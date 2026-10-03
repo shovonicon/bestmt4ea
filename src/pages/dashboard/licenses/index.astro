@@ -1,16 +1,17 @@
 ---
 export const prerender = false;
 
+import { eq } from 'drizzle-orm';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getDb } from '../../../db/client';
-import { listActiveAccounts, listLicensesForCustomer } from '../../../server/licenses';
 import { products } from '../../../db/schema';
-import { eq } from 'drizzle-orm';
+import { listActiveAccounts, listLicensesForCustomer } from '../../../server/licenses';
+import { url } from '../../../lib/urls';
 
 const session = Astro.locals.session;
-if (!session || session.subjectType !== 'customer') {
-  return Astro.redirect('/login/');
-}
+if (!session || session.subjectType !== 'customer') return Astro.redirect('/login/');
+
+const requested = Astro.url.searchParams.get('requested') === '1';
 
 const db = getDb();
 const rows = await listLicensesForCustomer(db, session.subjectId);
@@ -25,6 +26,7 @@ for (const license of rows) {
     key: license.licenseKey,
     status: license.status,
     product: product?.title ?? license.productId,
+    productSlug: license.productId,
     expiresAt: license.expiresAt,
     accounts,
   });
@@ -42,9 +44,15 @@ const badge = (status: string) =>
     <p class="section-kicker">Dashboard</p>
     <h1 class="mt-3 text-3xl font-bold sm:text-4xl">My licenses</h1>
 
+    {requested && (
+      <p class="mt-6 rounded-xl border border-[--color-brand]/40 bg-[--color-brand]/10 px-4 py-3 text-sm">
+        Account-change request received. We&rsquo;ll review it and update your licence.
+      </p>
+    )}
+
     {licenses.length === 0 && (
       <p class="mt-6 text-[--color-ink-soft]">
-        No licenses yet. <a class="underline" href="/shop/">Browse the shop</a>.
+        No licenses yet. <a class="underline" href={url('/shop')}>Browse the shop</a>.
       </p>
     )}
 
@@ -72,25 +80,40 @@ const badge = (status: string) =>
           {license.status === 'PENDING' && (
             <form method="post" action="/api/licenses/activate/" class="mt-5 grid gap-3 sm:grid-cols-4">
               <input type="hidden" name="licenseId" value={license.id} />
-              <input
-                name="accountNumber"
-                required
-                inputmode="numeric"
-                placeholder="MT5 account"
-                class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm"
-              />
+              <input name="accountNumber" required inputmode="numeric" placeholder="MT5 account" class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm" />
               <input name="broker" placeholder="Broker" class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm" />
               <select name="accountType" class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm">
                 <option value="demo">Demo</option>
                 <option value="real">Real</option>
               </select>
-              <button type="submit" class="rounded-xl bg-[--color-brand] px-4 py-2 text-sm font-semibold text-black">
-                Activate
-              </button>
+              <button type="submit" class="rounded-xl bg-[--color-brand] px-4 py-2 text-sm font-semibold text-black">Activate</button>
             </form>
+          )}
+
+          {license.status === 'ACTIVE' && (
+            <div class="mt-5 flex flex-wrap items-center gap-3">
+              <a class="rounded-lg border border-white/10 px-3 py-2 text-sm" href={url('/dashboard/downloads')}>Download</a>
+              <details class="text-sm">
+                <summary class="cursor-pointer text-[--color-ink-soft]">Request an account change</summary>
+                <form method="post" action="/api/licenses/request-account-change/" class="mt-3 grid gap-3 sm:grid-cols-4">
+                  <input type="hidden" name="licenseId" value={license.id} />
+                  <input name="accountNumber" required inputmode="numeric" placeholder="New MT5 account" class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm" />
+                  <input name="broker" placeholder="Broker" class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm" />
+                  <select name="accountType" class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm">
+                    <option value="demo">Demo</option>
+                    <option value="real">Real</option>
+                  </select>
+                  <button type="submit" class="rounded-xl border border-white/10 px-4 py-2 text-sm font-semibold">Request</button>
+                </form>
+              </details>
+            </div>
           )}
         </div>
       ))}
     </div>
+
+    <p class="mt-10 text-sm text-[--color-ink-soft]">
+      <a class="underline" href={url('/dashboard')}>Dashboard</a>
+    </p>
   </section>
 </BaseLayout>

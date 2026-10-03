@@ -5,17 +5,26 @@ import { eq } from 'drizzle-orm';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getDb } from '../../db/client';
 import { customers } from '../../db/schema';
+import { listLicensesForCustomer } from '../../server/licenses';
+import { listCustomerDownloads, listOrdersForCustomer } from '../../server/portal';
+import { url } from '../../lib/urls';
 
 const session = Astro.locals.session;
-if (!session || session.subjectType !== 'customer') {
-  return Astro.redirect('/login/');
-}
+if (!session || session.subjectType !== 'customer') return Astro.redirect('/login/');
 
-const customer = await getDb()
-  .select()
-  .from(customers)
-  .where(eq(customers.id, session.subjectId))
-  .get();
+const db = getDb();
+const customer = await db.select().from(customers).where(eq(customers.id, session.subjectId)).get();
+const [licenses, downloads, orders] = await Promise.all([
+  listLicensesForCustomer(db, session.subjectId),
+  listCustomerDownloads(db, session.subjectId),
+  listOrdersForCustomer(db, session.subjectId),
+]);
+
+const cards = [
+  { label: 'Licenses', value: licenses.length, href: url('/dashboard/licenses') },
+  { label: 'Downloads', value: downloads.length, href: url('/dashboard/downloads') },
+  { label: 'Orders', value: orders.length, href: url('/dashboard/orders') },
+];
 ---
 
 <BaseLayout title="Dashboard" description="Your BestMT4EA account." noindex>
@@ -29,23 +38,21 @@ const customer = await getDb()
     </p>
 
     <div class="mt-10 grid gap-4 sm:grid-cols-3">
-      <a href="/dashboard/licenses/" class="brand-card rounded-2xl p-5">
-        <p class="text-sm text-[--color-ink-soft]">My licenses</p>
-        <p class="mt-1 text-lg font-semibold">Manage EA licenses</p>
-      </a>
-      <a href="/dashboard/downloads/" class="brand-card rounded-2xl p-5">
-        <p class="text-sm text-[--color-ink-soft]">Downloads</p>
-        <p class="mt-1 text-lg font-semibold">Your files</p>
-      </a>
-      <a href="/dashboard/orders/" class="brand-card rounded-2xl p-5">
-        <p class="text-sm text-[--color-ink-soft]">Orders</p>
-        <p class="mt-1 text-lg font-semibold">Order history</p>
-      </a>
+      {cards.map((card) => (
+        <a href={card.href} class="brand-card rounded-2xl p-5">
+          <p class="text-3xl font-bold">{card.value}</p>
+          <p class="mt-1 text-sm text-[--color-ink-soft]">{card.label}</p>
+        </a>
+      ))}
     </div>
 
-    <p class="mt-10 text-sm text-[--color-ink-soft]">
-      Licenses, downloads and orders arrive in the next platform phases.
-      <a class="underline" href="/logout/">Sign out</a>.
-    </p>
+    <nav class="mt-10 flex flex-wrap gap-3 text-sm">
+      <a class="rounded-lg border border-white/10 px-3 py-2" href={url('/dashboard/licenses')}>My licenses</a>
+      <a class="rounded-lg border border-white/10 px-3 py-2" href={url('/dashboard/downloads')}>Downloads</a>
+      <a class="rounded-lg border border-white/10 px-3 py-2" href={url('/dashboard/orders')}>Orders</a>
+      <a class="rounded-lg border border-white/10 px-3 py-2" href={url('/dashboard/account')}>Account</a>
+      <a class="rounded-lg border border-white/10 px-3 py-2" href={url('/dashboard/support')}>Support</a>
+      <a class="rounded-lg border border-white/10 px-3 py-2" href="/logout/">Sign out</a>
+    </nav>
   </section>
 </BaseLayout>

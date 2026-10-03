@@ -17,10 +17,10 @@ Keep it short — about 12 lines. `/checkpoint` rewrites it.
 - Updated: 2026-10-03
 - Session: dc409e13-ec30-4e6c-bde8-23e584f22e52
 - Focus: PLATFORM (Astro SSR + Cloudflare D1/R2). Content rollout paused until Phase R.
-- Last done: **P5 DONE (core)** — premium licensing. `src/server/licenses.ts`: non-sequential keys (`BMT4-XXXX-XXXX-XXXX`, no ambiguous chars), statuses/transitions (activate/extend/change-account/suspend/resume/revoke), `license_events` audit, and the `license_builds` queue. `settleOrder` now creates a PENDING licence for EA products; `/api/download` requires an **ACTIVE licence** for EAs. Endpoints `/api/licenses/` (list) + `/api/licenses/activate/`, plus `/dashboard/licenses/`. `release:check` PASSED (65.2s); live LICENSE SMOKE PASS (9/9).
+- Last done: **P6 DONE** — customer portal. Real `/dashboard` sections: overview counts, `/dashboard/licenses/` (activate + account-change request), `/dashboard/downloads/` (free + licensed, streamed via `/api/download`), `/dashboard/orders/`, `/dashboard/account/`, `/dashboard/support/` (Telegram = communication only). `src/server/portal.ts` (`listCustomerDownloads` applies the free/entitlement/licence rules; `listOrdersForCustomer`); `requestAccountChange` records a `license_events` row for admin approval. `release:check` PASSED (75.1s); live PORTAL SMOKE PASS (10/10).
 - Next action:
-  1. Phase P6 — customer portal: dashboard sections (licenses/downloads/orders/account) and the customer renew + account-change request flows.
-  2. P5 follow-ups: the private **build machine** + admin licence/build management (P7); **remove the public R2 custom domain** before premium EX5 ships; the companion cron Worker; settlement emails.
+  1. Phase P7 — admin platform (`/admin`): customers, orders, licences (approve account changes, suspend/revoke), builds, payments (USDT monitor), settings; admin TOTP auth.
+  2. P5/P6 follow-ups: the private build machine + R2 upload; **remove the public R2 custom domain** before premium EX5; companion cron Worker; checkout/payment pages; settlement emails; real pricing pass.
   3. Confirm plan §4 decisions as they arise.
 - Blockers: none
 - Resume: reopen this project and run `cmd -c`, or `cmd -r "<session name>"`. Run `/checkpoint` before stopping.
@@ -497,25 +497,25 @@ wrapper was not keyboard-reachable (axe `scrollable-region-focusable`, WCAG
 
 ## Next task
 
-**Phase P6 — customer portal** (P0–P5 are DONE; the content rollout is paused until
+**Phase P7 — admin platform** (P0–P6 are DONE; the content rollout is paused until
 Phase R).
 
 Done: **P0** D1 schema + USDT engine. **P1** Astro SSR on Cloudflare. **P2** passwordless
-accounts. **P3** catalogue + gated downloads. **P4** payments (one `settleOrder` trust
-path; Stripe + USDT). **P5** premium licensing (keys, statuses, MT5 binding, build queue;
-EA downloads require an ACTIVE licence). Git: `b268d03` → `e587665` → `ba6a333` →
-`d2c5c1a` → `9e2c3ce`.
+accounts. **P3** catalogue + gated downloads. **P4** payments. **P5** premium licensing.
+**P6** customer portal. Git: `b268d03` → `e587665` → `ba6a333` → `d2c5c1a` → `9e2c3ce` →
+`d9cf5f4`.
 
-Next: **P6** — the customer portal: real `/dashboard` sections (licenses, downloads,
-orders, account) and the customer **renew** + **account-change request** flows. Then
-**P7** — the admin platform (`/admin`: customers, orders, licences, builds, payments).
+Next: **P7** — the admin platform at `/admin`: dashboard KPIs; customers; orders;
+**licences** (approve account-change requests, extend, suspend/revoke, manual create);
+**builds**; a **USDT payment monitor**; settings; `audit_log`. Admin auth = password +
+TOTP + recovery codes (`src/lib/totp.ts` still to port; `password.ts` exists).
 
 Hard prerequisites before premium EX5 ships: **remove the public R2 custom domain** (the
 bucket is world-readable today); stand up the private **build machine** for the
 `license_builds` queue; add the companion cron Worker for the 60s USDT poll.
 
-Also open: checkout/payment pages (UI), settlement emails, and a real pricing pass so
-`product_plans` exist in production.
+Also open: checkout/payment pages (UI), settlement emails, customer **renew** (currently a
+re-purchase), and a real pricing pass so `product_plans` exist in production.
 
 ## Phase P1 — Astro SSR on Cloudflare (DONE 2026-10-03)
 
@@ -663,3 +663,27 @@ download allowed (200) → a second account refused (409, `max_accounts`).
 > and uploads the compiled EX5 to R2, and admin licence/build management (P7). The **R2
 > bucket is still world-readable** via its public custom domain — that must be removed before
 > any premium EX5 is stored. Customer renew / account-change *requests* land in P6.
+
+## Phase P6 — customer portal (DONE 2026-10-03)
+
+- **`src/server/portal.ts`** — the read models: `listCustomerDownloads` returns every file
+  the customer may download (the whole free library, plus premium files they hold an active
+  entitlement for — and an **active licence** for an EA), applying the same rules as the
+  download endpoint; `listOrdersForCustomer` returns orders with their items.
+- **`requestAccountChange`** (`src/server/licenses.ts`) — records a customer's request as a
+  `license_events` row (`account_change_requested`); an admin approves it in P7 via
+  `changeLicenseAccount`. Recorded, not applied — account changes are limited by policy.
+- **Pages** (all `prerender = false`, session-gated): `/dashboard/` (counts + nav),
+  `/dashboard/licenses/` (activate a PENDING licence, request an account change on an ACTIVE
+  one), `/dashboard/downloads/` (licensed + free, streamed through `/api/download`),
+  `/dashboard/orders/`, `/dashboard/account/`, `/dashboard/support/` (Telegram =
+  communication only).
+- **Endpoint** — `POST /api/licenses/request-account-change/`.
+
+Verification: `npm run release:check` — **PASSED (75.1s)**; `vitest` 21/21. Live
+`wrangler dev` **PORTAL SMOKE PASS (10/10)**: dashboard / downloads / orders / account /
+support all render for the signed-in customer, the downloads page lists the files, a
+signed-out visitor is redirected to `/login/`, and an account-change request is accepted.
+
+> P6 follow-ups: customer **renew** is currently a re-purchase (a dedicated renew flow is
+> later); payment/checkout **pages** (UI) and settlement **emails** are still open.

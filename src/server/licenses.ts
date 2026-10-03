@@ -290,6 +290,31 @@ export const resumeLicense = (db: Db, licenseId: string, actorId?: string | null
 export const revokeLicense = (db: Db, licenseId: string, actorId?: string | null) =>
   setLicenseStatus(db, { licenseId, status: 'REVOKED', action: 'revoked', actorId });
 
+/**
+ * A customer asking to move the licence to a different MT5 account. This records
+ * the request only — an admin approves it (P7) via `changeLicenseAccount`, since
+ * account changes are limited, not unlimited.
+ */
+export async function requestAccountChange(
+  db: Db,
+  input: {
+    licenseId: string;
+    customerId: string;
+    accountNumber: string;
+    broker?: string | null;
+    accountType?: 'real' | 'demo';
+  }
+): Promise<{ ok: boolean; reason?: string }> {
+  const license = await getLicense(db, input.licenseId);
+  if (!license || license.customerId !== input.customerId) return { ok: false, reason: 'not_found' };
+  await logEvent(db, license.id, 'account_change_requested', 'customer', input.customerId, {
+    accountNumber: input.accountNumber,
+    broker: input.broker ?? null,
+    accountType: input.accountType ?? 'demo',
+  });
+  return { ok: true };
+}
+
 /* -------------------------------------------------------------- build queue */
 
 export async function listPendingBuilds(db: Db): Promise<LicenseBuild[]> {
