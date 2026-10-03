@@ -18,7 +18,7 @@ import { join, extname, normalize } from 'node:path';
 const args = process.argv.slice(2);
 const portArg = args[args.indexOf('--port') + 1];
 const PORT = Number(portArg) || 4322;
-const DIST = 'dist';
+const DIST = 'dist/client';
 
 const TYPES = {
   '.html': 'text/html; charset=utf-8',

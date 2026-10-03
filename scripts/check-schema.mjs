@@ -21,7 +21,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import matter from 'gray-matter';
 
-const DIST = 'dist';
+const DIST = 'dist/client';
 const SITE_HOST = 'bestmt4ea.com';
 const ALLOWED_AVAILABILITY = new Set([
   'https://schema.org/InStock',

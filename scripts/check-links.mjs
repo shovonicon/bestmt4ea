@@ -19,7 +19,7 @@
 import { readdirSync, readFileSync, existsSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
-const DIST = 'dist';
+const DIST = 'dist/client';
 const ASSET_EXT = /\.(?:html|xml|txt|json|css|js|mjs|map|webp|png|jpe?g|gif|svg|ico|avif|woff2?|ttf|otf|pdf|zip|ex4|ex5|mq4|mq5|set|csv)$/i;
 
 /** Every .html file under dist, as forward-slash relative paths. */

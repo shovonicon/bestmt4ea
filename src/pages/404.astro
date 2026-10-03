@@ -3,6 +3,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../lib/site';
 import { url } from '../lib/urls';
 
+// Rendered on demand (not prerendered) so Astro middleware runs for unmatched
+// paths and can serve the legacy-redirect manifest before the 404 is rendered.
+export const prerender = false;
+
 const links = [
   { href: url('/'), label: 'Home' },
   { href: url('/top-ranking'), label: 'Top ranking' },

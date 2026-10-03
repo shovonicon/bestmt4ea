@@ -16,12 +16,12 @@ Keep it short — about 12 lines. `/checkpoint` rewrites it.
 
 - Updated: 2026-10-03
 - Session: dc409e13-ec30-4e6c-bde8-23e584f22e52
-- Focus: PLATFORM (Astro + Cloudflare D1/R2). Content rollout is paused per "platform first"; the 119 rewrites resume as Phase R.
-- Last done: replan approved (keep Astro; self-hosted USDT TRC20 gateway; product-page performance; Telegram comms-only). P0 started: added `@astrojs/cloudflare`, `drizzle-orm`, `stripe`, `drizzle-kit`, `vitest`; wrote `src/db/schema.ts` (30 tables), `src/server/crypto-payments.ts`, `src/server/tron.ts`, `drizzle/0000_init.sql`; 19 tests pass; `astro check` 0 errors.
+- Focus: PLATFORM (Astro + Cloudflare D1/R2). Content rollout paused until Phase R.
+- Last done: **git repo initialised** (baseline `b268d03`). **P1 DONE** — Astro SSR adopted: `@astrojs/cloudflare` + `session:false`, all 219 public pages stay prerendered, the 404 renders on demand (which builds the Worker), redirects moved from the old Worker into `src/middleware.ts`, gates retargeted to `dist/client`, `wrangler.jsonc` slimmed. `release:check` PASSED (68.4s); `check:preview` PASS (legacy 301, emoji routes, 404); `astro check` 0 errors.
 - Next action:
-  1. Phase P1 — add the adapter to `astro.config.mjs`; add D1 + Email bindings and `triggers.crons` to `wrangler.jsonc`; replace `worker/index.ts` with `src/worker.ts` (Astro handler + redirect matcher + `scheduled()`); keep all 219 prerendered pages green under the preservation gate.
-  2. Phase P2 — port sessions/login_tokens/middleware; wire `src/db/client.ts` to the worker env.
-  3. Confirm open decisions (plan §4): product-page cache length, admin URL, EX5 build machine, TRON wallet + TronGrid key, licence max-accounts policy.
+  1. Phase P2 — accounts & auth: port `src/lib/{session,crypto,csrf,password,totp,rate-limit,http}.ts` + magic-link, add `src/db/client.ts` (D1 `DB` binding) and session resolution in middleware.
+  2. Phase P3 — catalogue + free downloads (D1 + R2, `/api/download/<fileId>`).
+  3. Create the D1 database and bind `DB`; confirm plan §4 decisions (product-page cache, admin URL, EX5 build machine, TRON wallet + TronGrid key, licence max-accounts).
 - Blockers: none
 - Resume: reopen this project and run `cmd -c`, or `cmd -r "<session name>"`. Run `/checkpoint` before stopping.
 
@@ -497,20 +497,44 @@ wrapper was not keyboard-reachable (axe `scrollable-region-focusable`, WCAG
 
 ## Next task
 
-**Phase P0/P1 of the platform program.** The content rollout is **paused** (it resumes
-as Phase R once the platform is live).
+**Phase P2 — accounts & authentication** (P0 and P1 are DONE; the content rollout is
+paused until Phase R).
 
-Done in P0: deps added (`@astrojs/cloudflare`, `drizzle-orm`, `stripe`, `drizzle-kit`,
-`vitest`); `src/db/schema.ts` (30 tables incl. `licenses`, `license_accounts`,
-`license_builds`, `crypto_payments`, `payment_events`); `src/server/crypto-payments.ts`
-+ `src/server/tron.ts`; `drizzle/0000_init.sql`; `tests/crypto-payments.test.ts`
-(19 passing); `astro check` 0 errors.
+Done: **P0** — D1 schema (30 tables incl. licensing + USDT), the USDT engine + 21 tests,
+Drizzle migration. **P1** — Astro SSR on Cloudflare: `@astrojs/cloudflare` adapter,
+static-by-default (219 pages prerendered, 404 on demand → Worker built), redirects in
+`src/middleware.ts`, gates retargeted to `dist/client`, `wrangler.jsonc` slimmed, old
+`worker/index.ts` retired. `release:check` PASSED (68.4s); `check:preview` PASS. The repo
+is now git-tracked (baseline `b268d03`).
 
-Next — **Phase P1**: add the adapter to `astro.config.mjs`; add the D1 (`DB`) + Email
-bindings and `triggers.crons` to `wrangler.jsonc`; replace `worker/index.ts` with
-`src/worker.ts` (Astro handler + redirect matcher + `scheduled()`), keeping all 219
-prerendered pages green under the preservation gate (`check-routes`, `check-canonicals`,
-`check-links`, `check-rendered`, `check-schema`).
+Next: **P2** — port `src/lib/{session,crypto,csrf,password,totp,rate-limit,http}.ts` and
+the magic-link login flow; add `src/db/client.ts` + the D1 `DB` binding; resolve the
+session in `src/middleware.ts`. Then **P3** — catalogue + free downloads.
 
-Open decisions to confirm (plan §4): product-page cache length, admin URL, EX5 build
-machine, TRON wallet + TronGrid key, licence max-accounts policy.
+Infra still to create: the D1 database (`wrangler d1 create bestmt4ea`) and the `DB`
+binding. Confirm plan §4: product-page cache length, admin URL, EX5 build machine, TRON
+wallet + TronGrid key, licence max-accounts policy.
+
+## Phase P1 — Astro SSR on Cloudflare (DONE 2026-10-03)
+
+- `astro.config.mjs`: `@astrojs/cloudflare` adapter, `session: false` (we use D1
+  sessions, not the adapter's KV), `imageService: 'passthrough'`. `output` stays
+  **`'static'`** — every public page is prerendered automatically, so **no per-page
+  `prerender` flags were needed**.
+- `src/pages/404.astro`: `export const prerender = false` — this single on-demand route
+  is what makes the adapter build a **Worker** rather than assets-only, and lets middleware
+  run for unmatched paths.
+- `src/middleware.ts` (new): serves the legacy redirect manifest (410/451 + 301/302/307/308)
+  through the same pure matcher (`worker/match.mjs`) the old Worker used — one
+  implementation, and the same one `worker.test.mjs` exercises.
+- `wrangler.jsonc`: dropped `main` and the `assets` block (the adapter owns both at build
+  time, via the generated `dist/server/wrangler.json`), added `nodejs_compat`. Deploy is
+  routed by `.wrangler/deploy/config.json` → the built config.
+- Retired `worker/index.ts`; retargeted the five gates (`check-canonicals`, `check-links`,
+  `check-schema`, `check-rendered-html`, `serve-dist`) from `dist` to **`dist/client`**
+  (the adapter's static output; the server bundle is `dist/server`).
+
+Verification: `npm run release:check` — **PASSED (68.4s)**, all steps green. `npm run
+check:preview` against `wrangler dev` — **PASS**: legacy redirect fires (301), emoji
+routes serve with one canonical each, unknown path 404s, `/shop` canonicalises. `astro
+check` 0 errors; `vitest` 21/21.

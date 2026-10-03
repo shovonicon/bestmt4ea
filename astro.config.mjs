@@ -1,6 +1,7 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import cloudflare from '@astrojs/cloudflare';
 import tailwindcss from '@tailwindcss/vite';
 import matter from 'gray-matter';
 import { rehypeTableAccessibility } from './src/lib/rehype-table-a11y.mjs';
@@ -50,6 +51,8 @@ const dates = contentDates();
 export default defineConfig({
   site: SITE,
   output: 'static',
+  session: false,
+  adapter: cloudflare({ imageService: 'passthrough' }),
   trailingSlash: 'always',
   integrations: [
     sitemap({

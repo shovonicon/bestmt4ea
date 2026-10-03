@@ -27,7 +27,7 @@ import { join, relative, sep } from 'node:path';
 import matter from 'gray-matter';
 import { bodySectionKinds, hasBodyH1 } from './content-rules.mjs';
 
-const DIST = 'dist';
+const DIST = 'dist/client';
 const POSTS_DIR = 'src/content/posts';
 const PRODUCTS_DIR = 'src/content/products';
 

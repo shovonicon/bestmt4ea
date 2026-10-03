@@ -19,7 +19,7 @@
 import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 
-const DIST = 'dist';
+const DIST = 'dist/client';
 const SITE_HOST = 'bestmt4ea.com';
 
 /**
@@ -104,7 +104,7 @@ if (errors.length > 0) {
 }
 
 if (!existsSync(join(DIST, 'sitemap-index.xml'))) {
-  console.error('check-canonicals: dist/sitemap-index.xml missing — run a build first.');
+  console.error('check-canonicals: dist/client/sitemap-index.xml missing — run a build first.');
   process.exit(1);
 }
 
