@@ -1,0 +1,50 @@
+---
+/**
+ * AdSense unit.
+ *
+ * Placement rules this component is built around (see docs/CONTENT-STANDARD.md):
+ *   1. Never render next to a download button or a purchase CTA — AdSense
+ *      treats an ad that can be mistaken for the download link as a violation.
+ *   2. Never place inside the "answer box" or the first paragraph, so the
+ *      primary answer is never pushed below the fold.
+ *   3. Maximum of one unit per 500 words of body content.
+ *   4. Renders nothing at all when PUBLIC_ADSENSE_CLIENT is unset, so local
+ *      development and preview builds contain no ad code.
+ */
+export interface Props {
+  slot: string;
+  format?: string;
+  layoutKey?: string;
+  class?: string;
+  /** Set false when the unit sits in the sidebar to avoid stacking labels. */
+  showLabel?: boolean;
+}
+
+const { slot, format = 'auto', layoutKey, class: className = '', showLabel = true } = Astro.props;
+const client = import.meta.env.PUBLIC_ADSENSE_CLIENT;
+const enabled = Boolean(client && slot);
+---
+
+{
+  enabled && (
+    <aside class:list={['ad-unit not-prose my-8', className]} aria-label="Advertisement">
+      {showLabel && (
+        <p class="mb-1 text-[10px] font-medium uppercase tracking-[0.16em] text-[--color-ink-dim]">
+          Advertisement
+        </p>
+      )}
+      <ins
+        class="adsbygoogle block"
+        style="display:block"
+        data-ad-client={client}
+        data-ad-slot={slot}
+        data-ad-format={format}
+        data-ad-layout-key={layoutKey}
+        data-full-width-responsive="true"
+      />
+      <script is:inline>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </aside>
+  )
+}

@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../lib/site';
+import { url } from '../lib/urls';
+
+const links = [
+  { href: url('/'), label: 'Home' },
+  { href: url('/top-ranking'), label: 'Top ranking' },
+  { href: url('/shop'), label: 'Shop' },
+  { href: url('/free-download-forex-ea-indicator'), label: 'Free downloads' },
+  { href: url('/blog'), label: 'Blog' },
+  { href: url('/contact'), label: 'Contact support' },
+];
+---
+
+<BaseLayout title="Page not found" description="The page you were looking for does not exist." noindex>
+  <section class="container-x flex min-h-[60vh] flex-col items-center justify-center py-24 text-center">
+    <p class="section-kicker">Error 404</p>
+    <h1 class="mt-4 text-4xl font-bold sm:text-6xl">This page traded away</h1>
+    <p class="mt-5 max-w-xl text-base leading-8 text-[--color-ink-soft]">
+      The link is broken or the page has moved. Nothing here is lost — start from one of these instead.
+    </p>
+
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
+      {links.map((link) => <a href={link.href} class="btn btn-ghost">{link.label}</a>)}
+    </div>
+
+    <a href={url('/shop')} class="btn btn-primary mt-8">Browse the EA library</a>
+
+    <p class="mt-10 text-xs text-[--color-ink-dim]">
+      Still stuck? Message us on
+      <a href={site.telegram.support} rel="noopener" class="text-[--color-accent]">Telegram</a>.
+    </p>
+  </section>
+</BaseLayout>

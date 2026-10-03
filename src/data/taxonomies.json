@@ -1,0 +1,316 @@
+{
+  "productCategories": [
+    {
+      "id": 504,
+      "name": "Forex Robot",
+      "slug": "forex-robot",
+      "count": 11
+    },
+    {
+      "id": 1529,
+      "name": "Gold Forex EA",
+      "slug": "gold-forex-ea",
+      "count": 5
+    },
+    {
+      "id": 505,
+      "name": "Indicator",
+      "slug": "indicator",
+      "count": 3
+    },
+    {
+      "id": 1339,
+      "name": "Most Popular",
+      "slug": "most-popular",
+      "count": 13
+    }
+  ],
+  "brands": [
+    {
+      "id": 1471,
+      "name": "MT4",
+      "slug": "mt4",
+      "count": 5
+    },
+    {
+      "id": 1507,
+      "name": "MT5",
+      "slug": "mt5",
+      "count": 10
+    }
+  ],
+  "blogCategories": [
+    {
+      "id": 1525,
+      "name": "AI EA Reviews",
+      "slug": "ai-ea-reviews",
+      "count": 2,
+      "parent": 1511,
+      "path": "https://bestmt4ea.com/category/ai-powered-trading-tools/ai-ea-reviews/"
+    },
+    {
+      "id": 1527,
+      "name": "AI Trading Indicators",
+      "slug": "ai-trading-indicators",
+      "count": 6,
+      "parent": 1511,
+      "path": "https://bestmt4ea.com/category/ai-powered-trading-tools/ai-trading-indicators/"
+    },
+    {
+      "id": 1511,
+      "name": "AI-Powered Trading Tools",
+      "slug": "ai-powered-trading-tools",
+      "count": 4,
+      "parent": 0,
+      "path": "https://bestmt4ea.com/category/ai-powered-trading-tools/"
+    },
+    {
+      "id": 1492,
+      "name": "Beginner’s Guides & Forex Basics",
+      "slug": "beginners-guides-forex-basics",
+      "count": 0,
+      "parent": 0,
+      "path": "https://bestmt4ea.com/category/beginners-guides-forex-basics/"
+    },
+    {
+      "id": 1528,
+      "name": "Brokers & Trading Platforms",
+      "slug": "brokers-trading-platforms",
+      "count": 1,
+      "parent": 1511,
+      "path": "https://bestmt4ea.com/category/ai-powered-trading-tools/brokers-trading-platforms/"
+    },
+    {
+      "id": 1498,
+      "name": "Chart Patterns",
+      "slug": "chart-patterns",
+      "count": 0,
+      "parent": 0,
+      "path": "https://bestmt4ea.com/category/chart-patterns/"
+    },
+    {
+      "id": 1514,
+      "name": "EA Development (MQL4/MQL5)",
+      "slug": "ea-development-mql4-mql5",
+      "count": 0,
+      "parent": 1508,
+      "path": "https://bestmt4ea.com/category/mt4-mt5-expert-advisors/ea-development-mql4-mql5/"
+    },
+    {
+      "id": 1512,
+      "name": "EA Reviews & Comparisons",
+      "slug": "ea-reviews-comparisons",
+      "count": 17,
+      "parent": 1508,
+      "path": "https://bestmt4ea.com/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
+    },
+    {
+      "id": 1513,
+      "name": "EA Settings & Optimization",
+      "slug": "ea-settings-optimization",
+      "count": 3,
+      "parent": 1508,
+      "path": "https://bestmt4ea.com/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
+    },
+    {
+      "id": 1496,
+      "name": "Forex Broker Reviews",
+      "slug": "forex-broker-reviews",
+      "count": 0,
+      "parent": 0,
+      "path": "https://bestmt4ea.com/category/forex-broker-reviews/"
+    },
+    {
+      "id": 1504,
+      "name": "Forex EA Reviews",
+      "slug": "forex-ea-reviews",
+      "count": 8,
+      "parent": 0,
+      "path": "https://bestmt4ea.com/category/forex-ea-reviews/"
+    },
+    {
+      "id": 1499,
+      "name": "Forex Indicator Reviews",
+      "slug": "forex-indicator-reviews",
+      "count": 4,
+      "parent": 0,
+      "path": "https://bestmt4ea.com/category/forex-indicator-reviews/"
+    },
+    {
+      "id": 1520,
+      "name": "Forex Scalping",
+      "slug": "forex-scalping",
+      "count": 9,
+      "parent": 1510,
+      "path": "https://bestmt4ea.com/category/forex-trading-strategies/forex-scalping/"
+    },
+    {
+      "id": 1521,
+      "name": "Forex Swing Trading",
+      "slug": "forex-swing-trading",
+      "count": 0,
+      "parent": 1510,
+      "path": "https://bestmt4ea.com/category/forex-trading-strategies/forex-swing-trading/"
+    },
+    {
+      "id": 1510,
+      "name": "Forex Trading Strategies",
+      "slug": "forex-trading-strategies",
+      "count": 14,
+      "parent": 0,
+      "path": "https://bestmt4ea.com/category/forex-trading-strategies/"
+    },
+    {
+      "id": 1505,
+      "name": "Free Forex EA",
+      "slug": "free-forex-ea",
+      "count": 30,
+      "parent": 0,
+      "path": "https://bestmt4ea.com/category/free-forex-ea/"
+    },
+    {
+      "id": 1506,
+      "name": "Free Forex Indicator",
+      "slug": "free-forex-indicator",
+      "count": 33,
+      "parent": 0,
+      "path": "https://bestmt4ea.com/category/free-forex-indicator/"
+    },
+    {
+      "id": 1495,
+      "name": "Fundamental Analysis",
+      "slug": "fundamental-analysis",
+      "count": 0,
+      "parent": 0,
+      "path": "https://bestmt4ea.com/category/fundamental-analysis/"
+    },
+    {
+      "id": 1509,
+      "name": "Gold (XAUUSD) Trading",
+      "slug": "gold-xauusd-trading",
+      "count": 12,
+      "parent": 0,
+      "path": "https://bestmt4ea.com/category/gold-xauusd-trading/"
+    },
+    {
+      "id": 1518,
+      "name": "Gold EA & Robots",
+      "slug": "gold-ea-robots",
+      "count": 11,
+      "parent": 1509,
+      "path": "https://bestmt4ea.com/category/gold-xauusd-trading/gold-ea-robots/"
+    },
+    {
+      "id": 1517,
+      "name": "Gold Market Analysis",
+      "slug": "gold-market-analysis",
+      "count": 0,
+      "parent": 1509,
+      "path": "https://bestmt4ea.com/category/gold-xauusd-trading/gold-market-analysis/"
+    },
+    {
+      "id": 1519,
+      "name": "Gold Risk Management",
+      "slug": "gold-risk-management",
+      "count": 0,
+      "parent": 1509,
+      "path": "https://bestmt4ea.com/category/gold-xauusd-trading/gold-risk-management/"
+    },
+    {
+      "id": 1490,
+      "name": "Installation & Setup",
+      "slug": "installation-setup",
+      "count": 7,
+      "parent": 0,
+      "path": "https://bestmt4ea.com/category/installation-setup/"
+    },
+    {
+      "id": 1523,
+      "name": "Mean Reversion Trading",
+      "slug": "mean-reversion-trading",
+      "count": 0,
+      "parent": 1510,
+      "path": "https://bestmt4ea.com/category/forex-trading-strategies/mean-reversion-trading/"
+    },
+    {
+      "id": 1508,
+      "name": "MT4/MT5 Expert Advisors",
+      "slug": "mt4-mt5-expert-advisors",
+      "count": 38,
+      "parent": 0,
+      "path": "https://bestmt4ea.com/category/mt4-mt5-expert-advisors/"
+    },
+    {
+      "id": 1503,
+      "name": "Prop Firm Reviews",
+      "slug": "prop-firm-reviews",
+      "count": 0,
+      "parent": 0,
+      "path": "https://bestmt4ea.com/category/prop-firm-reviews/"
+    },
+    {
+      "id": 1524,
+      "name": "Risk & Money Management",
+      "slug": "risk-money-management-forex-trading-strategies",
+      "count": 1,
+      "parent": 1510,
+      "path": "https://bestmt4ea.com/category/forex-trading-strategies/risk-money-management-forex-trading-strategies/"
+    },
+    {
+      "id": 1493,
+      "name": "Risk & Money Management",
+      "slug": "risk-money-management",
+      "count": 0,
+      "parent": 0,
+      "path": "https://bestmt4ea.com/category/risk-money-management/"
+    },
+    {
+      "id": 1491,
+      "name": "Strategies & Best Practices",
+      "slug": "strategies-best-practices",
+      "count": 0,
+      "parent": 0,
+      "path": "https://bestmt4ea.com/category/strategies-best-practices/"
+    },
+    {
+      "id": 1494,
+      "name": "Technical Analysis",
+      "slug": "technical-analysis",
+      "count": 0,
+      "parent": 0,
+      "path": "https://bestmt4ea.com/category/technical-analysis/"
+    },
+    {
+      "id": 1526,
+      "name": "Trading Algorithms & Systems",
+      "slug": "trading-algorithms-systems",
+      "count": 0,
+      "parent": 1511,
+      "path": "https://bestmt4ea.com/category/ai-powered-trading-tools/trading-algorithms-systems/"
+    },
+    {
+      "id": 1502,
+      "name": "Trading Psychology",
+      "slug": "trading-psychology",
+      "count": 0,
+      "parent": 0,
+      "path": "https://bestmt4ea.com/category/trading-psychology/"
+    },
+    {
+      "id": 1522,
+      "name": "Trend Following",
+      "slug": "trend-following",
+      "count": 2,
+      "parent": 1510,
+      "path": "https://bestmt4ea.com/category/forex-trading-strategies/trend-following/"
+    },
+    {
+      "id": 1516,
+      "name": "XAUUSD Trading Strategies",
+      "slug": "xauusd-trading-strategies",
+      "count": 1,
+      "parent": 1509,
+      "path": "https://bestmt4ea.com/category/gold-xauusd-trading/xauusd-trading-strategies/"
+    }
+  ]
+}

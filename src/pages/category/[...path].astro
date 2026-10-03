@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPublicPosts } from '../../lib/content';
+import { url } from '../../lib/urls';
+import taxonomies from '../../data/taxonomies.json';
+
+/**
+ * Blog category archives.
+ *
+ * WordPress categories are hierarchical (/category/parent/child/), so this
+ * catch-all rebuilds the exact same paths from the exported taxonomy map
+ * rather than flattening them to the category slug.
+ *
+ * Everything getStaticPaths needs is declared inside it, because Astro hoists
+ * that function out of the component scope.
+ */
+
+export async function getStaticPaths() {
+  const cats = ((taxonomies as any).blogCategories ?? []) as {
+    name: string;
+    slug: string;
+    path: string;
+  }[];
+
+  const relPath = (path: string) =>
+    String(path)
+      .replace(/^https?:\/\/[^/]+/, '')
+      .replace(/^\/category\//, '')
+      .replace(/\/+$/, '');
+
+  const posts = await getPublicPosts();
+  const used = new Set(posts.flatMap((p) => p.data.categories ?? []));
+
+  return cats
+    .filter((cat) => used.has(cat.name))
+    .map((cat) => ({
+      params: { path: relPath(cat.path) || cat.slug },
+      props: {
+        catName: cat.name,
+        posts: posts.filter((p) => (p.data.categories ?? []).includes(cat.name)),
+      },
+    }));
+}
+
+const { catName, posts } = Astro.props;
+
+const sorted = [...posts].sort(
+  (a: any, b: any) =>
+    (b.data.updatedAt ?? b.data.publishedAt).valueOf() - (a.data.updatedAt ?? a.data.publishedAt).valueOf(),
+);
+
+const fmt = (d: Date) =>
+  new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(d);
+---
+
+<BaseLayout
+  title={`${catName} — Guides and Reviews`}
+  description={`Every article filed under ${catName}: practical guides and reviews on automated forex trading, written to solve specific problems rather than to sell.`}
+>
+  <div class="container-x py-14">
+    <nav aria-label="Breadcrumb" class="text-xs text-[--color-ink-dim]">
+      <a href="/" class="hover:text-[--color-accent]">Home</a>
+      <span class="mx-2">/</span>
+      <a href="/blog/" class="hover:text-[--color-accent]">Blog</a>
+      <span class="mx-2">/</span>
+      <span class="text-[--color-ink-soft]">{catName}</span>
+    </nav>
+
+    <h1 class="mt-6 text-3xl md:text-4xl">{catName}</h1>
+    <p class="mt-4 max-w-2xl text-sm leading-7 text-[--color-ink-dim]">
+      {sorted.length} article{sorted.length === 1 ? '' : 's'} in this category.
+    </p>
+
+    <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      {
+        sorted.map((post: any) => (
+          <article class="panel p-5">
+            <h2 class="text-base leading-snug">
+              <a href={url(`/${post.data.slug}/`)} class="hover:text-[--color-accent]">
+                {post.data.title}
+              </a>
+            </h2>
+            <p class="mt-2 line-clamp-3 text-sm leading-6 text-[--color-ink-dim]">{post.data.description}</p>
+            <p class="mt-4 text-xs text-[--color-ink-dim]">{fmt(post.data.updatedAt ?? post.data.publishedAt)}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</BaseLayout>

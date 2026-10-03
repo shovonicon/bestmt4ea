@@ -1,0 +1,7 @@
+{
+  "_note": "Real verification dates, distinct from build time. Build time must never be presented as a data-freshness claim: it says when the site was compiled, not when anything was checked. These values are the only dates allowed next to content, catalogue or performance data, and the only ones used in structured data. Update them when the corresponding review actually happens.",
+  "contentReviewedAt": "2026-09-29",
+  "catalogueVerifiedAt": "2026-09-29",
+  "performanceVerifiedAt": "2026-09-28",
+  "performanceSource": "Myfxbook (editorial transcription)"
+}

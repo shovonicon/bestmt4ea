@@ -1,0 +1,66 @@
+---
+import { site } from '../lib/site';
+
+export interface Props {
+  published?: Date;
+  updated?: Date;
+  readingMinutes?: number;
+}
+
+const { published, updated, readingMinutes } = Astro.props;
+
+const fmt = (d?: Date) =>
+  d
+    ? new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(d)
+    : undefined;
+---
+
+<section class="panel-flat flex flex-wrap items-center gap-x-6 gap-y-3 p-5">
+  <div class="flex items-center gap-3">
+    <span
+      aria-hidden="true"
+      class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[--color-accent]/15 text-sm font-semibold text-[--color-accent]"
+    >
+      BT
+    </span>
+    <div>
+      <p class="text-sm font-semibold text-[--color-ink]">BESTMT4EA Trading Desk</p>
+      <p class="text-xs text-[--color-ink-dim]">
+        MQL4/MQL5 developers and traders. We publish the live track record for everything we review.
+      </p>
+    </div>
+  </div>
+
+  <dl class="flex flex-wrap gap-x-6 gap-y-2 text-xs">
+    {
+      published && (
+        <div>
+          <dt class="metric-label">Published</dt>
+          <dd class="mt-0.5 text-[--color-ink-soft]">{fmt(published)}</dd>
+        </div>
+      )
+    }
+    {
+      updated && (
+        <div>
+          <dt class="metric-label">Reviewed</dt>
+          <dd class="mt-0.5 text-[--color-ink-soft]">{fmt(updated)}</dd>
+        </div>
+      )
+    }
+    {
+      readingMinutes && (
+        <div>
+          <dt class="metric-label">Reading time</dt>
+          <dd class="mt-0.5 text-[--color-ink-soft]">{readingMinutes} min</dd>
+        </div>
+      )
+    }
+    <div>
+      <dt class="metric-label">Support</dt>
+      <dd class="mt-0.5">
+        <a href={site.telegram.support} rel="noopener" class="text-[--color-accent]">Telegram</a>
+      </dd>
+    </div>
+  </dl>
+</section>

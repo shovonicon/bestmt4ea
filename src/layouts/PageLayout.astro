@@ -1,0 +1,97 @@
+---
+/**
+ * Static page layout (About, Contact, Brokers, Privacy, Terms …).
+ *
+ * Ads are opt-out per page via `showAds` in frontmatter — legal and contact
+ * pages should not carry them. When ads are off there is no sidebar either, so
+ * the article renders full width (used by the Brokers and Copy Trading pages).
+ */
+import { render } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import AdSlot from '../components/AdSlot.astro';
+import Faq from '../components/Faq.astro';
+import { site } from '../lib/site';
+import { breadcrumbSchema, faqSchema } from '../lib/seo';
+
+export interface Props {
+  entry: any;
+}
+
+const { entry } = Astro.props;
+const data = entry.data;
+const { Content } = await render(entry);
+
+const pageUrl = `/${data.slug}/`;
+const trail = [
+  { name: 'Home', url: '/' },
+  { name: data.title, url: pageUrl },
+];
+const showAds = data.showAds !== false && !['privacy-policy', 'terms-conditions', 'contact'].includes(data.slug);
+const hasFaqs = Boolean(data.faqs?.length);
+---
+
+<BaseLayout
+  title={data.seo.title || data.title}
+  description={data.seo.description || data.description}
+  canonical={data.seo.canonical}
+  ogImage={data.seo.ogImage || data.featuredImage}
+  robots={data.seo.robots}
+  jsonLd={[breadcrumbSchema(trail), ...(data.faqs?.length ? [faqSchema(data.faqs)] : [])]}
+>
+  <div class="container-x pt-8">
+    <nav aria-label="Breadcrumb" class="text-xs text-[--color-ink-dim]">
+      <a href="/" class="hover:text-[--color-accent]">Home</a>
+      <span class="mx-2">/</span>
+      <span class="text-[--color-ink-soft]">{data.title}</span>
+    </nav>
+  </div>
+
+  <div class="container-x mt-8 pb-16">
+    <header class="animate-fade-in-up max-w-4xl">
+      <h1 class="text-3xl leading-tight tracking-tight sm:text-4xl lg:text-5xl">{data.title}</h1>
+      {
+        data.description && (
+          <p class="mt-5 max-w-3xl text-base leading-8 text-[--color-ink-soft] sm:text-lg">{data.description}</p>
+        )
+      }
+    </header>
+
+    {
+      showAds ? (
+        <div class="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
+          <article class="min-w-0">
+            <div class="prose-article max-w-none">
+              <Content />
+            </div>
+
+            <AdSlot slot={site.adSlots.belowContent} class="mt-12" />
+
+            {hasFaqs && (
+              <div class="mt-12">
+                <Faq items={data.faqs} heading="Frequently asked questions" />
+              </div>
+            )}
+          </article>
+
+          <aside class="min-w-0">
+            <div class="sticky top-24">
+              <AdSlot slot={site.adSlots.sidebar} class="hidden lg:block" />
+            </div>
+          </aside>
+        </div>
+      ) : (
+        <article class="mt-12 w-full">
+          <div class="prose-article max-w-none">
+            <Content />
+          </div>
+
+          {hasFaqs && (
+            <div class="mt-12">
+              <Faq items={data.faqs} heading="Frequently asked questions" />
+            </div>
+          )}
+        </article>
+      )
+    }
+  </div>
+</BaseLayout>

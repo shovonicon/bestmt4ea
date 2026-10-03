@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import ProductLayout from '../../layouts/ProductLayout.astro';
+
+export async function getStaticPaths() {
+  const products = await getCollection('products');
+  return products.map((product) => ({
+    params: { slug: product.data.slug },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+
+const allProducts = await getCollection('products');
+const related = allProducts
+  .filter(
+    (p) =>
+      p.data.slug !== product.data.slug &&
+      p.data.productCategories.some((c) => product.data.productCategories.includes(c)),
+  )
+  .slice(0, 3);
+---
+
+<ProductLayout product={product} related={related} />

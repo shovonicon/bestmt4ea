@@ -1,0 +1,32 @@
+---
+/**
+ * Sources / citations block.
+ *
+ * Rendered from `sources` frontmatter — the single source of truth, so the
+ * visible list and any schema always match. Outbound links carry
+ * `rel="noopener nofollow"`; this block is the E-E-A-T signal YMYL pages need.
+ */
+export interface Props {
+  sources: { label: string; url: string }[];
+  title?: string;
+}
+
+const { sources, title = 'Sources' } = Astro.props;
+---
+
+{
+  sources?.length > 0 && (
+    <section class="mt-12 panel p-6" data-sources>
+      <h2 class="text-base">{title}</h2>
+      <ul class="mt-4 space-y-2 text-sm">
+        {sources.map((source) => (
+          <li>
+            <a href={source.url} rel="noopener nofollow" class="text-[--color-accent]">
+              {source.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}

@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RankingTable from '../../components/RankingTable.astro';
+import { getPerformance } from '../../lib/performance';
+import { RISK_DISCLAIMER } from '../../lib/site';
+import { monthYear, performanceVerifiedAt } from '../../lib/dates';
+import { formatDate } from '../../lib/format';
+import { getPublicProducts } from '../../lib/content';
+import { url } from '../../lib/urls';
+import taxonomies from '../../data/taxonomies.json';
+
+/**
+ * Ranking page.
+ *
+ * This is the highest-value commercial page on the site: it captures head-term
+ * comparison intent ("best forex EA", "top MT4 robots") and routes it to the
+ * product pages. bestforexeas.com derives most of its 42k monthly traffic from
+ * a page like this.
+ */
+const products = await getPublicProducts();
+
+const perfSorted = products
+  .map((product) => ({ product, perf: getPerformance(product.data.slug) }))
+  .sort((a, b) => (b.perf?.monthlyGainPct ?? -Infinity) - (a.perf?.monthlyGainPct ?? -Infinity));
+
+const withLive = perfSorted.filter((r) => r.perf?.isLiveAccount);
+const withDemo = perfSorted.filter((r) => r.perf?.accountType === 'demo');
+const verified = perfSorted.filter((r) => r.perf?.verified);
+
+const cats = ((taxonomies as any).productCategories ?? []) as { name: string; slug: string }[];
+---
+
+<BaseLayout
+  title={`Top Forex Expert Advisors ${monthYear} — Ranked and Verified`}
+  description="Ranked comparison of MT4 and MT5 expert advisors by verified monthly return, maximum drawdown and absolute gain. Account type shown for every system, live or demo."
+>
+  <div class="container-x py-14">
+    <p class="eyebrow">Rankings · Performance verified {formatDate(performanceVerifiedAt)}</p>
+    <h1 class="mt-2 text-3xl md:text-4xl">Top expert advisors, ranked by verified monthly return</h1>
+    <p class="mt-5 max-w-3xl text-base leading-7 text-[--color-ink-soft]">
+      Every figure in this table comes from the third-party tracking account linked on each product page. We rank on
+      monthly return, but we publish drawdown beside it, because a system returning 20% a month at 80% drawdown is a
+      different proposition from one returning 6% at 5%.
+    </p>
+
+    <dl class="mt-10 grid grid-cols-2 gap-6 border-y border-[--color-line] py-8 md:grid-cols-4">
+      <div>
+        <dt class="metric-label">Systems ranked</dt>
+        <dd class="metric-value mt-2 text-3xl">{products.length}</dd>
+      </div>
+      <div>
+        <dt class="metric-label">Third-party verified</dt>
+        <dd class="metric-value mt-2 text-3xl">{verified.length}</dd>
+      </div>
+      <div>
+        <dt class="metric-label">On live accounts</dt>
+        <dd class="metric-value mt-2 text-3xl">{withLive.length}</dd>
+      </div>
+      <div>
+        <dt class="metric-label">On demo accounts</dt>
+        <dd class="metric-value mt-2 text-3xl">{withDemo.length}</dd>
+      </div>
+    </dl>
+
+    <section class="mt-12">
+      <h2 class="text-2xl">Full ranking</h2>
+      <div class="mt-6">
+        <RankingTable products={products} caption="Ranked expert advisors by verified monthly return" />
+      </div>
+      <p class="mt-4 text-xs leading-6 text-[--color-ink-dim]">{RISK_DISCLAIMER}</p>
+    </section>
+
+    <section class="mt-14 grid gap-8 md:grid-cols-2">
+      <div class="panel p-6">
+        <h2 class="text-lg">How we rank</h2>
+        <ol class="mt-4 space-y-3 text-sm leading-7 text-[--color-ink-soft]">
+          <li>
+            <strong class="text-[--color-ink]">1. Verified data only.</strong> A system only appears with figures once a
+            third-party tracking account exists for it.
+          </li>
+          <li>
+            <strong class="text-[--color-ink]">2. Monthly return first.</strong> Sorted by compound monthly return, then
+            by drawdown as a tiebreak.
+          </li>
+          <li>
+            <strong class="text-[--color-ink]">3. Drawdown always shown.</strong> Never hidden, never averaged away.
+          </li>
+          <li>
+            <strong class="text-[--color-ink]">4. Account type stated.</strong> Demo track records are labelled as demo,
+            because simulated fills do not carry the slippage a live account does.
+          </li>
+        </ol>
+      </div>
+
+      <div class="panel p-6">
+        <h2 class="text-lg">Browse by category</h2>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          {
+            cats.map((cat) => (
+              <li>
+                <a href={url(`/product-category/${cat.slug}`)} class="text-[--color-ink-soft] hover:text-[--color-accent]">
+                  {cat.name}
+                </a>
+              </li>
+            ))
+          }
+          <li>
+            <a href={url('/brand/mt4')} class="text-[--color-ink-soft] hover:text-[--color-accent]">MT4 expert advisors</a>
+          </li>
+          <li>
+            <a href={url('/brand/mt5')} class="text-[--color-ink-soft] hover:text-[--color-accent]">MT5 expert advisors</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

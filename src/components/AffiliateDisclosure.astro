@@ -1,0 +1,16 @@
+---
+/**
+ * Affiliate disclosure line.
+ *
+ * Render once on any page that carries affiliate links, before the first link.
+ */
+import { AFFILIATE_DISCLOSURE } from '../lib/affiliates';
+
+export interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<p class:list={['text-xs leading-6 text-[--color-ink-dim]', className]}>{AFFILIATE_DISCLOSURE}</p>

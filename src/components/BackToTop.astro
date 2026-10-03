@@ -1,0 +1,44 @@
+---
+/**
+ * Back-to-top arrow — appears once the reader has scrolled past the fold.
+ */
+---
+
+<button
+  type="button"
+  data-back-to-top
+  aria-label="Back to top"
+  class="fixed bottom-6 left-6 z-40 hidden h-11 w-11 place-items-center rounded-full border border-white/15 bg-white/[0.04] text-white backdrop-blur transition-all duration-300 hover:border-emerald-400/50 hover:text-emerald-300"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="h-4 w-4"
+  >
+    <path d="m18 15-6-6-6 6"></path>
+  </svg>
+</button>
+
+<script is:inline>
+  (() => {
+    const btn = document.querySelector('[data-back-to-top]');
+    if (!btn) return;
+
+    const toggle = () => {
+      const past = window.scrollY > 600;
+      btn.classList.toggle('hidden', !past);
+      btn.classList.toggle('grid', past);
+    };
+
+    toggle();
+    window.addEventListener('scroll', toggle, { passive: true });
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  })();
+</script>

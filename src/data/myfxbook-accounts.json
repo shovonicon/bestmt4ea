@@ -1,0 +1,27 @@
+{
+  "_comment": "Maps a product slug to its public Myfxbook account. Only accounts listed here get live performance data. Verified by scripts/sync-myfxbook.mjs.",
+  "obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5": {
+    "accountId": "12080504",
+    "accountUrl": "https://www.myfxbook.com/members/Bestmt4ea/obsidian-aether-eurusd-ea-ai/12080504"
+  },
+  "onix-stratos-xauusd-ea-ai-smart-scalper-for-mt5": {
+    "accountId": "12144557",
+    "accountUrl": "https://www.myfxbook.com/members/Bestmt4ea/onix-stratos-xauusd-ea-ai/12144557"
+  },
+  "zenith-matrix-ea-ai-gold-scalper-for-mt5": {
+    "accountId": "12049339",
+    "accountUrl": "https://www.myfxbook.com/members/Bestmt4ea/zenith-matrix-xauusd-ea-ai/12049339"
+  },
+  "nexora-manus-ea-ai-gold-scalper-for-mt5": {
+    "accountId": "12059490",
+    "accountUrl": "https://www.myfxbook.com/members/Bestmt4ea/nexora-manus-xauusd-ea-ai/12059490"
+  },
+  "mythos-epic-ea-ai-gold-scalper-for-mt5": {
+    "accountId": "12049330",
+    "accountUrl": "https://www.myfxbook.com/members/Bestmt4ea/mythos-epic-xauusd-ea-ai/12049330"
+  },
+  "equinox-cosmos-ea-ai-gbpjpy-scalper-for-mt5": {
+    "accountId": "12033689",
+    "accountUrl": "https://www.myfxbook.com/members/Bestmt4ea/equinox-cosmos-gbpjpy-ea-ai/12033689"
+  }
+}

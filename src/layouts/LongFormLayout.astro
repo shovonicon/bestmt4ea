@@ -1,0 +1,217 @@
+---
+/**
+ * Unified long-form layout for posts — articles and free-download pages.
+ *
+ * One renderer, two modes: `entry.data.download` switches on the download
+ * order. Everything that comes from frontmatter (quick answer, takeaways,
+ * download, install steps, FAQ, sources) renders here and nowhere else; the
+ * Markdown body carries narrative only. That is what stops the duplicate
+ * FAQ/Sources/Install sections the WordPress imports shipped with.
+ *
+ * Reading layout: full-width composition with a centered ~44rem prose column
+ * (`65–75ch`) and wider breakouts for the download card and other panels.
+ * There is no ad sidebar. Ads sit inside the column, and on a download page at
+ * least one full content section (the install steps) separates the download
+ * action from the first ad unit.
+ *
+ * Render order — download mode: breadcrumb → H1 → quick answer → download →
+ * takeaways → install steps → ad → author/date → TOC → body → ad → FAQ →
+ * sources → risk warning → related. Article mode drops download, install steps.
+ */
+import { render } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+import AnswerBox from '../components/AnswerBox.astro';
+import KeyTakeaways from '../components/KeyTakeaways.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import AdSlot from '../components/AdSlot.astro';
+import Faq from '../components/Faq.astro';
+import DownloadCard from '../components/DownloadCard.astro';
+import InstallSteps from '../components/InstallSteps.astro';
+import ArticleSources from '../components/ArticleSources.astro';
+import { countWords, readingMinutes } from '../lib/reading';
+import { site, RISK_DISCLAIMER } from '../lib/site';
+import { articleSchema, breadcrumbSchema, faqSchema, howToSchema } from '../lib/seo';
+import { url } from '../lib/urls';
+
+export interface Props {
+  entry: any;
+  headings: { depth: number; text: string; id: string }[];
+  body: string;
+  related?: any[];
+}
+
+const { entry, headings, body, related = [] } = Astro.props;
+const data = entry.data;
+const { Content } = await render(entry);
+
+const words = countWords(body);
+const minutes = readingMinutes(words);
+const pageUrl = `/${data.slug}/`;
+const download = data.download;
+const isDownload = Boolean(download);
+const installSteps = data.installSteps ?? [];
+
+const trail = isDownload
+  ? [
+      { name: 'Home', url: '/' },
+      { name: 'Free downloads', url: '/free-download-forex-ea-indicator/' },
+      { name: data.title, url: pageUrl },
+    ]
+  : [
+      { name: 'Home', url: '/' },
+      { name: 'Blog', url: '/blog/' },
+      ...(data.categories?.[0]
+        ? [{ name: data.categories[0], url: data.categoryPaths?.[0] ?? '/blog/' }]
+        : []),
+      { name: data.title, url: pageUrl },
+    ];
+---
+
+<BaseLayout
+  title={data.seo.title || data.title}
+  description={data.seo.description || data.description}
+  canonical={data.seo.canonical}
+  ogImage={data.seo.ogImage || data.featuredImage}
+  robots={data.seo.robots}
+  jsonLd={[
+    articleSchema({
+      title: data.title,
+      description: data.seo.description || data.description,
+      url: pageUrl,
+      published: data.publishedAt,
+      updated: data.updatedAt,
+      image: data.featuredImage,
+      author: data.author,
+    }),
+    breadcrumbSchema(trail),
+    ...(isDownload && installSteps.length ? [howToSchema(data.title, installSteps)] : []),
+    ...(data.faqs?.length ? [faqSchema(data.faqs)] : []),
+  ]}
+>
+  <div class="container-x pt-8 pb-16">
+    <div class="longform">
+      <nav aria-label="Breadcrumb" class="text-xs text-[--color-ink-dim]">
+        <a href="/" class="hover:text-[--color-accent]">Home</a>
+        <span class="mx-2">/</span>
+        {
+          isDownload ? (
+            <a href="/free-download-forex-ea-indicator/" class="hover:text-[--color-accent]">
+              Free downloads
+            </a>
+          ) : (
+            <a href="/blog/" class="hover:text-[--color-accent]">Blog</a>
+          )
+        }
+        {
+          !isDownload && data.categories?.[0] && (
+            <>
+              <span class="mx-2">/</span>
+              <span class="text-[--color-ink-soft]">{data.categories[0]}</span>
+            </>
+          )
+        }
+      </nav>
+
+      <header class="mt-6">
+        {
+          isDownload ? (
+            <p class="eyebrow">Free download · {download.platform ?? 'MT4 / MT5'}</p>
+          ) : (
+            data.categories?.[0] && <p class="eyebrow">{data.categories[0]}</p>
+          )
+        }
+        <h1 class="mt-2 text-3xl leading-tight md:text-4xl">{data.title}</h1>
+        {
+          data.description && (
+            <p class="mt-4 text-lg leading-8 text-[--color-ink-soft]">{data.description}</p>
+          )
+        }
+      </header>
+
+      {data.quickAnswer && <div class="mt-7"><AnswerBox answer={data.quickAnswer} /></div>}
+
+      {
+        isDownload && (
+          <div class="longform-breakout mt-6">
+            <DownloadCard download={download} title={data.title} />
+          </div>
+        )
+      }
+
+      {
+        data.keyTakeaways?.length > 0 && (
+          <div class="mt-6">
+            <KeyTakeaways items={data.keyTakeaways} />
+          </div>
+        )
+      }
+
+      {
+        isDownload && installSteps.length > 0 && (
+          <div class="mt-6">
+            <InstallSteps steps={installSteps} />
+          </div>
+        )
+      }
+
+      <!-- First ad: never adjacent to the download action (install steps sit between). -->
+      <AdSlot slot={site.adSlots.inArticle} class="mt-8" />
+
+      <div class="mt-10">
+        <AuthorBox published={data.publishedAt} updated={data.updatedAt} readingMinutes={minutes} />
+      </div>
+
+      <div class="mt-8 lg:hidden">
+        <TableOfContents headings={headings} variant="collapsible" />
+      </div>
+
+      <div class="mt-8 hidden lg:block">
+        <TableOfContents headings={headings} />
+      </div>
+
+      <div class="prose-article mt-10">
+        <Content />
+      </div>
+
+      <!-- Second ad: after the body, clear of every download and purchase action. -->
+      <AdSlot slot={site.adSlots.belowContent} class="mt-12" />
+
+      {
+        data.faqs?.length > 0 && (
+          <div class="mt-12">
+            <Faq items={data.faqs} heading="Frequently asked questions" />
+          </div>
+        )
+      }
+
+      <ArticleSources sources={data.sources} />
+
+      <section class="mt-12 rounded-xl border border-[--color-warn]/30 bg-[--color-warn]/5 p-5">
+        <h2 class="text-sm font-semibold text-[--color-warn]">Risk warning</h2>
+        <p class="mt-2 text-xs leading-6 text-[--color-ink-soft]">{RISK_DISCLAIMER}</p>
+      </section>
+
+      {
+        related.length > 0 && (
+          <section class="mt-12">
+            <h2 class="text-xl">Continue reading</h2>
+            <ul class="mt-5 space-y-3">
+              {related.map((item) => (
+                <li>
+                  <a
+                    href={url(`/${item.data.slug}/`)}
+                    class="text-sm font-semibold text-[--color-ink] hover:text-[--color-accent]"
+                  >
+                    {item.data.title}
+                  </a>
+                  <p class="mt-1 text-xs leading-6 text-[--color-ink-dim]">{item.data.description}</p>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,24 @@
+# build output
+dist/
+.astro/
+node_modules/
+
+# env
+.env
+.env.production
+.dev.vars
+
+# wrangler
+.wrangler/
+
+# os / editor
+.DS_Store
+Thumbs.db
+*.log
+
+# test artifacts
+test-results/
+playwright-report/
+
+# command code local session state
+.commandcode/session.json

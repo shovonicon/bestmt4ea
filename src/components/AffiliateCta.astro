@@ -1,0 +1,47 @@
+---
+/**
+ * Affiliate call-to-action.
+ *
+ * Placement rule (AdSense + our own standard): never render a CTA next to a
+ * download button. Use it in-content or in the sidebar only.
+ */
+import { getAffiliate, AFFILIATE_REL } from '../lib/affiliates';
+
+export interface Props {
+  id: string;
+  label?: string;
+  description?: string;
+  variant?: 'primary' | 'ghost';
+}
+
+const { id, label, description, variant = 'ghost' } = Astro.props;
+const offer = getAffiliate(id);
+---
+
+{
+  offer && (
+    <div class="hover-brand-card p-6">
+      <p class="font-mono text-[10px] font-bold uppercase tracking-wider text-emerald-400">
+        {offer.program === 'broker' ? 'Recommended broker' : 'Recommended platform'}
+      </p>
+      <h3 class="mt-3 text-lg font-bold text-white">{offer.label}</h3>
+      {(description || offer.note) && (
+        <p class="mt-2 text-sm leading-6 text-[--color-ink-dim]">{description ?? offer.note}</p>
+      )}
+      <a
+        href={offer.url}
+        rel={AFFILIATE_REL}
+        target="_blank"
+        class:list={[
+          'btn mt-5 w-full',
+          variant === 'primary' ? 'btn-primary' : 'btn-ghost',
+        ]}
+      >
+        {label ?? `Open a ${offer.label} account`}
+      </a>
+      <p class="mt-3 text-center text-[10px] leading-4 text-[--color-ink-dim]">
+        Affiliate link · no extra cost to you
+      </p>
+    </div>
+  )
+}

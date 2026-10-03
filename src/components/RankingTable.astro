@@ -1,0 +1,125 @@
+---
+/**
+ * Ranking table — the primary comparison asset.
+ *
+ * Modelled on the bestforexeas.com layout: monthly return, max drawdown,
+ * absolute gain, account type and rating in one scannable grid.
+ *
+ * Two deliberate differences:
+ *  - Account type is shown honestly (Live vs Demo) rather than badged "LIVE"
+ *    for every row.
+ *  - No star rating is emitted for a system we have not tested. The rating
+ *    column renders only where a genuine customer rating exists, because an
+ *    invented score is both misleading and a structured-data violation.
+ */
+import { getPerformance } from '../lib/performance';
+import { formatSignedPercent } from '../lib/format';
+import { url } from '../lib/urls';
+
+export interface Props {
+  products: any[];
+  caption?: string;
+  limit?: number;
+}
+
+const { products, caption, limit } = Astro.props;
+
+const rows = products
+  .map((product) => ({ product, perf: getPerformance(product.data.slug) }))
+  .sort((a, b) => (b.perf?.monthlyGainPct ?? -Infinity) - (a.perf?.monthlyGainPct ?? -Infinity))
+  .slice(0, limit ?? products.length);
+
+const maxGain = Math.max(...rows.map((r) => r.perf?.totalGainPct ?? 0), 1);
+---
+
+<div class="overflow-x-auto panel">
+  <table class="data-table min-w-[60rem]">
+    <caption class="sr-only">{caption ?? 'Ranked comparison of expert advisors'}</caption>
+    <thead>
+      <tr>
+        <th scope="col" class="w-12">#</th>
+        <th scope="col">System</th>
+        <th scope="col">Market</th>
+        <th scope="col">Platform</th>
+        <th scope="col" class="text-right">Monthly</th>
+        <th scope="col" class="text-right">Max DD</th>
+        <th scope="col" class="text-right">Total gain</th>
+        <th scope="col">Account</th>
+        <th scope="col" class="text-right">Rating</th>
+        <th scope="col" class="text-right">Review</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        rows.map(({ product, perf }, index) => {
+          const gainWidth = perf?.totalGainPct ? Math.max(4, (perf.totalGainPct / maxGain) * 100) : 0;
+          const hasRating = (product.data.ratingCount ?? 0) > 0 && product.data.ratingAverage;
+          const href = url(`/product/${product.data.slug}`);
+
+          return (
+            <tr>
+              <td class="metric-value text-[--color-ink-dim]">{index + 1}</td>
+
+              <td>
+                <a
+                  href={href}
+                  class="font-semibold text-[--color-ink] hover:text-[--color-accent]"
+                >
+                  {product.data.title}
+                </a>
+                {perf?.strategy && <p class="mt-1 text-xs text-[--color-ink-dim]">{perf.strategy}</p>}
+              </td>
+
+              <td class="text-sm text-[--color-ink-soft]">{product.data.brands.join(', ') || '—'}</td>
+              <td class="text-sm text-[--color-ink-soft]">
+                {product.data.platform === 'none' ? '—' : product.data.platform}
+              </td>
+
+              <td class="metric-value text-right text-[--color-accent]">
+                {perf?.monthlyGainPct != null ? formatSignedPercent(perf.monthlyGainPct, 1) : '—'}
+              </td>
+
+              <td class="metric-value text-right" style="color: var(--color-warn);">
+                {perf?.maxDrawdownPct != null ? `↘ ${perf.maxDrawdownPct}%` : '—'}
+              </td>
+
+              <td class="text-right">
+                <span class="metric-value text-[--color-ink]">
+                  {perf?.totalGainPct != null ? `↗ ${perf.totalGainPct}%` : '—'}
+                </span>
+                {gainWidth > 0 && (
+                  <span class="mt-1.5 block h-1 w-full max-w-[8rem] overflow-hidden rounded-full bg-[--color-surface-2]">
+                    <span class="block h-full rounded-full bg-[--color-accent]/50" style={`width:${gainWidth}%`} />
+                  </span>
+                )}
+              </td>
+
+              <td>
+                {perf?.isLiveAccount ? (
+                  <span class="badge badge-accent">Live</span>
+                ) : perf?.accountType === 'demo' ? (
+                  <span class="badge">Demo</span>
+                ) : (
+                  <span class="text-xs text-[--color-ink-dim]">—</span>
+                )}
+              </td>
+
+              <td class="metric-value text-right">
+                {hasRating ? `${product.data.ratingAverage.toFixed(1)}/5` : '—'}
+              </td>
+
+              <td class="text-right">
+                <a
+                  href={href}
+                  class="text-sm font-semibold text-[--color-accent] whitespace-nowrap"
+                >
+                  Review
+                </a>
+              </td>
+            </tr>
+          );
+        })
+      }
+    </tbody>
+  </table>
+</div>

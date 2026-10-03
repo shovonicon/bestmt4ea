@@ -1,0 +1,460 @@
+---
+import { getCollection } from 'astro:content';
+import { getPerformance } from '../lib/performance';
+import { site } from '../lib/site';
+import { url } from '../lib/urls';
+
+const products = await getCollection('products');
+const featured = products
+  .map((product) => ({ product, perf: getPerformance(product.data.slug) }))
+  .sort((a, b) => (b.perf?.totalGainPct ?? -Infinity) - (a.perf?.totalGainPct ?? -Infinity))
+  .slice(0, 8)
+  .map(({ product }) => ({ href: url(`/product/${product.data.slug}`), label: product.data.title }));
+
+/** Links shown before the dropdown menus. */
+const leadLinksRaw = [
+  { href: '/', label: 'Home' },
+  { href: '/top-ranking', label: 'Top Ranking' },
+];
+
+/** Links shown after the dropdown menus. */
+const tailLinksRaw = [{ href: '/shop', label: 'Shop' }];
+
+const menusRaw = [
+  {
+    label: 'Products',
+    columns: [
+      { title: 'Featured Expert Advisors', links: featured },
+      {
+        title: 'Tools & Infrastructure',
+        links: [
+          { href: '/product/golden-deer-holy-grail-indicator', label: 'Golden Deer Indicator' },
+          { href: '/product/vps', label: 'Low Latency Forex VPS' },
+          { href: '/product/2000-trading-tools', label: 'Top 2000 Trading Tools' },
+        ],
+      },
+    ],
+  },
+  {
+    label: 'Reviews',
+    columns: [
+      {
+        title: 'Compare Platforms',
+        links: [
+          { href: '/best-mt4-ea', label: 'Best MT4 EAs' },
+          { href: '/best-forex-ea', label: 'Best MT5 EAs' },
+          { href: '/top-ranking', label: 'View All Rankings' },
+        ],
+      },
+      {
+        title: 'Compare Strategies',
+        links: [
+          { href: '/product-category/gold-forex-ea', label: 'Best Gold EAs' },
+          { href: '/product-category/forex-robot', label: 'Scalping Robots' },
+          { href: '/product-category/indicator', label: 'Indicators' },
+        ],
+      },
+      {
+        title: 'Brokers & Services',
+        links: [
+          { href: '/best-forex-brokers', label: 'Best Forex Brokers' },
+          { href: '/copy-trading', label: 'Copy Trading' },
+          { href: '/product/vps', label: 'Forex VPS' },
+        ],
+      },
+    ],
+  },
+  {
+    label: 'Blog',
+    columns: [
+      {
+        title: 'Guides & Education',
+        links: [
+          { href: '/category/installation-setup', label: 'Installation & Setup' },
+          { href: '/category/forex-trading-strategies', label: 'Trading Strategies' },
+          { href: '/category/risk-money-management', label: 'Risk & Money Management' },
+          { href: '/category/gold-xauusd-trading', label: 'Gold (XAUUSD) Trading' },
+        ],
+      },
+      {
+        title: 'Free Downloads',
+        links: [
+          { href: '/free-download-forex-ea-indicator', label: 'Free Download Library' },
+          { href: '/category/free-forex-ea', label: 'Free Expert Advisors' },
+          { href: '/category/free-forex-indicator', label: 'Free Indicators' },
+          { href: '/blog', label: 'View All Posts →' },
+        ],
+      },
+    ],
+  },
+];
+
+/**
+ * Every internal href is normalised here once, so the trailing-slash policy
+ * cannot be broken by adding a menu entry without one.
+ */
+const withUrls = (links: { href: string; label: string }[]) =>
+  links.map((link) => ({ ...link, href: url(link.href) }));
+
+const leadLinks = withUrls(leadLinksRaw);
+const tailLinks = withUrls(tailLinksRaw);
+const menus = menusRaw.map((menu) => ({
+  ...menu,
+  columns: menu.columns.map((col) => ({ ...col, links: withUrls(col.links) })),
+}));
+
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) => currentPath === href || currentPath.startsWith(`${href}/`);
+---
+
+<header data-site-header class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+  <div class="container-x flex h-16 items-center justify-between gap-4">
+    <a href="/" class="group flex items-center gap-3" aria-label={`${site.name} home`}>
+      <img
+        src="/logo.png"
+        alt={site.name}
+        width="2048"
+        height="286"
+        class="h-8 w-auto object-contain transition-transform duration-300 group-hover:brightness-110 sm:h-9"
+      />
+    </a>
+
+    <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary">
+      {
+        leadLinks.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'rounded-lg px-3.5 py-2 text-xs font-semibold transition-colors',
+              isActive(item.href)
+                ? 'bg-white/[0.06] text-white'
+                : 'text-slate-300 hover:bg-white/[0.06] hover:text-white',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      {
+        menus.map((menu) => (
+          <div class="relative" data-menu>
+            <button
+              type="button"
+              data-menu-toggle
+              aria-haspopup="true"
+              aria-expanded="false"
+              class="flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-xs font-semibold text-slate-300 transition-colors hover:bg-white/[0.06] hover:text-white"
+            >
+              <span>{menu.label}</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="menu-chevron h-3.5 w-3.5 text-slate-400"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </button>
+
+            <div class="pointer-events-none absolute left-1/2 top-full z-50 -translate-x-1/2 pt-2">
+              <div
+                class="menu-panel flex gap-6 rounded-2xl border border-white/10 bg-[#05070f] p-6 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.9)] ring-1 ring-white/5"
+              >
+                {
+                  menu.columns.map((col) => (
+                    <div class="flex min-w-[13rem] flex-col gap-2">
+                      <h4 class="mb-1 flex items-center gap-1.5 border-b border-white/5 pb-2 font-mono text-[11px] font-bold uppercase tracking-wider text-emerald-400">
+                        {col.title}
+                      </h4>
+                      <ul class="flex flex-col gap-1">
+                        {col.links.map((link) => (
+                          <li>
+                            <a
+                              href={link.href}
+                              class="block rounded-lg border-l-2 border-transparent px-3 py-2 text-xs font-medium text-slate-300 transition-colors hover:border-emerald-400 hover:bg-emerald-500/10 hover:text-emerald-300"
+                            >
+                              {link.label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        ))
+      }
+
+      {
+        tailLinks.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'rounded-lg px-3.5 py-2 text-xs font-semibold transition-colors',
+              isActive(item.href)
+                ? 'bg-white/[0.06] text-white'
+                : 'text-slate-300 hover:bg-white/[0.06] hover:text-white',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="hidden items-center gap-3 lg:flex">
+      <a
+        href={site.telegram.support}
+        rel="noopener"
+        class="text-xs font-semibold text-slate-300 transition-colors hover:text-white"
+      >
+        Support
+      </a>
+      <a
+        href={url('/shop')}
+        class="brand-gradient group inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold text-black shadow-[0_0_40px_-10px_rgba(0,193,144,0.55)] transition-transform duration-300 hover:scale-105"
+      >
+        Explore EAs
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        >
+          <path d="M7 7h10v10" />
+          <path d="M7 17 17 10" />
+        </svg>
+      </a>
+    </div>
+
+    <button
+      type="button"
+      data-nav-toggle
+      aria-label="Open menu"
+      aria-expanded="false"
+      class="grid h-11 w-11 place-items-center rounded-lg border border-white/10 bg-white/5 text-white lg:hidden"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="h-5 w-5"
+      >
+        <line x1="4" x2="20" y1="12" y2="12" />
+        <line x1="4" x2="20" y1="6" y2="6" />
+        <line x1="4" x2="20" y1="18" y2="18" />
+      </svg>
+    </button>
+  </div>
+
+  <nav data-mobile-nav class="hidden border-t border-white/5 bg-black/90 backdrop-blur-xl lg:hidden" aria-label="Mobile">
+    <div class="container-x flex flex-col py-3">
+      {
+        leadLinks.map((item) => (
+          <a
+            href={item.href}
+            class="flex min-h-[44px] items-center rounded-lg px-3 text-sm font-medium text-slate-300 transition-colors hover:bg-white/[0.06] hover:text-white"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      {
+        menus.map((menu) => (
+          <details class="group border-t border-white/5">
+            <summary class="flex min-h-[44px] cursor-pointer list-none items-center justify-between rounded-lg px-3 text-sm font-medium text-slate-300">
+              {menu.label}
+              <span class="text-slate-500 transition-transform group-open:rotate-180">▾</span>
+            </summary>
+            <div class="pb-2">
+              {menu.columns.map((col) => (
+                <div class="mt-2">
+                  <p class="px-3 font-mono text-[10px] font-bold uppercase tracking-wider text-emerald-400">{col.title}</p>
+                  <ul>
+                    {col.links.map((link) => (
+                      <li>
+                        <a href={link.href} class="flex min-h-[44px] items-center rounded-lg px-3 text-sm text-slate-400">
+                          {link.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </details>
+        ))
+      }
+      {
+        tailLinks.map((item) => (
+          <a
+            href={item.href}
+            class="flex min-h-[44px] items-center rounded-lg px-3 text-sm font-medium text-slate-300 transition-colors hover:bg-white/[0.06] hover:text-white"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a
+        href={url('/shop')}
+        class="brand-gradient mt-3 inline-flex min-h-[44px] items-center justify-center rounded-full px-4 text-sm font-semibold text-black"
+      >
+        Explore EAs
+      </a>
+    </div>
+  </nav>
+</header>
+
+<script is:inline>
+  (() => {
+    const header = document.querySelector('[data-site-header]');
+    const navToggle = document.querySelector('[data-nav-toggle]');
+    const mobile = document.querySelector('[data-mobile-nav]');
+
+    const onScroll = () => {
+      if (!header) return;
+      const solid = window.scrollY > 8;
+      header.classList.toggle('border-b', solid);
+      header.classList.toggle('border-white/5', solid);
+      header.classList.toggle('bg-black/80', solid);
+      header.classList.toggle('backdrop-blur-xl', solid);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    /* ---------------------------------------------------------- mobile nav */
+
+    const mobileOpen = () => Boolean(mobile) && !mobile.classList.contains('hidden');
+
+    const setMobile = (open) => {
+      if (!mobile || !navToggle) return;
+      mobile.classList.toggle('hidden', !open);
+      navToggle.setAttribute('aria-expanded', String(open));
+      /* The accessible name must describe the action, not the icon. */
+      navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+
+    navToggle?.addEventListener('click', () => setMobile(!mobileOpen()));
+
+    /* ------------------------------------------------------- desktop menus */
+
+    const menus = Array.from(document.querySelectorAll('[data-menu]'));
+
+    const setOpen = (menu, open) => {
+      menu.classList.toggle('menu-open', open);
+      menu.querySelector('[data-menu-toggle]')?.setAttribute('aria-expanded', String(open));
+    };
+
+    const closeAll = (except) => {
+      menus.forEach((menu) => {
+        if (menu !== except) setOpen(menu, false);
+      });
+    };
+
+    menus.forEach((menu) => {
+      const btn = menu.querySelector('[data-menu-toggle]');
+      const firstLink = menu.querySelector('.menu-panel a');
+      let closeTimer = 0;
+
+      /**
+       * Set while focus is being returned to the trigger after a close. The
+       * trigger lives inside the menu, so focusing it fires `focusin` and would
+       * reopen the menu immediately — which is exactly what Escape must not do.
+       */
+      let restoringFocus = false;
+
+      const open = () => {
+        if (restoringFocus) return;
+        window.clearTimeout(closeTimer);
+        closeAll(menu);
+        setOpen(menu, true);
+      };
+      const close = () => setOpen(menu, false);
+
+      /**
+       * Closing is delayed so the pointer can cross the small gap between the
+       * trigger and the panel without the menu vanishing mid-approach. Re-entering
+       * cancels the pending close.
+       */
+      const scheduleClose = () => {
+        window.clearTimeout(closeTimer);
+        closeTimer = window.setTimeout(close, 220);
+      };
+
+      menu.addEventListener('mouseenter', open);
+      menu.addEventListener('mouseleave', scheduleClose);
+
+      /* Click keeps the menu open (mouseenter already opened it on hover) and is
+         the only way in on touch, where hover never fires. */
+      btn?.addEventListener('click', (event) => {
+        event.preventDefault();
+        open();
+      });
+
+      /**
+       * Keyboard entry: ArrowDown opens the menu and moves focus to its first
+       * link. Without it a keyboard user can open the menu but has no way into
+       * its contents, because the panel is not in the tab order while closed.
+       */
+      btn?.addEventListener('keydown', (event) => {
+        if (event.key !== 'ArrowDown') return;
+        event.preventDefault();
+        open();
+        firstLink?.focus();
+      });
+
+      /**
+       * Escape closes the menu and returns focus to its trigger, so focus is
+       * never dropped to the top of the document.
+       */
+      menu.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape' || !menu.classList.contains('menu-open')) return;
+        event.stopPropagation();
+        close();
+        restoringFocus = true;
+        btn?.focus();
+        window.setTimeout(() => {
+          restoringFocus = false;
+        }, 0);
+      });
+
+      menu.addEventListener('focusin', open);
+      menu.addEventListener('focusout', (event) => {
+        if (!menu.contains(event.relatedTarget)) scheduleClose();
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!(event.target instanceof Element) || !event.target.closest('[data-menu]')) closeAll();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      closeAll();
+      if (mobileOpen()) {
+        setMobile(false);
+        navToggle?.focus();
+      }
+    });
+  })();
+</script>

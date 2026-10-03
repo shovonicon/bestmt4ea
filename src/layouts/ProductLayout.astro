@@ -1,0 +1,345 @@
+---
+/**
+ * Product page layout (licensed EAs, indicators, tools).
+ *
+ * Structure mirrors the strivealgo model:
+ *   hero -> live stats strip -> verified track record -> body -> specs -> FAQ
+ *   -> risk -> related, with a sticky licence sidebar.
+ *
+ * Account type is never assumed: a demo account renders a "not live funds"
+ * badge, so a tracked demo can never be presented as a live result.
+ */
+import { render } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import Faq from '../components/Faq.astro';
+import ProductCard from '../components/ProductCard.astro';
+import ProductChart from '../components/ProductChart.astro';
+import { getPerformance } from '../lib/performance';
+import { formatMoney, formatPriceRange, formatDate, formatSignedPercent } from '../lib/format';
+import { site, RISK_DISCLAIMER } from '../lib/site';
+import { productSchema, breadcrumbSchema, breadcrumbTrail } from '../lib/seo';
+import { url } from '../lib/urls';
+
+export interface Props {
+  product: any;
+  related?: any[];
+}
+
+const { product, related = [] } = Astro.props;
+const perf = getPerformance(product.data.slug);
+const { Content } = await render(product);
+
+const platform = product.data.platform === 'none' ? 'MT4 / MT5' : product.data.platform;
+const currency = product.data.currency || 'USD';
+const priceLabel = formatPriceRange(product.data.priceMin, product.data.priceMax, currency);
+const updatedLabel = product.data.updatedAt ?? product.data.publishedAt;
+
+const trail = breadcrumbTrail([
+  { name: 'Home', href: '/' },
+  { name: 'Shop', href: url('/shop') },
+  { name: product.data.title, href: url(`/product/${product.data.slug}/`) },
+]);
+
+const faqs = [
+  {
+    question: `What platform does ${product.data.title} run on?`,
+    answer: `It runs on MetaTrader ${platform.replace('MT', '')}. Installation steps and the recommended account configuration are included with every licence.`,
+  },
+  {
+    question: 'What is the minimum account balance?',
+    answer: perf?.minCapitalUsd
+      ? `We recommend a minimum of ${formatMoney(perf.minCapitalUsd, 'USD')}. Smaller balances can still run the system, but position sizing becomes constrained by your broker's minimum lot size.`
+      : 'The recommended minimum balance is listed in the technical specifications above.',
+  },
+  {
+    question: 'Are the results shown here live or backtested?',
+    answer:
+      'The track record panel links directly to the third-party account it was taken from, so you can verify every figure yourself. Where the account holds demo funds rather than live money, the page states that. Past performance does not predict future results.',
+  },
+  {
+    question: 'Do I need a VPS?',
+    answer:
+      'A VPS is strongly recommended. These systems execute intraday and need the terminal running continuously, independent of your home connection or machine.',
+  },
+];
+
+const tiles = [
+  { label: 'Total gain', value: perf?.totalGainPct != null ? formatSignedPercent(perf.totalGainPct) : '—' },
+  { label: 'Monthly', value: perf?.monthlyGainPct != null ? `${perf.monthlyGainPct}%` : '—' },
+  { label: 'Profit factor', value: perf?.profitFactor != null ? String(perf.profitFactor) : '—' },
+  { label: 'Max drawdown', value: perf?.maxDrawdownPct != null ? `${perf.maxDrawdownPct}%` : '—' },
+];
+---
+
+<BaseLayout
+  title={product.data.seo.title || product.data.title}
+  description={product.data.seo.description || product.data.description}
+  canonical={product.data.seo.canonical}
+  ogImage={product.data.seo.ogImage || product.data.featuredImage}
+  jsonLd={[
+    productSchema(product, { currency, min: product.data.priceMin, max: product.data.priceMax }),
+    breadcrumbSchema(trail),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.question,
+        acceptedAnswer: { '@type': 'Answer', text: f.answer },
+      })),
+    },
+  ]}
+>
+  <div class="container-x pt-8">
+    <nav aria-label="Breadcrumb" class="text-xs text-[--color-ink-dim]">
+      <a href="/" class="hover:text-[--color-accent]">Home</a>
+      <span class="mx-2">/</span>
+      <a href={url('/shop')} class="hover:text-[--color-accent]">Shop</a>
+      <span class="mx-2">/</span>
+      <span class="text-[--color-ink-soft]">{product.data.title}</span>
+    </nav>
+  </div>
+
+  <div class="container-x mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_22rem]">
+    <div class="min-w-0 space-y-8">
+      <section class="grid gap-6 md:grid-cols-[minmax(0,1fr)_15rem] md:items-start">
+        <div>
+          <p class="eyebrow">{perf?.strategy ?? 'Expert Advisor'} · Updated {formatDate(updatedLabel)}</p>
+          <h1 class="mt-2 text-3xl leading-tight md:text-4xl">{product.data.title}</h1>
+          <p class="mt-4 max-w-3xl text-base leading-7 text-[--color-ink-soft]">{product.data.description}</p>
+
+          <div class="mt-6 flex flex-wrap gap-2">
+            <span class="badge">{platform}</span>
+            {perf?.strategy && <span class="badge">{perf.strategy}</span>}
+            {
+              perf?.isLiveAccount ? (
+                <span class="badge badge-accent">Live account verified</span>
+              ) : perf?.accountType === 'demo' ? (
+                <span class="badge">Demo account tracked</span>
+              ) : null
+            }
+          </div>
+
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a href="#acquire" class="btn btn-primary">Get licence — {priceLabel}</a>
+            <a href={site.telegram.support} rel="noopener" class="btn btn-ghost">Telegram support</a>
+          </div>
+        </div>
+
+        {
+          product.data.featuredImage && (
+            <div class="aspect-square overflow-hidden rounded-xl border border-[--color-line] bg-[--color-surface-2]">
+              <img
+                src={product.data.featuredImage}
+                alt={product.data.title}
+                class="h-full w-full object-cover"
+              />
+            </div>
+          )
+        }
+      </section>
+
+      {
+        perf?.hasData && (
+          <section class="panel grid grid-cols-2 divide-[--color-line-soft] md:grid-cols-4 md:divide-x">
+            {tiles.map((tile) => (
+              <div class="p-5">
+                <p class="metric-label">{tile.label}</p>
+                <p class="metric-value mt-2 text-2xl">{tile.value}</p>
+              </div>
+            ))}
+          </section>
+        )
+      }
+
+      {
+        perf?.hasData && (
+          <section class="panel overflow-hidden">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[--color-line-soft] px-6 py-4">
+              <div>
+                <h2 class="text-base">Verified track record</h2>
+                <p class="mt-1 text-xs text-[--color-ink-dim]">
+                  {
+                    perf.live
+                      ? `Live figures synced ${perf.lastVerified ? formatDate(perf.lastVerified) : 'recently'}${
+                          perf.stale ? ' — this sync is stale, verify at source' : ''
+                        }`
+                      : perf.lastVerified
+                        ? `Figures transcribed from the published account record, checked ${formatDate(perf.lastVerified)}`
+                        : 'Figures transcribed from the published account record'
+                  }
+                </p>
+              </div>
+              {
+                perf.isLiveAccount ? (
+                  <span class="badge badge-accent">Real account</span>
+                ) : perf.accountType === 'demo' ? (
+                  <span class="badge" style="border-color: var(--color-warn); color: var(--color-warn);">
+                    Demo account — not live funds
+                  </span>
+                ) : (
+                  <span class="badge">Unverified</span>
+                )
+              }
+            </div>
+
+            {perf.widgetHtml && <div class="border-b border-[--color-line-soft] p-4" set:html={perf.widgetHtml} />}
+
+            <div class="px-6 py-5">
+              <p class="text-sm leading-7 text-[--color-ink-soft]">
+                Full live statistics for this system are published on the third-party tracking account rather than
+                mirrored here, so what you read is never a copy that has drifted out of date.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-3 border-t border-[--color-line-soft] px-6 py-4">
+              {
+                perf.sourceUrl ? (
+                  <a href={perf.sourceUrl} rel="noopener" class="text-sm font-semibold text-[--color-accent]">
+                    Verify account {perf.accountId ? `#${perf.accountId}` : ''} on Myfxbook →
+                  </a>
+                ) : (
+                  <span class="text-sm text-[--color-warn]">No third-party account published for this system.</span>
+                )
+              }
+              {perf.broker && <span class="text-xs text-[--color-ink-dim]">{perf.broker}</span>}
+            </div>
+          </section>
+        )
+      }
+
+      <ProductChart slug={product.data.slug} />
+
+      <article class="prose-article max-w-none">
+        <Content />
+      </article>
+
+      <section class="panel p-6">
+        <h2 class="text-xl">Technical specifications</h2>
+        <table class="data-table mt-4">
+          <tbody>
+            <tr><th scope="row">Platform</th><td>{platform}</td></tr>
+            {perf?.strategy && <tr><th scope="row">Strategy</th><td>{perf.strategy}</td></tr>}
+            <tr>
+              <th scope="row">Licence type</th>
+              <td>{product.data.productType === 'variable' ? 'Multiple tiers' : 'Single licence'}</td>
+            </tr>
+            <tr><th scope="row">Price</th><td class="metric-value">{priceLabel}</td></tr>
+            {
+              perf?.minCapitalUsd != null && (
+                <tr>
+                  <th scope="row">Recommended minimum</th>
+                  <td class="metric-value">{formatMoney(perf.minCapitalUsd, 'USD')}</td>
+                </tr>
+              )
+            }
+            {
+              perf?.maxDrawdownPct != null && (
+                <tr>
+                  <th scope="row">Max drawdown</th>
+                  <td class="metric-value">{perf.maxDrawdownPct}%</td>
+                </tr>
+              )
+            }
+            {
+              perf?.totalTrades != null && (
+                <tr>
+                  <th scope="row">Trades analysed</th>
+                  <td class="metric-value">{perf.totalTrades}</td>
+                </tr>
+              )
+            }
+          </tbody>
+        </table>
+      </section>
+
+      <Faq items={faqs} heading="Questions about this system" />
+
+      <section class="rounded-xl border border-[--color-warn]/30 bg-[--color-warn]/5 p-5">
+        <h2 class="text-sm font-semibold text-[--color-warn]">Risk warning</h2>
+        <p class="mt-2 text-xs leading-6 text-[--color-ink-soft]">{RISK_DISCLAIMER}</p>
+      </section>
+
+      {
+        related.length > 0 && (
+          <section>
+            <h2 class="text-xl">Related systems</h2>
+            <div class="mt-5 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+              {related.map((item) => (
+                <ProductCard product={item} />
+              ))}
+            </div>
+          </section>
+        )
+      }
+    </div>
+
+    <aside class="min-w-0">
+      <div class="sticky top-24 space-y-4" id="acquire">
+        <section class="panel p-6">
+          <p class="metric-label">Acquire licence</p>
+          <p class="metric-value mt-2 text-2xl">{priceLabel}</p>
+
+          {
+            product.data.variants.length > 0 && (
+              <ul class="mt-5 space-y-2">
+                {product.data.variants.map((variant: any) => (
+                  <li class="flex items-center justify-between gap-3 rounded-lg border border-[--color-line-soft] bg-[--color-bg-soft] px-3 py-2.5">
+                    <span class="text-sm text-[--color-ink-soft]">{variant.name ?? 'Licence'}</span>
+                    <span class="text-xs text-[--color-ink-dim]">
+                      {variant.price ? formatMoney(Number(variant.price), currency) : 'included'}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )
+          }
+
+          <ul class="mt-5 space-y-2 text-sm text-[--color-ink-soft]">
+            <li>Instant file delivery after checkout</li>
+            <li>Setup guide and recommended presets</li>
+            <li>Telegram support during installation</li>
+          </ul>
+
+          <a href="#acquire" data-checkout class="btn btn-primary mt-6 w-full">Proceed to checkout</a>
+          <p class="mt-3 text-center text-xs text-[--color-ink-dim]">Checkout and licensing handled on {site.name}.</p>
+        </section>
+
+        <section class="panel p-6">
+          <p class="metric-label">Fast specs</p>
+          <dl class="mt-4 space-y-3 text-sm">
+            <div class="flex justify-between gap-3">
+              <dt class="text-[--color-ink-dim]">Platform</dt>
+              <dd class="text-[--color-ink]">{platform}</dd>
+            </div>
+            <div class="flex justify-between gap-3">
+              <dt class="text-[--color-ink-dim]">Strategy</dt>
+              <dd class="text-right text-[--color-ink]">{perf?.strategy ?? '—'}</dd>
+            </div>
+            <div class="flex justify-between gap-3">
+              <dt class="text-[--color-ink-dim]">Min capital</dt>
+              <dd class="metric-value text-[--color-ink]">
+                {perf?.minCapitalUsd != null ? formatMoney(perf.minCapitalUsd, 'USD') : '—'}
+              </dd>
+            </div>
+            <div class="flex justify-between gap-3">
+              <dt class="text-[--color-ink-dim]">Max drawdown</dt>
+              <dd class="metric-value text-[--color-ink]">
+                {perf?.maxDrawdownPct != null ? `${perf.maxDrawdownPct}%` : '—'}
+              </dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="panel-flat p-5">
+          <p class="text-xs leading-6 text-[--color-ink-dim]">
+            Performance figures are gathered from the public third-party tracking account linked on this page. Always
+            confirm current results at the source before purchasing.
+          </p>
+        </section>
+      </div>
+    </aside>
+  </div>
+
+  <div class="container-x pb-16"></div>
+</BaseLayout>

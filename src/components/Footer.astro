@@ -1,0 +1,135 @@
+---
+import { site, RISK_DISCLAIMER } from '../lib/site';
+import { contentReviewedAt } from '../lib/dates';
+import { formatDate } from '../lib/format';
+import { url } from '../lib/urls';
+
+const year = new Date().getFullYear();
+
+const columnsRaw = [
+  {
+    title: 'Expert Advisors',
+    links: [
+      { href: '/top-ranking', label: 'Top ranking' },
+      { href: '/shop', label: 'All systems' },
+      { href: '/product-category/forex-robot', label: 'Forex robots' },
+      { href: '/product-category/gold-forex-ea', label: 'Gold (XAUUSD) EAs' },
+      { href: '/product-category/indicator', label: 'Indicators' },
+      { href: '/product-category/most-popular', label: 'Most popular' },
+      { href: '/brand/mt4', label: 'MT4 expert advisors' },
+      { href: '/brand/mt5', label: 'MT5 expert advisors' },
+    ],
+  },
+  {
+    title: 'Free downloads',
+    links: [
+      { href: '/free-download-forex-ea-indicator', label: 'Free download library' },
+      { href: '/category/free-forex-ea', label: 'Free expert advisors' },
+      { href: '/category/free-forex-indicator', label: 'Free indicators' },
+      { href: '/product/2000-trading-tools', label: '2,000+ tools bundle' },
+      { href: '/product/vps', label: 'Forex VPS' },
+    ],
+  },
+  {
+    title: 'Learn',
+    links: [
+      { href: '/blog', label: 'Trading blog' },
+      { href: '/category/mt4-mt5-expert-advisors', label: 'Expert advisor guides' },
+      { href: '/category/installation-setup', label: 'Installation & setup' },
+      { href: '/category/forex-trading-strategies', label: 'Trading strategies' },
+      { href: '/category/forex-trading-strategies/trend-following', label: 'Trend following' },
+      { href: '/category/gold-xauusd-trading', label: 'Gold (XAUUSD) trading' },
+      { href: '/category/risk-money-management', label: 'Risk management' },
+      { href: '/category/forex-indicator-reviews', label: 'Indicator reviews' },
+    ],
+  },
+  {
+    title: 'Brokers & services',
+    links: [
+      { href: '/best-forex-brokers', label: 'Best forex brokers' },
+      { href: '/copy-trading', label: 'Copy trading' },
+      { href: '/forex-calendar', label: 'Economic calendar' },
+      { href: '/live-chart', label: 'Live charts' },
+      { href: '/forex-screener', label: 'Forex screener' },
+      { href: '/forex-heat-map', label: 'Currency heat map' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { href: '/contact', label: 'Contact' },
+      { href: '/terms-conditions', label: 'Terms & conditions' },
+      { href: '/privacy-policy', label: 'Privacy policy' },
+      { href: '/disclaimer', label: 'Risk disclaimer' },
+      { href: '/dmca-policy', label: 'DMCA' },
+      { href: '/affiliate-disclosure', label: 'Affiliate disclosure' },
+    ],
+  },
+];
+
+/** Internal links are normalised once so the trailing-slash policy holds. */
+const columns = columnsRaw.map((column) => ({
+  ...column,
+  links: column.links.map((link) => ({ ...link, href: url(link.href) })),
+}));
+---
+
+<footer class="relative z-10 mt-24 border-t border-white/10 bg-black/80 text-slate-400">
+  <div class="container-x py-14">
+    <div class="grid gap-10 lg:grid-cols-[1.4fr_repeat(5,1fr)]">
+      <div>
+        <img src="/logo.png" alt={site.name} width="2048" height="286" class="h-8 w-auto object-contain" />
+        <p class="mt-4 max-w-xs text-sm leading-6 text-slate-400">{site.tagline}</p>
+        <div class="mt-5 flex flex-wrap gap-2">
+          <a
+            href={site.telegram.support}
+            rel="noopener"
+            class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-xs font-medium text-slate-300 transition-colors hover:border-emerald-400/50 hover:text-emerald-300"
+          >
+            Live support
+          </a>
+          <a
+            href={`mailto:${site.contactEmail}`}
+            class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-xs font-medium text-slate-300 transition-colors hover:border-emerald-400/50 hover:text-emerald-300"
+          >
+            Email
+          </a>
+        </div>
+      </div>
+
+      {
+        columns.map((col) => (
+          <nav aria-label={col.title}>
+            <h2 class="mb-3 text-xs font-bold uppercase tracking-wider text-white">{col.title}</h2>
+            <ul class="space-y-2 text-sm">
+              {col.links.map((link) => (
+                <li>
+                  <a href={link.href} class="text-slate-400 transition-colors hover:text-white">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))
+      }
+    </div>
+
+    <div class="mt-12 rounded-xl border border-white/10 bg-black/40 p-4">
+      <p class="mb-2 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-amber-200">
+        Risk disclosure
+      </p>
+      <p class="text-[11px] leading-5 text-slate-500">{RISK_DISCLAIMER}</p>
+    </div>
+
+    <div class="mt-6 flex flex-col gap-3 border-t border-white/10 pt-6 text-[11px] text-slate-600 sm:flex-row sm:items-center sm:justify-between">
+      <p>© {year} {site.name}. All rights reserved. · Content reviewed {formatDate(contentReviewedAt)}</p>
+      <p>
+        Reviews and rankings also published at
+        <a href={site.reviewSiteUrl} class="text-slate-500 transition-colors hover:text-slate-300" rel="noopener">
+          strivealgo.com
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>

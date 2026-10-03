@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { getPerformance } from '../../lib/performance';
+import { RISK_DISCLAIMER } from '../../lib/site';
+import { monthYear } from '../../lib/dates';
+import { getPublicProducts } from '../../lib/content';
+import { url } from '../../lib/urls';
+
+const products = await getPublicProducts();
+
+const categories = [...new Set(products.flatMap((p) => p.data.productCategories))].sort();
+const brands = ['MT4', 'MT5'];
+
+const sorted = products
+  .map((product) => ({ product, perf: getPerformance(product.data.slug) }))
+  .sort((a, b) => (b.perf?.totalGainPct ?? -Infinity) - (a.perf?.totalGainPct ?? -Infinity));
+---
+
+<BaseLayout
+  title={`Shop ${monthYear} — Expert Advisors, Indicators and Tools`}
+  description="Browse every MetaTrader 4 and MetaTrader 5 expert advisor, indicator and tool in the BESTMT4EA library, each with a verifiable track record."
+>
+  <div class="container-x py-14">
+    <p class="eyebrow">The EA store</p>
+    <h1 class="mt-2 text-3xl md:text-4xl">All systems</h1>
+    <p class="mt-4 max-w-2xl text-sm leading-7 text-[--color-ink-dim]">
+      {products.length} products, each with its licence tier, platform compatibility and a link to its independent
+      performance record.
+    </p>
+
+    <div class="mt-8 flex flex-wrap gap-2">
+      {categories.map((category) => <span class="badge">{category}</span>)}
+      {brands.map((brand) => <a href={url(`/brand/${brand.toLowerCase()}`)} class="badge">{brand}</a>)}
+    </div>
+
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {sorted.map(({ product }) => <ProductCard product={product} />)}
+    </div>
+
+    <p class="mt-12 text-xs text-[--color-ink-dim]">{RISK_DISCLAIMER}</p>
+  </div>
+</BaseLayout>

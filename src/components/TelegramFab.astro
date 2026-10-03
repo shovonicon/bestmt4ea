@@ -1,0 +1,35 @@
+---
+/**
+ * Floating Telegram button — fixed bottom-right with a pulsing ring,
+ * matching strivealgo's live-support affordance.
+ */
+import { site } from '../lib/site';
+---
+
+<a
+  href={site.telegram.support}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Chat on Telegram"
+  class="brand-gradient fixed bottom-6 right-6 z-40 grid h-12 w-12 place-items-center rounded-full text-white shadow-[0_0_40px_-10px_rgba(0,193,144,0.55)] transition-transform duration-300 hover:scale-105"
+>
+  <span
+    class="pointer-events-none absolute inset-0 animate-ping rounded-full bg-teal-400/40"
+    style="animation-duration: 2.5s"
+  ></span>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="relative h-5 w-5"
+  >
+    <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path>
+    <path d="m21.854 2.147-10.94 10.939"></path>
+  </svg>
+</a>

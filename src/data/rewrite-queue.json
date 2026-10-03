@@ -1,0 +1,1942 @@
+{
+  "generatedAt": "2026-10-03T03:40:30.419Z",
+  "source": "src/content/posts",
+  "standards": {
+    "minWords": 3500,
+    "maxWords": 7500,
+    "minQuickAnswerWords": 40,
+    "maxQuickAnswerWords": 75,
+    "minFaqs": 4,
+    "minSources": 2,
+    "requiresDownload": true,
+    "requiresPrimaryKeyword": true,
+    "reference": "docs/CONTENT-STANDARD.md §12"
+  },
+  "prioritySlugs": {
+    "moneyPages": [
+      "free-download-forex-ea-indicator",
+      "best-mt4-ea",
+      "best-forex-ea",
+      "top-ranking"
+    ],
+    "hubLinks": [],
+    "topics": [
+      "gold",
+      "xauusd"
+    ]
+  },
+  "total": 153,
+  "needsWork": 119,
+  "clean": 34,
+  "byPriority": {
+    "1": 0,
+    "2": 119,
+    "3": 0
+  },
+  "queue": [
+    {
+      "file": "src/content/posts/best-non-repainting-arrow-indicator-for-forex.md",
+      "slug": "best-non-repainting-arrow-indicator-for-forex",
+      "words": 675,
+      "priority": 2,
+      "issues": [
+        "words 675 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 1,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/eur-usd-expert-advisor-ea-overview-free-download-guide.md",
+      "slug": "eur-usd-expert-advisor-ea-overview-free-download-guide",
+      "words": 694,
+      "priority": 2,
+      "issues": [
+        "words 694 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 2,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/%f0%9f%9a%80-mt4-x-speed-forex-indicator-free-download-powerful-proven-guide.md",
+      "slug": "%f0%9f%9a%80-mt4-x-speed-forex-indicator-free-download-powerful-proven-guide",
+      "words": 715,
+      "priority": 2,
+      "issues": [
+        "words 715 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 3,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/%f0%9f%93%88-pro-trend-line-indicator-free-download-7-powerful-benefits-every-trader-must-know.md",
+      "slug": "%f0%9f%93%88-pro-trend-line-indicator-free-download-7-powerful-benefits-every-trader-must-know",
+      "words": 722,
+      "priority": 2,
+      "issues": [
+        "words 722 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 4,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/best-volume-profile-indicator-for-tradingview-free.md",
+      "slug": "best-volume-profile-indicator-for-tradingview-free",
+      "words": 725,
+      "priority": 2,
+      "issues": [
+        "words 725 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 5,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/vertex-alerts-arrows-indicator-free-download-powerful-proven-trading-boost-step-by-step-guide.md",
+      "slug": "vertex-alerts-arrows-indicator-free-download-powerful-proven-trading-boost-step-by-step-guide",
+      "words": 742,
+      "priority": 2,
+      "issues": [
+        "words 742 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 6,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/%f0%9f%8f%86-best-currency-strength-meter-indicator-free-download-powerful-proven-picks.md",
+      "slug": "%f0%9f%8f%86-best-currency-strength-meter-indicator-free-download-powerful-proven-picks",
+      "words": 753,
+      "priority": 2,
+      "issues": [
+        "words 753 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 7,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/%f0%9f%9a%80-forexhub-system-for-mt4-free-download-powerful-2026-guide-with-proven-setup-tips.md",
+      "slug": "%f0%9f%9a%80-forexhub-system-for-mt4-free-download-powerful-2026-guide-with-proven-setup-tips",
+      "words": 780,
+      "priority": 2,
+      "issues": [
+        "words 780 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 8,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/%f0%9f%9a%80-boom-and-crash-mt5-indicator-free-download-7-powerful-benefits-every-trader-must-know.md",
+      "slug": "%f0%9f%9a%80-boom-and-crash-mt5-indicator-free-download-7-powerful-benefits-every-trader-must-know",
+      "words": 784,
+      "priority": 2,
+      "issues": [
+        "words 784 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 9,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/murasaki-scalper-free-download-powerful-secrets-every-trader-must-know-before-installing.md",
+      "slug": "murasaki-scalper-free-download-powerful-secrets-every-trader-must-know-before-installing",
+      "words": 785,
+      "priority": 2,
+      "issues": [
+        "words 785 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 10,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/us30-scalping-ea-free-download-powerful-proven-7-step-guide-to-maximize-profits.md",
+      "slug": "us30-scalping-ea-free-download-powerful-proven-7-step-guide-to-maximize-profits",
+      "words": 786,
+      "priority": 2,
+      "issues": [
+        "words 786 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 11,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/%f0%9f%9a%80-master-scalping-trading-system-mt4-free-download-ultimate-proven-guide-7-powerful-benefits.md",
+      "slug": "%f0%9f%9a%80-master-scalping-trading-system-mt4-free-download-ultimate-proven-guide-7-powerful-benefits",
+      "words": 787,
+      "priority": 2,
+      "issues": [
+        "words 787 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 12,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/best-volume-profile-indicator-for-mt4-free-download-7-powerful-tools-that-actually-work.md",
+      "slug": "best-volume-profile-indicator-for-mt4-free-download-7-powerful-tools-that-actually-work",
+      "words": 794,
+      "priority": 2,
+      "issues": [
+        "words 794 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 13,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/the-best-forex-trading-journal-template-excel-download-complete-guide-free-resources.md",
+      "slug": "the-best-forex-trading-journal-template-excel-download-complete-guide-free-resources",
+      "words": 805,
+      "priority": 2,
+      "issues": [
+        "words 805 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 14,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/nexus-6-0-binary-indicator-free-download-powerful-proven-trading-tool-guide.md",
+      "slug": "nexus-6-0-binary-indicator-free-download-powerful-proven-trading-tool-guide",
+      "words": 815,
+      "priority": 2,
+      "issues": [
+        "words 815 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 15,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/basic-harmonic-pattern-indicator-mt4-free-download-7-powerful-benefits-every-trader-must-know.md",
+      "slug": "basic-harmonic-pattern-indicator-mt4-free-download-7-powerful-benefits-every-trader-must-know",
+      "words": 821,
+      "priority": 2,
+      "issues": [
+        "words 821 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 16,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/cpr-forex-indicator-for-mt4-free-download-7-powerful-benefits-proven-trading-secrets.md",
+      "slug": "cpr-forex-indicator-for-mt4-free-download-7-powerful-benefits-proven-trading-secrets",
+      "words": 821,
+      "priority": 2,
+      "issues": [
+        "words 821 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 17,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/forex-velocity-ea-free-download-7-powerful-truths-you-must-know-before-installing.md",
+      "slug": "forex-velocity-ea-free-download-7-powerful-truths-you-must-know-before-installing",
+      "words": 826,
+      "priority": 2,
+      "issues": [
+        "words 826 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 18,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/elliot-fibonacci-forex-indicator-free-download-7-powerful-secrets-to-maximize-profits.md",
+      "slug": "elliot-fibonacci-forex-indicator-free-download-7-powerful-secrets-to-maximize-profits",
+      "words": 832,
+      "priority": 2,
+      "issues": [
+        "words 832 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 19,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/10-powerful-grid-trading-ea-safe-settings-for-mt4-to-reduce-risk-and-boost-profitability.md",
+      "slug": "10-powerful-grid-trading-ea-safe-settings-for-mt4-to-reduce-risk-and-boost-profitability",
+      "words": 834,
+      "priority": 2,
+      "issues": [
+        "words 834 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 20,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/fair-value-gap-balanced-price-range-indicator-mt4-mt5-free-download.md",
+      "slug": "fair-value-gap-balanced-price-range-indicator-mt4-mt5-free-download",
+      "words": 835,
+      "priority": 2,
+      "issues": [
+        "words 835 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 21,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/forex-millionaire-indicator-free-download-7-powerful-truths-you-must-know-before-installing.md",
+      "slug": "forex-millionaire-indicator-free-download-7-powerful-truths-you-must-know-before-installing",
+      "words": 837,
+      "priority": 2,
+      "issues": [
+        "words 837 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 22,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/order-blocks-indicator-for-mt4-mt5-free-download-7-powerful-benefits-smart-traders-cant-ignore.md",
+      "slug": "order-blocks-indicator-for-mt4-mt5-free-download-7-powerful-benefits-smart-traders-cant-ignore",
+      "words": 845,
+      "priority": 2,
+      "issues": [
+        "words 845 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 23,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/%f0%9f%9a%80-bitcoin-scalper-ea-free-download-powerful-guide-with-7-shocking-benefits-for-traders.md",
+      "slug": "%f0%9f%9a%80-bitcoin-scalper-ea-free-download-powerful-guide-with-7-shocking-benefits-for-traders",
+      "words": 855,
+      "priority": 2,
+      "issues": [
+        "words 855 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 24,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/quantum-algo-trading-ea-free-download-powerful-proven-automated-strategy.md",
+      "slug": "quantum-algo-trading-ea-free-download-powerful-proven-automated-strategy",
+      "words": 855,
+      "priority": 2,
+      "issues": [
+        "words 855 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 25,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/%f0%9f%93%8a-strength-candles-buy-sell-forex-mt4-indicator-free-download-powerful-guide-smart-trading-tips.md",
+      "slug": "%f0%9f%93%8a-strength-candles-buy-sell-forex-mt4-indicator-free-download-powerful-guide-smart-trading-tips",
+      "words": 863,
+      "priority": 2,
+      "issues": [
+        "words 863 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 26,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/%f0%9f%9a%80-powerful-proven-crypto-trading-indicator-system-mt5-free-download.md",
+      "slug": "%f0%9f%9a%80-powerful-proven-crypto-trading-indicator-system-mt5-free-download",
+      "words": 865,
+      "priority": 2,
+      "issues": [
+        "words 865 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 27,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/dark-mimas-highly-customizable-ea-mt4-mt5-free-download-7-powerful-features-every-trader-must-know.md",
+      "slug": "dark-mimas-highly-customizable-ea-mt4-mt5-free-download-7-powerful-features-every-trader-must-know",
+      "words": 868,
+      "priority": 2,
+      "issues": [
+        "words 868 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 28,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/%f0%9f%93%8a-stop-loss-take-profit-mt4-forex-indicator-free-download-powerful-smart-risk-control-guide.md",
+      "slug": "%f0%9f%93%8a-stop-loss-take-profit-mt4-forex-indicator-free-download-powerful-smart-risk-control-guide",
+      "words": 869,
+      "priority": 2,
+      "issues": [
+        "words 869 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 29,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/news-straddle-expert-advisor-setup-tutorial-the-ultimate-step-by-step-guide.md",
+      "slug": "news-straddle-expert-advisor-setup-tutorial-the-ultimate-step-by-step-guide",
+      "words": 870,
+      "priority": 2,
+      "issues": [
+        "words 870 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 30,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/master-entry-indicator-free-download-7-powerful-benefits-every-trader-must-know.md",
+      "slug": "master-entry-indicator-free-download-7-powerful-benefits-every-trader-must-know",
+      "words": 875,
+      "priority": 2,
+      "issues": [
+        "words 875 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 31,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/cobra-scalper-best-trading-indicator-free-download-7-powerful-reasons-traders-love-it.md",
+      "slug": "cobra-scalper-best-trading-indicator-free-download-7-powerful-reasons-traders-love-it",
+      "words": 890,
+      "priority": 2,
+      "issues": [
+        "words 890 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 32,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/the-10-best-sentiment-analysis-tools-for-forex-traders-a-comprehensive-guide.md",
+      "slug": "the-10-best-sentiment-analysis-tools-for-forex-traders-a-comprehensive-guide",
+      "words": 890,
+      "priority": 2,
+      "issues": [
+        "words 890 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 33,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/binary-options-signals-indicator-mt4-free-download-powerful-proven-guide.md",
+      "slug": "binary-options-signals-indicator-mt4-free-download-powerful-proven-guide",
+      "words": 891,
+      "priority": 2,
+      "issues": [
+        "words 891 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 34,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/forex-order-manager-trade-panel-for-mt4-free-download-powerful-7-benefits-every-trader-must-know.md",
+      "slug": "forex-order-manager-trade-panel-for-mt4-free-download-powerful-7-benefits-every-trader-must-know",
+      "words": 893,
+      "priority": 2,
+      "issues": [
+        "words 893 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 35,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/pip-scalper-ea-mt4-free-download-7-powerful-benefits-and-smart-setup-guide.md",
+      "slug": "pip-scalper-ea-mt4-free-download-7-powerful-benefits-and-smart-setup-guide",
+      "words": 893,
+      "priority": 2,
+      "issues": [
+        "words 893 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 36,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/best-scalper-ea-mt4-free-download-powerful-proven-guide.md",
+      "slug": "best-scalper-ea-mt4-free-download-powerful-proven-guide",
+      "words": 898,
+      "priority": 2,
+      "issues": [
+        "words 898 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 37,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/forex-tester-online-backtesting-with-eas-tutorial-the-ultimate-step-by-step-guide.md",
+      "slug": "forex-tester-online-backtesting-with-eas-tutorial-the-ultimate-step-by-step-guide",
+      "words": 902,
+      "priority": 2,
+      "issues": [
+        "words 902 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 38,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/%f0%9f%9a%80-powerful-boom-and-crash-spike-detector-indicator-mt5-free-download-7-proven-facts-traders-must-know.md",
+      "slug": "%f0%9f%9a%80-powerful-boom-and-crash-spike-detector-indicator-mt5-free-download-7-proven-facts-traders-must-know",
+      "words": 905,
+      "priority": 2,
+      "issues": [
+        "words 905 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 39,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/10-powerful-ways-to-use-news-time-trading-disable-ea-automatically-for-safer-forex-trading.md",
+      "slug": "10-powerful-ways-to-use-news-time-trading-disable-ea-automatically-for-safer-forex-trading",
+      "words": 907,
+      "priority": 2,
+      "issues": [
+        "words 907 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 40,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/forex-viking-most-profitable-indicator-free-download-7-powerful-secrets-to-consistent-profits.md",
+      "slug": "forex-viking-most-profitable-indicator-free-download-7-powerful-secrets-to-consistent-profits",
+      "words": 907,
+      "priority": 2,
+      "issues": [
+        "words 907 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 41,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/forex-order-manager-trade-panel-for-mt4-free-download-powerful-smart-tool-every-trader-needs.md",
+      "slug": "forex-order-manager-trade-panel-for-mt4-free-download-powerful-smart-tool-every-trader-needs",
+      "words": 913,
+      "priority": 2,
+      "issues": [
+        "words 913 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 42,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/top-10-free-tools-for-mt4-ea-performance-monitoring-powerful-ways-to-track-improve-results.md",
+      "slug": "top-10-free-tools-for-mt4-ea-performance-monitoring-powerful-ways-to-track-improve-results",
+      "words": 914,
+      "priority": 2,
+      "issues": [
+        "words 914 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 43,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/ea-red-dragon-ea-free-download-the-ultimate-safe-powerful-guide.md",
+      "slug": "ea-red-dragon-ea-free-download-the-ultimate-safe-powerful-guide",
+      "words": 915,
+      "priority": 2,
+      "issues": [
+        "words 915 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 44,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/renko-street-indicator-free-download-powerful-accurate-trading-tool-guide.md",
+      "slug": "renko-street-indicator-free-download-powerful-accurate-trading-tool-guide",
+      "words": 918,
+      "priority": 2,
+      "issues": [
+        "words 918 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 45,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/hft-ea-free-download-7-powerful-truths-before-you-install-any-trading-robot.md",
+      "slug": "hft-ea-free-download-7-powerful-truths-before-you-install-any-trading-robot",
+      "words": 919,
+      "priority": 2,
+      "issues": [
+        "words 919 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 46,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/orion-scalper-ea-free-download-7-powerful-truths-you-must-know-before-installing.md",
+      "slug": "orion-scalper-ea-free-download-7-powerful-truths-you-must-know-before-installing",
+      "words": 921,
+      "priority": 2,
+      "issues": [
+        "words 921 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 47,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/supply-and-demand-indicator-for-mt4-no-repaint.md",
+      "slug": "supply-and-demand-indicator-for-mt4-no-repaint",
+      "words": 921,
+      "priority": 2,
+      "issues": [
+        "words 921 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 48,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/quantum-valkyrie-forex-ea-reviews-powerful-insights-honest-analysis-performance-breakdown.md",
+      "slug": "quantum-valkyrie-forex-ea-reviews-powerful-insights-honest-analysis-performance-breakdown",
+      "words": 922,
+      "priority": 2,
+      "issues": [
+        "words 922 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 49,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/signalspro007-ea-free-download-7-powerful-facts-you-must-know-before-installing.md",
+      "slug": "signalspro007-ea-free-download-7-powerful-facts-you-must-know-before-installing",
+      "words": 923,
+      "priority": 2,
+      "issues": [
+        "words 923 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 50,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/%f0%9f%9a%80-moving-average-crossover-arrows-indicator-mt5-free-download-powerful-profitable-guide.md",
+      "slug": "%f0%9f%9a%80-moving-average-crossover-arrows-indicator-mt5-free-download-powerful-profitable-guide",
+      "words": 928,
+      "priority": 2,
+      "issues": [
+        "words 928 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 51,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/10-powerful-ways-on-how-to-export-tradingview-data-to-csv-free-methods-no-paid-plan-needed.md",
+      "slug": "10-powerful-ways-on-how-to-export-tradingview-data-to-csv-free-methods-no-paid-plan-needed",
+      "words": 928,
+      "priority": 2,
+      "issues": [
+        "words 928 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 52,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/auto-supply-and-demand-indicator-mt4-mt5-free-download-powerful-guide-to-smarter-trading.md",
+      "slug": "auto-supply-and-demand-indicator-mt4-mt5-free-download-powerful-guide-to-smarter-trading",
+      "words": 929,
+      "priority": 2,
+      "issues": [
+        "words 929 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 53,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/ultimate-pro-scalper-forex-indicator-free-download-7-powerful-secrets-every-trader-must-know.md",
+      "slug": "ultimate-pro-scalper-forex-indicator-free-download-7-powerful-secrets-every-trader-must-know",
+      "words": 930,
+      "priority": 2,
+      "issues": [
+        "words 930 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 54,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/how-to-make-money-with-sengkuni-ea-7-powerful-proven-strategies-for-consistent-profits.md",
+      "slug": "how-to-make-money-with-sengkuni-ea-7-powerful-proven-strategies-for-consistent-profits",
+      "words": 931,
+      "priority": 2,
+      "issues": [
+        "words 931 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 55,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/bos-and-choch-market-structure-indicator-free-download-ultimate-proven-guide-for-smart-traders.md",
+      "slug": "bos-and-choch-market-structure-indicator-free-download-ultimate-proven-guide-for-smart-traders",
+      "words": 932,
+      "priority": 2,
+      "issues": [
+        "words 932 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 56,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/life-changer-arthur-fx-ai-ea-powerful-7-step-breakdown-that-could-transform-your-forex-strategy.md",
+      "slug": "life-changer-arthur-fx-ai-ea-powerful-7-step-breakdown-that-could-transform-your-forex-strategy",
+      "words": 934,
+      "priority": 2,
+      "issues": [
+        "words 934 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 57,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/smart-correlation-hedge-ea-free-download-powerful-7-step-guide-to-smarter-forex-hedging.md",
+      "slug": "smart-correlation-hedge-ea-free-download-powerful-7-step-guide-to-smarter-forex-hedging",
+      "words": 938,
+      "priority": 2,
+      "issues": [
+        "words 938 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 58,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/smart-machine-ea-free-download-7-powerful-facts-you-must-know-before-installing.md",
+      "slug": "smart-machine-ea-free-download-7-powerful-facts-you-must-know-before-installing",
+      "words": 940,
+      "priority": 2,
+      "issues": [
+        "words 940 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 59,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/best-scalping-indicator-scalper-inside-v7-9-free-download-7-powerful-reasons-traders-love-it.md",
+      "slug": "best-scalping-indicator-scalper-inside-v7-9-free-download-7-powerful-reasons-traders-love-it",
+      "words": 946,
+      "priority": 2,
+      "issues": [
+        "words 946 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 60,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/bb-return-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing.md",
+      "slug": "bb-return-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing",
+      "words": 947,
+      "priority": 2,
+      "issues": [
+        "words 947 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 61,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/automate-indicator-mt4-ea-free-download-7-powerful-benefits-every-trader-must-know.md",
+      "slug": "automate-indicator-mt4-ea-free-download-7-powerful-benefits-every-trader-must-know",
+      "words": 948,
+      "priority": 2,
+      "issues": [
+        "words 948 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 62,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/cryo-scalper-indicator-free-download-powerful-guide-to-boost-your-trading-profits-fast.md",
+      "slug": "cryo-scalper-indicator-free-download-powerful-guide-to-boost-your-trading-profits-fast",
+      "words": 952,
+      "priority": 2,
+      "issues": [
+        "words 952 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 63,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/super-arrow-mt4-forex-indicator-free-download-powerful-7-step-guide-to-smarter-trading.md",
+      "slug": "super-arrow-mt4-forex-indicator-free-download-powerful-7-step-guide-to-smarter-trading",
+      "words": 954,
+      "priority": 2,
+      "issues": [
+        "words 954 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 64,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/fxstabilizer-pro-ea-free-download-7-powerful-truths-every-trader-must-know-before-installing.md",
+      "slug": "fxstabilizer-pro-ea-free-download-7-powerful-truths-every-trader-must-know-before-installing",
+      "words": 956,
+      "priority": 2,
+      "issues": [
+        "words 956 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 65,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/volumehedger-forex-ea-reviews-7-powerful-truths-every-trader-must-know.md",
+      "slug": "volumehedger-forex-ea-reviews-7-powerful-truths-every-trader-must-know",
+      "words": 961,
+      "priority": 2,
+      "issues": [
+        "words 961 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 66,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/non-repainting-mt4-trading-system-free-download-powerful-proven-strategy-in-2026.md",
+      "slug": "non-repainting-mt4-trading-system-free-download-powerful-proven-strategy-in-2026",
+      "words": 964,
+      "priority": 2,
+      "issues": [
+        "words 964 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 67,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/drawdown-reduction-ea-free-download-7-powerful-benefits-every-trader-must-know.md",
+      "slug": "drawdown-reduction-ea-free-download-7-powerful-benefits-every-trader-must-know",
+      "words": 966,
+      "priority": 2,
+      "issues": [
+        "words 966 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 68,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/vision-scalper-ea-free-download-7-powerful-truths-you-must-know-before-installing.md",
+      "slug": "vision-scalper-ea-free-download-7-powerful-truths-you-must-know-before-installing",
+      "words": 967,
+      "priority": 2,
+      "issues": [
+        "words 967 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 69,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/night-hunter-pro-ea-an-honest-review.md",
+      "slug": "night-hunter-pro-ea-an-honest-review",
+      "words": 970,
+      "priority": 2,
+      "issues": [
+        "words 970 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 70,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/range-detector-indicator-mt4-mt5-free-download-powerful-7-step-guide-to-smarter-range-trading.md",
+      "slug": "range-detector-indicator-mt4-mt5-free-download-powerful-7-step-guide-to-smarter-range-trading",
+      "words": 970,
+      "priority": 2,
+      "issues": [
+        "words 970 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 71,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/aura-ultimate-ea-forex-ea-reviews-powerful-insights-7-shocking-truths-you-must-know.md",
+      "slug": "aura-ultimate-ea-forex-ea-reviews-powerful-insights-7-shocking-truths-you-must-know",
+      "words": 975,
+      "priority": 2,
+      "issues": [
+        "words 975 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 72,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/forex-scanner-pro-indicator-system-for-mt4-free-download-ultimate-powerful-guide-setup.md",
+      "slug": "forex-scanner-pro-indicator-system-for-mt4-free-download-ultimate-powerful-guide-setup",
+      "words": 975,
+      "priority": 2,
+      "issues": [
+        "words 975 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 73,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/powerful-profitable-fair-value-gap-fvg-ea-mt5-free-download-ultimate-guide-for-smart-traders.md",
+      "slug": "powerful-profitable-fair-value-gap-fvg-ea-mt5-free-download-ultimate-guide-for-smart-traders",
+      "words": 979,
+      "priority": 2,
+      "issues": [
+        "words 979 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 74,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/eagle-scalper-best-forex-indicator-free-download-powerful-proven-profitable-strategy-guide.md",
+      "slug": "eagle-scalper-best-forex-indicator-free-download-powerful-proven-profitable-strategy-guide",
+      "words": 980,
+      "priority": 2,
+      "issues": [
+        "words 980 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 75,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/prop-firm-ea-free-download-7-powerful-truths-every-trader-must-know.md",
+      "slug": "prop-firm-ea-free-download-7-powerful-truths-every-trader-must-know",
+      "words": 982,
+      "priority": 2,
+      "issues": [
+        "words 982 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 76,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/%f0%9f%9a%80-apex-day-trading-forex-bot-mt4-free-download-the-ultimate-powerful-guide.md",
+      "slug": "%f0%9f%9a%80-apex-day-trading-forex-bot-mt4-free-download-the-ultimate-powerful-guide",
+      "words": 985,
+      "priority": 2,
+      "issues": [
+        "words 985 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 77,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/top-7-best-free-forex-scalper-ea-for-mt4-download.md",
+      "slug": "top-7-best-free-forex-scalper-ea-for-mt4-download",
+      "words": 985,
+      "priority": 2,
+      "issues": [
+        "words 985 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 78,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/hft-arbitrage-ea-free-download-7-powerful-truths-every-trader-must-know-before-installing.md",
+      "slug": "hft-arbitrage-ea-free-download-7-powerful-truths-every-trader-must-know-before-installing",
+      "words": 987,
+      "priority": 2,
+      "issues": [
+        "words 987 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 79,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/apex-scalper-metatrader-4-expert-advisor-free-download-7-powerful-benefits-every-trader-must-know.md",
+      "slug": "apex-scalper-metatrader-4-expert-advisor-free-download-7-powerful-benefits-every-trader-must-know",
+      "words": 991,
+      "priority": 2,
+      "issues": [
+        "words 991 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 80,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/forex-indicators-96-for-free-download-the-ultimate-powerful-guide-to-smart-trading-tools.md",
+      "slug": "forex-indicators-96-for-free-download-the-ultimate-powerful-guide-to-smart-trading-tools",
+      "words": 1002,
+      "priority": 2,
+      "issues": [
+        "words 1002 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 81,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/advanced-hedge-ea-free-download-powerful-2026-guide-to-safe-smart-access.md",
+      "slug": "advanced-hedge-ea-free-download-powerful-2026-guide-to-safe-smart-access",
+      "words": 1006,
+      "priority": 2,
+      "issues": [
+        "words 1006 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 82,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/best-free-alternatives-to-tradingview-for-custom-indicators.md",
+      "slug": "best-free-alternatives-to-tradingview-for-custom-indicators",
+      "words": 1006,
+      "priority": 2,
+      "issues": [
+        "words 1006 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 83,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/top-10-best-trend-reversal-indicator-mt4-non-repaint-solutions.md",
+      "slug": "top-10-best-trend-reversal-indicator-mt4-non-repaint-solutions",
+      "words": 1011,
+      "priority": 2,
+      "issues": [
+        "words 1011 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 84,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/top-10-insights-for-a-powerful-accurate-forex-pharaon-non-repaint-indicator-accuracy-test.md",
+      "slug": "top-10-insights-for-a-powerful-accurate-forex-pharaon-non-repaint-indicator-accuracy-test",
+      "words": 1018,
+      "priority": 2,
+      "issues": [
+        "words 1018 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 85,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/sigma-bot-forex-ea-reviews-powerful-insights-honest-analysis-7-must-know-facts.md",
+      "slug": "sigma-bot-forex-ea-reviews-powerful-insights-honest-analysis-7-must-know-facts",
+      "words": 1019,
+      "priority": 2,
+      "issues": [
+        "words 1019 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 86,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/best-custom-mt4-indicators-for-scalping.md",
+      "slug": "best-custom-mt4-indicators-for-scalping",
+      "words": 1022,
+      "priority": 2,
+      "issues": [
+        "words 1022 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 87,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/fair-value-gaps-fvg-indicator-free-download-powerful-trading-edge-with-7-proven-benefits.md",
+      "slug": "fair-value-gaps-fvg-indicator-free-download-powerful-trading-edge-with-7-proven-benefits",
+      "words": 1024,
+      "priority": 2,
+      "issues": [
+        "words 1024 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 88,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/buyside-sellside-liquidity-indicator-free-download-powerful-guide-to-smart-trading-success.md",
+      "slug": "buyside-sellside-liquidity-indicator-free-download-powerful-guide-to-smart-trading-success",
+      "words": 1028,
+      "priority": 2,
+      "issues": [
+        "words 1028 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 89,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/monopolist-scalping-expert-advisor-free-download-powerful-7-step-guide-to-smart-forex-profits.md",
+      "slug": "monopolist-scalping-expert-advisor-free-download-powerful-7-step-guide-to-smart-forex-profits",
+      "words": 1028,
+      "priority": 2,
+      "issues": [
+        "words 1028 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 90,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/ai-trend-booster-ea-free-download-powerful-proven-trading-advantage-guide.md",
+      "slug": "ai-trend-booster-ea-free-download-powerful-proven-trading-advantage-guide",
+      "words": 1031,
+      "priority": 2,
+      "issues": [
+        "words 1031 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 91,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/ultimate-trade-assistant-free-download-7-powerful-benefits-every-trader-will-love.md",
+      "slug": "ultimate-trade-assistant-free-download-7-powerful-benefits-every-trader-will-love",
+      "words": 1038,
+      "priority": 2,
+      "issues": [
+        "words 1038 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 92,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/german-sniper-forex-trading-indicator-free-download-the-ultimate-guide-to-boosting-precision.md",
+      "slug": "german-sniper-forex-trading-indicator-free-download-the-ultimate-guide-to-boosting-precision",
+      "words": 1040,
+      "priority": 2,
+      "issues": [
+        "words 1040 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 93,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/quantum-queen-forex-ea-reviews-powerful-insights-honest-pros-7-shocking-truths.md",
+      "slug": "quantum-queen-forex-ea-reviews-powerful-insights-honest-pros-7-shocking-truths",
+      "words": 1040,
+      "priority": 2,
+      "issues": [
+        "words 1040 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 94,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/cap-channel-forex-indicator-free-download-7-powerful-benefits-every-trader-must-know.md",
+      "slug": "cap-channel-forex-indicator-free-download-7-powerful-benefits-every-trader-must-know",
+      "words": 1043,
+      "priority": 2,
+      "issues": [
+        "words 1043 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 95,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/choppa-ea-free-download-7-powerful-truths-you-must-know-before-installing.md",
+      "slug": "choppa-ea-free-download-7-powerful-truths-you-must-know-before-installing",
+      "words": 1044,
+      "priority": 2,
+      "issues": [
+        "words 1044 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 96,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/forex-viking-most-profitable-indicator-free-download-7-powerful-reasons-traders-love-it.md",
+      "slug": "forex-viking-most-profitable-indicator-free-download-7-powerful-reasons-traders-love-it",
+      "words": 1049,
+      "priority": 2,
+      "issues": [
+        "words 1049 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 97,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/forex-plutus-best-premium-indicator-free-download-7-powerful-reasons-traders-love-it.md",
+      "slug": "forex-plutus-best-premium-indicator-free-download-7-powerful-reasons-traders-love-it",
+      "words": 1060,
+      "priority": 2,
+      "issues": [
+        "words 1060 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 98,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/extreme-binary-sniper-mt5-trading-system-free-download-powerful-proven-strategy-guide.md",
+      "slug": "extreme-binary-sniper-mt5-trading-system-free-download-powerful-proven-strategy-guide",
+      "words": 1061,
+      "priority": 2,
+      "issues": [
+        "words 1061 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 99,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/%f0%9f%8c%8a-neptune-ea-forex-ea-reviews-7-powerful-truths-every-trader-must-know.md",
+      "slug": "%f0%9f%8c%8a-neptune-ea-forex-ea-reviews-7-powerful-truths-every-trader-must-know",
+      "words": 1066,
+      "priority": 2,
+      "issues": [
+        "words 1066 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 100,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/syna-forex-ea-reviews-7-powerful-truths-you-must-know-before-investing.md",
+      "slug": "syna-forex-ea-reviews-7-powerful-truths-you-must-know-before-investing",
+      "words": 1067,
+      "priority": 2,
+      "issues": [
+        "words 1067 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 101,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/ict-kill-zones-indicator-mt4-mt5-free-download-powerful-proven-2025-trading-edge.md",
+      "slug": "ict-kill-zones-indicator-mt4-mt5-free-download-powerful-proven-2025-trading-edge",
+      "words": 1071,
+      "priority": 2,
+      "issues": [
+        "words 1071 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 102,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/yarukami-mnukakashi-ea-free-download-7-powerful-truths-you-must-know-before-installing.md",
+      "slug": "yarukami-mnukakashi-ea-free-download-7-powerful-truths-you-must-know-before-installing",
+      "words": 1076,
+      "priority": 2,
+      "issues": [
+        "words 1076 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 103,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/breakout-and-retest-scanner-indicator-free-download-7-powerful-secrets-to-smarter-trading.md",
+      "slug": "breakout-and-retest-scanner-indicator-free-download-7-powerful-secrets-to-smarter-trading",
+      "words": 1092,
+      "priority": 2,
+      "issues": [
+        "words 1092 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 104,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/oracle-scalper-best-trading-indicator-free-download-powerful-secrets-7-proven-benefits-for-smart-traders.md",
+      "slug": "oracle-scalper-best-trading-indicator-free-download-powerful-secrets-7-proven-benefits-for-smart-traders",
+      "words": 1092,
+      "priority": 2,
+      "issues": [
+        "words 1092 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 105,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/mft-trading-robot-mt4-free-download-7-powerful-facts-you-must-know-before-installing.md",
+      "slug": "mft-trading-robot-mt4-free-download-7-powerful-facts-you-must-know-before-installing",
+      "words": 1108,
+      "priority": 2,
+      "issues": [
+        "words 1108 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 106,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/best-martingale-ea-for-mt4-with-a-recovery-system.md",
+      "slug": "best-martingale-ea-for-mt4-with-a-recovery-system",
+      "words": 1116,
+      "priority": 2,
+      "issues": [
+        "words 1116 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 107,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/accurate-signals-no-repaint-indicator-free-download-7-powerful-benefits-traders-must-know.md",
+      "slug": "accurate-signals-no-repaint-indicator-free-download-7-powerful-benefits-traders-must-know",
+      "words": 1129,
+      "priority": 2,
+      "issues": [
+        "words 1129 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 108,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/skynet-ea-free-download-7-shocking-truths-you-must-know-before-installing.md",
+      "slug": "skynet-ea-free-download-7-shocking-truths-you-must-know-before-installing",
+      "words": 1144,
+      "priority": 2,
+      "issues": [
+        "words 1144 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 109,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/forex-factory-best-custom-indicators-a-guide-to-enhancing-your-trading-strategy.md",
+      "slug": "forex-factory-best-custom-indicators-a-guide-to-enhancing-your-trading-strategy",
+      "words": 1158,
+      "priority": 2,
+      "issues": [
+        "words 1158 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 110,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/usdjpy-safe-expert-advisor-free-download-7-powerful-benefits-smart-setup-guide.md",
+      "slug": "usdjpy-safe-expert-advisor-free-download-7-powerful-benefits-smart-setup-guide",
+      "words": 1171,
+      "priority": 2,
+      "issues": [
+        "words 1171 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 111,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/forex-smc-indicator-for-mt4-free-download-powerful-7-step-guide-to-install-trade-smarter.md",
+      "slug": "forex-smc-indicator-for-mt4-free-download-powerful-7-step-guide-to-install-trade-smarter",
+      "words": 1198,
+      "priority": 2,
+      "issues": [
+        "words 1198 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 112,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/zenith-protocol-forex-ea-reviews-7-powerful-truths-every-trader-must-know.md",
+      "slug": "zenith-protocol-forex-ea-reviews-7-powerful-truths-every-trader-must-know",
+      "words": 1200,
+      "priority": 2,
+      "issues": [
+        "words 1200 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 113,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/noble-impulse-v4-indicator-and-strategies-for-free-download-powerful-guide-9-proven-tactics.md",
+      "slug": "noble-impulse-v4-indicator-and-strategies-for-free-download-powerful-guide-9-proven-tactics",
+      "words": 1286,
+      "priority": 2,
+      "issues": [
+        "words 1286 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 114,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/pending-order-ea-free-download-powerful-guide-to-avoid-risky-traps-in-9-steps.md",
+      "slug": "pending-order-ea-free-download-powerful-guide-to-avoid-risky-traps-in-9-steps",
+      "words": 1378,
+      "priority": 2,
+      "issues": [
+        "words 1378 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 115,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/asian-breakout-trading-system-free-download-powerful-7-step-strategy-for-explosive-forex-profits.md",
+      "slug": "asian-breakout-trading-system-free-download-powerful-7-step-strategy-for-explosive-forex-profits",
+      "words": 1445,
+      "priority": 2,
+      "issues": [
+        "words 1445 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 116,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/eagle-scalper-best-forex-indicator-11-powerful-benefits-real-world-red-flags.md",
+      "slug": "eagle-scalper-best-forex-indicator-11-powerful-benefits-real-world-red-flags",
+      "words": 1538,
+      "priority": 2,
+      "issues": [
+        "words 1538 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 117,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/bheurekso-pattern-forex-indicator-free-download-powerful-guide-7-safe-steps-to-install-use-avoid-scams.md",
+      "slug": "bheurekso-pattern-forex-indicator-free-download-powerful-guide-7-safe-steps-to-install-use-avoid-scams",
+      "words": 1572,
+      "priority": 2,
+      "issues": [
+        "words 1572 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 118,
+      "priorityLabel": "missing download"
+    },
+    {
+      "file": "src/content/posts/perfect-binary-signal-indicator-free-download-9-powerful-ways-to-use-it-safely-and-smarter-no-fluff-guide.md",
+      "slug": "perfect-binary-signal-indicator-free-download-9-powerful-ways-to-use-it-safely-and-smarter-no-fluff-guide",
+      "words": 1678,
+      "priority": 2,
+      "issues": [
+        "words 1678 (below 3500)",
+        "missing quickAnswer",
+        "faqs 0 (needs 4+)",
+        "sources 0 (needs 2+)",
+        "missing download",
+        "missing primaryKeyword"
+      ],
+      "rank": 119,
+      "priorityLabel": "missing download"
+    }
+  ]
+}

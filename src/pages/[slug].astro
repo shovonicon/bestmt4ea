@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../layouts/PageLayout.astro';
+import LongFormLayout from '../layouts/LongFormLayout.astro';
+import { extractHeadings } from '../lib/reading';
+import { RESERVED_SLUGS, assertRootSlugIntegrity } from '../lib/content';
+
+/**
+ * Root-level route for both posts and pages.
+ *
+ * WordPress serves both at /<slug>/, so this single route preserves those
+ * permalinks exactly. Static routes (/shop, /blog, /product/...) take priority
+ * over this dynamic segment, so there is no clash.
+ *
+ * Every post — article or free-download page — renders through
+ * `LongFormLayout`, which switches its order on `entry.data.download`. Static
+ * pages keep their own layout.
+ */
+
+export async function getStaticPaths() {
+  const [posts, pages] = await Promise.all([getCollection('posts'), getCollection('pages')]);
+
+  /**
+   * Stop the build on a slug that cannot be served — a duplicate root slug, or
+   * one a dedicated route already owns. Previously those were skipped with
+   * `continue`, which silently dropped the page.
+   */
+  assertRootSlugIntegrity(posts, pages);
+
+  const paths: any[] = [];
+
+  for (const entry of posts) {
+    const slug = entry.data.slug;
+    if (RESERVED_SLUGS.has(slug)) continue;
+    paths.push({ params: { slug }, props: { kind: 'post' as const, entry } });
+  }
+
+  for (const entry of pages) {
+    const slug = entry.data.slug;
+    if (RESERVED_SLUGS.has(slug)) continue;
+    paths.push({ params: { slug }, props: { kind: 'page' as const, entry } });
+  }
+
+  return paths;
+}
+
+const { kind, entry } = Astro.props;
+
+const body = (entry as any).body ?? '';
+const headings = kind === 'post' ? extractHeadings(body) : [];
+
+// Posts in the same primary category, for internal linking.
+let related: any[] = [];
+if (kind === 'post') {
+  const category = entry.data.categories?.[0];
+  if (category) {
+    const all = await getCollection('posts');
+    related = all
+      .filter((p: any) => p.data.slug !== entry.data.slug && p.data.categories?.includes(category))
+      .slice(0, 5);
+  }
+}
+---
+
+{
+  kind === 'page' ? (
+    <PageLayout entry={entry} />
+  ) : (
+    <LongFormLayout entry={entry} headings={headings} body={body} related={related} />
+  )
+}

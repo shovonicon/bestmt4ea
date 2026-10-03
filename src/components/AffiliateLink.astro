@@ -1,0 +1,26 @@
+---
+/**
+ * Inline affiliate link.
+ *
+ * Renders nothing if the key is unknown, so a typo fails visibly rather than
+ * silently shipping a broken or unsponsored link.
+ */
+import { getAffiliate, AFFILIATE_REL } from '../lib/affiliates';
+
+export interface Props {
+  id: string;
+  label?: string;
+  class?: string;
+}
+
+const { id, label, class: className = '' } = Astro.props;
+const offer = getAffiliate(id);
+---
+
+{
+  offer && (
+    <a href={offer.url} rel={AFFILIATE_REL} target="_blank" class={className}>
+      {label ?? offer.label}
+    </a>
+  )
+}

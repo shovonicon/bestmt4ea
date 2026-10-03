@@ -1,0 +1,230 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import RankingTable from '../components/RankingTable.astro';
+import Faq from '../components/Faq.astro';
+import { getPerformance } from '../lib/performance';
+import { site, RISK_DISCLAIMER } from '../lib/site';
+import { organizationSchema, websiteSchema, faqSchema } from '../lib/seo';
+import { monthYear, performanceVerifiedAt } from '../lib/dates';
+import { formatDate } from '../lib/format';
+import { getPublicProducts } from '../lib/content';
+import { url } from '../lib/urls';
+
+const products = await getPublicProducts();
+
+const ranked = products
+  .map((product) => ({ product, perf: getPerformance(product.data.slug) }))
+  .sort((a, b) => (b.perf?.totalGainPct ?? -Infinity) - (a.perf?.totalGainPct ?? -Infinity));
+
+const featured = ranked.slice(0, 6).map((r) => r.product);
+
+const stats = [
+  { label: 'Expert advisors', value: String(products.length) },
+  { label: 'Markets covered', value: 'MT4 · MT5' },
+  { label: 'Independent tracking', value: 'Myfxbook' },
+  { label: 'Operating since', value: '2016' },
+];
+
+const pillars = [
+  {
+    title: 'Transparency first',
+    body: 'Every performance figure links to the third-party account behind it. If a system runs on demo funds, the page says so plainly instead of calling it live.',
+  },
+  {
+    title: 'Risk shown with return',
+    body: 'Drawdown, profit factor and trade counts sit next to gain percentages. A system that returns 80% at 80% drawdown is described as one — not marketed as 80%.',
+  },
+  {
+    title: 'Support that answers',
+    body: 'Installation, preset configuration and troubleshooting run through the community Telegram, so you are never left alone with a compiled file.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'Are the trading results on this site real?',
+    answer:
+      'Every performance figure links to the third-party tracking account it came from, so you can verify it yourself. Where an account is a demo rather than live funds, the page says so. Past performance does not guarantee future results.',
+  },
+  {
+    question: 'Do I need a VPS to run an expert advisor?',
+    answer:
+      'A VPS is strongly recommended. Automated systems need the MetaTrader terminal running continuously, so hosting it near your broker\u2019s server avoids downtime and reduces execution latency.',
+  },
+  {
+    question: 'Can I test a system before buying a license?',
+    answer:
+      'Yes. Most products include a trial or demo license tier so you can run the system on a demo account and compare its behaviour with the published track record before committing.',
+  },
+  {
+    question: 'Which brokers do your systems run on?',
+    answer:
+      'They run on any MetaTrader 4 or MetaTrader 5 broker. Low-spread ECN accounts perform best because the strategies are sensitive to execution cost.',
+  },
+  {
+    question: 'Can I use these systems on a prop firm account?',
+    answer:
+      'Several systems include presets with drawdown cut-offs and news filters suited to funded-account rules. Always check your firm\u2019s policy on automated trading before you start a challenge.',
+  },
+];
+---
+
+<BaseLayout
+  title={`Best MT4 & MT5 Expert Advisors ${monthYear} — Myfxbook Verified`}
+  description={site.description}
+  jsonLd={[organizationSchema(), websiteSchema(), faqSchema(faqs)]}
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="glow-orb animate-aurora left-1/2 top-[-12rem] h-[26rem] w-[38rem] -translate-x-1/2 bg-emerald-500/25"
+    ></div>
+    <div class="glow-orb animate-float right-[-6rem] top-[6rem] h-[18rem] w-[18rem] bg-teal-400/10"></div>
+    <div class="grid-overlay pointer-events-none absolute inset-0"></div>
+    <div class="container-x relative flex min-h-[62vh] flex-col items-center justify-center py-20 text-center lg:py-28">
+      <span
+        class="eyebrow animate-fade-in-up inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2"
+      >
+        <span class="live-dot"></span>Verified performance · checked {formatDate(performanceVerifiedAt)}
+      </span>
+
+      <h1
+        class="animate-fade-in-up-delay-1 mt-6 max-w-5xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-7xl"
+      >
+        Forex expert advisors, with the <span class="text-gradient-brand">track record</span> attached
+      </h1>
+
+      <p
+        class="animate-fade-in-up-delay-2 mt-6 max-w-3xl text-base leading-8 text-[--color-ink-soft] sm:text-lg"
+      >
+        Every system here links to its live third-party account, so you can check the drawdown as easily as the returns
+        before you spend anything. No hidden curves, no cherry-picked months.
+      </p>
+
+      <div class="animate-fade-in-up-delay-3 mt-10 flex flex-wrap items-center justify-center gap-3">
+        <a href={url('/shop')} class="btn btn-primary">Browse the EA library</a>
+        <a href={site.telegram.community} rel="noopener" class="btn btn-ghost">Join the community</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="container-x pb-20">
+    <div class="stats-panel">
+      {
+        stats.map((stat) => (
+          <div class="stats-panel-item">
+            <div class="mb-3 flex items-center justify-center gap-2">
+              <span class="live-dot" />
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-300">{stat.label}</span>
+            </div>
+            <div class="font-mono text-2xl font-bold text-white sm:text-3xl">{stat.value}</div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Pillars -->
+  <section class="border-t border-white/5">
+    <div class="container-x py-20 lg:py-28">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="section-kicker">Why this library</p>
+        <h2 class="mt-4 text-3xl font-bold sm:text-4xl lg:text-5xl">
+          Built and traded by the person who writes the code
+        </h2>
+        <p class="mt-4 text-sm leading-7 text-[--color-ink-dim] sm:text-base">
+          No outsourced reviews and no affiliate-only rankings. Every system is developed, forward-tested and supported
+          in-house before it is listed here.
+        </p>
+      </div>
+
+      <div class="mt-14 grid gap-6 lg:grid-cols-3">
+        {
+          pillars.map((pillar) => (
+            <div class="hover-brand-card p-8">
+              <h3 class="text-lg font-bold text-emerald-400">{pillar.title}</h3>
+              <p class="mt-3 text-sm leading-7 text-[--color-ink-dim]">{pillar.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Ranking -->
+  <section class="border-t border-white/5">
+    <div class="container-x py-20 lg:py-28">
+      <div class="mx-auto mb-12 max-w-2xl text-center">
+        <p class="section-kicker">Comparison registry</p>
+        <h2 class="mt-4 text-3xl font-bold sm:text-4xl lg:text-5xl">Top systems by verified gain</h2>
+        <p class="mt-4 text-sm leading-7 text-[--color-ink-dim]">
+          Ranked on third-party tracked performance, with drawdown and account type shown next to every
+          figure and the check date stated.
+        </p>
+      </div>
+
+      <RankingTable
+        products={products}
+        limit={10}
+        caption={`Top ten expert advisors by verified monthly return — ${monthYear}`}
+      />
+
+      <p class="mx-auto mt-6 max-w-3xl text-center text-xs leading-6 text-[--color-ink-dim]">{RISK_DISCLAIMER}</p>
+      <div class="mt-8 flex justify-center">
+        <a href={url('/top-ranking')} class="btn btn-ghost">See the full ranking</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Store -->
+  <section class="border-t border-white/5 bg-zinc-950/20">
+    <div class="container-x py-20 lg:py-28">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="section-kicker">The EA directory</p>
+        <h2 class="mt-4 text-3xl font-bold sm:text-4xl lg:text-5xl">Choose the system that fits your account</h2>
+        <p class="mt-4 text-sm leading-7 text-[--color-ink-dim]">
+          Each license includes the compiled expert advisor, a setup guide, recommended broker and account type, and
+          default risk settings.
+        </p>
+      </div>
+
+      <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {featured.map((product) => <ProductCard product={product} />)}
+      </div>
+
+      <div class="mt-10 flex justify-center">
+        <a href={url('/shop')} class="btn btn-ghost">See all {products.length} systems</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Free library -->
+  <section class="border-t border-white/5">
+    <div class="container-x py-20 lg:py-28">
+      <div class="brand-card overflow-hidden p-8 sm:p-12">
+        <div class="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          <div class="max-w-2xl">
+            <span class="eyebrow inline-flex items-center gap-2">
+              <span class="live-dot"></span>Free to download
+            </span>
+            <h2 class="mt-4 text-2xl font-bold sm:text-3xl">Start on a demo account for nothing</h2>
+            <p class="mt-3 text-sm leading-7 text-[--color-ink-dim]">
+              Our own indicators and open-source expert advisors are free to download and test. Learn how the systems
+              behave on a demo account before you commit real capital to a paid license.
+            </p>
+          </div>
+          <a href={url('/free-download-forex-ea-indicator')} class="btn btn-primary shrink-0">Open the free library</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-white/5">
+    <div class="container-x py-20">
+      <div class="mx-auto max-w-3xl">
+        <Faq items={faqs} heading="Frequently asked questions" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

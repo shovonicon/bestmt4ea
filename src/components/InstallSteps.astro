@@ -1,0 +1,36 @@
+---
+/**
+ * Install steps for a download page.
+ *
+ * Rendered from `installSteps` frontmatter — the single source of truth, which
+ * also feeds HowTo structured data. The layout places it between the download
+ * card and the first ad unit, so no ad is ever adjacent to the download button.
+ */
+export interface Props {
+  steps: { name: string; text: string }[];
+  title?: string;
+}
+
+const { steps, title = 'How to install it' } = Astro.props;
+---
+
+{
+  steps?.length > 0 && (
+    <section class="panel p-6" data-install-steps>
+      <h2 class="text-xl">{title}</h2>
+      <ol class="mt-5 space-y-5">
+        {steps.map((step, index) => (
+          <li class="flex gap-4">
+            <span class="metric-value mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[--color-accent]/15 text-xs text-[--color-accent]">
+              {index + 1}
+            </span>
+            <div>
+              <h3 class="text-sm font-semibold text-[--color-ink]">{step.name}</h3>
+              <p class="mt-1 text-sm leading-7 text-[--color-ink-soft]">{step.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+  )
+}

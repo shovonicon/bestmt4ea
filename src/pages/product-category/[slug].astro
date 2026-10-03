@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { RISK_DISCLAIMER } from '../../lib/site';
+import { getPublicProducts } from '../../lib/content';
+import { url } from '../../lib/urls';
+import taxonomies from '../../data/taxonomies.json';
+
+/**
+ * Product category archive (/product-category/<slug>).
+ *
+ * Rebuilds the WooCommerce `product_cat` archive, which is live and indexed
+ * today. Slugs come from the exported taxonomy so they match exactly.
+ */
+
+type Cat = { id: number; name: string; slug: string; count: number };
+
+export async function getStaticPaths() {
+  const cats = ((taxonomies as any).productCategories ?? []) as Cat[];
+  return cats.map((cat) => ({ params: { slug: cat.slug }, props: { catName: cat.name } }));
+}
+
+const { catName } = Astro.props;
+const { slug } = Astro.params;
+
+const all = await getPublicProducts();
+const products = all.filter((p) => p.data.productCategories.includes(catName));
+---
+
+<BaseLayout
+  title={`${catName} — Expert Advisors and Tools`}
+  description={`${catName}: every system in this category, with its licence options, platform compatibility and a link to its independent performance record.`}
+>
+  <div class="container-x py-14">
+    <nav aria-label="Breadcrumb" class="text-xs text-[--color-ink-dim]">
+      <a href="/" class="hover:text-[--color-accent]">Home</a>
+      <span class="mx-2">/</span>
+      <a href={url('/shop')} class="hover:text-[--color-accent]">Shop</a>
+      <span class="mx-2">/</span>
+      <span class="text-[--color-ink-soft]">{catName}</span>
+    </nav>
+
+    <p class="eyebrow mt-6">{slug}</p>
+    <h1 class="mt-2 text-3xl md:text-4xl">{catName}</h1>
+    <p class="mt-4 max-w-2xl text-sm leading-7 text-[--color-ink-dim]">
+      {products.length} product{products.length === 1 ? '' : 's'} in this category.
+    </p>
+
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {products.map((product) => <ProductCard product={product} />)}
+    </div>
+
+    <p class="mt-12 text-xs leading-6 text-[--color-ink-dim]">{RISK_DISCLAIMER}</p>
+  </div>
+</BaseLayout>

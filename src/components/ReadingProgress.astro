@@ -1,0 +1,28 @@
+---
+/**
+ * Reading progress bar — fixed to the top of the viewport, filled by scroll depth.
+ * Matches the strivealgo chrome.
+ */
+---
+
+<div class="fixed inset-x-0 top-0 z-[60] h-[3px] bg-transparent" aria-hidden="true">
+  <div data-reading-progress class="brand-gradient h-full w-0 transition-[width] duration-150 ease-out"></div>
+</div>
+
+<script is:inline>
+  (() => {
+    const bar = document.querySelector('[data-reading-progress]');
+    if (!bar) return;
+
+    const update = () => {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      const pct = max > 0 ? (doc.scrollTop / max) * 100 : 0;
+      bar.style.width = pct + '%';
+    };
+
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+  })();
+</script>

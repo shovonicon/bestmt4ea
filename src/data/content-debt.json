@@ -1,0 +1,4459 @@
+{
+  "generatedAt": "2026-09-29T14:28:16.682Z",
+  "rules": "scripts/content-rules.mjs",
+  "totals": {
+    "docs": 166,
+    "withViolations": 132,
+    "clean": 34,
+    "duplicatePairs": 0
+  },
+  "duplicates": [],
+  "entries": {
+    "post:%f0%9f%8c%8a-neptune-ea-forex-ea-reviews-7-powerful-truths-every-trader-must-know": {
+      "file": "src/content/posts/%f0%9f%8c%8a-neptune-ea-forex-ea-reviews-7-powerful-truths-every-trader-must-know.md",
+      "violations": {
+        "word-count": [
+          "1066 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "body-h1": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ]
+      }
+    },
+    "post:%f0%9f%8f%86-best-currency-strength-meter-indicator-free-download-powerful-proven-picks": {
+      "file": "src/content/posts/%f0%9f%8f%86-best-currency-strength-meter-indicator-free-download-powerful-proven-picks.md",
+      "violations": {
+        "word-count": [
+          "753 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "description-length": [
+          "147 chars"
+        ]
+      }
+    },
+    "post:%f0%9f%93%88-pro-trend-line-indicator-free-download-7-powerful-benefits-every-trader-must-know": {
+      "file": "src/content/posts/%f0%9f%93%88-pro-trend-line-indicator-free-download-7-powerful-benefits-every-trader-must-know.md",
+      "violations": {
+        "word-count": [
+          "722 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ]
+      }
+    },
+    "post:%f0%9f%93%8a-stop-loss-take-profit-mt4-forex-indicator-free-download-powerful-smart-risk-control-guide": {
+      "file": "src/content/posts/%f0%9f%93%8a-stop-loss-take-profit-mt4-forex-indicator-free-download-powerful-smart-risk-control-guide.md",
+      "violations": {
+        "word-count": [
+          "869 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "description-length": [
+          "171 chars"
+        ]
+      }
+    },
+    "post:%f0%9f%93%8a-strength-candles-buy-sell-forex-mt4-indicator-free-download-powerful-guide-smart-trading-tips": {
+      "file": "src/content/posts/%f0%9f%93%8a-strength-candles-buy-sell-forex-mt4-indicator-free-download-powerful-guide-smart-trading-tips.md",
+      "violations": {
+        "word-count": [
+          "863 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "description-length": [
+          "181 chars"
+        ]
+      }
+    },
+    "post:%f0%9f%9a%80-apex-day-trading-forex-bot-mt4-free-download-the-ultimate-powerful-guide": {
+      "file": "src/content/posts/%f0%9f%9a%80-apex-day-trading-forex-bot-mt4-free-download-the-ultimate-powerful-guide.md",
+      "violations": {
+        "word-count": [
+          "985 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "body-h1": [
+          ""
+        ],
+        "title-length": [
+          "77 chars"
+        ]
+      }
+    },
+    "post:%f0%9f%9a%80-bitcoin-scalper-ea-free-download-powerful-guide-with-7-shocking-benefits-for-traders": {
+      "file": "src/content/posts/%f0%9f%9a%80-bitcoin-scalper-ea-free-download-powerful-guide-with-7-shocking-benefits-for-traders.md",
+      "violations": {
+        "word-count": [
+          "855 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "body-h1": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "182 chars"
+        ]
+      }
+    },
+    "post:%f0%9f%9a%80-boom-and-crash-mt5-indicator-free-download-7-powerful-benefits-every-trader-must-know": {
+      "file": "src/content/posts/%f0%9f%9a%80-boom-and-crash-mt5-indicator-free-download-7-powerful-benefits-every-trader-must-know.md",
+      "violations": {
+        "word-count": [
+          "784 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "body-h1": [
+          ""
+        ],
+        "title-length": [
+          "89 chars"
+        ],
+        "description-length": [
+          "174 chars"
+        ]
+      }
+    },
+    "post:%f0%9f%9a%80-forexhub-system-for-mt4-free-download-powerful-2026-guide-with-proven-setup-tips": {
+      "file": "src/content/posts/%f0%9f%9a%80-forexhub-system-for-mt4-free-download-powerful-2026-guide-with-proven-setup-tips.md",
+      "violations": {
+        "word-count": [
+          "780 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "description-length": [
+          "181 chars"
+        ]
+      }
+    },
+    "post:%f0%9f%9a%80-master-scalping-trading-system-mt4-free-download-ultimate-proven-guide-7-powerful-benefits": {
+      "file": "src/content/posts/%f0%9f%9a%80-master-scalping-trading-system-mt4-free-download-ultimate-proven-guide-7-powerful-benefits.md",
+      "violations": {
+        "word-count": [
+          "787 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "title-length": [
+          "97 chars"
+        ],
+        "description-length": [
+          "192 chars"
+        ]
+      }
+    },
+    "post:%f0%9f%9a%80-moving-average-crossover-arrows-indicator-mt5-free-download-powerful-profitable-guide": {
+      "file": "src/content/posts/%f0%9f%9a%80-moving-average-crossover-arrows-indicator-mt5-free-download-powerful-profitable-guide.md",
+      "violations": {
+        "word-count": [
+          "928 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "201 chars"
+        ]
+      }
+    },
+    "post:%f0%9f%9a%80-mt4-x-speed-forex-indicator-free-download-powerful-proven-guide": {
+      "file": "src/content/posts/%f0%9f%9a%80-mt4-x-speed-forex-indicator-free-download-powerful-proven-guide.md",
+      "violations": {
+        "word-count": [
+          "715 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "description-length": [
+          "167 chars"
+        ]
+      }
+    },
+    "post:%f0%9f%9a%80-powerful-boom-and-crash-spike-detector-indicator-mt5-free-download-7-proven-facts-traders-must-know": {
+      "file": "src/content/posts/%f0%9f%9a%80-powerful-boom-and-crash-spike-detector-indicator-mt5-free-download-7-proven-facts-traders-must-know.md",
+      "violations": {
+        "word-count": [
+          "905 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "104 chars"
+        ],
+        "description-length": [
+          "188 chars"
+        ]
+      }
+    },
+    "post:%f0%9f%9a%80-powerful-proven-crypto-trading-indicator-system-mt5-free-download": {
+      "file": "src/content/posts/%f0%9f%9a%80-powerful-proven-crypto-trading-indicator-system-mt5-free-download.md",
+      "violations": {
+        "word-count": [
+          "865 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "188 chars"
+        ]
+      }
+    },
+    "post:10-powerful-grid-trading-ea-safe-settings-for-mt4-to-reduce-risk-and-boost-profitability": {
+      "file": "src/content/posts/10-powerful-grid-trading-ea-safe-settings-for-mt4-to-reduce-risk-and-boost-profitability.md",
+      "violations": {
+        "word-count": [
+          "834 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "risk-free"
+        ],
+        "body-h1": [
+          ""
+        ],
+        "description-length": [
+          "188 chars"
+        ]
+      }
+    },
+    "post:10-powerful-ways-on-how-to-export-tradingview-data-to-csv-free-methods-no-paid-plan-needed": {
+      "file": "src/content/posts/10-powerful-ways-on-how-to-export-tradingview-data-to-csv-free-methods-no-paid-plan-needed.md",
+      "violations": {
+        "word-count": [
+          "928 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ],
+        "description-length": [
+          "206 chars"
+        ]
+      }
+    },
+    "post:10-powerful-ways-to-use-news-time-trading-disable-ea-automatically-for-safer-forex-trading": {
+      "file": "src/content/posts/10-powerful-ways-to-use-news-time-trading-disable-ea-automatically-for-safer-forex-trading.md",
+      "violations": {
+        "word-count": [
+          "907 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ],
+        "description-length": [
+          "199 chars"
+        ]
+      }
+    },
+    "post:accurate-signals-no-repaint-indicator-free-download-7-powerful-benefits-traders-must-know": {
+      "file": "src/content/posts/accurate-signals-no-repaint-indicator-free-download-7-powerful-benefits-traders-must-know.md",
+      "violations": {
+        "word-count": [
+          "1129 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "90 chars"
+        ],
+        "description-length": [
+          "174 chars"
+        ]
+      }
+    },
+    "post:advanced-hedge-ea-free-download-powerful-2026-guide-to-safe-smart-access": {
+      "file": "src/content/posts/advanced-hedge-ea-free-download-powerful-2026-guide-to-safe-smart-access.md",
+      "violations": {
+        "word-count": [
+          "1006 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ],
+        "title-length": [
+          "70 chars"
+        ],
+        "description-length": [
+          "138 chars"
+        ]
+      }
+    },
+    "post:ai-trend-booster-ea-free-download-powerful-proven-trading-advantage-guide": {
+      "file": "src/content/posts/ai-trend-booster-ea-free-download-powerful-proven-trading-advantage-guide.md",
+      "violations": {
+        "word-count": [
+          "1031 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "77 chars"
+        ],
+        "description-length": [
+          "175 chars"
+        ]
+      }
+    },
+    "post:apex-scalper-metatrader-4-expert-advisor-free-download-7-powerful-benefits-every-trader-must-know": {
+      "file": "src/content/posts/apex-scalper-metatrader-4-expert-advisor-free-download-7-powerful-benefits-every-trader-must-know.md",
+      "violations": {
+        "word-count": [
+          "991 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "180 chars"
+        ]
+      }
+    },
+    "post:asian-breakout-trading-system-free-download-powerful-7-step-strategy-for-explosive-forex-profits": {
+      "file": "src/content/posts/asian-breakout-trading-system-free-download-powerful-7-step-strategy-for-explosive-forex-profits.md",
+      "violations": {
+        "word-count": [
+          "1445 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "63 chars"
+        ]
+      }
+    },
+    "post:aura-ultimate-ea-forex-ea-reviews-powerful-insights-7-shocking-truths-you-must-know": {
+      "file": "src/content/posts/aura-ultimate-ea-forex-ea-reviews-powerful-insights-7-shocking-truths-you-must-know.md",
+      "violations": {
+        "word-count": [
+          "975 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "risk-free"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "149 chars"
+        ]
+      }
+    },
+    "post:auto-supply-and-demand-indicator-mt4-mt5-free-download-powerful-guide-to-smarter-trading": {
+      "file": "src/content/posts/auto-supply-and-demand-indicator-mt4-mt5-free-download-powerful-guide-to-smarter-trading.md",
+      "violations": {
+        "word-count": [
+          "929 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "89 chars"
+        ],
+        "description-length": [
+          "189 chars"
+        ]
+      }
+    },
+    "post:automate-indicator-mt4-ea-free-download-7-powerful-benefits-every-trader-must-know": {
+      "file": "src/content/posts/automate-indicator-mt4-ea-free-download-7-powerful-benefits-every-trader-must-know.md",
+      "violations": {
+        "word-count": [
+          "948 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "risk-free"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "83 chars"
+        ],
+        "description-length": [
+          "149 chars"
+        ]
+      }
+    },
+    "post:basic-harmonic-pattern-indicator-mt4-free-download-7-powerful-benefits-every-trader-must-know": {
+      "file": "src/content/posts/basic-harmonic-pattern-indicator-mt4-free-download-7-powerful-benefits-every-trader-must-know.md",
+      "violations": {
+        "word-count": [
+          "821 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ],
+        "description-length": [
+          "180 chars"
+        ]
+      }
+    },
+    "post:bb-return-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing": {
+      "file": "src/content/posts/bb-return-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing.md",
+      "violations": {
+        "word-count": [
+          "947 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "body-h1": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "85 chars"
+        ],
+        "description-length": [
+          "175 chars"
+        ]
+      }
+    },
+    "post:best-custom-mt4-indicators-for-scalping": {
+      "file": "src/content/posts/best-custom-mt4-indicators-for-scalping.md",
+      "violations": {
+        "word-count": [
+          "1022 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "description-length": [
+          "193 chars"
+        ]
+      }
+    },
+    "post:best-free-alternatives-to-tradingview-for-custom-indicators": {
+      "file": "src/content/posts/best-free-alternatives-to-tradingview-for-custom-indicators.md",
+      "violations": {
+        "word-count": [
+          "1006 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ],
+        "description-length": [
+          "216 chars"
+        ]
+      }
+    },
+    "post:best-martingale-ea-for-mt4-with-a-recovery-system": {
+      "file": "src/content/posts/best-martingale-ea-for-mt4-with-a-recovery-system.md",
+      "violations": {
+        "word-count": [
+          "1116 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "description-length": [
+          "188 chars"
+        ]
+      }
+    },
+    "post:best-non-repainting-arrow-indicator-for-forex": {
+      "file": "src/content/posts/best-non-repainting-arrow-indicator-for-forex.md",
+      "violations": {
+        "word-count": [
+          "675 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "description-length": [
+          "201 chars"
+        ]
+      }
+    },
+    "post:best-scalper-ea-mt4-free-download-powerful-proven-guide": {
+      "file": "src/content/posts/best-scalper-ea-mt4-free-download-powerful-proven-guide.md",
+      "violations": {
+        "word-count": [
+          "898 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "140 chars"
+        ]
+      }
+    },
+    "post:best-scalping-indicator-scalper-inside-v7-9-free-download-7-powerful-reasons-traders-love-it": {
+      "file": "src/content/posts/best-scalping-indicator-scalper-inside-v7-9-free-download-7-powerful-reasons-traders-love-it.md",
+      "violations": {
+        "word-count": [
+          "946 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "body-h1": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "180 chars"
+        ]
+      }
+    },
+    "post:best-volume-profile-indicator-for-mt4-free-download-7-powerful-tools-that-actually-work": {
+      "file": "src/content/posts/best-volume-profile-indicator-for-mt4-free-download-7-powerful-tools-that-actually-work.md",
+      "violations": {
+        "word-count": [
+          "794 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ],
+        "title-length": [
+          "89 chars"
+        ],
+        "description-length": [
+          "169 chars"
+        ]
+      }
+    },
+    "post:best-volume-profile-indicator-for-tradingview-free": {
+      "file": "src/content/posts/best-volume-profile-indicator-for-tradingview-free.md",
+      "violations": {
+        "word-count": [
+          "725 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "description-length": [
+          "202 chars"
+        ]
+      }
+    },
+    "post:bheurekso-pattern-forex-indicator-free-download-powerful-guide-7-safe-steps-to-install-use-avoid-scams": {
+      "file": "src/content/posts/bheurekso-pattern-forex-indicator-free-download-powerful-guide-7-safe-steps-to-install-use-avoid-scams.md",
+      "violations": {
+        "word-count": [
+          "1572 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "63 chars"
+        ],
+        "description-length": [
+          "187 chars"
+        ]
+      }
+    },
+    "post:binary-options-signals-indicator-mt4-free-download-powerful-proven-guide": {
+      "file": "src/content/posts/binary-options-signals-indicator-mt4-free-download-powerful-proven-guide.md",
+      "violations": {
+        "word-count": [
+          "891 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "76 chars"
+        ],
+        "description-length": [
+          "180 chars"
+        ]
+      }
+    },
+    "post:bos-and-choch-market-structure-indicator-free-download-ultimate-proven-guide-for-smart-traders": {
+      "file": "src/content/posts/bos-and-choch-market-structure-indicator-free-download-ultimate-proven-guide-for-smart-traders.md",
+      "violations": {
+        "word-count": [
+          "932 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "96 chars"
+        ],
+        "description-length": [
+          "201 chars"
+        ]
+      }
+    },
+    "post:breakout-and-retest-scanner-indicator-free-download-7-powerful-secrets-to-smarter-trading": {
+      "file": "src/content/posts/breakout-and-retest-scanner-indicator-free-download-7-powerful-secrets-to-smarter-trading.md",
+      "violations": {
+        "word-count": [
+          "1092 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "91 chars"
+        ],
+        "description-length": [
+          "183 chars"
+        ]
+      }
+    },
+    "post:buyside-sellside-liquidity-indicator-free-download-powerful-guide-to-smart-trading-success": {
+      "file": "src/content/posts/buyside-sellside-liquidity-indicator-free-download-powerful-guide-to-smart-trading-success.md",
+      "violations": {
+        "word-count": [
+          "1028 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "93 chars"
+        ],
+        "description-length": [
+          "180 chars"
+        ]
+      }
+    },
+    "post:cap-channel-forex-indicator-free-download-7-powerful-benefits-every-trader-must-know": {
+      "file": "src/content/posts/cap-channel-forex-indicator-free-download-7-powerful-benefits-every-trader-must-know.md",
+      "violations": {
+        "word-count": [
+          "1043 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "85 chars"
+        ],
+        "description-length": [
+          "178 chars"
+        ]
+      }
+    },
+    "post:choppa-ea-free-download-7-powerful-truths-you-must-know-before-installing": {
+      "file": "src/content/posts/choppa-ea-free-download-7-powerful-truths-you-must-know-before-installing.md",
+      "violations": {
+        "word-count": [
+          "1044 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "163 chars"
+        ]
+      }
+    },
+    "post:cobra-scalper-best-trading-indicator-free-download-7-powerful-reasons-traders-love-it": {
+      "file": "src/content/posts/cobra-scalper-best-trading-indicator-free-download-7-powerful-reasons-traders-love-it.md",
+      "violations": {
+        "word-count": [
+          "890 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "175 chars"
+        ]
+      }
+    },
+    "post:cpr-forex-indicator-for-mt4-free-download-7-powerful-benefits-proven-trading-secrets": {
+      "file": "src/content/posts/cpr-forex-indicator-for-mt4-free-download-7-powerful-benefits-proven-trading-secrets.md",
+      "violations": {
+        "word-count": [
+          "821 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "title-length": [
+          "87 chars"
+        ]
+      }
+    },
+    "post:cryo-scalper-indicator-free-download-powerful-guide-to-boost-your-trading-profits-fast": {
+      "file": "src/content/posts/cryo-scalper-indicator-free-download-powerful-guide-to-boost-your-trading-profits-fast.md",
+      "violations": {
+        "word-count": [
+          "952 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "171 chars"
+        ]
+      }
+    },
+    "post:dark-mimas-highly-customizable-ea-mt4-mt5-free-download-7-powerful-features-every-trader-must-know": {
+      "file": "src/content/posts/dark-mimas-highly-customizable-ea-mt4-mt5-free-download-7-powerful-features-every-trader-must-know.md",
+      "violations": {
+        "word-count": [
+          "868 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "title-length": [
+          "100 chars"
+        ],
+        "description-length": [
+          "210 chars"
+        ]
+      }
+    },
+    "post:drawdown-reduction-ea-free-download-7-powerful-benefits-every-trader-must-know": {
+      "file": "src/content/posts/drawdown-reduction-ea-free-download-7-powerful-benefits-every-trader-must-know.md",
+      "violations": {
+        "word-count": [
+          "966 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "79 chars"
+        ],
+        "description-length": [
+          "184 chars"
+        ]
+      }
+    },
+    "post:ea-red-dragon-ea-free-download-the-ultimate-safe-powerful-guide": {
+      "file": "src/content/posts/ea-red-dragon-ea-free-download-the-ultimate-safe-powerful-guide.md",
+      "violations": {
+        "word-count": [
+          "915 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "dup-faq-section": [
+          ""
+        ]
+      }
+    },
+    "post:eagle-scalper-best-forex-indicator-11-powerful-benefits-real-world-red-flags": {
+      "file": "src/content/posts/eagle-scalper-best-forex-indicator-11-powerful-benefits-real-world-red-flags.md",
+      "violations": {
+        "word-count": [
+          "1538 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "162 chars"
+        ]
+      }
+    },
+    "post:eagle-scalper-best-forex-indicator-free-download-powerful-proven-profitable-strategy-guide": {
+      "file": "src/content/posts/eagle-scalper-best-forex-indicator-free-download-powerful-proven-profitable-strategy-guide.md",
+      "violations": {
+        "word-count": [
+          "980 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ],
+        "title-length": [
+          "96 chars"
+        ],
+        "description-length": [
+          "178 chars"
+        ]
+      }
+    },
+    "post:elliot-fibonacci-forex-indicator-free-download-7-powerful-secrets-to-maximize-profits": {
+      "file": "src/content/posts/elliot-fibonacci-forex-indicator-free-download-7-powerful-secrets-to-maximize-profits.md",
+      "violations": {
+        "word-count": [
+          "832 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "86 chars"
+        ],
+        "description-length": [
+          "188 chars"
+        ]
+      }
+    },
+    "post:eur-usd-expert-advisor-ea-overview-free-download-guide": {
+      "file": "src/content/posts/eur-usd-expert-advisor-ea-overview-free-download-guide.md",
+      "violations": {
+        "word-count": [
+          "694 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "164 chars"
+        ]
+      }
+    },
+    "post:extreme-binary-sniper-mt5-trading-system-free-download-powerful-proven-strategy-guide": {
+      "file": "src/content/posts/extreme-binary-sniper-mt5-trading-system-free-download-powerful-proven-strategy-guide.md",
+      "violations": {
+        "word-count": [
+          "1061 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "body-h1": [
+          ""
+        ],
+        "description-length": [
+          "180 chars"
+        ]
+      }
+    },
+    "post:fair-value-gap-balanced-price-range-indicator-mt4-mt5-free-download": {
+      "file": "src/content/posts/fair-value-gap-balanced-price-range-indicator-mt4-mt5-free-download.md",
+      "violations": {
+        "word-count": [
+          "835 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "69 chars"
+        ],
+        "description-length": [
+          "200 chars"
+        ]
+      }
+    },
+    "post:fair-value-gaps-fvg-indicator-free-download-powerful-trading-edge-with-7-proven-benefits": {
+      "file": "src/content/posts/fair-value-gaps-fvg-indicator-free-download-powerful-trading-edge-with-7-proven-benefits.md",
+      "violations": {
+        "word-count": [
+          "1024 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "91 chars"
+        ],
+        "description-length": [
+          "174 chars"
+        ]
+      }
+    },
+    "post:forex-factory-best-custom-indicators-a-guide-to-enhancing-your-trading-strategy": {
+      "file": "src/content/posts/forex-factory-best-custom-indicators-a-guide-to-enhancing-your-trading-strategy.md",
+      "violations": {
+        "word-count": [
+          "1158 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "description-length": [
+          "185 chars"
+        ]
+      }
+    },
+    "post:forex-indicators-96-for-free-download-the-ultimate-powerful-guide-to-smart-trading-tools": {
+      "file": "src/content/posts/forex-indicators-96-for-free-download-the-ultimate-powerful-guide-to-smart-trading-tools.md",
+      "violations": {
+        "word-count": [
+          "1002 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "172 chars"
+        ]
+      }
+    },
+    "post:forex-millionaire-indicator-free-download-7-powerful-truths-you-must-know-before-installing": {
+      "file": "src/content/posts/forex-millionaire-indicator-free-download-7-powerful-truths-you-must-know-before-installing.md",
+      "violations": {
+        "word-count": [
+          "837 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "risk-free"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "92 chars"
+        ],
+        "description-length": [
+          "162 chars"
+        ]
+      }
+    },
+    "post:forex-order-manager-trade-panel-for-mt4-free-download-powerful-7-benefits-every-trader-must-know": {
+      "file": "src/content/posts/forex-order-manager-trade-panel-for-mt4-free-download-powerful-7-benefits-every-trader-must-know.md",
+      "violations": {
+        "word-count": [
+          "893 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "177 chars"
+        ]
+      }
+    },
+    "post:forex-order-manager-trade-panel-for-mt4-free-download-powerful-smart-tool-every-trader-needs": {
+      "file": "src/content/posts/forex-order-manager-trade-panel-for-mt4-free-download-powerful-smart-tool-every-trader-needs.md",
+      "violations": {
+        "word-count": [
+          "913 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "206 chars"
+        ]
+      }
+    },
+    "post:forex-plutus-best-premium-indicator-free-download-7-powerful-reasons-traders-love-it": {
+      "file": "src/content/posts/forex-plutus-best-premium-indicator-free-download-7-powerful-reasons-traders-love-it.md",
+      "violations": {
+        "word-count": [
+          "1060 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ],
+        "title-length": [
+          "87 chars"
+        ],
+        "description-length": [
+          "165 chars"
+        ]
+      }
+    },
+    "post:forex-scanner-pro-indicator-system-for-mt4-free-download-ultimate-powerful-guide-setup": {
+      "file": "src/content/posts/forex-scanner-pro-indicator-system-for-mt4-free-download-ultimate-powerful-guide-setup.md",
+      "violations": {
+        "word-count": [
+          "975 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "89 chars"
+        ],
+        "description-length": [
+          "163 chars"
+        ]
+      }
+    },
+    "post:forex-smc-indicator-for-mt4-free-download-powerful-7-step-guide-to-install-trade-smarter": {
+      "file": "src/content/posts/forex-smc-indicator-for-mt4-free-download-powerful-7-step-guide-to-install-trade-smarter.md",
+      "violations": {
+        "word-count": [
+          "1198 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "body-h1": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "91 chars"
+        ],
+        "description-length": [
+          "175 chars"
+        ]
+      }
+    },
+    "post:forex-tester-online-backtesting-with-eas-tutorial-the-ultimate-step-by-step-guide": {
+      "file": "src/content/posts/forex-tester-online-backtesting-with-eas-tutorial-the-ultimate-step-by-step-guide.md",
+      "violations": {
+        "word-count": [
+          "902 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ],
+        "description-length": [
+          "200 chars"
+        ]
+      }
+    },
+    "post:forex-velocity-ea-free-download-7-powerful-truths-you-must-know-before-installing": {
+      "file": "src/content/posts/forex-velocity-ea-free-download-7-powerful-truths-you-must-know-before-installing.md",
+      "violations": {
+        "word-count": [
+          "826 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "182 chars"
+        ]
+      }
+    },
+    "post:forex-viking-most-profitable-indicator-free-download-7-powerful-reasons-traders-love-it": {
+      "file": "src/content/posts/forex-viking-most-profitable-indicator-free-download-7-powerful-reasons-traders-love-it.md",
+      "violations": {
+        "word-count": [
+          "1049 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "body-h1": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "90 chars"
+        ],
+        "description-length": [
+          "170 chars"
+        ]
+      }
+    },
+    "post:forex-viking-most-profitable-indicator-free-download-7-powerful-secrets-to-consistent-profits": {
+      "file": "src/content/posts/forex-viking-most-profitable-indicator-free-download-7-powerful-secrets-to-consistent-profits.md",
+      "violations": {
+        "word-count": [
+          "907 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "96 chars"
+        ],
+        "description-length": [
+          "161 chars"
+        ]
+      }
+    },
+    "post:fxstabilizer-pro-ea-free-download-7-powerful-truths-every-trader-must-know-before-installing": {
+      "file": "src/content/posts/fxstabilizer-pro-ea-free-download-7-powerful-truths-every-trader-must-know-before-installing.md",
+      "violations": {
+        "word-count": [
+          "956 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "171 chars"
+        ]
+      }
+    },
+    "post:german-sniper-forex-trading-indicator-free-download-the-ultimate-guide-to-boosting-precision": {
+      "file": "src/content/posts/german-sniper-forex-trading-indicator-free-download-the-ultimate-guide-to-boosting-precision.md",
+      "violations": {
+        "word-count": [
+          "1040 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "93 chars"
+        ],
+        "description-length": [
+          "177 chars"
+        ]
+      }
+    },
+    "post:hft-arbitrage-ea-free-download-7-powerful-truths-every-trader-must-know-before-installing": {
+      "file": "src/content/posts/hft-arbitrage-ea-free-download-7-powerful-truths-every-trader-must-know-before-installing.md",
+      "violations": {
+        "word-count": [
+          "987 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ],
+        "dup-sources-section": [
+          ""
+        ],
+        "title-length": [
+          "90 chars"
+        ],
+        "description-length": [
+          "167 chars"
+        ]
+      }
+    },
+    "post:hft-ea-free-download-7-powerful-truths-before-you-install-any-trading-robot": {
+      "file": "src/content/posts/hft-ea-free-download-7-powerful-truths-before-you-install-any-trading-robot.md",
+      "violations": {
+        "word-count": [
+          "919 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ]
+      }
+    },
+    "post:how-to-make-money-with-sengkuni-ea-7-powerful-proven-strategies-for-consistent-profits": {
+      "file": "src/content/posts/how-to-make-money-with-sengkuni-ea-7-powerful-proven-strategies-for-consistent-profits.md",
+      "violations": {
+        "word-count": [
+          "931 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "risk-free"
+        ],
+        "body-h1": [
+          ""
+        ],
+        "description-length": [
+          "166 chars"
+        ]
+      }
+    },
+    "post:ict-kill-zones-indicator-mt4-mt5-free-download-powerful-proven-2025-trading-edge": {
+      "file": "src/content/posts/ict-kill-zones-indicator-mt4-mt5-free-download-powerful-proven-2025-trading-edge.md",
+      "violations": {
+        "word-count": [
+          "1071 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "63 chars"
+        ],
+        "description-length": [
+          "199 chars"
+        ]
+      }
+    },
+    "post:life-changer-arthur-fx-ai-ea-powerful-7-step-breakdown-that-could-transform-your-forex-strategy": {
+      "file": "src/content/posts/life-changer-arthur-fx-ai-ea-powerful-7-step-breakdown-that-could-transform-your-forex-strategy.md",
+      "violations": {
+        "word-count": [
+          "934 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "body-h1": [
+          ""
+        ],
+        "title-length": [
+          "99 chars"
+        ],
+        "description-length": [
+          "198 chars"
+        ]
+      }
+    },
+    "post:master-entry-indicator-free-download-7-powerful-benefits-every-trader-must-know": {
+      "file": "src/content/posts/master-entry-indicator-free-download-7-powerful-benefits-every-trader-must-know.md",
+      "violations": {
+        "word-count": [
+          "875 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "173 chars"
+        ]
+      }
+    },
+    "post:mft-trading-robot-mt4-free-download-7-powerful-facts-you-must-know-before-installing": {
+      "file": "src/content/posts/mft-trading-robot-mt4-free-download-7-powerful-facts-you-must-know-before-installing.md",
+      "violations": {
+        "word-count": [
+          "1108 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "body-h1": [
+          ""
+        ],
+        "title-length": [
+          "85 chars"
+        ],
+        "description-length": [
+          "175 chars"
+        ]
+      }
+    },
+    "post:monopolist-scalping-expert-advisor-free-download-powerful-7-step-guide-to-smart-forex-profits": {
+      "file": "src/content/posts/monopolist-scalping-expert-advisor-free-download-powerful-7-step-guide-to-smart-forex-profits.md",
+      "violations": {
+        "word-count": [
+          "1028 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "94 chars"
+        ],
+        "description-length": [
+          "177 chars"
+        ]
+      }
+    },
+    "post:murasaki-scalper-free-download-powerful-secrets-every-trader-must-know-before-installing": {
+      "file": "src/content/posts/murasaki-scalper-free-download-powerful-secrets-every-trader-must-know-before-installing.md",
+      "violations": {
+        "word-count": [
+          "785 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "178 chars"
+        ]
+      }
+    },
+    "post:news-straddle-expert-advisor-setup-tutorial-the-ultimate-step-by-step-guide": {
+      "file": "src/content/posts/news-straddle-expert-advisor-setup-tutorial-the-ultimate-step-by-step-guide.md",
+      "violations": {
+        "word-count": [
+          "870 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ],
+        "description-length": [
+          "195 chars"
+        ]
+      }
+    },
+    "post:nexus-6-0-binary-indicator-free-download-powerful-proven-trading-tool-guide": {
+      "file": "src/content/posts/nexus-6-0-binary-indicator-free-download-powerful-proven-trading-tool-guide.md",
+      "violations": {
+        "word-count": [
+          "815 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "body-h1": [
+          ""
+        ],
+        "title-length": [
+          "78 chars"
+        ],
+        "description-length": [
+          "189 chars"
+        ]
+      }
+    },
+    "post:night-hunter-pro-ea-an-honest-review": {
+      "file": "src/content/posts/night-hunter-pro-ea-an-honest-review.md",
+      "violations": {
+        "word-count": [
+          "970 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "description-length": [
+          "186 chars"
+        ]
+      }
+    },
+    "post:noble-impulse-v4-indicator-and-strategies-for-free-download-powerful-guide-9-proven-tactics": {
+      "file": "src/content/posts/noble-impulse-v4-indicator-and-strategies-for-free-download-powerful-guide-9-proven-tactics.md",
+      "violations": {
+        "word-count": [
+          "1286 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "62 chars"
+        ],
+        "description-length": [
+          "191 chars"
+        ]
+      }
+    },
+    "post:non-repainting-mt4-trading-system-free-download-powerful-proven-strategy-in-2026": {
+      "file": "src/content/posts/non-repainting-mt4-trading-system-free-download-powerful-proven-strategy-in-2026.md",
+      "violations": {
+        "word-count": [
+          "964 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "166 chars"
+        ]
+      }
+    },
+    "post:oracle-scalper-best-trading-indicator-free-download-powerful-secrets-7-proven-benefits-for-smart-traders": {
+      "file": "src/content/posts/oracle-scalper-best-trading-indicator-free-download-powerful-secrets-7-proven-benefits-for-smart-traders.md",
+      "violations": {
+        "word-count": [
+          "1092 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "176 chars"
+        ]
+      }
+    },
+    "post:order-blocks-indicator-for-mt4-mt5-free-download-7-powerful-benefits-smart-traders-cant-ignore": {
+      "file": "src/content/posts/order-blocks-indicator-for-mt4-mt5-free-download-7-powerful-benefits-smart-traders-cant-ignore.md",
+      "violations": {
+        "word-count": [
+          "845 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "172 chars"
+        ]
+      }
+    },
+    "post:orion-scalper-ea-free-download-7-powerful-truths-you-must-know-before-installing": {
+      "file": "src/content/posts/orion-scalper-ea-free-download-7-powerful-truths-you-must-know-before-installing.md",
+      "violations": {
+        "word-count": [
+          "921 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "81 chars"
+        ],
+        "description-length": [
+          "143 chars"
+        ]
+      }
+    },
+    "post:pending-order-ea-free-download-powerful-guide-to-avoid-risky-traps-in-9-steps": {
+      "file": "src/content/posts/pending-order-ea-free-download-powerful-guide-to-avoid-risky-traps-in-9-steps.md",
+      "violations": {
+        "word-count": [
+          "1378 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "78 chars"
+        ],
+        "description-length": [
+          "195 chars"
+        ]
+      }
+    },
+    "post:perfect-binary-signal-indicator-free-download-9-powerful-ways-to-use-it-safely-and-smarter-no-fluff-guide": {
+      "file": "src/content/posts/perfect-binary-signal-indicator-free-download-9-powerful-ways-to-use-it-safely-and-smarter-no-fluff-guide.md",
+      "violations": {
+        "word-count": [
+          "1678 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "title-length": [
+          "108 chars"
+        ],
+        "description-length": [
+          "185 chars"
+        ]
+      }
+    },
+    "post:pip-scalper-ea-mt4-free-download-7-powerful-benefits-and-smart-setup-guide": {
+      "file": "src/content/posts/pip-scalper-ea-mt4-free-download-7-powerful-benefits-and-smart-setup-guide.md",
+      "violations": {
+        "word-count": [
+          "893 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "risk-free"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "75 chars"
+        ],
+        "description-length": [
+          "149 chars"
+        ]
+      }
+    },
+    "post:powerful-profitable-fair-value-gap-fvg-ea-mt5-free-download-ultimate-guide-for-smart-traders": {
+      "file": "src/content/posts/powerful-profitable-fair-value-gap-fvg-ea-mt5-free-download-ultimate-guide-for-smart-traders.md",
+      "violations": {
+        "word-count": [
+          "979 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ]
+      }
+    },
+    "post:prop-firm-ea-free-download-7-powerful-truths-every-trader-must-know": {
+      "file": "src/content/posts/prop-firm-ea-free-download-7-powerful-truths-every-trader-must-know.md",
+      "violations": {
+        "word-count": [
+          "982 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "68 chars"
+        ],
+        "description-length": [
+          "149 chars"
+        ]
+      }
+    },
+    "post:quantum-algo-trading-ea-free-download-powerful-proven-automated-strategy": {
+      "file": "src/content/posts/quantum-algo-trading-ea-free-download-powerful-proven-automated-strategy.md",
+      "violations": {
+        "word-count": [
+          "855 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "168 chars"
+        ]
+      }
+    },
+    "post:quantum-queen-forex-ea-reviews-powerful-insights-honest-pros-7-shocking-truths": {
+      "file": "src/content/posts/quantum-queen-forex-ea-reviews-powerful-insights-honest-pros-7-shocking-truths.md",
+      "violations": {
+        "word-count": [
+          "1040 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "82 chars"
+        ],
+        "description-length": [
+          "183 chars"
+        ]
+      }
+    },
+    "post:quantum-valkyrie-forex-ea-reviews-powerful-insights-honest-analysis-performance-breakdown": {
+      "file": "src/content/posts/quantum-valkyrie-forex-ea-reviews-powerful-insights-honest-analysis-performance-breakdown.md",
+      "violations": {
+        "word-count": [
+          "922 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "93 chars"
+        ]
+      }
+    },
+    "post:range-detector-indicator-mt4-mt5-free-download-powerful-7-step-guide-to-smarter-range-trading": {
+      "file": "src/content/posts/range-detector-indicator-mt4-mt5-free-download-powerful-7-step-guide-to-smarter-range-trading.md",
+      "violations": {
+        "word-count": [
+          "970 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "94 chars"
+        ],
+        "description-length": [
+          "175 chars"
+        ]
+      }
+    },
+    "post:renko-street-indicator-free-download-powerful-accurate-trading-tool-guide": {
+      "file": "src/content/posts/renko-street-indicator-free-download-powerful-accurate-trading-tool-guide.md",
+      "violations": {
+        "word-count": [
+          "918 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "77 chars"
+        ],
+        "description-length": [
+          "165 chars"
+        ]
+      }
+    },
+    "post:sigma-bot-forex-ea-reviews-powerful-insights-honest-analysis-7-must-know-facts": {
+      "file": "src/content/posts/sigma-bot-forex-ea-reviews-powerful-insights-honest-analysis-7-must-know-facts.md",
+      "violations": {
+        "word-count": [
+          "1019 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "172 chars"
+        ]
+      }
+    },
+    "post:signalspro007-ea-free-download-7-powerful-facts-you-must-know-before-installing": {
+      "file": "src/content/posts/signalspro007-ea-free-download-7-powerful-facts-you-must-know-before-installing.md",
+      "violations": {
+        "word-count": [
+          "923 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "80 chars"
+        ]
+      }
+    },
+    "post:skynet-ea-free-download-7-shocking-truths-you-must-know-before-installing": {
+      "file": "src/content/posts/skynet-ea-free-download-7-shocking-truths-you-must-know-before-installing.md",
+      "violations": {
+        "word-count": [
+          "1144 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "dup-faq-section": [
+          ""
+        ]
+      }
+    },
+    "post:smart-correlation-hedge-ea-free-download-powerful-7-step-guide-to-smarter-forex-hedging": {
+      "file": "src/content/posts/smart-correlation-hedge-ea-free-download-powerful-7-step-guide-to-smarter-forex-hedging.md",
+      "violations": {
+        "word-count": [
+          "938 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "88 chars"
+        ],
+        "description-length": [
+          "183 chars"
+        ]
+      }
+    },
+    "post:smart-machine-ea-free-download-7-powerful-facts-you-must-know-before-installing": {
+      "file": "src/content/posts/smart-machine-ea-free-download-7-powerful-facts-you-must-know-before-installing.md",
+      "violations": {
+        "word-count": [
+          "940 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "80 chars"
+        ]
+      }
+    },
+    "post:super-arrow-mt4-forex-indicator-free-download-powerful-7-step-guide-to-smarter-trading": {
+      "file": "src/content/posts/super-arrow-mt4-forex-indicator-free-download-powerful-7-step-guide-to-smarter-trading.md",
+      "violations": {
+        "word-count": [
+          "954 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "87 chars"
+        ],
+        "description-length": [
+          "191 chars"
+        ]
+      }
+    },
+    "post:supply-and-demand-indicator-for-mt4-no-repaint": {
+      "file": "src/content/posts/supply-and-demand-indicator-for-mt4-no-repaint.md",
+      "violations": {
+        "word-count": [
+          "921 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "description-length": [
+          "197 chars"
+        ]
+      }
+    },
+    "post:syna-forex-ea-reviews-7-powerful-truths-you-must-know-before-investing": {
+      "file": "src/content/posts/syna-forex-ea-reviews-7-powerful-truths-you-must-know-before-investing.md",
+      "violations": {
+        "word-count": [
+          "1067 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ],
+        "title-length": [
+          "71 chars"
+        ],
+        "description-length": [
+          "167 chars"
+        ]
+      }
+    },
+    "post:the-10-best-sentiment-analysis-tools-for-forex-traders-a-comprehensive-guide": {
+      "file": "src/content/posts/the-10-best-sentiment-analysis-tools-for-forex-traders-a-comprehensive-guide.md",
+      "violations": {
+        "word-count": [
+          "890 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "body-h1": [
+          ""
+        ],
+        "title-length": [
+          "77 chars"
+        ],
+        "description-length": [
+          "190 chars"
+        ]
+      }
+    },
+    "post:the-best-forex-trading-journal-template-excel-download-complete-guide-free-resources": {
+      "file": "src/content/posts/the-best-forex-trading-journal-template-excel-download-complete-guide-free-resources.md",
+      "violations": {
+        "word-count": [
+          "805 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "87 chars"
+        ],
+        "description-length": [
+          "193 chars"
+        ]
+      }
+    },
+    "post:top-10-best-trend-reversal-indicator-mt4-non-repaint-solutions": {
+      "file": "src/content/posts/top-10-best-trend-reversal-indicator-mt4-non-repaint-solutions.md",
+      "violations": {
+        "word-count": [
+          "1011 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ],
+        "description-length": [
+          "190 chars"
+        ]
+      }
+    },
+    "post:top-10-free-tools-for-mt4-ea-performance-monitoring-powerful-ways-to-track-improve-results": {
+      "file": "src/content/posts/top-10-free-tools-for-mt4-ea-performance-monitoring-powerful-ways-to-track-improve-results.md",
+      "violations": {
+        "word-count": [
+          "914 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "197 chars"
+        ]
+      }
+    },
+    "post:top-10-insights-for-a-powerful-accurate-forex-pharaon-non-repaint-indicator-accuracy-test": {
+      "file": "src/content/posts/top-10-insights-for-a-powerful-accurate-forex-pharaon-non-repaint-indicator-accuracy-test.md",
+      "violations": {
+        "word-count": [
+          "1018 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "91 chars"
+        ],
+        "description-length": [
+          "200 chars"
+        ]
+      }
+    },
+    "post:top-7-best-free-forex-scalper-ea-for-mt4-download": {
+      "file": "src/content/posts/top-7-best-free-forex-scalper-ea-for-mt4-download.md",
+      "violations": {
+        "word-count": [
+          "985 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ],
+        "description-length": [
+          "197 chars"
+        ]
+      }
+    },
+    "post:ultimate-pro-scalper-forex-indicator-free-download-7-powerful-secrets-every-trader-must-know": {
+      "file": "src/content/posts/ultimate-pro-scalper-forex-indicator-free-download-7-powerful-secrets-every-trader-must-know.md",
+      "violations": {
+        "word-count": [
+          "930 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "93 chars"
+        ],
+        "description-length": [
+          "164 chars"
+        ]
+      }
+    },
+    "post:ultimate-trade-assistant-free-download-7-powerful-benefits-every-trader-will-love": {
+      "file": "src/content/posts/ultimate-trade-assistant-free-download-7-powerful-benefits-every-trader-will-love.md",
+      "violations": {
+        "word-count": [
+          "1038 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "dup-faq-section": [
+          ""
+        ]
+      }
+    },
+    "post:us30-scalping-ea-free-download-powerful-proven-7-step-guide-to-maximize-profits": {
+      "file": "src/content/posts/us30-scalping-ea-free-download-powerful-proven-7-step-guide-to-maximize-profits.md",
+      "violations": {
+        "word-count": [
+          "786 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "body-h1": [
+          ""
+        ]
+      }
+    },
+    "post:usdjpy-safe-expert-advisor-free-download-7-powerful-benefits-smart-setup-guide": {
+      "file": "src/content/posts/usdjpy-safe-expert-advisor-free-download-7-powerful-benefits-smart-setup-guide.md",
+      "violations": {
+        "word-count": [
+          "1171 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "81 chars"
+        ],
+        "description-length": [
+          "178 chars"
+        ]
+      }
+    },
+    "post:vertex-alerts-arrows-indicator-free-download-powerful-proven-trading-boost-step-by-step-guide": {
+      "file": "src/content/posts/vertex-alerts-arrows-indicator-free-download-powerful-proven-trading-boost-step-by-step-guide.md",
+      "violations": {
+        "word-count": [
+          "742 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "98 chars"
+        ],
+        "description-length": [
+          "183 chars"
+        ]
+      }
+    },
+    "post:vision-scalper-ea-free-download-7-powerful-truths-you-must-know-before-installing": {
+      "file": "src/content/posts/vision-scalper-ea-free-download-7-powerful-truths-you-must-know-before-installing.md",
+      "violations": {
+        "word-count": [
+          "967 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "82 chars"
+        ]
+      }
+    },
+    "post:volumehedger-forex-ea-reviews-7-powerful-truths-every-trader-must-know": {
+      "file": "src/content/posts/volumehedger-forex-ea-reviews-7-powerful-truths-every-trader-must-know.md",
+      "violations": {
+        "word-count": [
+          "961 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "71 chars"
+        ],
+        "description-length": [
+          "161 chars"
+        ]
+      }
+    },
+    "post:yarukami-mnukakashi-ea-free-download-7-powerful-truths-you-must-know-before-installing": {
+      "file": "src/content/posts/yarukami-mnukakashi-ea-free-download-7-powerful-truths-you-must-know-before-installing.md",
+      "violations": {
+        "word-count": [
+          "1076 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "87 chars"
+        ]
+      }
+    },
+    "post:zenith-protocol-forex-ea-reviews-7-powerful-truths-every-trader-must-know": {
+      "file": "src/content/posts/zenith-protocol-forex-ea-reviews-7-powerful-truths-every-trader-must-know.md",
+      "violations": {
+        "word-count": [
+          "1200 words"
+        ],
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "missing-download": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "body-h1": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "title-length": [
+          "74 chars"
+        ],
+        "description-length": [
+          "185 chars"
+        ]
+      }
+    },
+    "product:2000-trading-tools": {
+      "file": "src/content/products/2000-trading-tools.md",
+      "violations": {
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "title-length": [
+          "78 chars"
+        ],
+        "description-length": [
+          "132 chars"
+        ]
+      }
+    },
+    "product:apex-quant-ea-ai-bitcoin-scalper-for-mt5": {
+      "file": "src/content/products/apex-quant-ea-ai-bitcoin-scalper-for-mt5.md",
+      "violations": {
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "banned-claim": [
+          "risk-free"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "148 chars"
+        ]
+      }
+    },
+    "product:ava-aigpt5-ea": {
+      "file": "src/content/products/ava-aigpt5-ea.md",
+      "violations": {
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "banned-claim": [
+          "risk-free"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "149 chars"
+        ]
+      }
+    },
+    "product:elysium-vortex-eurcad-ea-ai-eurcad-scalper-for-mt5": {
+      "file": "src/content/products/elysium-vortex-eurcad-ea-ai-eurcad-scalper-for-mt5.md",
+      "violations": {
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "banned-claim": [
+          "risk-free"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "144 chars"
+        ]
+      }
+    },
+    "product:equinox-cosmos-ea-ai-gbpjpy-scalper-for-mt5": {
+      "file": "src/content/products/equinox-cosmos-ea-ai-gbpjpy-scalper-for-mt5.md",
+      "violations": {
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "banned-claim": [
+          "risk-free"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "144 chars"
+        ]
+      }
+    },
+    "product:fxcore100-ea": {
+      "file": "src/content/products/fxcore100-ea.md",
+      "violations": {
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "banned-claim": [
+          "risk-free"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "144 chars"
+        ]
+      }
+    },
+    "product:golden-deer-holy-grail-indicator": {
+      "file": "src/content/products/golden-deer-holy-grail-indicator.md",
+      "violations": {
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "135 chars"
+        ]
+      }
+    },
+    "product:mythos-epic-ea-ai-gold-scalper-for-mt5": {
+      "file": "src/content/products/mythos-epic-ea-ai-gold-scalper-for-mt5.md",
+      "violations": {
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "banned-claim": [
+          "risk-free"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "143 chars"
+        ]
+      }
+    },
+    "product:nexora-manus-ea-ai-gold-scalper-for-mt5": {
+      "file": "src/content/products/nexora-manus-ea-ai-gold-scalper-for-mt5.md",
+      "violations": {
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "banned-claim": [
+          "risk-free"
+        ],
+        "dup-faq-section": [
+          ""
+        ]
+      }
+    },
+    "product:obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5": {
+      "file": "src/content/products/obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5.md",
+      "violations": {
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "banned-claim": [
+          "risk-free"
+        ],
+        "dup-faq-section": [
+          ""
+        ]
+      }
+    },
+    "product:onix-stratos-xauusd-ea-ai-smart-scalper-for-mt5": {
+      "file": "src/content/products/onix-stratos-xauusd-ea-ai-smart-scalper-for-mt5.md",
+      "violations": {
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "banned-claim": [
+          "risk-free"
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "144 chars"
+        ]
+      }
+    },
+    "product:vps": {
+      "file": "src/content/products/vps.md",
+      "violations": {
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "banned-claim": [
+          "guaranteed"
+        ],
+        "body-h1": [
+          ""
+        ],
+        "dup-faq-section": [
+          ""
+        ],
+        "description-length": [
+          "136 chars"
+        ]
+      }
+    },
+    "product:zenith-matrix-ea-ai-gold-scalper-for-mt5": {
+      "file": "src/content/products/zenith-matrix-ea-ai-gold-scalper-for-mt5.md",
+      "violations": {
+        "missing-quickanswer": [
+          ""
+        ],
+        "takeaways-count": [
+          "0 bullet(s)"
+        ],
+        "faqs-count": [
+          "0 Q&A(s)"
+        ],
+        "sources-count": [
+          "0 source(s)"
+        ],
+        "missing-primary-keyword": [
+          ""
+        ],
+        "banned-claim": [
+          "risk-free"
+        ],
+        "dup-faq-section": [
+          ""
+        ]
+      }
+    }
+  }
+}
