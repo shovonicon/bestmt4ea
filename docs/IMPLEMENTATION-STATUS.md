@@ -17,10 +17,10 @@ Keep it short — about 12 lines. `/checkpoint` rewrites it.
 - Updated: 2026-10-03
 - Session: dc409e13-ec30-4e6c-bde8-23e584f22e52
 - Focus: PLATFORM (Astro SSR + Cloudflare D1/R2). Content rollout paused until Phase R.
-- Last done: **P6 DONE** — customer portal. Real `/dashboard` sections: overview counts, `/dashboard/licenses/` (activate + account-change request), `/dashboard/downloads/` (free + licensed, streamed via `/api/download`), `/dashboard/orders/`, `/dashboard/account/`, `/dashboard/support/` (Telegram = communication only). `src/server/portal.ts` (`listCustomerDownloads` applies the free/entitlement/licence rules; `listOrdersForCustomer`); `requestAccountChange` records a `license_events` row for admin approval. `release:check` PASSED (75.1s); live PORTAL SMOKE PASS (10/10).
+- Last done: **P7 DONE (core)** — admin platform. `src/lib/totp.ts` + `src/server/admin-auth.ts` (password, then TOTP/recovery; `requireAdminMfa`/`isPendingAdmin` type guards) and `scripts/create-admin.mjs`. `/admin` behind password + TOTP: dashboard KPIs, licences (suspend/resume/revoke/extend/rebuild/approve-account-change), orders, USDT payments, builds, customers — every action writes `audit_log`. `release:check` PASSED (66.4s); live ADMIN SMOKE PASS (11/11).
 - Next action:
-  1. Phase P7 — admin platform (`/admin`): customers, orders, licences (approve account changes, suspend/revoke), builds, payments (USDT monitor), settings; admin TOTP auth.
-  2. P5/P6 follow-ups: the private build machine + R2 upload; **remove the public R2 custom domain** before premium EX5; companion cron Worker; checkout/payment pages; settlement emails; real pricing pass.
+  1. Phase P8 — Telegram (communication only; confirm no-op beyond copy), then P9 — MyFxBook collector + product-page performance.
+  2. Prereqs before premium EX5: **remove the public R2 custom domain**; the build machine + R2 upload; the companion cron Worker; checkout/payment pages; settlement emails; a real pricing pass.
   3. Confirm plan §4 decisions as they arise.
 - Blockers: none
 - Resume: reopen this project and run `cmd -c`, or `cmd -r "<session name>"`. Run `/checkpoint` before stopping.
@@ -497,18 +497,18 @@ wrapper was not keyboard-reachable (axe `scrollable-region-focusable`, WCAG
 
 ## Next task
 
-**Phase P7 — admin platform** (P0–P6 are DONE; the content rollout is paused until
-Phase R).
+**Phase P8 — Telegram (communication only)** then **P9 — MyFxBook performance**
+(P0–P7 are DONE; the content rollout is paused until Phase R).
 
 Done: **P0** D1 schema + USDT engine. **P1** Astro SSR on Cloudflare. **P2** passwordless
 accounts. **P3** catalogue + gated downloads. **P4** payments. **P5** premium licensing.
-**P6** customer portal. Git: `b268d03` → `e587665` → `ba6a333` → `d2c5c1a` → `9e2c3ce` →
-`d9cf5f4`.
+**P6** customer portal. **P7** admin platform. Git: `b268d03` → `e587665` → `ba6a333` →
+`d2c5c1a` → `9e2c3ce` → `d9cf5f4` → `bd0de34`.
 
-Next: **P7** — the admin platform at `/admin`: dashboard KPIs; customers; orders;
-**licences** (approve account-change requests, extend, suspend/revoke, manual create);
-**builds**; a **USDT payment monitor**; settings; `audit_log`. Admin auth = password +
-TOTP + recovery codes (`src/lib/totp.ts` still to port; `password.ts` exists).
+Next: **P8** is a **no-op beyond copy** (Telegram stays a support/contact link — no bot);
+then **P9** — the scheduled browser collector posts MyFxBook snapshots to
+`/api/performance/ingest`, and product pages render the figures server-side (no new
+`/performance` category).
 
 Hard prerequisites before premium EX5 ships: **remove the public R2 custom domain** (the
 bucket is world-readable today); stand up the private **build machine** for the
@@ -687,3 +687,29 @@ signed-out visitor is redirected to `/login/`, and an account-change request is 
 
 > P6 follow-ups: customer **renew** is currently a re-purchase (a dedicated renew flow is
 > later); payment/checkout **pages** (UI) and settlement **emails** are still open.
+
+## Phase P7 — admin platform (DONE 2026-10-03)
+
+- **`src/lib/totp.ts`** — RFC 6238 TOTP (SHA-1 / 6 digits / 30s), WebCrypto only.
+- **`src/server/admin-auth.ts`** — password verification then a **TOTP / recovery code**
+  second factor; `requireAdminMfa` / `isPendingAdmin` (type predicates, so a guarded page
+  narrows the session); `audit()` writes `audit_log`. Enrolment secret is minted on first
+  login and shown on the verify page (authenticator QR text included).
+- **`scripts/create-admin.mjs`** — `node scripts/create-admin.mjs --email … --password …`
+  (hashes with the same PBKDF2 as the app).
+- **`/admin` behind password + TOTP:** `login` → `verify` (enrol) → panel. Dashboard KPIs
+  (customers, active licences, paid orders, revenue, pending builds, USDT waiting);
+  `/admin/licenses` (suspend / resume / revoke / extend / rebuild / **approve account
+  change**); `/admin/orders`, `/admin/payments` (USDT monitor), `/admin/builds`,
+  `/admin/customers`.
+- **Endpoints** — `POST /api/admin/login`, `POST /api/admin/verify`,
+  `POST /api/admin/license` (every licence action is audited).
+
+Verification: `npm run release:check` — **PASSED (66.4s)**; `vitest` 21/21. Live
+`wrangler dev` **ADMIN SMOKE PASS (11/11)**: password accepted → unverified session blocked
+from the panel → verify page shows the enrolment secret → a computed TOTP code is verified →
+the panel renders → the admin suspends a licence and it flips to `SUSPENDED`.
+
+> The gate caught **8 real type errors** here (`requireAdminMfa` returned `boolean`, so TS
+> could not narrow `session`) — fixed by making both guards type predicates. P7 follow-ups:
+> recovery-code display/download, admin refunds, and richer per-customer drill-downs.

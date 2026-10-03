@@ -1,0 +1,79 @@
+---
+export const prerender = false;
+
+import { desc, eq } from 'drizzle-orm';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getDb } from '../../../db/client';
+import { customers, licenses, products } from '../../../db/schema';
+import { getPendingAccountChangeRequest } from '../../../server/licenses';
+import { requireAdminMfa } from '../../../server/admin-auth';
+import { url } from '../../../lib/urls';
+
+const session = Astro.locals.session;
+if (!requireAdminMfa(session)) return Astro.redirect('/admin/login/');
+
+const db = getDb();
+const rows = await db
+  .select({
+    id: licenses.id,
+    key: licenses.licenseKey,
+    status: licenses.status,
+    expiresAt: licenses.expiresAt,
+    email: customers.email,
+    product: products.title,
+  })
+  .from(licenses)
+  .leftJoin(customers, eq(customers.id, licenses.customerId))
+  .leftJoin(products, eq(products.id, licenses.productId))
+  .orderBy(desc(licenses.createdAt))
+  .limit(50)
+  .all();
+
+const withPending = [];
+for (const row of rows) {
+  withPending.push({ ...row, pending: await getPendingAccountChangeRequest(db, row.id) });
+}
+---
+
+<BaseLayout title="Admin — licenses" description="Admin licenses." noindex>
+  <section class="container-x py-16">
+    <p class="section-kicker">Admin</p>
+    <h1 class="mt-3 text-3xl font-bold">Licenses</h1>
+    <p class="mt-3 text-sm text-[--color-ink-soft]">
+      <a class="underline" href={url('/admin')}>Dashboard</a>
+    </p>
+
+    <div class="mt-8 flex flex-col gap-4">
+      {withPending.map((license) => (
+        <div class="brand-card rounded-2xl p-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 text-sm">
+            <span class="font-mono">{license.key}</span>
+            <span>{license.status}{license.pending ? ' · change requested' : ''}</span>
+          </div>
+          <p class="mt-1 text-sm text-[--color-ink-soft]">
+            {license.product} — {license.email ?? '—'} · expires
+            {license.expiresAt ? license.expiresAt.toISOString().slice(0, 10) : ' never'}
+          </p>
+          <div class="mt-3 flex flex-wrap gap-2">
+            {['suspend', 'resume', 'revoke', 'extend', 'rebuild'].map((action) => (
+              <form method="post" action="/api/admin/license/">
+                <input type="hidden" name="licenseId" value={license.id} />
+                <input type="hidden" name="action" value={action} />
+                <button class="rounded-lg border border-white/10 px-3 py-1.5 text-xs">{action}</button>
+              </form>
+            ))}
+            {license.pending && (
+              <form method="post" action="/api/admin/license/">
+                <input type="hidden" name="licenseId" value={license.id} />
+                <input type="hidden" name="action" value="approve-account-change" />
+                <button class="rounded-lg bg-[--color-brand] px-3 py-1.5 text-xs font-semibold text-black">
+                  approve account change
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

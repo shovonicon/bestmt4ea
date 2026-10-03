@@ -1,4 +1,4 @@
-import { and, eq, isNull, or, sql } from 'drizzle-orm';
+import { and, desc, eq, isNull, or, sql } from 'drizzle-orm';
 import type { Db } from '../db/client';
 import {
   licenseAccounts,
@@ -333,4 +333,48 @@ export async function markBuildFailed(db: Db, buildId: string, error: string): P
     .update(licenseBuilds)
     .set({ buildStatus: 'FAILED', error, builtAt: new Date() })
     .where(eq(licenseBuilds.id, buildId));
+}
+
+/** Re-queue a build for the licence's active account (e.g. after a version bump). */
+export async function rebuildLicense(
+  db: Db,
+  licenseId: string,
+  actorId?: string | null
+): Promise<LicenseActionResult> {
+  const license = await getLicense(db, licenseId);
+  if (!license) return { ok: false, reason: 'not_found' };
+  const account = (await listActiveAccounts(db, license.id))[0];
+  if (!account) return { ok: false, reason: 'no_account' };
+  await enqueueBuild(db, license.id, account.accountNumber, license.expiresAt);
+  await logEvent(db, license.id, 'rebuild_requested', 'admin', actorId ?? null, {});
+  const updated = await getLicense(db, license.id);
+  return updated ? { ok: true, license: updated } : { ok: false, reason: 'not_found' };
+}
+
+export interface PendingAccountChange {
+  accountNumber: string;
+  broker: string | null;
+  accountType: 'real' | 'demo';
+}
+
+/** The most recent un-actioned account-change request an admin can approve. */
+export async function getPendingAccountChangeRequest(
+  db: Db,
+  licenseId: string
+): Promise<PendingAccountChange | null> {
+  const row = await db
+    .select()
+    .from(licenseEvents)
+    .where(
+      and(eq(licenseEvents.licenseId, licenseId), eq(licenseEvents.action, 'account_change_requested'))
+    )
+    .orderBy(desc(licenseEvents.createdAt))
+    .get();
+  const meta = row?.meta as Record<string, unknown> | undefined;
+  if (!meta || typeof meta.accountNumber !== 'string') return null;
+  return {
+    accountNumber: meta.accountNumber,
+    broker: typeof meta.broker === 'string' ? meta.broker : null,
+    accountType: meta.accountType === 'real' ? 'real' : 'demo',
+  };
 }
