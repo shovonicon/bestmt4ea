@@ -112,7 +112,7 @@ You’ll receive the Indicator files, installation guide, recommended settings, 
 
 **How long does delivery take?**
 
-Instant download after successful payment**[.](https://t.me/pizion)**
+Instant download from your BestMT4EA dashboard after successful payment.
 
 **How can I contact support?**
 

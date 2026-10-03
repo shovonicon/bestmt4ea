@@ -280,7 +280,7 @@ You’ll receive the Expert Advisor files, installation guide, recommended setti
 
 **How long does delivery take?**
 
-Licensed products are delivered in 6 Hours after successful payment via **[Telegram.](https://t.me/pizion)**
+Licensed products are delivered to your BestMT4EA dashboard after successful payment — usually within a few hours. **[Message us on Telegram](https://t.me/pizion)** if you need help getting set up.
 
 **Can I change the risk settings?**
 

@@ -35,7 +35,7 @@ Click our exclusive affiliate link below to register a new, live trading account
 **Complete the broker’s quick verification process by uploading the required identification and proof of address documents. Your account must be fully verified and approved to qualify for the promotion.
 
 **Step 3: **Receive Your Complete Package**  
-**Get the full EA / indicator system with setup guide delivered directly to your Telegram.
+**Get the full EA / indicator system with its setup guide delivered to your BestMT4EA account.
 
 ### **Why Trade With Our Partner Broker?**
 

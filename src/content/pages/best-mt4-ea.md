@@ -365,7 +365,7 @@ Yes. We provide step-by-step installation assistance, activation guidance, and t
 
 **How long does delivery take?**
 
-Licensed products are delivered in 6 Hours after successful payment via **[Telegram.](https://t.me/pizion)**
+Licensed products are delivered to your BestMT4EA dashboard after successful payment — usually within a few hours. **[Message us on Telegram](https://t.me/pizion)** if you need help getting set up.
 
 **Which payment methods do you accept?**
 

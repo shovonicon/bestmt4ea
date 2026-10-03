@@ -17,11 +17,11 @@ Keep it short — about 12 lines. `/checkpoint` rewrites it.
 - Updated: 2026-10-03
 - Session: dc409e13-ec30-4e6c-bde8-23e584f22e52
 - Focus: PLATFORM (Astro SSR + Cloudflare D1/R2). Content rollout paused until Phase R.
-- Last done: **P7 DONE (core)** — admin platform. `src/lib/totp.ts` + `src/server/admin-auth.ts` (password, then TOTP/recovery; `requireAdminMfa`/`isPendingAdmin` type guards) and `scripts/create-admin.mjs`. `/admin` behind password + TOTP: dashboard KPIs, licences (suspend/resume/revoke/extend/rebuild/approve-account-change), orders, USDT payments, builds, customers — every action writes `audit_log`. `release:check` PASSED (66.4s); live ADMIN SMOKE PASS (11/11).
+- Last done: **P8 DONE** — Telegram is communication only. Rewrote the delivery copy in 14 files (10 products + 2 pages) that promised delivery "via Telegram", plus the free-download page and `ProductLayout` — delivery is now stated as from the **dashboard**, with Telegram as a support/contact channel. No bot, no notifications, no linking, no files. Content hashes re-baselined (189 files). `release:check` PASSED (67.5s); vitest 21/21.
 - Next action:
-  1. Phase P8 — Telegram (communication only; confirm no-op beyond copy), then P9 — MyFxBook collector + product-page performance.
-  2. Prereqs before premium EX5: **remove the public R2 custom domain**; the build machine + R2 upload; the companion cron Worker; checkout/payment pages; settlement emails; a real pricing pass.
-  3. Confirm plan §4 decisions as they arise.
+  1. Phase P9 — MyFxBook collector + product-page performance: scheduled browser collector → `/api/performance/ingest` → D1; product pages render the figures server-side (no new `/performance` category).
+  2. Then P10 (companion cron Worker) and P11 (release gates/tests/cutover) and Phase R (the 119 rewrites).
+  3. Prereqs before premium EX5: remove the public R2 custom domain; build machine + R2 upload; checkout/payment pages; settlement emails; a real pricing pass.
 - Blockers: none
 - Resume: reopen this project and run `cmd -c`, or `cmd -r "<session name>"`. Run `/checkpoint` before stopping.
 
@@ -497,25 +497,30 @@ wrapper was not keyboard-reachable (axe `scrollable-region-focusable`, WCAG
 
 ## Next task
 
-**Phase P8 — Telegram (communication only)** then **P9 — MyFxBook performance**
-(P0–P7 are DONE; the content rollout is paused until Phase R).
+**Phase P9 — MyFxBook performance** (P0–P8 are DONE; the content rollout is paused until
+Phase R).
 
 Done: **P0** D1 schema + USDT engine. **P1** Astro SSR on Cloudflare. **P2** passwordless
 accounts. **P3** catalogue + gated downloads. **P4** payments. **P5** premium licensing.
-**P6** customer portal. **P7** admin platform. Git: `b268d03` → `e587665` → `ba6a333` →
-`d2c5c1a` → `9e2c3ce` → `d9cf5f4` → `bd0de34`.
+**P6** customer portal. **P7** admin platform. **P8** Telegram is communication only.
+Git: `b268d03` → `e587665` → `ba6a333` → `d2c5c1a` → `9e2c3ce` → `d9cf5f4` → `bd0de34` →
+`cca5ee5`.
 
-Next: **P8** is a **no-op beyond copy** (Telegram stays a support/contact link — no bot);
-then **P9** — the scheduled browser collector posts MyFxBook snapshots to
-`/api/performance/ingest`, and product pages render the figures server-side (no new
-`/performance` category).
+Next: **P9** — a scheduled **browser collector** (outside the Worker, since MyFXBook 403s
+plain fetches) POSTs snapshots to `/api/performance/ingest` → `performance_snapshots` +
+`trades`; **product pages render the figures server-side** (no new `/performance` category),
+with a true "last synchronized" line. Replace the hand-transcribed `src/lib/performance.ts`
+figures.
 
-Hard prerequisites before premium EX5 ships: **remove the public R2 custom domain** (the
-bucket is world-readable today); stand up the private **build machine** for the
-`license_builds` queue; add the companion cron Worker for the 60s USDT poll.
+Then **P10** (the companion cron Worker for the 60s USDT poll + expiry/cleanup) and **P11**
+(release gates for SSR routes, browser tests, cutover) and **Phase R** (the 119 rewrites).
+
+Hard prerequisites before premium EX5 ships: **remove the public R2 custom domain**; the
+private **build machine** for `license_builds`; the companion cron Worker.
 
 Also open: checkout/payment pages (UI), settlement emails, customer **renew** (currently a
-re-purchase), and a real pricing pass so `product_plans` exist in production.
+re-purchase), a real pricing pass so `product_plans` exist, and product pages reading the
+catalogue from D1.
 
 ## Phase P1 — Astro SSR on Cloudflare (DONE 2026-10-03)
 
@@ -713,3 +718,22 @@ the panel renders → the admin suspends a licence and it flips to `SUSPENDED`.
 > The gate caught **8 real type errors** here (`requireAdminMfa` returned `boolean`, so TS
 > could not narrow `session`) — fixed by making both guards type predicates. P7 follow-ups:
 > recovery-code display/download, admin refunds, and richer per-customer drill-downs.
+
+## Phase P8 — Telegram is communication only (DONE 2026-10-03)
+
+No bot, no notifications, no account linking, no file delivery over Telegram — it is a
+support/contact channel (the floating button + support links, unchanged).
+
+- **Copy fix.** Product and page content promised delivery "**via Telegram**"
+  (`delivered … via **[Telegram]**`, and one "delivered directly to your Telegram"). That
+  contradicted both the platform (delivery is from the dashboard) and the policy. Rewrote
+  **14 files** — 10 product pages, `best-forex-ea`, `best-mt4-ea`, the free-download page,
+  and the `ProductLayout` feature list — to state delivery from the **BestMT4EA dashboard**
+  with Telegram as *help/support*.
+- Verified none remain (`delivered in 6 Hours` / `delivered directly to your Telegram` /
+  `Instant download after successful payment … Telegram` → no matches).
+- Content hashes re-baselined (`changed-files --write`, 189 files) since the change is
+  intentional.
+
+Verification: `npm run release:check` — **PASSED (67.5s)**; `vitest` 21/21; `astro check` 0
+errors.
