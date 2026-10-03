@@ -17,10 +17,10 @@ Keep it short — about 12 lines. `/checkpoint` rewrites it.
 - Updated: 2026-10-03
 - Session: dc409e13-ec30-4e6c-bde8-23e584f22e52
 - Focus: PLATFORM (Astro SSR + Cloudflare D1/R2). Content rollout paused until Phase R.
-- Last done: **P4 DONE (core)** — payments. `src/server/{orders,payments,stripe,usdt-payments}.ts`: one settlement path (`settleOrder`) marks the order paid, records a payment and **grants entitlements**; Stripe hosted Checkout + signed webhook + return reconcile; the USDT TRC20 rail (P0 engine + TronGrid) via `/api/checkout`, `/api/payments/usdt/[id]`, and a secret-guarded `/api/internal/usdt-poll` (the cron seam). `release:check` PASSED (72.6s); live PAYMENT SMOKE PASS (9/9); vitest 21/21.
+- Last done: **P5 DONE (core)** — premium licensing. `src/server/licenses.ts`: non-sequential keys (`BMT4-XXXX-XXXX-XXXX`, no ambiguous chars), statuses/transitions (activate/extend/change-account/suspend/resume/revoke), `license_events` audit, and the `license_builds` queue. `settleOrder` now creates a PENDING licence for EA products; `/api/download` requires an **ACTIVE licence** for EAs. Endpoints `/api/licenses/` (list) + `/api/licenses/activate/`, plus `/dashboard/licenses/`. `release:check` PASSED (65.2s); live LICENSE SMOKE PASS (9/9).
 - Next action:
-  1. Phase P5 — premium licensing + EX5: licence keys/statuses, MT5 binding, build queue, private R2 streaming. **Remove the public R2 custom domain** before premium files ship.
-  2. P4 follow-ups: the companion cron Worker for the 60s poll; checkout/payment pages (UI); settlement emails; a real pricing pass so `product_plans` exist in production.
+  1. Phase P6 — customer portal: dashboard sections (licenses/downloads/orders/account) and the customer renew + account-change request flows.
+  2. P5 follow-ups: the private **build machine** + admin licence/build management (P7); **remove the public R2 custom domain** before premium EX5 ships; the companion cron Worker; settlement emails.
   3. Confirm plan §4 decisions as they arise.
 - Blockers: none
 - Resume: reopen this project and run `cmd -c`, or `cmd -r "<session name>"`. Run `/checkpoint` before stopping.
@@ -497,21 +497,25 @@ wrapper was not keyboard-reachable (axe `scrollable-region-focusable`, WCAG
 
 ## Next task
 
-**Phase P5 — premium licensing & EX5 delivery** (P0–P4 are DONE; the content rollout is
-paused until Phase R).
+**Phase P6 — customer portal** (P0–P5 are DONE; the content rollout is paused until
+Phase R).
 
 Done: **P0** D1 schema + USDT engine. **P1** Astro SSR on Cloudflare. **P2** passwordless
-accounts. **P3** catalogue + gated downloads. **P4** payments — one `settleOrder` trust
-path (grants entitlements), Stripe hosted Checkout + webhook, USDT TRC20 rail + poll cron
-seam. Git: `b268d03` → `e587665` → `ba6a333` → `d2c5c1a`.
+accounts. **P3** catalogue + gated downloads. **P4** payments (one `settleOrder` trust
+path; Stripe + USDT). **P5** premium licensing (keys, statuses, MT5 binding, build queue;
+EA downloads require an ACTIVE licence). Git: `b268d03` → `e587665` → `ba6a333` →
+`d2c5c1a` → `9e2c3ce`.
 
-Next: **P5** (plan §6c) — the entitlement → licence → MT5-account → compiled-EX5 model:
-licence keys + statuses + transitions, `license_accounts`/`license_builds`/`license_events`,
-the activation page, the out-of-band build queue, and private streaming. **Before that:
-remove the public R2 custom domain** so `files/` (premium EX5) is not world-readable.
+Next: **P6** — the customer portal: real `/dashboard` sections (licenses, downloads,
+orders, account) and the customer **renew** + **account-change request** flows. Then
+**P7** — the admin platform (`/admin`: customers, orders, licences, builds, payments).
 
-Also open: the companion cron Worker for the 60s USDT poll; checkout/payment pages (UI);
-a real pricing pass so `product_plans` exist; product pages reading the catalogue from D1.
+Hard prerequisites before premium EX5 ships: **remove the public R2 custom domain** (the
+bucket is world-readable today); stand up the private **build machine** for the
+`license_builds` queue; add the companion cron Worker for the 60s USDT poll.
+
+Also open: checkout/payment pages (UI), settlement emails, and a real pricing pass so
+`product_plans` exist in production.
 
 ## Phase P1 — Astro SSR on Cloudflare (DONE 2026-10-03)
 
@@ -625,3 +629,37 @@ a **replay re-settles nothing** (`matched: 0`).
 > USDT payment **pages** (UI), settlement **emails**, and a **real pricing pass** so
 > `product_plans` exist in production. Stripe is implemented but **not live-tested** — no
 > keys here — so it is exercised only by type-check until real keys are set.
+
+## Phase P5 — premium licensing & EX5 delivery (DONE 2026-10-03)
+
+Implements plan §6c: entitlement → **licence** → bound MT5 account → compiled EX5.
+
+- **`src/server/licenses.ts`** — the licence domain:
+  - `generateLicenseKey()` — non-sequential `BMT4-XXXX-XXXX-XXXX` from an alphabet with no
+    `0/O/1/L` (the key is a lookup/identifier, not the security boundary).
+  - `createLicense` (PENDING), `getLicense` / `getLicenseByKey` / `listLicensesForCustomer` /
+    `listActiveAccounts`, `getActiveLicense` / `hasAnyLicense`.
+  - Transitions, each writing a `license_events` row: `activateLicense` (bind account,
+    PENDING → ACTIVE, queue a build), `extendLicense` (new window + rebuild),
+    `changeLicenseAccount` (deactivate old, add new, rebuild), `suspendLicense` /
+    `resumeLicense` / `revokeLicense` (REVOKED is terminal).
+  - Build queue: `enqueueBuild`, `listPendingBuilds`, `markBuildReady`, `markBuildFailed`.
+- **Settlement integration** — `settleOrder` now creates a **PENDING licence** for every EA
+  product bought (`grantEntitlement` returns the entitlement id), so activation is the next
+  customer step.
+- **Download gate** — `authorizeDownload` now requires an **ACTIVE licence** (in window) for
+  an `ea` product, on top of the active entitlement; free products and non-EA premium
+  products are unaffected.
+- **Routes** — `GET /api/licenses/` (the customer's licences + bound accounts),
+  `POST /api/licenses/activate/` (bind the MT5 account), and a customer page at
+  `/dashboard/licenses/`.
+
+Verification: `npm run release:check` — **PASSED (65.2s)**; `vitest` 21/21. Live
+`wrangler dev` + mock TronGrid **LICENSE SMOKE PASS (9/9)**: purchase → PENDING licence
+(key `BMT4-UEUK-JCVM-KN99`) → EA download refused (403) → activation (bind account) →
+download allowed (200) → a second account refused (409, `max_accounts`).
+
+> P5 follow-ups (deliberate): the private **build machine** that consumes `license_builds`
+> and uploads the compiled EX5 to R2, and admin licence/build management (P7). The **R2
+> bucket is still world-readable** via its public custom domain — that must be removed before
+> any premium EX5 is stored. Customer renew / account-change *requests* land in P6.

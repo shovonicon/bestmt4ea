@@ -11,6 +11,7 @@ import {
 } from '../db/schema';
 import { uuid } from '../lib/crypto';
 import { getActiveEntitlement } from './entitlements';
+import { getActiveLicense } from './licenses';
 
 export const DEFAULT_HOURLY_DOWNLOAD_LIMIT = 30;
 
@@ -48,7 +49,7 @@ export async function authorizeDownload(
   if (!file) return { ok: false, status: 404, reason: 'not_found' };
 
   const product = await db
-    .select({ id: products.id, isFree: products.isFree, active: products.active })
+    .select({ id: products.id, isFree: products.isFree, active: products.active, type: products.type })
     .from(products)
     .where(eq(products.id, file.productId))
     .get();
@@ -63,6 +64,13 @@ export async function authorizeDownload(
       entitlement.downloadsUsed >= entitlement.downloadLimit
     ) {
       return { ok: false, status: 429, reason: 'download_limit_reached' };
+    }
+
+    // An EA is account-bound: the compiled EX5 only runs for a licensed account,
+    // so the file is only released when the licence itself is ACTIVE.
+    if (product.type === 'ea') {
+      const license = await getActiveLicense(db, input.customerId, file.productId);
+      if (!license) return { ok: false, status: 403, reason: 'license_not_active' };
     }
   }
 

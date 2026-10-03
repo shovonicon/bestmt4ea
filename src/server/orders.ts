@@ -11,6 +11,7 @@ import {
 } from '../db/schema';
 import { randomToken, uuid } from '../lib/crypto';
 import { grantEntitlement } from './entitlements';
+import { createLicense } from './licenses';
 
 /**
  * Orders and the single settlement path.
@@ -193,13 +194,31 @@ export async function settleOrder(db: Db, input: SettleOrderInput): Promise<Sett
   ]);
 
   for (const item of items) {
-    await grantEntitlement(db, {
+    const entitlementId = await grantEntitlement(db, {
       customerId: order.customerId,
       productId: item.productId,
       orderId: order.id,
       source: 'purchase',
       expiresAt: item.durationDays ? new Date(now.getTime() + item.durationDays * 86_400_000) : null,
     });
+
+    // An EA needs a licence (the MT5-account-bound activation), created PENDING so
+    // the customer can activate it. Non-EA products (VPS, tools) need only the
+    // entitlement.
+    const product = await db
+      .select({ platform: products.platform })
+      .from(products)
+      .where(eq(products.id, item.productId))
+      .get();
+    if (product && product.platform !== 'none') {
+      await createLicense(db, {
+        entitlementId,
+        customerId: order.customerId,
+        productId: item.productId,
+        maxAccounts: item.maxAccounts ?? 1,
+        expiresAt: item.durationDays ? new Date(now.getTime() + item.durationDays * 86_400_000) : null,
+      });
+    }
   }
 
   return { applied: true, productIds: items.map((item) => item.productId) };

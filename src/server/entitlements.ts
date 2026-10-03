@@ -19,7 +19,7 @@ export interface GrantEntitlementInput {
   expiresAt?: Date | null;
 }
 
-export async function grantEntitlement(db: Db, input: GrantEntitlementInput): Promise<void> {
+export async function grantEntitlement(db: Db, input: GrantEntitlementInput): Promise<string> {
   await db
     .insert(entitlements)
     .values({
@@ -41,6 +41,15 @@ export async function grantEntitlement(db: Db, input: GrantEntitlementInput): Pr
         expiresAt: input.expiresAt ?? null,
       },
     });
+  const row = await db
+    .select({ id: entitlements.id })
+    .from(entitlements)
+    .where(
+      and(eq(entitlements.customerId, input.customerId), eq(entitlements.productId, input.productId))
+    )
+    .get();
+  if (!row) throw new Error('entitlement_grant_failed');
+  return row.id;
 }
 
 export async function getActiveEntitlement(

@@ -1,0 +1,96 @@
+---
+export const prerender = false;
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getDb } from '../../../db/client';
+import { listActiveAccounts, listLicensesForCustomer } from '../../../server/licenses';
+import { products } from '../../../db/schema';
+import { eq } from 'drizzle-orm';
+
+const session = Astro.locals.session;
+if (!session || session.subjectType !== 'customer') {
+  return Astro.redirect('/login/');
+}
+
+const db = getDb();
+const rows = await listLicensesForCustomer(db, session.subjectId);
+const licenses = [];
+for (const license of rows) {
+  const [product, accounts] = await Promise.all([
+    db.select({ title: products.title }).from(products).where(eq(products.id, license.productId)).get(),
+    listActiveAccounts(db, license.id),
+  ]);
+  licenses.push({
+    id: license.id,
+    key: license.licenseKey,
+    status: license.status,
+    product: product?.title ?? license.productId,
+    expiresAt: license.expiresAt,
+    accounts,
+  });
+}
+const badge = (status: string) =>
+  status === 'ACTIVE'
+    ? 'text-emerald-300'
+    : status === 'REVOKED' || status === 'SUSPENDED'
+      ? 'text-red-300'
+      : 'text-amber-300';
+---
+
+<BaseLayout title="My licenses" description="Your BestMT4EA licenses." noindex>
+  <section class="container-x py-16">
+    <p class="section-kicker">Dashboard</p>
+    <h1 class="mt-3 text-3xl font-bold sm:text-4xl">My licenses</h1>
+
+    {licenses.length === 0 && (
+      <p class="mt-6 text-[--color-ink-soft]">
+        No licenses yet. <a class="underline" href="/shop/">Browse the shop</a>.
+      </p>
+    )}
+
+    <div class="mt-8 flex flex-col gap-4">
+      {licenses.map((license) => (
+        <div class="brand-card rounded-2xl p-5">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <p class="text-lg font-semibold">{license.product}</p>
+            <span class={`text-sm font-semibold ${badge(license.status)}`}>{license.status}</span>
+          </div>
+          <dl class="mt-4 grid gap-2 text-sm text-[--color-ink-soft] sm:grid-cols-3">
+            <div><dt class="opacity-70">Key</dt><dd class="font-mono text-[--color-ink]">{license.key}</dd></div>
+            <div>
+              <dt class="opacity-70">MT5 account</dt>
+              <dd class="text-[--color-ink]">{license.accounts[0]?.accountNumber ?? '—'}</dd>
+            </div>
+            <div>
+              <dt class="opacity-70">Expires</dt>
+              <dd class="text-[--color-ink]">
+                {license.expiresAt ? license.expiresAt.toISOString().slice(0, 10) : 'Lifetime'}
+              </dd>
+            </div>
+          </dl>
+
+          {license.status === 'PENDING' && (
+            <form method="post" action="/api/licenses/activate/" class="mt-5 grid gap-3 sm:grid-cols-4">
+              <input type="hidden" name="licenseId" value={license.id} />
+              <input
+                name="accountNumber"
+                required
+                inputmode="numeric"
+                placeholder="MT5 account"
+                class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm"
+              />
+              <input name="broker" placeholder="Broker" class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm" />
+              <select name="accountType" class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm">
+                <option value="demo">Demo</option>
+                <option value="real">Real</option>
+              </select>
+              <button type="submit" class="rounded-xl bg-[--color-brand] px-4 py-2 text-sm font-semibold text-black">
+                Activate
+              </button>
+            </form>
+          )}
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
