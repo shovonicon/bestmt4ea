@@ -17,10 +17,10 @@ Keep it short — about 12 lines. `/checkpoint` rewrites it.
 - Updated: 2026-10-03
 - Session: dc409e13-ec30-4e6c-bde8-23e584f22e52
 - Focus: PLATFORM (Astro SSR + Cloudflare D1/R2). Content rollout paused until Phase R.
-- Last done: **P2 DONE** — accounts & passwordless auth. Created D1 `bestmt4ea` (APAC) + `DB` binding; `src/db/client.ts`; `src/lib/{session,csrf,rate-limit,password,http}.ts`; `src/server/auth.ts` (magic-link + one-time code); `src/emails/{send,magic-link}.ts`; `/login`, `/auth/request/`, `/auth/verify/`, `/logout/`, `/dashboard/`; session + CSRF resolved in `src/middleware.ts`. `release:check` PASSED (63.6s); live AUTH SMOKE PASS (10/10); astro check 0 errors; vitest 21/21.
+- Last done: **P3 DONE (core)** — catalogue + free downloads. `scripts/seed-catalog.mjs` (+ `db:seed:local/remote`) seeds the 13 products + FAQs into D1; migration `0001` made `download_events.entitlement_id` nullable for free downloads. `src/server/{entitlements,downloads}.ts` gate by active entitlement with a free-product bypass and a per-customer 30/hour cap; `/api/download/[fileId]` streams the private R2 object only to a signed-in customer (never a public URL). `release:check` PASSED (63.5s); live DOWNLOAD SMOKE PASS (5/5); vitest 21/21.
 - Next action:
-  1. Phase P3 — catalogue + free downloads: seed the 13 products/plans/files into D1; R2 `free/` prefix; `/api/download/<fileId>` gated streaming.
-  2. Phase P4 — payments: Stripe hosted checkout + webhook; wire the USDT TRC20 engine + the 60s cron.
+  1. Phase P4 — payments: Stripe hosted checkout + webhook; wire the USDT TRC20 engine + the 60s cron; grant entitlements on settlement.
+  2. P3 follow-ups: product pages reading the catalogue from D1; real per-tier `product_plans` (needs a pricing pass — not invented); upload the free-download library to R2 `free/`.
   3. Confirm plan §4 decisions (product-page cache, admin URL, EX5 build machine, TRON wallet + TronGrid key, licence max-accounts).
 - Blockers: none
 - Resume: reopen this project and run `cmd -c`, or `cmd -r "<session name>"`. Run `/checkpoint` before stopping.
@@ -497,21 +497,22 @@ wrapper was not keyboard-reachable (axe `scrollable-region-focusable`, WCAG
 
 ## Next task
 
-**Phase P3 — catalogue & free downloads** (P0–P2 are DONE; the content rollout is paused
-until Phase R).
+**Phase P4 — payments (Stripe + USDT TRC20)** (P0–P3 are DONE; the content rollout is
+paused until Phase R).
 
-Done: **P0** D1 schema + USDT engine + tests. **P1** Astro SSR on Cloudflare (static
-site, middleware redirects, gates on `dist/client`). **P2** passwordless accounts: D1
-`bestmt4ea` + `DB` binding, session/CSRF libs, magic-link auth, `/login` `/auth/*`
-`/logout` `/dashboard`, session resolution in middleware. Repo is git-tracked (`b268d03`
-baseline, `e587665` P1).
+Done: **P0** D1 schema + USDT engine. **P1** Astro SSR on Cloudflare. **P2** passwordless
+accounts (D1 `DB`, sessions, magic-link, `/login` `/auth/*` `/logout` `/dashboard`). **P3**
+catalogue + gated downloads (13 products seeded; `/api/download/[fileId]` streaming with a
+free bypass). Git: `b268d03` → `e587665` → `ba6a333`.
 
-Next: **P3** — seed the 13 products + plans + files into D1, store free EA files under the
-R2 `free/` prefix, and add `/api/download/<fileId>` (session-required, entitlement-gated,
-streamed — never a public R2 URL). Then **P4** — payments.
+Next: **P4** — Stripe hosted Checkout + signed webhook and the self-hosted USDT TRC20 rail
+(`src/server/crypto-payments.ts` + `src/server/tron.ts` already exist), reconciling through
+one trust path and granting an entitlement on settlement. Then **P5** — premium licensing
++ EX5.
 
-Confirm plan §4: product-page cache length, admin URL, EX5 build machine, TRON wallet +
-TronGrid key, licence max-accounts policy.
+Open P3 follow-ups: product pages reading the catalogue from D1; real per-tier
+`product_plans` (needs a pricing pass — do not invent); upload the free-download library to
+R2 `free/`. Confirm plan §4 decisions as they arise.
 
 ## Phase P1 — Astro SSR on Cloudflare (DONE 2026-10-03)
 
@@ -564,3 +565,31 @@ renders and greets, anonymous visitor redirected to `/login/`, logout redirects.
 
 > Deliberately **not** in P2: admin TOTP / recovery codes (they land with the admin
 > platform, P7) and Turnstile wiring (with checkout, P4).
+
+## Phase P3 — catalogue & free downloads (DONE 2026-10-03)
+
+- **Migration `0001_free_download_events.sql`** — `download_events.entitlement_id` is now
+  nullable, so a free download (no entitlement) is still tracked.
+- **`scripts/seed-catalog.mjs`** (+ `db:seed:local` / `db:seed:remote`) reads
+  `src/content/products/*.md` and emits `scripts/seed-catalog.sql` (`INSERT OR REPLACE`
+  into `products` + `product_faqs`). **13 products** seeded; exactly one is free
+  (`2000-trading-tools`). **Plans are deliberately not seeded** — the per-tier prices are
+  not in a shape we can trust, so they belong to a real pricing pass, not an invented map.
+- **`src/server/entitlements.ts`** — `getActiveEntitlement` / `grantEntitlement` /
+  `revokeEntitlement` (the "what was bought" record).
+- **`src/server/downloads.ts`** — `authorizeDownload`: a **free** product is downloadable by
+  any signed-in customer; a **premium** product needs an active entitlement (expiry +
+  download count respected). A per-customer **30/hour** cap applies to both, and every
+  granted download writes a `download_events` row (batched with the entitlement increment).
+- **`src/pages/api/download/[fileId].ts`** — requires a customer session, runs the gate, then
+  **streams the private R2 object** (`env.FILES.get`). There is no public R2 URL; the bucket
+  is never exposed for these files.
+
+Verification: `npm run release:check` — **PASSED (63.5s)**; `vitest` 21/21. Live
+`wrangler dev` **DOWNLOAD SMOKE PASS (5/5)**: anonymous → 401, signed-in free download →
+200 with the correct body, attachment filename set, unknown file → 404.
+
+> P3 follow-ups: product pages still read the catalogue from content (moving them to D1 is
+> the next catalogue step); hosted free files for the 34 free-download posts (all are
+> external GitHub links today); the R2 public bucket is still whole-bucket — the plan keeps
+> it private, so removing the public custom domain is a follow-up before premium files ship.

@@ -506,9 +506,8 @@ export const downloadEvents = sqliteTable(
   'download_events',
   {
     id: text('id').primaryKey(),
-    entitlementId: text('entitlement_id')
-      .notNull()
-      .references(() => entitlements.id, { onDelete: 'cascade' }),
+    /** null for a free (no-entitlement) download. */
+    entitlementId: text('entitlement_id').references(() => entitlements.id, { onDelete: 'cascade' }),
     customerId: text('customer_id').notNull(),
     productFileId: text('product_file_id').notNull(),
     licenseBuildId: text('license_build_id'),

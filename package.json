@@ -37,6 +37,8 @@
     "types": "wrangler types",
     "db:migrate:local": "wrangler d1 migrations apply bestmt4ea --local",
     "db:migrate:remote": "wrangler d1 migrations apply bestmt4ea --remote",
+    "db:seed:local": "node scripts/seed-catalog.mjs && wrangler d1 execute bestmt4ea --local --file=./scripts/seed-catalog.sql",
+    "db:seed:remote": "node scripts/seed-catalog.mjs && wrangler d1 execute bestmt4ea --remote --file=./scripts/seed-catalog.sql",
     "release:check": "node scripts/release-gate.mjs",
     "predeploy": "npm run release:check",
     "deploy": "wrangler deploy"

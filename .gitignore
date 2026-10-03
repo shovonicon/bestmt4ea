@@ -11,6 +11,9 @@ node_modules/
 # wrangler
 .wrangler/
 
+# generated seed SQL (rebuilt by scripts/seed-catalog.mjs)
+scripts/seed-catalog.sql
+
 # os / editor
 .DS_Store
 Thumbs.db
