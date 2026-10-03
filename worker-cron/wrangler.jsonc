@@ -1,0 +1,15 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "bestmt4ea-cron",
+  "main": "index.ts",
+  "compatibility_date": "2025-09-01",
+  "triggers": {
+    "crons": ["* * * * *", "0 3 * * *"]
+  },
+  "vars": {
+    "APP_URL": "https://bestmt4ea.com"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

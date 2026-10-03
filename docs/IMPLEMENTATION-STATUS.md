@@ -17,10 +17,10 @@ Keep it short — about 12 lines. `/checkpoint` rewrites it.
 - Updated: 2026-10-03
 - Session: dc409e13-ec30-4e6c-bde8-23e584f22e52
 - Focus: PLATFORM (Astro SSR + Cloudflare D1/R2). Content rollout paused until Phase R.
-- Last done: **P9 remainder DONE** — product pages are now **edge-cached SSR** (`prerender=false`, `s-maxage=300`) and render the latest D1 MyFxBook snapshot via `ProductLayout` (live figures win over the transcribed ones, with a real "synced" label). Gate updated for on-demand routes: `check-links` accepts live-but-not-in-dist routes (via `routes.mjs`), product URLs re-added to the sitemap (`customPages`), and Playwright now runs against `wrangler dev` (the Worker), not a static dist server. `release:check` PASSED (71.6s); `/product/onix…/` verified rendering the ingested 9.39 / 5.54 with a synced label.
+- Last done: **P10 DONE** — companion cron Worker (`worker-cron/`, `bestmt4ea-cron`) with Cron Triggers: every minute → USDT poll; daily 03:00 → licence expiry + cleanup. It holds **no** bindings; it calls the app's secret-guarded internal endpoints. Added `/api/internal/license-expiry/` (ACTIVE → EXPIRED; `expireLicenses`) and `/api/internal/cleanup/`; scripts `cron:dev/dry-run/deploy`; the gate now includes a **Cron Worker dry-run**. `release:check` PASSED (71.6s); live CRON SMOKE PASS (3/3) end-to-end.
 - Next action:
-  1. P10 — the companion cron Worker (60s USDT poll + licence-expiry checks/cleanup).
-  2. P11 — **live checks for on-demand routes**: product-page structure (`check-rendered-html`) and `Product` JSON-LD (`check-schema`) moved off the static dist when products became SSR, so they now report 0; add a live-server pass. Then Phase R (119 rewrites).
+  1. P11 — **live checks for on-demand routes**: product-page structure (`check-rendered-html`) and `Product` JSON-LD (`check-schema`) now report 0 (they left the static dist when products became SSR); add a live-server pass. Then browser tests + cutover.
+  2. Phase R — the 119 content rewrites.
   3. Prereqs before premium EX5: remove the public R2 custom domain; build machine + R2 upload.
 - Blockers: none
 - Resume: reopen this project and run `cmd -c`, or `cmd -r "<session name>"`. Run `/checkpoint` before stopping.
@@ -497,25 +497,23 @@ wrapper was not keyboard-reachable (axe `scrollable-region-focusable`, WCAG
 
 ## Next task
 
-**Phase P10 — companion cron Worker** (P0–P9 are DONE, including the product-page SSR
-remainder; the content rollout is paused until Phase R).
+**Phase P11 — release gates, browser tests, cutover** (P0–P10 are DONE; the content rollout
+is paused until Phase R).
 
 Done: **P0** D1 schema + USDT engine. **P1** Astro SSR on Cloudflare. **P2** passwordless
 accounts. **P3** catalogue + gated downloads. **P4** payments. **P5** premium licensing.
 **P6** customer portal. **P7** admin platform. **P8** Telegram communication-only. **P9**
-performance pipeline **and** SSR product pages rendering live figures.
+performance pipeline + SSR product pages. **P10** companion cron Worker.
 
 Next, in order:
 
-1. **P10** — a small companion **cron Worker** with a Cron Trigger that calls
-   `/api/internal/usdt-poll` every 60s (secret-guarded), plus a daily licence-expiry sweep
-   and cleanup. The Astro adapter owns the main Worker entrypoint, so cron lives in its own
-   Worker.
-2. **P11** — **live checks for on-demand routes.** `check-rendered-html` and `check-schema`
-   now report **0 product pages / 0 Product nodes** because product pages left the static
-   `dist/` when they became SSR; add a live-server pass so that coverage returns. Then
-   browser tests and cutover.
-3. **Phase R** — the 119 content rewrites.
+1. **P11** — restore the coverage that moved off the static build:
+   - `check-rendered-html` (product structure) and `check-schema` (`Product` JSON-LD) now
+     report **0 product pages** because product pages are SSR; add a **live-server** pass
+     (probe `wrangler dev` / the deployed Worker) so product-page structure and Product
+     schema are checked again.
+   - Extend browser tests to the on-demand routes, then the DNS cutover.
+2. **Phase R** — the 119 content rewrites.
 
 Hard prerequisites before premium EX5 ships: **remove the public R2 custom domain**; the
 private **build machine** for `license_builds`.
@@ -793,3 +791,23 @@ synced label.
 > **Coverage note for P11:** `check-rendered-html` (product structure) and `check-schema`
 > (`Product` JSON-LD) now see **0 product pages**, because product pages are no longer in
 > `dist/client`. They still pass, but that coverage must move to a **live** check.
+
+## Phase P10 — companion cron Worker (DONE 2026-10-03)
+
+- **`worker-cron/`** (`bestmt4ea-cron`) — a separate Worker with **Cron Triggers**:
+  `* * * * *` (every minute → `POST /api/internal/usdt-poll/`) and `0 3 * * *` (daily 03:00 →
+  `/api/internal/license-expiry/` and `/api/internal/cleanup/`). It holds **no** bindings —
+  it is a thin scheduler that calls the app's secret-guarded internal endpoints (the Astro
+  adapter owns the main Worker entrypoint, so cron cannot live there).
+- **`/api/internal/license-expiry/`** — `expireLicenses()` sweeps ACTIVE licences whose
+  window has passed → EXPIRED, each writing a `license_events` row.
+- **`/api/internal/cleanup/`** — drops settled/expired USDT rows older than 30 days and
+  stale rate-limit windows.
+- `package.json`: `cron:dev` / `cron:dry-run` / `cron:deploy`. The release gate gained a
+  **Cron Worker dry-run** step (17).
+
+Verification: `npm run release:check` — **PASSED (71.6s)** including the Cron Worker dry-run.
+Live end-to-end **CRON SMOKE PASS (3/3)**, with the main app on 8788 and the cron Worker on
+8789 (`--test-scheduled`): the internal endpoint refuses an unknown caller (401); the cron
+Worker's daily job runs; and the prepared ACTIVE-past-expiry licence is flipped to
+**EXPIRED** through the app — proving the whole cron → app → D1 path.

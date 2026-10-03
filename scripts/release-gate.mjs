@@ -21,6 +21,7 @@
  *  14. Browser + accessibility tests   (Playwright + axe, desktop and mobile)
  *  15. Worker redirect tests
  *  16. Wrangler dry-run
+ *  17. Cron Worker dry-run
  *
  * `npm run deploy` runs this automatically via npm's `predeploy` hook.
  *
@@ -58,8 +59,17 @@ const steps = [
   ['Browser + accessibility tests', 'npx playwright test'],
   ['Worker redirect tests', 'node scripts/worker.test.mjs'],
   ...(skipDryRun
-    ? [['Wrangler dry-run', null, 'skipped (--skip-dry-run)']]
-    : [['Wrangler dry-run', 'npx wrangler deploy --dry-run']]),
+    ? [
+        ['Wrangler dry-run', null, 'skipped (--skip-dry-run)'],
+        ['Cron Worker dry-run', null, 'skipped (--skip-dry-run)'],
+      ]
+    : [
+        ['Wrangler dry-run', 'npx wrangler deploy --dry-run'],
+        [
+          'Cron Worker dry-run',
+          'npx wrangler deploy --config worker-cron/wrangler.jsonc --dry-run',
+        ],
+      ]),
 ];
 
 const started = Date.now();

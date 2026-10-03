@@ -39,6 +39,9 @@
     "db:migrate:remote": "wrangler d1 migrations apply bestmt4ea --remote",
     "db:seed:local": "node scripts/seed-catalog.mjs && wrangler d1 execute bestmt4ea --local --file=./scripts/seed-catalog.sql",
     "db:seed:remote": "node scripts/seed-catalog.mjs && wrangler d1 execute bestmt4ea --remote --file=./scripts/seed-catalog.sql",
+    "cron:dev": "wrangler dev --config worker-cron/wrangler.jsonc --test-scheduled",
+    "cron:dry-run": "wrangler deploy --config worker-cron/wrangler.jsonc --dry-run",
+    "cron:deploy": "wrangler deploy --config worker-cron/wrangler.jsonc",
     "release:check": "node scripts/release-gate.mjs",
     "predeploy": "npm run release:check",
     "deploy": "wrangler deploy"

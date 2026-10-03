@@ -1,4 +1,4 @@
-import { and, desc, eq, isNull, or, sql } from 'drizzle-orm';
+import { and, desc, eq, isNotNull, isNull, or, sql } from 'drizzle-orm';
 import type { Db } from '../db/client';
 import {
   licenseAccounts,
@@ -313,6 +313,29 @@ export async function requestAccountChange(
     accountType: input.accountType ?? 'demo',
   });
   return { ok: true };
+}
+
+/** Expire ACTIVE licences whose window has passed. Returns how many moved. */
+export async function expireLicenses(db: Db, now = Date.now()): Promise<number> {
+  const due = await db
+    .select({ id: licenses.id })
+    .from(licenses)
+    .where(
+      and(
+        eq(licenses.status, 'ACTIVE'),
+        isNotNull(licenses.expiresAt),
+        sql`${licenses.expiresAt} < ${now}`
+      )
+    )
+    .all();
+  for (const row of due) {
+    await db
+      .update(licenses)
+      .set({ status: 'EXPIRED', updatedAt: new Date(now) })
+      .where(eq(licenses.id, row.id));
+    await logEvent(db, row.id, 'expired', 'system', null, {});
+  }
+  return due.length;
 }
 
 /* -------------------------------------------------------------- build queue */
