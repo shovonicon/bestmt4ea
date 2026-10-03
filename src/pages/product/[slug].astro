@@ -1,25 +1,34 @@
 ---
+export const prerender = false;
+
 import { getCollection } from 'astro:content';
 import ProductLayout from '../../layouts/ProductLayout.astro';
+import { getDb } from '../../db/client';
+import { getLatestSnapshot } from '../../server/performance';
 
-export async function getStaticPaths() {
-  const products = await getCollection('products');
-  return products.map((product) => ({
-    params: { slug: product.data.slug },
-    props: { product },
-  }));
-}
+const slug = Astro.params.slug ?? '';
+const products = await getCollection('products');
+const product = products.find((entry) => entry.data.slug === slug);
+if (!product) return new Response(null, { status: 404 });
 
-const { product } = Astro.props;
-
-const allProducts = await getCollection('products');
-const related = allProducts
+const related = products
   .filter(
-    (p) =>
-      p.data.slug !== product.data.slug &&
-      p.data.productCategories.some((c) => product.data.productCategories.includes(c)),
+    (entry) =>
+      entry.data.slug !== product.data.slug &&
+      entry.data.productCategories.some((category) => product.data.productCategories.includes(category)),
   )
   .slice(0, 3);
+
+// Live MyFxBook figures when the collector has written some; the layout falls
+// back to the transcribed editorial record when it has not.
+let live = null;
+try {
+  live = await getLatestSnapshot(getDb(), product.data.slug);
+} catch (error) {
+  console.error('product_live_performance_failed', error);
+}
+
+Astro.response.headers.set('cache-control', 'public, s-maxage=300, stale-while-revalidate=600');
 ---
 
-<ProductLayout product={product} related={related} />
+<ProductLayout product={product} related={related} live={live} />

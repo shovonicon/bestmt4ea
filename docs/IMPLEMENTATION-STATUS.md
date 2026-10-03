@@ -17,10 +17,10 @@ Keep it short — about 12 lines. `/checkpoint` rewrites it.
 - Updated: 2026-10-03
 - Session: dc409e13-ec30-4e6c-bde8-23e584f22e52
 - Focus: PLATFORM (Astro SSR + Cloudflare D1/R2). Content rollout paused until Phase R.
-- Last done: **P9 DONE (data pipeline)** — MyFxBook performance. `src/server/performance.ts` (`recordSnapshot`/`recordTrades`/`getLatestSnapshot`/`getSeries` over `performance_accounts`/`performance_snapshots`/`trades`); `POST /api/performance/ingest` (token-guarded — the collector's seam, since MyFXBook 403s plain fetches); `GET /api/performance/[slug]` (read). `release:check` PASSED (63.5s); live PERFORMANCE SMOKE PASS (8/8).
+- Last done: **P9 remainder DONE** — product pages are now **edge-cached SSR** (`prerender=false`, `s-maxage=300`) and render the latest D1 MyFxBook snapshot via `ProductLayout` (live figures win over the transcribed ones, with a real "synced" label). Gate updated for on-demand routes: `check-links` accepts live-but-not-in-dist routes (via `routes.mjs`), product URLs re-added to the sitemap (`customPages`), and Playwright now runs against `wrangler dev` (the Worker), not a static dist server. `release:check` PASSED (71.6s); `/product/onix…/` verified rendering the ingested 9.39 / 5.54 with a synced label.
 - Next action:
-  1. P9 remainder — convert **product pages to edge-cached SSR** and render the latest snapshot server-side. This needs gate/sitemap changes first: `check-links` must accept live-but-not-in-dist routes, and product URLs must be added back to the sitemap.
-  2. P10 — the companion cron Worker (60s USDT poll + licence expiry/cleanup). Then P11 (release gates/tests/cutover) and Phase R (119 rewrites).
+  1. P10 — the companion cron Worker (60s USDT poll + licence-expiry checks/cleanup).
+  2. P11 — **live checks for on-demand routes**: product-page structure (`check-rendered-html`) and `Product` JSON-LD (`check-schema`) moved off the static dist when products became SSR, so they now report 0; add a live-server pass. Then Phase R (119 rewrites).
   3. Prereqs before premium EX5: remove the public R2 custom domain; build machine + R2 upload.
 - Blockers: none
 - Resume: reopen this project and run `cmd -c`, or `cmd -r "<session name>"`. Run `/checkpoint` before stopping.
@@ -497,25 +497,25 @@ wrapper was not keyboard-reachable (axe `scrollable-region-focusable`, WCAG
 
 ## Next task
 
-**Phase P9 remainder (product-page SSR) then P10 (companion cron Worker)** (P0–P9 are
-DONE; the content rollout is paused until Phase R).
+**Phase P10 — companion cron Worker** (P0–P9 are DONE, including the product-page SSR
+remainder; the content rollout is paused until Phase R).
 
 Done: **P0** D1 schema + USDT engine. **P1** Astro SSR on Cloudflare. **P2** passwordless
 accounts. **P3** catalogue + gated downloads. **P4** payments. **P5** premium licensing.
-**P6** customer portal. **P7** admin platform. **P8** Telegram is communication only. **P9**
-performance pipeline (ingest + read). Git: `… → d8dbc81`.
+**P6** customer portal. **P7** admin platform. **P8** Telegram communication-only. **P9**
+performance pipeline **and** SSR product pages rendering live figures.
 
 Next, in order:
 
-1. **P9 remainder** — convert `src/pages/product/[slug].astro` to edge-cached **SSR** and
-   overlay the latest D1 snapshot on `ProductLayout` (with a real "last synchronized" line).
-   This is deferred because it removes product pages from `dist/client`, so `check-links`
-   (product links) and the sitemap must first be taught that product routes are live
-   on-demand routes.
-2. **P10** — a small companion **cron Worker** for the 60s USDT poll
-   (`/api/internal/usdt-poll`) plus licence-expiry checks and cleanup.
-3. **P11** — release gates for SSR routes, browser tests, cutover. Then **Phase R** — the 119
-   content rewrites.
+1. **P10** — a small companion **cron Worker** with a Cron Trigger that calls
+   `/api/internal/usdt-poll` every 60s (secret-guarded), plus a daily licence-expiry sweep
+   and cleanup. The Astro adapter owns the main Worker entrypoint, so cron lives in its own
+   Worker.
+2. **P11** — **live checks for on-demand routes.** `check-rendered-html` and `check-schema`
+   now report **0 product pages / 0 Product nodes** because product pages left the static
+   `dist/` when they became SSR; add a live-server pass so that coverage returns. Then
+   browser tests and cutover.
+3. **Phase R** — the 119 content rewrites.
 
 Hard prerequisites before premium EX5 ships: **remove the public R2 custom domain**; the
 private **build machine** for `license_builds`.
@@ -767,3 +767,29 @@ preserved (`demo`), the series is present, and an unknown product 404s.
 > which removes it from `dist/client` — so `check-links` and the sitemap must first accept
 > product routes as live on-demand routes. The collector that calls the ingest endpoint is
 > also external (GitHub Actions / a small runner) and not part of this repo.
+
+### P9 remainder — product-page SSR + gate updates (DONE 2026-10-03)
+
+- **`src/pages/product/[slug].astro`** now sets `prerender = false`, resolves the product
+  from the collection by `Astro.params.slug`, reads the latest snapshot from D1
+  (`getLatestSnapshot`), sets `Cache-Control: public, s-maxage=300`, and passes `live` to
+  the layout.
+- **`ProductLayout`** accepts `live` and overlays it on the transcribed figures — the live
+  numbers win, and the "track record" line becomes a real **synced** label (via
+  `perf.live` + `lastVerified`).
+- **Gate changes for on-demand routes:**
+  - `check-links` accepts a link when the path is a **live route** (`routes.mjs`) even though
+    it has no file in `dist/client`.
+  - `astro.config.mjs` re-adds the product URLs to the **sitemap** via `customPages` (an SSR
+    page is not in the build's page list).
+  - `playwright.config.ts` runs the browser tests against **`wrangler dev`** (the real
+    Worker) instead of the static `dist` server, so on-demand pages are served.
+
+Verification: `npm run release:check` — **PASSED (71.6s)**; `check-links` 10,153 links across
+207 pages; Playwright 24/24. `/product/onix-stratos-xauusd-ea-ai-smart-scalper-for-mt5/`
+returns 200 and renders the ingested figures (**9.39** gain, **5.54** drawdown) with a
+synced label.
+
+> **Coverage note for P11:** `check-rendered-html` (product structure) and `check-schema`
+> (`Product` JSON-LD) now see **0 product pages**, because product pages are no longer in
+> `dist/client`. They still pass, but that coverage must move to a **live** check.

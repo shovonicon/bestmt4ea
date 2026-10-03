@@ -15,6 +15,7 @@ import Faq from '../components/Faq.astro';
 import ProductCard from '../components/ProductCard.astro';
 import ProductChart from '../components/ProductChart.astro';
 import { getPerformance } from '../lib/performance';
+import type { LatestPerformance } from '../server/performance';
 import { formatMoney, formatPriceRange, formatDate, formatSignedPercent } from '../lib/format';
 import { site, RISK_DISCLAIMER } from '../lib/site';
 import { productSchema, breadcrumbSchema, breadcrumbTrail } from '../lib/seo';
@@ -23,10 +24,32 @@ import { url } from '../lib/urls';
 export interface Props {
   product: any;
   related?: any[];
+  live?: LatestPerformance | null;
 }
 
-const { product, related = [] } = Astro.props;
-const perf = getPerformance(product.data.slug);
+const { product, related = [], live = null } = Astro.props;
+const base = getPerformance(product.data.slug);
+// A live D1 snapshot (from the MyFxBook collector) wins over the transcribed figures,
+// and switches the "track record" label to a real last-synchronized time.
+const perf = live
+  ? ({
+      ...(base ?? {
+        hasData: true,
+        verified: true,
+        isLiveAccount: live.accountType === 'real',
+        stale: false,
+        conflicts: [],
+      }),
+      totalGainPct: live.growthPct != null ? Number(live.growthPct) : base?.totalGainPct,
+      maxDrawdownPct: live.drawdownPct != null ? Number(live.drawdownPct) : base?.maxDrawdownPct,
+      profitFactor: live.profitFactor != null ? Number(live.profitFactor) : base?.profitFactor,
+      accountType: live.accountType ?? base?.accountType,
+      sourceUrl: live.sourceUrl ?? base?.sourceUrl,
+      lastVerified: live.capturedAt,
+      stale: false,
+      live: {},
+    } as NonNullable<typeof base>)
+  : base;
 const { Content } = await render(product);
 
 const platform = product.data.platform === 'none' ? 'MT4 / MT5' : product.data.platform;

@@ -48,6 +48,29 @@ function contentDates() {
 
 const dates = contentDates();
 
+/**
+ * Product pages are served on demand (SSR) so their performance stays fresh,
+ * which keeps them out of the build's page list — and out of the sitemap. Add
+ * them back explicitly; the serialize() hook applies the same real `lastmod`.
+ */
+function productPaths() {
+  const dir = 'src/content/products';
+  const out = [];
+  for (const file of readdirSync(dir)) {
+    if (!file.endsWith('.md')) continue;
+    const { data } = matter(readFileSync(`${dir}/${file}`, 'utf8'));
+    if (data.draft) continue;
+    let slug = String(data.slug ?? file.replace(/\.md$/, ''));
+    try {
+      slug = decodeURIComponent(slug);
+    } catch {
+      /* leave as-is */
+    }
+    out.push(`/product/${slug}/`);
+  }
+  return out;
+}
+
 export default defineConfig({
   site: SITE,
   output: 'static',
@@ -56,6 +79,7 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [
     sitemap({
+      customPages: productPaths().map((path) => `${SITE}${path}`),
       serialize(item) {
         let pathname = item.url;
         try {

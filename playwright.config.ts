@@ -7,9 +7,11 @@ import { defineConfig, devices } from '@playwright/test';
  * server, so what is tested is what ships. Two viewports are covered: desktop
  * (1440×1100) and mobile (390×844).
  *
- * The web server is `scripts/serve-dist.mjs` rather than `astro preview`, which
- * did not bind reliably here; the script applies the same trailing-slash and
- * 404 rules the site uses.
+ * The web server is the real Worker (`wrangler dev`). The build now has
+ * on-demand routes (product pages, /login, /dashboard, /admin) that a static
+ * `dist/` server cannot serve, so the tests run against the Worker. `astro
+ * preview` did not bind reliably here; `wrangler dev` serves the built assets
+ * and the on-demand routes exactly as production does.
  *
  * `npm run test:e2e` starts the server itself; the release gate has already run
  * the build by the time it reaches this step.
@@ -40,9 +42,9 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: `node scripts/serve-dist.mjs --port ${PORT}`,
+    command: `npx wrangler dev --port ${PORT}`,
     url: BASE_URL,
     reuseExistingServer: true,
-    timeout: 60_000,
+    timeout: 120_000,
   },
 });

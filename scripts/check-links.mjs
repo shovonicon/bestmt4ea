@@ -18,8 +18,12 @@
 
 import { readdirSync, readFileSync, existsSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
+import { getLiveRoutes, cmpKey } from './routes.mjs';
 
 const DIST = 'dist/client';
+// Routes served on demand (e.g. product pages, SSR) have no file in dist — a
+// link to one is live, not broken.
+const liveRoutes = getLiveRoutes();
 const ASSET_EXT = /\.(?:html|xml|txt|json|css|js|mjs|map|webp|png|jpe?g|gif|svg|ico|avif|woff2?|ttf|otf|pdf|zip|ex4|ex5|mq4|mq5|set|csv)$/i;
 
 /** Every .html file under dist, as forward-slash relative paths. */
@@ -85,7 +89,9 @@ for (const file of htmlFiles()) {
     }
 
     checked++;
-    if (!resolves(pathname)) errors.push({ page, target: pathname });
+    if (!resolves(pathname) && !liveRoutes.has(cmpKey(pathname))) {
+      errors.push({ page, target: pathname });
+    }
   }
 }
 
