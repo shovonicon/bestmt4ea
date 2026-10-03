@@ -31,6 +31,8 @@ export const RESERVED_SLUGS = new Set([
   'logout',
   'dashboard',
   'auth',
+  'checkout',
+  'api',
 ]);
 
 /**

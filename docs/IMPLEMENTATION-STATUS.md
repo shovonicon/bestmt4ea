@@ -17,11 +17,11 @@ Keep it short — about 12 lines. `/checkpoint` rewrites it.
 - Updated: 2026-10-03
 - Session: dc409e13-ec30-4e6c-bde8-23e584f22e52
 - Focus: PLATFORM (Astro SSR + Cloudflare D1/R2). Content rollout paused until Phase R.
-- Last done: **P3 DONE (core)** — catalogue + free downloads. `scripts/seed-catalog.mjs` (+ `db:seed:local/remote`) seeds the 13 products + FAQs into D1; migration `0001` made `download_events.entitlement_id` nullable for free downloads. `src/server/{entitlements,downloads}.ts` gate by active entitlement with a free-product bypass and a per-customer 30/hour cap; `/api/download/[fileId]` streams the private R2 object only to a signed-in customer (never a public URL). `release:check` PASSED (63.5s); live DOWNLOAD SMOKE PASS (5/5); vitest 21/21.
+- Last done: **P4 DONE (core)** — payments. `src/server/{orders,payments,stripe,usdt-payments}.ts`: one settlement path (`settleOrder`) marks the order paid, records a payment and **grants entitlements**; Stripe hosted Checkout + signed webhook + return reconcile; the USDT TRC20 rail (P0 engine + TronGrid) via `/api/checkout`, `/api/payments/usdt/[id]`, and a secret-guarded `/api/internal/usdt-poll` (the cron seam). `release:check` PASSED (72.6s); live PAYMENT SMOKE PASS (9/9); vitest 21/21.
 - Next action:
-  1. Phase P4 — payments: Stripe hosted checkout + webhook; wire the USDT TRC20 engine + the 60s cron; grant entitlements on settlement.
-  2. P3 follow-ups: product pages reading the catalogue from D1; real per-tier `product_plans` (needs a pricing pass — not invented); upload the free-download library to R2 `free/`.
-  3. Confirm plan §4 decisions (product-page cache, admin URL, EX5 build machine, TRON wallet + TronGrid key, licence max-accounts).
+  1. Phase P5 — premium licensing + EX5: licence keys/statuses, MT5 binding, build queue, private R2 streaming. **Remove the public R2 custom domain** before premium files ship.
+  2. P4 follow-ups: the companion cron Worker for the 60s poll; checkout/payment pages (UI); settlement emails; a real pricing pass so `product_plans` exist in production.
+  3. Confirm plan §4 decisions as they arise.
 - Blockers: none
 - Resume: reopen this project and run `cmd -c`, or `cmd -r "<session name>"`. Run `/checkpoint` before stopping.
 
@@ -497,22 +497,21 @@ wrapper was not keyboard-reachable (axe `scrollable-region-focusable`, WCAG
 
 ## Next task
 
-**Phase P4 — payments (Stripe + USDT TRC20)** (P0–P3 are DONE; the content rollout is
+**Phase P5 — premium licensing & EX5 delivery** (P0–P4 are DONE; the content rollout is
 paused until Phase R).
 
 Done: **P0** D1 schema + USDT engine. **P1** Astro SSR on Cloudflare. **P2** passwordless
-accounts (D1 `DB`, sessions, magic-link, `/login` `/auth/*` `/logout` `/dashboard`). **P3**
-catalogue + gated downloads (13 products seeded; `/api/download/[fileId]` streaming with a
-free bypass). Git: `b268d03` → `e587665` → `ba6a333`.
+accounts. **P3** catalogue + gated downloads. **P4** payments — one `settleOrder` trust
+path (grants entitlements), Stripe hosted Checkout + webhook, USDT TRC20 rail + poll cron
+seam. Git: `b268d03` → `e587665` → `ba6a333` → `d2c5c1a`.
 
-Next: **P4** — Stripe hosted Checkout + signed webhook and the self-hosted USDT TRC20 rail
-(`src/server/crypto-payments.ts` + `src/server/tron.ts` already exist), reconciling through
-one trust path and granting an entitlement on settlement. Then **P5** — premium licensing
-+ EX5.
+Next: **P5** (plan §6c) — the entitlement → licence → MT5-account → compiled-EX5 model:
+licence keys + statuses + transitions, `license_accounts`/`license_builds`/`license_events`,
+the activation page, the out-of-band build queue, and private streaming. **Before that:
+remove the public R2 custom domain** so `files/` (premium EX5) is not world-readable.
 
-Open P3 follow-ups: product pages reading the catalogue from D1; real per-tier
-`product_plans` (needs a pricing pass — do not invent); upload the free-download library to
-R2 `free/`. Confirm plan §4 decisions as they arise.
+Also open: the companion cron Worker for the 60s USDT poll; checkout/payment pages (UI);
+a real pricing pass so `product_plans` exist; product pages reading the catalogue from D1.
 
 ## Phase P1 — Astro SSR on Cloudflare (DONE 2026-10-03)
 
@@ -593,3 +592,36 @@ Verification: `npm run release:check` — **PASSED (63.5s)**; `vitest` 21/21. Li
 > the next catalogue step); hosted free files for the 34 free-download posts (all are
 > external GitHub links today); the R2 public bucket is still whole-bucket — the plan keeps
 > it private, so removing the public custom domain is a follow-up before premium files ship.
+
+## Phase P4 — payments (Stripe + USDT TRC20) (DONE 2026-10-03)
+
+- **`src/server/orders.ts`** — `createOrder` (from plans), and the **single settlement path**
+  `settleOrder`: it marks the order paid, records one payment row, and **grants the
+  entitlements** (with each plan's `durationDays`). Idempotent — an already-paid order
+  settles to `applied: false` and grants nothing again. `getOrder` / `markOrderFailed`.
+  Nothing else may mark an order paid, so a forged or replayed payment cannot unlock
+  anything.
+- **`src/server/stripe.ts`** — thin wrapper over Stripe-hosted Checkout only
+  (`createCheckoutSession`, `verifyCheckoutSession`, `constructWebhookEvent`). Card details
+  never touch the Worker.
+- **`src/server/payments.ts`** — the Stripe reconcile path (`reconcileStripeSession`) used by
+  **both** the return page and the webhook, plus replay-safe `recordWebhookEvent`
+  (`webhook_events.dedupe_key`).
+- **`src/server/usdt-payments.ts`** — the USDT orchestration over the P0 pure engine +
+  TronGrid: `createUsdtPayment` (unique amount), `pollUsdtPayments` (expire + fetch once +
+  match all WAITING orders + settle), `expireUsdtPayments`.
+- **Endpoints**: `POST /api/checkout` (order → card session or USDT payment),
+  `GET /api/payments/usdt/[id]` (status; the browser never decides validity),
+  `POST /api/webhooks/stripe`, and the secret-guarded `POST /api/internal/usdt-poll/` — the
+  seam the companion cron Worker calls every 60s.
+
+Verification: `npm run release:check` — **PASSED (72.6s)**; `vitest` 21/21. Live
+`wrangler dev` + a mock TronGrid **PAYMENT SMOKE PASS (9/9)**: checkout mints a unique
+amount, a premium download is refused (403) before payment, the poll matches the transfer
+and settles, the order and payment go paid, the **premium download now succeeds (200)**, and
+a **replay re-settles nothing** (`matched: 0`).
+
+> P4 follow-ups (deliberate): the companion cron Worker (the 60s trigger), the checkout and
+> USDT payment **pages** (UI), settlement **emails**, and a **real pricing pass** so
+> `product_plans` exist in production. Stripe is implemented but **not live-tested** — no
+> keys here — so it is exercised only by type-check until real keys are set.

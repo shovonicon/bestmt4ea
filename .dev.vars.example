@@ -8,4 +8,7 @@ TURNSTILE_SECRET_KEY=
 STRIPE_SECRET_KEY=
 STRIPE_WEBHOOK_SECRET=
 TRONGRID_API_KEY=
+# Point at a mock TronGrid in tests; leave blank for the real api.trongrid.io.
+TRONGRID_BASE_URL=
 TRON_RECEIVING_ADDRESS=
+CRON_SECRET=
