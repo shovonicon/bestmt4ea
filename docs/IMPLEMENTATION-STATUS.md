@@ -17,11 +17,11 @@ Keep it short — about 12 lines. `/checkpoint` rewrites it.
 - Updated: 2026-10-03
 - Session: dc409e13-ec30-4e6c-bde8-23e584f22e52
 - Focus: PLATFORM (Astro SSR + Cloudflare D1/R2). Content rollout paused until Phase R.
-- Last done: **P8 DONE** — Telegram is communication only. Rewrote the delivery copy in 14 files (10 products + 2 pages) that promised delivery "via Telegram", plus the free-download page and `ProductLayout` — delivery is now stated as from the **dashboard**, with Telegram as a support/contact channel. No bot, no notifications, no linking, no files. Content hashes re-baselined (189 files). `release:check` PASSED (67.5s); vitest 21/21.
+- Last done: **P9 DONE (data pipeline)** — MyFxBook performance. `src/server/performance.ts` (`recordSnapshot`/`recordTrades`/`getLatestSnapshot`/`getSeries` over `performance_accounts`/`performance_snapshots`/`trades`); `POST /api/performance/ingest` (token-guarded — the collector's seam, since MyFXBook 403s plain fetches); `GET /api/performance/[slug]` (read). `release:check` PASSED (63.5s); live PERFORMANCE SMOKE PASS (8/8).
 - Next action:
-  1. Phase P9 — MyFxBook collector + product-page performance: scheduled browser collector → `/api/performance/ingest` → D1; product pages render the figures server-side (no new `/performance` category).
-  2. Then P10 (companion cron Worker) and P11 (release gates/tests/cutover) and Phase R (the 119 rewrites).
-  3. Prereqs before premium EX5: remove the public R2 custom domain; build machine + R2 upload; checkout/payment pages; settlement emails; a real pricing pass.
+  1. P9 remainder — convert **product pages to edge-cached SSR** and render the latest snapshot server-side. This needs gate/sitemap changes first: `check-links` must accept live-but-not-in-dist routes, and product URLs must be added back to the sitemap.
+  2. P10 — the companion cron Worker (60s USDT poll + licence expiry/cleanup). Then P11 (release gates/tests/cutover) and Phase R (119 rewrites).
+  3. Prereqs before premium EX5: remove the public R2 custom domain; build machine + R2 upload.
 - Blockers: none
 - Resume: reopen this project and run `cmd -c`, or `cmd -r "<session name>"`. Run `/checkpoint` before stopping.
 
@@ -497,26 +497,28 @@ wrapper was not keyboard-reachable (axe `scrollable-region-focusable`, WCAG
 
 ## Next task
 
-**Phase P9 — MyFxBook performance** (P0–P8 are DONE; the content rollout is paused until
-Phase R).
+**Phase P9 remainder (product-page SSR) then P10 (companion cron Worker)** (P0–P9 are
+DONE; the content rollout is paused until Phase R).
 
 Done: **P0** D1 schema + USDT engine. **P1** Astro SSR on Cloudflare. **P2** passwordless
 accounts. **P3** catalogue + gated downloads. **P4** payments. **P5** premium licensing.
-**P6** customer portal. **P7** admin platform. **P8** Telegram is communication only.
-Git: `b268d03` → `e587665` → `ba6a333` → `d2c5c1a` → `9e2c3ce` → `d9cf5f4` → `bd0de34` →
-`cca5ee5`.
+**P6** customer portal. **P7** admin platform. **P8** Telegram is communication only. **P9**
+performance pipeline (ingest + read). Git: `… → d8dbc81`.
 
-Next: **P9** — a scheduled **browser collector** (outside the Worker, since MyFXBook 403s
-plain fetches) POSTs snapshots to `/api/performance/ingest` → `performance_snapshots` +
-`trades`; **product pages render the figures server-side** (no new `/performance` category),
-with a true "last synchronized" line. Replace the hand-transcribed `src/lib/performance.ts`
-figures.
+Next, in order:
 
-Then **P10** (the companion cron Worker for the 60s USDT poll + expiry/cleanup) and **P11**
-(release gates for SSR routes, browser tests, cutover) and **Phase R** (the 119 rewrites).
+1. **P9 remainder** — convert `src/pages/product/[slug].astro` to edge-cached **SSR** and
+   overlay the latest D1 snapshot on `ProductLayout` (with a real "last synchronized" line).
+   This is deferred because it removes product pages from `dist/client`, so `check-links`
+   (product links) and the sitemap must first be taught that product routes are live
+   on-demand routes.
+2. **P10** — a small companion **cron Worker** for the 60s USDT poll
+   (`/api/internal/usdt-poll`) plus licence-expiry checks and cleanup.
+3. **P11** — release gates for SSR routes, browser tests, cutover. Then **Phase R** — the 119
+   content rewrites.
 
 Hard prerequisites before premium EX5 ships: **remove the public R2 custom domain**; the
-private **build machine** for `license_builds`; the companion cron Worker.
+private **build machine** for `license_builds`.
 
 Also open: checkout/payment pages (UI), settlement emails, customer **renew** (currently a
 re-purchase), a real pricing pass so `product_plans` exist, and product pages reading the
@@ -737,3 +739,31 @@ support/contact channel (the floating button + support links, unchanged).
 
 Verification: `npm run release:check` — **PASSED (67.5s)**; `vitest` 21/21; `astro check` 0
 errors.
+
+## Phase P9 — MyFxBook performance pipeline (DONE 2026-10-03)
+
+Delivers the data path the site was missing: real MyFXBook figures in D1, instead of the
+hand-transcribed `src/lib/performance.ts`.
+
+- **`src/server/performance.ts`** — `recordSnapshot` / `recordTrades` (upsert the account,
+  insert the snapshot, insert trades de-duplicated by `(account, tradeId)`) and the read
+  models `getLatestSnapshot` / `getSeries` over `performance_accounts` /
+  `performance_snapshots` / `trades`. `ensureAccount` only patches fields that were
+  actually provided, so a trades-only call cannot wipe the account type.
+- **`POST /api/performance/ingest`** — the endpoint the scheduled collector POSTs to,
+  guarded by `PERF_INGEST_TOKEN` (`x-ingest-token`). MyFXBook returns **403** to plain
+  server-side fetches, so the scrape runs in a headless browser **outside the Worker** and
+  pushes here; the browser never reaches this route.
+- **`GET /api/performance/[slug]`** — public read: the latest snapshot + the recent series.
+- `.dev.vars(.example)`: `PERF_INGEST_TOKEN`; `wrangler types` regenerated.
+
+Verification: `npm run release:check` — **PASSED (63.5s)**; `vitest` 21/21. Live
+`wrangler dev` **PERFORMANCE SMOKE PASS (8/8)**: ingest refused without the token (401);
+a snapshot + trade accepted (200); the read returns the figures, the account type is
+preserved (`demo`), the series is present, and an unknown product 404s.
+
+> **Deferred (P9 remainder):** the *product page* does not yet render this data. Rendering
+> it server-side needs `src/pages/product/[slug].astro` converted to edge-cached **SSR**,
+> which removes it from `dist/client` — so `check-links` and the sitemap must first accept
+> product routes as live on-demand routes. The collector that calls the ingest endpoint is
+> also external (GitHub Actions / a small runner) and not part of this repo.
