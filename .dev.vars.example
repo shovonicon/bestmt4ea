@@ -1,0 +1,11 @@
+# Copy to .dev.vars for local development. These are SECRETS — .dev.vars is
+# gitignored. Leave a value blank to exercise the dev fallback for that feature
+# (no TURNSTILE_SECRET_KEY skips the challenge; outbound email is logged).
+
+SESSION_SECRET=dev-only-local-session-secret-change-me-0123456789
+APP_URL=http://localhost:4321
+TURNSTILE_SECRET_KEY=
+STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
+TRONGRID_API_KEY=
+TRON_RECEIVING_ADDRESS=

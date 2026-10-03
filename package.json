@@ -34,6 +34,7 @@
     "wp:refresh": "node scripts/wp-export.mjs --refresh",
     "sync:myfxbook": "node scripts/sync-myfxbook.mjs",
     "db:generate": "drizzle-kit generate",
+    "types": "wrangler types",
     "db:migrate:local": "wrangler d1 migrations apply bestmt4ea --local",
     "db:migrate:remote": "wrangler d1 migrations apply bestmt4ea --remote",
     "release:check": "node scripts/release-gate.mjs",

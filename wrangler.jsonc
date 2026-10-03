@@ -3,16 +3,32 @@
   "name": "bestmt4ea",
   "compatibility_date": "2025-09-01",
   "compatibility_flags": ["nodejs_compat"],
+  "vars": {
+    "PUBLIC_SITE_URL": "https://bestmt4ea.com",
+    "PUBLIC_R2_PUBLIC_URL": "https://files.bestmt4ea.com",
+    "APP_URL": "https://bestmt4ea.com",
+    "EMAIL_FROM_EMAIL": "no-reply@bestmt4ea.com",
+    "EMAIL_FROM_NAME": "BestMT4EA"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "bestmt4ea",
+      "database_id": "5e9ca777-3a9b-486c-9229-30e7d3237447",
+      "migrations_dir": "drizzle"
+    }
+  ],
   "r2_buckets": [
     {
       "binding": "FILES",
       "bucket_name": "bestmt4ea-files"
     }
   ],
-  "vars": {
-    "PUBLIC_SITE_URL": "https://bestmt4ea.com",
-    "PUBLIC_R2_PUBLIC_URL": "https://files.bestmt4ea.com"
-  },
+  "send_email": [
+    {
+      "name": "EMAIL"
+    }
+  ],
   "observability": {
     "enabled": true
   }

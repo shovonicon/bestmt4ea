@@ -1,0 +1,46 @@
+import type { APIRoute } from 'astro';
+import { env } from 'cloudflare:workers';
+import { getDb } from '../../db/client';
+import { requestLogin } from '../../server/auth';
+import { rateLimit } from '../../lib/rate-limit';
+import { verifyCsrf } from '../../lib/csrf';
+import { sha256Hex } from '../../lib/crypto';
+import { json, jsonError, readBody, redirect, wantsHtml, clientIpFrom } from '../../lib/http';
+import { sendEmail } from '../../emails/send';
+import { magicLinkEmail } from '../../emails/magic-link';
+
+export const prerender = false;
+
+/** Request a one-time sign-in link. Always aims to succeed quietly. */
+export const POST: APIRoute = async ({ request, locals }) => {
+  const body = await readBody(request);
+
+  if (!verifyCsrf(request, locals.csrfToken, body.csrf)) {
+    return wantsHtml(request) ? redirect('/login/?error=csrf', 303) : jsonError(403, 'csrf');
+  }
+
+  const db = getDb();
+  const ipHash = await sha256Hex(clientIpFrom(request));
+
+  const limited = await rateLimit(db, `login:${ipHash}`, 5, 15 * 60 * 1000);
+  if (!limited.allowed) {
+    return wantsHtml(request) ? redirect('/login/?error=rate', 303) : jsonError(429, 'rate_limited');
+  }
+
+  const result = await requestLogin(db, env.SESSION_SECRET, { email: body.email ?? '', ipHash });
+  if (!result) {
+    return wantsHtml(request) ? redirect('/login/?error=email', 303) : jsonError(400, 'invalid_email');
+  }
+
+  const url = `${env.APP_URL}/auth/verify?token=${encodeURIComponent(result.token)}`;
+  const mail = magicLinkEmail({ url, code: result.code });
+  await sendEmail(db, env, {
+    to: (body.email ?? '').trim().toLowerCase(),
+    subject: mail.subject,
+    html: mail.html,
+    text: mail.text,
+    template: 'magic-link',
+  });
+
+  return wantsHtml(request) ? redirect('/login/?sent=1', 303) : json({ ok: true });
+};

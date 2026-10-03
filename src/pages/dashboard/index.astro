@@ -1,0 +1,51 @@
+---
+export const prerender = false;
+
+import { eq } from 'drizzle-orm';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getDb } from '../../db/client';
+import { customers } from '../../db/schema';
+
+const session = Astro.locals.session;
+if (!session || session.subjectType !== 'customer') {
+  return Astro.redirect('/login/');
+}
+
+const customer = await getDb()
+  .select()
+  .from(customers)
+  .where(eq(customers.id, session.subjectId))
+  .get();
+---
+
+<BaseLayout title="Dashboard" description="Your BestMT4EA account." noindex>
+  <section class="container-x py-16">
+    <p class="section-kicker">Dashboard</p>
+    <h1 class="mt-3 text-3xl font-bold sm:text-4xl">
+      Welcome{customer?.name ? `, ${customer.name}` : ''}
+    </h1>
+    <p class="mt-3 text-base text-[--color-ink-soft]">
+      Signed in as {customer?.email ?? 'your account'}.
+    </p>
+
+    <div class="mt-10 grid gap-4 sm:grid-cols-3">
+      <a href="/dashboard/licenses/" class="brand-card rounded-2xl p-5">
+        <p class="text-sm text-[--color-ink-soft]">My licenses</p>
+        <p class="mt-1 text-lg font-semibold">Manage EA licenses</p>
+      </a>
+      <a href="/dashboard/downloads/" class="brand-card rounded-2xl p-5">
+        <p class="text-sm text-[--color-ink-soft]">Downloads</p>
+        <p class="mt-1 text-lg font-semibold">Your files</p>
+      </a>
+      <a href="/dashboard/orders/" class="brand-card rounded-2xl p-5">
+        <p class="text-sm text-[--color-ink-soft]">Orders</p>
+        <p class="mt-1 text-lg font-semibold">Order history</p>
+      </a>
+    </div>
+
+    <p class="mt-10 text-sm text-[--color-ink-soft]">
+      Licenses, downloads and orders arrive in the next platform phases.
+      <a class="underline" href="/logout/">Sign out</a>.
+    </p>
+  </section>
+</BaseLayout>

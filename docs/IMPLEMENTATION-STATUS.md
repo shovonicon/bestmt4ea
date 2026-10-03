@@ -16,12 +16,12 @@ Keep it short — about 12 lines. `/checkpoint` rewrites it.
 
 - Updated: 2026-10-03
 - Session: dc409e13-ec30-4e6c-bde8-23e584f22e52
-- Focus: PLATFORM (Astro + Cloudflare D1/R2). Content rollout paused until Phase R.
-- Last done: **git repo initialised** (baseline `b268d03`). **P1 DONE** — Astro SSR adopted: `@astrojs/cloudflare` + `session:false`, all 219 public pages stay prerendered, the 404 renders on demand (which builds the Worker), redirects moved from the old Worker into `src/middleware.ts`, gates retargeted to `dist/client`, `wrangler.jsonc` slimmed. `release:check` PASSED (68.4s); `check:preview` PASS (legacy 301, emoji routes, 404); `astro check` 0 errors.
+- Focus: PLATFORM (Astro SSR + Cloudflare D1/R2). Content rollout paused until Phase R.
+- Last done: **P2 DONE** — accounts & passwordless auth. Created D1 `bestmt4ea` (APAC) + `DB` binding; `src/db/client.ts`; `src/lib/{session,csrf,rate-limit,password,http}.ts`; `src/server/auth.ts` (magic-link + one-time code); `src/emails/{send,magic-link}.ts`; `/login`, `/auth/request/`, `/auth/verify/`, `/logout/`, `/dashboard/`; session + CSRF resolved in `src/middleware.ts`. `release:check` PASSED (63.6s); live AUTH SMOKE PASS (10/10); astro check 0 errors; vitest 21/21.
 - Next action:
-  1. Phase P2 — accounts & auth: port `src/lib/{session,crypto,csrf,password,totp,rate-limit,http}.ts` + magic-link, add `src/db/client.ts` (D1 `DB` binding) and session resolution in middleware.
-  2. Phase P3 — catalogue + free downloads (D1 + R2, `/api/download/<fileId>`).
-  3. Create the D1 database and bind `DB`; confirm plan §4 decisions (product-page cache, admin URL, EX5 build machine, TRON wallet + TronGrid key, licence max-accounts).
+  1. Phase P3 — catalogue + free downloads: seed the 13 products/plans/files into D1; R2 `free/` prefix; `/api/download/<fileId>` gated streaming.
+  2. Phase P4 — payments: Stripe hosted checkout + webhook; wire the USDT TRC20 engine + the 60s cron.
+  3. Confirm plan §4 decisions (product-page cache, admin URL, EX5 build machine, TRON wallet + TronGrid key, licence max-accounts).
 - Blockers: none
 - Resume: reopen this project and run `cmd -c`, or `cmd -r "<session name>"`. Run `/checkpoint` before stopping.
 
@@ -497,23 +497,21 @@ wrapper was not keyboard-reachable (axe `scrollable-region-focusable`, WCAG
 
 ## Next task
 
-**Phase P2 — accounts & authentication** (P0 and P1 are DONE; the content rollout is
-paused until Phase R).
+**Phase P3 — catalogue & free downloads** (P0–P2 are DONE; the content rollout is paused
+until Phase R).
 
-Done: **P0** — D1 schema (30 tables incl. licensing + USDT), the USDT engine + 21 tests,
-Drizzle migration. **P1** — Astro SSR on Cloudflare: `@astrojs/cloudflare` adapter,
-static-by-default (219 pages prerendered, 404 on demand → Worker built), redirects in
-`src/middleware.ts`, gates retargeted to `dist/client`, `wrangler.jsonc` slimmed, old
-`worker/index.ts` retired. `release:check` PASSED (68.4s); `check:preview` PASS. The repo
-is now git-tracked (baseline `b268d03`).
+Done: **P0** D1 schema + USDT engine + tests. **P1** Astro SSR on Cloudflare (static
+site, middleware redirects, gates on `dist/client`). **P2** passwordless accounts: D1
+`bestmt4ea` + `DB` binding, session/CSRF libs, magic-link auth, `/login` `/auth/*`
+`/logout` `/dashboard`, session resolution in middleware. Repo is git-tracked (`b268d03`
+baseline, `e587665` P1).
 
-Next: **P2** — port `src/lib/{session,crypto,csrf,password,totp,rate-limit,http}.ts` and
-the magic-link login flow; add `src/db/client.ts` + the D1 `DB` binding; resolve the
-session in `src/middleware.ts`. Then **P3** — catalogue + free downloads.
+Next: **P3** — seed the 13 products + plans + files into D1, store free EA files under the
+R2 `free/` prefix, and add `/api/download/<fileId>` (session-required, entitlement-gated,
+streamed — never a public R2 URL). Then **P4** — payments.
 
-Infra still to create: the D1 database (`wrangler d1 create bestmt4ea`) and the `DB`
-binding. Confirm plan §4: product-page cache length, admin URL, EX5 build machine, TRON
-wallet + TronGrid key, licence max-accounts policy.
+Confirm plan §4: product-page cache length, admin URL, EX5 build machine, TRON wallet +
+TronGrid key, licence max-accounts policy.
 
 ## Phase P1 — Astro SSR on Cloudflare (DONE 2026-10-03)
 
@@ -538,3 +536,31 @@ Verification: `npm run release:check` — **PASSED (68.4s)**, all steps green. `
 check:preview` against `wrangler dev` — **PASS**: legacy redirect fires (301), emoji
 routes serve with one canonical each, unknown path 404s, `/shop` canonicalises. `astro
 check` 0 errors; `vitest` 21/21.
+
+## Phase P2 — accounts & passwordless auth (DONE 2026-10-03)
+
+- **D1 live.** Created the `bestmt4ea` D1 database (region APAC,
+  `5e9ca777-3a9b-486c-9229-30e7d3237447`), bound as `DB` with `migrations_dir: drizzle`;
+  added the `EMAIL` (Cloudflare Email Service) binding and `APP_URL` / `EMAIL_FROM_*` vars.
+  `npm run types` regenerates `worker-configuration.d.ts` after any `wrangler.jsonc` change.
+- **`src/db/client.ts`** — one `getDb()` over the D1 binding, plus `dbBatch()`.
+- **Ported primitives** (cookie names adapted to `bmt4_*`): `src/lib/{session,csrf,
+  rate-limit,password,http}.ts`.
+- **`src/server/auth.ts`** — passwordless magic-link + one-time code: `requestLogin`
+  (HMAC-hashed token/code, 15-min TTL), `consumeTokenByLink` / `consumeTokenByCode`, and
+  `upsertCustomer`. Customers have **no password** at all.
+- **`src/emails/{send,magic-link}.ts`** — sends via the `EMAIL` binding, logs every attempt
+  to `email_logs`, and degrades to a console log when the binding is absent.
+- **Routes**: `/login`, `POST /auth/request/`, `GET /auth/verify/`, `GET /logout/`,
+  `/dashboard/` (session-gated). All `prerender = false`; the new slugs are in
+  `RESERVED_SLUGS`.
+- **`src/middleware.ts`** now resolves the session (from D1) and a CSRF token on every
+  on-demand request, after the redirect manifest.
+
+Verification: `npm run release:check` — **PASSED (63.6s)**. `astro check` 0 errors;
+`vitest` 21/21. Live `wrangler dev` **AUTH SMOKE PASS (10/10)**: login page + CSRF cookie,
+magic-link request (303 `sent=1`), bad token rejected, valid token → session, dashboard
+renders and greets, anonymous visitor redirected to `/login/`, logout redirects.
+
+> Deliberately **not** in P2: admin TOTP / recovery codes (they land with the admin
+> platform, P7) and Turnstile wiring (with checkout, P4).

@@ -27,6 +27,10 @@ export const RESERVED_SLUGS = new Set([
   'category',
   'free-download-forex-ea-indicator',
   'licences',
+  'login',
+  'logout',
+  'dashboard',
+  'auth',
 ]);
 
 /**
