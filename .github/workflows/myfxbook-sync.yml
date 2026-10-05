@@ -11,12 +11,10 @@ name: Myfxbook performance sync
 #   MYFXBOOK_SESSION      optional; enables the monthly breakdown (403s anonymously)
 
 on:
-  schedule:
-    # Once every 24 hours. Product pages are server-rendered and read the newest
-    # snapshot per request (5-minute edge cache), so one run a day is all the
-    # freshness the live figures need. The monthly chart Myfxbook serves is
-    # intermittent, so a missed month on one run is recovered on the next.
-    - cron: '0 0 * * *' # daily, 00:00 UTC
+  # No schedule: Myfxbook returns 403 to GitHub's runner IPs on every attempt, so a
+  # scheduled run only fails. Collect from a normal connection instead
+  # (scripts/local/collect-myfxbook.cmd), then publish with scripts/sync-myfxbook.mjs.
+  # Re-add a `schedule:` here if the collector ever moves somewhere Myfxbook allows.
   workflow_dispatch: {}
 
 concurrency:
