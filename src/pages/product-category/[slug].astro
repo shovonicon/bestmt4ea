@@ -24,7 +24,17 @@ const { catName } = Astro.props;
 const { slug } = Astro.params;
 
 const all = await getPublicProducts();
-const products = all.filter((p) => p.data.productCategories.includes(catName));
+const matched = all.filter((p) => p.data.productCategories.includes(catName));
+
+/**
+ * WooCommerce's "Forex Robot" category held the whole EA catalogue, and dozens
+ * of old URLs 301 onto it â€” but our imported product frontmatter does not carry
+ * that name, so an exact match is empty. Fall back to the catalogue (minus the
+ * VPS, which is a service, not a robot) rather than shipping an empty archive
+ * that search engines and old backlinks already point at.
+ */
+const products = matched.length > 0 ? matched : all.filter((p) => p.data.slug !== 'vps');
+const isFallback = matched.length === 0;
 ---
 
 <BaseLayout
@@ -43,7 +53,9 @@ const products = all.filter((p) => p.data.productCategories.includes(catName));
     <p class="eyebrow mt-6">{slug}</p>
     <h1 class="mt-2 text-3xl md:text-4xl">{catName}</h1>
     <p class="mt-4 max-w-2xl text-sm leading-7 text-[--color-ink-dim]">
-      {products.length} product{products.length === 1 ? '' : 's'} in this category.
+      {isFallback
+        ? `Every expert advisor in the catalogue, ${products.length} in total.`
+        : `${products.length} product${products.length === 1 ? '' : 's'} in this category.`}
     </p>
 
     <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

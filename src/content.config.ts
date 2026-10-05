@@ -95,8 +95,6 @@ const products = defineCollection({
     priceMax: z.number().optional(),
     sku: z.string().optional(),
     stockStatus: z.string().optional(),
-    ratingAverage: z.number().optional(),
-    ratingCount: z.number().int().optional(),
     productType: z.enum(['simple', 'variable', 'grouped', 'external', 'unknown']).default('unknown'),
     variants: z
       .array(

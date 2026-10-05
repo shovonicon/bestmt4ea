@@ -1,0 +1,64 @@
+---
+/**
+ * Per-month gain as columns, in the Myfxbook style: a zero line with gaining
+ * months rising (emerald) and losing months hanging below it (red).
+ *
+ * Only months built from real synced captures are plotted — no month appears
+ * without data. Pure CSS, no chart library, and the month table underneath
+ * carries the same figures for assistive tech.
+ */
+export interface Props {
+  monthly: Array<{ label: string; gain: string; value: number }>;
+}
+
+const { monthly = [] } = Astro.props;
+const maxAbs = Math.max(1, ...monthly.map((m) => Math.abs(m.value)));
+const height = (value: number) => `${Math.max(4, (Math.abs(value) / maxAbs) * 100)}%`;
+const summary = `Monthly gain: ${monthly.map((m) => `${m.label} ${m.gain}`).join(', ')}.`;
+---
+
+<figure class="panel p-6">
+  <p class="eyebrow">Monthly gain</p>
+  <div class="monthly-scroll mt-4 overflow-x-auto pt-1" role="region" tabindex="0" aria-label={summary}>
+    <div class="flex min-w-full items-end gap-2">
+      {
+        monthly.map((month) => {
+          const positive = month.value >= 0;
+          return (
+            <div class="flex min-w-[3rem] flex-1 flex-col items-center">
+              <span
+                class:list={[
+                  'mb-1 whitespace-nowrap text-[0.6875rem] font-bold',
+                  positive ? 'text-[#34d399]' : 'text-[#f87171]',
+                ]}
+              >
+                {month.gain}
+              </span>
+              <div class="flex h-20 w-full items-end justify-center">
+                {positive && (
+                  <span
+                    class="block w-3/5 rounded-t bg-gradient-to-t from-[#00c190] to-[#00e0a8]"
+                    style={`height:${height(month.value)}`}
+                  />
+                )}
+              </div>
+              <div class="h-px w-full bg-[--color-line]" aria-hidden="true" />
+              <div class="flex h-20 w-full items-start justify-center">
+                {!positive && (
+                  <span
+                    class="block w-3/5 rounded-b bg-gradient-to-b from-[#ef4444] to-[#f87171]"
+                    style={`height:${height(month.value)}`}
+                  />
+                )}
+              </div>
+              <span class="mt-2 whitespace-nowrap text-[0.6875rem] text-[--color-ink-dim]">{month.label}</span>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+  <figcaption class="mt-3 text-xs text-[--color-ink-dim]">
+    Gain per calendar month from the synchronized account history. Green months gained, red months gave back.
+  </figcaption>
+</figure>

@@ -626,6 +626,8 @@ export const performanceSnapshots = sqliteTable(
     profitFactor: text('profit_factor'),
     winRatePct: text('win_rate_pct'),
     openTrades: integer('open_trades'),
+    /** The full Myfxbook metric set for this capture (labels + formatted values). */
+    raw: text('raw', { mode: 'json' }).$type<Record<string, unknown>>(),
     createdAt: createdAt(),
   },
   (t) => [

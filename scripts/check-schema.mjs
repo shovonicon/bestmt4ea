@@ -8,7 +8,10 @@
  *
  *   Product   — offers, when present, carry a positive price; availability comes
  *               only from the allowed schema.org set; images are absolute; the
- *               site is never named as the brand.
+ *               site is never named as the brand; and no `aggregateRating` is
+ *               emitted. This site has no review corpus to substantiate one, and
+ *               Google's review-snippet policy requires rating markup to be
+ *               backed by reviews a visitor can actually read.
  *   Article   — url equals the page canonical, publisher carries a logo, an
  *               author exists, and `dateModified` matches the content's own
  *               `updatedAt` (never build time).
@@ -76,6 +79,30 @@ function contentDates() {
 
 const dates = contentDates();
 
+/**
+ * Product pages are server-rendered, so they never land in dist/ — the walk
+ * below reports 0 Product nodes and cannot police them. The no-rating rule is
+ * asserted against the schema source instead, where a rating node would have to
+ * be authored. `aggregateRating:` with its colon only matches real code, never
+ * the prose in a comment.
+ */
+function sourceFiles(dir, out = []) {
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const full = join(dir, entry.name);
+    if (entry.isDirectory()) sourceFiles(full, out);
+    else if (/\.(ts|astro)$/.test(entry.name)) out.push(full);
+  }
+  return out;
+}
+
+for (const file of sourceFiles('src')) {
+  if (/aggregateRating\s*:/.test(readFileSync(file, 'utf8'))) {
+    errors.push(
+      `${file}: authors an aggregateRating node — rating markup must be backed by reviews published on the page`,
+    );
+  }
+}
+
 function routeOf(file) {
   const rel = relative(DIST, file).replace(/\\/g, '/');
   if (rel === 'index.html') return '/';
@@ -109,6 +136,11 @@ for (const file of htmlFiles()) {
 
     if (block?.['@type'] === 'Product') {
       productPages++;
+      if ('aggregateRating' in block) {
+        errors.push(
+          `${label}: Product carries aggregateRating — rating markup must be backed by reviews published on the page`,
+        );
+      }
       const offers = block.offers;
       if (offers) {
         const price = offers.price;
@@ -168,5 +200,5 @@ if (errors.length > 0) {
 
 console.log(
   `check-schema PASS: ${productPages} Product, ${articlePages} Article, ${websiteNodes} WebSite node(s) valid ` +
-    '(no zero prices, no invented availability or brand, no build-time dates).',
+    '(no zero prices, no invented availability or brand, no unbacked rating markup, no build-time dates).',
 );

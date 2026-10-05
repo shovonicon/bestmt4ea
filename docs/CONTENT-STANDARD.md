@@ -86,13 +86,13 @@ padding it to a word count makes it worse at its job.
 
 **Required on every product page:**
 
-- **A metrics panel** built from the real figures in `src/lib/performance.ts` —
-  return, drawdown, profit factor, trade count — each shown with the date it was
-  checked.
-- **A chart drawn from real data** (`ProductChart`): this system against the rest of
-  the catalogue on return versus maximum drawdown. **Never draw a curve, sparkline
-  or equity series we do not actually have.** An invented chart is a false claim and
-  is treated as a policy violation, not a design choice.
+- **A live performance panel** built from the real figures — gain, max drawdown,
+  profit factor and win rate (or trade count), plus balance, equity, profit and open
+  trades when the collector supplies them — each shown with the time it was checked.
+  Figures come from D1 (`performance_snapshots`, written by the MyFxBook collector);
+  the transcribed record is the fallback. **Never invent a figure, a curve or a
+  sparkline** — an invented number is a false claim and is treated as a policy
+  violation, not a design choice.
 - **A specifications table**: platform, strategy, licence tiers, minimum capital,
   price and currency.
 - **Account type stated** — live or demo. A demo record is never presented as live.
@@ -122,6 +122,17 @@ Both platforms police financial marketing. These are hard bans.
 - Demo-first advice — test before risking real money.
 - The real licence and source for any third-party file.
 - YMYL-grade E-E-A-T: a named author box, cited sources, visible dates.
+
+**Reviews, ratings and testimonials** (Google review-snippet policy + FTC endorsements).
+This is the area where the old WordPress store fails hardest, so it is spelled out:
+
+- **Publish only words the customer wrote and confirmed.** AI-assisted wording, invented quotes, and quotes carried over from another site are all banned. The disclaimer line "quotes from verified owners on strivealgo.com and bestmt4ea.com" was a confession, not a defence.
+- **Never attribute a quote to a named "verified owner" you cannot tie to an order.** A name plus a location plus "Verified owner" is an endorsement; if it is not real it is a misrepresentation.
+- **No duplicate review text.** The same review under two names, or one reviewer's words reused across products, is both a spam signal and an actionable breach.
+- **No profit claims in a review or testimonial** — the same rule as §4 above. "$30,000 hit $40,000 in one month" cannot carry a genuine quote.
+- **No rating markup without readable reviews behind it.** `aggregateRating` may only be emitted when the reviews it summarises are published on the same page, so `check-schema` fails the build if any Product carries one. A rating count is not a review: the old store showed 11 ratings against 2 reviews on one product, and 3 ratings on a product whose own page said "There are no reviews yet". Neither figure may be displayed — on the page *or* in structured data.
+- **Where the data lives.** `src/data/reviews.json` holds the 100 order-derived drafts at `status: "draft"` — admin-only at `/admin/reviews/`, never rendered publicly. `src/data/site-reviews.json` is a record of what the live store published, kept for provenance, not publishable copy. Publishing a review means setting `status: "approved"` after the named customer confirms the wording.
+- **The imported rating counts are now inert.** `ratingAverage`/`ratingCount` were dropped from the product schema and from `seo.ts`, so nothing can read them. The legacy keys still sit in the 13 product frontmatter files purely so those content files stay byte-identical to the content baseline; they are ignored on parse. Strip them in the Phase R rewrite of those pages, not in an infra change — deleting them here turns 13 untouched product pages into "changed" content and drags their pre-existing debt into the changed-content gate.
 
 ---
 

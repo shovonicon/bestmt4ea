@@ -1,12 +1,18 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import RankingTable from '../../components/RankingTable.astro';
+import ComparisonRegistry from '../../components/ComparisonRegistry.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import CountUp from '../../components/CountUp.astro';
+import Faq from '../../components/Faq.astro';
 import { getPerformance } from '../../lib/performance';
-import { RISK_DISCLAIMER } from '../../lib/site';
+import { RISK_DISCLAIMER, site } from '../../lib/site';
 import { monthYear, performanceVerifiedAt } from '../../lib/dates';
 import { formatDate } from '../../lib/format';
 import { getPublicProducts } from '../../lib/content';
 import { url } from '../../lib/urls';
+import { breadcrumbSchema, breadcrumbTrail, faqSchema } from '../../lib/seo';
+import siteStats from '../../data/site-stats.json';
 import taxonomies from '../../data/taxonomies.json';
 
 /**
@@ -15,7 +21,7 @@ import taxonomies from '../../data/taxonomies.json';
  * This is the highest-value commercial page on the site: it captures head-term
  * comparison intent ("best forex EA", "top MT4 robots") and routes it to the
  * product pages. bestforexeas.com derives most of its 42k monthly traffic from
- * a page like this.
+ * a page like this — so every row carries a licence price and a purchase CTA.
  */
 const products = await getPublicProducts();
 
@@ -27,53 +33,142 @@ const withLive = perfSorted.filter((r) => r.perf?.isLiveAccount);
 const withDemo = perfSorted.filter((r) => r.perf?.accountType === 'demo');
 const verified = perfSorted.filter((r) => r.perf?.verified);
 
+// The three leaders by verified monthly return — only rows with a real figure.
+const leaders = perfSorted.filter((r) => r.perf?.monthlyGainPct != null).slice(0, 3).map((r) => r.product);
+
 const cats = ((taxonomies as any).productCategories ?? []) as { name: string; slug: string }[];
+const catsWithCounts = cats.map((cat) => ({
+  ...cat,
+  count: products.filter((p: any) => p.data.productCategories?.includes(cat.name)).length,
+}));
+
+const stats = [
+  { label: 'Systems ranked', value: String(products.length) },
+  { label: 'Third-party verified', value: String(verified.length) },
+  { label: 'On live accounts', value: String(withLive.length) },
+  { label: 'On demo accounts', value: String(withDemo.length) },
+];
+
+const trail = breadcrumbTrail([
+  { name: 'Home', href: '/' },
+  { name: 'Top ranking', href: url('/top-ranking') },
+]);
+
+const faqs = [
+  {
+    question: 'How are these systems ranked?',
+    answer:
+      'By verified compound monthly return, taken from the third-party tracking account published on each product page. Drawdown is shown beside the return rather than averaged away, and the account type is stated on every row, so a demo record is never presented as live.',
+  },
+  {
+    question: 'What does "verified" mean on this page?',
+    answer:
+      'It means a third-party tracking account exists for that system and the figures shown are read from it. Where the tracked account holds demo funds rather than live money, the row says Demo. Systems with no published account carry no performance figures at all.',
+  },
+  {
+    question: 'Should I just buy the top-ranked system?',
+    answer:
+      'No. Rank is one input. A system returning 20% a month at 80% drawdown is a different proposition from one returning 6% at 5%, and the minimum account size and licence price differ too. Check the drawdown, the account type, the recommended minimum balance and the price on each row before deciding.',
+  },
+  {
+    question: 'How do I buy a licence?',
+    answer:
+      'Every row has a Get licence button that opens the licence panel on that system\u2019s page, where you choose the tier and see the price. Card and USDT (TRC20) are both accepted through Stripe at checkout, and the licence and download are delivered to your BestMT4EA dashboard.',
+  },
+];
 ---
 
 <BaseLayout
   title={`Top Forex Expert Advisors ${monthYear} — Ranked and Verified`}
-  description="Ranked comparison of MT4 and MT5 expert advisors by verified monthly return, maximum drawdown and absolute gain. Account type shown for every system, live or demo."
+  description="Ranked comparison of MT4 and MT5 expert advisors by verified monthly return, maximum drawdown and absolute gain, with the licence price on every row. Account type stated for every system, live or demo."
+  ogImage="/media/products/forex-windows-vps.png"
+  jsonLd={[breadcrumbSchema(trail), faqSchema(faqs)]}
 >
-  <div class="container-x py-14">
-    <p class="eyebrow">Rankings · Performance verified {formatDate(performanceVerifiedAt)}</p>
-    <h1 class="mt-2 text-3xl md:text-4xl">Top expert advisors, ranked by verified monthly return</h1>
-    <p class="mt-5 max-w-3xl text-base leading-7 text-[--color-ink-soft]">
-      Every figure in this table comes from the third-party tracking account linked on each product page. We rank on
-      monthly return, but we publish drawdown beside it, because a system returning 20% a month at 80% drawdown is a
-      different proposition from one returning 6% at 5%.
-    </p>
+  <section class="relative overflow-hidden">
+    <div class="glow-orb animate-aurora left-1/2 top-[-14rem] h-[22rem] w-[34rem] -translate-x-1/2 bg-emerald-500/20"
+    ></div>
+    <div class="grid-overlay pointer-events-none absolute inset-0"></div>
 
-    <dl class="mt-10 grid grid-cols-2 gap-6 border-y border-[--color-line] py-8 md:grid-cols-4">
-      <div>
-        <dt class="metric-label">Systems ranked</dt>
-        <dd class="metric-value mt-2 text-3xl">{products.length}</dd>
-      </div>
-      <div>
-        <dt class="metric-label">Third-party verified</dt>
-        <dd class="metric-value mt-2 text-3xl">{verified.length}</dd>
-      </div>
-      <div>
-        <dt class="metric-label">On live accounts</dt>
-        <dd class="metric-value mt-2 text-3xl">{withLive.length}</dd>
-      </div>
-      <div>
-        <dt class="metric-label">On demo accounts</dt>
-        <dd class="metric-value mt-2 text-3xl">{withDemo.length}</dd>
-      </div>
-    </dl>
+    <div class="container-x relative py-16">
+      <p class="eyebrow animate-fade-in-up">
+        Rankings · Performance verified {formatDate(performanceVerifiedAt)}
+      </p>
+      <h1 class="animate-fade-in-up-delay-1 mt-3 max-w-4xl text-3xl font-bold leading-tight md:text-5xl">
+        Top expert advisors, ranked by verified monthly return
+      </h1>
+      <p class="animate-fade-in-up-delay-2 mt-5 max-w-3xl text-base leading-8 text-[--color-ink-soft]">
+        Every figure in this table comes from the third-party tracking account linked on each product page. We rank on
+        monthly return, but we publish drawdown, account type and the licence price beside it — because a system
+        returning 20% a month at 80% drawdown is a different proposition from one returning 6% at 5%.
+      </p>
 
-    <section class="mt-12">
-      <h2 class="text-2xl">Full ranking</h2>
-      <div class="mt-6">
-        <RankingTable products={products} caption="Ranked expert advisors by verified monthly return" />
+      <div class="animate-fade-in-up-delay-3 mt-8 flex flex-wrap items-center gap-3">
+        <a href={url('/shop')} class="btn btn-primary !px-7 !py-3.5 !text-base">Browse the EA library</a>
+        <a href={url('/best-forex-brokers')} class="btn btn-ghost !px-6 !py-3.5 !text-base">Compare brokers</a>
       </div>
-      <p class="mt-4 text-xs leading-6 text-[--color-ink-dim]">{RISK_DISCLAIMER}</p>
+
+      <div class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-[--color-ink-dim]">
+        <span class="inline-flex items-center gap-2">
+          <span>{siteStats.customers} customers</span>
+        </span>
+        <span>{verified.length} third-party tracked</span>
+        <span>Checked {formatDate(performanceVerifiedAt)}</span>
+      </div>
+
+      <div class="stats-panel reveal mt-12">
+        {
+          stats.map((stat) => (
+            <div class="stats-panel-item">
+              <div class="mb-3 flex items-center justify-center gap-2">
+                <span class="live-dot" />
+                <span class="metric-label">{stat.label}</span>
+              </div>
+              <div class="display-stat text-2xl sm:text-3xl">
+                <CountUp value={stat.value} />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <div class="container-x pb-20">
+    <section aria-labelledby="ranking-heading">
+      <SectionHead
+        kicker="Full ranking"
+        title="Every system, side by side"
+        lead="Sorted by compound monthly return. Scroll the table sideways on a phone — or use the cards below for the three leaders."
+        id="ranking-heading"
+      />
+      <div class="reveal mt-8">
+        <ComparisonRegistry products={products} />
+      </div>
+      <p class="mt-4 max-w-3xl text-xs leading-6 text-[--color-ink-dim]">{RISK_DISCLAIMER}</p>
     </section>
 
-    <section class="mt-14 grid gap-8 md:grid-cols-2">
-      <div class="panel p-6">
-        <h2 class="text-lg">How we rank</h2>
-        <ol class="mt-4 space-y-3 text-sm leading-7 text-[--color-ink-soft]">
+    {
+      leaders.length > 0 && (
+        <section class="mt-20" aria-labelledby="leaders-heading">
+          <SectionHead
+            kicker="The leaders"
+            title="The three highest verified monthly returns"
+            lead="Each card carries the tracked figures, the minimum balance and the licence price."
+            id="leaders-heading"
+          />
+          <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {leaders.map((product: any) => (
+              <ProductCard product={product} />
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <section class="mt-20 grid gap-6 md:grid-cols-2" aria-labelledby="how-heading">
+      <div class="panel reveal p-7">
+        <h2 id="how-heading" class="text-xl font-bold text-[--color-ink]">How we rank</h2>
+        <ol class="mt-5 space-y-4 text-sm leading-7 text-[--color-ink-soft]">
           <li>
             <strong class="text-[--color-ink]">1. Verified data only.</strong> A system only appears with figures once a
             third-party tracking account exists for it.
@@ -92,26 +187,77 @@ const cats = ((taxonomies as any).productCategories ?? []) as { name: string; sl
         </ol>
       </div>
 
-      <div class="panel p-6">
-        <h2 class="text-lg">Browse by category</h2>
-        <ul class="mt-4 space-y-2.5 text-sm">
+      <div class="panel reveal p-7">
+        <h2 class="text-xl font-bold text-[--color-ink]">Browse by category</h2>
+        <ul class="mt-5 space-y-3 text-sm">
           {
-            cats.map((cat) => (
+            catsWithCounts.map((cat) => (
               <li>
-                <a href={url(`/product-category/${cat.slug}`)} class="text-[--color-ink-soft] hover:text-[--color-accent]">
-                  {cat.name}
+                <a
+                  href={url(`/product-category/${cat.slug}`)}
+                  class="flex items-center justify-between gap-3 text-[--color-ink-soft] hover:text-[--color-accent]"
+                >
+                  <span>{cat.name}</span>
+                  <span class="badge">{cat.count}</span>
                 </a>
               </li>
             ))
           }
           <li>
-            <a href={url('/brand/mt4')} class="text-[--color-ink-soft] hover:text-[--color-accent]">MT4 expert advisors</a>
+            <a
+              href={url('/brand/mt4')}
+              class="flex items-center justify-between gap-3 text-[--color-ink-soft] hover:text-[--color-accent]"
+            >
+              <span>MT4 expert advisors</span>
+              <span class="badge">{products.filter((p: any) => p.data.brands?.includes('MT4')).length}</span>
+            </a>
           </li>
           <li>
-            <a href={url('/brand/mt5')} class="text-[--color-ink-soft] hover:text-[--color-accent]">MT5 expert advisors</a>
+            <a
+              href={url('/brand/mt5')}
+              class="flex items-center justify-between gap-3 text-[--color-ink-soft] hover:text-[--color-accent]"
+            >
+              <span>MT5 expert advisors</span>
+              <span class="badge">{products.filter((p: any) => p.data.brands?.includes('MT5')).length}</span>
+            </a>
           </li>
         </ul>
       </div>
+    </section>
+
+    <section class="mt-20" aria-labelledby="brokers-cta-heading">
+      <div class="brand-card reveal overflow-hidden p-8 sm:p-12">
+        <div class="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          <div class="max-w-2xl">
+            <span class="eyebrow inline-flex items-center gap-2">
+              <span class="live-dot"></span>Before you buy
+            </span>
+            <h2 id="brokers-cta-heading" class="mt-4 text-2xl font-bold sm:text-3xl">
+              The broker matters as much as the EA
+            </h2>
+            <p class="mt-3 text-sm leading-7 text-[--color-ink-dim]">
+              Scalping systems are sensitive to spread and execution. Compare regulation, minimum deposit, platforms and
+              account types for the brokers we test on before you choose where to run one.
+            </p>
+          </div>
+          <a href={url('/best-forex-brokers')} class="btn btn-primary shrink-0">Compare brokers</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-20" aria-labelledby="ranking-faq-heading">
+      <SectionHead
+        kicker="Questions"
+        title="How to read this ranking"
+        id="ranking-faq-heading"
+      />
+      <div class="mt-8 max-w-3xl">
+        <Faq items={faqs} heading="Frequently asked questions" />
+      </div>
+      <p class="mt-8 text-sm text-[--color-ink-dim]">
+        Need help picking? Message us on
+        <a href={site.telegram.support} rel="noopener" class="text-[--color-accent]">Telegram</a>.
+      </p>
     </section>
   </div>
 </BaseLayout>

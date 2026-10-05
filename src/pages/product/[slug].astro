@@ -2,28 +2,86 @@
 export const prerender = false;
 
 import { getCollection } from 'astro:content';
+import { and, desc, eq, isNull } from 'drizzle-orm';
 import ProductLayout from '../../layouts/ProductLayout.astro';
+import VpsLayout from '../../layouts/VpsLayout.astro';
+import { isFreeProduct, isUnpublishedProduct } from '../../lib/content';
 import { getDb } from '../../db/client';
-import { getLatestSnapshot } from '../../server/performance';
+import { reviews as reviewsTable } from '../../db/schema';
+import { getLatestSnapshot, getSeries } from '../../server/performance';
 
 const slug = Astro.params.slug ?? '';
 const products = await getCollection('products');
 const product = products.find((entry) => entry.data.slug === slug);
-if (!product) return new Response(null, { status: 404 });
+// A withdrawn product 404s here; the Worker's redirect manifest serves the 301
+// from its old URL to `redirectTo` in src/data/unpublished.json.
+if (!product || isUnpublishedProduct(slug)) return new Response(null, { status: 404 });
+
+// Two relevant, paid alternatives. Never the product being viewed, never a free
+// product, and ranked by shared category first, then platform.
+const relevance = (entry: (typeof products)[number]) => {
+  const data = entry.data;
+  const sharedCategories = data.productCategories.filter((category) =>
+    product.data.productCategories.includes(category),
+  ).length;
+  const samePlatform = data.platform === product.data.platform ? 1 : 0;
+  return sharedCategories * 1000 + samePlatform * 100;
+};
 
 const related = products
-  .filter(
-    (entry) =>
-      entry.data.slug !== product.data.slug &&
-      entry.data.productCategories.some((category) => product.data.productCategories.includes(category)),
-  )
-  .slice(0, 3);
+  .filter((entry) => entry.data.slug !== product.data.slug && !isFreeProduct(entry))
+  .sort((a, b) => relevance(b) - relevance(a))
+  .slice(0, 2);
 
-// Live MyFxBook figures when the collector has written some; the layout falls
-// back to the transcribed editorial record when it has not.
+// The VPS we recommend for running the system — omitted on the VPS page itself.
+const vps = products.find((entry) => entry.data.slug === 'vps' && entry.data.slug !== product.data.slug) ?? null;
+
+// Live MyFxBook figures, the real growth series, and any published customer
+// reviews. The transcribed editorial record is the fallback when nothing is live.
 let live = null;
+let series: Array<{ capturedAt: number; growthPct: string | null; profitCents: number | null }> = [];
+let productReviews: Array<{ rating: number; body: string; name: string; createdAt: number }> = [];
 try {
-  live = await getLatestSnapshot(getDb(), product.data.slug);
+  const db = getDb();
+  live = await getLatestSnapshot(db, product.data.slug);
+  const rows = await getSeries(db, product.data.slug, 500);
+  series = rows
+    .map((row) => ({
+      capturedAt: row.capturedAt.getTime(),
+      growthPct: row.growthPct,
+      profitCents: row.profitCents,
+    }))
+    .sort((a, b) => a.capturedAt - b.capturedAt);
+
+  // Myfxbook serves the monthly breakdown intermittently, so the newest capture can
+  // arrive without it while still carrying current summary and trade figures. Fall
+  // back to the most recent capture that DID include the chart, rather than blanking
+  // the Monthly log for a day. The chart is month-by-month, so a day or two of lag
+  // on it is not a stale figure.
+  const monthsOf = (raw: Record<string, unknown> | null | undefined) =>
+    Array.isArray((raw as { monthly?: unknown } | null | undefined)?.monthly)
+      ? ((raw as { monthly: unknown[] }).monthly)
+      : [];
+
+  if (live && monthsOf(live.raw).length === 0) {
+    const withMonths = rows.find((row) => monthsOf(row.raw).length > 0);
+    if (withMonths) {
+      live = { ...live, raw: { ...(live.raw ?? {}), monthly: monthsOf(withMonths.raw) } };
+    }
+  }
+
+  const published = await db
+    .select()
+    .from(reviewsTable)
+    .where(and(eq(reviewsTable.productId, product.data.slug), isNull(reviewsTable.hiddenAt)))
+    .orderBy(desc(reviewsTable.createdAt))
+    .all();
+  productReviews = published.map((row) => ({
+    rating: row.rating,
+    body: row.body,
+    name: row.reviewerName ?? 'Verified customer',
+    createdAt: row.createdAt.getTime(),
+  }));
 } catch (error) {
   console.error('product_live_performance_failed', error);
 }
@@ -31,4 +89,18 @@ try {
 Astro.response.headers.set('cache-control', 'public, s-maxage=300, stale-while-revalidate=600');
 ---
 
-<ProductLayout product={product} related={related} live={live} />
+{
+  product.data.slug === 'vps' ? (
+    <VpsLayout product={product} />
+  ) : (
+    <ProductLayout
+      product={product}
+      related={related}
+      live={live}
+      series={series}
+      reviews={productReviews}
+      systems={products.length}
+      vps={vps}
+    />
+  )
+}

@@ -1,0 +1,422 @@
+{
+  "_note": "Real licence tiers per product, taken from the store's own product data. `price` is the current price; `compareAt` is the store's list price and is set ONLY where the store itself shows a discount. price 0 renders as Free. Keep content files untouched so the changed-content gate stays clean. Prices here come from each product page's own licence table — never invented.",
+  "onix-stratos-xauusd-ea-ai-smart-scalper-for-mt5": [
+    {
+      "code": "trial-30d",
+      "name": "Trial",
+      "term": "30 days · demo only",
+      "price": 0,
+      "badge": "Try it free",
+      "cta": "Start free trial",
+      "features": [
+        "Licence for any demo account",
+        "No real account",
+        "1 demo account",
+        "Activation period: 30 days"
+      ]
+    },
+    {
+      "code": "personal-12m",
+      "name": "Personal",
+      "term": "12 months",
+      "price": 349.99,
+      "badge": "Most affordable",
+      "cta": "Get 12 months",
+      "features": [
+        "Licence by account number",
+        "1 real account",
+        "Unlimited demo accounts",
+        "Activation period: 12 months"
+      ]
+    },
+    {
+      "code": "personal-lifetime",
+      "name": "Personal",
+      "term": "Lifetime",
+      "price": 999.99,
+      "compareAt": 1204.81,
+      "badge": "Most popular",
+      "cta": "Get lifetime",
+      "features": [
+        "Licence by account number",
+        "2 real accounts",
+        "Unlimited demo accounts",
+        "Lifetime activation"
+      ]
+    }
+  ],
+  "obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5": [
+    {
+      "code": "trial-30d",
+      "name": "Trial",
+      "term": "30 days · demo only",
+      "price": 0,
+      "badge": "Try it free",
+      "cta": "Start free trial",
+      "features": [
+        "Licence for any demo account",
+        "No real account",
+        "1 demo account",
+        "Activation period: 30 days"
+      ]
+    },
+    {
+      "code": "personal-12m",
+      "name": "Personal",
+      "term": "12 months",
+      "price": 279.99,
+      "badge": "Most affordable",
+      "cta": "Get 12 months",
+      "features": [
+        "Licence by account number",
+        "1 real account",
+        "Unlimited demo accounts",
+        "Activation period: 12 months"
+      ]
+    },
+    {
+      "code": "personal-lifetime",
+      "name": "Personal",
+      "term": "Lifetime",
+      "price": 797.99,
+      "badge": "Most popular",
+      "cta": "Get lifetime",
+      "features": [
+        "Licence by account number",
+        "2 real accounts",
+        "Unlimited demo accounts",
+        "Lifetime activation"
+      ]
+    }
+  ],
+  "zenith-matrix-ea-ai-gold-scalper-for-mt5": [
+    {
+      "code": "trial-30d",
+      "name": "Trial",
+      "term": "30 days · demo only",
+      "price": 0,
+      "badge": "Try it free",
+      "cta": "Start free trial",
+      "features": [
+        "Licence for any demo account",
+        "No real account",
+        "1 demo account",
+        "Activation period: 30 days"
+      ]
+    },
+    {
+      "code": "personal-12m",
+      "name": "Personal",
+      "term": "12 months",
+      "price": 329.99,
+      "badge": "Most affordable",
+      "cta": "Get 12 months",
+      "features": [
+        "Licence by account number",
+        "1 real account",
+        "Unlimited demo accounts",
+        "Activation period: 12 months"
+      ]
+    },
+    {
+      "code": "personal-lifetime",
+      "name": "Personal",
+      "term": "Lifetime",
+      "price": 899.99,
+      "badge": "Most popular",
+      "cta": "Get lifetime",
+      "features": [
+        "Licence by account number",
+        "2 real accounts",
+        "Unlimited demo accounts",
+        "Lifetime activation"
+      ]
+    }
+  ],
+  "nexora-manus-ea-ai-gold-scalper-for-mt5": [
+    {
+      "code": "trial-30d",
+      "name": "Trial",
+      "term": "30 days · demo only",
+      "price": 0,
+      "badge": "Try it free",
+      "cta": "Start free trial",
+      "features": [
+        "Licence for any demo account",
+        "No real account",
+        "1 demo account",
+        "Activation period: 30 days"
+      ]
+    },
+    {
+      "code": "personal-12m",
+      "name": "Personal",
+      "term": "12 months",
+      "price": 249.99,
+      "badge": "Most affordable",
+      "cta": "Get 12 months",
+      "features": [
+        "Licence by account number",
+        "1 real account",
+        "Unlimited demo accounts",
+        "Activation period: 12 months"
+      ]
+    },
+    {
+      "code": "personal-lifetime",
+      "name": "Personal",
+      "term": "Lifetime",
+      "price": 699.99,
+      "badge": "Most popular",
+      "cta": "Get lifetime",
+      "features": [
+        "Licence by account number",
+        "2 real accounts",
+        "Unlimited demo accounts",
+        "Lifetime activation"
+      ]
+    }
+  ],
+  "mythos-epic-ea-ai-gold-scalper-for-mt5": [
+    {
+      "code": "trial-30d",
+      "name": "Trial",
+      "term": "30 days · demo only",
+      "price": 0,
+      "badge": "Try it free",
+      "cta": "Start free trial",
+      "features": [
+        "Licence for any demo account",
+        "No real account",
+        "1 demo account",
+        "Activation period: 30 days"
+      ]
+    },
+    {
+      "code": "personal-12m",
+      "name": "Personal",
+      "term": "12 months",
+      "price": 299.99,
+      "badge": "Most affordable",
+      "cta": "Get 12 months",
+      "features": [
+        "Licence by account number",
+        "1 real account",
+        "Unlimited demo accounts",
+        "Activation period: 12 months"
+      ]
+    },
+    {
+      "code": "personal-lifetime",
+      "name": "Personal",
+      "term": "Lifetime",
+      "price": 849.99,
+      "badge": "Most popular",
+      "cta": "Get lifetime",
+      "features": [
+        "Licence by account number",
+        "2 real accounts",
+        "Unlimited demo accounts",
+        "Lifetime activation"
+      ]
+    }
+  ],
+  "equinox-cosmos-ea-ai-gbpjpy-scalper-for-mt5": [
+    {
+      "code": "trial-30d",
+      "name": "Trial",
+      "term": "30 days · demo only",
+      "price": 0,
+      "badge": "Try it free",
+      "cta": "Start free trial",
+      "features": [
+        "Licence for any demo account",
+        "No real account",
+        "1 demo account",
+        "Activation period: 30 days"
+      ]
+    },
+    {
+      "code": "personal-12m",
+      "name": "Personal",
+      "term": "12 months",
+      "price": 149.99,
+      "badge": "Most affordable",
+      "cta": "Get 12 months",
+      "features": [
+        "Licence by account number",
+        "1 real account",
+        "Unlimited demo accounts",
+        "Activation period: 12 months"
+      ]
+    },
+    {
+      "code": "personal-lifetime",
+      "name": "Personal",
+      "term": "Lifetime",
+      "price": 399.99,
+      "badge": "Most popular",
+      "cta": "Get lifetime",
+      "features": [
+        "Licence by account number",
+        "2 real accounts",
+        "Unlimited demo accounts",
+        "Lifetime activation"
+      ]
+    }
+  ],
+  "vps": [
+    {
+      "code": "vps-monthly",
+      "name": "Monthly",
+      "term": "1 month",
+      "months": 1,
+      "note": "Ideal for testing or short-term use.",
+      "price": 44.99,
+      "compareAt": 49.99,
+      "badge": "Try it out",
+      "cta": "Start monthly",
+      "features": [
+        "2 Intel Cores @ 2.0 GHz+",
+        "4 GB Guaranteed RAM",
+        "60 GB SSD storage",
+        "1 TB bandwidth · 1 Gbps network",
+        "Windows Server 2022 + RDP"
+      ]
+    },
+    {
+      "code": "vps-quarterly",
+      "name": "Quarterly",
+      "term": "3 months",
+      "months": 3,
+      "note": "Suitable for a medium-term commitment.",
+      "price": 119.99,
+      "compareAt": 149.99,
+      "badge": "Save 20%",
+      "cta": "Get 3 months",
+      "features": [
+        "2 Intel Cores @ 2.0 GHz+",
+        "4 GB Guaranteed RAM",
+        "60 GB SSD storage",
+        "1 TB bandwidth · 1 Gbps network",
+        "Windows Server 2022 + RDP"
+      ]
+    },
+    {
+      "code": "vps-semi-annual",
+      "name": "Semi-annual",
+      "term": "6 months",
+      "months": 6,
+      "note": "Best value for consistent, ongoing use.",
+      "price": 209.99,
+      "compareAt": 299.99,
+      "badge": "Best value",
+      "cta": "Get 6 months",
+      "features": [
+        "2 Intel Cores @ 2.0 GHz+",
+        "4 GB Guaranteed RAM",
+        "60 GB SSD storage",
+        "1 TB bandwidth · 1 Gbps network",
+        "Windows Server 2022 + RDP"
+      ]
+    },
+    {
+      "code": "vps-annual",
+      "name": "Annual",
+      "term": "12 months",
+      "months": 12,
+      "note": "Maximum savings for long-term dedicated use.",
+      "price": 359.99,
+      "compareAt": 599.99,
+      "badge": "Maximum savings",
+      "cta": "Get 12 months",
+      "features": [
+        "2 Intel Cores @ 2.0 GHz+",
+        "4 GB Guaranteed RAM",
+        "60 GB SSD storage",
+        "1 TB bandwidth · 1 Gbps network",
+        "Windows Server 2022 + RDP"
+      ]
+    }
+  ],
+  "ava-aigpt5-ea": [
+    {
+      "code": "trial-30d",
+      "name": "Trial",
+      "term": "30 days · demo only",
+      "price": 0,
+      "badge": "Try it free",
+      "cta": "Start free trial",
+      "features": [
+        "Licence for any demo account",
+        "No real account",
+        "1 demo account",
+        "Activation period: 30 days"
+      ]
+    },
+    {
+      "code": "personal-12m",
+      "name": "Personal",
+      "term": "12 months",
+      "price": 239.99,
+      "badge": "Most affordable",
+      "cta": "Get 12 months",
+      "features": [
+        "Licence by account number",
+        "1 real account",
+        "Unlimited demo accounts",
+        "Activation period: 12 months"
+      ]
+    },
+    {
+      "code": "personal-lifetime",
+      "name": "Personal",
+      "term": "Lifetime",
+      "price": 679.99,
+      "badge": "Most popular",
+      "cta": "Get lifetime",
+      "features": [
+        "Licence by account number",
+        "2 real accounts",
+        "Unlimited demo accounts",
+        "Lifetime activation"
+      ]
+    }
+  ],
+  "fxcore100-ea": [
+    {
+      "code": "lifetime",
+      "name": "Lifetime",
+      "term": "one payment",
+      "note": "Lifetime access to the EA, including free updates.",
+      "price": 7.99,
+      "compareAt": 10.99,
+      "badge": "Most popular",
+      "cta": "Get lifetime access",
+      "features": [
+        "Expert Advisor file (.ex4)",
+        "Free lifetime updates",
+        "Premium Telegram support",
+        "Licence activation for your account(s)"
+      ]
+    }
+  ],
+  "golden-deer-holy-grail-indicator": [
+    {
+      "code": "lifetime-premium",
+      "name": "Lifetime Premium",
+      "term": "one payment",
+      "note": "Lifetime premium access to the indicator.",
+      "price": 87.99,
+      "compareAt": 109.99,
+      "badge": "Most popular",
+      "cta": "Get lifetime access",
+      "features": [
+        "Indicator files (.ex4)",
+        "Installation guide",
+        "Recommended settings",
+        "Template files"
+      ]
+    }
+  ]
+}

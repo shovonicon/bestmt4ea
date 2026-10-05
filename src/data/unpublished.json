@@ -1,0 +1,6 @@
+{
+  "_note": "Products withdrawn from sale. Each slug is removed from every listing and the sitemap, its /product/<slug>/ route returns 404, and the Worker serves a 301 to `redirectTo`. Kept here rather than as `draft: true` in the markdown because the changed-content gate requires any edited product file to be fully compliant, and a legacy WordPress import is not — so the withdrawal is expressed in code that the listing helpers, the product route, scripts/routes.mjs and astro.config.mjs all read.",
+  "products": [
+    { "slug": "2000-trading-tools", "redirectTo": "/top-ranking/" }
+  ]
+}

@@ -30,8 +30,8 @@ Every post and every product review must satisfy all three. No exceptions.
 
 1. **3,500–7,500 words — posts only.** Long-form guides and article-style reviews.
    Below the floor they won't rank; above it, it's padding. **Product pages are
-   exempt**: they earn the buying decision with charts drawn from real data, specs,
-   licence tiers and honest limits instead — see §3b of the content standard.
+   exempt**: they earn the buying decision with live performance figures drawn from
+   real data, specs, licence tiers and honest limits instead — see §3b of the content standard.
 2. **A `download:` block on every post.** It must solve a real problem — an EA, indicator,
    preset, checklist, calculator or template. `origin: own` (ours, hosted) or
    `origin: opensource` (credited, with `author` + `sourceUrl`).

@@ -1,0 +1,49 @@
+name: Myfxbook performance sync
+
+# Drives the scheduled collector: a headless browser reads each public Myfxbook
+# account page and POSTs a snapshot to the app's ingest endpoint. Myfxbook 403s
+# plain server-side fetches, which is why this runs in a real browser rather
+# than inside the Cloudflare Worker.
+#
+# Required repository secrets:
+#   BESTMT4EA_INGEST_URL  e.g. https://bestmt4ea.com
+#   PERF_INGEST_TOKEN     the same secret the Worker holds
+#   MYFXBOOK_SESSION      optional; enables the monthly breakdown (403s anonymously)
+
+on:
+  schedule:
+    # Once every 24 hours. Product pages are server-rendered and read the newest
+    # snapshot per request (5-minute edge cache), so one run a day is all the
+    # freshness the live figures need. The monthly chart Myfxbook serves is
+    # intermittent, so a missed month on one run is recovered on the next.
+    - cron: '0 4 * * *' # daily, 04:00 UTC
+  workflow_dispatch: {}
+
+concurrency:
+  group: myfxbook-sync
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Collect and ingest
+        env:
+          INGEST_URL: ${{ secrets.BESTMT4EA_INGEST_URL }}
+          PERF_INGEST_TOKEN: ${{ secrets.PERF_INGEST_TOKEN }}
+          MYFXBOOK_SESSION: ${{ secrets.MYFXBOOK_SESSION }}
+        run: node scripts/collect-myfxbook.mjs

@@ -1,0 +1,90 @@
+---
+/**
+ * Obsidian Aether promo banner — the #1 ranked EA, shown site-wide.
+ *
+ * Ported from the reference featured banner (Strive Algo `app/page.tsx` /
+ * `app/blog/[slug]/page.tsx`). The figures are read from `getPerformance`, not
+ * hardcoded, so the banner always matches the product page and the registry.
+ *
+ * Rendered once from `BaseLayout`, so it appears on every page. It is hidden on
+ * the Obsidian product page itself (a self-promotion) and on the account /
+ * checkout routes, where a promo would be noise.
+ */
+import { getPerformance } from '../lib/performance';
+import { formatSignedPercent } from '../lib/format';
+import { url } from '../lib/urls';
+
+const SLUG = 'obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5';
+
+const path = Astro.url.pathname;
+const show =
+  !/^\/(checkout|dashboard|admin|login|auth|logout)\b/.test(path) && !path.startsWith(`/product/${SLUG}`);
+
+const perf = getPerformance(SLUG);
+const href = url(`/product/${SLUG}`);
+---
+
+{
+  show && (
+    <section class="container-x pb-16 pt-4" aria-label="Featured expert advisor">
+      <a
+        href={href}
+        class="group block rounded-3xl border border-emerald-400/20 p-6 transition-all duration-500 hover:border-emerald-400/40 hover:shadow-[0_0_60px_-10px_rgba(0,193,144,0.15)] sm:p-8 md:p-10"
+        style="background: radial-gradient(circle at 88% 8%, rgba(45,212,191,0.18), transparent 55%), radial-gradient(circle at 4% 100%, rgba(0,193,144,0.18), transparent 55%), linear-gradient(135deg, rgba(0,193,144,0.1) 0%, rgba(5,8,24,0.92) 45%, rgba(5,8,24,0.92) 60%, rgba(45,212,191,0.08) 100%);"
+      >
+        <div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+          <div class="flex-1">
+            <div class="mb-3 flex items-center gap-3">
+              <span class="live-dot" />
+              <span class="font-mono text-[10px] font-bold uppercase tracking-widest text-emerald-400">
+                #1 Ranked EA · Myfxbook Verified
+              </span>
+            </div>
+            <h3 class="font-heading text-2xl font-bold text-white sm:text-3xl">Obsidian Aether EURUSD EA</h3>
+            <p class="mt-2 max-w-xl text-sm leading-relaxed text-slate-400">
+              AI-powered grid scalper for MetaTrader 5 — adaptive ATR spacing, range & trend dual detection, and
+              institutional-grade risk management.
+            </p>
+            <div class="mt-4 flex flex-wrap items-center gap-2.5 font-mono text-xs">
+              {perf?.totalGainPct != null && (
+                <span class="rounded-full border border-emerald-400/25 bg-emerald-500/10 px-3 py-1 font-bold text-emerald-300">
+                  {formatSignedPercent(perf.totalGainPct)} Gain
+                </span>
+              )}
+              {perf?.profitFactor != null && (
+                <span class="rounded-full border border-teal-400/25 bg-teal-500/10 px-3 py-1 font-semibold text-teal-300">
+                  PF {perf.profitFactor}
+                </span>
+              )}
+              {perf?.totalTrades != null && (
+                <span class="rounded-full border border-cyan-400/20 bg-cyan-500/10 px-3 py-1 font-semibold text-cyan-300">
+                  {perf.totalTrades} Trades
+                </span>
+              )}
+            </div>
+          </div>
+
+          <div
+            class="inline-flex shrink-0 items-center gap-2 rounded-xl px-6 py-3.5 text-xs font-bold text-black transition-all group-hover:scale-105"
+            style="background: linear-gradient(135deg, #00e0a8, #00c190); box-shadow: 0 0 30px -4px rgba(0,193,144,0.5);"
+          >
+            View Full Review
+            <svg
+              viewBox="0 0 24 24"
+              class="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </div>
+        </div>
+      </a>
+    </section>
+  )
+}

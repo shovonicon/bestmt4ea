@@ -121,7 +121,7 @@ export const editorial: Record<string, EditorialPerf> = {
     profitFactor: 3.36,
     totalTrades: 414,
     maxDrawdownPct: 80.14,
-    minCapitalUsd: 1000,
+    minCapitalUsd: 2000,
     broker: 'Fusion Markets',
     terminal: 'MetaTrader 5',
     conflicts: [

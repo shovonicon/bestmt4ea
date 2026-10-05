@@ -26,6 +26,8 @@ export const POST: APIRoute = async ({ request }) => {
     metrics?: Record<string, unknown>;
     account?: { myfxbookAccountId?: string; url?: string; accountType?: string };
     trades?: Array<Record<string, unknown>>;
+    /** The full Myfxbook metric set, rendered verbatim in the "every figure" panel. */
+    raw?: Record<string, unknown>;
   };
   try {
     payload = JSON.parse(await request.text());
@@ -55,6 +57,7 @@ export const POST: APIRoute = async ({ request }) => {
       profitFactor: stringOrNull(payload.metrics?.profitFactor),
       winRatePct: stringOrNull(payload.metrics?.winRatePct),
       openTrades: numberOrNull(payload.metrics?.openTrades),
+      raw: payload.raw ?? null,
     },
     {
       productId,

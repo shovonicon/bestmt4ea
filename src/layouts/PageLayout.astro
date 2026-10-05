@@ -3,8 +3,9 @@
  * Static page layout (About, Contact, Brokers, Privacy, Terms …).
  *
  * Ads are opt-out per page via `showAds` in frontmatter — legal and contact
- * pages should not carry them. When ads are off there is no sidebar either, so
- * the article renders full width (used by the Brokers and Copy Trading pages).
+ * pages should not carry them. The article always renders full width: the old
+ * 20rem ad sidebar was removed site-wide (see LongFormLayout), so there is no
+ * sidebar column left to put a unit in.
  */
 import { render } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
@@ -58,27 +59,19 @@ const hasFaqs = Boolean(data.faqs?.length);
 
     {
       showAds ? (
-        <div class="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
-          <article class="min-w-0">
-            <div class="prose-article max-w-none">
-              <Content />
+        <article class="mt-12">
+          <div class="prose-article max-w-none">
+            <Content />
+          </div>
+
+          <AdSlot slot={site.adSlots.belowContent} class="mt-12" />
+
+          {hasFaqs && (
+            <div class="mt-12">
+              <Faq items={data.faqs} heading="Frequently asked questions" />
             </div>
-
-            <AdSlot slot={site.adSlots.belowContent} class="mt-12" />
-
-            {hasFaqs && (
-              <div class="mt-12">
-                <Faq items={data.faqs} heading="Frequently asked questions" />
-              </div>
-            )}
-          </article>
-
-          <aside class="min-w-0">
-            <div class="sticky top-24">
-              <AdSlot slot={site.adSlots.sidebar} class="hidden lg:block" />
-            </div>
-          </aside>
-        </div>
+          )}
+        </article>
       ) : (
         <article class="mt-12 w-full">
           <div class="prose-article max-w-none">

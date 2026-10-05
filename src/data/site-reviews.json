@@ -1,0 +1,201 @@
+{
+  "_note": "Customer reviews read directly off the live bestmt4ea.com product pages (WooCommerce reviews as the store itself publishes them). Collected for the rebuild so the site does not lose its own review content. Every field below is copied from the source — nothing is inferred, and no review text was written or embellished. NOT YET RENDERED anywhere: the integrity findings below must be resolved first.",
+  "_collectedAt": "2026-10-05",
+  "_how": "Fetched with the web_fetch tool. The site returns 403 Forbidden (openresty) to plain HTTP requests and to headless Chromium, so a scripted collector cannot read it — the pages were read one at a time. Re-run by hand against the same URLs if this needs refreshing.",
+  "_coverage": {
+    "productsRead": 10,
+    "reviewTextsFound": 12,
+    "ratingsClaimedBySite": 25,
+    "note": "The site advertises 25 ratings across these products but only publishes 12 review bodies. The rest are counts with no visible review (e.g. VPS shows 11 ratings and 2 reviews; the 2000-trading-tools page shows 3 ratings while its own reviews tab says 'There are no reviews yet')."
+  },
+  "_findings": [
+    "These are the store's own published reviews, but several are not independent of the marketing copy: 4 of the 12 reviewers are the same four names the site uses as its site-wide 'Verified Buyer' testimonials, and their review text is lifted from that testimonial copy.",
+    "Review text is reused verbatim between different reviewers on different products: the Chris Aronson review on AVA and the Bobby McTee review on Nexora are word-for-word identical; the Bennett Carter review on Onix and the Mc Cluskey review on Apex differ by one word ('consistent' vs 'daily').",
+    "Three reviews are explicit profit claims ('My $30,000 account hit $40,000 in just one month!', 'Turned my $3500 account into ten thousands!', 'I'm already seeing profits'). These breach the site's own no-income-claims rule (AGENTS.md) and the AdSense/FTC rules, so they cannot be republished as-is.",
+    "The quality 'Verified owner' flag is the store's own WooCommerce badge. It means the reviewer's email matched an order — it is not an independent audit, and on this data it appears alongside the duplicated copy above.",
+    "Conclusion: this is NOT clean source material. Treat it as a record of what the live site publishes, not as trusted customer evidence."
+  ],
+  "reviews": [
+    {
+      "id": "s01",
+      "product": "vps",
+      "productName": "Windows VPS for MT4 & MT5",
+      "productUrl": "https://bestmt4ea.com/product/vps/",
+      "author": "Alexander Novak",
+      "rating": 5,
+      "date": "2022-01-06",
+      "verifiedOwner": false,
+      "body": "Very Good VPS, using for 3 months."
+    },
+    {
+      "id": "s02",
+      "product": "vps",
+      "productName": "Windows VPS for MT4 & MT5",
+      "productUrl": "https://bestmt4ea.com/product/vps/",
+      "author": "tahaelguemmam",
+      "rating": 5,
+      "date": "2022-12-26",
+      "verifiedOwner": true,
+      "body": "Questa È la Migliore Vps Mai Visto Facile Da Utilizzare e Veloce in Italia Ringrazio il Tema (bestmt4ea.com) Buon nuovo Anno A Tutti ❤️🙏🏼❤️2023💫"
+    },
+    {
+      "id": "s03",
+      "product": "obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5",
+      "productName": "Obsidian Aether EURUSD EA: AI Grid Scalper for MT5",
+      "productUrl": "https://bestmt4ea.com/product/obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5/",
+      "author": "Andrew Smith",
+      "rating": 5,
+      "date": "2025-04-14",
+      "verifiedOwner": false,
+      "body": "My $30,000 account hit $40,000 in just one month!",
+      "flags": ["income-claim"]
+    },
+    {
+      "id": "s04",
+      "product": "fxcore100-ea",
+      "productName": "FXCore100 EA [UPDATED]",
+      "productUrl": "https://bestmt4ea.com/product/fxcore100-ea/",
+      "author": "Emmanuel Niamkey",
+      "rating": 5,
+      "date": "2021-06-19",
+      "verifiedOwner": false,
+      "body": "Hopefully the best ea for this price."
+    },
+    {
+      "id": "s05",
+      "product": "ava-aigpt5-ea",
+      "productName": "AVA AIGPT5 XAUUSD EA: AI Gold Scalper for MT4",
+      "productUrl": "https://bestmt4ea.com/product/ava-aigpt5-ea/",
+      "author": "Chris Aronson",
+      "rating": 5,
+      "date": "2025-07-14",
+      "verifiedOwner": false,
+      "body": "So easy to set up, and the results speak for themselves.",
+      "flags": ["duplicate-text"],
+      "duplicateOf": "s10"
+    },
+    {
+      "id": "s06",
+      "product": "ava-aigpt5-ea",
+      "productName": "AVA AIGPT5 XAUUSD EA: AI Gold Scalper for MT4",
+      "productUrl": "https://bestmt4ea.com/product/ava-aigpt5-ea/",
+      "author": "Nick Kurils",
+      "rating": 5,
+      "date": "2025-08-01",
+      "verifiedOwner": false,
+      "body": "Turned my $3500 account into ten thousands!",
+      "flags": ["income-claim"]
+    },
+    {
+      "id": "s07",
+      "product": "onix-stratos-xauusd-ea-ai-smart-scalper-for-mt5",
+      "productName": "Onix Stratos XAUUSD EA: AI Smart Scalper for MT5",
+      "productUrl": "https://bestmt4ea.com/product/onix-stratos-xauusd-ea-ai-smart-scalper-for-mt5/",
+      "author": "Bennett Carter",
+      "rating": 5,
+      "date": "2026-07-18",
+      "verifiedOwner": true,
+      "body": "Quick setup and reliable performance. Seeing consistent gains has made trading enjoyable again.",
+      "flags": ["duplicate-text", "matches-site-testimonial"],
+      "duplicateOf": "s12",
+      "matchesTestimonial": "Sigueme Sigo"
+    },
+    {
+      "id": "s08",
+      "product": "equinox-cosmos-ea-ai-gbpjpy-scalper-for-mt5",
+      "productName": "Equinox Cosmos GBPJPY EA: AI GBPJPY Scalper for MT5",
+      "productUrl": "https://bestmt4ea.com/product/equinox-cosmos-ea-ai-gbpjpy-scalper-for-mt5/",
+      "author": "Sigueme Sigo",
+      "rating": 5,
+      "date": "2026-05-02",
+      "verifiedOwner": true,
+      "body": "User-friendly interface even for non-techies. Consistent returns have boosted my confidence.",
+      "flags": ["reviewer-is-site-testimonial"],
+      "matchesTestimonial": "Sigueme Sigo"
+    },
+    {
+      "id": "s09",
+      "product": "zenith-matrix-ea-ai-gold-scalper-for-mt5",
+      "productName": "Zenith Matrix XAUUSD EA: AI Gold Scalper for MT5",
+      "productUrl": "https://bestmt4ea.com/product/zenith-matrix-ea-ai-gold-scalper-for-mt5/",
+      "author": "Atkan Naibo",
+      "rating": 5,
+      "date": "2026-04-09",
+      "verifiedOwner": true,
+      "body": "Setup took 10 minutes, and I'm seeing steady gains.",
+      "flags": ["matches-site-testimonial"],
+      "matchesTestimonial": "Atkan Naibo"
+    },
+    {
+      "id": "s10",
+      "product": "nexora-manus-ea-ai-gold-scalper-for-mt5",
+      "productName": "Nexora Manus XAUUSD EA: AI Gold Scalper for MT5",
+      "productUrl": "https://bestmt4ea.com/product/nexora-manus-ea-ai-gold-scalper-for-mt5/",
+      "author": "Bobby McTee",
+      "rating": 5,
+      "date": "2026-03-17",
+      "verifiedOwner": true,
+      "body": "So easy to set up, and the results speak for themselves.",
+      "flags": ["duplicate-text", "reviewer-is-site-testimonial"],
+      "duplicateOf": "s05",
+      "matchesTestimonial": "Bobby McTee"
+    },
+    {
+      "id": "s11",
+      "product": "mythos-epic-ea-ai-gold-scalper-for-mt5",
+      "productName": "Mythos Epic XAUUSD EA: AI Gold Scalper for MT5",
+      "productUrl": "https://bestmt4ea.com/product/mythos-epic-ea-ai-gold-scalper-for-mt5/",
+      "author": "Niaz Mohsin",
+      "rating": 5,
+      "date": "2026-04-26",
+      "verifiedOwner": true,
+      "body": "Perfect for beginners—I'm already seeing profits.",
+      "flags": ["income-claim"]
+    },
+    {
+      "id": "s12",
+      "product": "apex-quant-ea-ai-bitcoin-scalper-for-mt5",
+      "productName": "Apex Quant BTCUSD EA: AI Bitcoin Scalper for MT5",
+      "productUrl": "https://bestmt4ea.com/product/apex-quant-ea-ai-bitcoin-scalper-for-mt5/",
+      "author": "Mc Cluskey",
+      "rating": 5,
+      "date": "2026-04-19",
+      "verifiedOwner": true,
+      "body": "Quick setup and reliable performance. Seeing daily gains has made trading enjoyable again.",
+      "flags": ["duplicate-text", "matches-site-testimonial"],
+      "duplicateOf": "s07",
+      "matchesTestimonial": "Sigueme Sigo"
+    }
+  ],
+  "siteWideTestimonials": [
+    {
+      "author": "Matt Johnson",
+      "label": "Verified Buyer",
+      "body": "The live stats give me real peace of mind — I can see exactly what the EA is doing.",
+      "note": "Shown on the homepage and on every product page."
+    },
+    {
+      "author": "Atkan Naibo",
+      "label": "Verified Buyer",
+      "body": "Setup took 10 minutes, and I'm seeing steady gains. Support is always quick to respond.",
+      "note": "Same person also left the Zenith Matrix review (s09), which is a truncation of this text."
+    },
+    {
+      "author": "Bobby McTee",
+      "label": "Verified Buyer",
+      "body": "Excellent risk management features. Survived market dips and came out ahead.",
+      "note": "Same person also left the Nexora Manus review (s10), which uses different text."
+    },
+    {
+      "author": "Sigueme Sigo",
+      "label": "Verified Buyer",
+      "body": "Quick setup and reliable performance. Seeing consistent gains has made trading enjoyable again.",
+      "note": "This exact text is published as the reviews by Bennett Carter (s07) and, with one word changed, Mc Cluskey (s12)."
+    }
+  ],
+  "ratingsWithoutReviewText": [
+    { "product": "vps", "claimedRatings": 11, "publishedReviews": 2 },
+    { "product": "fxcore100-ea", "claimedRatings": 3, "publishedReviews": 1 },
+    { "product": "2000-trading-tools", "claimedRatings": 3, "publishedReviews": 0, "sourceSays": "There are no reviews yet." }
+  ]
+}

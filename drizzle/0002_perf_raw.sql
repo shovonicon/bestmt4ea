@@ -1,0 +1,1 @@
+ALTER TABLE `performance_snapshots` ADD `raw` text;

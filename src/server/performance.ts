@@ -32,6 +32,8 @@ export interface SnapshotInput {
   profitFactor?: string | null;
   winRatePct?: string | null;
   openTrades?: number | null;
+  /** The full Myfxbook metric set for this capture. */
+  raw?: Record<string, unknown> | null;
 }
 
 export interface TradeInput {
@@ -100,6 +102,7 @@ export async function recordSnapshot(db: Db, input: SnapshotInput, account?: Acc
     profitFactor: input.profitFactor ?? null,
     winRatePct: input.winRatePct ?? null,
     openTrades: input.openTrades ?? null,
+    raw: input.raw ?? null,
     createdAt: new Date(),
   });
   return id;
@@ -146,6 +149,8 @@ export interface LatestPerformance {
   profitFactor: string | null;
   winRatePct: string | null;
   openTrades: number | null;
+  /** The full Myfxbook metric set, for the "every figure" panel. */
+  raw: Record<string, unknown> | null;
 }
 
 export async function getLatestSnapshot(db: Db, productId: string): Promise<LatestPerformance | null> {
@@ -176,6 +181,7 @@ export async function getLatestSnapshot(db: Db, productId: string): Promise<Late
     profitFactor: snap.profitFactor,
     winRatePct: snap.winRatePct,
     openTrades: snap.openTrades,
+    raw: (snap.raw as Record<string, unknown> | null) ?? null,
   };
 }
 

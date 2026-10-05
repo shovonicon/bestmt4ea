@@ -1,0 +1,82 @@
+---
+/** Lot size calculator — ported from `lot-size-calculator.tsx`. */
+---
+
+<div id="calc-lot" class="space-y-6">
+  <div class="grid gap-4 sm:grid-cols-2">
+    <label class="block">
+      <span class="metric-label mb-2 block">Trade size (units)</span>
+      <input class="tool-input" type="number" min="1" value="100000" data-field="units" />
+    </label>
+    <label class="block">
+      <span class="metric-label mb-2 block">Instrument type</span>
+      <select class="tool-input" data-field="type">
+        <option value="standard">Forex (100,000 per lot)</option>
+        <option value="gold">Gold XAUUSD (100 per lot)</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="tool-result">
+    <p class="metric-label">Lot conversion</p>
+    <p class="display-stat mt-2 text-4xl text-white">
+      <span data-out="standard">1.00</span> <span class="text-lg text-slate-400">standard lots</span>
+    </p>
+    <p class="mt-2 text-sm text-slate-400" data-out="caption">100,000 units · Contract size: 100,000</p>
+  </div>
+
+  <div class="grid grid-cols-3 gap-3">
+    <div class="tool-stat">
+      <p class="mb-1 text-xs text-slate-500">Standard</p>
+      <p class="text-lg font-bold text-white" data-out="std">1.00</p>
+      <p class="text-[10px] text-slate-600" data-out="stdHint">1 lot = 100,000</p>
+    </div>
+    <div class="tool-stat">
+      <p class="mb-1 text-xs text-slate-500">Mini</p>
+      <p class="text-lg font-bold text-white" data-out="mini">10.00</p>
+      <p class="text-[10px] text-slate-600" data-out="miniHint">1 mini = 10,000</p>
+    </div>
+    <div class="tool-stat">
+      <p class="mb-1 text-xs text-slate-500">Micro</p>
+      <p class="text-lg font-bold text-white" data-out="micro">100.00</p>
+      <p class="text-[10px] text-slate-600" data-out="microHint">1 micro = 1,000</p>
+    </div>
+  </div>
+
+  <div class="rounded-xl border border-white/5 bg-white/[0.01] p-4">
+    <p class="text-xs leading-relaxed text-slate-500">
+      <strong class="text-slate-300">Quick reference:</strong> 1 standard lot = 100,000 units. Mini lots are 1/10th and
+      micro lots are 1/100th of a standard lot. Notional value = lots × contract size × current price.
+    </p>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const el = document.getElementById('calc-lot');
+    if (!el) return;
+    const root = el;
+    const field = (name: string) =>
+      root.querySelector(`[data-field="${name}"]`) as HTMLInputElement | HTMLSelectElement;
+    const out = (name: string) => root.querySelector<HTMLElement>(`[data-out="${name}"]`)!;
+
+    const calc = () => {
+      const units = parseFloat(field('units').value) || 0;
+      const isGold = field('type').value === 'gold';
+      const contract = isGold ? 100 : 100000;
+      const lots = units / contract;
+
+      out('standard').textContent = lots.toFixed(2);
+      out('std').textContent = lots.toFixed(2);
+      out('mini').textContent = (lots * 10).toFixed(2);
+      out('micro').textContent = (lots * 100).toFixed(2);
+      out('caption').textContent = `${units.toLocaleString()} units · Contract size: ${contract.toLocaleString()}`;
+      out('stdHint').textContent = `1 lot = ${contract.toLocaleString()}`;
+      out('miniHint').textContent = `1 mini = ${(contract / 10).toLocaleString()}`;
+      out('microHint').textContent = `1 micro = ${(contract / 100).toLocaleString()}`;
+    };
+
+    root.querySelectorAll('input,select').forEach((node) => node.addEventListener('input', calc));
+    calc();
+  })();
+</script>

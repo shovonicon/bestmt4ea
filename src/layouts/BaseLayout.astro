@@ -6,6 +6,7 @@ import ReadingProgress from '../components/ReadingProgress.astro';
 import BackToTop from '../components/BackToTop.astro';
 import TelegramFab from '../components/TelegramFab.astro';
 import ParticleField from '../components/ParticleField.astro';
+import ObsidianPromo from '../components/ObsidianPromo.astro';
 import { site } from '../lib/site';
 import { canonicalFor, resolveImage } from '../lib/urls';
 
@@ -90,6 +91,7 @@ const jsonLdBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     <main class="relative z-10 flex-1 pt-16">
       <slot />
     </main>
+    <ObsidianPromo />
     <Footer />
     <BackToTop />
     <TelegramFab />

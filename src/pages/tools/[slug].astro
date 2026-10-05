@@ -1,0 +1,123 @@
+---
+/**
+ * Individual trading tool page — ported from the reference
+ * `app/tools/[slug]/page.tsx` + `tool-renderer.tsx`. Prerendered: one page per
+ * available tool, each rendering its calculator or TradingView widget.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getAvailableTools, getToolBySlug } from '../../data/tools';
+import { url } from '../../lib/urls';
+import { site } from '../../lib/site';
+import AdSlot from '../../components/AdSlot.astro';
+import PartnerFallback from '../../components/PartnerFallback.astro';
+import TradingViewWidget from '../../components/tools/TradingViewWidget.astro';
+import PipCalculator from '../../components/tools/PipCalculator.astro';
+import PositionSizeCalculator from '../../components/tools/PositionSizeCalculator.astro';
+import ProfitLossCalculator from '../../components/tools/ProfitLossCalculator.astro';
+import CompoundingCalculator from '../../components/tools/CompoundingCalculator.astro';
+import LotSizeCalculator from '../../components/tools/LotSizeCalculator.astro';
+import MarginCalculator from '../../components/tools/MarginCalculator.astro';
+import RiskRewardCalculator from '../../components/tools/RiskRewardCalculator.astro';
+import DrawdownCalculator from '../../components/tools/DrawdownCalculator.astro';
+import SwapCalculator from '../../components/tools/SwapCalculator.astro';
+
+export function getStaticPaths() {
+  return getAvailableTools().map((tool) => ({ params: { slug: tool.slug } }));
+}
+
+const { slug = '' } = Astro.params;
+const tool = getToolBySlug(slug)!;
+const others = getAvailableTools()
+  .filter((entry) => entry.slug !== tool.slug)
+  .slice(0, 3);
+
+const BACK_ARROW = '<path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>';
+
+// Sticky vertical rails either side of the tool column, as on post pages.
+const showRails = Boolean(import.meta.env.PUBLIC_ADSENSE_CLIENT);
+---
+
+<BaseLayout title={`${tool.name} — Free Forex Tool`} description={tool.description}>
+  <section class="container-x relative py-16 lg:py-20">
+    {
+      showRails && (
+        <>
+          <div class="ad-rail ad-rail-left">
+            <div class="ad-rail-inner">
+              <AdSlot slot={site.adSlots.railLeft} format="vertical" showLabel={false} class="!my-0">
+                <PartnerFallback slot="fallback" variant="rail" />
+              </AdSlot>
+            </div>
+          </div>
+          <div class="ad-rail ad-rail-right">
+            <div class="ad-rail-inner">
+              <AdSlot slot={site.adSlots.railRight} format="vertical" showLabel={false} class="!my-0">
+                <PartnerFallback slot="fallback" variant="rail" />
+              </AdSlot>
+            </div>
+          </div>
+        </>
+      )
+    }
+
+    <div class="mx-auto max-w-4xl">
+      <a
+        href={url('/tools')}
+        class="group inline-flex items-center gap-2 text-sm text-[--color-ink-dim] transition-colors hover:text-[--color-ink]"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          class="h-4 w-4 transition-transform group-hover:-translate-x-0.5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          set:html={BACK_ARROW}
+        />
+        All trading tools
+      </a>
+
+      <div class="mt-8">
+        <span class="eyebrow">
+          {tool.category === 'live-data' ? 'Live market data' : 'Trading calculator'}
+        </span>
+        <h1 class="mt-3 text-3xl font-bold text-[--color-ink] sm:text-4xl">{tool.name}</h1>
+        <p class="mt-3 max-w-2xl text-sm leading-7 text-[--color-ink-dim]">{tool.description}</p>
+      </div>
+
+      <div class="panel mt-8 p-6 sm:p-8">
+        {slug === 'live-forex-rates' && <TradingViewWidget widget="rates" />}
+        {slug === 'live-charts' && <TradingViewWidget widget="chart" />}
+        {slug === 'economic-calendar' && <TradingViewWidget widget="calendar" />}
+        {slug === 'pip-calculator' && <PipCalculator />}
+        {slug === 'position-size-calculator' && <PositionSizeCalculator />}
+        {slug === 'profit-loss-calculator' && <ProfitLossCalculator />}
+        {slug === 'compounding-calculator' && <CompoundingCalculator />}
+        {slug === 'lot-size-calculator' && <LotSizeCalculator />}
+        {slug === 'margin-calculator' && <MarginCalculator />}
+        {slug === 'risk-reward-calculator' && <RiskRewardCalculator />}
+        {slug === 'drawdown-calculator' && <DrawdownCalculator />}
+        {slug === 'swap-calculator' && <SwapCalculator />}
+      </div>
+
+      <div class="mt-12">
+        <h2 class="text-xl font-bold text-[--color-ink]">More tools</h2>
+        <div class="mt-4 grid gap-4 sm:grid-cols-3">
+          {
+            others.map((entry) => (
+              <a
+                href={url(`/tools/${entry.slug}`)}
+                class="rounded-xl border border-white/10 bg-white/[0.02] p-4 transition-all hover:border-emerald-400/20 hover:bg-white/[0.04]"
+              >
+                <h3 class="text-sm font-bold text-[--color-ink]">{entry.shortName}</h3>
+                <p class="mt-1 line-clamp-2 text-xs text-slate-500">{entry.description}</p>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

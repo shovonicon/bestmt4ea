@@ -1,0 +1,279 @@
+---
+export interface Props {
+  slides?: Array<{ src: string; alt?: string; caption?: string }>;
+  title?: string;
+  eyebrow?: string;
+  /** Intro line under the heading. */
+  note?: string;
+  /** Honesty line about where the figures come from. */
+  footnote?: string;
+}
+
+const {
+  slides = [],
+  title = 'Live trading results',
+  eyebrow = 'Results',
+  note = 'Real account screenshots from the tracked terminal. Open any image full size.',
+  footnote = 'The tracked live figures on this page come from the audited Myfxbook account, not from these images.',
+} = Astro.props;
+if (slides.length === 0) return null;
+---
+
+<section class="results-slider" aria-labelledby="results-heading" data-results>
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <div class="max-w-2xl">
+      <p class="section-mark eyebrow"><span>{eyebrow}</span></p>
+      <h2 id="results-heading" class="mt-3 text-3xl leading-tight md:text-4xl">{title}</h2>
+      <p class="mt-2 text-sm leading-6 text-[--color-ink-dim]">
+        {note}
+      </p>
+    </div>
+    <div class="flex items-center gap-2">
+      <button type="button" class="btn btn-ghost !px-3.5" data-results-prev aria-label="Previous screenshot">←</button>
+      <span class="metric-value min-w-[3.5rem] text-center text-xs text-[--color-ink-dim]" data-results-count>
+        1 / {slides.length}
+      </span>
+      <button type="button" class="btn btn-ghost !px-3.5" data-results-next aria-label="Next screenshot">→</button>
+    </div>
+  </div>
+
+  <ul class="results-track mt-6" data-results-track>
+    {
+      slides.map((slide, index) => (
+        <li class="results-slide">
+          <button
+            type="button"
+            class="results-open"
+            data-results-open={slide.src}
+            aria-label={`Open result screenshot ${index + 1} at full size`}
+          >
+            <img
+              src={slide.src}
+              alt={slide.alt ?? `Result screenshot ${index + 1}`}
+              loading={index === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+            />
+            <span class="results-zoom" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="M4 10V4h6M20 14v6h-6M4 4l6 6M20 20l-6-6" />
+              </svg>
+            </span>
+          </button>
+          {slide.caption && <p class="mt-2 text-xs text-[--color-ink-dim]">{slide.caption}</p>}
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="results-thumbs mt-4" data-results-thumbs>
+    {
+      slides.map((slide, index) => (
+        <button
+          type="button"
+          class="results-thumb"
+          data-results-goto={String(index)}
+          aria-label={`Go to screenshot ${index + 1}`}
+        >
+          <img src={slide.src} alt="" loading="lazy" decoding="async" />
+        </button>
+      ))
+    }
+  </div>
+
+  <p class="mt-4 text-xs leading-6 text-[--color-ink-dim]">
+    {footnote}
+  </p>
+</section>
+
+<div class="results-lightbox" data-results-lightbox hidden>
+  <button type="button" class="results-lightbox-close" data-results-close aria-label="Close image">✕</button>
+  <img alt="Result screenshot, full size" data-results-lightbox-img />
+</div>
+
+<style>
+  .results-track {
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0 0 0.5rem;
+    list-style: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+  }
+  .results-slide {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+  .results-open {
+    position: relative;
+    display: block;
+    height: clamp(16rem, 42vh, 28rem);
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--color-line);
+    border-radius: 1rem;
+    background: #05070f;
+    cursor: zoom-in;
+    transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .results-open:hover {
+    border-color: rgba(0, 193, 144, 0.45);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  }
+  .results-open img {
+    display: block;
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    object-position: top center;
+  }
+  .results-zoom {
+    position: absolute;
+    right: 0.6rem;
+    bottom: 0.6rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    backdrop-filter: blur(6px);
+  }
+  .results-thumbs {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.35rem;
+    scrollbar-width: thin;
+  }
+  .results-thumb {
+    flex: 0 0 auto;
+    width: 5.25rem;
+    height: 3.4rem;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--color-line);
+    border-radius: 0.6rem;
+    background: #000;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.2s ease, border-color 0.2s ease;
+  }
+  .results-thumb:hover,
+  .results-thumb[aria-current='true'] {
+    opacity: 1;
+    border-color: rgba(0, 193, 144, 0.65);
+  }
+  .results-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+  .results-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.94);
+    backdrop-filter: blur(6px);
+  }
+  .results-lightbox[hidden] {
+    display: none;
+  }
+  .results-lightbox img {
+    max-width: 100%;
+    max-height: 90vh;
+    border: 1px solid var(--color-line);
+    border-radius: 1rem;
+  }
+  .results-lightbox-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid var(--color-line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--color-ink);
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-results]').forEach((root) => {
+    if (root.dataset.resultsReady === '1') return;
+    root.dataset.resultsReady = '1';
+
+    const track = root.querySelector<HTMLElement>('[data-results-track]');
+    if (!track) return;
+    const counter = root.querySelector<HTMLElement>('[data-results-count]');
+    const thumbs = Array.from(root.querySelectorAll<HTMLElement>('[data-results-goto]'));
+    const lightbox =
+      root.parentElement?.querySelector<HTMLElement>('[data-results-lightbox]') ??
+      document.querySelector<HTMLElement>('[data-results-lightbox]');
+    const lightboxImg = lightbox?.querySelector<HTMLImageElement>('[data-results-lightbox-img]');
+    const slides = Array.from(track.querySelectorAll<HTMLElement>('.results-slide'));
+    if (slides.length === 0) return;
+
+    const step = () => slides[0].offsetWidth + 16;
+
+    const sync = () => {
+      const index = Math.min(slides.length - 1, Math.max(0, Math.round(track.scrollLeft / step())));
+      if (counter) counter.textContent = `${index + 1} / ${slides.length}`;
+      thumbs.forEach((thumb, i) => {
+        if (i === index) thumb.setAttribute('aria-current', 'true');
+        else thumb.removeAttribute('aria-current');
+      });
+    };
+
+    root.querySelector('[data-results-prev]')?.addEventListener('click', () => {
+      track.scrollBy({ left: -step(), behavior: 'smooth' });
+    });
+    root.querySelector('[data-results-next]')?.addEventListener('click', () => {
+      track.scrollBy({ left: step(), behavior: 'smooth' });
+    });
+    thumbs.forEach((thumb, i) => {
+      thumb.addEventListener('click', () => {
+        track.scrollTo({ left: step() * i, behavior: 'smooth' });
+      });
+    });
+    track.addEventListener('scroll', () => window.requestAnimationFrame(sync), { passive: true });
+
+    const closeLightbox = () => {
+      if (!lightbox) return;
+      lightbox.hidden = true;
+      document.body.style.removeProperty('overflow');
+    };
+    root.querySelectorAll<HTMLElement>('[data-results-open]').forEach((button) => {
+      button.addEventListener('click', () => {
+        if (!lightbox || !lightboxImg) return;
+        lightboxImg.src = button.dataset.resultsOpen ?? '';
+        lightbox.hidden = false;
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    lightbox?.querySelector('[data-results-close]')?.addEventListener('click', closeLightbox);
+    lightbox?.addEventListener('click', (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeLightbox();
+    });
+
+    sync();
+  });
+</script>

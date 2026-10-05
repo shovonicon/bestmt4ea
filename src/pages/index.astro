@@ -1,8 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductCard from '../components/ProductCard.astro';
-import RankingTable from '../components/RankingTable.astro';
+import ComparisonRegistry from '../components/ComparisonRegistry.astro';
 import Faq from '../components/Faq.astro';
+import SectionHead from '../components/SectionHead.astro';
+import CountUp from '../components/CountUp.astro';
 import { getPerformance } from '../lib/performance';
 import { site, RISK_DISCLAIMER } from '../lib/site';
 import { organizationSchema, websiteSchema, faqSchema } from '../lib/seo';
@@ -10,20 +12,27 @@ import { monthYear, performanceVerifiedAt } from '../lib/dates';
 import { formatDate } from '../lib/format';
 import { getPublicProducts } from '../lib/content';
 import { url } from '../lib/urls';
+import siteStats from '../data/site-stats.json';
 
 const products = await getPublicProducts();
 
-const ranked = products
-  .map((product) => ({ product, perf: getPerformance(product.data.slug) }))
-  .sort((a, b) => (b.perf?.totalGainPct ?? -Infinity) - (a.perf?.totalGainPct ?? -Infinity));
+const withPerf = products.map((product) => ({ product, perf: getPerformance(product.data.slug) }));
+
+const ranked = [...withPerf].sort(
+  (a, b) => (b.perf?.totalGainPct ?? -Infinity) - (a.perf?.totalGainPct ?? -Infinity),
+);
 
 const featured = ranked.slice(0, 6).map((r) => r.product);
 
+// Real counts only — never a counter we cannot source.
+const trackedCount = withPerf.filter((r) => r.perf?.verified).length;
+const liveCount = withPerf.filter((r) => r.perf?.accountType === 'real').length;
+
 const stats = [
-  { label: 'Expert advisors', value: String(products.length) },
-  { label: 'Markets covered', value: 'MT4 · MT5' },
-  { label: 'Independent tracking', value: 'Myfxbook' },
-  { label: 'Operating since', value: '2016' },
+  { label: 'Expert advisors', value: String(products.length), count: true },
+  { label: 'Third-party tracked', value: String(trackedCount), count: true },
+  { label: 'Live-traded', value: String(liveCount), count: true },
+  { label: 'Operating since', value: String(siteStats.since), count: false },
 ];
 
 const pillars = [
@@ -41,6 +50,13 @@ const pillars = [
   },
 ];
 
+const payments = [
+  { src: '/media/payments/visa.svg', label: 'Visa' },
+  { src: '/media/payments/mastercard.svg', label: 'Mastercard' },
+  { src: '/media/payments/stripe.svg', label: 'Stripe' },
+  { src: '/media/payments/tether.svg', label: 'USDT (TRC20)' },
+];
+
 const faqs = [
   {
     question: 'Are the trading results on this site real?',
@@ -48,19 +64,24 @@ const faqs = [
       'Every performance figure links to the third-party tracking account it came from, so you can verify it yourself. Where an account is a demo rather than live funds, the page says so. Past performance does not guarantee future results.',
   },
   {
+    question: 'What do I receive after I buy a licence?',
+    answer:
+      'The compiled expert advisor, a setup guide, the recommended broker and account configuration, and the default risk settings. Everything is delivered to your BestMT4EA dashboard after checkout, with Telegram support if you get stuck.',
+  },
+  {
+    question: 'Can I test a system before buying a license?',
+    answer:
+      'Yes. Most products include a free 30-day trial tier so you can run the system on a demo account and compare its behaviour with the published track record before committing.',
+  },
+  {
     question: 'Do I need a VPS to run an expert advisor?',
     answer:
       'A VPS is strongly recommended. Automated systems need the MetaTrader terminal running continuously, so hosting it near your broker\u2019s server avoids downtime and reduces execution latency.',
   },
   {
-    question: 'Can I test a system before buying a license?',
-    answer:
-      'Yes. Most products include a trial or demo license tier so you can run the system on a demo account and compare its behaviour with the published track record before committing.',
-  },
-  {
     question: 'Which brokers do your systems run on?',
     answer:
-      'They run on any MetaTrader 4 or MetaTrader 5 broker. Low-spread ECN accounts perform best because the strategies are sensitive to execution cost.',
+      'They run on any MetaTrader 4 or MetaTrader 5 broker. Low-spread ECN accounts perform best because the strategies are sensitive to execution cost. We publish the two brokers our own systems are tested on.',
   },
   {
     question: 'Can I use these systems on a prop firm account?',
@@ -73,6 +94,7 @@ const faqs = [
 <BaseLayout
   title={`Best MT4 & MT5 Expert Advisors ${monthYear} — Myfxbook Verified`}
   description={site.description}
+  ogImage="/media/products/forex-windows-vps.png"
   jsonLd={[organizationSchema(), websiteSchema(), faqSchema(faqs)]}
 >
   <!-- Hero -->
@@ -102,23 +124,39 @@ const faqs = [
       </p>
 
       <div class="animate-fade-in-up-delay-3 mt-10 flex flex-wrap items-center justify-center gap-3">
-        <a href={url('/shop')} class="btn btn-primary">Browse the EA library</a>
-        <a href={site.telegram.community} rel="noopener" class="btn btn-ghost">Join the community</a>
+        <a href={url('/shop')} class="btn btn-primary !px-7 !py-3.5 !text-base">Browse the EA library</a>
+        <a href={url('/top-ranking')} class="btn btn-ghost !px-6 !py-3.5 !text-base">See the full ranking</a>
+        <a href={site.telegram.community} rel="noopener" class="btn btn-ghost !px-6 !py-3.5 !text-base">
+          Join the community
+        </a>
+      </div>
+
+      <div
+        class="animate-fade-in-up-delay-3 mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-[--color-ink-dim]"
+      >
+        <span class="inline-flex items-center gap-2">
+          <span>{siteStats.customers} customers</span>
+        </span>
+        <span>{products.length} systems</span>
+        <span>{trackedCount} third-party tracked</span>
+        <span>Since {siteStats.since}</span>
       </div>
     </div>
   </section>
 
   <!-- Stats -->
   <section class="container-x pb-20">
-    <div class="stats-panel">
+    <div class="stats-panel reveal">
       {
         stats.map((stat) => (
           <div class="stats-panel-item">
             <div class="mb-3 flex items-center justify-center gap-2">
               <span class="live-dot" />
-              <span class="text-xs font-bold uppercase tracking-wider text-slate-300">{stat.label}</span>
+              <span class="metric-label">{stat.label}</span>
             </div>
-            <div class="font-mono text-2xl font-bold text-white sm:text-3xl">{stat.value}</div>
+            <div class="display-stat text-2xl sm:text-3xl">
+              {stat.count ? <CountUp value={stat.value} /> : stat.value}
+            </div>
           </div>
         ))
       }
@@ -126,23 +164,20 @@ const faqs = [
   </section>
 
   <!-- Pillars -->
-  <section class="border-t border-white/5">
+  <section class="border-t border-white/5" aria-labelledby="pillars-heading">
     <div class="container-x py-20 lg:py-28">
-      <div class="mx-auto max-w-3xl text-center">
-        <p class="section-kicker">Why this library</p>
-        <h2 class="mt-4 text-3xl font-bold sm:text-4xl lg:text-5xl">
-          Built and traded by the person who writes the code
-        </h2>
-        <p class="mt-4 text-sm leading-7 text-[--color-ink-dim] sm:text-base">
-          No outsourced reviews and no affiliate-only rankings. Every system is developed, forward-tested and supported
-          in-house before it is listed here.
-        </p>
-      </div>
+      <SectionHead
+        align="center"
+        kicker="Why this library"
+        title="Built and traded by the person who writes the code"
+        lead="No outsourced reviews and no affiliate-only rankings. Every system is developed, forward-tested and supported in-house before it is listed here."
+        id="pillars-heading"
+      />
 
       <div class="mt-14 grid gap-6 lg:grid-cols-3">
         {
           pillars.map((pillar) => (
-            <div class="hover-brand-card p-8">
+            <div class="hover-brand-card reveal p-8">
               <h3 class="text-lg font-bold text-emerald-400">{pillar.title}</h3>
               <p class="mt-3 text-sm leading-7 text-[--color-ink-dim]">{pillar.body}</p>
             </div>
@@ -153,69 +188,117 @@ const faqs = [
   </section>
 
   <!-- Ranking -->
-  <section class="border-t border-white/5">
+  <section class="border-t border-white/5" aria-labelledby="ranking-heading">
     <div class="container-x py-20 lg:py-28">
-      <div class="mx-auto mb-12 max-w-2xl text-center">
-        <p class="section-kicker">Comparison registry</p>
-        <h2 class="mt-4 text-3xl font-bold sm:text-4xl lg:text-5xl">Top systems by verified gain</h2>
-        <p class="mt-4 text-sm leading-7 text-[--color-ink-dim]">
-          Ranked on third-party tracked performance, with drawdown and account type shown next to every
-          figure and the check date stated.
-        </p>
-      </div>
-
-      <RankingTable
-        products={products}
-        limit={10}
-        caption={`Top ten expert advisors by verified monthly return — ${monthYear}`}
+      <SectionHead
+        align="center"
+        kicker="Comparison registry"
+        title="Top systems by verified gain"
+        lead="Ranked on third-party tracked performance, with the pair, platform, monthly return and drawdown shown for every system and the check date stated."
+        id="ranking-heading"
       />
 
+      <div class="reveal mt-10">
+        <ComparisonRegistry products={ranked.slice(0, 10).map((entry) => entry.product)} />
+      </div>
+
+      <p class="mt-4 text-center text-xs text-[--color-ink-dim]">
+        Third-party figures checked {formatDate(performanceVerifiedAt)} · a demo account is labelled as a demo on every
+        row.
+      </p>
       <p class="mx-auto mt-6 max-w-3xl text-center text-xs leading-6 text-[--color-ink-dim]">{RISK_DISCLAIMER}</p>
       <div class="mt-8 flex justify-center">
-        <a href={url('/top-ranking')} class="btn btn-ghost">See the full ranking</a>
+        <a href={url('/top-ranking')} class="btn btn-primary">See the full ranking</a>
       </div>
     </div>
   </section>
 
   <!-- Store -->
-  <section class="border-t border-white/5 bg-zinc-950/20">
+  <section class="border-t border-white/5 bg-zinc-950/20" aria-labelledby="store-heading">
     <div class="container-x py-20 lg:py-28">
-      <div class="mx-auto max-w-2xl text-center">
-        <p class="section-kicker">The EA directory</p>
-        <h2 class="mt-4 text-3xl font-bold sm:text-4xl lg:text-5xl">Choose the system that fits your account</h2>
-        <p class="mt-4 text-sm leading-7 text-[--color-ink-dim]">
-          Each license includes the compiled expert advisor, a setup guide, recommended broker and account type, and
-          default risk settings.
-        </p>
-      </div>
+      <SectionHead
+        align="center"
+        kicker="The EA directory"
+        title="Choose the system that fits your account"
+        lead="Ten systems publish their licence price up front. Each licence includes the compiled expert advisor, a setup guide, the recommended broker and account type, and default risk settings."
+        id="store-heading"
+      />
 
       <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {featured.map((product) => <ProductCard product={product} />)}
       </div>
 
       <div class="mt-10 flex justify-center">
-        <a href={url('/shop')} class="btn btn-ghost">See all {products.length} systems</a>
+        <a href={url('/shop')} class="btn btn-primary">See all {products.length} systems</a>
       </div>
     </div>
   </section>
 
-  <!-- Free library -->
+  <!-- Secure checkout -->
   <section class="border-t border-white/5">
     <div class="container-x py-20 lg:py-28">
-      <div class="brand-card overflow-hidden p-8 sm:p-12">
+      <div class="brand-card reveal overflow-hidden p-8 sm:p-12">
         <div class="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <div class="max-w-2xl">
             <span class="eyebrow inline-flex items-center gap-2">
-              <span class="live-dot"></span>Free to download
+              <span class="live-dot"></span>Checkout
             </span>
-            <h2 class="mt-4 text-2xl font-bold sm:text-3xl">Start on a demo account for nothing</h2>
+            <h2 class="mt-4 text-2xl font-bold sm:text-3xl">Pay once, delivered to your dashboard</h2>
             <p class="mt-3 text-sm leading-7 text-[--color-ink-dim]">
-              Our own indicators and open-source expert advisors are free to download and test. Learn how the systems
-              behave on a demo account before you commit real capital to a paid license.
+              Card and USDT (TRC20) are both accepted. Checkout is handled by Stripe — card details never touch this
+              site — and your licence, download and activation land in your BestMT4EA account. Setup help is a Telegram
+              message away.
             </p>
+            <div class="mt-6 flex flex-wrap items-center gap-2">
+              {
+                payments.map((method) => (
+                  <span class="brand-chip" title={method.label}>
+                    <img src={method.src} alt={method.label} width="24" height="24" loading="lazy" decoding="async" />
+                  </span>
+                ))
+              }
+            </div>
           </div>
-          <a href={url('/free-download-forex-ea-indicator')} class="btn btn-primary shrink-0">Open the free library</a>
+          <div class="shrink-0">
+            <a href={url('/shop')} class="btn btn-primary">Browse licences</a>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="border-t border-white/5 bg-zinc-950/20" aria-labelledby="next-heading">
+    <div class="container-x py-20 lg:py-28">
+      <SectionHead
+        align="center"
+        kicker="Next step"
+        title="Where do you want to start?"
+        lead="Compare every system side by side, pick a licence, or choose the broker to run it on."
+        id="next-heading"
+      />
+      <div class="mt-12 grid gap-6 lg:grid-cols-3">
+        <a href={url('/top-ranking')} class="hover-brand-card reveal flex flex-col p-8">
+          <h3 class="text-lg font-bold text-[--color-ink]">Compare all {products.length} systems</h3>
+          <p class="mt-3 flex-1 text-sm leading-7 text-[--color-ink-dim]">
+            Monthly return, drawdown, total gain, account type and licence price in one table.
+          </p>
+          <span class="mt-6 text-sm font-semibold text-[--color-accent]">Open the ranking →</span>
+        </a>
+        <a href={url('/shop')} class="hover-brand-card reveal flex flex-col p-8">
+          <h3 class="text-lg font-bold text-[--color-ink]">Browse the EA library</h3>
+          <p class="mt-3 flex-1 text-sm leading-7 text-[--color-ink-dim]">
+            Every licence with its price, specs and tracked record, filterable by platform.
+          </p>
+          <span class="mt-6 text-sm font-semibold text-[--color-accent]">Open the shop →</span>
+        </a>
+        <a href={url('/best-forex-brokers')} class="hover-brand-card reveal flex flex-col p-8">
+          <h3 class="text-lg font-bold text-[--color-ink]">Choose a broker</h3>
+          <p class="mt-3 flex-1 text-sm leading-7 text-[--color-ink-dim]">
+            Regulation, minimum deposit, platforms and account types for the brokers we test on.
+          </p>
+          <span class="mt-6 text-sm font-semibold text-[--color-accent]">Compare brokers →</span>
+        </a>
       </div>
     </div>
   </section>

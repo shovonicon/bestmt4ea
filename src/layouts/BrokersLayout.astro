@@ -1,0 +1,317 @@
+---
+/**
+ * Broker comparison page (/best-forex-brokers/).
+ *
+ * The source page is a WordPress import whose body is one raw markdown table
+ * carrying affiliate URLs with no `rel` and no disclosure. It is deliberately
+ * NOT rendered: the rows come from `src/data/brokers.json`, the links from
+ * `src/lib/affiliates.ts`, and every link goes out with the sponsored rel and a
+ * visible disclosure above it.
+ *
+ * Kept deliberately short and scannable: proof, the two platforms we build on,
+ * the full ranked list, and one way out. Every figure comes from the comparison
+ * data — nothing is scored or invented.
+ */
+import BaseLayout from './BaseLayout.astro';
+import SectionHead from '../components/SectionHead.astro';
+import BrokerCard from '../components/BrokerCard.astro';
+import Faq from '../components/Faq.astro';
+import CountUp from '../components/CountUp.astro';
+import { getAffiliate, AFFILIATE_REL, AFFILIATE_DISCLOSURE } from '../lib/affiliates';
+import { breadcrumbSchema, breadcrumbTrail, faqSchema } from '../lib/seo';
+import { RISK_DISCLAIMER } from '../lib/site';
+import { formatDate } from '../lib/format';
+import { url } from '../lib/urls';
+import brokerData from '../data/brokers.json';
+
+export interface Props {
+  entry: any;
+}
+
+const { entry } = Astro.props;
+const data = entry.data;
+
+type Row = {
+  key: string;
+  regulation: string;
+  minDeposit: string;
+  platforms: string;
+  accountTypes: string;
+  offer?: string;
+  recommended?: boolean;
+};
+
+const brokers = (brokerData as unknown as { brokers: Row[] }).brokers ?? [];
+const faqs = (brokerData as unknown as { faqs: Array<{ question: string; answer: string }> }).faqs ?? [];
+const recommended = brokers.filter((broker) => broker.recommended);
+
+// Proof figures, all read straight from the comparison data.
+const offerCount = brokers.filter((broker) => broker.offer).length;
+const depositValues = brokers
+  .map((broker) => String(broker.minDeposit).match(/\$\s*([\d,]+)/))
+  .filter((match): match is RegExpMatchArray => Boolean(match))
+  .map((match) => Number(match[1].replace(/,/g, '')));
+const lowestDeposit = depositValues.length > 0 ? `$${Math.min(...depositValues)}` : '—';
+
+const stats = [
+  { label: 'Platforms compared', value: String(brokers.length) },
+  { label: 'We build on', value: String(recommended.length) },
+  { label: 'Live broker offers', value: String(offerCount) },
+  { label: 'Lowest min deposit', value: lowestDeposit },
+];
+
+// `title` is "Best Forex Brokers 2026 – Trusted, Regulated, …"; the trailing
+// clause becomes the gradient half of the headline.
+const [h1main, h1sub] = String(data.title).split('–').map((part) => part.trim());
+const updated = formatDate(data.updatedAt ?? data.publishedAt);
+
+const trail = breadcrumbTrail([
+  { name: 'Home', href: '/' },
+  { name: data.title, href: url('/best-forex-brokers') },
+]);
+---
+
+<BaseLayout
+  title={data.seo.title || data.title}
+  description={data.seo.description || data.description}
+  canonical={data.seo.canonical}
+  ogImage={data.seo.ogImage || data.featuredImage}
+  jsonLd={[breadcrumbSchema(trail), faqSchema(faqs)]}
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="glow-orb animate-aurora left-1/2 top-[-14rem] h-[26rem] w-[38rem] -translate-x-1/2 bg-emerald-500/25"
+    ></div>
+    <div class="glow-orb animate-float right-[-6rem] top-[4rem] h-[18rem] w-[18rem] bg-teal-400/10"></div>
+    <div class="grid-overlay pointer-events-none absolute inset-0"></div>
+
+    <div class="container-x relative py-20 text-center lg:py-24">
+      <span
+        class="eyebrow animate-fade-in-up inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2"
+      >
+        <span class="live-dot"></span>Regulation-first · Updated {updated}
+      </span>
+
+      <h1
+        class="animate-fade-in-up-delay-1 mx-auto mt-6 max-w-4xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
+      >
+        {h1main}
+        {h1sub && <span class="text-gradient-brand"> {h1sub}</span>}
+      </h1>
+
+      <p class="animate-fade-in-up-delay-2 mx-auto mt-6 max-w-2xl text-base leading-8 text-[--color-ink-soft] sm:text-lg">
+        The platforms we test our own expert advisors on. Compare regulation, minimum deposit and platform support, then
+        check the terms at the broker before you fund anything.
+      </p>
+
+      <div class="animate-fade-in-up-delay-3 mt-9 flex flex-wrap items-center justify-center gap-3">
+        <a href="#picks" class="btn btn-primary !px-7 !py-3.5 !text-base">See the top picks</a>
+        <a href={url('/shop')} class="btn btn-ghost !px-6 !py-3.5 !text-base">Browse the EA library</a>
+      </div>
+
+      <div class="stats-panel reveal mt-12">
+        {
+          stats.map((stat) => (
+            <div class="stats-panel-item">
+              <div class="mb-3 flex items-center justify-center gap-2">
+                <span class="live-dot" />
+                <span class="metric-label">{stat.label}</span>
+              </div>
+              <div class="display-stat text-2xl sm:text-3xl">
+                <CountUp value={stat.value} />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Disclosure must precede the first affiliate link on the page. -->
+      <p class="mx-auto mt-8 max-w-2xl rounded-xl border border-[--color-line] bg-white/[0.02] px-4 py-3 text-xs leading-6 text-[--color-ink-dim]">
+        {AFFILIATE_DISCLOSURE}
+      </p>
+    </div>
+  </section>
+
+  <!-- Top picks -->
+  <section id="picks" class="border-t border-white/5" aria-labelledby="picks-heading">
+    <div class="container-x py-20 lg:py-24">
+      <SectionHead
+        align="center"
+        kicker="Where we test"
+        title="The two brokers we build on"
+        lead="Every expert advisor we sell is developed against these platforms, so they are the ones we can describe in detail."
+        id="picks-heading"
+      />
+      <div class="reveal mx-auto mt-12 grid max-w-4xl gap-5 md:grid-cols-2">
+        {recommended.map((broker, index) => <BrokerCard broker={broker} rank={index + 1} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- The full ranked list -->
+  <section class="border-t border-white/5" aria-labelledby="all-heading">
+    <div class="container-x py-20 lg:py-24">
+      <SectionHead
+        align="center"
+        kicker="The full list"
+        title={`All ${brokers.length} platforms, ranked`}
+        lead="Ordered by regulation, minimum deposit and platform support. Offers are each broker's own promotion."
+        id="all-heading"
+      />
+
+      <div class="reveal mx-auto mt-12 flex max-w-5xl flex-col gap-6">
+        {
+          brokers.map((broker, index) => {
+            const affiliate = getAffiliate(broker.key);
+            if (!affiliate) return null;
+            return (
+              <div
+                class:list={[
+                  'group relative overflow-hidden rounded-2xl border border-white/10 transition-all duration-300 hover:border-emerald-500/50',
+                  broker.recommended ? 'bg-emerald-500/5' : 'bg-white/[0.02]',
+                ]}
+              >
+                {broker.recommended && (
+                  <div class="absolute right-0 top-0 z-10 rounded-bl-xl bg-emerald-500 px-4 py-1 text-xs font-bold uppercase tracking-wider text-black">
+                    {index === 0 ? 'Top Choice' : 'Recommended'}
+                  </div>
+                )}
+
+                <div class="flex flex-col items-center gap-6 p-6 md:p-8 lg:flex-row lg:gap-10">
+                  {/* Rank & name */}
+                  <div class="flex w-full items-center gap-6 lg:w-1/4">
+                    <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 font-heading text-xl font-bold text-emerald-400 transition-colors group-hover:border-emerald-500/50 group-hover:bg-emerald-500/20">
+                      #{index + 1}
+                    </div>
+                    <div>
+                      <h3 class="font-heading text-2xl font-bold text-white">{affiliate.label}</h3>
+                      <div class="mt-1 flex items-center gap-1.5 text-sm text-slate-400">
+                        <svg
+                          viewBox="0 0 24 24"
+                          class="h-4 w-4 text-emerald-400"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                        >
+                          <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+                          <path d="m9 12 2 2 4-4" />
+                        </svg>
+                        <span>{broker.regulation}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Details */}
+                  <div class="grid w-full grid-cols-2 gap-6 md:grid-cols-4 lg:flex-1">
+                    <div>
+                      <p class="mb-1 flex items-center gap-1 text-xs uppercase tracking-wider text-slate-500">
+                        <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <line x1="12" x2="12" y1="2" y2="22" />
+                          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                        </svg>
+                        Min Deposit
+                      </p>
+                      <p class="font-semibold text-white">{broker.minDeposit}</p>
+                    </div>
+
+                    <div>
+                      <p class="mb-1 flex items-center gap-1 text-xs uppercase tracking-wider text-slate-500">
+                        <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <rect width="20" height="14" x="2" y="3" rx="2" />
+                          <line x1="8" x2="16" y1="21" y2="21" />
+                          <line x1="12" x2="12" y1="17" y2="21" />
+                        </svg>
+                        Platforms
+                      </p>
+                      <p class="text-sm text-slate-300">{broker.platforms}</p>
+                    </div>
+
+                    <div>
+                      <p class="mb-1 flex items-center gap-1 text-xs uppercase tracking-wider text-slate-500">
+                        <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <circle cx="12" cy="12" r="10" />
+                          <path d="m9 12 2 2 4-4" />
+                        </svg>
+                        Accounts
+                      </p>
+                      <p class="text-sm text-slate-300">{broker.accountTypes}</p>
+                    </div>
+
+                    <div>
+                      <p class="mb-1 flex items-center gap-1 text-xs uppercase tracking-wider text-slate-500">
+                        <svg viewBox="0 0 24 24" class="h-3 w-3 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <rect x="3" y="8" width="18" height="4" rx="1" />
+                          <path d="M12 8v13" />
+                          <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7" />
+                          <path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5" />
+                        </svg>
+                        Offer
+                      </p>
+                      <p class="text-sm font-semibold text-amber-400">{broker.offer ?? '—'}</p>
+                    </div>
+                  </div>
+
+                  {/* Action */}
+                  <div class="mt-4 w-full lg:mt-0 lg:w-auto">
+                    <a
+                      href={affiliate.url}
+                      rel={AFFILIATE_REL}
+                      class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-emerald-500 hover:bg-emerald-500 hover:text-black lg:w-auto"
+                    >
+                      Open account
+                      <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+
+      <p class="mx-auto mt-6 max-w-2xl text-center text-xs leading-6 text-[--color-ink-dim]">
+        Deposit bonuses are the broker's own promotions with their own terms. A bonus is not profit and does not reduce
+        the risk of trading.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="border-t border-white/5 bg-zinc-950/20" aria-labelledby="broker-faq-heading">
+    <div class="container-x py-20 lg:py-24">
+      <SectionHead
+        align="center"
+        kicker="Questions"
+        title="Before you open an account"
+        lead="Straight answers on how we choose, what the bonuses mean and which broker suits an automated strategy."
+        id="broker-faq-heading"
+      />
+      <div class="reveal mx-auto mt-12 max-w-3xl">
+        <Faq items={faqs} heading="Frequently asked questions" />
+      </div>
+      <p class="mx-auto mt-8 max-w-3xl text-center text-xs leading-6 text-[--color-ink-dim]">{RISK_DISCLAIMER}</p>
+    </div>
+  </section>
+
+  <!-- Next step -->
+  <section class="border-t border-white/5">
+    <div class="container-x py-20 lg:py-24">
+      <div class="brand-card reveal overflow-hidden p-8 text-center sm:p-12">
+        <h2 class="text-2xl font-bold sm:text-3xl">Ready to pick the system to run?</h2>
+        <p class="mx-auto mt-3 max-w-xl text-sm leading-7 text-[--color-ink-dim]">
+          Every licence includes the setup guide, presets and the tracked record on its product page.
+        </p>
+        <div class="mt-7 flex flex-wrap justify-center gap-3">
+          <a href={url('/top-ranking')} class="btn btn-primary !px-7 !py-3.5 !text-base">Compare all systems</a>
+          <a href={url('/shop')} class="btn btn-ghost !px-6 !py-3.5 !text-base">Browse the EA library</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

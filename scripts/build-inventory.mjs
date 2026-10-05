@@ -51,12 +51,19 @@ const posts = readCollection('src/content/posts');
 const pages = readCollection('src/content/pages');
 const products = readCollection('src/content/products');
 
+// Products withdrawn from sale are not published, so they are not inventoried.
+const unpublished = new Set(
+  (JSON.parse(readFileSync('src/data/unpublished.json', 'utf8')).products ?? []).map((entry) => entry.slug),
+);
+
 const taxonomies = JSON.parse(readFileSync('src/data/taxonomies.json', 'utf8'));
 const productCategories = taxonomies.productCategories ?? [];
 const blogCategories = taxonomies.blogCategories ?? [];
 
 const urls = [
-  ...products.map((entry) => ({ type: 'product', url: `/product/${entry.slug}/`, title: entry.title })),
+  ...products
+    .filter((entry) => !unpublished.has(entry.slug))
+    .map((entry) => ({ type: 'product', url: `/product/${entry.slug}/`, title: entry.title })),
   ...posts.map((entry) => ({ type: 'post', url: `/${entry.slug}/`, title: entry.title })),
   ...pages.map((entry) => ({ type: 'page', url: `/${entry.slug}/`, title: entry.title })),
 ]
@@ -68,7 +75,7 @@ const inventory = {
   source: SITE_URL,
   generatedBy: 'scripts/build-inventory.mjs',
   counts: {
-    products: products.length,
+    products: products.filter((entry) => !unpublished.has(entry.slug)).length,
     posts: posts.length,
     pages: pages.length,
     productCategories: productCategories.length,
@@ -99,5 +106,5 @@ if (CHECK) {
 
 writeFileSync(OUT, next, 'utf8');
 console.log(
-  `Wrote ${OUT}: ${urls.length} URL(s) — ${products.length} products, ${posts.length} posts, ${pages.length} pages.`,
+  `Wrote ${OUT}: ${urls.length} URL(s) — ${products.filter((entry) => !unpublished.has(entry.slug)).length} products, ${posts.length} posts, ${pages.length} pages.`,
 );

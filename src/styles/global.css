@@ -196,6 +196,13 @@
     border-right: 1px solid rgba(0, 193, 144, 0.14);
   }
   .stats-panel-item:last-child { border-right: none; }
+  /* Four tiles squeeze below the small breakpoint — fold to two. */
+  @media (max-width: 639px) {
+    .stats-panel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .stats-panel-item { padding: 18px 14px; border-bottom: 1px solid rgba(0, 193, 144, 0.14); }
+    .stats-panel-item:nth-child(2n) { border-right: none; }
+    .stats-panel-item:nth-last-child(-n + 2) { border-bottom: none; }
+  }
 
   .table-shell {
     overflow: hidden;
@@ -380,8 +387,42 @@
    * panels break out of the text column without breaking alignment.
    */
   .longform {
+    position: relative;
     display: grid;
     grid-template-columns: minmax(0, 1fr) min(44rem, 100%) minmax(0, 1fr);
+  }
+
+  /*
+   * Sticky vertical ad rails.
+   *
+   * They sit in the gutters either side of the reading column, absolute so they
+   * never disturb the grid (the download card's `.longform-breakout` still
+   * spans the full track set) — and the inner element is what sticks, because a
+   * grid/flex item stretched to its full cell has no room to move.
+   *
+   * The breakpoint clears the narrowest column that uses a rail — the tools
+   * page's 56rem column needs a 1312px viewport before a 160px unit fits beside
+   * it — so the rails are hidden below that rather than squeezed or overlapping.
+   */
+  .ad-rail {
+    display: none;
+  }
+  @media (min-width: 1320px) {
+    .ad-rail {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      display: block;
+      width: 10rem;
+    }
+    .ad-rail-left { left: 0; }
+    .ad-rail-right { right: 0; }
+    .ad-rail-inner {
+      position: sticky;
+      top: 6rem;
+      /* Reserve the skyscraper's height so the page does not jump when it fills. */
+      min-height: 37.5rem;
+    }
   }
   .longform > * {
     grid-column: 2;
@@ -391,6 +432,332 @@
     grid-column: 1 / -1;
     width: min(100%, 56rem);
     margin-inline: auto;
+  }
+
+  /* ---------- Premium product-page layer ---------- */
+
+  /* Full-bleed tinted band, used to break the card rhythm between sections. */
+  .section-band {
+    position: relative;
+    border-block: 1px solid var(--color-line-soft);
+    background:
+      radial-gradient(ellipse 60% 130% at 50% 0%, rgba(0, 193, 144, 0.08), transparent 72%),
+      linear-gradient(180deg, rgba(5, 8, 24, 0.72), rgba(0, 0, 0, 0.2));
+  }
+
+  /* Oversized display number — the thing the references do that we did not. */
+  .display-stat {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  /* Short emerald rule before a section kicker. */
+  .section-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .section-mark::before {
+    content: "";
+    width: 1.75rem;
+    height: 2px;
+    border-radius: 2px;
+    background-image: linear-gradient(90deg, var(--color-accent), transparent);
+  }
+
+  /* Glass chrome for the hero and terminal. */
+  .glass {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(9, 14, 30, 0.92), rgba(0, 0, 0, 0.86));
+    backdrop-filter: blur(14px);
+  }
+
+  /* Terminal frame with a chrome bar. */
+  .terminal {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 193, 144, 0.26);
+    background: linear-gradient(160deg, #010605, #000201 60%);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  }
+  .terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .terminal-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.18);
+    flex-shrink: 0;
+  }
+
+  /* Tabs. The panel content is in the DOM for SEO; only [hidden] hides it. */
+  .tablist {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-line);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 0.3rem;
+  }
+  .tab {
+    border-radius: 999px;
+    padding: 0.5rem 0.95rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-ink-dim);
+    transition: color 0.2s ease, background-color 0.2s ease;
+    cursor: pointer;
+  }
+  .tab:hover { color: var(--color-ink); }
+  .tab[aria-selected="true"] {
+    background-image: linear-gradient(135deg, #00e0a8, #00c190 50%, #2dd4bf);
+    color: #04140f;
+    box-shadow: 0 0 24px -10px rgba(0, 193, 144, 0.8);
+  }
+  .tab-panel[hidden] { display: none; }
+
+  /* Icon tile for the requirements grid. */
+  .icon-tile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    border-radius: 0.85rem;
+    border: 1px solid rgba(0, 193, 144, 0.28);
+    background: linear-gradient(140deg, rgba(0, 193, 144, 0.16), rgba(0, 193, 144, 0.02));
+    color: var(--color-accent-soft);
+  }
+
+  /* Discount ribbon. */
+  .ribbon {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    border-radius: 999px;
+    padding: 0.2rem 0.55rem;
+    background: linear-gradient(135deg, #00e0a8, #00c190);
+    color: #04140f;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+  }
+  .strike {
+    color: var(--color-ink-dim);
+    text-decoration: line-through;
+    text-decoration-color: rgba(248, 113, 113, 0.7);
+  }
+
+  .stars { color: #fbbf24; letter-spacing: 0.12em; }
+
+  /* Selectable licence option. Selection state is CSS-only (`:has`), so it works
+     before any script runs and needs no class juggling in JS. */
+  .plan-option {
+    border: 1px solid var(--color-line-soft);
+    background: rgba(255, 255, 255, 0.02);
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    cursor: pointer;
+  }
+  .plan-option:hover {
+    border-color: rgba(0, 193, 144, 0.32);
+  }
+  .plan-option:has(input:checked) {
+    border-color: rgba(0, 193, 144, 0.55);
+    background: rgba(0, 193, 144, 0.07);
+  }
+  .plan-option:has(input:focus-visible) {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  .plan-option input {
+    accent-color: var(--color-accent);
+  }
+
+  /* Partner cards — the two brokers we build on, shown with their official
+     logo on a light plate so each brand renders exactly as designed. */
+  .partner-feature {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 193, 144, 0.35);
+    background:
+      radial-gradient(120% 140% at 50% 0%, rgba(0, 193, 144, 0.18), transparent 62%),
+      rgba(255, 255, 255, 0.02);
+    padding: 1.35rem 1.4rem;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  }
+  .partner-feature:hover {
+    border-color: rgba(0, 193, 144, 0.8);
+    box-shadow: 0 0 40px -12px rgba(0, 193, 144, 0.55);
+    transform: translateY(-3px);
+  }
+  .partner-logo-plate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.75rem;
+    padding-inline: 1.25rem;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 0 26px -12px rgba(0, 193, 144, 0.9);
+  }
+  .partner-logo-plate img {
+    height: 1.6rem;
+    width: auto;
+  }
+  /* White pill for a brand mark — broker logos in the hero, payment marks at checkout. */
+  .brand-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: #fff;
+    padding: 0.3rem 0.6rem;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+  }
+  .brand-chip:hover {
+    box-shadow: 0 0 20px -6px rgba(0, 193, 144, 0.8);
+    transform: translateY(-1px);
+  }
+  .brand-chip img {
+    height: 0.875rem;
+    width: auto;
+  }
+  .partner-chip {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 0.15rem 0.5rem;
+    border: 1px solid rgba(0, 193, 144, 0.35);
+    background: rgba(0, 193, 144, 0.14);
+    color: var(--color-accent-soft);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .partner-arrow {
+    color: var(--color-accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    transition: transform 0.25s ease;
+  }
+  .partner-feature:hover .partner-arrow {
+    transform: translateX(4px);
+  }
+
+  /* ---------- Broker leaderboard layer ---------- */
+
+  /* Rank numeral — the rhythm anchor of a ranked comparison. */
+  .rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding-inline: 0.4rem;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 193, 144, 0.35);
+    background: linear-gradient(140deg, rgba(0, 193, 144, 0.2), rgba(0, 193, 144, 0.03));
+    color: var(--color-accent-soft);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.9rem;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .rank-badge--top {
+    border-color: transparent;
+    background-image: linear-gradient(135deg, #00e0a8, #00c190 50%, #2dd4bf);
+    color: #04140f;
+    box-shadow: 0 0 24px -8px rgba(0, 193, 144, 0.8);
+  }
+
+  /* Compact brand plate for a leaderboard row (smaller than the hero plate). */
+  .broker-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.9rem;
+    padding-inline: 0.55rem;
+    border-radius: 8px;
+    background: #fff;
+  }
+  .broker-logo img {
+    height: 1rem;
+    width: auto;
+  }
+
+  /* ---------- Trading tools ---------- */
+
+  /* Shared input/select style for every calculator. */
+  .tool-input {
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-line);
+    background: rgba(255, 255, 255, 0.04);
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    color: var(--color-ink);
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+  .tool-input:focus-visible { border-color: rgba(0, 193, 144, 0.5); }
+  .tool-input option { background: #000; }
+
+  /* Headline result panel + the small stat tiles below it. */
+  .tool-result {
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 193, 144, 0.2);
+    background: rgba(0, 193, 144, 0.04);
+    padding: 1.5rem;
+  }
+  .tool-stat {
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-line);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 1rem;
+    text-align: center;
+  }
+  .tool-toggle-btn {
+    flex: 1;
+    padding: 0.75rem 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--color-ink-dim);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .tool-toggle-btn:hover { color: var(--color-ink); }
+  .tool-toggle-btn[aria-pressed="true"] {
+    background: rgba(0, 193, 144, 0.2);
+    color: var(--color-accent-soft);
+  }
+
+  /* Scroll reveal — additive only: content is visible by default and plays a
+     short fade-up when it enters the viewport, so there is never a flash of
+     hidden content and no-JS stays fully readable. */
+  .reveal-in {
+    animation: fadeInUp 0.7s ease-out both;
   }
 }
 

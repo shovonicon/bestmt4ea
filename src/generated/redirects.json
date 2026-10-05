@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-03T06:44:12.518Z",
+  "generatedAt": "2026-10-05T09:29:12.691Z",
   "source": "wordpress-seo-redirects (2).csv",
-  "count": 2338,
+  "count": 2377,
   "dropped": [
     {
       "from": "/special-discount",
@@ -138,6 +138,11 @@
     {
       "from": "/%F0%9F%93%88-forex-trend-detector-indicator-free-download-powerful-proven-guide-for-smart-traders",
       "to": "/forex-millionaire-indicator-free-download-7-powerful-truths-you-must-know-before-installing/",
+      "status": 301
+    },
+    {
+      "from": "/%F0%9F%93%88-gold-trend-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -447,7 +452,7 @@
     },
     {
       "from": "/%F0%9F%9A%80-kx4-pro-trading-system-free-download-powerful-proven-strategy-guide",
-      "to": "/gold-sniper-master-indicator-system-free-download-powerful-secrets-7-proven-trading-advantages/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -523,6 +528,11 @@
     {
       "from": "/%F0%9F%9A%80-smart-money-engine-by-willyalgotrader-forex-indicator-reviews-powerful-truth-7-shocking-insights",
       "to": "/category/forex-indicator-reviews/",
+      "status": 301
+    },
+    {
+      "from": "/%F0%9F%9A%80-supergold-m1-scalping-ea-free-download-powerful-proven-7-step-setup-guide-for-maximum-profits/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -622,17 +632,17 @@
     },
     {
       "from": "/10-best-mt4-brokers-for-ea-trading-low-spread",
-      "to": "/gold-hitter-ea-mt4-free-download-powerful-2026-guide-to-safe-setup-profitable-trading/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
       "from": "/10-best-mt4-indicators-for-gbpusd-scalping-proven-powerful-tools-for-accurate-fast-trading",
-      "to": "/top-10-best-mt4-indicators-for-gold-xauusd-powerful-tools-for-accurate-trading/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
       "from": "/10-best-top-mt4-indicators-for-eurusd-intraday-trading-powerful-proven-guide",
-      "to": "/top-10-best-mt4-indicators-for-gold-xauusd-powerful-tools-for-accurate-trading/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -717,7 +727,7 @@
     },
     {
       "from": "/10-powerful-hedging-techniques-using-mt4-for-safer-smarter-trading",
-      "to": "/gold-hitter-ea-mt4-free-download-powerful-2026-guide-to-safe-setup-profitable-trading/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -812,7 +822,7 @@
     },
     {
       "from": "/10-powerful-proven-best-strategies-for-breakout-trading-with-eas",
-      "to": "/free-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -1576,6 +1586,11 @@
       "status": 301
     },
     {
+      "from": "/7-best-top-gold-scalping-ea-for-beginners-with-low-drawdown-ultimate-safe-trading-guide/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
       "from": "/7-best-ultimate-ways-to-master-tradingview-webhook-alerts-to-discord-step-by-step",
       "to": "/category/ai-powered-trading-tools/",
       "status": 301
@@ -1602,7 +1617,7 @@
     },
     {
       "from": "/7-powerful-benefits-of-a-free-zigzag-indicator-with-repaint-fix-for-trend-lines",
-      "to": "/%F0%9F%93%88-gold-trend-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -1637,7 +1652,7 @@
     },
     {
       "from": "/7-powerful-gold-trading-strategies-alongside-forex-for-massive-success",
-      "to": "/free-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -1737,7 +1752,7 @@
     },
     {
       "from": "/7-powerful-reasons-to-get-a-free-deconvolution-trend-probability-indicator-download-today",
-      "to": "/%F0%9F%93%88-gold-trend-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -1802,7 +1817,7 @@
     },
     {
       "from": "/7-powerful-steps-on-how-to-add-expert-advisor-to-mt4-with-screenshots-beginner-friendly-guide",
-      "to": "/gold-scalping-expert-advisor-mt4-free-download-powerful-proven-guide-7-winning-secrets/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -1822,12 +1837,12 @@
     },
     {
       "from": "/7-powerful-steps-to-master-how-to-optimize-parameters-in-mt4-expert-advisor-complete-guide",
-      "to": "/gold-scalping-expert-advisor-mt4-free-download-powerful-proven-guide-7-winning-secrets/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
       "from": "/7-powerful-steps-to-remove-mt4-expert-advisor-safely",
-      "to": "/gold-scalping-expert-advisor-mt4-free-download-powerful-proven-guide-7-winning-secrets/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -1847,7 +1862,7 @@
     },
     {
       "from": "/7-powerful-strategies-to-use-a-gold-xauusd-scalping-robot-best-risk-to-reward",
-      "to": "/xauusd-trading-robot-free-download-7-powerful-secrets-to-maximize-gold-profits-safely/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -1987,7 +2002,7 @@
     },
     {
       "from": "/7-powerful-ways-to-use-better-brain-trend-forex-indicator-mt4-free-download-for-smarter-trend-trading",
-      "to": "/%F0%9F%93%88-gold-trend-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -2147,12 +2162,12 @@
     },
     {
       "from": "/adaptive-trading-ea-free-download-7-powerful-benefits-smart-setup-guide",
-      "to": "/free-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
       "from": "/adaptive-volatility-trend-by-willyalgotrader-forex-indicator-reviews-powerful-insights-7-proven-benefits",
-      "to": "/%F0%9F%93%88-gold-trend-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -2167,7 +2182,7 @@
     },
     {
       "from": "/advanced-mt4-gold-ea-free-download-powerful-guide-9-safety-tips",
-      "to": "/pharaoh-gold-ea-mt4-free-download-7-powerful-facts-every-trader-must-know-before-installing/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -2257,7 +2272,12 @@
     },
     {
       "from": "/ai-gold-scalp-forex-ea-reviews-shocking-truth-7-powerful-insights-before-you-invest",
-      "to": "/free-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
+      "from": "/ai-gold-scalping-ea-free-download-powerful-profitable-2026-guide-7-proven-insights/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -2267,7 +2287,7 @@
     },
     {
       "from": "/ai-gold-trading-forex-ea-reviews-7-powerful-insights-every-trader-must-know",
-      "to": "/free-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -2342,7 +2362,7 @@
     },
     {
       "from": "/alpha-gold-mt4-robot-v5-free-download-powerful-proven-guide-with-7-essential-insights",
-      "to": "/gold-hitter-ea-mt4-free-download-powerful-2026-guide-to-safe-setup-profitable-trading/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -2567,7 +2587,7 @@
     },
     {
       "from": "/automated-forex-trading-systems-backtesting-in-strategy-tester",
-      "to": "/gold-scalping-expert-advisor-mt4-free-download-powerful-proven-guide-7-winning-secrets/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -2747,12 +2767,12 @@
     },
     {
       "from": "/best-bitcoin-robot-free-download-7-powerful-safe-picks-for-smart-trading",
-      "to": "/xauusd-trading-robot-free-download-7-powerful-secrets-to-maximize-gold-profits-safely/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
       "from": "/best-brokers-for-gold-trading-with-mt4-bots",
-      "to": "/gold-hitter-ea-mt4-free-download-powerful-2026-guide-to-safe-setup-profitable-trading/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -2882,12 +2902,22 @@
     },
     {
       "from": "/best-gold-ea-free-download-the-ultimate-guide-to-safe-smart-trading",
-      "to": "/gold-cycle-trader-ea-free-download-7-powerful-secrets-smart-traders-must-know/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
       "from": "/best-gold-robot-eafree-download-7-powerful-truths-every-trader-must-know",
-      "to": "/gold-investor-best-forex-gold-ea-free-download-powerful-proven-guide/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
+      "from": "/best-gold-robot-for-mt4-mt5-ea-7-powerful-picks-for-consistent-trading-profits/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
+      "from": "/best-gold-scalper-ea-for-mt4-mt5-the-only-guide-you-need/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -2907,7 +2937,7 @@
     },
     {
       "from": "/best-mt4-indicators-for-us30-trading-top-10-powerful-tools-for-precision-profitability",
-      "to": "/top-10-best-mt4-indicators-for-gold-xauusd-powerful-tools-for-accurate-trading/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -2972,7 +3002,7 @@
     },
     {
       "from": "/best-scalping-strategy-for-beginners-in-forex-proven-powerful-beginner-friendly-guide",
-      "to": "/ai-gold-scalping-ea-free-download-powerful-profitable-2026-guide-7-proven-insights/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -3062,7 +3092,7 @@
     },
     {
       "from": "/bitcoin-quantum-computing",
-      "to": "/product/2000-trading-tools/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -3386,6 +3416,21 @@
       "status": 301
     },
     {
+      "from": "/category/gold-xauusd-trading/",
+      "to": "/blog/",
+      "status": 301
+    },
+    {
+      "from": "/category/gold-xauusd-trading/gold-ea-robots/",
+      "to": "/blog/",
+      "status": 301
+    },
+    {
+      "from": "/category/gold-xauusd-trading/xauusd-trading-strategies/",
+      "to": "/blog/",
+      "status": 301
+    },
+    {
       "from": "/category/indicators",
       "to": "/product/nexora-manus-ea-ai-gold-scalper-for-mt5/",
       "status": 301
@@ -3516,6 +3561,11 @@
       "status": 301
     },
     {
+      "from": "/communication-preferences/",
+      "to": "/shop/",
+      "status": 301
+    },
+    {
       "from": "/comparison",
       "to": "/product/fxcore100-ea/",
       "status": 301
@@ -3552,7 +3602,7 @@
     },
     {
       "from": "/corrective-trend-ea-free-download-7-powerful-benefits-every-trader-must-know",
-      "to": "/%F0%9F%93%88-gold-trend-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -3712,7 +3762,7 @@
     },
     {
       "from": "/daily-pips-hunter-trading-strategy-mt4-free-download-powerful-profitable-guide",
-      "to": "/gold-hitter-ea-mt4-free-download-powerful-2026-guide-to-safe-setup-profitable-trading/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -3777,7 +3827,7 @@
     },
     {
       "from": "/day-trading-gold-futures-step-by-step-guide",
-      "to": "/free-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -3847,7 +3897,7 @@
     },
     {
       "from": "/dj-market-pro-x20-delta-gold-indicator-free-download-powerful-secrets-7-smart-benefits-revealed",
-      "to": "/category/gold-xauusd-trading/",
+      "to": "/blog/",
       "status": 301
     },
     {
@@ -3982,12 +4032,12 @@
     },
     {
       "from": "/ea-gold-algo-forex-ea-reviews-7-powerful-truths-every-trader-must-know",
-      "to": "/the-gold-reaper-forex-ea-reviews-powerful-truths-7-critical-insights-before-you-invest/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
       "from": "/ea-gold-stuff-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing",
-      "to": "/category/gold-xauusd-trading/",
+      "to": "/blog/",
       "status": 301
     },
     {
@@ -4067,7 +4117,7 @@
     },
     {
       "from": "/egcx-gold-bot-pro-ea-7-powerful-reasons-traders-are-switching-to-this-advanced-gold-trading-system",
-      "to": "/category/gold-xauusd-trading/",
+      "to": "/blog/",
       "status": 301
     },
     {
@@ -4167,7 +4217,7 @@
     },
     {
       "from": "/entryexit-trend-forex-indicator-for-mt4-free-download-powerful-risky-and-11-smart-ways-to-use-it-safely",
-      "to": "/%F0%9F%93%88-gold-trend-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -4237,7 +4287,7 @@
     },
     {
       "from": "/exit-and-fisher-no-repainting-mt4-forex-strategy-free-download-powerful-trading-guide-for-consistent-profits",
-      "to": "/best-gold-robot-for-mt4-mt5-ea-7-powerful-picks-for-consistent-trading-profits/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -4417,7 +4467,7 @@
     },
     {
       "from": "/fondex-high-frequency-ea-free-download-7-powerful-truths-every-trader-must-know",
-      "to": "/gold-high-frequency-scalping-ea-free-download-7-powerful-truths-you-must-know-before-installing/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -4507,7 +4557,7 @@
     },
     {
       "from": "/forex-breakout-ea-free-download-7-powerful-benefits-smart-setup-guide",
-      "to": "/gold-breakout-ea-free-download-7-powerful-benefits-proven-setup-guide-for-massive-trading-success/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -4592,7 +4642,7 @@
     },
     {
       "from": "/forex-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide",
-      "to": "/free-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -4603,6 +4653,11 @@
     {
       "from": "/forex-hacked-ea-free-download-the-shocking-truth-7-hidden-risks-safer-alternatives",
       "to": "/category/free-forex-ea/",
+      "status": 301
+    },
+    {
+      "from": "/forex-holy-grail-indicator-golden-eagle-system-free-download-powerful-secrets-7-proven-benefits/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -4837,7 +4892,7 @@
     },
     {
       "from": "/forex-win-master-trading-indicator-system-free-download-7-powerful-secrets-to-boost-profits-fast",
-      "to": "/gold-sniper-master-indicator-system-free-download-powerful-secrets-7-proven-trading-advantages/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -4857,7 +4912,7 @@
     },
     {
       "from": "/forexcracked-trend-breath-indicator-free-download-powerful-proven-strategy-guide",
-      "to": "/%F0%9F%93%88-gold-trend-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -4907,7 +4962,12 @@
     },
     {
       "from": "/frankoscalp-steady-scalper-robot-free-download-powerful-guide-to-safe-smart-trading",
-      "to": "/xauusd-trading-robot-free-download-7-powerful-secrets-to-maximize-gold-profits-safely/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
+      "from": "/free-download-forex-ea-indicator/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -4927,7 +4987,12 @@
     },
     {
       "from": "/free-forex-signals-for-gbp-pairs-7-powerful-tips-for-massive-trading-results",
-      "to": "/xauusd-scalping-robot-settings-and-tips-10-powerful-strategies-for-better-trading-results/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
+      "from": "/free-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -5097,7 +5162,7 @@
     },
     {
       "from": "/fx-splitter-ea-free-download-7-powerful-benefits-hidden-truths-every-trader-must-know",
-      "to": "/free-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -5107,7 +5172,7 @@
     },
     {
       "from": "/fx-trendroid-free-download-7-powerful-benefits-every-trader-must-know",
-      "to": "/%F0%9F%93%88-gold-trend-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -5127,12 +5192,12 @@
     },
     {
       "from": "/fxcore-gold-ea-free-download-7-powerful-facts-every-gold-trader-must-know",
-      "to": "/gold-investor-best-forex-gold-ea-free-download-powerful-proven-guide/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
       "from": "/fxcore100-ea-47-powerful-insights-settings-strategies-for-smarter-forex-trading",
-      "to": "/gold-hitter-ea-mt4-free-download-powerful-2026-guide-to-safe-setup-profitable-trading/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -5152,7 +5217,7 @@
     },
     {
       "from": "/fxstabilizer-forex-robot-free-download",
-      "to": "/product/2000-trading-tools/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -5231,13 +5296,28 @@
       "status": 301
     },
     {
+      "from": "/gold-1-minute-grid-forex-ea-reviews-7-powerful-truths-you-must-know-before-investing/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
       "from": "/gold-auto-trading-mt4-ea-free-download-ultimate-safe-guide-powerful-tips-9-key-checks",
-      "to": "/gold-hitter-ea-mt4-free-download-powerful-2026-guide-to-safe-setup-profitable-trading/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
       "from": "/gold-billionaire-by-kieranj-forex-indicator-reviews-7-shocking-truths-you-must-know-before-buying",
       "to": "/category/forex-indicator-reviews/",
+      "status": 301
+    },
+    {
+      "from": "/gold-breakout-ea-free-download-7-powerful-benefits-proven-setup-guide-for-massive-trading-success/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
+      "from": "/gold-buster-mt4-expert-advisor-free-download-powerful-profitable-trading-guide/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -5251,8 +5331,23 @@
       "status": 301
     },
     {
+      "from": "/gold-cycle-trader-ea-free-download-7-powerful-secrets-smart-traders-must-know/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
       "from": "/gold-hero-v2-free-download-7-powerful-benefits-safe-guide-ultimate-features-explained",
-      "to": "/free-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
+      "from": "/gold-high-frequency-scalping-ea-free-download-7-powerful-truths-you-must-know-before-installing/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
+      "from": "/gold-hitter-ea-mt4-free-download-powerful-2026-guide-to-safe-setup-profitable-trading/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -5262,7 +5357,12 @@
     },
     {
       "from": "/gold-intelligence-ea-free-download-7-powerful-truths-you-must-know-before-installing",
-      "to": "/category/gold-xauusd-trading/",
+      "to": "/blog/",
+      "status": 301
+    },
+    {
+      "from": "/gold-investor-best-forex-gold-ea-free-download-powerful-proven-guide/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -5272,7 +5372,7 @@
     },
     {
       "from": "/gold-mining-ea-free-download-7-powerful-benefits-honest-review-setup-guide",
-      "to": "/gold-cycle-trader-ea-free-download-7-powerful-secrets-smart-traders-must-know/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -5286,8 +5386,18 @@
       "status": 301
     },
     {
+      "from": "/gold-prop-firm-robot-free-download-7-powerful-secrets-to-maximize-funded-trading-success/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
+      "from": "/gold-quantum-ea-free-download-the-ultimate-guide-to-safe-smart-profitable-trading/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
       "from": "/gold-rain-mt4-gold-ea-free-download-powerful-guide-to-profitable-gold-trading",
-      "to": "/gold-hitter-ea-mt4-free-download-powerful-2026-guide-to-safe-setup-profitable-trading/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -5302,7 +5412,7 @@
     },
     {
       "from": "/gold-scalper-pro-forex-ea-reviews-7-powerful-truths-you-must-know-before-buying",
-      "to": "/mt4-gold-scalper-ea-free-download-powerful-2026-guide-proven-setup-tips/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -5312,7 +5422,12 @@
     },
     {
       "from": "/gold-scalping-ea-mt4-review-real-account-insights",
-      "to": "/gold-scalping-expert-advisor-mt4-free-download-powerful-proven-guide-7-winning-secrets/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
+      "from": "/gold-scalping-expert-advisor-mt4-free-download-powerful-proven-guide-7-winning-secrets/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -5322,7 +5437,12 @@
     },
     {
       "from": "/gold-scalping-pecker-ea-free-download-powerful-guide-with-7-proven-insights",
-      "to": "/gold-high-frequency-scalping-ea-free-download-7-powerful-truths-you-must-know-before-installing/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
+      "from": "/gold-sniper-master-indicator-system-free-download-powerful-secrets-7-proven-trading-advantages/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -5337,22 +5457,32 @@
     },
     {
       "from": "/gold-trading-ea-for-prop-firm-free-download-safe-legal-proven-ways-to-get-one-7-step-guide",
-      "to": "/gold-prop-firm-robot-free-download-7-powerful-secrets-to-maximize-funded-trading-success/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
       "from": "/gold-trading-free-download-7-powerful-proven-secrets-to-maximize-profits-safely",
-      "to": "/xauusd-trading-robot-free-download-7-powerful-secrets-to-maximize-gold-profits-safely/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
+      "from": "/gold-trading-smc-ea-free-download-the-ultimate-guide-to-smart-money-concept-ea-for-profitable-gold-trading/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
       "from": "/gold-trading-without-emotional-drama-11-proven-strategies-for-calm-profitable-decisions",
-      "to": "/category/gold-xauusd-trading/",
+      "to": "/blog/",
       "status": 301
     },
     {
       "from": "/gold-vector-strategy-forex-ea-reviews-7-powerful-truths-every-trader-must-know",
-      "to": "/the-gold-reaper-forex-ea-reviews-powerful-truths-7-critical-insights-before-you-invest/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
+      "from": "/goldbaron-xauusd-ea-forex-ea-reviews-7-powerful-truths-every-trader-must-know/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -5381,6 +5511,11 @@
       "status": 301
     },
     {
+      "from": "/golden-line-v3-indicator-free-download-7-powerful-benefits-safe-installation-guide/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
       "from": "/golden-mammoth-free-download-the-shocking-truth-7-powerful-facts-you-must-know-before-you-click",
       "to": "/category/free-forex-ea/",
       "status": 301
@@ -5392,7 +5527,7 @@
     },
     {
       "from": "/goldenity-ai-ea-free-download-7-powerful-benefits-smart-setup-guide-for-traders",
-      "to": "/free-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -5402,7 +5537,7 @@
     },
     {
       "from": "/goldminer-votann-mt4-gold-ea-free-download-powerful-proven-trading-bot-guide-7-must-know-facts",
-      "to": "/gold-hitter-ea-mt4-free-download-powerful-2026-guide-to-safe-setup-profitable-trading/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -5447,7 +5582,7 @@
     },
     {
       "from": "/green-hawk-smart-scalping-ea-free-download-powerful-profitable-forex-automation",
-      "to": "/ai-gold-scalping-ea-free-download-powerful-profitable-2026-guide-7-proven-insights/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -5692,7 +5827,7 @@
     },
     {
       "from": "/how-central-bank-interest-rate-hikes-affect-gold-prices",
-      "to": "/category/gold-xauusd-trading/",
+      "to": "/blog/",
       "status": 301
     },
     {
@@ -5707,7 +5842,7 @@
     },
     {
       "from": "/how-do-i-install-an-expert-advisor-on-mt4",
-      "to": "/gold-scalping-expert-advisor-mt4-free-download-powerful-proven-guide-7-winning-secrets/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -6087,22 +6222,22 @@
     },
     {
       "from": "/how-to-install-mt4-expert-advisor-on-windows-10-the-ultimate-step-by-step-guide",
-      "to": "/gold-scalping-expert-advisor-mt4-free-download-powerful-proven-guide-7-winning-secrets/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
       "from": "/how-to-install-mt4-expert-advisor-on-windows-11-the-ultimate-step-by-step-guide",
-      "to": "/gold-scalping-expert-advisor-mt4-free-download-powerful-proven-guide-7-winning-secrets/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
       "from": "/how-to-install-mt4-expert-advisor-on-windows-7-powerful-steps-for-fast-easy-setup",
-      "to": "/gold-scalping-expert-advisor-mt4-free-download-powerful-proven-guide-7-winning-secrets/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
       "from": "/how-to-install-mt4-expert-advisor-on-windows-quick-guide",
-      "to": "/gold-scalping-expert-advisor-mt4-free-download-powerful-proven-guide-7-winning-secrets/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -6147,7 +6282,7 @@
     },
     {
       "from": "/how-to-optimize-parameters-in-mt4-expert-advisor-complete-step-by-step-guide",
-      "to": "/gold-scalping-expert-advisor-mt4-free-download-powerful-proven-guide-7-winning-secrets/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -6527,7 +6662,7 @@
     },
     {
       "from": "/how-to-use-metatrader-4",
-      "to": "/gold-scalping-expert-advisor-mt4-free-download-powerful-proven-guide-7-winning-secrets/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -6782,7 +6917,7 @@
     },
     {
       "from": "/intelligent-mt4-trend-indicator-free-download-risky-truth-9-powerful-safer-options",
-      "to": "/%F0%9F%93%88-gold-trend-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -6802,7 +6937,7 @@
     },
     {
       "from": "/invictus-gold-robot-free-download-7-powerful-truths-you-must-know-before-installing",
-      "to": "/xauusd-trading-robot-free-download-7-powerful-secrets-to-maximize-gold-profits-safely/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -6857,7 +6992,7 @@
     },
     {
       "from": "/jacaranda-ea-free-download-7-powerful-benefits-setup-guide-honest-review",
-      "to": "/free-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -7007,7 +7142,7 @@
     },
     {
       "from": "/la-gold-ea-free-download-7-powerful-benefits-smart-trading-secrets",
-      "to": "/free-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -7067,7 +7202,7 @@
     },
     {
       "from": "/long-form-article-donchian-channel-breakout-ea-for-commodity-trading-powerful-guide-to-automated-market-success",
-      "to": "/gold-breakout-ea-free-download-7-powerful-benefits-proven-setup-guide-for-massive-trading-success/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -7237,12 +7372,12 @@
     },
     {
       "from": "/marketmaker-pro-ea-free-download-the-ultimate-guide-to-smart-automated-trading-success",
-      "to": "/best-gold-scalper-ea-for-mt4-mt5-the-only-guide-you-need/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
       "from": "/martingale-expert-advisor-mt4-free-download-powerful-7-step-guide-to-maximize-forex-profits-safely",
-      "to": "/gold-scalping-expert-advisor-mt4-free-download-powerful-proven-guide-7-winning-secrets/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -7322,7 +7457,7 @@
     },
     {
       "from": "/mastermind-grid-trading-ea-free-download-7-powerful-benefits-every-trader-must-know",
-      "to": "/free-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -7377,7 +7512,7 @@
     },
     {
       "from": "/mega-trend-and-trigger-lines-mt4-forex-trading-strategy-free-download-powerful-guide-to-consistent-profits",
-      "to": "/best-gold-robot-for-mt4-mt5-ea-7-powerful-picks-for-consistent-trading-profits/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -7592,7 +7727,7 @@
     },
     {
       "from": "/mt4-expert-advisor-installation-on-mac-guide-ultimate-step-by-step-tutorial",
-      "to": "/gold-scalping-expert-advisor-mt4-free-download-powerful-proven-guide-7-winning-secrets/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -7626,8 +7761,13 @@
       "status": 301
     },
     {
+      "from": "/mt4-gold-scalper-ea-free-download-powerful-2026-guide-proven-setup-tips/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
       "from": "/mt4-indicators-for-beginners-simple-and-useful-17-powerfully-simple-tools-to-start-trading-smart",
-      "to": "/top-10-best-mt4-indicators-for-gold-xauusd-powerful-tools-for-accurate-trading/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -8012,7 +8152,7 @@
     },
     {
       "from": "/ouro-hedge-scalping-3-0-ea-17-powerful-secrets-every-gold-trader-must-know",
-      "to": "/7-best-top-gold-scalping-ea-for-beginners-with-low-drawdown-ultimate-safe-trading-guide/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -8042,7 +8182,7 @@
     },
     {
       "from": "/pandorum-indicator",
-      "to": "/product/2000-trading-tools/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -8117,7 +8257,12 @@
     },
     {
       "from": "/phantom-trend-cloud-by-willyalgotrader-forex-indicator-reviews-7-powerful-insights-every-trader-must-know",
-      "to": "/%F0%9F%93%88-gold-trend-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
+      "from": "/pharaoh-gold-ea-mt4-free-download-7-powerful-facts-every-trader-must-know-before-installing/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -8352,7 +8497,7 @@
     },
     {
       "from": "/price-action-ea-free-download",
-      "to": "/product/2000-trading-tools/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -8441,8 +8586,13 @@
       "status": 301
     },
     {
+      "from": "/product/2000-trading-tools/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
       "from": "/product/advance-elliott-wave-trading-course",
-      "to": "/product/2000-trading-tools/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -8457,12 +8607,12 @@
     },
     {
       "from": "/product/af-investing-ea",
-      "to": "/product/2000-trading-tools/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
       "from": "/product/all-free-fx-bundle",
-      "to": "/product/2000-trading-tools/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -8602,7 +8752,7 @@
     },
     {
       "from": "/product/thunderbird-ea",
-      "to": "/product/2000-trading-tools/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -8662,7 +8812,7 @@
     },
     {
       "from": "/profitable-mt4-gold-forex-robot-free-download-smart-safe-legit-ways-7-step-guide",
-      "to": "/ai-gold-scalping-ea-free-download-powerful-profitable-2026-guide-7-proven-insights/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -8697,7 +8847,7 @@
     },
     {
       "from": "/promax-gold-ea-free-download-powerful-secrets-7-proven-facts-you-must-know",
-      "to": "/free-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -8812,7 +8962,7 @@
     },
     {
       "from": "/quantum-trend-trading-indicator-free-download-7-powerful-benefits-every-trader-must-know",
-      "to": "/%F0%9F%93%88-gold-trend-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -8901,6 +9051,11 @@
       "status": 301
     },
     {
+      "from": "/review-order/",
+      "to": "/shop/",
+      "status": 301
+    },
+    {
       "from": "/revolution-premium-forex-ea-free-download-powerful-7-step-guide-to-smart-automated-trading-success",
       "to": "/forex-plutus-best-premium-indicator-free-download-7-powerful-reasons-traders-love-it/",
       "status": 301
@@ -8962,7 +9117,7 @@
     },
     {
       "from": "/robot-for-gold-trading-mt4-ea-free-download-7-powerful-secrets-to-maximize-profits-safely",
-      "to": "/top-10-best-mt4-indicators-for-gold-xauusd-powerful-tools-for-accurate-trading/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -9113,6 +9268,11 @@
     {
       "from": "/scalper-inside-pro-c7-forex-indicator-free-download-7-powerful-benefits-every-trader-must-know",
       "to": "/best-scalping-indicator-scalper-inside-v7-9-free-download-7-powerful-reasons-traders-love-it/",
+      "status": 301
+    },
+    {
+      "from": "/scalper-xauusd-ea-free-download-7-powerful-truths-you-must-know-before-installing/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -9552,7 +9712,7 @@
     },
     {
       "from": "/swing-gold-forex-ea-free-download-7-powerful-truths-you-must-know-before-installing",
-      "to": "/the-gold-reaper-forex-ea-reviews-powerful-truths-7-critical-insights-before-you-invest/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -9592,7 +9752,7 @@
     },
     {
       "from": "/swmax-ea-gold-free-download-7-powerful-truths-you-must-know-before-installing",
-      "to": "/gold-cycle-trader-ea-free-download-7-powerful-secrets-smart-traders-must-know/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -9678,6 +9838,11 @@
     {
       "from": "/the-2-risk-rule-in-trading-explained-with-examples",
       "to": "/category/risk-money-management/",
+      "status": 301
+    },
+    {
+      "from": "/the-7-best-mt4-ea-for-gold-trading-with-low-risk-proven-tools-for-consistent-results/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -9776,6 +9941,11 @@
       "status": 301
     },
     {
+      "from": "/the-gold-reaper-forex-ea-reviews-powerful-truths-7-critical-insights-before-you-invest/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
       "from": "/the-great-paradox-of-trading",
       "to": "/blog/",
       "status": 301
@@ -9827,7 +9997,7 @@
     },
     {
       "from": "/the-psychological-aspects-of-successful-trading-15-powerful-insights-for-more-consistent-results",
-      "to": "/the-7-best-mt4-ea-for-gold-trading-with-low-risk-proven-tools-for-consistent-results/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -10036,6 +10206,11 @@
       "status": 301
     },
     {
+      "from": "/top-10-best-mt4-indicators-for-gold-xauusd-powerful-tools-for-accurate-trading/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
       "from": "/top-10-common-errors-when-installing-forex-ea-on-mt4-essential-guide-for-traders",
       "to": "/category/installation-setup/",
       "status": 301
@@ -10226,8 +10401,13 @@
       "status": 301
     },
     {
+      "from": "/top-10-powerful-scalping-strategies-for-gold-trading-complete-guide/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
       "from": "/top-10-powerful-team-trading-prop-firm-options-for-modern-traders",
-      "to": "/gold-prop-firm-robot-free-download-7-powerful-secrets-to-maximize-funded-trading-success/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -10542,12 +10722,12 @@
     },
     {
       "from": "/trend-market-reversal-indicator-free-download-powerful-proven-7-step-guide-for-smarter-trading",
-      "to": "/%F0%9F%93%88-gold-trend-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
       "from": "/trend-reversal-forex-indicator-for-mt4-free-download-7-powerful-secrets-to-catch-market-turning-points",
-      "to": "/%F0%9F%93%88-gold-trend-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -10697,7 +10877,7 @@
     },
     {
       "from": "/twilight-trader-night-scalping-ea-free-downloa-powerful-night-trading-strategy-with-proven-results",
-      "to": "/xauusd-scalping-robot-settings-and-tips-10-powerful-strategies-for-better-trading-results/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -10827,7 +11007,7 @@
     },
     {
       "from": "/ultimate-oscillator-weighted-average-ea-mt4-guide-proven-strategies-expert-tips-complete-setup-tutorial",
-      "to": "/gold-scalping-expert-advisor-mt4-free-download-powerful-proven-guide-7-winning-secrets/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -11057,7 +11237,7 @@
     },
     {
       "from": "/volatility-hyper-trend-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know",
-      "to": "/%F0%9F%93%88-gold-trend-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -11132,7 +11312,7 @@
     },
     {
       "from": "/vr-grid-trading-robot-free-download-7-powerful-benefits-smart-setup-guide",
-      "to": "/free-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -11237,7 +11417,7 @@
     },
     {
       "from": "/what-are-technical-indicator-7-powerful-tools-every-trader-should-master",
-      "to": "/top-10-best-mt4-indicators-for-gold-xauusd-powerful-tools-for-accurate-trading/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -11566,6 +11746,11 @@
       "status": 301
     },
     {
+      "from": "/wishlist/",
+      "to": "/shop/",
+      "status": 301
+    },
+    {
       "from": "/withdrawal-fees-in-forex-brokers-explained-essential-guide-expert-insights",
       "to": "/blog/",
       "status": 301
@@ -11627,7 +11812,7 @@
     },
     {
       "from": "/xauusd-breeze-forex-ea-reviews-7-powerful-truths-every-gold-trader-must-know",
-      "to": "/goldbaron-xauusd-ea-forex-ea-reviews-7-powerful-truths-every-trader-must-know/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -11641,8 +11826,18 @@
       "status": 301
     },
     {
+      "from": "/xauusd-scalping-robot-settings-and-tips-10-powerful-strategies-for-better-trading-results/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
       "from": "/xauusd-sniper-ea-free-download-7-powerful-truths-you-must-know-before-installing",
-      "to": "/scalper-xauusd-ea-free-download-7-powerful-truths-you-must-know-before-installing/",
+      "to": "/top-ranking/",
+      "status": 301
+    },
+    {
+      "from": "/xauusd-trading-robot-free-download-7-powerful-secrets-to-maximize-gold-profits-safely/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -11652,7 +11847,7 @@
     },
     {
       "from": "/xbest-ea-free-download-7-powerful-benefits-safe-installation-guide-for-smart-traders",
-      "to": "/best-gold-scalper-ea-for-mt4-mt5-the-only-guide-you-need/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -11682,7 +11877,7 @@
     },
     {
       "from": "/xo-forex-trading-free-download-the-ultimate-safe-guide-powerful-setup-tips",
-      "to": "/xauusd-trading-robot-free-download-7-powerful-secrets-to-maximize-gold-profits-safely/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {
@@ -11722,7 +11917,7 @@
     },
     {
       "from": "/yoforex-free-ea-download-7-powerful-benefits-honest-insights-you-must-know",
-      "to": "/free-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide/",
+      "to": "/top-ranking/",
       "status": 301
     },
     {

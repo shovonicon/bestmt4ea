@@ -1,0 +1,160 @@
+---
+/** Swap calculator — ported from `swap-calculator.tsx`. */
+const RATES = [
+  { key: 'EURUSD', long: -6.5, short: 1.2, label: 'EUR/USD' },
+  { key: 'GBPUSD', long: -4.8, short: 0.5, label: 'GBP/USD' },
+  { key: 'USDJPY', long: 8.5, short: -12.3, label: 'USD/JPY' },
+  { key: 'USDCHF', long: 4.2, short: -7.8, label: 'USD/CHF' },
+  { key: 'AUDUSD', long: -3.9, short: 0.3, label: 'AUD/USD' },
+  { key: 'USDCAD', long: -2.1, short: -4.5, label: 'USD/CAD' },
+  { key: 'GBPJPY', long: 12.6, short: -18.4, label: 'GBP/JPY' },
+  { key: 'EURJPY', long: 6.8, short: -11.5, label: 'EUR/JPY' },
+  { key: 'XAUUSD', long: -35.0, short: 18.5, label: 'XAU/USD (Gold)' },
+  { key: 'NZDUSD', long: -2.5, short: -0.8, label: 'NZD/USD' },
+];
+---
+
+<div id="calc-swap" class="space-y-6">
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <label class="block">
+      <span class="metric-label mb-2 block">Currency pair</span>
+      <select class="tool-input" data-field="pair">
+        {
+          RATES.map((row) => (
+            <option value={row.key} data-long={row.long} data-short={row.short}>
+              {row.label}
+            </option>
+          ))
+        }
+      </select>
+    </label>
+    <div>
+      <span class="metric-label mb-2 block">Direction</span>
+      <div class="flex overflow-hidden rounded-xl border border-white/10">
+        <button type="button" class="tool-toggle-btn" data-dir="long" aria-pressed="true">Buy (long)</button>
+        <button type="button" class="tool-toggle-btn" data-dir="short" aria-pressed="false">Sell (short)</button>
+      </div>
+    </div>
+    <label class="block">
+      <span class="metric-label mb-2 block">Lot size</span>
+      <input class="tool-input" type="number" step="0.01" min="0.01" value="1.00" data-field="lots" />
+    </label>
+    <label class="block">
+      <span class="metric-label mb-2 block">Holding days</span>
+      <input class="tool-input" type="number" min="1" max="365" value="1" data-field="days" />
+    </label>
+  </div>
+
+  <div class="tool-result">
+    <p class="metric-label" data-out="title">Total swap (1 day)</p>
+    <p class="display-stat mt-2 text-4xl text-white">
+      <span data-out="total">−$6.50</span> <span class="text-lg text-slate-400">USD</span>
+    </p>
+    <p class="mt-2 text-sm text-slate-400" data-out="caption">Swap rate: −6.50 points per lot · 1 lot</p>
+  </div>
+
+  <div class="grid grid-cols-3 gap-3">
+    <div class="tool-stat">
+      <p class="mb-1 text-xs text-slate-500">Daily swap</p>
+      <p class="text-lg font-bold" data-out="daily">−$6.50</p>
+    </div>
+    <div class="tool-stat">
+      <p class="mb-1 text-xs text-slate-500">Weekly</p>
+      <p class="text-lg font-bold" data-out="weekly">−$45.50</p>
+    </div>
+    <div class="tool-stat">
+      <p class="mb-1 text-xs text-slate-500">Triple swap (Wed)</p>
+      <p class="text-lg font-bold" data-out="triple">−$19.50</p>
+    </div>
+  </div>
+
+  <div>
+    <p class="metric-label mb-3">Swap rates overview (per 1 lot)</p>
+    <div class="overflow-hidden rounded-xl border border-white/10 bg-white/[0.02]">
+      <div class="max-h-64 overflow-y-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-white/10 bg-white/[0.03]">
+              <th scope="col" class="px-4 py-2 text-left text-xs font-bold text-slate-400">Pair</th>
+              <th scope="col" class="px-4 py-2 text-right text-xs font-bold text-slate-400">Long</th>
+              <th scope="col" class="px-4 py-2 text-right text-xs font-bold text-slate-400">Short</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              RATES.map((row) => (
+                <tr class="border-b border-white/5">
+                  <td class="px-4 py-2 text-slate-300">{row.label}</td>
+                  <td class:list={['px-4 py-2 text-right font-bold', row.long >= 0 ? 'text-emerald-400' : 'text-red-400']}>
+                    {row.long >= 0 ? '+' : ''}
+                    {row.long.toFixed(2)}
+                  </td>
+                  <td class:list={['px-4 py-2 text-right font-bold', row.short >= 0 ? 'text-emerald-400' : 'text-red-400']}>
+                    {row.short >= 0 ? '+' : ''}
+                    {row.short.toFixed(2)}
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="rounded-xl border border-white/5 bg-white/[0.01] p-4">
+    <p class="text-xs leading-relaxed text-slate-500">
+      <strong class="text-slate-300">Note:</strong> swap rates are indicative and vary by broker. Most brokers charge
+      triple swap on Wednesday to cover the weekend. A positive swap means you earn interest; a negative swap means you
+      pay. Always check your broker's current rates.
+    </p>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const el = document.getElementById('calc-swap');
+    if (!el) return;
+    const root = el;
+    const field = (name: string) =>
+      root.querySelector(`[data-field="${name}"]`) as HTMLInputElement | HTMLSelectElement;
+    const out = (name: string) => root.querySelector<HTMLElement>(`[data-out="${name}"]`)!;
+    let direction: 'long' | 'short' = 'long';
+
+    const money = (value: number) => `${value >= 0 ? '+' : '−'}$${Math.abs(value).toFixed(2)}`;
+    const paint = (node: HTMLElement, value: number) => {
+      node.textContent = money(value);
+      node.style.color = value >= 0 ? 'var(--color-accent)' : 'var(--color-danger)';
+    };
+
+    root.querySelectorAll<HTMLButtonElement>('[data-dir]').forEach((button) => {
+      button.addEventListener('click', () => {
+        direction = button.dataset.dir === 'short' ? 'short' : 'long';
+        root.querySelectorAll<HTMLButtonElement>('[data-dir]').forEach((other) => {
+          other.setAttribute('aria-pressed', String(other === button));
+        });
+        calc();
+      });
+    });
+
+    const calc = () => {
+      const option = (field('pair') as HTMLSelectElement).selectedOptions[0] as HTMLOptionElement;
+      const rate = Number(direction === 'long' ? option.dataset.long : option.dataset.short);
+      const lots = parseFloat(field('lots').value) || 0;
+      const days = parseInt(field('days').value, 10) || 0;
+
+      const daily = rate * lots;
+      const total = daily * days;
+
+      out('title').textContent = `Total swap (${days} day${days !== 1 ? 's' : ''})`;
+      paint(out('total'), total);
+      out('caption').textContent = `Swap rate: ${rate >= 0 ? '+' : ''}${rate.toFixed(2)} points per lot · ${lots} lot${lots !== 1 ? 's' : ''}`;
+      paint(out('daily'), daily);
+      paint(out('weekly'), daily * 7);
+      paint(out('triple'), daily * 3);
+    };
+
+    root.querySelectorAll('input,select').forEach((node) => node.addEventListener('input', calc));
+    calc();
+  })();
+</script>

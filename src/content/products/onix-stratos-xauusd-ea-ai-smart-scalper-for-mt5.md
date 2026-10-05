@@ -45,6 +45,13 @@ gallery:
   - "/media/products/xauusd-bestmt4ea.webp"
 systemPage: false
 draft: false
+keyTakeaways:
+  - "Fully automated execution — no manual entries, no screen time required"
+  - "Fixed, rule-based logic — every trade follows the same criteria, no emotion involved"
+  - "Configurable risk controls — set your own drawdown cap and lot size"
+  - "MyFxBook-verified performance — check the live-tracked results before buying"
+  - "Free lifetime updates — the strategy improves, you don't pay again"
+  - "24/7 Telegram support — real answers, not a ticket queue"
 ---
 
 ## Onix Stratos EA

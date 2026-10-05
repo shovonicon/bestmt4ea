@@ -1,8 +1,7 @@
-import { desc, eq } from 'drizzle-orm';
+import { and, desc, eq } from 'drizzle-orm';
 import type { Db } from '../db/client';
-import { orderItems, orders, productFiles, products } from '../db/schema';
+import { licenseBuilds, licenses, orderItems, orders, productFiles, products } from '../db/schema';
 import { getActiveEntitlement } from './entitlements';
-import { getActiveLicense } from './licenses';
 
 /**
  * Read models for the customer portal. Everything a signed-in customer sees is
@@ -52,9 +51,14 @@ export async function listCustomerDownloads(db: Db, customerId: string): Promise
       continue;
     }
 
+    // A licensed EA is delivered as a compiled, account-bound build rather than a
+    // shared file, so its `product_files` rows are never listed here — the portal
+    // shows `listCustomerBuilds` instead. Serving the shared row would hand every
+    // buyer the same binary, which cannot carry their account number or expiry.
+    if (row.type === 'ea') continue;
+
     const entitlement = await getActiveEntitlement(db, customerId, row.productId);
     if (!entitlement) continue;
-    if (row.type === 'ea' && !(await getActiveLicense(db, customerId, row.productId))) continue;
 
     out.push({
       fileId: row.fileId,
@@ -66,6 +70,58 @@ export async function listCustomerDownloads(db: Db, customerId: string): Promise
     });
   }
   return out;
+}
+
+export interface PortalBuild {
+  buildId: string;
+  productTitle: string;
+  productSlug: string;
+  accountNumber: string;
+  expiresAt: Date | null;
+  requestedAt: Date;
+  filename: string;
+}
+
+/**
+ * The compiled builds this customer may download: READY, on a licence that is both
+ * ACTIVE and theirs. A build carries their account number and expiry, so these are
+ * the artefacts a purchased EA is actually delivered as.
+ */
+export async function listCustomerBuilds(db: Db, customerId: string): Promise<PortalBuild[]> {
+  const rows = await db
+    .select({
+      buildId: licenseBuilds.id,
+      accountNumber: licenseBuilds.accountNumber,
+      expiresAt: licenseBuilds.expirationDate,
+      r2Key: licenseBuilds.r2Key,
+      requestedAt: licenseBuilds.requestedAt,
+      productTitle: products.title,
+      productSlug: products.slug,
+    })
+    .from(licenseBuilds)
+    .innerJoin(licenses, eq(licenses.id, licenseBuilds.licenseId))
+    .innerJoin(products, eq(products.id, licenses.productId))
+    .where(
+      and(
+        eq(licenses.customerId, customerId),
+        eq(licenses.status, 'ACTIVE'),
+        eq(licenseBuilds.buildStatus, 'READY')
+      )
+    )
+    .orderBy(desc(licenseBuilds.requestedAt))
+    .all();
+
+  return rows
+    .filter((row) => Boolean(row.r2Key))
+    .map((row) => ({
+      buildId: row.buildId,
+      productTitle: row.productTitle,
+      productSlug: row.productSlug,
+      accountNumber: row.accountNumber,
+      expiresAt: row.expiresAt ?? null,
+      requestedAt: row.requestedAt,
+      filename: (row.r2Key as string).split('/').pop() ?? `build-${row.accountNumber}.ex4`,
+    }));
 }
 
 export interface PortalOrderItem {

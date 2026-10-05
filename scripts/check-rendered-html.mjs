@@ -272,8 +272,8 @@ for (const file of indexFiles()) {
 
 /**
  * Product pages are exempt from the word band (CONTENT-STANDARD §3b), so their
- * quality is asserted in the DOM instead: the decision chart must be present —
- * and it is only ever drawn from real figures — and the risk warning must appear.
+ * quality is asserted in the DOM instead: a risk warning and a drawdown figure
+ * must appear, and the account type must be stated.
  */
 function productRoutes() {
   const set = new Set();
@@ -301,9 +301,6 @@ for (const file of indexFiles()) {
   productsChecked++;
   const html = readFileSync(file, 'utf8');
 
-  if (!html.includes('data-product-chart')) {
-    errors.push(`${rel}: product page has no decision chart (data-product-chart)`);
-  }
   if (!/risk warning/i.test(html)) {
     errors.push(`${rel}: product page has no risk warning`);
   }
@@ -322,7 +319,7 @@ if (errors.length > 0) {
 if (notes.length && process.env.VERBOSE) for (const n of notes) console.log(`  ${n}`);
 console.log(
   `check-rendered-html PASS: ${pagesChecked} page(s) checked; non-post pages have exactly one H1, ` +
-    `${productsChecked} product page(s) carry the decision chart and risk warning, ` +
+    `${productsChecked} product page(s) carry a risk warning and drawdown figure, ` +
     `${strict} strict post pages clean (${legacy} legacy posts with body-section debt, ` +
     `${postH1Debt} posts + ${pageH1Debt} page(s)/product(s) with duplicate H1s).`,
 );

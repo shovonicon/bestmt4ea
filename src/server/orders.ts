@@ -1,7 +1,9 @@
 import { and, eq } from 'drizzle-orm';
+import { env } from 'cloudflare:workers';
 import type { Db } from '../db/client';
 import { dbBatch } from '../db/client';
 import {
+  customers,
   orderItems,
   orders,
   payments,
@@ -10,6 +12,8 @@ import {
   type Order,
 } from '../db/schema';
 import { randomToken, uuid } from '../lib/crypto';
+import { sendEmail } from '../emails/send';
+import { orderConfirmationEmail } from '../emails/order-confirmation';
 import { grantEntitlement } from './entitlements';
 import { createLicense } from './licenses';
 
@@ -144,6 +148,48 @@ export async function markOrderFailed(db: Db, orderId: string): Promise<void> {
   await db.update(orders).set({ status: 'failed' }).where(eq(orders.id, orderId));
 }
 
+const money = (cents: number) => `$${(cents / 100).toFixed(2)}`;
+
+/**
+ * Best-effort purchase receipt. `sendEmail` never throws, so a mail failure can
+ * never undo a settled order — the customer still has the dashboard.
+ */
+async function sendReceipt(
+  db: Db,
+  order: Order,
+  items: Array<{ titleSnapshot: string; unitPriceCents: number; quantity: number }>
+): Promise<void> {
+  try {
+    const customer = await db
+      .select({ email: customers.email })
+      .from(customers)
+      .where(eq(customers.id, order.customerId))
+      .get();
+    if (!customer?.email) return;
+
+    const mail = orderConfirmationEmail({
+      orderNumber: order.orderNumber,
+      items: items.map((item) => ({
+        title: item.titleSnapshot,
+        amount: money(item.unitPriceCents * item.quantity),
+      })),
+      total: money(order.totalCents),
+      dashboardUrl: `${env.APP_URL}/dashboard/`,
+      loginUrl: `${env.APP_URL}/login/`,
+    });
+
+    await sendEmail(db, env, {
+      to: customer.email,
+      subject: mail.subject,
+      html: mail.html,
+      text: mail.text,
+      template: 'order-confirmation',
+    });
+  } catch (error) {
+    console.error('receipt_failed', error);
+  }
+}
+
 export interface SettleOrderInput {
   orderId: string;
   /** Unique provider reference (Stripe session id, crypto payment id, or manual-<n>). */
@@ -202,15 +248,15 @@ export async function settleOrder(db: Db, input: SettleOrderInput): Promise<Sett
       expiresAt: item.durationDays ? new Date(now.getTime() + item.durationDays * 86_400_000) : null,
     });
 
-    // An EA needs a licence (the MT5-account-bound activation), created PENDING so
-    // the customer can activate it. Non-EA products (VPS, tools) need only the
-    // entitlement.
+    // Only an EA is account-bound: it needs the MT4/MT5-bound activation,
+    // created PENDING so the customer can activate it. A tool (indicator) and a
+    // service (VPS) deliver on the entitlement alone.
     const product = await db
-      .select({ platform: products.platform })
+      .select({ type: products.type })
       .from(products)
       .where(eq(products.id, item.productId))
       .get();
-    if (product && product.platform !== 'none') {
+    if (product?.type === 'ea') {
       await createLicense(db, {
         entitlementId,
         customerId: order.customerId,
@@ -220,6 +266,8 @@ export async function settleOrder(db: Db, input: SettleOrderInput): Promise<Sett
       });
     }
   }
+
+  await sendReceipt(db, order, items);
 
   return { applied: true, productIds: items.map((item) => item.productId) };
 }

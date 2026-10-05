@@ -12,6 +12,22 @@
 
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import unpublishedData from '../data/unpublished.json';
+
+/**
+ * Products withdrawn from sale (`src/data/unpublished.json`). They leave every
+ * listing and the sitemap, their route 404s, and the Worker redirects the old
+ * URL. `scripts/routes.mjs` and `astro.config.mjs` read the same file so the
+ * live-route set and the sitemap agree with this one.
+ */
+export const UNPUBLISHED_PRODUCT_SLUGS = new Set(
+  (unpublishedData.products ?? []).map((entry: { slug: string }) => entry.slug),
+);
+
+/** True when a product URL must not be served or listed. */
+export function isUnpublishedProduct(slug: string): boolean {
+  return UNPUBLISHED_PRODUCT_SLUGS.has(slug);
+}
 
 /**
  * Slugs served by a dedicated `src/pages/` route. `[slug].astro` must not emit
@@ -25,8 +41,6 @@ export const RESERVED_SLUGS = new Set([
   'brand',
   'product-category',
   'category',
-  'free-download-forex-ea-indicator',
-  'licences',
   'login',
   'logout',
   'dashboard',
@@ -37,12 +51,12 @@ export const RESERVED_SLUGS = new Set([
 ]);
 
 /**
- * WordPress pages deliberately superseded by a dedicated route: the old blog
- * archive page and the thin free-download listing, both replaced by real hubs.
- * Naming them here keeps the shadowing explicit — anything else that collides
- * with a reserved route fails the build instead of quietly disappearing.
+ * A WordPress page deliberately superseded by a dedicated route: the old blog
+ * archive. Naming it here keeps the shadowing explicit — anything else that
+ * collides with a reserved route fails the build instead of quietly
+ * disappearing.
  */
-export const SUPERSEDED_SLUGS = new Set(['blog', 'free-download-forex-ea-indicator']);
+export const SUPERSEDED_SLUGS = new Set(['blog']);
 
 /** A date in the future means the entry is not published yet. */
 export const isFutureDated = (date?: Date): boolean => Boolean(date && date.getTime() > Date.now());
@@ -66,7 +80,9 @@ export async function getPublicPosts(): Promise<CollectionEntry<'posts'>[]> {
 }
 
 export async function getPublicProducts(): Promise<CollectionEntry<'products'>[]> {
-  return (await getCollection('products')).filter(isPublic).sort(byTitle);
+  return (await getCollection('products'))
+    .filter((entry) => isPublic(entry) && !isUnpublishedProduct(entry.data.slug))
+    .sort(byTitle);
 }
 
 /** Pages that are indexable content — legal/system pages are excluded. */
@@ -77,6 +93,22 @@ export async function getPublicPages(): Promise<CollectionEntry<'pages'>[]> {
 /** The free-download library: public posts carrying a `download:` block. */
 export async function getDownloadPosts(): Promise<CollectionEntry<'posts'>[]> {
   return (await getPublicPosts()).filter((post) => Boolean(post.data.download));
+}
+
+/**
+ * A product is free only when every price signal is zero. A variable product
+ * keeps a non-zero `priceMax` even though its `price` reads "0", so a paid tier
+ * is never mistaken for a giveaway. This is the same rule `scripts/seed-catalog.mjs`
+ * writes to `products.is_free`.
+ */
+export function isFreeProduct(entry: {
+  data: { price?: string; priceMin?: number; priceMax?: number };
+}): boolean {
+  const num = (value: unknown) => {
+    const n = Number(value ?? 0);
+    return Number.isFinite(n) ? n : 0;
+  };
+  return num(entry.data.price) === 0 && num(entry.data.priceMin) === 0 && num(entry.data.priceMax) === 0;
 }
 
 /**

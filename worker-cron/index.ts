@@ -44,7 +44,7 @@ export default {
     await Promise.allSettled(jobs);
   },
 
-  async fetch(request: Request): Promise<Response> {
+  async fetch(): Promise<Response> {
     return new Response('bestmt4ea-cron', {
       status: 200,
       headers: { 'content-type': 'text/plain' },

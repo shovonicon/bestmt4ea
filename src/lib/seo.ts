@@ -65,17 +65,18 @@ const STOCK_SCHEMA: Record<string, string> = {
  *    systems, and the exported `brands` field holds platforms (MT4/MT5), not a
  *    manufacturer, so `brand` is omitted rather than invented
  *
- * `aggregateRating` is only emitted when there are genuine customer reviews
- * behind it, which is a Google requirement.
+ * It also emits no `aggregateRating`. The imported WooCommerce rating counts are
+ * not backed by reviews a visitor can read — the VPS product carried 11 ratings
+ * against 2 published reviews, and 2000-trading-tools carried 3 while its own
+ * store page said "There are no reviews yet". Google's review-snippet policy
+ * requires rating markup to be substantiated by reviews shown on the page, so a
+ * rating node may only be added once this site has collected those reviews itself.
  */
 export function productSchema(
   product: CollectionEntry<'products'>,
   opts: { currency?: string; min?: number; max?: number } = {},
 ): Json {
   const { currency = 'USD', min, max } = opts;
-  const ratingCount = product.data.ratingCount ?? 0;
-  const ratingAverage = product.data.ratingAverage;
-  const hasRating = ratingCount > 0 && typeof ratingAverage === 'number';
   const image = resolveImage(product.data.featuredImage);
   const url = absoluteUrl(`/product/${product.data.slug}/`);
 
@@ -104,15 +105,6 @@ export function productSchema(
     ...(product.data.sku ? { sku: product.data.sku } : {}),
     ...(product.data.productCategories[0] ? { category: product.data.productCategories[0] } : {}),
     ...(offers ? { offers } : {}),
-    ...(hasRating
-      ? {
-          aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue: ratingAverage,
-            reviewCount: ratingCount,
-          },
-        }
-      : {}),
   };
 }
 

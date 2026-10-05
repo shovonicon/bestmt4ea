@@ -1,15 +1,89 @@
 ---
 import { getCollection } from 'astro:content';
+import { getPublicProducts } from '../lib/content';
 import { getPerformance } from '../lib/performance';
 import { site } from '../lib/site';
 import { url } from '../lib/urls';
+import taxonomies from '../data/taxonomies.json';
 
-const products = await getCollection('products');
+/**
+ * Mega-menu icons. The reference (`forexcracked.com`) labels every menu section
+ * with a small icon rather than a bare list of links, which is a large part of
+ * why its menu is easy to scan — mirrored here.
+ */
+const MENU_ICONS: Record<string, string> = {
+  flash: '<path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/>',
+  tools:
+    '<path d="M14.7 6.3a4 4 0 0 0 5 5l-9.4 9.4a2.1 2.1 0 0 1-3-3l9.4-9.4z"/><path d="m6 6 3 3"/>',
+  chart: '<path d="M3 3v18h18"/><path d="M7 15l3-4 3 3 4-6"/>',
+  scale:
+    '<path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>',
+  shield:
+    '<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>',
+  trend: '<polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>',
+  download:
+    '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/>',
+};
+const CHEVRON = '<path d="m9 18 6-6-6-6"/>';
+
+// Public products only — a withdrawn one must not reappear in the mega menu.
+const products = await getPublicProducts();
 const featured = products
   .map((product) => ({ product, perf: getPerformance(product.data.slug) }))
   .sort((a, b) => (b.perf?.totalGainPct ?? -Infinity) - (a.perf?.totalGainPct ?? -Infinity))
   .slice(0, 8)
   .map(({ product }) => ({ href: url(`/product/${product.data.slug}`), label: product.data.title }));
+
+/**
+ * Blog categories, grouped for the mega menu.
+ *
+ * Only categories that actually have posts get a page (mirrors
+ * `scripts/routes.mjs`), so the menu is built from the live ones — a category
+ * with no posts has no route and would be a dead link. Titles group the
+ * taxonomy's own paths; every label comes from the taxonomy.
+ */
+const BLOG_GROUPS: Array<{ title: string; icon: string; segments: string[] }> = [
+  { title: 'Expert Advisors', icon: 'flash', segments: ['mt4-mt5-expert-advisors', 'forex-ea-reviews'] },
+  { title: 'Trading Tools', icon: 'tools', segments: ['ai-powered-trading-tools', 'forex-indicator-reviews'] },
+  { title: 'Strategies', icon: 'trend', segments: ['forex-trading-strategies'] },
+  {
+    title: 'Free Downloads & Guides',
+    icon: 'download',
+    segments: ['free-forex-ea', 'free-forex-indicator', 'installation-setup', 'risk-money-management'],
+  },
+];
+
+const usedCategoryNames = new Set<string>();
+for (const post of await getCollection('posts')) {
+  for (const name of (post.data as any).categories ?? []) usedCategoryNames.add(name);
+}
+
+const seenCategoryLabels = new Set<string>();
+const liveBlogCategories = ((taxonomies as any).blogCategories ?? [])
+  .map((cat: any) => {
+    const href = `/${String(cat.path)
+      .replace(/^https?:\/\/[^/]+/, '')
+      .replace(/^\/+/, '')
+      .replace(/\/+$/, '')}/`;
+    return { href, label: String(cat.name), segment: href.replace(/^\/category\//, '').split('/')[0] };
+  })
+  .filter((cat: any) => usedCategoryNames.has(cat.label) && !seenCategoryLabels.has(cat.label))
+  .filter((cat: any) => {
+    seenCategoryLabels.add(cat.label);
+    return true;
+  });
+
+const blogColumns = BLOG_GROUPS.map((group) => ({
+  title: group.title,
+  icon: group.icon,
+  links: liveBlogCategories
+    .filter((cat: any) => group.segments.includes(cat.segment))
+    .map((cat: any) => ({ href: url(cat.href), label: cat.label })),
+})).filter((column) => column.links.length > 0);
+
+if (blogColumns.length > 0) {
+  blogColumns[blogColumns.length - 1].links.push({ href: url('/blog'), label: 'View All Posts →' });
+}
 
 /** Links shown before the dropdown menus. */
 const leadLinksRaw = [
@@ -18,19 +92,22 @@ const leadLinksRaw = [
 ];
 
 /** Links shown after the dropdown menus. */
-const tailLinksRaw = [{ href: '/shop', label: 'Shop' }];
+const tailLinksRaw = [
+  { href: '/shop', label: 'Shop' },
+  { href: '/tools', label: 'Tools' },
+];
 
 const menusRaw = [
   {
     label: 'Products',
     columns: [
-      { title: 'Featured Expert Advisors', links: featured },
+      { title: 'Featured Expert Advisors', icon: 'flash', links: featured },
       {
         title: 'Tools & Infrastructure',
+        icon: 'tools',
         links: [
           { href: '/product/golden-deer-holy-grail-indicator', label: 'Golden Deer Indicator' },
           { href: '/product/vps', label: 'Low Latency Forex VPS' },
-          { href: '/product/2000-trading-tools', label: 'Top 2000 Trading Tools' },
         ],
       },
     ],
@@ -40,10 +117,13 @@ const menusRaw = [
     columns: [
       {
         title: 'Compare Platforms',
+        icon: 'chart',
         links: [
           { href: '/best-mt4-ea', label: 'Best MT4 EAs' },
-          { href: '/best-forex-ea', label: 'Best MT5 EAs' },
+          { href: '/best-mt5-ea', label: 'Best MT5 EAs' },
+          { href: '/best-forex-ea', label: 'Best Forex EAs' },
           { href: '/top-ranking', label: 'View All Rankings' },
+          { href: '/customer-feedback', label: 'Customer Feedback' },
         ],
       },
       {
@@ -66,26 +146,7 @@ const menusRaw = [
   },
   {
     label: 'Blog',
-    columns: [
-      {
-        title: 'Guides & Education',
-        links: [
-          { href: '/category/installation-setup', label: 'Installation & Setup' },
-          { href: '/category/forex-trading-strategies', label: 'Trading Strategies' },
-          { href: '/category/risk-money-management', label: 'Risk & Money Management' },
-          { href: '/category/gold-xauusd-trading', label: 'Gold (XAUUSD) Trading' },
-        ],
-      },
-      {
-        title: 'Free Downloads',
-        links: [
-          { href: '/free-download-forex-ea-indicator', label: 'Free Download Library' },
-          { href: '/category/free-forex-ea', label: 'Free Expert Advisors' },
-          { href: '/category/free-forex-indicator', label: 'Free Indicators' },
-          { href: '/blog', label: 'View All Posts →' },
-        ],
-      },
-    ],
+    columns: blogColumns,
   },
 ];
 
@@ -169,7 +230,22 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
                 {
                   menu.columns.map((col) => (
                     <div class="flex min-w-[13rem] flex-col gap-2">
-                      <h4 class="mb-1 flex items-center gap-1.5 border-b border-white/5 pb-2 font-mono text-[11px] font-bold uppercase tracking-wider text-emerald-400">
+                      <h4 class="mb-1 flex items-center gap-2 border-b border-white/5 pb-2 font-mono text-[11px] font-bold uppercase tracking-wider text-emerald-400">
+                        {col.icon && (
+                          <span class="grid h-6 w-6 shrink-0 place-items-center rounded-md border border-emerald-400/25 bg-emerald-400/10 text-emerald-300">
+                            <svg
+                              viewBox="0 0 24 24"
+                              class="h-3.5 w-3.5"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="1.8"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              aria-hidden="true"
+                              set:html={MENU_ICONS[col.icon]}
+                            />
+                          </span>
+                        )}
                         {col.title}
                       </h4>
                       <ul class="flex flex-col gap-1">
@@ -177,9 +253,20 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
                           <li>
                             <a
                               href={link.href}
-                              class="block rounded-lg border-l-2 border-transparent px-3 py-2 text-xs font-medium text-slate-300 transition-colors hover:border-emerald-400 hover:bg-emerald-500/10 hover:text-emerald-300"
+                              class="group/link flex items-center justify-between gap-2 rounded-lg border-l-2 border-transparent px-3 py-2 text-xs font-medium text-slate-300 transition-colors hover:border-emerald-400 hover:bg-emerald-500/10 hover:text-emerald-300"
                             >
                               {link.label}
+                              <svg
+                                viewBox="0 0 24 24"
+                                class="h-3 w-3 shrink-0 -translate-x-1 opacity-0 transition-all duration-200 group-hover/link:translate-x-0 group-hover/link:opacity-100"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                                set:html={CHEVRON}
+                              />
                             </a>
                           </li>
                         ))}
@@ -210,13 +297,16 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
       }
     </nav>
 
-    <div class="hidden items-center gap-3 lg:flex">
+    <div class="hidden items-center gap-4 lg:flex">
+      <a href={url('/login')} class="text-xs font-semibold text-slate-300 transition-colors hover:text-white">
+        Login
+      </a>
       <a
         href={site.telegram.support}
         rel="noopener"
         class="text-xs font-semibold text-slate-300 transition-colors hover:text-white"
       >
-        Support
+        Telegram support
       </a>
       <a
         href={url('/shop')}
@@ -289,7 +379,22 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
             <div class="pb-2">
               {menu.columns.map((col) => (
                 <div class="mt-2">
-                  <p class="px-3 font-mono text-[10px] font-bold uppercase tracking-wider text-emerald-400">{col.title}</p>
+                  <p class="flex items-center gap-2 px-3 font-mono text-[10px] font-bold uppercase tracking-wider text-emerald-400">
+                    {col.icon && (
+                      <svg
+                        viewBox="0 0 24 24"
+                        class="h-3.5 w-3.5 shrink-0"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        set:html={MENU_ICONS[col.icon]}
+                      />
+                    )}
+                    {col.title}
+                  </p>
                   <ul>
                     {col.links.map((link) => (
                       <li>
@@ -315,6 +420,19 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
           </a>
         ))
       }
+      <a
+        href={url('/login')}
+        class="flex min-h-[44px] items-center rounded-lg px-3 text-sm font-medium text-slate-300 transition-colors hover:bg-white/[0.06] hover:text-white"
+      >
+        Login
+      </a>
+      <a
+        href={site.telegram.support}
+        rel="noopener"
+        class="flex min-h-[44px] items-center rounded-lg px-3 text-sm font-medium text-slate-300 transition-colors hover:bg-white/[0.06] hover:text-white"
+      >
+        Telegram support
+      </a>
       <a
         href={url('/shop')}
         class="brand-gradient mt-3 inline-flex min-h-[44px] items-center justify-center rounded-full px-4 text-sm font-semibold text-black"

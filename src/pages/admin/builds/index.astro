@@ -36,7 +36,7 @@ const rows = await getDb()
     <div class="mt-8 overflow-x-auto">
       <table class="w-full text-left text-sm">
         <thead class="text-[--color-ink-soft]">
-          <tr><th class="py-2">License</th><th>Account</th><th>Status</th><th>File</th><th>Requested</th></tr>
+          <tr><th class="py-2">License</th><th>Account</th><th>Status</th><th>File</th><th>Requested</th><th>Attach compiled build</th></tr>
         </thead>
         <tbody>
           {rows.map((row) => (
@@ -46,6 +46,28 @@ const rows = await getDb()
               <td>{row.status}</td>
               <td class="text-xs">{row.r2Key ?? '—'}</td>
               <td>{row.requestedAt.toISOString().slice(0, 16).replace('T', ' ')}</td>
+              <td class="py-2">
+                {
+                  row.status === 'READY' ? (
+                    <span class="text-xs text-[--color-ink-soft]">attached</span>
+                  ) : (
+                    <form method="post" action="/api/admin/build/" enctype="multipart/form-data" class="flex items-center gap-2">
+                      <input type="hidden" name="buildId" value={row.id} />
+                      <input
+                        class="text-xs"
+                        type="file"
+                        name="file"
+                        accept=".ex4,.ex5,.zip"
+                        required
+                        aria-label={`Compiled build for account ${row.account}`}
+                      />
+                      <button class="rounded bg-[--color-brand] px-2 py-1 text-xs font-semibold text-black" type="submit">
+                        Attach
+                      </button>
+                    </form>
+                  )
+                }
+              </td>
             </tr>
           ))}
         </tbody>

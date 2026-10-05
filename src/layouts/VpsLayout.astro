@@ -1,0 +1,631 @@
+---
+/**
+ * Windows VPS product page.
+ *
+ * A VPS is not an expert advisor: it has no strategy, no Myfxbook record and no
+ * licence tiers, so the EA product layout would be mostly empty or dishonest
+ * here. This layout leads with what a hosting product is actually judged on —
+ * specifications, what it does for a running EA, billing periods and terms.
+ *
+ * Editorial content comes from src/data/vps-detail.json (the product's own page);
+ * the markdown body is NOT rendered and must not be edited. Per-period prices are
+ * deliberately not shown: the store gives one "from" price, so we publish that
+ * and describe the periods rather than inventing four numbers.
+ */
+import BaseLayout from './BaseLayout.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Faq from '../components/Faq.astro';
+import { url } from '../lib/urls';
+import { formatMoney, formatDate } from '../lib/format';
+import { site } from '../lib/site';
+import { affiliates, AFFILIATE_REL, AFFILIATE_DISCLOSURE, type AffiliateOffer } from '../lib/affiliates';
+import { productSchema, breadcrumbSchema, breadcrumbTrail } from '../lib/seo';
+import vpsData from '../data/vps-detail.json';
+import planData from '../data/product-plans.json';
+
+export interface Props {
+  product: any;
+}
+
+const { product } = Astro.props;
+const detail = (vpsData as unknown as { vps?: Record<string, any> }).vps ?? {};
+
+const specs: Array<{ label: string; value: string; icon?: string }> = detail.specs ?? [];
+const benefits: Array<{ title: string; text: string }> = detail.benefits ?? [];
+const whoFor: Array<{ title: string; text: string }> = detail.whoFor ?? [];
+const faqs: Array<{ question: string; answer: string }> = detail.faqs ?? [];
+const comparison = detail.comparison as { columns: string[]; rows: string[][] } | undefined;
+
+const partners: AffiliateOffer[] = [affiliates.roboforex, affiliates.exness];
+
+const currency = product.data.currency || 'USD';
+const priceFrom = Number(product.data.salePrice ?? product.data.priceMin ?? 0);
+const priceMax = Number(product.data.priceMax ?? priceFrom);
+
+type Plan = {
+  code: string;
+  name: string;
+  term?: string;
+  months?: number;
+  note?: string;
+  badge?: string;
+  cta?: string;
+  price: number;
+  compareAt?: number;
+  features?: string[];
+};
+// The four billing periods, priced from the store's own variation data.
+const plans: Plan[] = ((planData as unknown as Record<string, Plan[]>)[product.data.slug]) ?? [];
+const planLabel = (price: number) => (price > 0 ? formatMoney(price, currency) : 'Free');
+const defaultPlanIndex = Math.max(0, plans.findIndex((plan) => plan.badge === 'Try it out'));
+const selectedPlan = plans[defaultPlanIndex] ?? null;
+const selectedPriceLabel = selectedPlan ? planLabel(selectedPlan.price) : formatMoney(priceFrom, currency);
+const savingsPct = (plan: Plan) =>
+  plan.compareAt && plan.compareAt > plan.price ? Math.round(((plan.compareAt - plan.price) / plan.compareAt) * 100) : 0;
+
+const updatedLabel = product.data.updatedAt ?? product.data.publishedAt;
+
+const payments = [
+  { src: '/media/payments/visa.svg', label: 'Visa' },
+  { src: '/media/payments/mastercard.svg', label: 'Mastercard' },
+  { src: '/media/payments/stripe.svg', label: 'Stripe' },
+  { src: '/media/payments/tether.svg', label: 'USDT (TRC20)' },
+];
+
+const specIcons: Record<string, string> = {
+  cpu: 'M9 3v2M15 3v2M9 19v2M15 19v2M3 9h2M3 15h2M19 9h2M19 15h2M6 6h12v12H6zM10 10h4v4h-4z',
+  ram: 'M3 8h18v8H3zM7 16v3M12 16v3M17 16v3M7 11h2M11 11h2M15 11h2',
+  disk: 'M4 5h16v14H4zM8 5v5h8V5M8 15h8',
+  bandwidth: 'M4 19h16M7 19V9M12 19V5M17 19v-6',
+  network: 'M12 3v5M6 21h12M12 21v-4M6 17h12l-3-4H9z',
+  os: 'M4 5h16v10H4zM9 19h6M12 15v4',
+  remote: 'M4 5h16v10H4zM12 15v4M8 19h8',
+  instances: 'M4 6h7v7H4zM13 11h7v7h-7z',
+};
+
+const trail = breadcrumbTrail([
+  { name: 'Home', href: '/' },
+  { name: 'Shop', href: url('/shop') },
+  { name: product.data.title, href: url(`/product/${product.data.slug}/`) },
+]);
+---
+
+<BaseLayout
+  title={product.data.seo.title || product.data.title}
+  description={product.data.seo.description || product.data.description}
+  canonical={product.data.seo.canonical}
+  ogImage={product.data.seo.ogImage || product.data.featuredImage}
+  jsonLd={[
+    productSchema(product, { currency, min: product.data.priceMin, max: product.data.priceMax }),
+    breadcrumbSchema(trail),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.question,
+        acceptedAnswer: { '@type': 'Answer', text: f.answer },
+      })),
+    },
+  ]}
+>
+  {/* ---------------------------------------------------------------- HERO */}
+  <header class="relative overflow-hidden">
+    <div class="glow-orb left-[-6rem] top-[-8rem] h-[26rem] w-[26rem] bg-[--color-accent]/25" aria-hidden="true"></div>
+    <div class="glow-orb right-[-4rem] top-[2rem] h-[20rem] w-[20rem] bg-[--color-info]/15" aria-hidden="true"></div>
+    <div class="grid-overlay absolute inset-0" aria-hidden="true"></div>
+
+    <div class="container-x relative pb-12 pt-8">
+      <nav aria-label="Breadcrumb" class="text-xs text-[--color-ink-dim]">
+        <a href="/" class="hover:text-[--color-accent]">Home</a>
+        <span class="mx-2">/</span>
+        <a href={url('/shop')} class="hover:text-[--color-accent]">Shop</a>
+        <span class="mx-2">/</span>
+        <span class="text-[--color-ink-soft]">{product.data.title}</span>
+      </nav>
+
+      <div class="mt-8 grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_25rem]">
+        <div class="animate-fade-in-up">
+          <p class="section-mark eyebrow">
+            <span>Windows VPS hosting · Updated {formatDate(updatedLabel)}</span>
+          </p>
+
+          <h1 class="mt-4 text-4xl leading-[1.05] sm:text-5xl lg:text-[3.5rem]">
+            Windows VPS for
+            <br />
+            <span class="text-gradient-brand">MT4 &amp; MT5</span>
+          </h1>
+
+          <p class="mt-5 max-w-2xl text-base leading-7 text-[--color-ink-soft] sm:text-lg">{detail.tagline}</p>
+
+          <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
+            <span class="inline-flex items-center gap-2 text-[--color-ink-dim]">
+              <span class="live-dot" aria-hidden="true"></span>
+              Windows Server 2022 · 1 Gbps · RDP
+            </span>
+          </div>
+
+          <div class="mt-7 flex flex-wrap items-end gap-4">
+            <div>
+              <p class="metric-label">Starting from</p>
+              <p class="display-stat mt-1 text-4xl">
+                {formatMoney(priceFrom, currency)}
+                <span class="text-base font-semibold text-[--color-ink-dim]">/month</span>
+              </p>
+            </div>
+            <p class="mb-1 max-w-xs text-xs leading-5 text-[--color-ink-dim]">
+              Plans range from {formatMoney(priceFrom, currency)} to {formatMoney(priceMax, currency)} depending on the
+              billing period.
+            </p>
+          </div>
+
+          <div class="mt-7 flex flex-wrap items-center gap-3">
+            <a href="#acquire" class="btn btn-primary !px-7 !py-3.5 !text-base">Choose your plan</a>
+            <a href="#specifications" class="btn btn-ghost !px-6 !py-3.5 !text-base">See specifications</a>
+          </div>
+
+          <ul class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs text-[--color-ink-dim]">
+            <li class="inline-flex items-center gap-1.5">
+              <span class="text-[--color-accent]" aria-hidden="true">⚡</span>
+              Provisioned after checkout
+            </li>
+            <li class="inline-flex items-center gap-1.5">
+              <span class="text-[--color-accent]" aria-hidden="true">🧭</span>
+              Setup guide included
+            </li>
+            <li class="inline-flex items-center gap-1.5">
+              <span class="text-[--color-accent]" aria-hidden="true">💬</span>
+              Support via Telegram
+            </li>
+          </ul>
+        </div>
+
+        {/* Hero visual */}
+        {
+          product.data.featuredImage && (
+            <div class="animate-fade-in-up-delay-2 relative">
+              <div class="glass shadow-glow relative overflow-hidden p-3">
+                <img
+                  src={product.data.featuredImage}
+                  alt={product.data.title}
+                  class="w-full rounded-2xl object-cover"
+                  width="800"
+                  height="600"
+                  loading="eager"
+                  decoding="async"
+                />
+                <div class="brand-card absolute bottom-6 left-6 px-5 py-3.5">
+                  <p class="metric-label">Runs</p>
+                  <p class="display-stat mt-1 text-4xl">5–10</p>
+                  <p class="mt-1 text-xs text-[--color-ink-dim]">MT4 / MT5 platforms</p>
+                </div>
+              </div>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </header>
+
+  <div class="container-x grid gap-10 py-12 lg:grid-cols-[minmax(0,1fr)_22rem]">
+    <div class="min-w-0 space-y-12">
+      {/* -------------------------------------------------------- SPEC BAND */}
+      <section data-reveal class="reveal section-band -mx-4 rounded-3xl px-4 py-10 sm:-mx-8 sm:px-8" id="specifications" aria-labelledby="specs-heading">
+        <SectionHead
+          kicker="Specifications"
+          title="What you get on every plan"
+          lead="Dedicated resources, not shared best-effort. These are the advertised specifications for this configuration."
+          id="specs-heading"
+        />
+        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {
+            specs.map((spec) => (
+              <div class="hover-brand-card p-5">
+                <span class="icon-tile">
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="h-5 w-5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d={specIcons[spec.icon ?? ''] ?? specIcons.os} />
+                  </svg>
+                </span>
+                <dl class="mt-4">
+                  <dt class="metric-label">{spec.label}</dt>
+                  <dd class="mt-1 font-semibold text-[--color-ink]">{spec.value}</dd>
+                </dl>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      {/* ---------------------------------------------------------- WHY VPS */}
+      <section class="reveal" aria-labelledby="why-heading">
+        <SectionHead
+          kicker="Why a VPS"
+          title="Keep the terminal running when your PC is not"
+          lead="An expert advisor has to be online to manage its trades. A power cut, a dropped connection or a Windows reboot on your own machine can halt it mid-session."
+          id="why-heading"
+        />
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          {
+            benefits.map((benefit) => (
+              <article class="hover-brand-card p-6">
+                <h3 class="text-lg text-[--color-ink]">{benefit.title}</h3>
+                <p class="mt-2 text-sm leading-6 text-[--color-ink-soft]">{benefit.text}</p>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------- COMPARISON */}
+      {
+        comparison && (
+          <section class="reveal" aria-labelledby="compare-heading">
+            <SectionHead
+              kicker="Side by side"
+              title="VPS vs. your own computer"
+              lead="What actually changes when the terminal runs on a hosted Windows server."
+              id="compare-heading"
+            />
+            <div class="table-shell mt-6">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Scenario</th>
+                    {comparison.columns.map((column) => (
+                      <th>{column}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {comparison.rows.map((row) => (
+                    <tr>
+                      <th scope="row">{row[0]}</th>
+                      <td class="text-[--color-accent-soft]">{row[1]}</td>
+                      <td class="text-[--color-ink-dim]">{row[2]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )
+      }
+
+      {/* ----------------------------------------------------------- WHO FOR */}
+      <section class="reveal" aria-labelledby="who-heading">
+        <SectionHead kicker="Fit" title="Who this VPS suits" id="who-heading" />
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          {
+            whoFor.map((item) => (
+              <div class="panel p-5">
+                <h3 class="text-base font-semibold text-[--color-ink]">{item.title}</h3>
+                <p class="mt-1.5 text-sm leading-6 text-[--color-ink-soft]">{item.text}</p>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      {/* --------------------------------------------------------- PRICING */}
+      {
+        plans.length > 0 && (
+          <section class="reveal" id="plans" aria-labelledby="plans-heading">
+            <SectionHead
+              kicker="Pricing"
+              title="Four plans, one VPS"
+              lead="The same dedicated Windows VPS — choose how far ahead you want to pay. Longer periods cost less per month."
+              id="plans-heading"
+            />
+            <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {plans.map((plan) => {
+                const featured = plan.badge === 'Best value';
+                const perMonth = plan.months && plan.months > 0 ? plan.price / plan.months : null;
+                return (
+                  <div class:list={['flex flex-col p-5', featured ? 'brand-card' : 'panel']}>
+                    <div class="flex items-start justify-between gap-2">
+                      <div>
+                        <p class="metric-label">{plan.name}</p>
+                        <p class="display-stat mt-2 text-3xl">{planLabel(plan.price)}</p>
+                      </div>
+                      {savingsPct(plan) > 0 && <span class="ribbon">-{savingsPct(plan)}%</span>}
+                    </div>
+                    <p class="mt-1 text-xs text-[--color-ink-dim]">
+                      {plan.term}
+                      {plan.compareAt ? (
+                        <>
+                          {' · '}
+                          <span class="strike">{formatMoney(plan.compareAt, currency)}</span>
+                        </>
+                      ) : null}
+                      {perMonth ? ` · ≈ ${formatMoney(perMonth, currency)}/mo` : ''}
+                    </p>
+                    <p class="mt-3 text-sm leading-6 text-[--color-ink-soft]">{plan.note}</p>
+                    <ul class="mt-4 flex-1 space-y-2">
+                      {(plan.features ?? []).map((feature) => (
+                        <li class="flex gap-2 text-sm leading-6 text-[--color-ink-soft]">
+                          <span class="mt-0.5 text-[--color-accent]" aria-hidden="true">
+                            ✓
+                          </span>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                    <button
+                      type="button"
+                      data-select-plan={plan.code}
+                      class:list={['btn mt-5 w-full', featured ? 'btn-primary' : 'btn-ghost']}
+                    >
+                      {plan.cta ?? 'Choose'}
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+            <p class="mt-4 text-xs leading-6 text-[--color-ink-dim]">
+              Prices in {currency}. The exact total is confirmed at checkout.
+            </p>
+          </section>
+        )
+      }
+
+      {/* ----------------------------------------------------- PAYMENTS */}
+      <section class="panel reveal p-6 sm:p-7" aria-labelledby="payments-heading">
+        <h2 id="payments-heading" class="text-xl">Payment methods</h2>
+        <p class="mt-2 text-sm leading-6 text-[--color-ink-soft]">{detail.paymentNote}</p>
+        <div class="mt-5 flex flex-wrap items-center gap-2">
+          {
+            payments.map((method) => (
+              <span class="brand-chip" title={method.label}>
+                <img src={method.src} alt={method.label} width="24" height="24" loading="lazy" decoding="async" />
+              </span>
+            ))
+          }
+        </div>
+        <p class="mt-4 flex items-center gap-1.5 text-xs text-[--color-ink-dim]">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            class="h-3.5 w-3.5 text-[--color-accent]"
+            aria-hidden="true"
+          >
+            <rect x="4" y="10" width="16" height="10" rx="2"></rect>
+            <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+          </svg>
+          Secure checkout · Checkout is handled by Stripe.
+        </p>
+      </section>
+
+      {/* ------------------------------------------------------- PARTNERS */}
+      <section class="reveal" aria-labelledby="partners-heading">
+        <SectionHead
+          kicker="Partners"
+          title="Built for the brokers we use"
+          lead="Low-latency access to the brokers our expert advisors are tested on. Sponsored links, disclosed below."
+          id="partners-heading"
+        />
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          {
+            partners.map((partner) => (
+              <a href={partner.url} rel={AFFILIATE_REL} class="partner-feature group">
+                <span class="partner-logo-plate">
+                  {partner.logo ? (
+                    <img src={partner.logo} alt={partner.label} loading="lazy" decoding="async" />
+                  ) : (
+                    <span class="text-lg font-bold text-[#04140f]">{partner.label}</span>
+                  )}
+                </span>
+                <span class="flex w-full flex-wrap items-center justify-between gap-2">
+                  <span class="text-lg font-bold text-[--color-ink]">{partner.label}</span>
+                  <span class="partner-chip">Recommended</span>
+                </span>
+                <span class="block text-sm leading-6 text-[--color-ink-dim]">{partner.note}</span>
+                <span class="partner-arrow" aria-hidden="true">Visit site →</span>
+              </a>
+            ))
+          }
+        </div>
+        <p class="mt-4 text-xs leading-6 text-[--color-ink-dim]">{AFFILIATE_DISCLOSURE}</p>
+      </section>
+
+      <Faq items={faqs} heading="VPS hosting questions" />
+
+      {/* ---------------------------------------------------- AVAILABILITY */}
+      <section class="rounded-2xl border border-[--color-warn]/30 bg-[--color-warn]/5 p-5">
+        <h2 class="text-sm font-semibold text-[--color-warn]">Service availability</h2>
+        <p class="mt-2 text-xs leading-6 text-[--color-ink-soft]">{detail.availabilityNote}</p>
+      </section>
+
+      {/* ------------------------------------------------------- TELEGRAM */}
+      <section class="panel reveal overflow-hidden p-6 sm:p-8">
+        <div class="flex flex-wrap items-center justify-between gap-6">
+          <div class="max-w-2xl">
+            <p class="section-mark eyebrow"><span>Support</span></p>
+            <h2 class="mt-3 text-2xl">Need help choosing a plan?</h2>
+            <p class="mt-3 text-sm leading-6 text-[--color-ink-soft]">
+              Ask us how many platforms you need and which location is closest to your broker. Setup help is included with
+              every VPS.
+            </p>
+          </div>
+          <a href={site.telegram.support} rel="noopener" class="btn btn-primary">Message us on Telegram</a>
+        </div>
+      </section>
+    </div>
+
+    {/* -------------------------------------------------------------- ASIDE */}
+    <aside class="min-w-0">
+      <div class="sticky top-24 space-y-4" id="acquire">
+        <section class="brand-card p-6">
+          {/* A real form: the period radios post as `plan`, so checkout works with
+              no JavaScript. `method` comes from the chosen button. */}
+          <form id="checkout-form" method="post" action="/api/checkout/">
+            <input type="hidden" name="productId" value="vps" />
+            <div class="flex items-start justify-between gap-3">
+            <div>
+              <p class="metric-label">VPS plan</p>
+              <p class="display-stat mt-2 text-3xl" data-plan-price>{selectedPriceLabel}</p>
+            </div>
+            {selectedPlan && savingsPct(selectedPlan) > 0 && (
+              <span class="ribbon">-{savingsPct(selectedPlan)}%</span>
+            )}
+          </div>
+
+          <p class="mt-2 text-xs leading-6 text-[--color-ink-dim]">
+            One VPS, four billing periods. Longer periods cost less per month.
+          </p>
+
+          {
+            plans.length > 0 && (
+              <fieldset class="mt-5" data-plan-group>
+                <legend class="sr-only">Choose a billing period</legend>
+                <div class="space-y-2">
+                  {plans.map((plan, index) => (
+                    <label class="plan-option flex items-start gap-3 rounded-xl px-3 py-3">
+                      <input
+                        type="radio"
+                        name="plan"
+                        value={plan.code}
+                        class="mt-1"
+                        data-plan-radio
+                        data-price-label={planLabel(plan.price)}
+                        checked={index === defaultPlanIndex}
+                      />
+                      <span class="min-w-0 flex-1">
+                        <span class="flex items-baseline justify-between gap-2">
+                          <span class="text-sm font-semibold text-[--color-ink]">
+                            {plan.name}
+                            {plan.term ? <span class="font-normal text-[--color-ink-dim]"> · {plan.term}</span> : null}
+                          </span>
+                          <span class="metric-value text-sm">{planLabel(plan.price)}</span>
+                        </span>
+                        {plan.note && <span class="mt-1 block text-xs text-[--color-ink-dim]">{plan.note}</span>}
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+            )
+          }
+
+          {
+            plans.length > 0 ? (
+              <div class="mt-5 grid gap-2">
+                <button type="submit" name="method" value="card" data-checkout class="btn btn-primary w-full">
+                  Pay by card
+                </button>
+                <button type="submit" name="method" value="usdt" class="btn btn-ghost w-full">
+                  Pay with USDT (TRC20)
+                </button>
+              </div>
+            ) : (
+              <a href="/contact/" class="btn btn-ghost mt-5 w-full">Ask about VPS plans</a>
+            )
+          }
+
+          <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
+            {
+              payments.map((method) => (
+                <span class="brand-chip" title={method.label}>
+                  <img src={method.src} alt={method.label} width="24" height="24" loading="lazy" decoding="async" />
+                </span>
+              ))
+            }
+          </div>
+
+          <p class="mt-3 flex items-center justify-center gap-1.5 text-xs text-[--color-ink-dim]">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              class="h-3.5 w-3.5 text-[--color-accent]"
+              aria-hidden="true"
+            >
+              <rect x="4" y="10" width="16" height="10" rx="2"></rect>
+              <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+            </svg>
+            Secure checkout · Card &amp; USDT (TRC20)
+          </p>
+          <p class="mt-1 text-center text-xs text-[--color-ink-dim]">Checkout is handled by Stripe.</p>
+          </form>
+        </section>
+
+        <section class="panel p-6">
+          <p class="metric-label">At a glance</p>
+          <dl class="mt-4 space-y-3 text-sm">
+            <div class="flex justify-between gap-3">
+              <dt class="text-[--color-ink-dim]">Platform</dt>
+              <dd class="text-right font-medium text-[--color-ink]">MT4 / MT5</dd>
+            </div>
+            <div class="flex justify-between gap-3">
+              <dt class="text-[--color-ink-dim]">Operating system</dt>
+              <dd class="text-right font-medium text-[--color-ink]">Windows Server 2022</dd>
+            </div>
+            <div class="flex justify-between gap-3">
+              <dt class="text-[--color-ink-dim]">Access</dt>
+              <dd class="text-right font-medium text-[--color-ink]">Remote Desktop</dd>
+            </div>
+            <div class="flex justify-between gap-3">
+              <dt class="text-[--color-ink-dim]">Setup guide</dt>
+              <dd class="text-right font-medium text-[--color-ink]">Included</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="panel p-6">
+          <p class="metric-label">Availability</p>
+          <p class="mt-3 text-xs leading-6 text-[--color-ink-dim]">
+            Uptime and availability depend on the VPS infrastructure and network. Applications resume when service is
+            restored.
+          </p>
+        </section>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    /*
+     * Billing-period selection. The radios carry the period code and the
+     * pre-formatted price, so one change handler drives the sidebar figure; the
+     * pricing cards' buttons pick the matching period. Selection styling is
+     * CSS-only (`:has(input:checked)`), so the panel is correct before this runs.
+     */
+    document.querySelectorAll<HTMLElement>('[data-plan-group]').forEach((group) => {
+      if (group.dataset.planReady === '1') return;
+      group.dataset.planReady = '1';
+      const radios = Array.from(group.querySelectorAll<HTMLInputElement>('[data-plan-radio]'));
+      if (radios.length === 0) return;
+
+      const paint = () => {
+        const chosen = radios.find((radio) => radio.checked);
+        if (!chosen) return;
+        document.querySelectorAll<HTMLElement>('[data-plan-price]').forEach((out) => {
+          out.textContent = chosen.dataset.priceLabel ?? out.textContent;
+        });
+      };
+      radios.forEach((radio) => radio.addEventListener('change', paint));
+      paint();
+
+      document.querySelectorAll<HTMLElement>('[data-select-plan]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const target = radios.find((radio) => radio.value === button.dataset.selectPlan);
+          if (target) {
+            target.checked = true;
+            target.dispatchEvent(new Event('change', { bubbles: true }));
+          }
+          document.getElementById('acquire')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+    });
+  </script>
+</BaseLayout>

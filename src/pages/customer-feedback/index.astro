@@ -1,0 +1,130 @@
+---
+/**
+ * Public customer-feedback page (/customer-feedback/).
+ *
+ * Only entries carrying `status: "approved"` are rendered. The imported drafts
+ * in `src/data/reviews.json` are AI-assisted wording built from real WooCommerce
+ * order records — the source file is titled "100 Review Drafts", labels every
+ * card "Order-derived draft" and every rating "Draft rating" — so they stay at
+ * `status: "draft"` and are visible only to an admin at /admin/reviews/.
+ * Marking one `approved` is the deliberate act that publishes it, and should
+ * only happen once the customer has confirmed the wording as their own.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import { RISK_DISCLAIMER } from '../../lib/site';
+import { url } from '../../lib/urls';
+import reviewData from '../../data/reviews.json';
+
+interface Review {
+  id: number;
+  status: string;
+  rating: number;
+  title: string;
+  body: string;
+  reviewer: string;
+  location: string | null;
+  month: string | null;
+  product: string | null;
+}
+
+const all = (reviewData as unknown as { reviews: Review[] }).reviews ?? [];
+const approved = all.filter((review) => review.status === 'approved');
+const average = approved.length
+  ? approved.reduce((sum, review) => sum + review.rating, 0) / approved.length
+  : 0;
+---
+
+<BaseLayout
+  title="Customer Feedback"
+  description="Feedback from traders who bought and run these systems, and what customers say about the setup help and support."
+>
+  <section class="relative overflow-hidden">
+    <div class="glow-orb animate-aurora left-1/2 top-[-14rem] h-[24rem] w-[36rem] -translate-x-1/2 bg-emerald-500/25"
+    ></div>
+    <div class="grid-overlay pointer-events-none absolute inset-0"></div>
+
+    <div class="container-x relative py-20 text-center lg:py-24">
+      <span class="eyebrow animate-fade-in-up inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2">
+        <span class="live-dot"></span>Customer feedback
+      </span>
+      <h1
+        class="animate-fade-in-up-delay-1 mx-auto mt-6 max-w-3xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl"
+      >
+        What traders say about <span class="text-gradient-brand">these systems</span>
+      </h1>
+      <p class="animate-fade-in-up-delay-2 mx-auto mt-6 max-w-2xl text-base leading-8 text-[--color-ink-soft]">
+        Only feedback we can attribute to a real customer is published here. Individual results vary, and one trader's
+        experience is not a forecast.
+      </p>
+      {
+        approved.length > 0 && (
+          <p class="animate-fade-in-up-delay-3 mt-6 inline-flex items-center gap-2 text-sm text-[--color-ink-dim]">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <span class="font-semibold text-[--color-ink]">{average.toFixed(1)}</span>
+            <span>· {approved.length} published</span>
+          </p>
+        )
+      }
+    </div>
+  </section>
+
+  <!-- Published feedback -->
+  <section class="container-x pb-16" aria-labelledby="published-heading">
+    <SectionHead
+      align="center"
+      kicker="Published"
+      title="Published customer feedback"
+      lead="Written by customers and published with their confirmation."
+      id="published-heading"
+    />
+
+    {
+      approved.length > 0 ? (
+        <div class="reveal mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {approved.map((review) => (
+            <figure class="hover-brand-card flex flex-col gap-4 p-6">
+              <span class="stars text-sm" aria-hidden="true">
+                {'★'.repeat(review.rating)}
+                {'☆'.repeat(Math.max(0, 5 - review.rating))}
+              </span>
+              {review.title && <h3 class="text-sm font-bold text-[--color-ink]">{review.title}</h3>}
+              <blockquote class="flex-1 text-sm leading-7 text-[--color-ink-soft]">“{review.body}”</blockquote>
+              <figcaption class="border-t border-white/10 pt-3">
+                <span class="block text-sm font-semibold text-[--color-ink]">{review.reviewer}</span>
+                <span class="mt-1 block text-xs text-[--color-ink-dim]">
+                  {review.location ? `${review.location} · ` : ''}
+                  {review.month ?? ''}
+                  {review.product ? ` · ${review.product}` : ''}
+                </span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      ) : (
+        <p class="mx-auto mt-10 max-w-2xl text-center text-sm leading-7 text-[--color-ink-dim]">
+          No customer feedback has been published yet. A quote goes live here only once the customer who wrote it has
+          confirmed the wording as their own.
+        </p>
+      )
+    }
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="border-t border-white/5">
+    <div class="container-x py-20 lg:py-24">
+      <div class="brand-card reveal mx-auto max-w-4xl p-8 text-center sm:p-12">
+        <h2 class="text-3xl leading-tight md:text-4xl">Run the system, then tell us how it went</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-[--color-ink-soft]">
+          Every licence is delivered to your dashboard with the setup guide and presets, and support is a Telegram
+          message away.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          <a href={url('/shop')} class="btn btn-primary !px-7 !py-3.5 !text-base">Browse the EA library</a>
+          <a href={url('/top-ranking')} class="btn btn-ghost !px-6 !py-3.5 !text-base">Compare every system</a>
+        </div>
+      </div>
+      <p class="mx-auto mt-8 max-w-3xl text-center text-xs leading-6 text-[--color-ink-dim]">{RISK_DISCLAIMER}</p>
+    </div>
+  </section>
+</BaseLayout>

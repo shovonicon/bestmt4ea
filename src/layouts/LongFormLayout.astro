@@ -25,6 +25,7 @@ import AnswerBox from '../components/AnswerBox.astro';
 import KeyTakeaways from '../components/KeyTakeaways.astro';
 import TableOfContents from '../components/TableOfContents.astro';
 import AdSlot from '../components/AdSlot.astro';
+import PartnerFallback from '../components/PartnerFallback.astro';
 import Faq from '../components/Faq.astro';
 import DownloadCard from '../components/DownloadCard.astro';
 import InstallSteps from '../components/InstallSteps.astro';
@@ -52,12 +53,12 @@ const download = data.download;
 const isDownload = Boolean(download);
 const installSteps = data.installSteps ?? [];
 
+// Sticky left/right rails. They only exist when ads are configured and the post
+// has not opted out — AdSlot itself renders nothing without a client ID.
+const showRails = data.showAds !== false && Boolean(import.meta.env.PUBLIC_ADSENSE_CLIENT);
+
 const trail = isDownload
-  ? [
-      { name: 'Home', url: '/' },
-      { name: 'Free downloads', url: '/free-download-forex-ea-indicator/' },
-      { name: data.title, url: pageUrl },
-    ]
+  ? [{ name: 'Home', url: '/' }, { name: data.title, url: pageUrl }]
   : [
       { name: 'Home', url: '/' },
       { name: 'Blog', url: '/blog/' },
@@ -89,20 +90,39 @@ const trail = isDownload
     ...(data.faqs?.length ? [faqSchema(data.faqs)] : []),
   ]}
 >
-  <div class="container-x pt-8 pb-16">
+  <div class="container-x relative pt-8 pb-16">
+    {
+      /*
+       * The rails are siblings of `.longform`, not children: inside the grid
+       * `.longform > *` gives them `grid-column: 2`, which makes the READING
+       * column their containing block (so `left: 0` started inside the article).
+       * Out here they position against the container, exactly like the tools page.
+       */
+      showRails && (
+        <>
+          <div class="ad-rail ad-rail-left">
+            <div class="ad-rail-inner">
+              <AdSlot slot={site.adSlots.railLeft} format="vertical" showLabel={false} class="!my-0">
+                <PartnerFallback slot="fallback" variant="rail" />
+              </AdSlot>
+            </div>
+          </div>
+          <div class="ad-rail ad-rail-right">
+            <div class="ad-rail-inner">
+              <AdSlot slot={site.adSlots.railRight} format="vertical" showLabel={false} class="!my-0">
+                <PartnerFallback slot="fallback" variant="rail" />
+              </AdSlot>
+            </div>
+          </div>
+        </>
+      )
+    }
+
     <div class="longform">
       <nav aria-label="Breadcrumb" class="text-xs text-[--color-ink-dim]">
         <a href="/" class="hover:text-[--color-accent]">Home</a>
         <span class="mx-2">/</span>
-        {
-          isDownload ? (
-            <a href="/free-download-forex-ea-indicator/" class="hover:text-[--color-accent]">
-              Free downloads
-            </a>
-          ) : (
-            <a href="/blog/" class="hover:text-[--color-accent]">Blog</a>
-          )
-        }
+        <a href="/blog/" class="hover:text-[--color-accent]">Blog</a>
         {
           !isDownload && data.categories?.[0] && (
             <>

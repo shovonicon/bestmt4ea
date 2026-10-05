@@ -1,0 +1,140 @@
+---
+export const prerender = false;
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getDb } from '../../../db/client';
+import { getOrder } from '../../../server/orders';
+import { getUsdtPayment } from '../../../server/usdt-payments';
+import { url } from '../../../lib/urls';
+
+/**
+ * USDT (TRC20) payment page.
+ *
+ * The browser never decides anything: this renders the amount and address the
+ * server created, and polls the owner-checked status endpoint until the cron
+ * confirms the transfer. The exact amount (base price + a small identifier) is
+ * what ties a transfer to this order, so it is shown prominently.
+ */
+const session = Astro.locals.session;
+if (!session || session.subjectType !== 'customer') return Astro.redirect('/login/', 303);
+
+const id = Astro.url.searchParams.get('id') ?? '';
+const db = getDb();
+const payment = id ? await getUsdtPayment(db, id) : null;
+const order = payment ? await getOrder(db, payment.orderId) : null;
+
+if (!payment || !order || order.customerId !== session.subjectId) {
+  return Astro.redirect('/checkout/?error=not_found', 303);
+}
+
+const minutesLeft = Math.max(0, Math.round((payment.expiresAt.getTime() - Date.now()) / 60000));
+const settled = payment.status === 'PAID' || order.status === 'paid';
+---
+
+<BaseLayout title="Pay with USDT" description="Send USDT (TRC20) to complete your order." noindex>
+  <section class="container-x mx-auto max-w-xl py-20">
+    <p class="eyebrow">Step 2 of 2</p>
+    <h1 class="mt-3 text-3xl font-bold sm:text-4xl">Pay with USDT (TRC20)</h1>
+    <p class="mt-4 text-base leading-7 text-[--color-ink-soft]">
+      Send exactly the amount below over the <strong>TRON (TRC20)</strong> network. It is matched to
+      order <span class="metric-value">{order.orderNumber}</span> automatically.
+    </p>
+
+    <div class="brand-card mt-8 p-6" data-usdt data-payment={payment.id} data-confirm-url={`/checkout/return/?order=${encodeURIComponent(order.orderNumber)}`}>
+      <dl class="space-y-5">
+        <div>
+          <dt class="metric-label">Amount (USDT)</dt>
+          <dd class="mt-1 flex items-center gap-3">
+            <span class="display-stat text-2xl" data-usdt-amount>{payment.expectedAmount}</span>
+            <button type="button" class="text-xs text-[--color-accent]" data-copy={payment.expectedAmount}>Copy</button>
+          </dd>
+          <p class="mt-1 text-xs text-[--color-ink-dim]">The exact decimals are part of the match — copy it, don’t round it.</p>
+        </div>
+        <div>
+          <dt class="metric-label">To address ({payment.network})</dt>
+          <dd class="mt-1 flex items-center gap-3">
+            <span class="metric-value break-all text-sm" data-usdt-address>{payment.walletAddress}</span>
+            <button type="button" class="shrink-0 text-xs text-[--color-accent]" data-copy={payment.walletAddress}>Copy</button>
+          </dd>
+        </div>
+        <div>
+          <dt class="metric-label">Status</dt>
+          <dd class="mt-1 text-sm" data-usdt-status data-settled={settled ? '1' : '0'}>
+            {settled ? 'Confirmed' : 'Waiting for your transfer'}
+          </dd>
+          {
+            !settled && (
+              <p class="mt-1 text-xs text-[--color-ink-dim]">
+                This address expires in about {minutesLeft} minute{minutesLeft === 1 ? '' : 's'}. Confirmation
+                usually takes a few minutes after the transfer is confirmed on-chain.
+              </p>
+            )
+          }
+        </div>
+      </dl>
+
+      {
+        settled ? (
+          <a href={url('/dashboard')} class="btn btn-primary mt-6 w-full">Open your dashboard</a>
+        ) : (
+          <p class="mt-6 text-xs leading-6 text-[--color-ink-dim]">
+            You can safely close this page — the payment is confirmed on our side and your licence
+            appears in your dashboard.
+          </p>
+        )
+      }
+    </div>
+
+    <p class="mt-6 text-sm text-[--color-ink-soft]">
+      Sent the wrong amount or network? <a href={url('/contact')} class="text-[--color-accent]">Contact support</a>
+      with the transaction ID and we will sort it out.
+    </p>
+  </section>
+
+  <script>
+    (() => {
+      const root = document.querySelector<HTMLElement>('[data-usdt]');
+      if (!root) return;
+      const id = root.dataset.payment;
+      const confirmUrl = root.dataset.confirmUrl ?? '/dashboard/';
+      const statusOut = root.querySelector<HTMLElement>('[data-usdt-status]');
+
+      document.querySelectorAll<HTMLElement>('[data-copy]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const value = button.dataset.copy ?? '';
+          try {
+            await navigator.clipboard.writeText(value);
+            button.textContent = 'Copied';
+            window.setTimeout(() => {
+              button.textContent = 'Copy';
+            }, 1500);
+          } catch {
+            /* clipboard blocked — the value is visible to copy by hand */
+          }
+        });
+      });
+
+      if (root.querySelector('[data-settled="1"]')) return;
+
+      const poll = async () => {
+        try {
+          const response = await fetch(`/api/payments/usdt/${id}/`, { headers: { accept: 'application/json' } });
+          if (!response.ok) return;
+          const data = (await response.json()) as { status?: string; orderStatus?: string };
+          if (data.status === 'PAID' || data.orderStatus === 'paid') {
+            window.location.href = confirmUrl;
+            return;
+          }
+          if (statusOut && data.status === 'EXPIRED') {
+            statusOut.textContent = 'This payment window expired. Please start the order again.';
+          }
+        } catch {
+          /* transient — keep polling */
+        }
+      };
+
+      window.setInterval(poll, 10000);
+      void poll();
+    })();
+  </script>
+</BaseLayout>

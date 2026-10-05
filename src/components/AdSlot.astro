@@ -1,6 +1,6 @@
 ---
 /**
- * AdSense unit.
+ * AdSense unit, with an optional fallback.
  *
  * Placement rules this component is built around (see docs/CONTENT-STANDARD.md):
  *   1. Never render next to a download button or a purchase CTA — AdSense
@@ -10,6 +10,11 @@
  *   3. Maximum of one unit per 500 words of body content.
  *   4. Renders nothing at all when PUBLIC_ADSENSE_CLIENT is unset, so local
  *      development and preview builds contain no ad code.
+ *
+ * `fallback` slot: shown when AdSense reports the unit unfilled (or never
+ * reports at all — a blocked script), so reserved space is not wasted. Anything
+ * passed in is the caller's responsibility to keep policy-safe, including the
+ * `rel` and any affiliate disclosure.
  */
 export interface Props {
   slot: string;
@@ -23,11 +28,12 @@ export interface Props {
 const { slot, format = 'auto', layoutKey, class: className = '', showLabel = true } = Astro.props;
 const client = import.meta.env.PUBLIC_ADSENSE_CLIENT;
 const enabled = Boolean(client && slot);
+const hasFallback = Astro.slots.has('fallback');
 ---
 
 {
   enabled && (
-    <aside class:list={['ad-unit not-prose my-8', className]} aria-label="Advertisement">
+    <aside class:list={['ad-unit not-prose my-8', className]} aria-label="Advertisement" data-ad-unit>
       {showLabel && (
         <p class="mb-1 text-[10px] font-medium uppercase tracking-[0.16em] text-[--color-ink-dim]">
           Advertisement
@@ -42,9 +48,68 @@ const enabled = Boolean(client && slot);
         data-ad-layout-key={layoutKey}
         data-full-width-responsive="true"
       />
+      {hasFallback && (
+        <div data-ad-fallback hidden>
+          <slot name="fallback" />
+        </div>
+      )}
       <script is:inline>
         (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
+      {hasFallback && (
+        <script is:inline>
+          /*
+           * Swap an unfilled ad for its fallback. AdSense marks the <ins> with
+           * `data-ad-status="unfilled"` when it has nothing to serve; if the
+           * script never loads (blocked, or no fill) the status stays absent, so
+           * a timeout covers that case too. A late fill flips it back.
+           */
+          (() => {
+            const REVEAL_AFTER_MS = 4000;
+            /*
+             * Bind this unit only. An inline script runs while the document is
+             * still parsing, so a document-wide `querySelectorAll` here would
+             * miss every unit that appears later on the page.
+             */
+            const unit = document.currentScript?.closest('[data-ad-unit]');
+            if (!unit) return;
+            const fallback = unit.querySelector('[data-ad-fallback]');
+            if (!fallback) return;
+
+            const ad = unit.querySelector('ins.adsbygoogle');
+            if (!ad) {
+              fallback.hidden = false;
+              return;
+            }
+
+            /*
+             * An unfilled unit still leaves AdSense's own reserved box in the
+             * layout, which would push the fallback below it — so the ad is
+             * taken out of flow while the fallback stands in for it.
+             */
+            const sync = () => {
+              const status = ad.getAttribute('data-ad-status');
+              if (status === 'filled') {
+                fallback.hidden = true;
+                ad.style.display = '';
+              } else if (status === 'unfilled') {
+                fallback.hidden = false;
+                ad.style.display = 'none';
+              }
+            };
+            new MutationObserver(sync).observe(ad, {
+              attributes: true,
+              attributeFilter: ['data-ad-status'],
+            });
+            window.setTimeout(() => {
+              if (ad.getAttribute('data-ad-status') !== 'filled') {
+                fallback.hidden = false;
+                ad.style.display = 'none';
+              }
+            }, REVEAL_AFTER_MS);
+          })();
+        </script>
+      )}
     </aside>
   )
 }

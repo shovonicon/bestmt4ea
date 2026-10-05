@@ -13,3 +13,10 @@ TRONGRID_BASE_URL=
 TRON_RECEIVING_ADDRESS=
 CRON_SECRET=
 PERF_INGEST_TOKEN=
+# Brevo transactional email — the fallback sender behind the Cloudflare Email
+# binding (which is tried first). Two free senders: Cloudflare ~100/day + Brevo
+# ~300/day = ~400/day combined, after which mail logs `skipped` instead of
+# failing. Leave blank to use only the Cloudflare binding; with neither, mail is
+# logged to the console.
+# Set in production with: wrangler secret put BREVO_API_KEY
+BREVO_API_KEY=

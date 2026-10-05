@@ -1,0 +1,158 @@
+{
+  "_note": "Content for /copy-trading/, presented in the Strive Algo page layout. Every figure and quote here is the copy already published on this site's own copy-trading page (src/content/pages/copy-trading.md) — NOT the Strive Algo page, which advertises a different size ('$2.3M+ AUM / 350+ traders') against this site's '$230K+ / 15+'. Keep the two in step before publishing.",
+  "serviceName": "Barakah FX Management",
+  "hero": {
+    "title": "Professional Forex Trading",
+    "titleAccent": "Account Management",
+    "subtitle": "A performance-based forex fund management service that lets you copy trade Gold (XAUUSD) and EURUSD using an AI-driven trading system — without giving up control of your money.",
+    "cta": "Get started today"
+  },
+  "stats": [
+    { "label": "Assets under management", "value": "$230K+" },
+    { "label": "Active investors", "value": "15+" },
+    { "label": "Verified win rate", "value": "82%" },
+    { "label": "Avg monthly return", "value": "5–15%" }
+  ],
+  "about": {
+    "kicker": "Premium service",
+    "title": "What is Barakah FX Management?",
+    "body": [
+      "Barakah FX Management is a premium forex trading account management service designed for busy traders who want steady, professional growth without spending hours in front of charts.",
+      "We operate on a performance-based profit-share model: you provide the capital, we provide the expertise and the trading system. We only share profits — never losses."
+    ],
+    "highlights": [
+      "Trades EURUSD and XAUUSD 24/5",
+      "Rules-based, non-discretionary execution",
+      "Capital stays in your own broker account",
+      "Start from $1,000"
+    ]
+  },
+  "security": {
+    "title": "Your security is non-negotiable",
+    "items": [
+      "Funds never leave your broker account — we only place trades",
+      "Hard 25% drawdown stop — trading pauses automatically at the threshold",
+      "Full trade transparency — every position, profit and loss visible on your terminal",
+      "No hidden fees — you only pay when you profit"
+    ]
+  },
+  "steps": [
+    {
+      "step": "01",
+      "title": "Open a broker account",
+      "description": "Choose from our vetted partners (Exness, RoboForex, XM). Your funds stay in your name, in your account. Minimum $1,000."
+    },
+    {
+      "step": "02",
+      "title": "Grant limited access",
+      "description": "Share only your MT4/MT5 trading password. We receive trade execution rights only — zero access to withdraw or transfer funds."
+    },
+    {
+      "step": "03",
+      "title": "We manage professionally",
+      "description": "Our systems execute rule-based trades around the clock. Every trade is visible to you in real time."
+    },
+    {
+      "step": "04",
+      "title": "Stay in complete control",
+      "description": "Monitor your account anytime, withdraw profits whenever you want, and pause or cancel management instantly via Telegram."
+    }
+  ],
+  "compounding": {
+    "title": "Wealth isn't built by luck — it's built by compounding",
+    "body": "At Barakah FX Management we combine oversight with the power of consistent growth: a fixed percentage held back and reinvested, managed for you. No hype — just disciplined trading and strategic compounding that quietly builds long-term results.",
+    "formula": "Trading + discipline + compounding = a repeatable process."
+  },
+  "plans": [
+    {
+      "name": "Starter",
+      "deposit": "$1,000",
+      "profitShare": "50/50",
+      "youKeep": "You keep 50%",
+      "brokers": "Exness, RoboForex, XM",
+      "idealFor": "New traders testing copy trading"
+    },
+    {
+      "name": "Growth",
+      "deposit": "$5,000",
+      "profitShare": "40/60",
+      "youKeep": "You keep 60%",
+      "brokers": "Exness, RoboForex, XM",
+      "idealFor": "Copy trading with confidence",
+      "popular": true
+    },
+    {
+      "name": "Professional",
+      "deposit": "$25,000",
+      "profitShare": "25/75",
+      "youKeep": "You keep 75%",
+      "brokers": "Your choice, or Exness, RoboForex, XM",
+      "idealFor": "Serious investors maximising profit share"
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Charles Mootana",
+      "role": "Investor",
+      "quote": "What impressed me most was keeping full control of my broker account. Barakah only manages the trades, and every position is visible. It's a professional, transparent service I trust."
+    },
+    {
+      "name": "Arnold Ashihundu",
+      "role": "Investor",
+      "quote": "I started with the Growth plan six months ago. The communication is excellent, trades are transparent, and I can monitor everything live. The returns have been steady without unrealistic promises."
+    },
+    {
+      "name": "Emmanuel Niamkey",
+      "role": "Investor",
+      "quote": "I was sceptical about forex account management, but the verified performance and disciplined risk management gave me confidence. The team is responsive, and the results have been steady."
+    },
+    {
+      "name": "Bennett Carter",
+      "role": "Investor",
+      "quote": "The strategy has been consistent, especially on Gold and EURUSD. I appreciate the performance-based model because they only earn when I profit. It's a fair partnership built on trust."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What is Barakah FX Management?",
+      "answer": "A professional forex account management service that trades Gold (XAUUSD) and EURUSD using rules-based strategies. Your funds remain in your own MT4/MT5 broker account while we manage the trading on your behalf."
+    },
+    {
+      "question": "Do you have access to withdraw my money?",
+      "answer": "No. We cannot withdraw, transfer or deposit your funds. We only receive your MT4/MT5 trading password, which allows us to place and manage trades. Your account and withdrawals remain fully under your control."
+    },
+    {
+      "question": "Which brokers do you support?",
+      "answer": "We currently support Exness, RoboForex, XM, FBS, Markets4you, IC Markets and AvaTrade. If you already have an account with another regulated broker, contact us to check compatibility."
+    },
+    {
+      "question": "Can I stop or pause the service anytime?",
+      "answer": "Yes. You can revoke trade permissions instantly by contacting us on Telegram. Open trades are then closed at market."
+    },
+    {
+      "question": "What is the minimum investment?",
+      "answer": "The minimum is $1,000 for the Starter plan. Larger investments qualify for lower profit-sharing rates."
+    },
+    {
+      "question": "How do you charge for the service?",
+      "answer": "It is performance-based: there are no monthly management fees and no hidden charges. We only earn a percentage of the profit generated. If there is no profit, you pay nothing."
+    },
+    {
+      "question": "What level of risk should I expect?",
+      "answer": "Forex trading always carries risk, and profits are never guaranteed. We use strict risk management, including a maximum 25% drawdown limit, and disciplined position sizing to protect capital."
+    },
+    {
+      "question": "Can I monitor my account at any time?",
+      "answer": "Yes. Because the account is in your name, you can log in to your MT4 or MT5 platform at any time to view open trades, balance, equity and complete trading history."
+    },
+    {
+      "question": "How do I get started?",
+      "answer": "Open a supported broker account, deposit at least $1,000, then share your MT4/MT5 trading password — never your withdrawal credentials. We begin managing the account while you monitor every trade."
+    }
+  ],
+  "cta": {
+    "title": "Ready to let your capital work for you?",
+    "body": "Personal 1:1 setup guidance and a broker recommendation, usually within 24 hours.",
+    "button": "Begin onboarding"
+  }
+}

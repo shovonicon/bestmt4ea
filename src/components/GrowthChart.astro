@@ -1,0 +1,89 @@
+---
+/**
+ * Growth chart — an inline SVG drawn only from real synchronized points.
+ *
+ * No chart library, no interpolated series: if there are fewer than two real
+ * growth captures it renders an honest empty state rather than a line the data
+ * does not support.
+ */
+export interface Props {
+  points: Array<{ capturedAt: number; growthPct: number | null }>;
+  label?: string;
+}
+
+const { points, label = 'Growth' } = Astro.props;
+const valid = points
+  .filter((p): p is { capturedAt: number; growthPct: number } => p.growthPct != null)
+  .sort((a, b) => a.capturedAt - b.capturedAt);
+
+const W = 720;
+const H = 220;
+const PAD = 24;
+
+let linePath = '';
+let areaPath = '';
+let minV = 0;
+let maxV = 0;
+
+if (valid.length >= 2) {
+  const xs = valid.map((p) => p.capturedAt);
+  const ys = valid.map((p) => p.growthPct);
+  const minX = Math.min(...xs);
+  const maxX = Math.max(...xs);
+  minV = Math.min(...ys, 0);
+  maxV = Math.max(...ys, 0);
+  const spanX = Math.max(1, maxX - minX);
+  const spanY = Math.max(0.0001, maxV - minV);
+  const px = (t: number) => PAD + ((t - minX) / spanX) * (W - PAD * 2);
+  const py = (v: number) => H - PAD - ((v - minV) / spanY) * (H - PAD * 2);
+
+  linePath = valid
+    .map((p, i) => `${i === 0 ? 'M' : 'L'} ${px(p.capturedAt).toFixed(1)} ${py(p.growthPct).toFixed(1)}`)
+    .join(' ');
+  areaPath = `${linePath} L ${px(maxX).toFixed(1)} ${H - PAD} L ${px(minX).toFixed(1)} ${H - PAD} Z`;
+}
+
+const first = valid[0]?.growthPct ?? 0;
+const last = valid[valid.length - 1]?.growthPct ?? 0;
+---
+
+{
+  valid.length >= 2 ? (
+    <figure class="panel p-6">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <p class="eyebrow">{label}</p>
+        <p class="metric-value text-sm text-[--color-ink-soft]">
+          {first.toFixed(2)}% → {last.toFixed(2)}%
+          <span class="ml-2 font-sans text-xs text-[--color-ink-dim]">({valid.length} synced points)</span>
+        </p>
+      </div>
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        role="img"
+        aria-label={`${label} over time, from ${first.toFixed(2)}% to ${last.toFixed(2)}%`}
+        class="mt-4 h-56 w-full"
+        preserveAspectRatio="none"
+      >
+        <defs>
+          <linearGradient id="growth-fill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#00c190" stop-opacity="0.35"></stop>
+            <stop offset="100%" stop-color="#00c190" stop-opacity="0"></stop>
+          </linearGradient>
+        </defs>
+        <path d={areaPath} fill="url(#growth-fill)"></path>
+        <path d={linePath} fill="none" stroke="#00c190" stroke-width="2"></path>
+      </svg>
+      <figcaption class="mt-2 text-xs text-[--color-ink-dim]">
+        Cumulative growth from the synchronized account snapshots. No curve is drawn from data we do not have.
+      </figcaption>
+    </figure>
+  ) : (
+    <figure class="panel p-6">
+      <p class="eyebrow">{label}</p>
+      <p class="mt-3 text-sm text-[--color-ink-soft]">
+        Not enough synchronized history to draw a curve yet. The chart fills in as the collector runs — no line is
+        drawn from data we do not have.
+      </p>
+    </figure>
+  )
+}

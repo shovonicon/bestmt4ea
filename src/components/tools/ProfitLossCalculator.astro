@@ -1,0 +1,82 @@
+---
+/** Profit / loss calculator — ported from `profit-loss-calculator.tsx`. */
+---
+
+<div id="calc-pl" class="space-y-6">
+  <div class="flex gap-2">
+    <button type="button" class="tool-toggle-btn rounded-xl" data-dir="buy" aria-pressed="true">Buy</button>
+    <button type="button" class="tool-toggle-btn rounded-xl" data-dir="sell" aria-pressed="false">Sell</button>
+  </div>
+
+  <div class="grid gap-4 sm:grid-cols-2">
+    <label class="block">
+      <span class="metric-label mb-2 block">Pair type</span>
+      <select class="tool-input" data-field="pair">
+        <option value="standard">Standard (EUR/USD, GBP/USD…)</option>
+        <option value="jpy">JPY pairs (USD/JPY, GBP/JPY…)</option>
+        <option value="gold">Gold (XAU/USD)</option>
+      </select>
+    </label>
+    <label class="block">
+      <span class="metric-label mb-2 block">Lot size</span>
+      <input class="tool-input" type="number" step="0.01" min="0.01" value="1.00" data-field="lots" />
+    </label>
+    <label class="block">
+      <span class="metric-label mb-2 block">Entry price</span>
+      <input class="tool-input" type="number" step="0.00001" value="1.08500" data-field="entry" />
+    </label>
+    <label class="block">
+      <span class="metric-label mb-2 block">Exit price</span>
+      <input class="tool-input" type="number" step="0.00001" value="1.09000" data-field="exit" />
+    </label>
+  </div>
+
+  <div class="tool-result" data-out="panel">
+    <p class="metric-label" data-out="title">Estimated profit</p>
+    <p class="display-stat mt-2 text-4xl text-white" data-out="value">+$500.00</p>
+    <p class="mt-2 text-sm text-slate-400" data-out="caption">50.0 pips · BUY 1 lot</p>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const el = document.getElementById('calc-pl');
+    if (!el) return;
+    const root = el;
+    const field = (name: string) =>
+      root.querySelector(`[data-field="${name}"]`) as HTMLInputElement | HTMLSelectElement;
+    const out = (name: string) => root.querySelector<HTMLElement>(`[data-out="${name}"]`)!;
+    let direction: 'buy' | 'sell' = 'buy';
+
+    root.querySelectorAll<HTMLButtonElement>('[data-dir]').forEach((button) => {
+      button.addEventListener('click', () => {
+        direction = button.dataset.dir === 'sell' ? 'sell' : 'buy';
+        root.querySelectorAll<HTMLButtonElement>('[data-dir]').forEach((other) => {
+          other.setAttribute('aria-pressed', String(other === button));
+        });
+        calc();
+      });
+    });
+
+    const calc = () => {
+      const pair = field('pair').value;
+      const entry = parseFloat(field('entry').value) || 0;
+      const exit = parseFloat(field('exit').value) || 0;
+      const lots = parseFloat(field('lots').value) || 0;
+
+      const contract = pair === 'gold' ? 100 : 100000;
+      const pipSize = pair === 'standard' ? 0.0001 : 0.01;
+      const diff = direction === 'buy' ? exit - entry : entry - exit;
+      const pips = diff / pipSize;
+      const profit = diff * lots * contract;
+
+      out('title').textContent = profit >= 0 ? 'Estimated profit' : 'Estimated loss';
+      out('value').textContent = `${profit >= 0 ? '+' : ''}$${profit.toFixed(2)}`;
+      out('value').style.color = profit >= 0 ? 'var(--color-accent)' : 'var(--color-danger)';
+      out('caption').textContent = `${Math.abs(pips).toFixed(1)} pips · ${direction.toUpperCase()} ${lots} lot${lots !== 1 ? 's' : ''}`;
+    };
+
+    root.querySelectorAll('input,select').forEach((node) => node.addEventListener('input', calc));
+    calc();
+  })();
+</script>

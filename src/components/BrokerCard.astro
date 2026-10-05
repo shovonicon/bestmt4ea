@@ -1,0 +1,80 @@
+---
+/**
+ * Broker comparison card — used for the two "top pick" brokers.
+ *
+ * The label, affiliate URL and logo come from `src/lib/affiliates.ts` via
+ * `key` — this component never holds a tracking URL. The link carries
+ * `rel="sponsored nofollow noopener"`, and the page is responsible for showing
+ * the affiliate disclosure before the first card.
+ */
+import { getAffiliate, AFFILIATE_REL } from '../lib/affiliates';
+
+export interface Props {
+  broker: {
+    key: string;
+    regulation: string;
+    minDeposit: string;
+    platforms: string;
+    accountTypes: string;
+    offer?: string;
+    recommended?: boolean;
+  };
+  /** 1-based position — drives the numeral badge. */
+  rank?: number;
+}
+
+const { broker, rank } = Astro.props;
+const affiliate = getAffiliate(broker.key);
+if (!affiliate) return null;
+---
+
+<article class:list={['hover-brand-card flex flex-col p-6', broker.recommended && 'shadow-glow']}>
+  <div class="flex items-center justify-between gap-3">
+    {
+      rank != null ? (
+        <span class:list={['rank-badge', broker.recommended && 'rank-badge--top']}>{rank}</span>
+      ) : (
+        <span />
+      )
+    }
+    {broker.recommended && <span class="partner-chip">{rank === 1 ? 'Top choice' : 'Recommended'}</span>}
+  </div>
+
+  <span class="partner-logo-plate mt-5 w-fit">
+    {
+      affiliate.logo ? (
+        <img src={affiliate.logo} alt={affiliate.label} loading="lazy" decoding="async" />
+      ) : (
+        <span class="text-sm font-bold text-[#04140f]">{affiliate.label}</span>
+      )
+    }
+  </span>
+
+  <h3 class="mt-4 text-lg font-bold text-[--color-ink]">{affiliate.label}</h3>
+
+  <dl class="mt-4 flex-1 space-y-2 text-sm">
+    <div class="flex justify-between gap-3">
+      <dt class="text-[--color-ink-dim]">Min deposit</dt>
+      <dd class="metric-value text-[--color-ink]">{broker.minDeposit}</dd>
+    </div>
+    <div class="flex justify-between gap-3">
+      <dt class="text-[--color-ink-dim]">Regulation</dt>
+      <dd class="text-right font-medium text-[--color-ink]">{broker.regulation}</dd>
+    </div>
+    <div class="flex justify-between gap-3">
+      <dt class="text-[--color-ink-dim]">Platforms</dt>
+      <dd class="text-right font-medium text-[--color-ink]">{broker.platforms}</dd>
+    </div>
+  </dl>
+
+  {
+    broker.offer && (
+      <p class="mt-4 rounded-lg border border-[--color-accent]/25 bg-[--color-accent]/[0.06] px-3 py-2 text-xs leading-5 text-[--color-ink-soft]">
+        <span class="metric-label">Offer</span>{' · '}
+        <span class="font-semibold text-[--color-accent-soft]">{broker.offer}</span>
+      </p>
+    )
+  }
+
+  <a href={affiliate.url} rel={AFFILIATE_REL} class="btn btn-primary mt-5 w-full">Open account</a>
+</article>

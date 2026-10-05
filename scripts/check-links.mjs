@@ -24,6 +24,15 @@ const DIST = 'dist/client';
 // Routes served on demand (e.g. product pages, SSR) have no file in dist — a
 // link to one is live, not broken.
 const liveRoutes = getLiveRoutes();
+
+/**
+ * The app's own on-demand routes (`prerender = false`) have no file in
+ * `dist/client` and are not derived by `routes.mjs` (which feeds the redirect
+ * manifest), but they are real destinations — a link to one is live, not broken.
+ */
+for (const route of ['/login/', '/logout/', '/dashboard/', '/admin/', '/checkout/']) {
+  liveRoutes.add(cmpKey(route));
+}
 const ASSET_EXT = /\.(?:html|xml|txt|json|css|js|mjs|map|webp|png|jpe?g|gif|svg|ico|avif|woff2?|ttf|otf|pdf|zip|ex4|ex5|mq4|mq5|set|csv)$/i;
 
 /** Every .html file under dist, as forward-slash relative paths. */

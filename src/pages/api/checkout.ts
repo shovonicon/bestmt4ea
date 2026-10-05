@@ -3,7 +3,7 @@ import { eq } from 'drizzle-orm';
 import { env } from 'cloudflare:workers';
 import { getDb } from '../../db/client';
 import { customers } from '../../db/schema';
-import { createOrder, OrderError } from '../../server/orders';
+import { createOrder, OrderError, settleOrder } from '../../server/orders';
 import { createUsdtPayment } from '../../server/usdt-payments';
 import { createCheckoutSession, stripeClient } from '../../server/stripe';
 import { json, jsonError, readBody, redirect, wantsHtml } from '../../lib/http';
@@ -25,6 +25,22 @@ export const POST: APIRoute = async ({ request, locals }) => {
       customerId: session.subjectId,
       items: [{ productId: body.productId ?? '', planCode: body.plan ?? '', quantity: 1 }],
     });
+    // A free tier (the 30-day trial) has nothing to charge, so it settles right
+    // here instead of going to a provider. This is the same `settleOrder` every
+    // paid rail uses, so the entitlement and licence are identical either way.
+    if (order.totalCents === 0) {
+      await settleOrder(db, {
+        orderId: order.id,
+        invoiceId: `free-${order.orderNumber}`,
+        transactionId: null,
+        paymentMethod: 'free',
+        chargedCents: 0,
+      });
+      return wantsHtml(request)
+        ? redirect(`/checkout/return/?order=${encodeURIComponent(order.orderNumber)}`, 303)
+        : json({ ok: true, orderNumber: order.orderNumber, method: 'free' });
+    }
+
     const method = body.method === 'usdt' ? 'usdt' : 'card';
 
     if (method === 'usdt') {

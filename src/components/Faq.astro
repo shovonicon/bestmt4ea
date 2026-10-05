@@ -2,6 +2,8 @@
 export interface FaqItem {
   question: string;
   answer: string;
+  /** Optional call to action appended to the answer. */
+  link?: { href: string; label: string };
 }
 
 export interface Props {
@@ -31,7 +33,19 @@ const { items, heading = 'FAQ Overview', subheading } = Astro.props;
                 +
               </span>
             </summary>
-            <p class="mt-3 max-w-3xl text-sm leading-7 text-[--color-ink-soft]">{item.answer}</p>
+            <p class="mt-3 max-w-3xl text-sm leading-7 text-[--color-ink-soft]">
+              {item.answer}
+              {
+                item.link && (
+                  <>
+                    {' '}
+                    <a href={item.link.href} class="font-semibold text-[--color-accent]">
+                      {item.link.label}
+                    </a>
+                  </>
+                )
+              }
+            </p>
           </details>
         ))}
       </div>

@@ -1,0 +1,56 @@
+---
+export const prerender = false;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { url } from '../../lib/urls';
+
+/**
+ * Checkout landing / error page.
+ *
+ * `/api/checkout` sends a buyer here when a purchase could not start (a missing
+ * plan, no payment provider configured, or an unexpected failure), so every
+ * message has to tell them what to do next rather than just saying "error".
+ */
+const MESSAGES: Record<string, string> = {
+  plan_not_found: 'That licence option is no longer available. Please choose another tier and try again.',
+  product_not_found: 'That system is not available at the moment.',
+  empty_order: 'There was nothing in your order.',
+  stripe_unavailable: 'Card payments are temporarily unavailable — you can pay with USDT instead.',
+  usdt_unavailable: 'USDT payments are temporarily unavailable — you can pay by card instead.',
+  checkout_failed: 'We could not start the payment. Please try again in a moment.',
+  not_found: 'We could not find that order. Please start again from the system you wanted.',
+};
+
+const error = Astro.url.searchParams.get('error');
+const errorText = error ? (MESSAGES[error] ?? 'Something went wrong. Please try again.') : null;
+---
+
+<BaseLayout title="Checkout" description="Complete your BestMT4EA purchase." noindex>
+  <section class="container-x mx-auto flex min-h-[70vh] max-w-xl flex-col justify-center py-24">
+    <p class="eyebrow">Checkout</p>
+    <h1 class="mt-3 text-3xl font-bold sm:text-4xl">Complete your order</h1>
+
+    {
+      errorText ? (
+        <p class="mt-6 rounded-xl border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+          {errorText}
+        </p>
+      ) : (
+        <p class="mt-4 text-base leading-7 text-[--color-ink-soft]">
+          Pick the system you want from the catalogue and choose a licence on its page — checkout
+          starts there.
+        </p>
+      )
+    }
+
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href={url('/shop')} class="btn btn-primary">Browse the systems</a>
+      <a href={url('/top-ranking')} class="btn btn-ghost">Compare by verified performance</a>
+    </div>
+
+    <p class="mt-8 text-sm text-[--color-ink-soft]">
+      Already paid? Your licence key and downloads are in
+      <a href={url('/dashboard')} class="text-[--color-accent]">your dashboard</a>.
+    </p>
+  </section>
+</BaseLayout>

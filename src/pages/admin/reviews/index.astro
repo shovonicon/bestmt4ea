@@ -1,0 +1,96 @@
+---
+/**
+ * Admin — review drafts (/admin/reviews/).
+ *
+ * Lists every imported review with its status. Drafts are AI-assisted wording
+ * built from real WooCommerce order records and are deliberately NOT public:
+ * `src/pages/reviews/index.astro` renders only `status: "approved"`.
+ *
+ * To publish one, edit `src/data/reviews.json` and change that review's
+ * `status` to `"approved"` — after the customer has confirmed the wording.
+ */
+export const prerender = false;
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { requireAdminMfa } from '../../../server/admin-auth';
+import { url } from '../../../lib/urls';
+import reviewData from '../../../data/reviews.json';
+
+const session = Astro.locals.session;
+if (!requireAdminMfa(session)) return Astro.redirect('/admin/login/');
+
+interface Review {
+  id: number;
+  status: string;
+  provenance?: string;
+  rating: number;
+  title: string;
+  body: string;
+  reviewer: string;
+  location: string | null;
+  month: string | null;
+  product: string | null;
+}
+
+const all = (reviewData as unknown as { reviews: Review[] }).reviews ?? [];
+const drafts = all.filter((review) => review.status !== 'approved');
+const approved = all.filter((review) => review.status === 'approved');
+---
+
+<BaseLayout title="Admin — review drafts" description="Admin review drafts." noindex>
+  <section class="container-x py-16">
+    <p class="section-kicker">Admin</p>
+    <h1 class="mt-3 text-3xl font-bold">Review drafts</h1>
+    <p class="mt-3 text-sm text-[--color-ink-soft]">
+      <a class="underline" href={url('/admin')}>Dashboard</a> ·
+      <a class="underline" href={url('/customer-feedback')}>Public feedback page</a>
+    </p>
+
+    <p class="mt-6 max-w-3xl rounded-xl border border-[--color-warn]/30 bg-[--color-warn]/5 px-4 py-3 text-xs leading-6 text-[--color-ink-soft]">
+      <strong class="font-semibold">{drafts.length} draft{drafts.length === 1 ? '' : 's'}</strong> are not public.
+      These are AI-assisted words built from real order records — the customer and order details are genuine, the
+      wording is generated. Publish one only after that customer has confirmed it: set its
+      <code>status</code> to <code>approved</code> in <code>src/data/reviews.json</code>. {approved.length} published.
+    </p>
+
+    <div class="mt-10 overflow-x-auto panel">
+      <table class="data-table min-w-[52rem]">
+        <caption class="sr-only">Imported review drafts and their status</caption>
+        <thead>
+          <tr>
+            <th scope="col" class="w-12">#</th>
+            <th scope="col" class="w-24">Status</th>
+            <th scope="col" class="w-16">Rating</th>
+            <th scope="col" class="w-40">Reviewer</th>
+            <th scope="col" class="w-56">Product</th>
+            <th scope="col">Review</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            all.map((review) => (
+              <tr>
+                <td class="metric-value text-[--color-ink-dim]">{review.id}</td>
+                <td>
+                  <span class:list={['badge', review.status === 'approved' && 'badge-accent']}>{review.status}</span>
+                </td>
+                <td class="metric-value">{review.rating}/5</td>
+                <td class="text-sm text-[--color-ink]">
+                  {review.reviewer}
+                  <span class="mt-0.5 block text-xs text-[--color-ink-dim]">
+                    {review.location ?? ''}
+                    {review.month ? ` · ${review.month}` : ''}
+                  </span>
+                </td>
+                <td class="text-xs text-[--color-ink-soft]">{review.product ?? '—'}</td>
+                <td class="text-xs leading-6 text-[--color-ink-dim]">
+                  <strong class="text-[--color-ink-soft]">{review.title}</strong> — {review.body}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+</BaseLayout>

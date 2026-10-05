@@ -4,9 +4,13 @@ import { dbBatch } from '../db/client';
 import {
   downloadEvents,
   entitlements,
+  licenseBuilds,
+  licenses,
   productFiles,
   products,
   type Entitlement,
+  type License,
+  type LicenseBuild,
   type ProductFile,
 } from '../db/schema';
 import { uuid } from '../lib/crypto';
@@ -112,4 +116,67 @@ export async function authorizeDownload(
   }
 
   return { ok: true, file, entitlement, productId: product.id };
+}
+
+export interface AuthorizeBuildInput {
+  customerId: string;
+  buildId: string;
+  hourlyLimit?: number;
+}
+
+export type AuthorizeBuildResult =
+  | { ok: true; build: LicenseBuild; license: License }
+  | { ok: false; status: number; reason: string };
+
+/**
+ * Decide whether a signed-in customer may download a compiled EA build.
+ *
+ * A build is account-bound — it is compiled from the product's source with the
+ * customer's account number and expiry baked in — so unlike a `product_files`
+ * download there is no shared artifact to hand out. Four gates: the build exists,
+ * it belongs to *this* customer's licence, the licence is ACTIVE, and the build has
+ * actually been compiled (READY). A PENDING build is never served.
+ *
+ * The per-customer hourly cap is shared with file downloads, so a customer cannot
+ * bypass it by pulling builds instead of files.
+ */
+export async function authorizeBuildDownload(
+  db: Db,
+  input: AuthorizeBuildInput
+): Promise<AuthorizeBuildResult> {
+  const build = await db
+    .select()
+    .from(licenseBuilds)
+    .where(eq(licenseBuilds.id, input.buildId))
+    .get();
+  if (!build) return { ok: false, status: 404, reason: 'not_found' };
+
+  const license = await db.select().from(licenses).where(eq(licenses.id, build.licenseId)).get();
+  if (!license) return { ok: false, status: 404, reason: 'not_found' };
+
+  // Someone else's build must not be distinguishable from one that does not exist
+  // — but a wrong-owner request is worth naming in the reason for support.
+  if (license.customerId !== input.customerId) return { ok: false, status: 403, reason: 'not_yours' };
+  if (license.status !== 'ACTIVE') return { ok: false, status: 403, reason: 'license_not_active' };
+  if (build.buildStatus !== 'READY' || !build.r2Key) {
+    return { ok: false, status: 403, reason: 'build_not_ready' };
+  }
+
+  const hourlyLimit = input.hourlyLimit ?? DEFAULT_HOURLY_DOWNLOAD_LIMIT;
+  const windowStart = new Date(Date.now() - 60 * 60 * 1000);
+  const recent = await db
+    .select({ count: sql<number>`count(*)` })
+    .from(downloadEvents)
+    .where(
+      and(
+        eq(downloadEvents.customerId, input.customerId),
+        gte(downloadEvents.createdAt, windowStart)
+      )
+    )
+    .get();
+  if ((recent?.count ?? 0) >= hourlyLimit) {
+    return { ok: false, status: 429, reason: 'rate_limited' };
+  }
+
+  return { ok: true, build, license };
 }

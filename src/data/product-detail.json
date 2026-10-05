@@ -1,0 +1,772 @@
+{
+  "_note": "Structured product detail, sourced from the product's own page plus its published Myfxbook track record. Honesty rules: never claim a real-money account when the tracked account is a demo, never publish a number we cannot source, and omit a block (parameters, backtest) rather than invent one the product does not publish.",
+  "onix-stratos-xauusd-ea-ai-smart-scalper-for-mt5": {
+    "tagline": "Trend-scalping gold EA powered by the AI-driven 4D Nano Algorithm.",
+    "overview": "Onix Stratos is a high-performance automated trend-scalping expert advisor for MetaTrader 5, powered by the AI-driven 4D Nano Algorithm. It plots gold price metrics in real time to locate precise entry and exit targets with no lag, and is built specifically around the execution conditions of Fusion Markets MT5. A Real Time Broker Shield hides key trading points from broker interference.",
+    "settings": [
+      { "label": "Recommended pair", "value": "XAUUSD (Gold)", "icon": "pair" },
+      { "label": "Platform", "value": "MetaTrader 5", "icon": "platform" },
+      { "label": "Minimum equity", "value": "$2,000", "icon": "equity" },
+      { "label": "Timeframe", "value": "M1 (1 minute)", "icon": "timeframe" },
+      { "label": "Strategy", "value": "Scalping with trend", "icon": "strategy" },
+      { "label": "Broker", "value": "Fusion Markets MT5", "icon": "broker" },
+      { "label": "Track record", "value": "Myfxbook-verified", "icon": "track" },
+      { "label": "Setup time", "value": "Under 10 minutes", "icon": "setup" }
+    ],
+    "pros": [
+      "AI-powered 4D Nano Algorithm core maps volatile gold breakouts accurately.",
+      "Real Time Broker Shield secures execution details from broker counter-trading.",
+      "Low-drawdown design targeting under 10% for steadier compounding.",
+      "Fully automated, hands-free operation with no manual entries.",
+      "Fast step-by-step setup that takes under 10 minutes."
+    ],
+    "cons": [
+      "Configured for the Fusion Markets MT5 broker only — it is not built to run on other broker networks.",
+      "The recommended $2,000 minimum deposit is high for starter traders.",
+      "Needs low-latency execution (a co-located VPS) to hold its intended performance."
+    ],
+    "parameters": [
+      { "variable": "UseBrokerShield", "value": "true", "description": "Hides target take-profits and stop-losses from broker execution desks." },
+      { "variable": "RiskPercentagePerTrade", "value": "2.0%", "description": "Dynamically sizes trade lots to limit risk to 2% of equity per scalp." },
+      { "variable": "UseCompounding", "value": "false", "description": "If true, lot sizes grow relative to the compounding account balance." },
+      { "variable": "MaxSpreadAllowed", "value": "35 (3.5 pips)", "description": "Halts entries if the real-time gold spread exceeds 3.5 pips." }
+    ],
+    "verification": {
+      "backtest": {
+        "rows": [
+          ["Test period", "2020–2026 (6-year real-tick data)"],
+          ["Max drawdown", "7.9%"],
+          ["Profit factor", "2.08"],
+          ["Modelling", "Variable spreads with latency simulation"]
+        ],
+        "note": "Backtests used variable spreads and latency pings, and kept modelled drawdown well under the 10% target."
+      },
+      "live": {
+        "rows": [
+          ["Status", "Active — tracked on Myfxbook"],
+          ["Account type", "Demo (USD), 1:100"],
+          ["Monthly gain", "5.78%"],
+          ["Auditing", "Myfxbook / FXBlue tracked"]
+        ],
+        "note": "Forward testing on Fusion Markets ECN servers tracks the modelled curve closely, confirming fast order routing. The tracked account holds demo funds, not live money — the page says so everywhere it appears."
+      },
+      "report": "Onix Stratos is built to capitalise on high-volume session breakout cycles. By focusing strictly on M1 gold movements it locks in small pip captures quickly, limiting time exposure in the market. The Broker Shield integration is what keeps execution pricing tight during volatile sessions."
+    },
+    "fit": {
+      "good": [
+        "Traders who want rules-based XAUUSD exposure without watching charts all day",
+        "Traders already running an ECN broker with tight gold spreads",
+        "Traders comfortable running an EA on a VPS"
+      ],
+      "notFit": [
+        "Anyone expecting a set-and-forget system with zero risk",
+        "Anyone unwilling to test on a demo account first",
+        "Accounts below the recommended $2,000 minimum equity"
+      ]
+    },
+    "installation": [
+      { "step": "Download", "text": "Download the EA file from your dashboard after purchase." },
+      { "step": "Install", "text": "Copy it into your MT5 Experts folder." },
+      { "step": "Attach", "text": "Restart MT5 and drag the EA onto your XAUUSD chart." },
+      { "step": "Activate", "text": "Enable AutoTrading and apply the recommended settings." }
+    ],
+    "included": [
+      "Expert Advisor file (.ex5)",
+      "Free lifetime updates",
+      "Premium Telegram support",
+      "Licence activation for your account(s)"
+    ],
+    "comparison": {
+      "columns": ["Forex EA", "Manual trading"],
+      "rows": [
+        ["Emotion-free execution", "Yes", "No"],
+        ["24/5 automated monitoring", "Yes", "No"],
+        ["Automated risk control", "Instant", "Manual / slow"],
+        ["News & spread filter", "Automated", "Manual check"]
+      ]
+    },
+    "guarantee": {
+      "label": "30-day money-back guarantee",
+      "text": "Run it for a full month. If it is not for you, request a refund within 30 days of purchase."
+    }
+  },
+
+  "obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5": {
+    "_source": "https://bestmt4ea.com/product/obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5/",
+    "tagline": "Automated EURUSD grid scalper for MT5 with rule-based execution and configurable risk control.",
+    "settings": [
+      { "label": "Recommended pair", "value": "EURUSD", "icon": "pair" },
+      { "label": "Platform", "value": "MetaTrader 5", "icon": "platform" },
+      { "label": "Minimum equity", "value": "$2,000", "icon": "equity" },
+      { "label": "Timeframe", "value": "M20 (20 minutes)", "icon": "timeframe" },
+      { "label": "Strategy", "value": "Scalping with trend", "icon": "strategy" },
+      { "label": "Broker", "value": "Exness, RoboForex, XM", "icon": "broker" },
+      { "label": "Track record", "value": "Myfxbook-verified", "icon": "track" },
+      { "label": "Setup time", "value": "Under 10 minutes", "icon": "setup" }
+    ],
+    "features": [
+      "Fully automated execution — no manual entries, no screen time required",
+      "Fixed, rule-based logic — every trade follows the same criteria, no emotion involved",
+      "Configurable risk controls — set your own drawdown cap and lot size",
+      "Myfxbook-verified performance — check the live-tracked results before buying",
+      "Free lifetime updates — the strategy improves, you don't pay again",
+      "24/7 Telegram support — real answers, not a ticket queue"
+    ],
+    "pros": [
+      "Runs EURUSD on a fixed grid system without any manual entries.",
+      "Drawdown cap and lot size are configurable, so risk is yours to set.",
+      "The tracked record is published on Myfxbook and verifiable at the source.",
+      "Works with the major ECN brokers listed above, not a single locked venue.",
+      "Free lifetime updates and Telegram support are included with the licence."
+    ],
+    "cons": [
+      "The recommended $2,000 minimum equity is the highest in the range.",
+      "Needs a low-latency VPS — the terminal has to run continuously.",
+      "Grid recovery can hold deep floating exposure; the tracked account has recorded an 80.14% maximum drawdown."
+    ],
+    "verification": {
+      "live": {
+        "rows": [
+          ["Status", "Active — tracked on Myfxbook"],
+          ["Account type", "Real (EUR)"],
+          ["Total gain", "+147.21%"],
+          ["Max drawdown", "80.14%"],
+          ["Profit factor", "3.36"],
+          ["Trades", "414"],
+          ["Auditing", "Myfxbook"]
+        ],
+        "note": "Figures are the published Myfxbook record for account 12080504, checked 28 September 2026. This is a real-money account; the 80.14% maximum drawdown shown is the account's own. Confirm current numbers at the source before buying."
+      },
+      "report": "Obsidian Aether trades EURUSD on a structured grid, adding positions as price moves against the initial entry rather than chasing a single directional call. That is what produces the steady equity curve — and also what produces the deep drawdown: when a move does not retrace, the grid holds floating exposure until it does. It suits accounts sized to absorb that, on a broker with tight EURUSD spreads."
+    },
+    "fit": {
+      "good": [
+        "Traders who want rules-based EURUSD exposure without watching charts all day",
+        "Traders already using an ECN broker with tight EURUSD spreads",
+        "Traders comfortable running an EA on a VPS with a $2,000+ account"
+      ],
+      "notFit": [
+        "Anyone expecting a set-and-forget system with zero risk",
+        "Anyone unwilling to test on a demo account first",
+        "Accounts below the recommended $2,000 minimum equity",
+        "Anyone who cannot tolerate a large floating drawdown during grid recovery"
+      ]
+    },
+    "installation": [
+      { "step": "Download", "text": "Download the EA file from your dashboard after purchase." },
+      { "step": "Install", "text": "Copy it into your MT5 Experts folder." },
+      { "step": "Attach", "text": "Restart MT5 and drag the EA onto your EURUSD chart." },
+      { "step": "Activate", "text": "Enable AutoTrading and apply the recommended settings." }
+    ],
+    "included": [
+      "Expert Advisor file (.ex5)",
+      "Free lifetime updates",
+      "Premium Telegram support",
+      "Licence activation for your account(s)"
+    ],
+    "comparison": {
+      "columns": ["Forex EA", "Manual trading"],
+      "rows": [
+        ["Emotion-free execution", "Yes", "No"],
+        ["24/5 automated monitoring", "Yes", "No"],
+        ["Automated risk control", "Instant", "Manual / slow"],
+        ["News & spread filter", "Automated", "Manual check"]
+      ]
+    },
+    "guarantee": {
+      "label": "30-day money-back guarantee",
+      "text": "Run it for a full month. If it is not for you, request a refund within 30 days of purchase."
+    }
+  },
+
+  "zenith-matrix-ea-ai-gold-scalper-for-mt5": {
+    "_source": "https://bestmt4ea.com/product/zenith-matrix-ea-ai-gold-scalper-for-mt5/",
+    "tagline": "Multi-factor gold scalper for MT5 built for objective, rule-based XAUUSD entries.",
+    "settings": [
+      { "label": "Recommended pair", "value": "XAUUSD (Gold)", "icon": "pair" },
+      { "label": "Platform", "value": "MetaTrader 5", "icon": "platform" },
+      { "label": "Minimum equity", "value": "$1,000", "icon": "equity" },
+      { "label": "Timeframe", "value": "M1 (1 minute)", "icon": "timeframe" },
+      { "label": "Strategy", "value": "Scalping with trend", "icon": "strategy" },
+      { "label": "Broker", "value": "Exness, RoboForex, XM", "icon": "broker" },
+      { "label": "Track record", "value": "Myfxbook-verified", "icon": "track" },
+      { "label": "Setup time", "value": "Under 10 minutes", "icon": "setup" }
+    ],
+    "features": [
+      "Fully automated execution — no manual entries, no screen time required",
+      "Fixed, rule-based logic — every trade follows the same criteria, no emotion involved",
+      "Configurable risk controls — set your own drawdown cap and lot size",
+      "Myfxbook-verified performance — check the live-tracked results before buying",
+      "Free lifetime updates — the strategy improves, you don't pay again",
+      "24/7 Telegram support — real answers, not a ticket queue"
+    ],
+    "pros": [
+      "Multi-factor filtering decides each XAUUSD entry from fixed rules, not discretion.",
+      "Runs 24/5 without screen time; it does not need you watching gold.",
+      "Drawdown cap and lot size are configurable, so risk stays under your control.",
+      "The tracked record is published on Myfxbook and verifiable at the source.",
+      "Free lifetime updates and Telegram support are included with the licence."
+    ],
+    "cons": [
+      "Needs a low-latency VPS — the terminal has to run continuously.",
+      "Scalping gold is spread-sensitive; a broker with wide gold spreads erodes the edge.",
+      "The published track record is a demo account, not live money."
+    ],
+    "verification": {
+      "live": {
+        "rows": [
+          ["Status", "Active — tracked on Myfxbook"],
+          ["Account type", "Demo (USD)"],
+          ["Total gain", "+90.43%"],
+          ["Max drawdown", "47.85%"],
+          ["Auditing", "Myfxbook"]
+        ],
+        "note": "Figures are the published Myfxbook record for account 12049339, checked 28 September 2026. The tracked account holds demo funds, not live money — the page says so everywhere the numbers appear. Confirm current results at the source before buying."
+      },
+      "report": "Zenith Matrix scores gold's short-term conditions from several inputs at once and only takes the setups the combined signal agrees on. That filtering is what keeps the trade count modest and the entries consistent, and it is also why the system sits out quiet sessions rather than forcing trades. Results are spread-dependent: it was built against an ECN gold feed."
+    },
+    "fit": {
+      "good": [
+        "Traders who want rules-based XAUUSD exposure without watching charts all day",
+        "Traders already using an ECN broker with tight gold spreads",
+        "Traders comfortable running an EA on a VPS"
+      ],
+      "notFit": [
+        "Anyone expecting a set-and-forget system with zero risk",
+        "Anyone unwilling to test on a demo account first",
+        "Accounts below the recommended $1,000 minimum equity"
+      ]
+    },
+    "installation": [
+      { "step": "Download", "text": "Download the EA file from your dashboard after purchase." },
+      { "step": "Install", "text": "Copy it into your MT5 Experts folder." },
+      { "step": "Attach", "text": "Restart MT5 and drag the EA onto your XAUUSD chart." },
+      { "step": "Activate", "text": "Enable AutoTrading and apply the recommended settings." }
+    ],
+    "included": [
+      "Expert Advisor file (.ex5)",
+      "Free lifetime updates",
+      "Premium Telegram support",
+      "Licence activation for your account(s)"
+    ],
+    "comparison": {
+      "columns": ["Forex EA", "Manual trading"],
+      "rows": [
+        ["Emotion-free execution", "Yes", "No"],
+        ["24/5 automated monitoring", "Yes", "No"],
+        ["Automated risk control", "Instant", "Manual / slow"],
+        ["News & spread filter", "Automated", "Manual check"]
+      ]
+    },
+    "guarantee": {
+      "label": "30-day money-back guarantee",
+      "text": "Run it for a full month. If it is not for you, request a refund within 30 days of purchase."
+    }
+  },
+
+  "nexora-manus-ea-ai-gold-scalper-for-mt5": {
+    "_source": "https://bestmt4ea.com/product/nexora-manus-ea-ai-gold-scalper-for-mt5/",
+    "tagline": "AI multi-factor gold scalper for MT5 with a strategic buy-only mode.",
+    "settings": [
+      { "label": "Recommended pair", "value": "XAUUSD (Gold)", "icon": "pair" },
+      { "label": "Platform", "value": "MetaTrader 5", "icon": "platform" },
+      { "label": "Minimum equity", "value": "$1,000", "icon": "equity" },
+      { "label": "Timeframe", "value": "M30 (30 minutes)", "icon": "timeframe" },
+      { "label": "Strategy", "value": "Scalping with trend", "icon": "strategy" },
+      { "label": "Broker", "value": "Exness, RoboForex, XM", "icon": "broker" },
+      { "label": "Track record", "value": "Myfxbook-verified", "icon": "track" },
+      { "label": "Setup time", "value": "Under 10 minutes", "icon": "setup" }
+    ],
+    "features": [
+      "Fully automated execution — no manual entries, no screen time required",
+      "Fixed, rule-based logic — every trade follows the same criteria, no emotion involved",
+      "Configurable risk controls — set your own drawdown cap and lot size",
+      "Myfxbook-verified performance — check the live-tracked results before buying",
+      "Free lifetime updates — the strategy improves, you don't pay again",
+      "24/7 Telegram support — real answers, not a ticket queue"
+    ],
+    "pros": [
+      "Buy-only mode keeps the system on the long side of gold rather than trading both ways.",
+      "Works gold's higher M30 timeframe, so it takes fewer, more deliberate entries.",
+      "Drawdown cap and lot size are configurable, so risk stays under your control.",
+      "The tracked record is published on Myfxbook and verifiable at the source.",
+      "Free lifetime updates and Telegram support are included with the licence."
+    ],
+    "cons": [
+      "Needs a low-latency VPS — the terminal has to run continuously.",
+      "The published track record is a demo account, not live money.",
+      "A buy-only approach gives up short-side moves when gold trends down."
+    ],
+    "verification": {
+      "live": {
+        "rows": [
+          ["Status", "Active — tracked on Myfxbook"],
+          ["Account type", "Demo (USD)"],
+          ["Total gain", "+51.46%"],
+          ["Max drawdown", "37.4%"],
+          ["Auditing", "Myfxbook"]
+        ],
+        "note": "Figures are the published Myfxbook record for account 12059490, checked 28 September 2026. The tracked account holds demo funds, not live money — the page says so everywhere the numbers appear. Confirm current results at the source before buying."
+      },
+      "report": "Nexora Manus combines a multi-factor gold signal with a deliberate buy-only bias, so it participates in gold's upward structure and stands aside rather than shorting into a downtrend. The M30 timeframe means it is not competing for the same micro-moves as the M1 systems in this range — fewer decisions, each one filtered."
+    },
+    "fit": {
+      "good": [
+        "Traders who want rules-based XAUUSD exposure without watching charts all day",
+        "Traders who prefer a long-bias approach over trading both directions",
+        "Traders comfortable running an EA on a VPS"
+      ],
+      "notFit": [
+        "Anyone expecting a set-and-forget system with zero risk",
+        "Anyone unwilling to test on a demo account first",
+        "Accounts below the recommended $1,000 minimum equity",
+        "Anyone wanting a system that trades gold short as well as long"
+      ]
+    },
+    "installation": [
+      { "step": "Download", "text": "Download the EA file from your dashboard after purchase." },
+      { "step": "Install", "text": "Copy it into your MT5 Experts folder." },
+      { "step": "Attach", "text": "Restart MT5 and drag the EA onto your XAUUSD chart." },
+      { "step": "Activate", "text": "Enable AutoTrading and apply the recommended settings." }
+    ],
+    "included": [
+      "Expert Advisor file (.ex5)",
+      "Free lifetime updates",
+      "Premium Telegram support",
+      "Licence activation for your account(s)"
+    ],
+    "comparison": {
+      "columns": ["Forex EA", "Manual trading"],
+      "rows": [
+        ["Emotion-free execution", "Yes", "No"],
+        ["24/5 automated monitoring", "Yes", "No"],
+        ["Automated risk control", "Instant", "Manual / slow"],
+        ["News & spread filter", "Automated", "Manual check"]
+      ]
+    },
+    "guarantee": {
+      "label": "30-day money-back guarantee",
+      "text": "Run it for a full month. If it is not for you, request a refund within 30 days of purchase."
+    }
+  },
+
+  "mythos-epic-ea-ai-gold-scalper-for-mt5": {
+    "_source": "https://bestmt4ea.com/product/mythos-epic-ea-ai-gold-scalper-for-mt5/",
+    "tagline": "AI-fueled gold scalper for MT5 built around steady, verified compounding.",
+    "settings": [
+      { "label": "Recommended pair", "value": "XAUUSD (Gold)", "icon": "pair" },
+      { "label": "Platform", "value": "MetaTrader 5", "icon": "platform" },
+      { "label": "Minimum equity", "value": "$1,000", "icon": "equity" },
+      { "label": "Timeframe", "value": "M1 (1 minute)", "icon": "timeframe" },
+      { "label": "Strategy", "value": "Scalping with trend", "icon": "strategy" },
+      { "label": "Broker", "value": "Exness, RoboForex, XM", "icon": "broker" },
+      { "label": "Track record", "value": "Myfxbook-verified", "icon": "track" },
+      { "label": "Setup time", "value": "Under 10 minutes", "icon": "setup" }
+    ],
+    "features": [
+      "Fully automated execution — no manual entries, no screen time required",
+      "Fixed, rule-based logic — every trade follows the same criteria, no emotion involved",
+      "Configurable risk controls — set your own drawdown cap and lot size",
+      "Myfxbook-verified performance — check the live-tracked results before buying",
+      "Free lifetime updates — the strategy improves, you don't pay again",
+      "24/7 Telegram support — real answers, not a ticket queue"
+    ],
+    "pros": [
+      "AI-assisted filtering drives the M1 gold entries from fixed rules.",
+      "Targets steady compounding rather than high-variance swings.",
+      "Drawdown cap and lot size are configurable, so risk stays under your control.",
+      "The tracked record is published on Myfxbook and verifiable at the source.",
+      "Free lifetime updates and Telegram support are included with the licence."
+    ],
+    "cons": [
+      "Needs a low-latency VPS — the terminal has to run continuously.",
+      "Scalping gold on M1 is spread-sensitive; wide gold spreads erode the edge.",
+      "The published track record is a demo account, not live money."
+    ],
+    "verification": {
+      "live": {
+        "rows": [
+          ["Status", "Active — tracked on Myfxbook"],
+          ["Account type", "Demo (USD)"],
+          ["Total gain", "+73.65%"],
+          ["Max drawdown", "41.41%"],
+          ["Auditing", "Myfxbook"]
+        ],
+        "note": "Figures are the published Myfxbook record for account 12049330, checked 28 September 2026. The tracked account holds demo funds, not live money — the page says so everywhere the numbers appear. Confirm current results at the source before buying."
+      },
+      "report": "Mythos Epic works gold at the fastest timeframe in this range, taking small, frequent captures and compounding them. The tracking account's curve is the argument: the drawdown stays contained while the gain accumulates, which is what continuous compounding across many trades looks like when the risk per trade is fixed."
+    },
+    "fit": {
+      "good": [
+        "Traders who want rules-based XAUUSD exposure without watching charts all day",
+        "Traders already using an ECN broker with tight gold spreads",
+        "Traders comfortable running an EA on a VPS"
+      ],
+      "notFit": [
+        "Anyone expecting a set-and-forget system with zero risk",
+        "Anyone unwilling to test on a demo account first",
+        "Accounts below the recommended $1,000 minimum equity"
+      ]
+    },
+    "installation": [
+      { "step": "Download", "text": "Download the EA file from your dashboard after purchase." },
+      { "step": "Install", "text": "Copy it into your MT5 Experts folder." },
+      { "step": "Attach", "text": "Restart MT5 and drag the EA onto your XAUUSD chart." },
+      { "step": "Activate", "text": "Enable AutoTrading and apply the recommended settings." }
+    ],
+    "included": [
+      "Expert Advisor file (.ex5)",
+      "Free lifetime updates",
+      "Premium Telegram support",
+      "Licence activation for your account(s)"
+    ],
+    "comparison": {
+      "columns": ["Forex EA", "Manual trading"],
+      "rows": [
+        ["Emotion-free execution", "Yes", "No"],
+        ["24/5 automated monitoring", "Yes", "No"],
+        ["Automated risk control", "Instant", "Manual / slow"],
+        ["News & spread filter", "Automated", "Manual check"]
+      ]
+    },
+    "guarantee": {
+      "label": "30-day money-back guarantee",
+      "text": "Run it for a full month. If it is not for you, request a refund within 30 days of purchase."
+    }
+  },
+
+  "equinox-cosmos-ea-ai-gbpjpy-scalper-for-mt5": {
+    "_source": "https://bestmt4ea.com/product/equinox-cosmos-ea-ai-gbpjpy-scalper-for-mt5/",
+    "tagline": "AI GBPJPY scalper for MT5 built for high-probability entries and consistent equity growth.",
+    "settings": [
+      { "label": "Recommended pair", "value": "GBPJPY", "icon": "pair" },
+      { "label": "Platform", "value": "MetaTrader 5", "icon": "platform" },
+      { "label": "Minimum equity", "value": "$1,000", "icon": "equity" },
+      { "label": "Timeframe", "value": "M1 (1 minute)", "icon": "timeframe" },
+      { "label": "Strategy", "value": "Scalping with trend", "icon": "strategy" },
+      { "label": "Broker", "value": "Exness, RoboForex, XM", "icon": "broker" },
+      { "label": "Track record", "value": "Myfxbook-verified", "icon": "track" },
+      { "label": "Setup time", "value": "Under 10 minutes", "icon": "setup" }
+    ],
+    "features": [
+      "Fully automated execution — no manual entries, no screen time required",
+      "Fixed, rule-based logic — every trade follows the same criteria, no emotion involved",
+      "Configurable risk controls — set your own drawdown cap and lot size",
+      "Myfxbook-verified performance — check the live-tracked results before buying",
+      "Free lifetime updates — the strategy improves, you don't pay again",
+      "24/7 Telegram support — real answers, not a ticket queue"
+    ],
+    "pros": [
+      "Built for GBPJPY rather than gold, so it is not another clone of the XAUUSD systems.",
+      "Rule-based entries run 24/5 without any screen time.",
+      "Drawdown cap and lot size are configurable, so risk stays under your control.",
+      "The tracked record is published on Myfxbook and verifiable at the source.",
+      "Free lifetime updates and Telegram support are included with the licence."
+    ],
+    "cons": [
+      "GBPJPY is a wide-range, volatile pair — expect larger swings than a EURUSD system.",
+      "Needs a low-latency VPS — the terminal has to run continuously.",
+      "The published track record is a demo account, not live money."
+    ],
+    "verification": {
+      "live": {
+        "rows": [
+          ["Status", "Active — tracked on Myfxbook"],
+          ["Account type", "Demo (USD)"],
+          ["Total gain", "+32.66%"],
+          ["Max drawdown", "63.9%"],
+          ["Auditing", "Myfxbook"]
+        ],
+        "note": "Figures are the published Myfxbook record for account 12033689, checked 28 September 2026. The tracked account holds demo funds, not live money — the page says so everywhere the numbers appear. Confirm current results at the source before buying."
+      },
+      "report": "Equinox Cosmos applies the same rule-based scalping framework to GBPJPY, a pair that moves further and faster than the majors it sits beside here. The trade-off is visible in the record: a lower total gain than the gold systems, but also entries that do not depend on gold's specific session behaviour."
+    },
+    "fit": {
+      "good": [
+        "Traders who want rules-based GBPJPY exposure without watching charts all day",
+        "Traders diversifying away from the gold systems in this range",
+        "Traders comfortable running an EA on a VPS"
+      ],
+      "notFit": [
+        "Anyone expecting a set-and-forget system with zero risk",
+        "Anyone unwilling to test on a demo account first",
+        "Accounts below the recommended $1,000 minimum equity",
+        "Anyone uncomfortable with GBPJPY's wider daily ranges"
+      ]
+    },
+    "installation": [
+      { "step": "Download", "text": "Download the EA file from your dashboard after purchase." },
+      { "step": "Install", "text": "Copy it into your MT5 Experts folder." },
+      { "step": "Attach", "text": "Restart MT5 and drag the EA onto your GBPJPY chart." },
+      { "step": "Activate", "text": "Enable AutoTrading and apply the recommended settings." }
+    ],
+    "included": [
+      "Expert Advisor file (.ex5)",
+      "Free lifetime updates",
+      "Premium Telegram support",
+      "Licence activation for your account(s)"
+    ],
+    "comparison": {
+      "columns": ["Forex EA", "Manual trading"],
+      "rows": [
+        ["Emotion-free execution", "Yes", "No"],
+        ["24/5 automated monitoring", "Yes", "No"],
+        ["Automated risk control", "Instant", "Manual / slow"],
+        ["News & spread filter", "Automated", "Manual check"]
+      ]
+    },
+    "guarantee": {
+      "label": "30-day money-back guarantee",
+      "text": "Run it for a full month. If it is not for you, request a refund within 30 days of purchase."
+    }
+  },
+
+  "ava-aigpt5-ea": {
+    "_source": "https://bestmt4ea.com/product/ava-aigpt5-ea/",
+    "tagline": "Automated XAUUSD scalper for MT4 — AI-assisted market filtering, structured risk control and adaptive trade management.",
+    "settings": [
+      { "label": "Recommended pair", "value": "XAUUSD (Gold)", "icon": "pair" },
+      { "label": "Platform", "value": "MetaTrader 4", "icon": "platform" },
+      { "label": "Minimum equity", "value": "$1,000", "icon": "equity" },
+      { "label": "Timeframe", "value": "M30 (30 minutes)", "icon": "timeframe" },
+      { "label": "Strategy", "value": "Scalping with trend", "icon": "strategy" },
+      { "label": "Broker", "value": "Exness, RoboForex, XM", "icon": "broker" },
+      { "label": "Track record", "value": "Backtest report", "icon": "track" },
+      { "label": "Setup time", "value": "Under 10 minutes", "icon": "setup" }
+    ],
+    "features": [
+      "Fully automated execution — no manual entries, no screen time required",
+      "Fixed, rule-based logic — every trade follows the same criteria, no emotion involved",
+      "Configurable risk controls — set your own drawdown cap and lot size",
+      "Free lifetime updates — the strategy improves, you don't pay again",
+      "24/7 Telegram support — real answers, not a ticket queue"
+    ],
+    "pros": [
+      "Runs XAUUSD on MT4 with fully automated, rule-based entries.",
+      "Drawdown cap and lot size are configurable, so risk stays under your control.",
+      "Two broker backtests are published in full, including their modelling quality.",
+      "Works on the ECN brokers listed above rather than a single locked venue.",
+      "Free lifetime updates and Telegram support are included with the licence."
+    ],
+    "cons": [
+      "No independently tracked account is published — the record here is backtests, not live trading.",
+      "Both backtests are effectively long-only (gold buyer), so the curves depend on gold trending up.",
+      "The XM backtest ran at 63.20% modelling quality with 4 mismatched-chart errors — below the level that makes a backtest trustworthy.",
+      "Needs a low-latency VPS — the terminal has to run continuously."
+    ],
+    "verification": {
+      "backtest": {
+        "rows": [
+          ["Test period", "30 Dec 2024 – 11 Nov 2025"],
+          ["Broker", "XM Global · Real 2"],
+          ["Model", "Every tick · M30 gold"],
+          ["Initial deposit", "$1,000"],
+          ["Net profit", "$38,425"],
+          ["Profit factor", "10.61"],
+          ["Maximal drawdown", "$9,954 (34.32%)"],
+          ["Total trades", "396 (80.3% won)"]
+        ],
+        "note": "Published Strategy Tester reports — backtests, not live trading. XM Global (Real 2), 30 Dec 2024 – 11 Nov 2025: net profit $38,425 on a $1,000 deposit, profit factor 10.61, maximal drawdown 34.32%, 396 trades (318 won), modelling quality 63.20% with 4 mismatched-chart errors. The second published run, FBS (Real 3), 10 Jun 2024 – 2 Dec 2025, shows $164,642 on a $3,500 deposit at profit factor 21.72 and 21.31% maximal drawdown, on 90.00% modelling quality. Both take effectively one side of gold — 393 of the XM run's 396 trades and all 349 of the FBS run's were long. Low modelling quality and mismatched bars can flatter a system, so read these as historical simulations rather than evidence of live results."
+      },
+      "report": "Both runs were on gold with every-tick modelling, and both are long-only in effect — the system buys XAUUSD and holds through the trend. That is the shape to understand before buying: the equity curve depends on gold making progress over the test window, and the FBS curve shows it plainly, sitting nearly flat for months before stepping up sharply on a handful of trades (its two largest wins are $39,979 and within consecutive runs of $79,185). The XM run's 63.20% modelling quality is below the 90% that makes an M30 backtest trustworthy, and it logged 4 mismatched-chart errors, so its 10.61 profit factor should be treated as optimistic. Nothing here has been forward-tested on a tracked account."
+    },
+    "fit": {
+      "good": [
+        "Traders who want rules-based XAUUSD exposure on MT4 without watching charts all day",
+        "Traders who understand the difference between a backtest and a live record",
+        "Traders comfortable running an EA on a VPS with a $1,000+ account"
+      ],
+      "notFit": [
+        "Anyone who needs an independently verified live track record before buying",
+        "Anyone expecting a system that trades both directions in gold",
+        "Anyone unwilling to test on a demo account first",
+        "Accounts below the recommended $1,000 minimum equity"
+      ]
+    },
+    "installation": [
+      { "step": "Download", "text": "Download the EA file from your dashboard after purchase." },
+      { "step": "Install", "text": "Copy it into your MT4 Experts folder." },
+      { "step": "Attach", "text": "Restart MT4 and drag the EA onto your XAUUSD chart." },
+      { "step": "Activate", "text": "Enable AutoTrading and apply the recommended settings." }
+    ],
+    "included": [
+      "Expert Advisor file (.ex4)",
+      "Free lifetime updates",
+      "Premium Telegram support",
+      "Licence activation for your account(s)"
+    ],
+    "comparison": {
+      "columns": ["Forex EA", "Manual trading"],
+      "rows": [
+        ["Emotion-free execution", "Yes", "No"],
+        ["24/5 automated monitoring", "Yes", "No"],
+        ["Automated risk control", "Instant", "Manual / slow"],
+        ["News & spread filter", "Automated", "Manual check"]
+      ]
+    },
+    "guarantee": {
+      "label": "30-day money-back guarantee",
+      "text": "Run it for a full month. If it is not for you, request a refund within 30 days of purchase."
+    }
+  },
+
+  "fxcore100-ea": {
+    "_source": "https://bestmt4ea.com/product/fxcore100-ea/",
+    "tagline": "Automated EURUSD scalper for MT4 with grid-based entries and configurable risk control.",
+    "settings": [
+      { "label": "Recommended pair", "value": "EURUSD", "icon": "pair" },
+      { "label": "Platform", "value": "MetaTrader 4", "icon": "platform" },
+      { "label": "Minimum equity", "value": "$1,000", "icon": "equity" },
+      { "label": "Timeframe", "value": "H4 (4 hours)", "icon": "timeframe" },
+      { "label": "Strategy", "value": "Scalping with grid", "icon": "strategy" },
+      { "label": "Broker", "value": "Exness, RoboForex, XM", "icon": "broker" },
+      { "label": "Track record", "value": "Backtest report", "icon": "track" },
+      { "label": "Setup time", "value": "Under 10 minutes", "icon": "setup" }
+    ],
+    "features": [
+      "Fully automated execution — no manual entries, no screen time required",
+      "Fixed rule-based logic — every trade follows the same criteria, no emotion involved",
+      "Configurable risk controls — set your own drawdown cap and lot size",
+      "Free lifetime updates — the strategy improves, you don't pay again",
+      "24/7 Telegram support — real answers, not a ticket queue"
+    ],
+    "pros": [
+      "Runs a fixed EURUSD grid strategy on MT4 with no manual entries.",
+      "One payment for lifetime access, priced at the low end of the range here.",
+      "A full Strategy Tester report is published, including its modelling quality.",
+      "Drawdown cap and lot size are configurable, so risk stays under your control.",
+      "Telegram support is included with the licence."
+    ],
+    "cons": [
+      "No third-party tracked account is published — the record here is a backtest, not live trading.",
+      "The published backtest reaches a 46.80% maximal drawdown on a $1,000 account.",
+      "That backtest was run on M15, while the product recommends H4 — and the product's own money-management table puts M15 in the $11,000–$16,000 bracket.",
+      "Grid systems hold floating exposure when EURUSD trends without retracing."
+    ],
+    "verification": {
+      "backtest": {
+        "rows": [
+          ["Test period", "7 Sep 2021 – 8 Dec 2021"],
+          ["Broker", "FBS · Real 9"],
+          ["Model", "Every tick · M15 EURUSD"],
+          ["Initial deposit", "$1,000"],
+          ["Net profit", "$9,941"],
+          ["Profit factor", "1.91"],
+          ["Maximal drawdown", "$8,406 (46.80%)"],
+          ["Total trades", "1,867 (71.9% won)"]
+        ],
+        "note": "Published Strategy Tester report — a backtest, not live trading. FBS (Real 9), 7 Sep – 8 Dec 2021, every tick on M15 EURUSD: net profit $9,941 on a $1,000 deposit, profit factor 1.91, maximal drawdown $8,406 (46.80%), 1,867 trades of which 1,343 won. Modelling quality was 87.18% with 28 mismatched-chart errors, both of which are below the standard that makes a backtest trustworthy. Every one of the 1,867 trades was a short — the report is titled \"FXCore100 SELL\" and shows no long positions. Two things to weigh against the headline profit: the product recommends H4 while this test ran M15, and the product's own money-management table puts M15 accounts in the $11,000–$16,000 bracket, not $1,000. Treat these as historical simulations, not evidence of live results."
+      },
+      "report": "FXCore100 is a grid seller on EURUSD: the report takes 1,867 short trades and no longs, adding positions as price rises against the entry and closing them as it retraces. That is what produces a rising curve at a 71.9% win rate — and also the 46.80% maximal drawdown, because the losing 28% of trades are held through as the grid widens. The drawdown is the number to focus on: on a $1,000 account it means roughly half the equity was at risk at the worst point of the test, on a timeframe the product itself says needs eleven to sixteen thousand to run at low risk. Nothing here has been forward-tested on a tracked account."
+    },
+    "fit": {
+      "good": [
+        "Traders who want rules-based EURUSD exposure on MT4 without watching charts all day",
+        "Traders who understand a published backtest is not a live record",
+        "Traders comfortable running an EA on a VPS and sizing for a grid drawdown"
+      ],
+      "notFit": [
+        "Anyone who needs an independently verified live track record before buying",
+        "Anyone expecting a system that trades both directions in EURUSD",
+        "Anyone running the recommended H4 settings on a small account and expecting the backtest's numbers",
+        "Accounts below the recommended $1,000 minimum equity"
+      ]
+    },
+    "installation": [
+      { "step": "Download", "text": "Download the EA file from your dashboard after purchase." },
+      { "step": "Install", "text": "Copy it into your MT4 Experts folder." },
+      { "step": "Attach", "text": "Restart MT4 and drag the EA onto your EURUSD chart." },
+      { "step": "Activate", "text": "Enable AutoTrading and apply the default settings the developers recommend." }
+    ],
+    "included": [
+      "Expert Advisor file (.ex4)",
+      "Free lifetime updates",
+      "Premium Telegram support",
+      "Licence activation for your account(s)"
+    ],
+    "comparison": {
+      "columns": ["Forex EA", "Manual trading"],
+      "rows": [
+        ["Emotion-free execution", "Yes", "No"],
+        ["24/5 automated monitoring", "Yes", "No"],
+        ["Automated risk control", "Instant", "Manual / slow"],
+        ["News & spread filter", "Automated", "Manual check"]
+      ]
+    }
+  },
+
+  "golden-deer-holy-grail-indicator": {
+    "_source": "https://bestmt4ea.com/product/golden-deer-holy-grail-indicator/",
+    "tagline": "MT4 indicator that marks entry and exit levels on the chart, across any forex pair.",
+    "gallery": {
+      "eyebrow": "Signals",
+      "title": "How the signal looks on the chart",
+      "note": "Example charts published with the indicator, across five pairs. Open any image full size.",
+      "footnote": "These are chart illustrations of the signal, not a performance record. No backtest and no tracked account is published for this indicator."
+    },
+    "settings": [
+      { "label": "Platform", "value": "MetaTrader 4", "icon": "platform" },
+      { "label": "Markets", "value": "Any forex pair", "icon": "pair" },
+      { "label": "Licence", "value": "Lifetime premium", "icon": "track" },
+      { "label": "Delivery", "value": "Dashboard download", "icon": "setup" }
+    ],
+    "features": [
+      "Marks entry and exit levels directly on the chart",
+      "Works on any forex pair",
+      "Built for beginners and experienced traders alike",
+      "One payment for lifetime premium access",
+      "Downloaded from your dashboard straight after checkout"
+    ],
+    "pros": [
+      "A chart overlay you apply to any forex pair on MT4.",
+      "One payment, lifetime access — no renewal.",
+      "Instant download from your dashboard after checkout.",
+      "Signal examples are published on five different pairs.",
+      "Installation help is available over Telegram."
+    ],
+    "cons": [
+      "No backtest and no third-party tracked account is published — there is no performance record to check.",
+      "An indicator marks levels; it does not place or manage trades for you.",
+      "The published charts illustrate the signal, not a track record.",
+      "Entries still depend on the trader acting on them, so results vary with discipline."
+    ],
+    "fit": {
+      "good": [
+        "Traders who want a visual entry and exit overlay rather than an automated EA",
+        "Traders on MT4 who trade more than one currency pair",
+        "Traders who prefer to keep manual control of execution"
+      ],
+      "notFit": [
+        "Anyone looking for fully automated execution",
+        "Anyone who needs a verified performance record before buying",
+        "Traders who want the software to manage risk and positions for them"
+      ]
+    },
+    "installation": [
+      { "step": "Download", "text": "Download the indicator files from your dashboard after purchase." },
+      { "step": "Install", "text": "Copy the indicator into your MT4 Indicators folder." },
+      { "step": "Attach", "text": "Restart MT4, then drag the indicator onto the chart you trade." },
+      { "step": "Configure", "text": "Load the supplied template and settings, and adjust them to your pairs." }
+    ],
+    "included": [
+      "Indicator files (.ex4)",
+      "Installation guide",
+      "Recommended settings",
+      "Template files"
+    ]
+  },
+  "apex-quant-ea-ai-bitcoin-scalper-for-mt5": {
+    "settings": [
+      { "label": "Recommended pair", "value": "BTCUSD", "icon": "pair" },
+      { "label": "Platform", "value": "MetaTrader 5", "icon": "platform" },
+      { "label": "Minimum equity", "value": "$500", "icon": "equity" }
+    ]
+  },
+  "elysium-vortex-eurcad-ea-ai-eurcad-scalper-for-mt5": {
+    "settings": [
+      { "label": "Recommended pair", "value": "EURCAD", "icon": "pair" },
+      { "label": "Platform", "value": "MetaTrader 5", "icon": "platform" },
+      { "label": "Minimum equity", "value": "$1,000", "icon": "equity" }
+    ]
+  }
+}

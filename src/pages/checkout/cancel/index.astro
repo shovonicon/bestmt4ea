@@ -1,0 +1,24 @@
+---
+export const prerender = false;
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { url } from '../../../lib/urls';
+
+/** Checkout was abandoned at the provider. Nothing was charged. */
+const orderNumber = Astro.url.searchParams.get('order');
+---
+
+<BaseLayout title="Payment cancelled" description="Your BestMT4EA payment was cancelled." noindex>
+  <section class="container-x mx-auto flex min-h-[70vh] max-w-xl flex-col justify-center py-24">
+    <p class="eyebrow">Checkout</p>
+    <h1 class="mt-3 text-3xl font-bold sm:text-4xl">Payment cancelled</h1>
+    <p class="mt-4 text-base leading-7 text-[--color-ink-soft]">
+      {orderNumber ? <>Order <span class="metric-value">{orderNumber}</span> was not paid. </> : null}
+      Nothing has been charged and no licence has been issued.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href={url('/shop')} class="btn btn-primary">Back to the systems</a>
+      <a href={url('/contact')} class="btn btn-ghost">Ask a question</a>
+    </div>
+  </section>
+</BaseLayout>

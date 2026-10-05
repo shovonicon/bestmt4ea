@@ -3,13 +3,14 @@ export const prerender = false;
 
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getDb } from '../../../db/client';
-import { listCustomerDownloads } from '../../../server/portal';
+import { listCustomerBuilds, listCustomerDownloads } from '../../../server/portal';
 import { url } from '../../../lib/urls';
 
 const session = Astro.locals.session;
 if (!session || session.subjectType !== 'customer') return Astro.redirect('/login/');
 
 const downloads = await listCustomerDownloads(getDb(), session.subjectId);
+const builds = await listCustomerBuilds(getDb(), session.subjectId);
 const free = downloads.filter((d) => d.kind === 'free');
 const licensed = downloads.filter((d) => d.kind === 'licensed');
 ---
@@ -20,19 +21,41 @@ const licensed = downloads.filter((d) => d.kind === 'licensed');
     <h1 class="mt-3 text-3xl font-bold sm:text-4xl">My downloads</h1>
 
     <h2 class="mt-10 text-lg font-semibold">Your licensed files</h2>
-    {licensed.length === 0 ? (
+    {builds.length === 0 && licensed.length === 0 ? (
       <p class="mt-2 text-sm text-[--color-ink-soft]">
-        Nothing here yet. Your licensed EA files appear once a licence is active.
+        Nothing here yet. A licensed EA appears once its licence is active and your build — compiled for your account
+        number and expiry — has been attached.
       </p>
     ) : (
       <ul class="mt-4 flex flex-col gap-2">
+        {builds.map((b) => (
+          <li class="brand-card flex items-center justify-between gap-4 rounded-xl p-4">
+            <span>
+              <span class="font-medium">{b.productTitle}</span>
+              <span class="block text-xs text-[--color-ink-soft]">
+                Compiled for account #{b.accountNumber}
+                {b.expiresAt ? ` · licensed until ${b.expiresAt.toISOString().slice(0, 10)}` : ''}
+              </span>
+              <span class="block text-xs text-[--color-ink-dim]">{b.filename}</span>
+            </span>
+            <a
+              class="rounded-lg bg-[--color-brand] px-3 py-2 text-sm font-semibold text-black"
+              href={`/api/download/build/${b.buildId}/`}
+            >
+              Download
+            </a>
+          </li>
+        ))}
         {licensed.map((d) => (
           <li class="brand-card flex items-center justify-between gap-4 rounded-xl p-4">
             <span>
               <span class="font-medium">{d.productTitle}</span>
               <span class="block text-xs text-[--color-ink-soft]">{d.filename}</span>
             </span>
-            <a class="rounded-lg bg-[--color-brand] px-3 py-2 text-sm font-semibold text-black" href={`/api/download/${d.fileId}/`}>
+            <a
+              class="rounded-lg bg-[--color-brand] px-3 py-2 text-sm font-semibold text-black"
+              href={`/api/download/${d.fileId}/`}
+            >
               Download
             </a>
           </li>

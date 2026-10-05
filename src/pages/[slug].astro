@@ -2,8 +2,14 @@
 import { getCollection } from 'astro:content';
 import PageLayout from '../layouts/PageLayout.astro';
 import LongFormLayout from '../layouts/LongFormLayout.astro';
+import BrokersLayout from '../layouts/BrokersLayout.astro';
+import CopyTradingLayout from '../layouts/CopyTradingLayout.astro';
+import ReviewsLayout from '../layouts/ReviewsLayout.astro';
 import { extractHeadings } from '../lib/reading';
 import { RESERVED_SLUGS, assertRootSlugIntegrity } from '../lib/content';
+
+/** EA review directories — they render the catalogue, not their markdown body. */
+const REVIEW_SLUGS = new Set(['best-mt4-ea', 'best-mt5-ea', 'best-forex-ea']);
 
 /**
  * Root-level route for both posts and pages.
@@ -64,7 +70,15 @@ if (kind === 'post') {
 
 {
   kind === 'page' ? (
-    <PageLayout entry={entry} />
+    entry.data.slug === 'best-forex-brokers' ? (
+      <BrokersLayout entry={entry} />
+    ) : entry.data.slug === 'copy-trading' ? (
+      <CopyTradingLayout entry={entry} />
+    ) : REVIEW_SLUGS.has(entry.data.slug) ? (
+      <ReviewsLayout entry={entry} />
+    ) : (
+      <PageLayout entry={entry} />
+    )
   ) : (
     <LongFormLayout entry={entry} headings={headings} body={body} related={related} />
   )

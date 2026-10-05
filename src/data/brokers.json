@@ -1,0 +1,152 @@
+{
+  "_note": "Broker comparison rows for /best-forex-brokers/. `key` maps to an entry in src/lib/affiliates.ts, so the label, affiliate URL and logo are never duplicated here. Regulation, minimum deposit, platforms and account types are taken from the store's own broker page. `offer` is the broker's own current promotion; it is OMITTED rather than invented where the old page only carried an unverifiable superlative (\"Best USA broker\", \"Top forex broker\").",
+  "brokers": [
+    {
+      "key": "roboforex",
+      "regulation": "FSC Belize",
+      "minDeposit": "$10",
+      "platforms": "MT4, MT5, RTrader",
+      "accountTypes": "Standard, Cent, Zero Spread",
+      "offer": "Welcome bonus $30",
+      "recommended": true
+    },
+    {
+      "key": "exness",
+      "regulation": "FCA, CySEC",
+      "minDeposit": "$1",
+      "platforms": "MT4, MT5",
+      "accountTypes": "Standard, Cent, Zero Spread",
+      "offer": "Free VPS",
+      "recommended": true
+    },
+    {
+      "key": "fusion-markets",
+      "regulation": "Seychelles FSA",
+      "minDeposit": "$10",
+      "platforms": "MT4, MT5, TradingView",
+      "accountTypes": "Standard, Zero Spread"
+    },
+    {
+      "key": "xm",
+      "regulation": "ASIC, CySEC, FCA",
+      "minDeposit": "$5",
+      "platforms": "MT4, MT5",
+      "accountTypes": "Standard, Micro, Zero Spread",
+      "offer": "20% deposit bonus"
+    },
+    {
+      "key": "fbs",
+      "regulation": "ASIC, CySEC, FCA",
+      "minDeposit": "$10",
+      "platforms": "MT4, MT5",
+      "accountTypes": "Standard, Cent, Zero Spread",
+      "offer": "100% deposit bonus"
+    },
+    {
+      "key": "markets4you",
+      "regulation": "BVI FSC",
+      "minDeposit": "$1",
+      "platforms": "MT4, MT5",
+      "accountTypes": "Standard, Cent",
+      "offer": "100% deposit bonus"
+    },
+    {
+      "key": "icmarkets",
+      "regulation": "Seychelles FSA",
+      "minDeposit": "$200",
+      "platforms": "MT4, MT5, cTrader",
+      "accountTypes": "Standard, Zero Spread"
+    },
+    {
+      "key": "avatrade",
+      "regulation": "ASIC, FSCA",
+      "minDeposit": "$100",
+      "platforms": "MT4, MT5",
+      "accountTypes": "Standard, Cent, Zero Spread"
+    },
+    {
+      "key": "vantage",
+      "regulation": "FCA",
+      "minDeposit": "$100",
+      "platforms": "MT4, MT5",
+      "accountTypes": "Standard, Zero Spread"
+    },
+    {
+      "key": "xbtfx",
+      "regulation": "ASIC, CySEC, FCA",
+      "minDeposit": "$10",
+      "platforms": "MT4, MT5",
+      "accountTypes": "Standard, Zero Spread"
+    },
+    {
+      "key": "fxtm",
+      "regulation": "FSC Mauritius",
+      "minDeposit": "$10",
+      "platforms": "MT4, MT5",
+      "accountTypes": "Standard, Micro, Zero Spread",
+      "offer": "Welcome bonus $50"
+    },
+    {
+      "key": "binance",
+      "regulation": "DASP",
+      "minDeposit": "$10",
+      "platforms": "Binance platforms",
+      "accountTypes": "N/A"
+    },
+    {
+      "key": "tradingview",
+      "regulation": "Unregulated",
+      "minDeposit": "Free",
+      "platforms": "TradingView",
+      "accountTypes": "N/A"
+    }
+  ],
+  "chooseChecklist": [
+    {
+      "title": "Regulation first",
+      "text": "Check which regulator supervises the entity you are actually onboarding with. The licence on the homepage is not always the licence on the account you open."
+    },
+    {
+      "title": "Demo before live",
+      "text": "Run the system on a demo account at that broker first. Spread, swap and execution differ enough between brokers to change how a scalping strategy behaves."
+    },
+    {
+      "title": "Spread and execution cost",
+      "text": "Automated scalping lives or dies on execution cost. A raw-spread account with a commission is often cheaper than a marked-up spread account."
+    },
+    {
+      "title": "Minimum deposit vs account size",
+      "text": "A low minimum deposit is not a recommended account size. Check the system's own minimum equity before choosing a broker around a $10 deposit."
+    },
+    {
+      "title": "MT4 or MT5 support",
+      "text": "Confirm the platform your licence runs on is available at that broker, and that expert advisors are permitted on the account type you pick."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How did you choose these brokers?",
+      "answer": "They are the platforms we test our own expert advisors on. The comparison lists regulation, minimum deposit, platforms and account types so you can match a broker to the system you intend to run, rather than ranking them on a single score."
+    },
+    {
+      "question": "Do you earn from these links?",
+      "answer": "Yes. Some links on this page are affiliate links, and we may earn a commission if you open an account through one, at no extra cost to you. It does not change what is listed here or which systems we publish."
+    },
+    {
+      "question": "Is a lower minimum deposit better?",
+      "answer": "Not necessarily. The minimum deposit is the smallest amount the broker will open an account with, not a recommended trading balance. Our systems publish their own recommended minimum equity, and several need $1,000 or more to size positions properly."
+    },
+    {
+      "question": "What do the deposit bonuses mean?",
+      "answer": "A deposit bonus is the broker's own promotion and comes with its own terms, turnover requirements and withdrawal conditions. Read those terms at the broker. A bonus is not profit and does not reduce the risk of trading."
+    },
+    {
+      "question": "Which broker should I run an expert advisor on?",
+      "answer": "One with a regulation you are comfortable with, tight spreads on the instrument the system trades, and reliable execution. If you are unsure, start on a demo account at two brokers and compare the fills on the same strategy before committing capital."
+    },
+    {
+      "question": "Can I use a broker that is not on this list?",
+      "answer": "Yes. Our systems run on any MetaTrader 4 or MetaTrader 5 broker. The list here is what we test on, not a restriction — though a low-spread ECN account will usually suit these strategies better than a high-spread one."
+    }
+  ]
+}

@@ -14,8 +14,8 @@
  *   - cycles and chains deeper than MAX_DEPTH fail
  *   - statuses outside 301/302/307/308/410/451 fail
  *   - local targets that resolve to no live route fail, EXCEPT retired
- *     category archives listed in RETIRED_TARGETS, which are remapped to a
- *     live fallback and recorded in the manifest
+ *     archives and removed pages listed in RETIRED_TARGETS, which are remapped
+ *     to a live fallback and recorded in the manifest
  *   - sources that collide with a live route are dropped and recorded
  *     (legacy WordPress rows for /disclaimer/, /dmca-policy/, ... must never
  *     shadow real pages)
@@ -46,25 +46,60 @@ const REDIRECT_STATUSES = new Set([301, 302, 307, 308]);
 const GONE_STATUSES = new Set([410, 451]);
 
 /**
- * Retired WordPress category archives: taxonomy entries with no posts behind
- * them, so Astro emits no `/category/...` page for them. Hundreds of legacy
- * rows point at these; dropping the rules would resurrect dead links, and
- * failing would block deployment on legacy data. They consolidate into the
- * live blog index instead. Each remap is recorded in the manifest.
+ * Retired local targets: URLs this site no longer serves that legacy WordPress
+ * rows still point at. Dropping those rules would resurrect dead links, and
+ * failing would block deployment on legacy data — so each is remapped to a live
+ * fallback and recorded in the manifest.
+ *
+ *   - taxonomy archives with no posts behind them -> the blog index
+ *   - the free-download posts removed from the site -> the ranked catalogue
+ *   - the old VPS product slug -> the current one
  */
 const RETIRED_TARGETS = new Map(
   [
-    '/category/strategies-best-practices/',
-    '/category/fundamental-analysis/',
-    '/category/beginners-guides-forex-basics/',
-    '/category/forex-trading-strategies/forex-swing-trading/',
-    '/category/chart-patterns/',
-    '/category/technical-analysis/',
-    '/category/prop-firm-reviews/',
-    '/category/trading-psychology/',
-    '/category/forex-broker-reviews/',
-    '/category/mt4-mt5-expert-advisors/ea-development-mql4-mql5/',
-  ].map((from) => [cmpKey(from), '/blog/']),
+    ...[
+      '/category/strategies-best-practices/',
+      '/category/fundamental-analysis/',
+      '/category/beginners-guides-forex-basics/',
+      '/category/forex-trading-strategies/forex-swing-trading/',
+      '/category/chart-patterns/',
+      '/category/technical-analysis/',
+      '/category/prop-firm-reviews/',
+      '/category/trading-psychology/',
+      '/category/forex-broker-reviews/',
+      '/category/mt4-mt5-expert-advisors/ea-development-mql4-mql5/',
+      '/category/gold-xauusd-trading/',
+      '/how-to-install-mt4-expert-advisor-on-windows-7-powerful-steps-for-fast-easy-setup/',
+      '/is-tradingview-the-best-charting-platform/',
+    ].map((from) => [from, '/blog/']),
+    ...[
+      '/product/2000-trading-tools/',
+      '/%F0%9F%93%88-gold-trend-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know/',
+      '/7-best-top-gold-scalping-ea-for-beginners-with-low-drawdown-ultimate-safe-trading-guide/',
+      '/ai-gold-scalping-ea-free-download-powerful-profitable-2026-guide-7-proven-insights/',
+      '/best-gold-robot-for-mt4-mt5-ea-7-powerful-picks-for-consistent-trading-profits/',
+      '/best-gold-scalper-ea-for-mt4-mt5-the-only-guide-you-need/',
+      '/free-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide/',
+      '/gold-breakout-ea-free-download-7-powerful-benefits-proven-setup-guide-for-massive-trading-success/',
+      '/gold-cycle-trader-ea-free-download-7-powerful-secrets-smart-traders-must-know/',
+      '/gold-high-frequency-scalping-ea-free-download-7-powerful-truths-you-must-know-before-installing/',
+      '/gold-hitter-ea-mt4-free-download-powerful-2026-guide-to-safe-setup-profitable-trading/',
+      '/gold-investor-best-forex-gold-ea-free-download-powerful-proven-guide/',
+      '/gold-prop-firm-robot-free-download-7-powerful-secrets-to-maximize-funded-trading-success/',
+      '/gold-scalping-expert-advisor-mt4-free-download-powerful-proven-guide-7-winning-secrets/',
+      '/gold-sniper-master-indicator-system-free-download-powerful-secrets-7-proven-trading-advantages/',
+      '/goldbaron-xauusd-ea-forex-ea-reviews-7-powerful-truths-every-trader-must-know/',
+      '/mt4-gold-scalper-ea-free-download-powerful-2026-guide-proven-setup-tips/',
+      '/pharaoh-gold-ea-mt4-free-download-7-powerful-facts-every-trader-must-know-before-installing/',
+      '/scalper-xauusd-ea-free-download-7-powerful-truths-you-must-know-before-installing/',
+      '/the-7-best-mt4-ea-for-gold-trading-with-low-risk-proven-tools-for-consistent-results/',
+      '/the-gold-reaper-forex-ea-reviews-powerful-truths-7-critical-insights-before-you-invest/',
+      '/top-10-best-mt4-indicators-for-gold-xauusd-powerful-tools-for-accurate-trading/',
+      '/xauusd-scalping-robot-settings-and-tips-10-powerful-strategies-for-better-trading-results/',
+      '/xauusd-trading-robot-free-download-7-powerful-secrets-to-maximize-gold-profits-safely/',
+    ].map((from) => [from, '/top-ranking/']),
+    ['/product/forex-vps/', '/product/vps/'],
+  ].map(([from, fallback]) => [cmpKey(from), fallback]),
 );
 
 /* ------------------------------------------------------------------- csv */
@@ -105,6 +140,21 @@ async function main() {
   const raw = await readFile(csvPath, 'utf8');
   const lines = raw.split(/\r?\n/).filter((l) => l.trim().length > 0);
   const rows = lines.slice(1).map(parseCsvLine); // drop header
+
+  // Project-owned rules. The CSV is a generated artifact (wp-export --refresh
+  // rewrites it), so hand-written redirects live in their own file and go
+  // through exactly the same validation below.
+  const MANUAL_JSON = 'src/data/redirects-manual.json';
+  if (existsSync(MANUAL_JSON)) {
+    try {
+      const manual = JSON.parse(await readFile(MANUAL_JSON, 'utf8'));
+      for (const rule of manual.redirects ?? []) {
+        rows.push([rule.from, rule.to, String(rule.status ?? 301)]);
+      }
+    } catch (error) {
+      fail(`Could not read ${MANUAL_JSON}: ${error.message}`);
+    }
+  }
 
   const live = getLiveRoutes();
 

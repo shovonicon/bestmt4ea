@@ -1,0 +1,81 @@
+name: Licence build queue
+
+# Compiles each queued per-account EA build and attaches it to the customer's
+# licence, after which they can download it from /dashboard/downloads/.
+#
+# Why Windows: an .ex4/.ex5 can only be produced by MetaQuotes' MetaEditor, and
+# MT5's MetaEditor will NOT compile MQL4 — verified locally, it fails with
+# "error 208: unsupported file extension". So this needs a real MT4 terminal,
+# which MetaQuotes ships through brokers, hence MT4_INSTALLER_URL is a secret
+# rather than a URL baked in here.
+#
+# Required repository secrets:
+#   BESTMT4EA_APP_URL    app origin, e.g. https://bestmt4ea.com
+#   CRON_SECRET          the same secret the Worker holds
+#   MT4_INSTALLER_URL    direct download for an MT4 terminal installer
+#                        (your broker's — MetaQuotes distributes MT4 via brokers)
+#
+# FIRST RUN: watch it. The silent install switch is standard for MetaQuotes
+# installers but the resulting path varies by broker, so the step below reports
+# what it found. If the compile step cannot find MetaEditor, set METAEDITOR in
+# the workflow to the path that step printed.
+
+on:
+  # On demand — the app can fire a repository_dispatch the moment a licence is
+  # activated, which is when a build is actually needed — plus a safety net.
+  #
+  # Do NOT poll aggressively: Windows runners bill at 2x, so a 15-minute schedule
+  # (~96 runs/day) would burn roughly 23,000 billed minutes a month against a
+  # 2,000-minute free allowance. Every 6 hours is about 960.
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch: {}
+  repository_dispatch:
+    types: [license-build]
+
+concurrency:
+  group: license-builds
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 25
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install MetaTrader 4 (provides MetaEditor)
+        shell: pwsh
+        env:
+          MT4_INSTALLER_URL: ${{ secrets.MT4_INSTALLER_URL }}
+        run: |
+          if (-not $env:MT4_INSTALLER_URL) {
+            throw 'MT4_INSTALLER_URL secret is not set — MetaEditor cannot be installed without it.'
+          }
+          $installer = Join-Path $env:RUNNER_TEMP 'mt4setup.exe'
+          Invoke-WebRequest -Uri $env:MT4_INSTALLER_URL -OutFile $installer
+          Start-Process -FilePath $installer -ArgumentList '/auto' -Wait
+
+          # The install directory is broker-branded, so find MetaEditor rather than
+          # assuming a path, and hand it to the build step.
+          $metaeditor = Get-ChildItem 'C:\Program Files (x86)', 'C:\Program Files' `
+            -Recurse -Filter 'metaeditor.exe' -ErrorAction SilentlyContinue |
+            Select-Object -First 1 -ExpandProperty FullName
+          if (-not $metaeditor) { throw 'MT4 installed but no metaeditor.exe was found.' }
+          Write-Host "MetaEditor: $metaeditor"
+          "METAEDITOR=$metaeditor" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+
+      - name: Build queued licences
+        env:
+          APP_URL: ${{ secrets.BESTMT4EA_APP_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: node scripts/build-licenses.mjs

@@ -11,12 +11,9 @@ import AxeBuilder from '@axe-core/playwright';
 
 const PAGES = [
   { name: 'homepage', path: '/' },
-  {
-    name: 'migrated download post',
-    path: '/gold-investor-best-forex-gold-ea-free-download-powerful-proven-guide/',
-  },
+  { name: 'top ranking', path: '/top-ranking/' },
+  { name: 'broker comparison', path: '/best-forex-brokers/' },
   { name: 'product page', path: '/product/ava-aigpt5-ea/' },
-  { name: 'free download library', path: '/free-download-forex-ea-indicator/' },
   { name: 'privacy policy', path: '/privacy-policy/' },
   { name: 'terms and conditions', path: '/terms-conditions/' },
   { name: 'risk disclaimer', path: '/disclaimer/' },
@@ -41,13 +38,21 @@ for (const page of PAGES) {
   });
 }
 
-test('no horizontal overflow on the homepage', async ({ page }) => {
-  await page.goto('/', { waitUntil: 'load' });
-  const overflow = await page.evaluate(
-    () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
-  );
-  expect(overflow, 'the page should not scroll horizontally').toBeLessThanOrEqual(1);
-});
+// The three money pages carry the widest tables on the site, so they are the
+// ones that would break this.
+for (const entry of [
+  { name: 'homepage', path: '/' },
+  { name: 'top ranking', path: '/top-ranking/' },
+  { name: 'broker comparison', path: '/best-forex-brokers/' },
+]) {
+  test(`no horizontal overflow on the ${entry.name}`, async ({ page }) => {
+    await page.goto(entry.path, { waitUntil: 'load' });
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    );
+    expect(overflow, `${entry.path} should not scroll horizontally`).toBeLessThanOrEqual(1);
+  });
+}
 
 test('every page declares one H1', async ({ page }) => {
   for (const entry of PAGES) {

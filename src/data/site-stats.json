@@ -1,0 +1,9 @@
+{
+  "_note": "Counted from the WooCommerce order export (bestmt4ea2026ai-poweredforexrobotsformt4ampmt5.WordPress.2026-10-05.xml — 6,303 orders, generated 2026-10-05). Every figure is a count of order records, never an estimate. A \"customer\" is one unique billing email with a completed order, so the 2,840 includes free-download orders; payingCustomers is the subset that actually paid. Re-derive these figures with scripts/order-stats.mjs whenever the export is refreshed.",
+  "customers": "2,840",
+  "payingCustomers": "640",
+  "ordersCompleted": "6,031",
+  "since": 2021,
+  "firstOrder": "2021-01-22",
+  "sources": ["WooCommerce order export, 6,303 orders, generated 2026-10-05"]
+}

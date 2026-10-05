@@ -1,0 +1,98 @@
+---
+/** Pip value calculator — ported from the reference `pip-calculator.tsx`. */
+const PAIRS = [
+  { key: 'EURUSD', pipSize: 0.0001, contract: 100000, label: 'EUR/USD' },
+  { key: 'GBPUSD', pipSize: 0.0001, contract: 100000, label: 'GBP/USD' },
+  { key: 'USDJPY', pipSize: 0.01, contract: 100000, label: 'USD/JPY' },
+  { key: 'USDCHF', pipSize: 0.0001, contract: 100000, label: 'USD/CHF' },
+  { key: 'AUDUSD', pipSize: 0.0001, contract: 100000, label: 'AUD/USD' },
+  { key: 'USDCAD', pipSize: 0.0001, contract: 100000, label: 'USD/CAD' },
+  { key: 'NZDUSD', pipSize: 0.0001, contract: 100000, label: 'NZD/USD' },
+  { key: 'GBPJPY', pipSize: 0.01, contract: 100000, label: 'GBP/JPY' },
+  { key: 'EURJPY', pipSize: 0.01, contract: 100000, label: 'EUR/JPY' },
+  { key: 'XAUUSD', pipSize: 0.01, contract: 100, label: 'XAU/USD (Gold)' },
+];
+const STEPS = [1, 5, 10, 50];
+---
+
+<div id="calc-pip" class="space-y-6">
+  <div class="grid gap-4 sm:grid-cols-3">
+    <label class="block">
+      <span class="metric-label mb-2 block">Currency pair</span>
+      <select class="tool-input" data-field="pair">
+        {
+          PAIRS.map((pair) => (
+            <option value={pair.key} data-pip={pair.pipSize} data-contract={pair.contract} data-label={pair.label}>
+              {pair.label}
+            </option>
+          ))
+        }
+      </select>
+    </label>
+    <label class="block">
+      <span class="metric-label mb-2 block">Lot size</span>
+      <input class="tool-input" type="number" step="0.01" min="0.01" value="1.00" data-field="lots" />
+    </label>
+    <label class="block">
+      <span class="metric-label mb-2 block">Account currency</span>
+      <select class="tool-input" data-field="currency">
+        <option>USD</option>
+        <option>EUR</option>
+        <option>GBP</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="tool-result">
+    <p class="metric-label">Pip value</p>
+    <p class="display-stat mt-2 text-4xl text-white">
+      <span data-out="pipValue">$10.00</span>
+      <span class="text-lg text-slate-400" data-out="currency">USD</span>
+    </p>
+    <p class="mt-2 text-sm text-slate-400" data-out="caption">Per 1 pip move on EUR/USD with 1 lot</p>
+  </div>
+
+  <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
+    {
+      STEPS.map((pips) => (
+        <div class="tool-stat">
+          <p class="mb-1 text-xs text-slate-500">
+            {pips} pip{pips > 1 ? 's' : ''}
+          </p>
+          <p class="text-lg font-bold text-white" data-out={`pips${pips}`}>
+            —
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  (() => {
+    const el = document.getElementById('calc-pip');
+    if (!el) return;
+    const root = el;
+    const field = (name: string) =>
+      root.querySelector(`[data-field="${name}"]`) as HTMLInputElement | HTMLSelectElement;
+    const out = (name: string) => root.querySelector<HTMLElement>(`[data-out="${name}"]`)!;
+
+    const calc = () => {
+      const option = (field('pair') as HTMLSelectElement).selectedOptions[0] as HTMLOptionElement;
+      const pipSize = Number(option.dataset.pip);
+      const contract = Number(option.dataset.contract);
+      const lots = parseFloat(field('lots').value) || 0;
+      const pipValue = lots * contract * pipSize;
+
+      out('pipValue').textContent = `$${pipValue.toFixed(2)}`;
+      out('currency').textContent = field('currency').value;
+      out('caption').textContent = `Per 1 pip move on ${option.dataset.label} with ${lots} lot${lots !== 1 ? 's' : ''}`;
+      for (const pips of [1, 5, 10, 50]) {
+        out(`pips${pips}`).textContent = `$${(pipValue * pips).toFixed(2)}`;
+      }
+    };
+
+    root.querySelectorAll('input,select').forEach((node) => node.addEventListener('input', calc));
+    calc();
+  })();
+</script>

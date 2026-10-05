@@ -1,0 +1,107 @@
+{
+  "_note": "Structured content for the Windows VPS product page, taken from the product's own published page. A VPS is not an expert advisor, so it has no performance record, strategy or licence tiers — the page leads with specifications, terms of service and billing periods instead. Keep the content file untouched so the changed-content gate stays clean; never publish a per-period price we were not given.",
+  "vps": {
+    "tagline": "Run 5–10 MT4 or MT5 platforms on a dedicated Windows VPS — built for expert advisors and algorithmic trading that cannot afford downtime.",
+    "specs": [
+      { "label": "CPU", "value": "2 Intel Cores @ 2.0 GHz+", "icon": "cpu" },
+      { "label": "RAM", "value": "4 GB Guaranteed", "icon": "ram" },
+      { "label": "Storage", "value": "60 GB SSD", "icon": "disk" },
+      { "label": "Bandwidth", "value": "1 TB", "icon": "bandwidth" },
+      { "label": "Network", "value": "1 Gbps", "icon": "network" },
+      { "label": "Operating system", "value": "Windows Server 2022", "icon": "os" },
+      { "label": "Remote access", "value": "RDP (Remote Desktop Protocol)", "icon": "remote" },
+      { "label": "MT4/MT5 instances", "value": "Approximately 5 – 10 platforms", "icon": "instances" }
+    ],
+    "benefits": [
+      {
+        "title": "Designed for continuous operation",
+        "text": "Keep compatible Windows applications running without relying on your personal computer being powered on."
+      },
+      {
+        "title": "Remote Windows environment",
+        "text": "Access your VPS with Remote Desktop from a Windows PC, Mac, tablet or smartphone."
+      },
+      {
+        "title": "MT4 & MT5 compatible",
+        "text": "Install compatible MetaTrader software and other Windows applications inside the environment."
+      },
+      {
+        "title": "Dedicated resources",
+        "text": "Each plan provides the advertised CPU, memory, storage and network specifications."
+      }
+    ],
+    "whoFor": [
+      { "title": "MT4 / MT5 users", "text": "Run compatible MetaTrader installations remotely." },
+      {
+        "title": "Multiple-platform users",
+        "text": "Host multiple compatible applications within the available resources."
+      },
+      {
+        "title": "Remote workers & travellers",
+        "text": "Access a Windows environment from any supported device, anywhere."
+      },
+      {
+        "title": "Anyone needing continuous availability",
+        "text": "Keep compatible applications running independently of your computer or local connection."
+      }
+    ],
+    "comparison": {
+      "columns": ["Windows VPS", "Your own PC"],
+      "rows": [
+        ["Runs while your computer is off", "Yes", "No"],
+        ["A power cut or dropped Wi-Fi", "Unaffected", "Can close trades"],
+        ["A Windows update reboot", "Scheduled on the server", "Can halt the terminal"],
+        ["Always-on EA execution", "Yes", "Only while the PC is awake"],
+        ["Access from any device (RDP)", "Yes", "Local machine only"]
+      ]
+    },
+    "paymentNote": "Mastercard, Visa, USDT and other supported payment methods are available at checkout.",
+    "availabilityNote": "Service availability depends on the VPS infrastructure and network. If the VPS becomes temporarily unavailable, applications running on it may stop until service is restored. Open positions, if any, remain subject to the policies of the relevant trading provider.",
+    "faqs": [
+      {
+        "question": "Do I need a Windows VPS for MT4 or MT5?",
+        "answer": "A VPS can be useful if you want to run compatible MT4 or MT5 software remotely without keeping your personal computer switched on. Whether you need one depends on your particular setup."
+      },
+      {
+        "question": "What is the difference between a Windows VPS and a regular VPS?",
+        "answer": "A Windows VPS provides a Windows Server environment that can be accessed remotely. This is useful for Windows-compatible applications such as MT4 and MT5. The right configuration depends on the applications and resources you need."
+      },
+      {
+        "question": "How many MT4 or MT5 instances can I run on this VPS?",
+        "answer": "This configuration supports approximately 5–10 MT4 or MT5 instances, depending on the number of charts, indicators, expert advisors and other applications running at the same time."
+      },
+      {
+        "question": "What is RDP and how do I connect?",
+        "answer": "RDP stands for Remote Desktop Protocol — the standard Windows way to access a remote computer as if you were sitting in front of it. After purchase you receive login credentials. On Windows, open Remote Desktop Connection, enter the VPS IP address and your credentials, and you are connected. Mac users can use the free Microsoft Remote Desktop app."
+      },
+      {
+        "question": "Will applications continue running when I close my computer?",
+        "answer": "Applications running on the VPS can continue operating independently of your personal computer, provided the VPS and the applications remain available and properly configured."
+      },
+      {
+        "question": "What happens if the VPS temporarily becomes unavailable?",
+        "answer": "Service availability depends on the VPS infrastructure and network. If the VPS becomes temporarily unavailable, applications running on it may stop until service is restored. Open positions remain subject to the policies and systems of the relevant trading provider."
+      },
+      {
+        "question": "Can I use this VPS with my broker?",
+        "answer": "The VPS provides a standard Windows environment suitable for compatible MT4 and MT5 software. Check your broker's software and system requirements before purchasing."
+      },
+      {
+        "question": "Do I need technical knowledge to set this up?",
+        "answer": "No advanced technical knowledge is required. If you can install MetaTrader on a regular PC, you can do the same on a VPS over Remote Desktop. A setup guide is provided with every purchase and support is available if needed."
+      },
+      {
+        "question": "What operating system does the VPS use?",
+        "answer": "All plans run Windows Server 2022 and provide Remote Desktop access for installing compatible Windows applications."
+      },
+      {
+        "question": "Can I install software other than MetaTrader on the VPS?",
+        "answer": "Yes. You can install supported Windows-compatible applications, subject to the VPS resources, software licensing requirements and provider policies."
+      },
+      {
+        "question": "How do I choose the right billing plan?",
+        "answer": "Choose based on how long you plan to use the service: Monthly for testing or short-term use; Quarterly for a medium-term commitment; Semi-annually for consistent ongoing use; and Annually for maximum savings on long-term dedicated use."
+      }
+    ]
+  }
+}

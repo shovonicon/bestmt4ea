@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import RankingTable from '../../components/RankingTable.astro';
+import ComparisonRegistry from '../../components/ComparisonRegistry.astro';
 import { RISK_DISCLAIMER } from '../../lib/site';
 import { getPublicProducts } from '../../lib/content';
 import { url } from '../../lib/urls';
@@ -44,7 +44,13 @@ const products = all.filter((p) => p.data.brands.some((b) => b.toLowerCase() ===
     </p>
 
     <div class="mt-10">
-      {products.length > 0 ? <RankingTable products={products} /> : <p class="text-sm text-[--color-ink-dim]">No systems listed yet.</p>}
+      {
+        products.length > 0 ? (
+          <ComparisonRegistry products={products} />
+        ) : (
+          <p class="text-sm text-[--color-ink-dim]">No systems listed yet.</p>
+        )
+      }
     </div>
 
     <p class="mt-6 text-xs leading-6 text-[--color-ink-dim]">{RISK_DISCLAIMER}</p>

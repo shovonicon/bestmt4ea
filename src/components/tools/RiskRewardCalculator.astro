@@ -1,0 +1,115 @@
+---
+/** Risk/reward calculator — ported from `risk-reward-calculator.tsx`. */
+---
+
+<div id="calc-rr" class="space-y-6">
+  <div class="grid gap-4 sm:grid-cols-3">
+    <label class="block">
+      <span class="metric-label mb-2 block">Entry price</span>
+      <input class="tool-input" type="number" step="0.0001" value="1.0850" data-field="entry" />
+    </label>
+    <label class="block">
+      <span class="metric-label mb-2 block">Stop loss</span>
+      <input class="tool-input" type="number" step="0.0001" value="1.0800" data-field="stop" />
+    </label>
+    <label class="block">
+      <span class="metric-label mb-2 block">Take profit</span>
+      <input class="tool-input" type="number" step="0.0001" value="1.0950" data-field="target" />
+    </label>
+  </div>
+
+  <div class="grid gap-4 sm:grid-cols-2">
+    <label class="block">
+      <span class="metric-label mb-2 block">Account balance ($)</span>
+      <input class="tool-input" type="number" min="0" value="10000" data-field="balance" />
+    </label>
+    <label class="block">
+      <span class="metric-label mb-2 block">Risk per trade (%)</span>
+      <input class="tool-input" type="number" step="0.5" min="0.1" max="100" value="2" data-field="risk" />
+    </label>
+  </div>
+
+  <div class="tool-result">
+    <p class="metric-label" data-out="title">Risk:reward ratio</p>
+    <p class="display-stat mt-2 text-4xl text-white">1:<span data-out="ratio">2.00</span></p>
+    <p class="mt-2 text-sm text-slate-400" data-out="caption">Favourable setup</p>
+  </div>
+
+  <div class="rounded-xl border border-white/10 bg-white/[0.02] p-4">
+    <div class="flex items-center gap-2">
+      <span class="text-xs font-bold text-red-400">Risk</span>
+      <div class="flex h-4 flex-1 overflow-hidden rounded-full bg-white/5">
+        <div class="h-full bg-red-400/60 transition-all" data-out="riskBar" style="width:50%"></div>
+        <div class="h-full bg-emerald-400/60 transition-all" data-out="rewardBar" style="width:50%"></div>
+      </div>
+      <span class="text-xs font-bold text-emerald-400">Reward</span>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
+    <div class="tool-stat">
+      <p class="mb-1 text-xs text-slate-500">Risk (pips)</p>
+      <p class="text-lg font-bold text-red-400" data-out="riskPips">50.0</p>
+    </div>
+    <div class="tool-stat">
+      <p class="mb-1 text-xs text-slate-500">Reward (pips)</p>
+      <p class="text-lg font-bold text-emerald-400" data-out="rewardPips">100.0</p>
+    </div>
+    <div class="tool-stat">
+      <p class="mb-1 text-xs text-slate-500">Risk ($)</p>
+      <p class="text-lg font-bold text-red-400" data-out="riskCash">$200.00</p>
+    </div>
+    <div class="tool-stat">
+      <p class="mb-1 text-xs text-slate-500">Reward ($)</p>
+      <p class="text-lg font-bold text-emerald-400" data-out="rewardCash">$400.00</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const el = document.getElementById('calc-rr');
+    if (!el) return;
+    const root = el;
+    const field = (name: string) => root.querySelector<HTMLInputElement>(`[data-field="${name}"]`)!;
+    const out = (name: string) => root.querySelector<HTMLElement>(`[data-out="${name}"]`)!;
+
+    const calc = () => {
+      const entry = parseFloat(field('entry').value) || 0;
+      const stop = parseFloat(field('stop').value) || 0;
+      const target = parseFloat(field('target').value) || 0;
+      const balance = parseFloat(field('balance').value) || 0;
+      const riskPct = parseFloat(field('risk').value) || 0;
+
+      const riskPips = Math.abs(entry - stop);
+      const rewardPips = Math.abs(target - entry);
+      const ratio = riskPips > 0 ? rewardPips / riskPips : 0;
+      const riskCash = balance * (riskPct / 100);
+      const rewardCash = riskCash * ratio;
+
+      const good = ratio >= 2;
+      const fair = ratio >= 1 && ratio < 2;
+      const tone = good ? 'var(--color-accent)' : fair ? 'var(--color-warn)' : 'var(--color-danger)';
+
+      out('ratio').textContent = ratio.toFixed(2);
+      out('ratio').style.color = tone;
+      out('title').style.color = tone;
+      out('caption').textContent = good
+        ? 'Favourable setup'
+        : fair
+          ? 'Acceptable setup'
+          : 'Unfavourable — consider widening TP or tightening SL';
+      out('riskPips').textContent = (riskPips * 10000).toFixed(1);
+      out('rewardPips').textContent = (rewardPips * 10000).toFixed(1);
+      out('riskCash').textContent = `$${riskCash.toFixed(2)}`;
+      out('rewardCash').textContent = `$${rewardCash.toFixed(2)}`;
+
+      const total = riskPips + rewardPips;
+      out('riskBar').style.width = `${total > 0 ? (riskPips / total) * 100 : 50}%`;
+      out('rewardBar').style.width = `${total > 0 ? (rewardPips / total) * 100 : 50}%`;
+    };
+
+    root.querySelectorAll('input').forEach((node) => node.addEventListener('input', calc));
+    calc();
+  })();
+</script>

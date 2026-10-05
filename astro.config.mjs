@@ -53,8 +53,19 @@ const dates = contentDates();
  * which keeps them out of the build's page list — and out of the sitemap. Add
  * them back explicitly; the serialize() hook applies the same real `lastmod`.
  */
+/** Products withdrawn from sale — mirrors `src/data/unpublished.json`. */
+function unpublishedProductSlugs() {
+  try {
+    const data = JSON.parse(readFileSync('src/data/unpublished.json', 'utf8'));
+    return new Set((data.products ?? []).map((entry) => entry.slug));
+  } catch {
+    return new Set();
+  }
+}
+
 function productPaths() {
   const dir = 'src/content/products';
+  const unpublished = unpublishedProductSlugs();
   const out = [];
   for (const file of readdirSync(dir)) {
     if (!file.endsWith('.md')) continue;
@@ -66,6 +77,7 @@ function productPaths() {
     } catch {
       /* leave as-is */
     }
+    if (unpublished.has(slug)) continue;
     out.push(`/product/${slug}/`);
   }
   return out;

@@ -1,0 +1,65 @@
+{
+  "_note": "Real account screenshots, keyed by product slug. Paths are site-absolute. Never add an image that is not a genuine trading result.",
+  "onix-stratos-xauusd-ea-ai-smart-scalper-for-mt5": [
+    { "src": "/media/products/screenshot-ava-aigpt5-bestmt4ea-copy-trading-3.png", "alt": "Live MetaTrader account result screenshot" },
+    { "src": "/media/products/screenshot-ava-aigpt5-bestmt4ea-copy-trading-2.png", "alt": "Live MetaTrader trade history screenshot" },
+    { "src": "/media/products/screenshot-20251015-111819-metatrader-4.jpg", "alt": "MetaTrader terminal result screenshot" },
+    { "src": "/media/products/screenshot-20251015-191425-metatrader-4.jpg", "alt": "MetaTrader statement result screenshot" }
+  ],
+  "mythos-epic-ea-ai-gold-scalper-for-mt5": [
+    { "src": "/media/products/screenshot-ava-aigpt5-bestmt4ea-copy-trading-3.png", "alt": "Live MetaTrader account result screenshot" },
+    { "src": "/media/products/screenshot-ava-aigpt5-bestmt4ea-copy-trading-2.png", "alt": "Live MetaTrader trade history screenshot" },
+    { "src": "/media/products/screenshot-20251015-111819-metatrader-4.jpg", "alt": "MetaTrader terminal result screenshot" },
+    { "src": "/media/products/screenshot-20251015-191425-metatrader-4.jpg", "alt": "MetaTrader statement result screenshot" }
+  ],
+  "nexora-manus-ea-ai-gold-scalper-for-mt5": [
+    { "src": "/media/products/screenshot-ava-aigpt5-bestmt4ea-copy-trading-3.png", "alt": "Live MetaTrader account result screenshot" },
+    { "src": "/media/products/screenshot-ava-aigpt5-bestmt4ea-copy-trading-2.png", "alt": "Live MetaTrader trade history screenshot" },
+    { "src": "/media/products/screenshot-20251015-111819-metatrader-4.jpg", "alt": "MetaTrader terminal result screenshot" },
+    { "src": "/media/products/screenshot-20251015-191425-metatrader-4.jpg", "alt": "MetaTrader statement result screenshot" }
+  ],
+  "zenith-matrix-ea-ai-gold-scalper-for-mt5": [
+    { "src": "/media/products/screenshot-ava-aigpt5-bestmt4ea-copy-trading-3.png", "alt": "Live MetaTrader account result screenshot" },
+    { "src": "/media/products/screenshot-ava-aigpt5-bestmt4ea-copy-trading-2.png", "alt": "Live MetaTrader trade history screenshot" },
+    { "src": "/media/products/screenshot-20251015-111819-metatrader-4.jpg", "alt": "MetaTrader terminal result screenshot" },
+    { "src": "/media/products/screenshot-20251015-191425-metatrader-4.jpg", "alt": "MetaTrader statement result screenshot" }
+  ],
+  "ava-aigpt5-ea": [
+    {
+      "src": "/media/products/xauusd-ava-aigpt5-ea-backtest-xm.webp",
+      "alt": "AVA AIGPT5 Strategy Tester report — XM Global, 30 Dec 2024 to 11 Nov 2025 (backtest, not live)"
+    },
+    {
+      "src": "/media/products/xauusd-ava-aigpt5-ea-backtest-fbs.webp",
+      "alt": "AVA AIGPT5 Strategy Tester report — FBS, 10 Jun 2024 to 2 Dec 2025 (backtest, not live)"
+    }
+  ],
+  "fxcore100-ea": [
+    {
+      "src": "/media/products/euro-fxc.jpg",
+      "alt": "FXCore100 Strategy Tester report — FBS Real 9, 7 Sep to 8 Dec 2021, M15 EURUSD (backtest, not live)"
+    }
+  ],
+  "golden-deer-holy-grail-indicator": [
+    {
+      "src": "/media/products/nzdusd-golden-deer-holy-grail-indicator.png",
+      "alt": "Golden Deer Holy Grail Indicator signal example on NZDUSD"
+    },
+    {
+      "src": "/media/products/gbpjpy-golden-deer-holy-grail-indicator.png",
+      "alt": "Golden Deer Holy Grail Indicator signal example on GBPJPY"
+    },
+    {
+      "src": "/media/products/gbpcad-golden-deer-holy-grail-indicator.png",
+      "alt": "Golden Deer Holy Grail Indicator signal example on GBPCAD"
+    },
+    {
+      "src": "/media/products/eurusd-golden-deer-holy-grail-indicator.png",
+      "alt": "Golden Deer Holy Grail Indicator signal example on EURUSD"
+    },
+    {
+      "src": "/media/products/audnzd-golden-deer-holy-grail-indicator.png",
+      "alt": "Golden Deer Holy Grail Indicator signal example on AUDNZD"
+    }
+  ]
+}

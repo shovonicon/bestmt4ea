@@ -12,8 +12,7 @@
  *   - used blog categories at `/category/<path>/` (mirrors `[...path].astro`)
  *   - product categories at `/product-category/<slug>/`
  *   - platform hubs `/brand/mt4/` + `/brand/mt5/`
- *   - static hubs `/blog/`, `/shop/`, `/top-ranking/`, `/licences/`,
- *     `/free-download-forex-ea-indicator/`
+ *   - static hubs `/blog/`, `/shop/`, `/top-ranking/`
  *
  * Comparison helpers normalise percent-encoding once (`canon`) and ignore a
  * trailing slash (`key`), so an emoji target written as `%F0%9F%9A%80-...`
@@ -35,8 +34,6 @@ export const RESERVED_SLUGS = new Set([
   'brand',
   'product-category',
   'category',
-  'free-download-forex-ea-indicator',
-  'licences',
 ]);
 
 /** Static hub routes served by dedicated `src/pages/**` files. */
@@ -44,8 +41,6 @@ const STATIC_ROUTES = [
   '/blog/',
   '/shop/',
   '/top-ranking/',
-  '/licences/',
-  '/free-download-forex-ea-indicator/',
   '/brand/mt4/',
   '/brand/mt5/',
 ];
@@ -95,6 +90,22 @@ function contentEntries(collection) {
 }
 
 /**
+ * Products withdrawn from sale — mirrors `src/data/unpublished.json`, which
+ * `src/lib/content.ts` and `astro.config.mjs` also read. Their `/product/...`
+ * route is not live, so a redirect from it is allowed to exist.
+ */
+function unpublishedProductSlugs() {
+  const file = join(ROOT, 'src/data/unpublished.json');
+  if (!existsSync(file)) return new Set();
+  try {
+    const data = JSON.parse(readFileSync(file, 'utf8'));
+    return new Set((data.products || []).map((entry) => entry.slug));
+  } catch {
+    return new Set();
+  }
+}
+
+/**
  * Every live route, canonicalised for comparison. Drafts are included —
  * Astro still emits them (no draft filter in `getStaticPaths`).
  */
@@ -112,7 +123,9 @@ export function getLiveRoutes() {
     seen.add(k);
     add(`/${entry.slug}/`);
   }
+  const unpublished = unpublishedProductSlugs();
   for (const entry of contentEntries('products')) {
+    if (unpublished.has(entry.slug)) continue;
     const k = `product/${entry.slug}`.toLowerCase();
     if (seen.has(k)) continue;
     seen.add(k);

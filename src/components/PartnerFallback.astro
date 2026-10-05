@@ -1,0 +1,106 @@
+---
+/**
+ * Partner fallback for an unfilled ad slot.
+ *
+ * The two brokers this site actually builds and tests its systems on, so a
+ * reserved unit that AdSense did not fill still earns its space — and earns a
+ * click. Each card leads with the broker's own published offer and a real
+ * button, because a plain logo card does not read as clickable.
+ *
+ * Affiliate rules (AGENTS.md): every link comes from `src/lib/affiliates.ts`,
+ * carries `rel="sponsored nofollow noopener"`, is labelled "Sponsored" and is
+ * disclosed below. Figures come from `src/data/brokers.json` — the broker's own
+ * published regulation, minimum deposit and promotion — so nothing here is
+ * invented. It fills a placement the layout already keeps clear of any download
+ * button.
+ */
+import { affiliates, AFFILIATE_REL, type AffiliateOffer } from '../lib/affiliates';
+import brokerData from '../data/brokers.json';
+
+export interface Props {
+  variant?: 'rail' | 'wide';
+}
+
+interface BrokerRow {
+  key: string;
+  regulation: string;
+  minDeposit: string;
+  offer?: string;
+}
+
+const { variant = 'rail' } = Astro.props;
+const rail = variant === 'rail';
+
+const rows = (brokerData as unknown as { brokers: BrokerRow[] }).brokers ?? [];
+
+// Annotated so the const registry widens to `AffiliateOffer` here — otherwise
+// `logo` stays a truthy literal and the "no logo" branch narrows to `never`.
+const partners: Array<{ affiliate: AffiliateOffer; row?: BrokerRow }> = [
+  { key: 'roboforex', affiliate: affiliates.roboforex },
+  { key: 'exness', affiliate: affiliates.exness },
+].map(({ key, affiliate }) => ({ affiliate, row: rows.find((row) => row.key === key) }));
+---
+
+<div class:list={[rail ? 'flex flex-col gap-3' : 'grid gap-3 sm:grid-cols-2']}>
+  {
+    partners.map(({ affiliate, row }) => (
+      <a
+        href={affiliate.url}
+        rel={AFFILIATE_REL}
+        class:list={['hover-brand-card group flex flex-col items-center text-center', rail ? 'p-3' : 'p-5']}
+      >
+        <span class="partner-chip shrink-0">Sponsored</span>
+
+        <span class="brand-chip mt-2.5">
+          {affiliate.logo ? (
+            <img src={affiliate.logo} alt={affiliate.label} loading="lazy" decoding="async" />
+          ) : (
+            <span class="text-xs font-bold text-[#04140f]">{affiliate.label}</span>
+          )}
+        </span>
+
+        <span class:list={['mt-2.5 block font-bold text-[--color-ink]', rail ? 'text-sm' : 'text-base']}>
+          {affiliate.label}
+        </span>
+
+        {row && (
+          <span class="mt-1 block text-[10px] leading-4 text-[--color-ink-dim]">
+            {row.regulation} · from {row.minDeposit}
+          </span>
+        )}
+
+        {row?.offer && (
+          <span class="mt-2 block rounded-lg border border-[--color-accent]/25 bg-[--color-accent]/[0.08] px-2 py-1 text-[10px] font-bold leading-4 text-[--color-accent-soft]">
+            {row.offer}
+          </span>
+        )}
+
+        <span
+          class:list={[
+            'btn btn-primary mt-3 w-full',
+            rail ? '!px-2 !py-2 !text-[11px]' : '!py-2.5 !text-xs',
+          ]}
+        >
+          Open account
+          <svg
+            viewBox="0 0 24 24"
+            class="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </span>
+      </a>
+    ))
+  }
+</div>
+
+<p class="mt-3 text-[10px] leading-4 text-[--color-ink-dim]">
+  Sponsored links. We may earn a commission if you open an account, at no extra cost to you.
+</p>

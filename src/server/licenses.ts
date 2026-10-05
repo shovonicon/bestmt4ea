@@ -358,6 +358,35 @@ export async function markBuildFailed(db: Db, buildId: string, error: string): P
     .where(eq(licenseBuilds.id, buildId));
 }
 
+/**
+ * Record that a customer downloaded their compiled build.
+ *
+ * A build is not a `product_file`, and `download_events.product_file_id` is NOT
+ * NULL, so the audit entry belongs on the licence timeline rather than in the
+ * file-download log.
+ */
+export async function recordBuildDownload(db: Db, build: LicenseBuild, customerId: string): Promise<void> {
+  await logEvent(db, build.licenseId, 'build_downloaded', 'customer', customerId, {
+    buildId: build.id,
+    accountNumber: build.accountNumber,
+  });
+}
+
+/** Record that a compiled artefact was attached to a build (builder or admin). */
+export async function recordBuildReady(
+  db: Db,
+  build: LicenseBuild,
+  r2Key: string,
+  actorType: 'admin' | 'system' = 'system',
+  actorId: string | null = null
+): Promise<void> {
+  await logEvent(db, build.licenseId, 'build_ready', actorType, actorId, {
+    buildId: build.id,
+    accountNumber: build.accountNumber,
+    r2Key,
+  });
+}
+
 /** Re-queue a build for the licence's active account (e.g. after a version bump). */
 export async function rebuildLicense(
   db: Db,

@@ -1,0 +1,249 @@
+---
+import GrowthChart from './GrowthChart.astro';
+import MonthlyGainChart from './MonthlyGainChart.astro';
+
+type StatPair = [string, string];
+
+export interface Props {
+  raw?: null | {
+    header?: string;
+    chips?: string[];
+    updated?: string;
+    summary?: StatPair[];
+    periods?: Array<{ label: string; gain: string; profit: string; pips: string; win: string; trades: string; lots: string }>;
+    statistics?: StatPair[];
+  };
+  monthly?: Array<{ label: string; gain: string; value: number; profit: string }>;
+  growthPoints?: Array<{ capturedAt: number; growthPct: number }>;
+  syncedLabel: string;
+  hasLive: boolean;
+  isDemo?: boolean;
+  isReal?: boolean;
+  sourceUrl?: string;
+  accountId?: string;
+  platform?: string;
+  symbol?: string;
+}
+
+const {
+  raw = null,
+  monthly = [],
+  growthPoints = [],
+  syncedLabel,
+  hasLive,
+  isDemo = false,
+  isReal = false,
+  sourceUrl,
+  accountId,
+  platform = 'MT5',
+  symbol = 'XAUUSD',
+} = Astro.props;
+
+const hasTrades = Boolean(raw?.statistics && raw.statistics.length > 0);
+---
+
+<section class="terminal" aria-labelledby="performance-heading">
+  <div class="terminal-bar">
+    <span class="terminal-dot"></span>
+    <span class="terminal-dot"></span>
+    <span class="terminal-dot"></span>
+    <span class="ml-2 inline-flex items-center gap-2 text-xs text-[--color-ink-dim]">
+      <span class:list={['live-dot', { 'opacity-40': !hasLive }]} aria-hidden="true"></span>
+      {hasLive ? 'Myfxbook live feed' : 'Published account record'}
+    </span>
+    <span class="ml-auto hidden text-[0.6875rem] uppercase tracking-[0.18em] text-[--color-ink-dim] sm:block">
+      {platform} · {symbol}
+    </span>
+  </div>
+
+  <div class="p-5 sm:p-6">
+    <div class="flex flex-wrap items-start justify-between gap-4">
+      <div>
+        <p class="eyebrow">Verified track record</p>
+        <h2 id="performance-heading" class="mt-1 text-lg">{syncedLabel}</h2>
+        <p class="mt-1 text-xs text-[--color-ink-dim]">
+          Third-party tracking account — every figure is verifiable at the source.
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        {isReal && <span class="badge badge-accent">Real account</span>}
+        {isDemo && <span class="badge">Demo funds</span>}
+      </div>
+    </div>
+
+    <div class="tablist mt-5" role="tablist" aria-label="Performance data">
+      <button class="tab" type="button" role="tab" id="tab-account" aria-controls="panel-account" aria-selected="true">
+        Account statistics
+      </button>
+      <button class="tab" type="button" role="tab" id="tab-monthly" aria-controls="panel-monthly" aria-selected="false">
+        Monthly log
+      </button>
+      <button
+        class="tab"
+        type="button"
+        role="tab"
+        id="tab-trades"
+        aria-controls="panel-trades"
+        aria-selected="false"
+        disabled={!hasTrades}
+      >
+        Trade statistics
+      </button>
+    </div>
+
+    <div class="tab-panel mt-5" role="tabpanel" id="panel-account" aria-labelledby="tab-account">
+      {
+        raw && raw.summary && raw.summary.length > 0 ? (
+          <>
+            <dl class="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3 lg:grid-cols-4">
+              {raw.summary.map(([label, value]) => (
+                <div class="rounded-xl border border-[--color-line-soft] bg-white/[0.02] px-3 py-2.5">
+                  <dt class="metric-label">{label}</dt>
+                  <dd class="metric-value mt-1 text-base">{value}</dd>
+                </div>
+              ))}
+            </dl>
+
+            {raw.periods && raw.periods.length > 0 && (
+              <div class="table-shell mt-5">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Period</th>
+                      <th>Gain</th>
+                      <th>Profit</th>
+                      <th>Pips</th>
+                      <th>Win %</th>
+                      <th>Trades</th>
+                      <th>Lots</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {raw.periods.map((period) => (
+                      <tr>
+                        <th scope="row">{period.label}</th>
+                        <td class="metric-value">{period.gain}</td>
+                        <td class="metric-value">{period.profit}</td>
+                        <td class="metric-value">{period.pips}</td>
+                        <td class="metric-value">{period.win}</td>
+                        <td class="metric-value">{period.trades}</td>
+                        <td class="metric-value">{period.lots}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </>
+        ) : (
+          <p class="text-sm text-[--color-ink-soft]">
+            No verified figures are published for this system yet. Treat any performance claim you see elsewhere with
+            caution and ask for the tracking account before buying.
+          </p>
+        )
+      }
+    </div>
+
+    <div class="tab-panel mt-5" role="tabpanel" id="panel-monthly" aria-labelledby="tab-monthly" hidden>
+      {monthly.length > 0 && <MonthlyGainChart monthly={monthly} />}
+
+      <div class="mt-5">
+        <GrowthChart points={growthPoints} />
+      </div>
+
+      {
+        monthly.length > 0 ? (
+          <div class="table-shell mt-5">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Month</th>
+                  <th>Gain</th>
+                  <th>Profit</th>
+                </tr>
+              </thead>
+              <tbody>
+                {monthly.map((row) => (
+                  <tr>
+                    <th scope="row">{row.label}</th>
+                    <td class="metric-value">{row.gain}</td>
+                    <td class="metric-value">{row.profit}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <p class="mt-5 text-sm text-[--color-ink-soft]">
+            Monthly analytics fill in as the collector gathers history. No month is shown without real synced data.
+          </p>
+        )
+      }
+    </div>
+
+    <div class="tab-panel mt-5" role="tabpanel" id="panel-trades" aria-labelledby="tab-trades" hidden>
+      {
+        hasTrades ? (
+          <dl class="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3 lg:grid-cols-4">
+            {raw!.statistics!.map(([label, value]) => (
+              <div class="rounded-xl border border-[--color-line-soft] bg-white/[0.02] px-3 py-2.5">
+                <dt class="metric-label">{label}</dt>
+                <dd class="metric-value mt-1 text-base">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        ) : (
+          <p class="text-sm text-[--color-ink-soft]">Trade-level statistics are not published for this system yet.</p>
+        )
+      }
+      {
+        raw?.statistics && raw.statistics.length > 0 && (
+          <p class="mt-4 text-xs text-[--color-ink-dim]">
+            Mirrored from the tracked account. Some figures (negative pip totals, zero Sharpe) are properties of this
+            system's high-frequency style, not a warranty of performance.
+          </p>
+        )
+      }
+    </div>
+
+    <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-[--color-line-soft] pt-4">
+      {
+        sourceUrl ? (
+          <a href={sourceUrl} rel="sponsored nofollow noopener" class="text-sm font-semibold text-[--color-accent]">
+            Verify {accountId ? `account #${accountId}` : 'this account'} on Myfxbook →
+          </a>
+        ) : (
+          <span class="text-sm text-[--color-warn]">No third-party account published for this system.</span>
+        )
+      }
+      {raw?.updated && <span class="text-xs text-[--color-ink-dim]">Myfxbook updated {raw.updated}</span>}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[role="tablist"]').forEach((list) => {
+    if (list.dataset.tabsReady === '1') return;
+    list.dataset.tabsReady = '1';
+    const tabs = Array.from(list.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+    const activate = (tab: HTMLButtonElement) => {
+      tabs.forEach((candidate) => {
+        const selected = candidate === tab;
+        candidate.setAttribute('aria-selected', String(selected));
+        const panel = document.getElementById(candidate.getAttribute('aria-controls') ?? '');
+        if (panel) panel.hidden = !selected;
+      });
+    };
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activate(tab));
+      tab.addEventListener('keydown', (event) => {
+        if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+        event.preventDefault();
+        const offset = event.key === 'ArrowRight' ? 1 : tabs.length - 1;
+        const next = tabs[(index + offset) % tabs.length];
+        next.focus();
+        activate(next);
+      });
+    });
+  });
+</script>

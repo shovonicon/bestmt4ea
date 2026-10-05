@@ -32,6 +32,9 @@ export const site = {
     inArticle: import.meta.env.PUBLIC_ADSENSE_SLOT_IN_ARTICLE || '6721931734',
     sidebar: import.meta.env.PUBLIC_ADSENSE_SLOT_SIDEBAR || '6721931734',
     belowContent: import.meta.env.PUBLIC_ADSENSE_SLOT_BELOW || '6721931734',
+    /** Sticky vertical rails either side of the post reading column. */
+    railLeft: import.meta.env.PUBLIC_ADSENSE_SLOT_RAIL_LEFT || import.meta.env.PUBLIC_ADSENSE_SLOT_SIDEBAR || '6721931734',
+    railRight: import.meta.env.PUBLIC_ADSENSE_SLOT_RAIL_RIGHT || import.meta.env.PUBLIC_ADSENSE_SLOT_SIDEBAR || '6721931734',
   },
 } as const;
 

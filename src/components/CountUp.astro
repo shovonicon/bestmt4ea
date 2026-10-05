@@ -1,0 +1,83 @@
+---
+export interface Props {
+  /** Final rendered value, e.g. "+10.44%", "1.39", "4,275", "—". */
+  value: string;
+  class?: string;
+}
+
+const { value, class: className = '' } = Astro.props;
+
+// Split the string into prefix + number + suffix so the number can count up
+// while the surrounding text stays exactly as authored. The server always
+// renders the final value, so no-JS and crawlers see the real figure.
+const match = value.match(/-?\d[\d,]*(?:\.\d+)?/);
+const numeric = match ? Number(match[0].replace(/,/g, '')) : null;
+const decimals = match && match[0].includes('.') ? match[0].split('.')[1].length : 0;
+const prefix = match ? value.slice(0, value.indexOf(match[0])) : '';
+const suffix = match ? value.slice(value.indexOf(match[0]) + match[0].length) : '';
+---
+
+<span
+  class={className}
+  data-count-up={numeric != null ? String(numeric) : undefined}
+  data-count-prefix={prefix}
+  data-count-suffix={suffix}
+  data-count-decimals={String(decimals)}
+>{value}</span>
+
+<script>
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const nodes = Array.from(document.querySelectorAll<HTMLElement>('[data-count-up]'));
+  if (!reduced && nodes.length > 0 && 'IntersectionObserver' in window) {
+    const format = (target: number, decimals: number, prefix: string, suffix: string) =>
+      `${prefix}${target.toLocaleString('en-US', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+      })}${suffix}`;
+
+    const run = (el: HTMLElement) => {
+      const target = Number(el.dataset.countUp);
+      if (!Number.isFinite(target)) return;
+      const decimals = Number(el.dataset.countDecimals ?? '0');
+      const prefix = el.dataset.countPrefix ?? '';
+      const suffix = el.dataset.countSuffix ?? '';
+      const duration = 1100;
+      const start = performance.now();
+      const tick = (now: number) => {
+        const t = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = format(target * eased, decimals, prefix, suffix);
+        if (t < 1) requestAnimationFrame(tick);
+        else el.textContent = format(target, decimals, prefix, suffix);
+      };
+      requestAnimationFrame(tick);
+    };
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          run(entry.target as HTMLElement);
+          io.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.5 },
+    );
+    nodes.forEach((node) => io.observe(node));
+  }
+
+  // Scroll reveal — same gate: only when motion is allowed.
+  if (!reduced && 'IntersectionObserver' in window) {
+    const reveal = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('reveal-in');
+          reveal.unobserve(entry.target);
+        });
+      },
+      { rootMargin: '0px 0px -8% 0px', threshold: 0.08 },
+    );
+    document.querySelectorAll('.reveal').forEach((el) => reveal.observe(el));
+  }
+</script>

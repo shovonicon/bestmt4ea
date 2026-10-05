@@ -23,5 +23,13 @@ Thumbs.db
 test-results/
 playwright-report/
 
-# command code local session state
-.commandcode/session.json
+# paid product binaries — never committed (uploaded to the R2 bucket instead)
+product-files/
+
+# command code local session state and notes — never published
+.commandcode/
+
+# not published: competitor research and scraped WordPress caches (regenerate
+# the caches with `npm run wp:export`)
+competitors_for_bestmt4ea.com.csv
+.wp-cache/

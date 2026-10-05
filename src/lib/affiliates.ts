@@ -18,6 +18,8 @@ export interface AffiliateOffer {
   program: AffiliateProgram;
   /** Optional one-line description for CTA components. */
   note?: string;
+  /** Official brand logo served from `public/`. */
+  logo?: string;
 }
 
 export const affiliates = {
@@ -26,12 +28,14 @@ export const affiliates = {
     url: 'https://my.roboforex.com/en/?a=lwek',
     program: 'broker',
     note: 'FSC Belize · from $10 · MT4, MT5, RTrader',
+    logo: '/media/brands/roboforex.svg',
   },
   exness: {
     label: 'Exness',
     url: 'https://one.exness.link/a/te38he38',
     program: 'broker',
     note: 'FCA, CySEC · from $1 · free VPS',
+    logo: '/media/brands/exness.svg',
   },
   'fusion-markets': {
     label: 'Fusion Markets',

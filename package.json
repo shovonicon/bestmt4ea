@@ -33,6 +33,8 @@
     "wp:export": "node scripts/wp-export.mjs",
     "wp:refresh": "node scripts/wp-export.mjs --refresh",
     "sync:myfxbook": "node scripts/sync-myfxbook.mjs",
+    "collect:myfxbook": "node scripts/collect-myfxbook.mjs",
+    "build:licenses": "node scripts/build-licenses.mjs",
     "db:generate": "drizzle-kit generate",
     "types": "wrangler types",
     "db:migrate:local": "wrangler d1 migrations apply bestmt4ea --local",

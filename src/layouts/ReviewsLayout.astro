@@ -1,0 +1,108 @@
+---
+/**
+ * EA review directory — /best-mt4-ea/, /best-mt5-ea/, /best-forex-ea/.
+ *
+ * Composition follows the site's own /top-ranking/ page (hero + the
+ * ComparisonRegistry board), and the page title carries the catalogue month
+ * from `src/lib/dates.ts`, so the listing reads as current on every rebuild
+ * without anyone editing the file. That label is build time and is used as a
+ * label only — never as a claim about data freshness.
+ *
+ * The markdown body is not rendered: the listing comes from the catalogue.
+ */
+import BaseLayout from './BaseLayout.astro';
+import SectionHead from '../components/SectionHead.astro';
+import ComparisonRegistry from '../components/ComparisonRegistry.astro';
+import { getPublicProducts } from '../lib/content';
+import { RISK_DISCLAIMER } from '../lib/site';
+import { monthYear, performanceVerifiedAt } from '../lib/dates';
+import { formatDate } from '../lib/format';
+import { url } from '../lib/urls';
+
+export interface Props {
+  entry: any;
+}
+
+const { entry } = Astro.props;
+const meta = entry.data;
+
+/** Which slice of the catalogue each review page covers, keyed by slug. */
+const PLATFORM_PAGES: Record<string, { label: string; test: (platform: string) => boolean }> = {
+  'best-mt4-ea': { label: 'MT4', test: (platform) => platform === 'MT4' || platform === 'MT4/MT5' },
+  'best-mt5-ea': { label: 'MT5', test: (platform) => platform === 'MT5' || platform === 'MT4/MT5' },
+  'best-forex-ea': { label: 'Forex', test: () => true },
+};
+
+const page = PLATFORM_PAGES[meta.slug] ?? PLATFORM_PAGES['best-forex-ea'];
+
+/** One title format for every review page, month and year included. */
+const title = `Best ${page.label} Expert Advisors ${monthYear} — Myfxbook Verified`;
+
+// `platform: none` means "not stated" — fall back to the product's own brands.
+const platformOf = (product: any): string =>
+  product.data.platform !== 'none'
+    ? product.data.platform
+    : product.data.brands?.length
+      ? product.data.brands.join(' / ')
+      : 'MT4 / MT5';
+
+const all = await getPublicProducts();
+const products = all.filter((product) => product.data.slug !== 'vps' && page.test(platformOf(product)));
+---
+
+<BaseLayout
+  title={title}
+  description={meta.seo?.description || meta.description}
+  canonical={meta.seo?.canonical}
+  ogImage={meta.seo?.ogImage || meta.featuredImage}
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="glow-orb animate-aurora left-1/2 top-[-14rem] h-[24rem] w-[36rem] -translate-x-1/2 bg-emerald-500/25"
+    ></div>
+    <div class="grid-overlay pointer-events-none absolute inset-0"></div>
+
+    <div class="container-x relative py-20 text-center lg:py-24">
+      <span
+        class="eyebrow animate-fade-in-up inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2"
+      >
+        <span class="live-dot"></span>Curated directory · updated {monthYear}
+      </span>
+      <h1
+        class="animate-fade-in-up-delay-1 mx-auto mt-6 max-w-4xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl"
+      >
+        Best {page.label} <span class="text-gradient-brand">expert advisors</span>
+        <span class="block text-[--color-ink-soft]">{monthYear}</span>
+      </h1>
+      <p class="animate-fade-in-up-delay-2 mx-auto mt-6 max-w-3xl text-base leading-8 text-[--color-ink-soft]">
+        Every {page.label === 'Forex' ? '' : `${page.label} `}system in the catalogue, ranked on its third-party tracked
+        record — gain, monthly return and maximum drawdown shown for each, with the account type stated.
+      </p>
+    </div>
+  </section>
+
+  <!-- The board -->
+  <section class="container-x pb-20" aria-labelledby="review-heading">
+    <SectionHead
+      align="center"
+      kicker="The full list"
+      title={`${products.length} systems, ranked`}
+      lead="Ranked by verified gain. A demo account is labelled as a demo, and a system with no published record says so."
+      id="review-heading"
+    />
+
+    <div class="reveal mt-10">
+      <ComparisonRegistry products={products} />
+    </div>
+
+    <p class="mt-4 text-center text-xs text-[--color-ink-dim]">
+      Third-party figures checked {formatDate(performanceVerifiedAt)}.
+    </p>
+    <p class="mx-auto mt-6 max-w-3xl text-center text-xs leading-6 text-[--color-ink-dim]">{RISK_DISCLAIMER}</p>
+
+    <div class="mt-10 flex flex-wrap justify-center gap-3">
+      <a href={url('/top-ranking')} class="btn btn-primary !px-7 !py-3.5 !text-base">Compare every system</a>
+      <a href={url('/shop')} class="btn btn-ghost !px-6 !py-3.5 !text-base">Browse the EA library</a>
+    </div>
+  </section>
+</BaseLayout>

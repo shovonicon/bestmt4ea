@@ -1,0 +1,114 @@
+---
+/** Drawdown calculator — ported from `drawdown-calculator.tsx`. */
+const REFERENCE = [10, 20, 30, 50, 75].map((dd) => ({
+  dd,
+  recovery: ((1 / (1 - dd / 100)) - 1) * 100,
+}));
+---
+
+<div id="calc-drawdown" class="space-y-6">
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <label class="block">
+      <span class="metric-label mb-2 block">Account balance ($)</span>
+      <input class="tool-input" type="number" min="0" value="10000" data-field="balance" />
+    </label>
+    <label class="block">
+      <span class="metric-label mb-2 block">Drawdown (%)</span>
+      <input class="tool-input" type="number" step="1" min="0" max="99" value="30" data-field="dd" />
+    </label>
+    <label class="block">
+      <span class="metric-label mb-2 block">Consecutive losses</span>
+      <input class="tool-input" type="number" min="1" max="20" value="5" data-field="losses" />
+    </label>
+    <label class="block">
+      <span class="metric-label mb-2 block">Risk per trade (%)</span>
+      <input class="tool-input" type="number" step="0.5" min="0.1" max="50" value="2" data-field="risk" />
+    </label>
+  </div>
+
+  <div class="rounded-2xl border border-red-400/20 bg-red-400/[0.04] p-6">
+    <p class="text-xs font-bold uppercase tracking-wider text-red-400">Recovery requirement</p>
+    <p class="display-stat mt-2 text-4xl text-white">
+      +<span data-out="recovery">42.9</span>% <span class="text-lg text-slate-400">gain needed</span>
+    </p>
+    <p class="mt-2 text-sm text-slate-400" data-out="caption">
+      A 30% drawdown (−$3,000.00) leaves $7,000.00 — you need +42.9% just to break even.
+    </p>
+  </div>
+
+  <div>
+    <p class="metric-label mb-3">Drawdown vs recovery reference</p>
+    <div class="grid grid-cols-2 gap-2 sm:grid-cols-5">
+      {
+        REFERENCE.map((row) => (
+          <div class="tool-stat">
+            <p class="text-xs font-bold text-red-400">−{row.dd}%</p>
+            <p class="mt-1 text-sm font-bold text-white">+{row.recovery.toFixed(1)}%</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div>
+    <p class="metric-label mb-3">Consecutive loss simulation (<span data-out="riskLabel">2</span>% risk per trade)</p>
+    <div class="overflow-hidden rounded-xl border border-white/10 bg-white/[0.02]">
+      <div class="max-h-64 overflow-y-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-white/10 bg-white/[0.03]">
+              <th scope="col" class="px-4 py-2 text-left text-xs font-bold text-slate-400">Trade</th>
+              <th scope="col" class="px-4 py-2 text-right text-xs font-bold text-slate-400">Loss</th>
+              <th scope="col" class="px-4 py-2 text-right text-xs font-bold text-slate-400">Balance</th>
+            </tr>
+          </thead>
+          <tbody data-out="rows"></tbody>
+        </table>
+      </div>
+      <div class="flex justify-between border-t border-white/10 bg-white/[0.02] px-4 py-3">
+        <span class="text-xs text-slate-500">Total drawdown after <span data-out="lossCount">5</span> losses</span>
+        <span class="text-xs font-bold text-red-400">−<span data-out="totalLoss">9.6</span>%</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const el = document.getElementById('calc-drawdown');
+    if (!el) return;
+    const root = el;
+    const field = (name: string) => root.querySelector<HTMLInputElement>(`[data-field="${name}"]`)!;
+    const out = (name: string) => root.querySelector<HTMLElement>(`[data-out="${name}"]`)!;
+
+    const calc = () => {
+      const balance = parseFloat(field('balance').value) || 0;
+      const dd = parseFloat(field('dd').value) || 0;
+      const losses = Math.min(parseInt(field('losses').value, 10) || 0, 20);
+      const risk = parseFloat(field('risk').value) || 0;
+
+      const drawdownAmount = balance * (dd / 100);
+      const after = balance - drawdownAmount;
+      const recovery = dd > 0 && dd < 100 ? ((balance / after) - 1) * 100 : 0;
+
+      out('recovery').textContent = recovery.toFixed(1);
+      out('caption').textContent = `A ${dd}% drawdown (−$${drawdownAmount.toFixed(2)}) leaves $${after.toFixed(2)} — you need +${recovery.toFixed(1)}% just to break even.`;
+
+      let sim = balance;
+      let html = '';
+      for (let i = 1; i <= losses; i++) {
+        const loss = sim * (risk / 100);
+        sim -= loss;
+        html += `<tr class="border-b border-white/5"><td class="px-4 py-2 text-slate-300">#${i}</td><td class="px-4 py-2 text-right text-red-400">−$${loss.toFixed(2)}</td><td class="px-4 py-2 text-right font-bold text-white">$${sim.toFixed(2)}</td></tr>`;
+      }
+
+      out('rows').innerHTML = html || '<tr><td class="px-4 py-3 text-slate-500" colspan="3">No losses to show.</td></tr>';
+      out('riskLabel').textContent = String(risk);
+      out('lossCount').textContent = String(losses);
+      out('totalLoss').textContent = (balance > 0 ? ((balance - sim) / balance) * 100 : 0).toFixed(1);
+    };
+
+    root.querySelectorAll('input').forEach((node) => node.addEventListener('input', calc));
+    calc();
+  })();
+</script>
