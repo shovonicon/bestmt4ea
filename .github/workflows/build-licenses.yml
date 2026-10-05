@@ -74,6 +74,24 @@ jobs:
           Write-Host "MetaEditor: $metaeditor"
           "METAEDITOR=$metaeditor" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
 
+      - name: Install MetaTrader 5 (provides the MT5 MetaEditor)
+        shell: pwsh
+        run: |
+          # MT5's editor is not interchangeable with MT4's: each compiles only its
+          # own language. MetaQuotes ships MT5 itself, so unlike MT4 there is no
+          # broker in the path and no secret needed.
+          $installer = Join-Path $env:RUNNER_TEMP 'mt5setup.exe'
+          Invoke-WebRequest -Uri 'https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe' -OutFile $installer
+          Start-Process -FilePath $installer -ArgumentList '/auto' -Wait
+
+          $mt5 = Get-ChildItem 'C:\Program Files', 'C:\Program Files (x86)' `
+            -Recurse -Include 'metaeditor64.exe', 'metaeditor.exe' -ErrorAction SilentlyContinue |
+            Where-Object { $_.FullName -match 'MetaTrader 5' } |
+            Select-Object -First 1 -ExpandProperty FullName
+          if (-not $mt5) { throw 'MT5 installed but no MetaEditor was found.' }
+          Write-Host "MT5 MetaEditor: $mt5"
+          "METAEDITOR_MT5=$mt5" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+
       - name: Build queued licences
         env:
           APP_URL: ${{ secrets.BESTMT4EA_APP_URL }}

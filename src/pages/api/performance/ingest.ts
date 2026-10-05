@@ -57,7 +57,13 @@ export const POST: APIRoute = async ({ request }) => {
       profitFactor: stringOrNull(payload.metrics?.profitFactor),
       winRatePct: stringOrNull(payload.metrics?.winRatePct),
       openTrades: numberOrNull(payload.metrics?.openTrades),
-      raw: payload.raw ?? null,
+      // Keep the collector's flat metrics alongside the tables: the publish step
+      // rebuilds src/data/myfxbook-live.json from this row, and the columns alone
+      // carry only a fraction of the figures the pages show.
+      raw: {
+        ...(payload.raw ?? {}),
+        metrics: payload.metrics ?? null,
+      },
     },
     {
       productId,

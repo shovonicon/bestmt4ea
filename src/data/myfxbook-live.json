@@ -1,6 +1,5 @@
 {
   "fetchedAt": null,
   "staleAfterDays": 3,
-  "accounts": {},
-  "_note": "Written by scripts/sync-myfxbook.mjs. Myfxbook blocks plain server-side fetches (HTTP 403), so this stays empty until the sync runs with a browser engine. Pages fall back to the editorial figures in src/lib/performance.ts."
+  "accounts": {}
 }

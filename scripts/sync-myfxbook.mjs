@@ -1,236 +1,165 @@
 /**
- * Myfxbook performance sync.
+ * Publish step: D1 -> src/data/myfxbook-live.json
  *
- * Myfxbook publishes no supported public API for account statistics, so this
- * reads the public account page and extracts the published figures into
- * src/data/myfxbook-live.json, which the product pages consume at build time.
+ * The prerendered pages — the homepage, /shop/, /top-ranking/, the header column,
+ * the Obsidian promo, the review boards, the product cards — do not read the
+ * database. They read this file at build time. Only the SSR product page reads D1
+ * per request, which is why the two disagreed.
  *
- * Because this is screen-derived:
- *   - it is deliberately tolerant (multiple patterns per metric),
- *   - it records `accountType` (Real / Demo) so the UI can never mislabel one,
- *   - it stamps `fetchedAt`, and the UI degrades to "not verified" when the
- *     data is older than STALE_AFTER_DAYS.
+ * This used to scrape Myfxbook directly with a plain fetch. That cannot work:
+ * Myfxbook 403s plain server-side fetches, which is exactly why the collector
+ * drives a real browser. There is now one scraper (collect-myfxbook.mjs -> the
+ * token-guarded ingest endpoint -> D1) and this is a pure reader, so it can never
+ * be blocked and the figures cannot drift between the two paths.
  *
- * A parsing failure is never silently ignored: the metric is omitted and the
- * run reports it, because publishing a wrong performance number is worse than
- * publishing none.
+ * `fetchedAt` is the newest snapshot's capture time, not the time of this run: if
+ * collection has stopped, the pages should say the figures are stale rather than
+ * claim they are fresh.
  *
  * Usage:
- *   node scripts/sync-myfxbook.mjs            # all mapped accounts
- *   node scripts/sync-myfxbook.mjs --debug    # dump text + parsed values
- *   node scripts/sync-myfxbook.mjs <slug>     # one account
+ *   node scripts/sync-myfxbook.mjs            # every mapped account
+ *   node scripts/sync-myfxbook.mjs <slug>     # one
  */
 
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
-import { dirname } from 'node:path';
+import { writeFileSync, rmSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { dirname, join } from 'node:path';
+import { tmpdir } from 'node:os';
 
 const ACCOUNTS_FILE = 'src/data/myfxbook-accounts.json';
 const OUT_FILE = 'src/data/myfxbook-live.json';
+const DB = 'bestmt4ea';
 const STALE_AFTER_DAYS = 3;
 
-const args = process.argv.slice(2);
-const DEBUG = args.includes('--debug');
-const onlySlug = args.find((a) => !a.startsWith('--'));
+const onlySlug = process.argv.slice(2).find((a) => !a.startsWith('--'));
 
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
-/* ----------------------------------------------------------------- text */
-
-const NAMED = {
-  amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ',
-  hellip: '…', mdash: '—', ndash: '–', euro: '€', pound: '£', dollar: '$',
-  lsquo: '‘', rsquo: '’', ldquo: '“', rdquo: '”',
+const num = (value) => {
+  if (value === null || value === undefined || value === '') return undefined;
+  const n = Number(value);
+  return Number.isFinite(n) ? n : undefined;
+};
+const cents = (value) => {
+  const n = num(value);
+  return n === undefined ? undefined : n / 100;
 };
 
-function decodeEntities(input = '') {
-  return String(input)
-    .replace(/&#x([0-9a-f]+);/gi, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
-    .replace(/&#(\d+);/g, (_, dec) => String.fromCodePoint(Number(dec)))
-    .replace(/&([a-z]+);/gi, (m, name) => NAMED[name.toLowerCase()] ?? m);
-}
+/** Every snapshot, newest first — there are only a handful per account. */
+function readSnapshots() {
+  const sql =
+    'SELECT account_id, captured_at, raw, growth_pct, drawdown_pct, profit_factor, ' +
+    'win_rate_pct, balance_cents, equity_cents, profit_cents, open_trades ' +
+    'FROM performance_snapshots ORDER BY captured_at DESC';
+  // Through a file rather than --command: a shell is needed to reach npx.cmd on
+  // Windows, and a shell would split the SQL on its spaces. A file sidesteps both
+  // that and the command-line length limit. On Linux/CI either approach works.
+  const sqlPath = join(tmpdir(), `myfxbook-snapshots-${process.pid}.sql`);
+  writeFileSync(sqlPath, `${sql};\n`, 'utf8');
 
-/** Flatten the account page to text with row separators kept. */
-function htmlToText(html) {
-  const stripped = html
-    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
-    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
-    .replace(/<br\s*\/?>/gi, '\n')
-    .replace(/<\/(tr|div|p|li|h[1-6]|table)>/gi, '\n')
-    .replace(/<\/t[dh]>/gi, ' | ');
-  return decodeEntities(stripped)
-    .replace(/<[^>]+>/g, '')
-    .replace(/[ \t\u00a0]+/g, ' ')
-    .replace(/\n\s*\n+/g, '\n')
-    .trim();
-}
-
-/* ----------------------------------------------------------------- parse */
-
-/** Try each pattern in order; return the first capture group that matches. */
-function pick(text, patterns) {
-  for (const pattern of patterns) {
-    const match = text.match(pattern);
-    if (match?.[1] != null) return match[1].trim();
+  let out;
+  try {
+    out = execFileSync('npx', ['wrangler', 'd1', 'execute', DB, '--remote', '--json', '--file', sqlPath], {
+      // Only Windows needs a shell, because npx is npx.cmd there. Elsewhere it just
+      // adds Node's deprecation warning about unescaped arguments.
+      shell: process.platform === 'win32',
+      encoding: 'utf8',
+      maxBuffer: 64 * 1024 * 1024,
+    });
+  } finally {
+    rmSync(sqlPath, { force: true });
   }
-  return undefined;
+  const start = out.indexOf('[');
+  if (start === -1) throw new Error(`unexpected wrangler output: ${out.slice(0, 200)}`);
+  const parsed = JSON.parse(out.slice(start));
+  return parsed[0]?.results ?? [];
 }
 
-/** "€4,932.28" / "-€95.20" / "€-95.20" -> signed number */
-function toNumber(value) {
-  if (value == null) return undefined;
-  const cleaned = String(value).replace(/[^\d.,-]/g, '').replace(/,/g, '');
-  if (cleaned === '' || cleaned === '-') return undefined;
-  const n = Number(cleaned);
-  return Number.isFinite(n) ? n : undefined;
-}
-
-function parsePercent(value) {
-  return toNumber(value);
-}
-
-function parseAccount(text) {
-  const missing = [];
-  const need = (key, value) => {
-    if (value === undefined) missing.push(key);
-    return value;
-  };
-
-  // Header line: "Real (EUR), Fusion Markets, Technical, Automated, 1:500, MetaTrader 5"
-  const headerMatch = text.match(/(Real|Demo)\s*\(([A-Z]{3})\)\s*,([^\n]+)/i);
-  const accountType = headerMatch ? headerMatch[1].toLowerCase() : undefined;
-  const currency = headerMatch?.[2];
-  const headerParts = (headerMatch?.[3] ?? '').split(',').map((s) => s.trim()).filter(Boolean);
-  const broker = headerParts[0];
-  const leverage = headerParts.find((p) => /^\d+:\d+$/.test(p));
-  const terminal = headerParts.find((p) => /MetaTrader/i.test(p));
-  if (!accountType) missing.push('accountType');
-
+/**
+ * Collapse a snapshot into the shape the pages read. The `metrics` block the
+ * collector sends is the primary source; the indexed columns are the fallback, so
+ * rows written before that block was stored still publish.
+ */
+function toStats(row) {
+  const m = row.raw?.metrics ?? {};
   const stats = {
-    accountType,
-    currency,
-    broker,
-    leverage,
-    terminal,
-
-    gainPct: parsePercent(
-      need('gainPct', pick(text, [/Gain\s*:?\s*\|?\s*([+-]?[\d.,]+)\s*%/i, /Gain\s*:?\s*([+-]?[\d.,]+%)/i])),
-    ),
-    absGainPct: parsePercent(
-      need('absGainPct', pick(text, [/Abs\.?\s*Gain\s*:?\s*\|?\s*([+-]?[\d.,]+)\s*%/i])),
-    ),
-    dailyPct: parsePercent(pick(text, [/Daily\s*\|?\s*([\d.,]+)\s*%/i, /Daily\s*([\d.,]+%)/i])),
-    monthlyPct: parsePercent(
-      need('monthlyPct', pick(text, [/Monthly\s*:?\s*\|?\s*([\d.,]+)\s*%/i, /Monthly\s*:?\s*([\d.,]+%)/i])),
-    ),
-    drawdownPct: parsePercent(
-      need('drawdownPct', pick(text, [/Drawdown\s*:?\s*\|?\s*([\d.,]+)\s*%/i, /Drawdown\s*:?\s*([\d.,]+%)/i])),
-    ),
-    balance: toNumber(pick(text, [/Balance\s*:?\s*\|?\s*([-€$£]?[\d.,]+)/i])),
-    profit: toNumber(pick(text, [/Profit\s*:?\s*\|?\s*([-€$£]?[\d.,]+)/i])),
-    interest: toNumber(pick(text, [/Interest\s*:?\s*\|?\s*([-€$£]?[\d.,]+)/i])),
-    deposits: toNumber(pick(text, [/Deposits\s*:?\s*\|?\s*([-€$£]?[\d.,]+)/i])),
-    withdrawals: toNumber(pick(text, [/Withdrawals\s*:?\s*\|?\s*([-€$£]?[\d.,]+)/i])),
-
-    trades: toNumber(pick(text, [/Trades\s*:?\s*\|?\s*([\d,]+)/i])),
-    pips: toNumber(pick(text, [/Pips\s*:?\s*\|?\s*([-\d.,]+)/i])),
-    lots: toNumber(pick(text, [/Lots\s*:?\s*\|?\s*([\d.,]+)/i])),
-    commissions: toNumber(pick(text, [/Commissions\s*:?\s*\|?\s*([-€$£]?[\d.,]+)/i])),
-    profitFactor: toNumber(pick(text, [/Profit Factor\s*:?\s*\|?\s*([\d.,]+)/i])),
-    sharpeRatio: toNumber(pick(text, [/Sharpe Ratio\s*:?\s*\|?\s*([-\d.,]+)/i])),
-    standardDeviation: toNumber(pick(text, [/Standard Deviation\s*:?\s*\|?\s*([-€$£]?[\d.,]+)/i])),
-    expectancyPips: toNumber(pick(text, [/Expectancy\s*\|?\s*([-\d.,]+)\s*Pips/i])),
-    expectancyMoney: toNumber(pick(text, [/Expectancy\s*\|?\s*[-\d.,]+\s*Pips\s*\/\s*([-€$£]?[\d.,]+)/i])),
-    avgWinPips: toNumber(pick(text, [/Average Win\s*:?\s*\|?\s*([\d.,]+)\s*pips/i])),
-    avgWinMoney: toNumber(pick(text, [/Average Win\s*:?\s*\|?\s*[\d.,]+\s*pips\s*\/\s*([-€$£]?[\d.,]+)/i])),
-    avgLossPips: toNumber(pick(text, [/Average Loss\s*:?\s*\|?\s*(-[\d.,]+)\s*pips/i])),
-    avgLossMoney: toNumber(pick(text, [/Average Loss\s*:?\s*\|?\s*-[\d.,]+\s*pips\s*\/\s*(-?[-€$£]?[\d.,]+)/i])),
-    bestTradeMoney: toNumber(pick(text, [/Best Trade \([€$£]\)\s*:?\s*\|?\s*\(?[^)]*\)?\s*([-€$£]?[\d.,]+)/i])),
-    worstTradeMoney: toNumber(pick(text, [/Worst Trade \([€$£]\)\s*:?\s*\|?\s*\(?[^)]*\)?\s*(-[-€$£]?[\d.,]+)/i])),
-    bestTradePips: toNumber(pick(text, [/Best Trade \(Pips\)\s*:?\s*\|?\s*\(?[^)]*\)?\s*([\d.,]+)/i])),
-    worstTradePips: toNumber(pick(text, [/Worst Trade \(Pips\)\s*:?\s*\|?\s*\(?[^)]*\)?\s*(-[\d.,]+)/i])),
-    avgTradeLength: pick(text, [/Avg\.?\s*Trade Length\s*:?\s*\|?\s*([\w\s.]+?)\s*(?:\n|\|)/i]),
-    updatedLabel: pick(text, [/Updated\s*\|?\s*([^\n|]+)/i]),
+    accountId: String(row.account_id),
+    accountType: m.accountType,
+    currency: m.currency,
+    broker: m.broker,
+    leverage: m.leverage,
+    terminal: m.terminal,
+    sourceUrl: m.sourceUrl,
+    gainPct: num(m.gainPct) ?? num(row.growth_pct),
+    absGainPct: num(m.absGainPct),
+    dailyPct: num(m.dailyPct),
+    monthlyPct: num(m.monthlyPct),
+    drawdownPct: num(m.drawdownPct) ?? num(row.drawdown_pct),
+    balance: num(m.balance) ?? cents(row.balance_cents),
+    equity: num(m.equity) ?? cents(row.equity_cents),
+    profit: num(m.profit) ?? cents(row.profit_cents),
+    deposits: num(m.deposits),
+    withdrawals: num(m.withdrawals),
+    trades: num(m.trades),
+    pips: num(m.pips),
+    lots: num(m.lots),
+    profitFactor: num(m.profitFactor) ?? num(row.profit_factor),
+    sharpeRatio: num(m.sharpeRatio),
+    longsWon: num(m.longsWon),
+    longsTotal: num(m.longsTotal),
+    longsWinPct: num(m.longsWinPct),
+    shortsWon: num(m.shortsWon),
+    shortsTotal: num(m.shortsTotal),
+    shortsWinPct: num(m.shortsWinPct),
+    avgTradeLength: m.avgTradeLength,
+    updatedLabel: m.updatedLabel,
   };
 
-  const longs = text.match(/Longs Won\s*:?\s*\|?\s*\((\d+)\s*\/\s*(\d+)\)\s*([\d]+)\s*%/i);
-  const shorts = text.match(/Shorts Won\s*:?\s*\|?\s*\((\d+)\s*\/\s*(\d+)\)\s*([\d]+)\s*%/i);
-  if (longs) {
-    stats.longsWon = Number(longs[1]);
-    stats.longsTotal = Number(longs[2]);
-    stats.longsWinPct = Number(longs[3]);
-  }
-  if (shorts) {
-    stats.shortsWon = Number(shorts[1]);
-    stats.shortsTotal = Number(shorts[2]);
-    stats.shortsWinPct = Number(shorts[3]);
-  }
-
-  return { stats, missing };
-}
-
-/* ------------------------------------------------------------------ run */
-
-async function fetchAccount(url) {
-  const res = await fetch(url, {
-    headers: {
-      'User-Agent':
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
-      Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
-      'Accept-Language': 'en-US,en;q=0.9',
-      'Sec-Ch-Ua': '"Chromium";v="125", "Not.A/Brand";v="24"',
-      'Sec-Ch-Ua-Mobile': '?0',
-      'Sec-Ch-Ua-Platform': '"Windows"',
-      'Sec-Fetch-Dest': 'document',
-      'Sec-Fetch-Mode': 'navigate',
-      'Sec-Fetch-Site': 'none',
-      'Sec-Fetch-User': '?1',
-      'Upgrade-Insecure-Requests': '1',
-      'Cache-Control': 'no-cache',
-      Pragma: 'no-cache',
-    },
-    redirect: 'follow',
-  });
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  return res.text();
+  // Drop the empty keys so the file stays readable and the UI's "is this figure
+  // present" checks are not fooled by a key that exists but is undefined.
+  return Object.fromEntries(Object.entries(stats).filter(([, v]) => v !== undefined && v !== null));
 }
 
 async function main() {
   const accounts = JSON.parse(await readFile(ACCOUNTS_FILE, 'utf8'));
-  const slugs = Object.keys(accounts).filter((k) => !k.startsWith('_') && (!onlySlug || k === onlySlug));
-
-  const result = { fetchedAt: new Date().toISOString(), staleAfterDays: STALE_AFTER_DAYS, accounts: {} };
-  const problems = [];
-
-  for (const slug of slugs) {
-    const { accountUrl, accountId } = accounts[slug];
-    process.stdout.write(`Syncing ${slug} ... `);
-    try {
-      const html = await fetchAccount(accountUrl);
-      const text = htmlToText(html);
-      if (DEBUG) {
-        console.log('\n--- first 4000 chars of text ---\n' + text.slice(0, 4000));
-      }
-      const { stats, missing } = parseAccount(text);
-      stats.sourceUrl = accountUrl;
-      stats.accountId = accountId;
-      result.accounts[slug] = stats;
-      if (missing.length) {
-        problems.push(`${slug}: could not parse -> ${missing.join(', ')}`);
-        console.log(`partial (${missing.length} missing)`);
-      } else {
-        console.log(`ok  gain=${stats.gainPct}%  dd=${stats.drawdownPct}%  type=${stats.accountType}`);
-      }
-    } catch (err) {
-      problems.push(`${slug}: fetch failed -> ${err.message}`);
-      console.log(`FAILED: ${err.message}`);
-    }
-    await sleep(1500); // be polite to Myfxbook
+  const byId = new Map();
+  for (const [slug, entry] of Object.entries(accounts)) {
+    if (slug.startsWith('_') || typeof entry !== 'object' || !entry?.accountId) continue;
+    if (onlySlug && slug !== onlySlug) continue;
+    byId.set(String(entry.accountId), slug);
   }
 
-  await mkdir(dirname(OUT_FILE), { recursive: true });
-  await writeFile(OUT_FILE, JSON.stringify(result, null, 2), 'utf8');
+  const rows = readSnapshots();
+  const newest = new Map();
+  for (const row of rows) {
+    const id = String(row.account_id);
+    if (!newest.has(id)) newest.set(id, row); // rows arrive newest first
+  }
 
-  console.log(`\nWrote ${OUT_FILE} (${Object.keys(result.accounts).length} accounts)`);
+  const accounts_out = {};
+  const problems = [];
+  let newestCapture = 0;
+
+  for (const [accountId, slug] of byId) {
+    const row = newest.get(accountId);
+    if (!row) {
+      problems.push(`${slug}: no snapshot in D1 — the collector has not ingested it`);
+      continue;
+    }
+    accounts_out[slug] = toStats(row);
+    newestCapture = Math.max(newestCapture, Number(row.captured_at) || 0);
+    console.log(`  ${slug.padEnd(48)} gain=${accounts_out[slug].gainPct ?? '?'}%  dd=${accounts_out[slug].drawdownPct ?? '?'}%`);
+  }
+
+  const result = {
+    fetchedAt: newestCapture ? new Date(newestCapture).toISOString() : null,
+    staleAfterDays: STALE_AFTER_DAYS,
+    accounts: accounts_out,
+  };
+
+  await mkdir(dirname(OUT_FILE), { recursive: true });
+  await writeFile(OUT_FILE, JSON.stringify(result, null, 2) + '\n', 'utf8');
+
+  console.log(`\nWrote ${OUT_FILE}: ${Object.keys(accounts_out).length} account(s), newest capture ${result.fetchedAt ?? 'none'}`);
   if (problems.length) {
     console.log('\nProblems:');
     for (const p of problems) console.log(`  - ${p}`);
@@ -239,6 +168,6 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error('Sync failed:', err.message);
+  console.error('Publish failed:', err.message);
   process.exit(1);
 });
