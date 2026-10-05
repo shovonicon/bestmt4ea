@@ -139,7 +139,11 @@ function bindLicence(source, accountNumber, expiry) {
  */
 async function compile(metaEditor, mqPath, logPath) {
   try {
-    execFileSync(metaEditor, [`/compile:${mqPath}`, `/log:${logPath}`], {
+    // MQL_PORTABLE=1 (CI): use the install folder as the data folder, where the
+    // standard Include/ libraries live once the terminal has initialised it.
+    const args = [`/compile:${mqPath}`, `/log:${logPath}`];
+    if (process.env.MQL_PORTABLE === '1') args.unshift('/portable');
+    execFileSync(metaEditor, args, {
       stdio: 'pipe',
       timeout: 120_000,
     });

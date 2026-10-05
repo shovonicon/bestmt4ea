@@ -95,8 +95,27 @@ jobs:
           Write-Host "MT5 MetaEditor: $mt5"
           "METAEDITOR_MT5=$mt5" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
 
+      - name: Initialise the MetaTrader data folders
+        shell: pwsh
+        run: |
+          # A fresh install has never run its terminal, so the standard libraries
+          # (Include\stdlib.mqh, Include\Trade\Trade.mqh) do not exist yet and every
+          # compile fails with error 106. Start each terminal once in portable mode
+          # so it unpacks them, then stop it.
+          foreach ($exe in @($env:METAEDITOR, $env:METAEDITOR_MT5)) {
+            $dir = Split-Path $exe -Parent
+            $terminal = Get-ChildItem $dir -Filter 'terminal*.exe' | Select-Object -First 1
+            if (-not $terminal) { throw "No terminal executable next to $exe" }
+            $p = Start-Process -FilePath $terminal.FullName -ArgumentList '/portable' -PassThru
+            Start-Sleep -Seconds 45
+            Stop-Process -Id $p.Id -Force -ErrorAction SilentlyContinue
+            Get-ChildItem $dir -Recurse -Include 'stdlib.mqh', 'Trade.mqh' -ErrorAction SilentlyContinue |
+              ForEach-Object { Write-Host "found: $($_.FullName)" }
+          }
+
       - name: Build queued licences
         env:
+          MQL_PORTABLE: '1'
           APP_URL: ${{ secrets.BESTMT4EA_APP_URL }}
           CRON_SECRET: ${{ secrets.CRON_SECRET }}
         run: node scripts/build-licenses.mjs
