@@ -16,7 +16,7 @@ on:
     # snapshot per request (5-minute edge cache), so one run a day is all the
     # freshness the live figures need. The monthly chart Myfxbook serves is
     # intermittent, so a missed month on one run is recovered on the next.
-    - cron: '0 4 * * *' # daily, 04:00 UTC
+    - cron: '0 0 * * *' # daily, 00:00 UTC
   workflow_dispatch: {}
 
 concurrency:
