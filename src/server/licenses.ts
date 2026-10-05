@@ -10,6 +10,7 @@ import {
   type LicenseAccount,
   type LicenseBuild,
 } from '../db/schema';
+import { dispatchLicenseBuild } from '../lib/build-dispatch';
 import { randomInt, uuid } from '../lib/crypto';
 
 /**
@@ -124,6 +125,8 @@ async function enqueueBuild(
     buildStatus: 'PENDING',
     requestedAt: new Date(),
   });
+  // Start the Windows builder now rather than at the next scheduled run.
+  await dispatchLicenseBuild();
   return id;
 }
 
