@@ -6,14 +6,12 @@ name: Licence build queue
 # Why Windows: an .ex4/.ex5 can only be produced by MetaQuotes' MetaEditor, and
 # MT5's MetaEditor will NOT compile MQL4 — verified locally, it fails with
 # "error 208: unsupported file extension". So this needs a real MT4 terminal,
-# which MetaQuotes ships through brokers, hence MT4_INSTALLER_URL is a secret
-# rather than a URL baked in here.
+# which MetaQuotes ships through brokers, hence the installer is attached to the
+# `tools-mt4` release (an optional MT4_INSTALLER_URL secret overrides it).
 #
 # Required repository secrets:
 #   BESTMT4EA_APP_URL    app origin, e.g. https://bestmt4ea.com
 #   CRON_SECRET          the same secret the Worker holds
-#   MT4_INSTALLER_URL    direct download for an MT4 terminal installer
-#                        (your broker's — MetaQuotes distributes MT4 via brokers)
 #
 # FIRST RUN: watch it. The silent install switch is standard for MetaQuotes
 # installers but the resulting path varies by broker, so the step below reports
@@ -56,13 +54,18 @@ jobs:
       - name: Install MetaTrader 4 (provides MetaEditor)
         shell: pwsh
         env:
+          GH_TOKEN: ${{ github.token }}
           MT4_INSTALLER_URL: ${{ secrets.MT4_INSTALLER_URL }}
         run: |
-          if (-not $env:MT4_INSTALLER_URL) {
-            throw 'MT4_INSTALLER_URL secret is not set — MetaEditor cannot be installed without it.'
-          }
+          # The installer is attached to the public `tools-mt4` release. An
+          # MT4_INSTALLER_URL secret, when set, overrides it.
           $installer = Join-Path $env:RUNNER_TEMP 'mt4setup.exe'
-          Invoke-WebRequest -Uri $env:MT4_INSTALLER_URL -OutFile $installer
+          if ($env:MT4_INSTALLER_URL) {
+            Invoke-WebRequest -Uri $env:MT4_INSTALLER_URL -OutFile $installer
+          } else {
+            gh release download tools-mt4 --pattern 'exness4setup.exe' --output $installer --clobber
+            if ($LASTEXITCODE -ne 0) { throw 'Could not download exness4setup.exe from the tools-mt4 release.' }
+          }
           Start-Process -FilePath $installer -ArgumentList '/auto' -Wait
 
           # The install directory is broker-branded, so find MetaEditor rather than
