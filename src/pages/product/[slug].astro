@@ -5,13 +5,16 @@ import { getCollection } from 'astro:content';
 import { and, desc, eq, isNull } from 'drizzle-orm';
 import ProductLayout from '../../layouts/ProductLayout.astro';
 import VpsLayout from '../../layouts/VpsLayout.astro';
-import { isFreeProduct, isUnpublishedProduct } from '../../lib/content';
+import { getPublicProducts, isFreeProduct, isUnpublishedProduct } from '../../lib/content';
 import { getDb } from '../../db/client';
 import { reviews as reviewsTable } from '../../db/schema';
 import { getLatestSnapshot, getSeries } from '../../server/performance';
+import { reviewsForProduct } from '../../lib/product-reviews';
 
 const slug = Astro.params.slug ?? '';
 const products = await getCollection('products');
+// The same count the homepage and shop state, from the same public-catalogue helper.
+const systemCount = (await getPublicProducts()).length;
 const product = products.find((entry) => entry.data.slug === slug);
 // A withdrawn product 404s here; the Worker's redirect manifest serves the 301
 // from its old URL to `redirectTo` in src/data/unpublished.json.
@@ -40,7 +43,12 @@ const vps = products.find((entry) => entry.data.slug === 'vps' && entry.data.slu
 // reviews. The transcribed editorial record is the fallback when nothing is live.
 let live = null;
 let series: Array<{ capturedAt: number; growthPct: string | null; profitCents: number | null }> = [];
-let productReviews: Array<{ rating: number; body: string; name: string; createdAt: number }> = [];
+// Approved customer reviews on file come first; anything customers post on the live
+// site (the database table) is added to them. Both are shown, and both are rated.
+let productReviews: Array<{ rating: number; body: string; name: string; createdAt: number }> = reviewsForProduct({
+  slug: product.data.slug,
+  title: product.data.title,
+});
 try {
   const db = getDb();
   live = await getLatestSnapshot(db, product.data.slug);
@@ -76,12 +84,15 @@ try {
     .where(and(eq(reviewsTable.productId, product.data.slug), isNull(reviewsTable.hiddenAt)))
     .orderBy(desc(reviewsTable.createdAt))
     .all();
-  productReviews = published.map((row) => ({
-    rating: row.rating,
-    body: row.body,
-    name: row.reviewerName ?? 'Verified customer',
-    createdAt: row.createdAt.getTime(),
-  }));
+  productReviews = [
+    ...published.map((row) => ({
+      rating: row.rating,
+      body: row.body,
+      name: row.reviewerName ?? 'Verified customer',
+      createdAt: row.createdAt.getTime(),
+    })),
+    ...productReviews,
+  ].sort((a, b) => b.createdAt - a.createdAt);
 } catch (error) {
   console.error('product_live_performance_failed', error);
 }
@@ -99,7 +110,7 @@ Astro.response.headers.set('cache-control', 'public, s-maxage=300, stale-while-r
       live={live}
       series={series}
       reviews={productReviews}
-      systems={products.length}
+      systems={systemCount}
       vps={vps}
     />
   )

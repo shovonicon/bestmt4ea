@@ -394,7 +394,7 @@ const faqs = [
   canonical={product.data.seo.canonical}
   ogImage={product.data.seo.ogImage || product.data.featuredImage}
   jsonLd={[
-    productSchema(product, { currency, min: product.data.priceMin, max: product.data.priceMax }),
+    productSchema(product, { currency, min: product.data.priceMin, max: product.data.priceMax, reviews }),
     breadcrumbSchema(trail),
     {
       '@context': 'https://schema.org',
@@ -449,6 +449,23 @@ const faqs = [
               <span class="live-dot" aria-hidden="true"></span>
               {siteStats.customers} customers · {systems} systems
             </span>
+            {
+              reviewCount > 0 && (
+                <a
+                  href="#reviews-heading"
+                  class="inline-flex items-center gap-2 text-[var(--color-ink-soft)] hover:text-white"
+                >
+                  <span class="stars" aria-hidden="true">
+                    {'★'.repeat(Math.round(reviewAverage))}
+                    {'☆'.repeat(5 - Math.round(reviewAverage))}
+                  </span>
+                  <span>
+                    <span class="font-semibold text-[var(--color-ink)]">{reviewAverage.toFixed(1)}</span> / 5 · {reviewCount}{' '}
+                    {reviewCount === 1 ? 'review' : 'reviews'}
+                  </span>
+                </a>
+              )
+            }
           </div>
 
           <div class="mt-6 flex flex-wrap gap-2">

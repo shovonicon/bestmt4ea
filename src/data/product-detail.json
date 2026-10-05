@@ -757,16 +757,166 @@
   },
   "apex-quant-ea-ai-bitcoin-scalper-for-mt5": {
     "settings": [
-      { "label": "Recommended pair", "value": "BTCUSD", "icon": "pair" },
-      { "label": "Platform", "value": "MetaTrader 5", "icon": "platform" },
-      { "label": "Minimum equity", "value": "$500", "icon": "equity" }
+      {
+        "label": "Recommended pair",
+        "value": "BTCUSD",
+        "icon": "pair"
+      },
+      {
+        "label": "Platform",
+        "value": "MetaTrader 5",
+        "icon": "platform"
+      },
+      {
+        "label": "Minimum equity",
+        "value": "$1,000",
+        "icon": "equity"
+      },
+      {
+        "label": "Timeframe",
+        "value": "M1 (1 minute)",
+        "icon": "timeframe"
+      },
+      {
+        "label": "Strategy",
+        "value": "Scalping with trend",
+        "icon": "strategy"
+      },
+      {
+        "label": "Broker",
+        "value": "Exness, RoboForex, XM",
+        "icon": "broker"
+      },
+      {
+        "label": "Setup time",
+        "value": "Under 10 minutes",
+        "icon": "setup"
+      }
+    ],
+    "features": [
+      "Fully automated execution — no manual entries, no screen time required",
+      "Fixed rule-based logic — every trade follows the same criteria, no emotion involved",
+      "Configurable risk controls — set your own drawdown cap and lot size",
+      "Free lifetime updates — the strategy improves, you don't pay again",
+      "24/7 Telegram support — real answers, not a ticket queue"
+    ],
+    "fit": {
+      "good": [
+        "Traders who want rules-based BTCUSD exposure without watching charts all day",
+        "Traders who already use an ECN broker with tight BTCUSD spreads",
+        "Traders comfortable running EAs on a VPS"
+      ],
+      "notFit": [
+        "Traders looking for a set-and-forget system with zero risk",
+        "Anyone unwilling to test on a demo account first",
+        "Accounts under the recommended minimum equity"
+      ]
+    },
+    "installation": [
+      {
+        "step": "Download",
+        "text": "Download the EA file from your dashboard after purchase."
+      },
+      {
+        "step": "Install",
+        "text": "Copy it into your MT5 Experts folder."
+      },
+      {
+        "step": "Attach",
+        "text": "Restart MT5 and drag the EA onto your BTCUSD chart."
+      },
+      {
+        "step": "Activate",
+        "text": "Enable AutoTrading and apply the recommended settings."
+      }
+    ],
+    "included": [
+      "Expert Advisor file (.ex5)",
+      "Free lifetime updates",
+      "Premium Telegram support",
+      "Licence activation for your account(s)"
     ]
   },
   "elysium-vortex-eurcad-ea-ai-eurcad-scalper-for-mt5": {
     "settings": [
-      { "label": "Recommended pair", "value": "EURCAD", "icon": "pair" },
-      { "label": "Platform", "value": "MetaTrader 5", "icon": "platform" },
-      { "label": "Minimum equity", "value": "$1,000", "icon": "equity" }
+      {
+        "label": "Recommended pair",
+        "value": "EURCAD",
+        "icon": "pair"
+      },
+      {
+        "label": "Platform",
+        "value": "MetaTrader 5",
+        "icon": "platform"
+      },
+      {
+        "label": "Minimum equity",
+        "value": "$1,000",
+        "icon": "equity"
+      },
+      {
+        "label": "Timeframe",
+        "value": "H1 (1 hour)",
+        "icon": "timeframe"
+      },
+      {
+        "label": "Strategy",
+        "value": "Scalping with trend",
+        "icon": "strategy"
+      },
+      {
+        "label": "Broker",
+        "value": "Exness, RoboForex, XM",
+        "icon": "broker"
+      },
+      {
+        "label": "Setup time",
+        "value": "Under 10 minutes",
+        "icon": "setup"
+      }
+    ],
+    "features": [
+      "Fully automated execution — no manual entries, no screen time required",
+      "Fixed rule-based logic — every trade follows the same criteria, no emotion involved",
+      "Configurable risk controls — set your own drawdown cap and lot size",
+      "Free lifetime updates — the strategy improves, you don't pay again",
+      "24/7 Telegram support — real answers, not a ticket queue"
+    ],
+    "fit": {
+      "good": [
+        "Traders who want rules-based EURCAD exposure without watching charts all day",
+        "Traders who already use an ECN broker with tight EURCAD spreads",
+        "Traders comfortable running EAs on a VPS"
+      ],
+      "notFit": [
+        "Traders looking for a set-and-forget system with zero risk",
+        "Anyone unwilling to test on a demo account first",
+        "Accounts under the recommended minimum equity"
+      ]
+    },
+    "installation": [
+      {
+        "step": "Download",
+        "text": "Download the EA file from your dashboard after purchase."
+      },
+      {
+        "step": "Install",
+        "text": "Copy it into your MT5 Experts folder."
+      },
+      {
+        "step": "Attach",
+        "text": "Restart MT5 and drag the EA onto your EURCAD chart."
+      },
+      {
+        "step": "Activate",
+        "text": "Enable AutoTrading and apply the recommended settings."
+      }
+    ],
+    "included": [
+      "Expert Advisor file (.ex5)",
+      "Free lifetime updates",
+      "Premium Telegram support",
+      "Licence activation for your account(s)"
     ]
   }
 }

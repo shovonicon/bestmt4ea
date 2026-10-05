@@ -418,5 +418,93 @@
         "Template files"
       ]
     }
+  ],
+  "apex-quant-ea-ai-bitcoin-scalper-for-mt5": [
+    {
+      "code": "trial-30d",
+      "name": "Trial",
+      "term": "30 days · demo only",
+      "price": 0,
+      "badge": "Try it free",
+      "cta": "Start free trial",
+      "features": [
+        "Licence for any demo account",
+        "No real account",
+        "1 demo account",
+        "Activation period: 30 days"
+      ]
+    },
+    {
+      "code": "personal-12m",
+      "name": "Personal",
+      "term": "12 months",
+      "price": 89.99,
+      "badge": "Most affordable",
+      "cta": "Get 12 months",
+      "features": [
+        "Licence by account number",
+        "1 real account",
+        "Unlimited demo accounts",
+        "Activation period: 12 months"
+      ]
+    },
+    {
+      "code": "personal-lifetime",
+      "name": "Personal",
+      "term": "Lifetime",
+      "price": 159.99,
+      "badge": "Most popular",
+      "cta": "Get lifetime",
+      "features": [
+        "Licence by account number",
+        "2 real accounts",
+        "Unlimited demo accounts",
+        "Lifetime activation"
+      ]
+    }
+  ],
+  "elysium-vortex-eurcad-ea-ai-eurcad-scalper-for-mt5": [
+    {
+      "code": "trial-30d",
+      "name": "Trial",
+      "term": "30 days · demo only",
+      "price": 0,
+      "badge": "Try it free",
+      "cta": "Start free trial",
+      "features": [
+        "Licence for any demo account",
+        "No real account",
+        "1 demo account",
+        "Activation period: 30 days"
+      ]
+    },
+    {
+      "code": "personal-12m",
+      "name": "Personal",
+      "term": "12 months",
+      "price": 99.99,
+      "badge": "Most affordable",
+      "cta": "Get 12 months",
+      "features": [
+        "Licence by account number",
+        "1 real account",
+        "Unlimited demo accounts",
+        "Activation period: 12 months"
+      ]
+    },
+    {
+      "code": "personal-lifetime",
+      "name": "Personal",
+      "term": "Lifetime",
+      "price": 199.99,
+      "badge": "Most popular",
+      "cta": "Get lifetime",
+      "features": [
+        "Licence by account number",
+        "2 real accounts",
+        "Unlimited demo accounts",
+        "Lifetime activation"
+      ]
+    }
   ]
 }

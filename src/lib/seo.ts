@@ -65,18 +65,24 @@ const STOCK_SCHEMA: Record<string, string> = {
  *    systems, and the exported `brands` field holds platforms (MT4/MT5), not a
  *    manufacturer, so `brand` is omitted rather than invented
  *
- * It also emits no `aggregateRating`. The imported WooCommerce rating counts are
- * not backed by reviews a visitor can read — the VPS product carried 11 ratings
- * against 2 published reviews, and 2000-trading-tools carried 3 while its own
- * store page said "There are no reviews yet". Google's review-snippet policy
- * requires rating markup to be substantiated by reviews shown on the page, so a
- * rating node may only be added once this site has collected those reviews itself.
+ * Ratings are the one thing it adds only conditionally. Google's review-snippet
+ * policy requires rating markup to be substantiated by reviews a visitor can read
+ * on the page, so `aggregateRating` and `review` are built from the exact reviews
+ * the caller passes in (the ones the page renders) and omitted when there are
+ * none. The old WooCommerce rating counts stay out: they were never backed by
+ * published reviews.
  */
 export function productSchema(
   product: CollectionEntry<'products'>,
-  opts: { currency?: string; min?: number; max?: number } = {},
+  opts: {
+    currency?: string;
+    min?: number;
+    max?: number;
+    /** The reviews rendered on the page — the only ones a rating may describe. */
+    reviews?: Array<{ rating: number; body: string; name: string; createdAt: number }>;
+  } = {},
 ): Json {
-  const { currency = 'USD', min, max } = opts;
+  const { currency = 'USD', min, max, reviews = [] } = opts;
   const image = resolveImage(product.data.featuredImage);
   const url = absoluteUrl(`/product/${product.data.slug}/`);
 
@@ -105,6 +111,24 @@ export function productSchema(
     ...(product.data.sku ? { sku: product.data.sku } : {}),
     ...(product.data.productCategories[0] ? { category: product.data.productCategories[0] } : {}),
     ...(offers ? { offers } : {}),
+    ...(reviews.length
+      ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: Number((reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1)),
+            reviewCount: reviews.length,
+            bestRating: 5,
+            worstRating: 1,
+          },
+          review: reviews.map((r) => ({
+            '@type': 'Review',
+            reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: 5, worstRating: 1 },
+            author: { '@type': 'Person', name: r.name.split(' · ')[0] || 'Verified customer' },
+            reviewBody: r.body,
+            ...(r.createdAt ? { datePublished: new Date(r.createdAt).toISOString().slice(0, 10) } : {}),
+          })),
+        }
+      : {}),
   };
 }
 

@@ -8,10 +8,11 @@
  *
  *   Product   — offers, when present, carry a positive price; availability comes
  *               only from the allowed schema.org set; images are absolute; the
- *               site is never named as the brand; and no `aggregateRating` is
- *               emitted. This site has no review corpus to substantiate one, and
- *               Google's review-snippet policy requires rating markup to be
- *               backed by reviews a visitor can actually read.
+ *               site is never named as the brand; and an `aggregateRating` exists
+ *               only where it is built from the reviews the page renders (see
+ *               productSchema), never as a constant or an imported count. Google's
+ *               review-snippet policy requires rating markup to be backed by
+ *               reviews a visitor can actually read.
  *   Article   — url equals the page canonical, publisher carries a logo, an
  *               author exists, and `dateModified` matches the content's own
  *               `updatedAt` (never build time).
@@ -96,10 +97,13 @@ function sourceFiles(dir, out = []) {
 }
 
 for (const file of sourceFiles('src')) {
-  if (/aggregateRating\s*:/.test(readFileSync(file, 'utf8'))) {
-    errors.push(
-      `${file}: authors an aggregateRating node — rating markup must be backed by reviews published on the page`,
-    );
+  const source = readFileSync(file, 'utf8');
+  if (!/aggregateRating\s*:/.test(source)) continue;
+  const normalised = file.replace(/\\/g, '/');
+  if (normalised !== 'src/lib/seo.ts') {
+    errors.push(`${file}: authors an aggregateRating node — only productSchema in src/lib/seo.ts may, from the page's own reviews`);
+  } else if (!/reviews\.length\s*\?/.test(source) || !/reviewCount:\s*reviews\.length/.test(source)) {
+    errors.push(`${file}: aggregateRating must be conditional on, and counted from, the reviews passed to productSchema`);
   }
 }
 

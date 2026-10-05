@@ -99,7 +99,7 @@ const trail = breadcrumbTrail([
   canonical={product.data.seo.canonical}
   ogImage={product.data.seo.ogImage || product.data.featuredImage}
   jsonLd={[
-    productSchema(product, { currency, min: product.data.priceMin, max: product.data.priceMax }),
+    productSchema(product, { currency, min: product.data.priceMin, max: product.data.priceMax, reviews }),
     breadcrumbSchema(trail),
     {
       '@context': 'https://schema.org',
