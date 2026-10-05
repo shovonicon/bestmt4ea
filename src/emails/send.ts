@@ -9,6 +9,11 @@ export interface EmailEnv {
   EMAIL?: SendEmail;
   EMAIL_FROM_EMAIL: string;
   EMAIL_FROM_NAME: string;
+  /**
+   * Where a customer's reply lands. The From address is no-reply, so without this
+   * a reply to an order email is dropped — while the copy invites them to reply.
+   */
+  EMAIL_REPLY_TO?: string;
   /** Brevo transactional API key (free tier). The fallback sender. */
   BREVO_API_KEY?: string;
 }
@@ -103,12 +108,15 @@ export async function sendEmail(db: Db, env: EmailEnv, message: EmailMessage): P
     console.error('email_cap_check_failed', failureDetail(error));
   }
 
+  // A reply has to reach a human, not no-reply.
+  const replyTo = env.EMAIL_REPLY_TO || env.EMAIL_FROM_EMAIL;
+
   // 1) Cloudflare Email — free, tried first.
   if (env.EMAIL) {
     try {
       const result = await env.EMAIL.send({
         from: { name: env.EMAIL_FROM_NAME, email: env.EMAIL_FROM_EMAIL },
-        replyTo: env.EMAIL_FROM_EMAIL,
+        replyTo,
         to: message.to,
         subject: message.subject,
         html: message.html,
@@ -133,6 +141,7 @@ export async function sendEmail(db: Db, env: EmailEnv, message: EmailMessage): P
           text: message.text,
           fromName: env.EMAIL_FROM_NAME,
           fromEmail: env.EMAIL_FROM_EMAIL,
+          replyTo,
           tags: [message.template],
         },
         { apiKey: env.BREVO_API_KEY }

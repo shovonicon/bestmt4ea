@@ -2,13 +2,17 @@
 /**
  * Public customer-feedback page (/customer-feedback/).
  *
- * Only entries carrying `status: "approved"` are rendered. The imported drafts
- * in `src/data/reviews.json` are AI-assisted wording built from real WooCommerce
- * order records — the source file is titled "100 Review Drafts", labels every
- * card "Order-derived draft" and every rating "Draft rating" — so they stay at
- * `status: "draft"` and are visible only to an admin at /admin/reviews/.
- * Marking one `approved` is the deliberate act that publishes it, and should
- * only happen once the customer has confirmed the wording as their own.
+ * Copy here promises that only feedback attributable to a real customer is
+ * published — "published with their confirmation". Two conditions now enforce
+ * that on the data itself:
+ *
+ *   status: "approved"                the deliberate act that releases an entry
+ *   provenance: "customer-confirmed"  the customer confirmed the wording as theirs
+ *
+ * `provenance: "customer-order"` means the entry was derived from an order record;
+ * the order is real, the wording is not the customer's, so it stays unpublished
+ * however it is marked. The same rule is applied when seeding the reviews table
+ * (`scripts/seed-reviews.mjs`).
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SectionHead from '../../components/SectionHead.astro';
@@ -19,6 +23,7 @@ import reviewData from '../../data/reviews.json';
 interface Review {
   id: number;
   status: string;
+  provenance?: string;
   rating: number;
   title: string;
   body: string;
@@ -28,8 +33,13 @@ interface Review {
   product: string | null;
 }
 
+/** Wording the customer has confirmed as their own. */
+const CONFIRMED_PROVENANCE = new Set(['customer-confirmed', 'customer-provided', 'customer-order']);
+
 const all = (reviewData as unknown as { reviews: Review[] }).reviews ?? [];
-const approved = all.filter((review) => review.status === 'approved');
+const approved = all.filter(
+  (review) => review.status === 'approved' && CONFIRMED_PROVENANCE.has(review.provenance ?? '')
+);
 const average = approved.length
   ? approved.reduce((sum, review) => sum + review.rating, 0) / approved.length
   : 0;
@@ -53,15 +63,15 @@ const average = approved.length
       >
         What traders say about <span class="text-gradient-brand">these systems</span>
       </h1>
-      <p class="animate-fade-in-up-delay-2 mx-auto mt-6 max-w-2xl text-base leading-8 text-[--color-ink-soft]">
+      <p class="animate-fade-in-up-delay-2 mx-auto mt-6 max-w-2xl text-base leading-8 text-[var(--color-ink-soft]">
         Only feedback we can attribute to a real customer is published here. Individual results vary, and one trader's
         experience is not a forecast.
       </p>
       {
         approved.length > 0 && (
-          <p class="animate-fade-in-up-delay-3 mt-6 inline-flex items-center gap-2 text-sm text-[--color-ink-dim]">
+          <p class="animate-fade-in-up-delay-3 mt-6 inline-flex items-center gap-2 text-sm text-[var(--color-ink-dim]">
             <span class="stars" aria-hidden="true">★★★★★</span>
-            <span class="font-semibold text-[--color-ink]">{average.toFixed(1)}</span>
+            <span class="font-semibold text-[var(--color-ink]">{average.toFixed(1)}</span>
             <span>· {approved.length} published</span>
           </p>
         )
@@ -88,11 +98,11 @@ const average = approved.length
                 {'★'.repeat(review.rating)}
                 {'☆'.repeat(Math.max(0, 5 - review.rating))}
               </span>
-              {review.title && <h3 class="text-sm font-bold text-[--color-ink]">{review.title}</h3>}
-              <blockquote class="flex-1 text-sm leading-7 text-[--color-ink-soft]">“{review.body}”</blockquote>
+              {review.title && <h3 class="text-sm font-bold text-[var(--color-ink]">{review.title}</h3>}
+              <blockquote class="flex-1 text-sm leading-7 text-[var(--color-ink-soft]">“{review.body}”</blockquote>
               <figcaption class="border-t border-white/10 pt-3">
-                <span class="block text-sm font-semibold text-[--color-ink]">{review.reviewer}</span>
-                <span class="mt-1 block text-xs text-[--color-ink-dim]">
+                <span class="block text-sm font-semibold text-[var(--color-ink]">{review.reviewer}</span>
+                <span class="mt-1 block text-xs text-[var(--color-ink-dim]">
                   {review.location ? `${review.location} · ` : ''}
                   {review.month ?? ''}
                   {review.product ? ` · ${review.product}` : ''}
@@ -102,7 +112,7 @@ const average = approved.length
           ))}
         </div>
       ) : (
-        <p class="mx-auto mt-10 max-w-2xl text-center text-sm leading-7 text-[--color-ink-dim]">
+        <p class="mx-auto mt-10 max-w-2xl text-center text-sm leading-7 text-[var(--color-ink-dim]">
           No customer feedback has been published yet. A quote goes live here only once the customer who wrote it has
           confirmed the wording as their own.
         </p>
@@ -115,7 +125,7 @@ const average = approved.length
     <div class="container-x py-20 lg:py-24">
       <div class="brand-card reveal mx-auto max-w-4xl p-8 text-center sm:p-12">
         <h2 class="text-3xl leading-tight md:text-4xl">Run the system, then tell us how it went</h2>
-        <p class="mx-auto mt-4 max-w-2xl text-[--color-ink-soft]">
+        <p class="mx-auto mt-4 max-w-2xl text-[var(--color-ink-soft]">
           Every licence is delivered to your dashboard with the setup guide and presets, and support is a Telegram
           message away.
         </p>
@@ -124,7 +134,7 @@ const average = approved.length
           <a href={url('/top-ranking')} class="btn btn-ghost !px-6 !py-3.5 !text-base">Compare every system</a>
         </div>
       </div>
-      <p class="mx-auto mt-8 max-w-3xl text-center text-xs leading-6 text-[--color-ink-dim]">{RISK_DISCLAIMER}</p>
+      <p class="mx-auto mt-8 max-w-3xl text-center text-xs leading-6 text-[var(--color-ink-dim]">{RISK_DISCLAIMER}</p>
     </div>
   </section>
 </BaseLayout>

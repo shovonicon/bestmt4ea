@@ -2,7 +2,7 @@
 export const prerender = false;
 
 import { eq } from 'drizzle-orm';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import DashboardLayout from '../../../layouts/DashboardLayout.astro';
 import { getDb } from '../../../db/client';
 import { customers } from '../../../db/schema';
 import { url } from '../../../lib/urls';
@@ -15,38 +15,75 @@ const customer = await getDb()
   .from(customers)
   .where(eq(customers.id, session.subjectId))
   .get();
+
+const DAY = 24 * 60 * 60 * 1000;
+const sessionEnds = session.expiresAt
+  ? new Date(session.expiresAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+  : null;
+const sessionDays = session.expiresAt ? Math.max(0, Math.round((session.expiresAt - Date.now()) / DAY)) : null;
 ---
 
-<BaseLayout title="Account" description="Your BestMT4EA account." noindex>
-  <section class="container-x py-16">
-    <p class="section-kicker">Dashboard</p>
-    <h1 class="mt-3 text-3xl font-bold sm:text-4xl">Account</h1>
-
-    <dl class="mt-8 grid max-w-lg gap-4 text-sm">
-      <div>
-        <dt class="text-[--color-ink-soft]">Email</dt>
-        <dd class="mt-1 text-[--color-ink]">{customer?.email ?? '—'}</dd>
-      </div>
-      <div>
-        <dt class="text-[--color-ink-soft]">Name</dt>
-        <dd class="mt-1 text-[--color-ink]">{customer?.name ?? '—'}</dd>
-      </div>
-      <div>
-        <dt class="text-[--color-ink-soft]">Signed in since</dt>
-        <dd class="mt-1 text-[--color-ink]">
-          {customer?.createdAt ? customer.createdAt.toISOString().slice(0, 10) : '—'}
-        </dd>
-      </div>
-    </dl>
-
-    <p class="mt-8 text-sm text-[--color-ink-soft]">
-      Sign-in is passwordless — you receive a one-time link by email, so there is no
-      password to change here.
-    </p>
-
-    <div class="mt-8 flex gap-3 text-sm">
-      <a class="rounded-lg border border-white/10 px-3 py-2" href={url('/dashboard/support')}>Support</a>
-      <a class="rounded-lg border border-white/10 px-3 py-2" href="/logout/">Sign out</a>
+<DashboardLayout
+  active="account"
+  title="Account"
+  heading="Account"
+  lead="How you sign in, and what this account is for."
+>
+  <div class="grid gap-5 lg:grid-cols-[1.1fr_1fr]">
+    <div class="panel p-6 sm:p-7">
+      <h2 class="text-lg">Details</h2>
+      <dl class="mt-5 divide-y divide-white/5">
+        <div class="flex flex-wrap items-baseline justify-between gap-3 py-3 first:pt-0">
+          <dt class="metric-label">Email</dt>
+          <dd class="text-sm text-[var(--color-ink)]">{customer?.email ?? '—'}</dd>
+        </div>
+        <div class="flex flex-wrap items-baseline justify-between gap-3 py-3">
+          <dt class="metric-label">Name</dt>
+          <dd class="text-sm text-[var(--color-ink)]">{customer?.name ?? 'Not set'}</dd>
+        </div>
+        <div class="flex flex-wrap items-baseline justify-between gap-3 py-3">
+          <dt class="metric-label">Customer since</dt>
+          <dd class="text-sm text-[var(--color-ink)]">
+            {customer?.createdAt ? customer.createdAt.toISOString().slice(0, 10) : '—'}
+          </dd>
+        </div>
+        <div class="flex flex-wrap items-baseline justify-between gap-3 py-3 last:pb-0">
+          <dt class="metric-label">Email verified</dt>
+          <dd class="text-sm text-[var(--color-ink)]">
+            {customer?.emailVerifiedAt ? customer.emailVerifiedAt.toISOString().slice(0, 10) : 'Not verified'}
+          </dd>
+        </div>
+      </dl>
     </div>
-  </section>
-</BaseLayout>
+
+    <div class="brand-card p-6 sm:p-7">
+      <h2 class="text-lg">Signing in</h2>
+      <p class="mt-3 text-sm leading-7 text-[var(--color-ink-soft)]">
+        This account is passwordless. A one-time link is emailed to you each time, so there is no password to change and
+        nothing for anyone to steal. Google sign-in lands on this same account when it is the same email address.
+      </p>
+      <p class="mt-4 text-xs leading-6 text-[var(--color-ink-dim)]">
+        {sessionEnds
+          ? `This session stays open until ${sessionEnds}${sessionDays !== null ? ` (${sessionDays} day${sessionDays === 1 ? '' : 's'})` : ''}. Signing out ends it immediately.`
+          : 'Signing out ends this session immediately.'}
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="/logout/" class="btn btn-ghost !px-5 !py-2.5 !text-sm">Sign out</a>
+        <a href={url('/dashboard/support')} class="btn btn-ghost !px-5 !py-2.5 !text-sm">Get help</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel mt-5 p-6 sm:p-7">
+    <h2 class="text-lg">Your data</h2>
+    <p class="mt-3 max-w-3xl text-sm leading-7 text-[var(--color-ink-soft)]">
+      We hold your email address, your orders and the licences they created, plus the MT4/MT5 account numbers you bind
+      to them — that binding is what makes a compiled build run only for you. Card payments are handled by Stripe and
+      never touch this site. See the{' '}
+      <a href={url('/privacy-policy')} class="text-emerald-300 hover:text-emerald-200">
+        privacy policy
+      </a>{' '}
+      for the full picture.
+    </p>
+  </div>
+</DashboardLayout>

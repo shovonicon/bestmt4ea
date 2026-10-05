@@ -1,0 +1,53 @@
+# Security headers for every response.
+#
+# The scripts below are allow-listed to what the site actually loads: Google
+# AdSense (the only third-party script), Cloudflare Turnstile if it is ever wired
+# up, and Cloudflare's own insights beacon. Stripe needs no allowance — checkout
+# is a redirect to Stripe's own hosted page, so there is no Stripe.js on this site
+# and no iframe to permit.
+#
+# 'unsafe-inline' is present in script-src because Astro inlines its island boot
+# script. Removing it needs build-time hashes; until then it is the honest gap in
+# this policy, and the other directives still do the real work: no external script
+# runs, no plugin content loads, and no other origin may frame the site.
+
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), usb=(), payment=()
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; upgrade-insecure-requests; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://partner.googleadservices.com https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net https://challenges.cloudflare.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://*.adtrafficquality.google https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net https://challenges.cloudflare.com https://cloudflareinsights.com; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.googlesyndication.com https://challenges.cloudflare.com https://www.youtube.com https://www.youtube-nocookie.com; manifest-src 'self'
+
+# Hashed assets are immutable, so they can be cached hard.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Never let a browser or proxy keep a personalised or licensed response.
+/api/*
+  Cache-Control: private, no-store
+  X-Robots-Tag: noindex
+
+# Private surfaces: no indexing, and no framing at all.
+/admin/*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: private, no-store
+/dashboard/*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: private, no-store
+/login/*
+  X-Robots-Tag: noindex, nofollow
+/checkout/*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: private, no-store
+
+# Product photography and the self-hosted fonts are not fingerprinted, so they get a
+# bounded cache rather than an immutable one: long enough that Lighthouse stops
+# reporting them, short enough that replacing a file still takes effect.
+/media/*
+  Cache-Control: public, max-age=604800
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+/logo.png
+  Cache-Control: public, max-age=604800

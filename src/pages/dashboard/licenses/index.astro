@@ -2,7 +2,7 @@
 export const prerender = false;
 
 import { eq } from 'drizzle-orm';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import DashboardLayout from '../../../layouts/DashboardLayout.astro';
 import { getDb } from '../../../db/client';
 import { products } from '../../../db/schema';
 import { listActiveAccounts, listLicensesForCustomer } from '../../../server/licenses';
@@ -13,12 +13,25 @@ if (!session || session.subjectType !== 'customer') return Astro.redirect('/logi
 
 const requested = Astro.url.searchParams.get('requested') === '1';
 
+/**
+ * The platform is a property of the product, not a question for the customer:
+ * an EA is compiled for one terminal, and binding an account from the other one
+ * simply cannot work. So a single-platform product states it, and only a product
+ * that genuinely ships both asks.
+ */
+const singlePlatform = (platform: string | null): string | null =>
+  platform === 'MT4' || platform === 'MT5' ? platform : null;
+
 const db = getDb();
 const rows = await listLicensesForCustomer(db, session.subjectId);
 const licenses = [];
 for (const license of rows) {
   const [product, accounts] = await Promise.all([
-    db.select({ title: products.title }).from(products).where(eq(products.id, license.productId)).get(),
+    db
+      .select({ title: products.title, platform: products.platform })
+      .from(products)
+      .where(eq(products.id, license.productId))
+      .get(),
     listActiveAccounts(db, license.id),
   ]);
   licenses.push({
@@ -26,94 +39,218 @@ for (const license of rows) {
     key: license.licenseKey,
     status: license.status,
     product: product?.title ?? license.productId,
-    productSlug: license.productId,
+    platform: product?.platform ?? null,
     expiresAt: license.expiresAt,
     accounts,
   });
 }
-const badge = (status: string) =>
+
+const badgeTone = (status: string) =>
   status === 'ACTIVE'
-    ? 'text-emerald-300'
+    ? 'badge badge-accent'
     : status === 'REVOKED' || status === 'SUSPENDED'
-      ? 'text-red-300'
-      : 'text-amber-300';
+      ? 'badge border-red-500/40 bg-red-500/10 text-red-200'
+      : 'badge border-amber-400/30 bg-amber-400/10 text-amber-200';
 ---
 
-<BaseLayout title="My licenses" description="Your BestMT4EA licenses." noindex>
-  <section class="container-x py-16">
-    <p class="section-kicker">Dashboard</p>
-    <h1 class="mt-3 text-3xl font-bold sm:text-4xl">My licenses</h1>
-
-    {requested && (
-      <p class="mt-6 rounded-xl border border-[--color-brand]/40 bg-[--color-brand]/10 px-4 py-3 text-sm">
-        Account-change request received. We&rsquo;ll review it and update your licence.
+<DashboardLayout
+  active="licenses"
+  title="My licences"
+  heading="Licences"
+  lead="Each licence is bound to the MT4/MT5 account you activate it on, and its compiled file is built for that account number and expiry date."
+>
+  {
+    requested && (
+      <p
+        role="status"
+        class="mb-6 rounded-xl border border-emerald-400/25 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-100"
+      >
+        Account-change request received. We review these by hand and will update your licence.
       </p>
-    )}
+    )
+  }
 
-    {licenses.length === 0 && (
-      <p class="mt-6 text-[--color-ink-soft]">
-        No licenses yet. <a class="underline" href={url('/shop')}>Browse the shop</a>.
-      </p>
-    )}
-
-    <div class="mt-8 flex flex-col gap-4">
-      {licenses.map((license) => (
-        <div class="brand-card rounded-2xl p-5">
-          <div class="flex flex-wrap items-center justify-between gap-2">
-            <p class="text-lg font-semibold">{license.product}</p>
-            <span class={`text-sm font-semibold ${badge(license.status)}`}>{license.status}</span>
-          </div>
-          <dl class="mt-4 grid gap-2 text-sm text-[--color-ink-soft] sm:grid-cols-3">
-            <div><dt class="opacity-70">Key</dt><dd class="font-mono text-[--color-ink]">{license.key}</dd></div>
-            <div>
-              <dt class="opacity-70">MT5 account</dt>
-              <dd class="text-[--color-ink]">{license.accounts[0]?.accountNumber ?? '—'}</dd>
+  {
+    licenses.length === 0 ? (
+      <div class="panel p-7 text-center">
+        <h2 class="text-lg">No licences yet</h2>
+        <p class="mx-auto mt-3 max-w-lg text-sm leading-7 text-[var(--color-ink-soft)]">
+          A licence is created the moment a purchase settles. Activate it here to bind it to your trading account, and
+          your compiled build is queued automatically.
+        </p>
+        <a href={url('/shop')} class="btn btn-primary mt-6 !text-sm">
+          Browse the EA library
+        </a>
+      </div>
+    ) : (
+      <div class="flex flex-col gap-5">
+        {licenses.map((license) => (
+          <article class="brand-card p-6 sm:p-7">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <h2 class="text-lg">
+                {license.product}
+                {singlePlatform(license.platform) && <span class="badge ml-1 align-middle">{license.platform}</span>}
+              </h2>
+              <span class={badgeTone(license.status)}>{license.status}</span>
             </div>
-            <div>
-              <dt class="opacity-70">Expires</dt>
-              <dd class="text-[--color-ink]">
-                {license.expiresAt ? license.expiresAt.toISOString().slice(0, 10) : 'Lifetime'}
-              </dd>
-            </div>
-          </dl>
 
-          {license.status === 'PENDING' && (
-            <form method="post" action="/api/licenses/activate/" class="mt-5 grid gap-3 sm:grid-cols-4">
-              <input type="hidden" name="licenseId" value={license.id} />
-              <input name="accountNumber" required inputmode="numeric" placeholder="MT5 account" class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm" />
-              <input name="broker" placeholder="Broker" class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm" />
-              <select name="accountType" class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm">
-                <option value="demo">Demo</option>
-                <option value="real">Real</option>
-              </select>
-              <button type="submit" class="rounded-xl bg-[--color-brand] px-4 py-2 text-sm font-semibold text-black">Activate</button>
-            </form>
-          )}
+            <dl class="mt-5 grid gap-x-8 gap-y-4 sm:grid-cols-3">
+              <div>
+                <dt class="metric-label">Licence key</dt>
+                <dd class="metric-value mt-1 text-sm">{license.key}</dd>
+              </div>
+              <div>
+                <dt class="metric-label">Bound account</dt>
+                <dd class="metric-value mt-1 text-sm">
+                  {license.accounts[0]?.accountNumber ??
+                    (license.status === 'PENDING' ? 'Not bound yet' : 'Any demo account')}
+                </dd>
+                {
+                  license.accounts[0]?.broker && (
+                    <dd class="mt-1 text-xs text-[var(--color-ink-dim)]">
+                      {license.accounts[0].broker}
+                      {license.accounts[0].accountType === 'real'
+                        ? ' · live account'
+                        : license.accounts[0].accountType === 'demo'
+                          ? ' · demo account'
+                          : ''}
+                    </dd>
+                  )
+                }
+              </div>
+              <div>
+                <dt class="metric-label">Runs until</dt>
+                <dd class="metric-value mt-1 text-sm">
+                  {license.expiresAt ? license.expiresAt.toISOString().slice(0, 10) : 'Lifetime'}
+                </dd>
+              </div>
+            </dl>
 
-          {license.status === 'ACTIVE' && (
-            <div class="mt-5 flex flex-wrap items-center gap-3">
-              <a class="rounded-lg border border-white/10 px-3 py-2 text-sm" href={url('/dashboard/downloads')}>Download</a>
-              <details class="text-sm">
-                <summary class="cursor-pointer text-[--color-ink-soft]">Request an account change</summary>
-                <form method="post" action="/api/licenses/request-account-change/" class="mt-3 grid gap-3 sm:grid-cols-4">
-                  <input type="hidden" name="licenseId" value={license.id} />
-                  <input name="accountNumber" required inputmode="numeric" placeholder="New MT5 account" class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm" />
-                  <input name="broker" placeholder="Broker" class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm" />
-                  <select name="accountType" class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm">
-                    <option value="demo">Demo</option>
-                    <option value="real">Real</option>
-                  </select>
-                  <button type="submit" class="rounded-xl border border-white/10 px-4 py-2 text-sm font-semibold">Request</button>
-                </form>
-              </details>
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
+            {
+              license.status === 'PENDING' && (
+                <div class="mt-6 border-t border-white/5 pt-6">
+                  <h3 class="text-sm font-semibold">Activate this licence</h3>
+                  <p class="mt-2 text-sm leading-7 text-[var(--color-ink-soft)]">
+                    {
+                      singlePlatform(license.platform)
+                        ? `This system runs on ${license.platform}, and its build is compiled for that terminal. Enter the ${license.platform} account number you will run it on — an account from the other terminal will not work. You can request a different account later.`
+                        : 'Choose the terminal you will run this on, then enter that account number — an account from the other terminal will not work. You can request a different account later.'
+                    }
+                  </p>
+                  <form method="post" action="/api/licenses/activate/" class="mt-4 grid gap-3 sm:grid-cols-4 sm:items-end">
+                    <input type="hidden" name="licenseId" value={license.id} />
+                    {
+                      !singlePlatform(license.platform) && (
+                        <label class="grid gap-1 text-xs text-[var(--color-ink-dim)]">
+                          Platform
+                          <select
+                            name="platform"
+                            required
+                            class="rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-[var(--color-ink)] transition-colors focus:border-[var(--color-accent)]"
+                          >
+                            <option value="MT4">MetaTrader 4</option>
+                            <option value="MT5">MetaTrader 5</option>
+                          </select>
+                        </label>
+                      )
+                    }
+                    <label class="grid gap-1 text-xs text-[var(--color-ink-dim)]">
+                      {singlePlatform(license.platform)
+                        ? `${license.platform} account number`
+                        : 'Account number'}
+                      <input
+                        name="accountNumber"
+                        required
+                        inputmode="numeric"
+                        placeholder="e.g. 90012345"
+                        class="rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-[var(--color-ink)] transition-colors focus:border-[var(--color-accent)]"
+                      />
+                    </label>
+                    <label class="grid gap-1 text-xs text-[var(--color-ink-dim)]">
+                      Broker <span class="opacity-70">(optional)</span>
+                      <input
+                        name="broker"
+                        placeholder="e.g. IC Markets"
+                        class="rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-[var(--color-ink)] transition-colors focus:border-[var(--color-accent)]"
+                      />
+                    </label>
+                    <div class="grid content-end">
+                      <button type="submit" class="btn btn-primary !py-2.5 !text-sm">
+                        Activate
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              )
+            }
 
-    <p class="mt-10 text-sm text-[--color-ink-soft]">
-      <a class="underline" href={url('/dashboard')}>Dashboard</a>
-    </p>
-  </section>
-</BaseLayout>
+            {
+              license.status === 'ACTIVE' && (
+                <div class="mt-6 flex flex-wrap items-center gap-3 border-t border-white/5 pt-6">
+                  <a href={url('/dashboard/downloads')} class="btn btn-primary !px-5 !py-2.5 !text-sm">
+                    Downloads
+                  </a>
+                  <a href={url('/dashboard/support')} class="btn btn-ghost !px-5 !py-2.5 !text-sm">
+                    Get setup help
+                  </a>
+                  {
+                    license.accounts.length > 0 && (
+                      <details class="w-full text-sm">
+                        <summary class="mt-1 cursor-pointer text-[var(--color-ink-soft)] hover:text-white">
+                          Request a different account
+                        </summary>
+                    <form
+                      method="post"
+                      action="/api/licenses/request-account-change/"
+                      class="mt-4 grid gap-3 sm:grid-cols-4 sm:items-end"
+                    >
+                      <input type="hidden" name="licenseId" value={license.id} />
+                      <label class="grid gap-1 text-xs text-[var(--color-ink-dim)]">
+                        New {singlePlatform(license.platform) ?? ''} account
+                        <input
+                          name="accountNumber"
+                          required
+                          inputmode="numeric"
+                          placeholder="e.g. 90012345"
+                          class="rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-[var(--color-ink)] transition-colors focus:border-[var(--color-accent)]"
+                        />
+                      </label>
+                      <label class="grid gap-1 text-xs text-[var(--color-ink-dim)]">
+                        Broker <span class="opacity-70">(optional)</span>
+                        <input
+                          name="broker"
+                          placeholder="e.g. IC Markets"
+                          class="rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-[var(--color-ink)] transition-colors focus:border-[var(--color-accent)]"
+                        />
+                      </label>
+                      <div class="grid content-end">
+                        <button type="submit" class="btn btn-ghost !py-2.5 !text-sm">Send request</button>
+                      </div>
+                    </form>
+                    <p class="mt-2 text-xs leading-6 text-[var(--color-ink-dim)]">
+                      Account changes are reviewed by hand, and a new build is compiled for the new account.
+                    </p>
+                      </details>
+                    )
+                  }
+                </div>
+              )
+            }
+
+            {
+              (license.status === 'REVOKED' || license.status === 'SUSPENDED' || license.status === 'EXPIRED') && (
+                <p class="mt-6 border-t border-white/5 pt-6 text-sm leading-7 text-[var(--color-ink-soft)]">
+                  This licence is not running. Message us on{' '}
+                  <a href={url('/dashboard/support')} class="text-emerald-300 hover:text-emerald-200">
+                    support
+                  </a>{' '}
+                  with your key and we will look at it.
+                </p>
+              )
+            }
+          </article>
+        ))}
+      </div>
+    )
+  }
+</DashboardLayout>

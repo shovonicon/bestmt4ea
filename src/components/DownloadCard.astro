@@ -40,7 +40,7 @@ const fmt = (d?: Date) =>
     : undefined;
 ---
 
-<section id="download" class="panel border-[--color-accent]/30 p-6" data-download-card>
+<section id="download" class="panel border-[var(--color-accent]/30 p-6" data-download-card>
   <div class="flex flex-wrap items-center gap-2">
     <span class="badge badge-accent">{isOwn ? 'Our own build' : 'Open source'}</span>
     {download.platform && <span class="badge">{download.platform}</span>}
@@ -49,7 +49,7 @@ const fmt = (d?: Date) =>
   </div>
 
   <h2 class="mt-4 text-xl">Download {title}</h2>
-  <p class="mt-2 text-sm leading-7 text-[--color-ink-soft]">
+  <p class="mt-2 text-sm leading-7 text-[var(--color-ink-soft]">
     {
       isOwn
         ? 'Built in-house and released free. Use it on a demo account first, then decide whether it earns a place on your live terminal.'
@@ -67,7 +67,7 @@ const fmt = (d?: Date) =>
       ].map(([label, value]) => (
         <div>
           <dt class="metric-label">{label}</dt>
-          <dd class="mt-1 text-sm text-[--color-ink]">{value}</dd>
+          <dd class="mt-1 text-sm text-[var(--color-ink]">{value}</dd>
         </div>
       ))
     }
@@ -91,19 +91,19 @@ const fmt = (d?: Date) =>
     }
   </div>
 
-  <div class="mt-5 space-y-1 border-t border-[--color-line-soft] pt-4 text-xs text-[--color-ink-dim]">
+  <div class="mt-5 space-y-1 border-t border-[var(--color-line-soft] pt-4 text-xs text-[var(--color-ink-dim]">
     <p>
-      <span class="text-[--color-ink-soft]">Licence:</span>
+      <span class="text-[var(--color-ink-soft]">Licence:</span>
       {download.license}{download.updatedAt ? ` · updated ${fmt(download.updatedAt)}` : ''}
     </p>
     {
       download.author && (
         <p>
-          <span class="text-[--color-ink-soft]">Original author:</span> {download.author}
+          <span class="text-[var(--color-ink-soft]">Original author:</span> {download.author}
           {download.sourceUrl && (
             <>
               {' · '}
-              <a href={download.sourceUrl} rel="noopener nofollow" class="text-[--color-accent]">
+              <a href={download.sourceUrl} rel="noopener nofollow" class="text-[var(--color-accent]">
                 view source
               </a>
             </>

@@ -21,7 +21,7 @@ const { sources, title = 'Sources' } = Astro.props;
       <ul class="mt-4 space-y-2 text-sm">
         {sources.map((source) => (
           <li>
-            <a href={source.url} rel="noopener nofollow" class="text-[--color-accent]">
+            <a href={source.url} rel="noopener nofollow" class="text-[var(--color-accent]">
               {source.label}
             </a>
           </li>

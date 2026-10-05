@@ -5,7 +5,7 @@ import { json, jsonError, readBody, redirect, wantsHtml } from '../../../lib/htt
 
 export const prerender = false;
 
-/** A customer requests a different MT5 account; an admin approves it (P7). */
+/** A customer requests a different trading account; an admin approves it (P7). */
 export const POST: APIRoute = async ({ request, locals }) => {
   const session = locals.session;
   if (!session || session.subjectType !== 'customer') {
@@ -21,7 +21,6 @@ export const POST: APIRoute = async ({ request, locals }) => {
     customerId: session.subjectId,
     accountNumber,
     broker: body.broker ?? null,
-    accountType: body.accountType === 'real' ? 'real' : 'demo',
   });
   if (!result.ok) return jsonError(404, result.reason ?? 'not_found');
 

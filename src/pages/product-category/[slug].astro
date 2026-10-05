@@ -42,17 +42,17 @@ const isFallback = matched.length === 0;
   description={`${catName}: every system in this category, with its licence options, platform compatibility and a link to its independent performance record.`}
 >
   <div class="container-x py-14">
-    <nav aria-label="Breadcrumb" class="text-xs text-[--color-ink-dim]">
-      <a href="/" class="hover:text-[--color-accent]">Home</a>
+    <nav aria-label="Breadcrumb" class="text-xs text-[var(--color-ink-dim]">
+      <a href="/" class="hover:text-[var(--color-accent]">Home</a>
       <span class="mx-2">/</span>
-      <a href={url('/shop')} class="hover:text-[--color-accent]">Shop</a>
+      <a href={url('/shop')} class="hover:text-[var(--color-accent]">Shop</a>
       <span class="mx-2">/</span>
-      <span class="text-[--color-ink-soft]">{catName}</span>
+      <span class="text-[var(--color-ink-soft]">{catName}</span>
     </nav>
 
     <p class="eyebrow mt-6">{slug}</p>
     <h1 class="mt-2 text-3xl md:text-4xl">{catName}</h1>
-    <p class="mt-4 max-w-2xl text-sm leading-7 text-[--color-ink-dim]">
+    <p class="mt-4 max-w-2xl text-sm leading-7 text-[var(--color-ink-dim]">
       {isFallback
         ? `Every expert advisor in the catalogue, ${products.length} in total.`
         : `${products.length} product${products.length === 1 ? '' : 's'} in this category.`}
@@ -62,6 +62,6 @@ const isFallback = matched.length === 0;
       {products.map((product) => <ProductCard product={product} />)}
     </div>
 
-    <p class="mt-12 text-xs leading-6 text-[--color-ink-dim]">{RISK_DISCLAIMER}</p>
+    <p class="mt-12 text-xs leading-6 text-[var(--color-ink-dim]">{RISK_DISCLAIMER}</p>
   </div>
 </BaseLayout>

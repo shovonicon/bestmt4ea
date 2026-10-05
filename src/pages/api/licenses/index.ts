@@ -24,7 +24,6 @@ export const GET: APIRoute = async ({ locals }) => {
       accounts: accounts.map((account) => ({
         accountNumber: account.accountNumber,
         broker: account.broker,
-        accountType: account.accountType,
       })),
     });
   }

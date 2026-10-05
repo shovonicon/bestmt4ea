@@ -24,7 +24,7 @@ const sorted = products
   <div class="container-x py-14">
     <p class="eyebrow">The EA store</p>
     <h1 class="mt-2 text-3xl md:text-4xl">All systems</h1>
-    <p class="mt-4 max-w-2xl text-sm leading-7 text-[--color-ink-dim]">
+    <p class="mt-4 max-w-2xl text-sm leading-7 text-[var(--color-ink-dim]">
       {products.length} products, each with its licence tier, platform compatibility and a link to its independent
       performance record.
     </p>
@@ -38,6 +38,6 @@ const sorted = products
       {sorted.map(({ product }) => <ProductCard product={product} />)}
     </div>
 
-    <p class="mt-12 text-xs text-[--color-ink-dim]">{RISK_DISCLAIMER}</p>
+    <p class="mt-12 text-xs text-[var(--color-ink-dim]">{RISK_DISCLAIMER}</p>
   </div>
 </BaseLayout>

@@ -19,7 +19,7 @@ const fmt = (d: Date) =>
   <div class="container-x py-14">
     <p class="eyebrow">Learn</p>
     <h1 class="mt-2 text-3xl md:text-4xl">Forex trading blog</h1>
-    <p class="mt-4 max-w-2xl text-sm leading-7 text-[--color-ink-dim]">
+    <p class="mt-4 max-w-2xl text-sm leading-7 text-[var(--color-ink-dim]">
       Everything here is written to solve a specific problem — testing a robot properly, reading a drawdown, sizing a
       position, or spotting a system that will not survive a real account.
     </p>
@@ -34,12 +34,12 @@ const fmt = (d: Date) =>
           <article class="panel p-5">
             {post.data.categories?.[0] && <p class="eyebrow">{post.data.categories[0]}</p>}
             <h2 class="mt-2 text-base leading-snug">
-              <a href={url(`/${post.data.slug}/`)} class="hover:text-[--color-accent]">
+              <a href={url(`/${post.data.slug}/`)} class="hover:text-[var(--color-accent]">
                 {post.data.title}
               </a>
             </h2>
-            <p class="mt-2 line-clamp-3 text-sm leading-6 text-[--color-ink-dim]">{post.data.description}</p>
-            <p class="mt-4 text-xs text-[--color-ink-dim]">{fmt(post.data.updatedAt ?? post.data.publishedAt)}</p>
+            <p class="mt-2 line-clamp-3 text-sm leading-6 text-[var(--color-ink-dim]">{post.data.description}</p>
+            <p class="mt-4 text-xs text-[var(--color-ink-dim]">{fmt(post.data.updatedAt ?? post.data.publishedAt)}</p>
           </article>
         ))
       }

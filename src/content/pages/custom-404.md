@@ -35,8 +35,8 @@ United States
 +1322224332  
 +154623278
 
-info@mail.com  
-support@mail.com
+bestmt4ea@gmail.com  
+[Telegram](https://t.me/pizion)
 
 Do you have questions about how we can help your company? Send us an email and we’ll get in touch shortly.
 

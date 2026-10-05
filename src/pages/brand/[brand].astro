@@ -29,17 +29,17 @@ const products = all.filter((p) => p.data.brands.some((b) => b.toLowerCase() ===
   description={`Every MetaTrader ${label === 'MT4' ? '4' : '5'} expert advisor in our library, ranked by verified monthly return with maximum drawdown shown alongside.`}
 >
   <div class="container-x py-14">
-    <nav aria-label="Breadcrumb" class="text-xs text-[--color-ink-dim]">
-      <a href="/" class="hover:text-[--color-accent]">Home</a>
+    <nav aria-label="Breadcrumb" class="text-xs text-[var(--color-ink-dim]">
+      <a href="/" class="hover:text-[var(--color-accent]">Home</a>
       <span class="mx-2">/</span>
-      <a href={url('/shop')} class="hover:text-[--color-accent]">Shop</a>
+      <a href={url('/shop')} class="hover:text-[var(--color-accent]">Shop</a>
       <span class="mx-2">/</span>
-      <span class="text-[--color-ink-soft]">{label}</span>
+      <span class="text-[var(--color-ink-soft]">{label}</span>
     </nav>
 
     <p class="eyebrow mt-6">Platform</p>
     <h1 class="mt-2 text-3xl md:text-4xl">{label} expert advisors</h1>
-    <p class="mt-4 max-w-2xl text-sm leading-7 text-[--color-ink-dim]">
+    <p class="mt-4 max-w-2xl text-sm leading-7 text-[var(--color-ink-dim]">
       {products.length} system{products.length === 1 ? '' : 's'} built for MetaTrader {label === 'MT4' ? '4' : '5'}.
     </p>
 
@@ -48,11 +48,11 @@ const products = all.filter((p) => p.data.brands.some((b) => b.toLowerCase() ===
         products.length > 0 ? (
           <ComparisonRegistry products={products} />
         ) : (
-          <p class="text-sm text-[--color-ink-dim]">No systems listed yet.</p>
+          <p class="text-sm text-[var(--color-ink-dim]">No systems listed yet.</p>
         )
       }
     </div>
 
-    <p class="mt-6 text-xs leading-6 text-[--color-ink-dim]">{RISK_DISCLAIMER}</p>
+    <p class="mt-6 text-xs leading-6 text-[var(--color-ink-dim]">{RISK_DISCLAIMER}</p>
   </div>
 </BaseLayout>

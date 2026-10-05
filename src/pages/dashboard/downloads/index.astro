@@ -1,88 +1,163 @@
 ---
 export const prerender = false;
 
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import DashboardLayout from '../../../layouts/DashboardLayout.astro';
 import { getDb } from '../../../db/client';
-import { listCustomerBuilds, listCustomerDownloads } from '../../../server/portal';
+import { listCustomerBuilds, listCustomerDownloads, listTelegramDeliveries } from '../../../server/portal';
+import { TRIAL_ACCOUNT } from '../../../server/licenses';
 import { url } from '../../../lib/urls';
+import { TELEGRAM_FULFILMENT_HANDLE, TELEGRAM_FULFILMENT_URL } from '../../../lib/delivery';
 
+/**
+ * Everything downloadable, split by how it is delivered.
+ *
+ * A compiled build is account-bound — it only runs for the account number and
+ * expiry baked into it — so it is listed by product with the account it belongs
+ * to, not as an anonymous file. A service (the VPS) has nothing to download and
+ * is arranged over Telegram instead, and a free file needs no licence at all.
+ */
 const session = Astro.locals.session;
 if (!session || session.subjectType !== 'customer') return Astro.redirect('/login/');
 
-const downloads = await listCustomerDownloads(getDb(), session.subjectId);
-const builds = await listCustomerBuilds(getDb(), session.subjectId);
-const free = downloads.filter((d) => d.kind === 'free');
-const licensed = downloads.filter((d) => d.kind === 'licensed');
+const db = getDb();
+const [downloads, builds, telegramDeliveries] = await Promise.all([
+  listCustomerDownloads(db, session.subjectId),
+  listCustomerBuilds(db, session.subjectId),
+  listTelegramDeliveries(db, session.subjectId),
+]);
+const free = downloads.filter((download) => download.kind === 'free');
+const licensed = downloads.filter((download) => download.kind === 'licensed');
+const readyCount = builds.length + licensed.length;
 ---
 
-<BaseLayout title="My downloads" description="Your BestMT4EA downloads." noindex>
-  <section class="container-x py-16">
-    <p class="section-kicker">Dashboard</p>
-    <h1 class="mt-3 text-3xl font-bold sm:text-4xl">My downloads</h1>
+<DashboardLayout
+  active="downloads"
+  title="My downloads"
+  heading="Downloads"
+  lead="Compiled builds are built for one account number and expiry, so they are released only while that licence is active."
+>
+  <!-- Ready now -->
+  <section aria-labelledby="ready-heading">
+    <div class="flex flex-wrap items-baseline justify-between gap-3">
+      <h2 id="ready-heading" class="text-lg">Ready to download</h2>
+      <span class="metric-label">{readyCount} file{readyCount === 1 ? '' : 's'}</span>
+    </div>
 
-    <h2 class="mt-10 text-lg font-semibold">Your licensed files</h2>
-    {builds.length === 0 && licensed.length === 0 ? (
-      <p class="mt-2 text-sm text-[--color-ink-soft]">
-        Nothing here yet. A licensed EA appears once its licence is active and your build — compiled for your account
-        number and expiry — has been attached.
-      </p>
-    ) : (
-      <ul class="mt-4 flex flex-col gap-2">
-        {builds.map((b) => (
-          <li class="brand-card flex items-center justify-between gap-4 rounded-xl p-4">
-            <span>
-              <span class="font-medium">{b.productTitle}</span>
-              <span class="block text-xs text-[--color-ink-soft]">
-                Compiled for account #{b.accountNumber}
-                {b.expiresAt ? ` · licensed until ${b.expiresAt.toISOString().slice(0, 10)}` : ''}
+    {
+      readyCount === 0 ? (
+        <div class="panel mt-3 p-6">
+          <p class="text-sm leading-7 text-[var(--color-ink-soft)]">
+            Nothing here yet. A licensed EA appears once its licence is active and your build has been compiled for your
+            account; a one-off tool unlocks as soon as its payment settles.
+          </p>
+          <a href={url('/dashboard/licenses')} class="btn btn-ghost mt-5 !px-5 !py-2.5 !text-sm">
+            Check your licences
+          </a>
+        </div>
+      ) : (
+        <ul class="mt-3 flex flex-col gap-3">
+          {builds.map((build) => (
+            <li class="panel flex flex-wrap items-center justify-between gap-5 p-5">
+              <span class="min-w-0">
+                <span class="block text-sm font-semibold">{build.productTitle}</span>
+                <span class="mt-1 block text-xs text-[var(--color-ink-soft)]">
+                  {
+                    build.accountNumber === TRIAL_ACCOUNT
+                      ? 'Built for any demo account'
+                      : `Compiled for account #${build.accountNumber}`
+                  }
+                  {build.expiresAt ? ` · licensed until ${build.expiresAt.toISOString().slice(0, 10)}` : ''}
+                </span>
+                <span class="metric-value mt-1 block truncate text-xs text-[var(--color-ink-dim)]">
+                  {build.filename}
+                </span>
               </span>
-              <span class="block text-xs text-[--color-ink-dim]">{b.filename}</span>
-            </span>
-            <a
-              class="rounded-lg bg-[--color-brand] px-3 py-2 text-sm font-semibold text-black"
-              href={`/api/download/build/${b.buildId}/`}
-            >
-              Download
-            </a>
-          </li>
-        ))}
-        {licensed.map((d) => (
-          <li class="brand-card flex items-center justify-between gap-4 rounded-xl p-4">
-            <span>
-              <span class="font-medium">{d.productTitle}</span>
-              <span class="block text-xs text-[--color-ink-soft]">{d.filename}</span>
-            </span>
-            <a
-              class="rounded-lg bg-[--color-brand] px-3 py-2 text-sm font-semibold text-black"
-              href={`/api/download/${d.fileId}/`}
-            >
-              Download
-            </a>
-          </li>
-        ))}
-      </ul>
-    )}
-
-    <h2 class="mt-10 text-lg font-semibold">Free library</h2>
-    {free.length === 0 ? (
-      <p class="mt-2 text-sm text-[--color-ink-soft]">No free files available.</p>
-    ) : (
-      <ul class="mt-4 flex flex-col gap-2">
-        {free.map((d) => (
-          <li class="flex items-center justify-between gap-4 border-b border-white/5 py-3">
-            <span>
-              <span class="font-medium">{d.productTitle}</span>
-              <span class="block text-xs text-[--color-ink-soft]">{d.filename}</span>
-            </span>
-            <a class="text-sm underline" href={`/api/download/${d.fileId}/`}>Download</a>
-          </li>
-        ))}
-      </ul>
-    )}
-
-    <p class="mt-10 text-sm text-[--color-ink-soft]">
-      <a class="underline" href={url('/dashboard/licenses')}>My licenses</a> ·
-      <a class="underline" href={url('/dashboard')}>Dashboard</a>
-    </p>
+              <a href={`/api/download/build/${build.buildId}/`} class="btn btn-primary !px-5 !py-2.5 !text-sm">
+                Download build
+              </a>
+            </li>
+          ))}
+          {licensed.map((download) => (
+            <li class="panel flex flex-wrap items-center justify-between gap-5 p-5">
+              <span class="min-w-0">
+                <span class="block text-sm font-semibold">{download.productTitle}</span>
+                <span class="metric-value mt-1 block truncate text-xs text-[var(--color-ink-dim)]">
+                  {download.filename}
+                </span>
+              </span>
+              <a href={`/api/download/${download.fileId}/`} class="btn btn-primary !px-5 !py-2.5 !text-sm">
+                Download
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
   </section>
-</BaseLayout>
+
+  <!-- Set up by hand -->
+  {
+    telegramDeliveries.length > 0 && (
+      <section class="mt-10" aria-labelledby="telegram-heading">
+        <h2 id="telegram-heading" class="text-lg">Delivered over Telegram</h2>
+        <p class="mt-2 max-w-2xl text-sm leading-7 text-[var(--color-ink-soft)]">
+          These are set up by hand, so your server credentials are sent over Telegram rather than served from this page.
+        </p>
+        <ul class="mt-3 flex flex-col gap-3">
+          {telegramDeliveries.map((delivery) => (
+            <li class="brand-card flex flex-wrap items-center justify-between gap-5 p-5">
+              <span class="min-w-0">
+                <span class="block text-sm font-semibold">{delivery.productTitle}</span>
+                <span class="mt-1 block text-xs text-[var(--color-ink-soft)]">
+                  Message {TELEGRAM_FULFILMENT_HANDLE} with your order number and we will arrange it.
+                </span>
+              </span>
+              <a
+                href={TELEGRAM_FULFILMENT_URL}
+                rel="noopener"
+                class="btn btn-primary !px-5 !py-2.5 !text-sm"
+              >
+                Message {TELEGRAM_FULFILMENT_HANDLE}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <!-- Free library -->
+  <section class="mt-10" aria-labelledby="free-heading">
+    <div class="flex flex-wrap items-baseline justify-between gap-3">
+      <h2 id="free-heading" class="text-lg">Free library</h2>
+      <span class="metric-label">{free.length} file{free.length === 1 ? '' : 's'}</span>
+    </div>
+    {
+      free.length === 0 ? (
+        <p class="mt-3 text-sm leading-7 text-[var(--color-ink-soft)]">
+          No free files on your account yet.{' '}
+          <a class="underline" href={url('/shop')}>
+            Browse the library
+          </a>{' '}
+          to add some.
+        </p>
+      ) : (
+        <ul class="mt-3 divide-y divide-white/5 border-y border-white/5">
+          {free.map((download) => (
+            <li class="flex flex-wrap items-center justify-between gap-4 py-3.5">
+              <span class="min-w-0">
+                <span class="block text-sm">{download.productTitle}</span>
+                <span class="metric-value mt-1 block truncate text-xs text-[var(--color-ink-dim)]">
+                  {download.filename}
+                </span>
+              </span>
+              <a href={`/api/download/${download.fileId}/`} class="text-sm font-semibold text-emerald-300 hover:text-emerald-200">
+                Download
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+</DashboardLayout>

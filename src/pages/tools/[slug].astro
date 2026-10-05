@@ -63,7 +63,7 @@ const showRails = Boolean(import.meta.env.PUBLIC_ADSENSE_CLIENT);
     <div class="mx-auto max-w-4xl">
       <a
         href={url('/tools')}
-        class="group inline-flex items-center gap-2 text-sm text-[--color-ink-dim] transition-colors hover:text-[--color-ink]"
+        class="group inline-flex items-center gap-2 text-sm text-[var(--color-ink-dim] transition-colors hover:text-[var(--color-ink]"
       >
         <svg
           viewBox="0 0 24 24"
@@ -83,8 +83,8 @@ const showRails = Boolean(import.meta.env.PUBLIC_ADSENSE_CLIENT);
         <span class="eyebrow">
           {tool.category === 'live-data' ? 'Live market data' : 'Trading calculator'}
         </span>
-        <h1 class="mt-3 text-3xl font-bold text-[--color-ink] sm:text-4xl">{tool.name}</h1>
-        <p class="mt-3 max-w-2xl text-sm leading-7 text-[--color-ink-dim]">{tool.description}</p>
+        <h1 class="mt-3 text-3xl font-bold text-[var(--color-ink] sm:text-4xl">{tool.name}</h1>
+        <p class="mt-3 max-w-2xl text-sm leading-7 text-[var(--color-ink-dim]">{tool.description}</p>
       </div>
 
       <div class="panel mt-8 p-6 sm:p-8">
@@ -103,7 +103,7 @@ const showRails = Boolean(import.meta.env.PUBLIC_ADSENSE_CLIENT);
       </div>
 
       <div class="mt-12">
-        <h2 class="text-xl font-bold text-[--color-ink]">More tools</h2>
+        <h2 class="text-xl font-bold text-[var(--color-ink]">More tools</h2>
         <div class="mt-4 grid gap-4 sm:grid-cols-3">
           {
             others.map((entry) => (
@@ -111,7 +111,7 @@ const showRails = Boolean(import.meta.env.PUBLIC_ADSENSE_CLIENT);
                 href={url(`/tools/${entry.slug}`)}
                 class="rounded-xl border border-white/10 bg-white/[0.02] p-4 transition-all hover:border-emerald-400/20 hover:bg-white/[0.04]"
               >
-                <h3 class="text-sm font-bold text-[--color-ink]">{entry.shortName}</h3>
+                <h3 class="text-sm font-bold text-[var(--color-ink]">{entry.shortName}</h3>
                 <p class="mt-1 line-clamp-2 text-xs text-slate-500">{entry.description}</p>
               </a>
             ))

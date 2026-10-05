@@ -67,16 +67,11 @@ const jsonLdBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     <link rel="preload" href="/fonts/manrope-400-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/sora-700-latin.woff2" as="font" type="font/woff2" crossorigin />
 
-    {
-      site.adsenseClient && (
-        <script
-          is:inline
-          async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${site.adsenseClient}`}
-          crossorigin="anonymous"
-        />
-      )
-    }
+    <!--
+      AdSense is loaded by AdSlot itself, on the first unit that actually renders.
+      Loading it here meant every page — the homepage, product pages, the dashboard —
+      pulled ~180 KB of JavaScript for ads that were never shown.
+    -->
 
     {
       jsonLdBlocks.map((block) => (

@@ -1,58 +1,185 @@
 ---
 export const prerender = false;
 
-import { eq } from 'drizzle-orm';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import DashboardLayout from '../../layouts/DashboardLayout.astro';
 import { getDb } from '../../db/client';
-import { customers } from '../../db/schema';
 import { listLicensesForCustomer } from '../../server/licenses';
-import { listCustomerDownloads, listOrdersForCustomer } from '../../server/portal';
+import { listCustomerBuilds, listCustomerDownloads, listOrdersForCustomer } from '../../server/portal';
+import { formatUsd } from '../../lib/money';
 import { url } from '../../lib/urls';
 
+/**
+ * Account overview.
+ *
+ * The job of this page is to answer "what do I do now" in one line, then show
+ * the state that backs it up. Counts alone are not a dashboard: every licence
+ * trickles through pending → active → compiled → downloaded, and only one of
+ * those steps is ever waiting on the customer.
+ */
 const session = Astro.locals.session;
 if (!session || session.subjectType !== 'customer') return Astro.redirect('/login/');
 
 const db = getDb();
-const customer = await db.select().from(customers).where(eq(customers.id, session.subjectId)).get();
-const [licenses, downloads, orders] = await Promise.all([
+const [licenses, downloads, builds, orders] = await Promise.all([
   listLicensesForCustomer(db, session.subjectId),
   listCustomerDownloads(db, session.subjectId),
+  listCustomerBuilds(db, session.subjectId),
   listOrdersForCustomer(db, session.subjectId),
 ]);
 
-const cards = [
-  { label: 'Licenses', value: licenses.length, href: url('/dashboard/licenses') },
-  { label: 'Downloads', value: downloads.length, href: url('/dashboard/downloads') },
-  { label: 'Orders', value: orders.length, href: url('/dashboard/orders') },
+const activeLicenses = licenses.filter((license) => license.status === 'ACTIVE');
+const pendingLicenses = licenses.filter((license) => license.status === 'PENDING');
+const readyFiles = builds.length + downloads.filter((download) => download.kind === 'licensed').length;
+
+/** One next action, chosen in this order: activate, download, then shop. */
+const nextStep = pendingLicenses.length
+  ? {
+      title: 'Activate your licence',
+      body: `Bind ${pendingLicenses[0].licenseKey} to the MT4/MT5 account you will trade on. Your build is queued for compilation as soon as you do.`,
+      href: url('/dashboard/licenses'),
+      cta: 'Activate licence',
+    }
+  : readyFiles > 0
+    ? {
+        title: 'Download your build',
+        body: 'Your compiled file is ready. It runs only on the account number it was built for, so keep that account open.',
+        href: url('/dashboard/downloads'),
+        cta: 'Open downloads',
+      }
+    : {
+        title: 'Choose your first system',
+        body: 'Every purchase lands in this dashboard with its licence, its setup guide and its downloads.',
+        href: url('/shop'),
+        cta: 'Browse the library',
+      };
+
+const stats = [
+  { label: 'Licences', value: String(licenses.length) },
+  { label: 'Active now', value: String(activeLicenses.length) },
+  { label: 'Downloads ready', value: String(readyFiles) },
+  { label: 'Orders', value: String(orders.length) },
 ];
+
+const recentOrders = orders.slice(0, 3);
+const statusTone = (status: string) =>
+  status === 'paid'
+    ? 'text-emerald-300'
+    : status === 'pending'
+      ? 'text-amber-300'
+      : status === 'failed' || status === 'cancelled'
+        ? 'text-red-300'
+        : 'text-slate-300';
 ---
 
-<BaseLayout title="Dashboard" description="Your BestMT4EA account." noindex>
-  <section class="container-x py-16">
-    <p class="section-kicker">Dashboard</p>
-    <h1 class="mt-3 text-3xl font-bold sm:text-4xl">
-      Welcome{customer?.name ? `, ${customer.name}` : ''}
-    </h1>
-    <p class="mt-3 text-base text-[--color-ink-soft]">
-      Signed in as {customer?.email ?? 'your account'}.
-    </p>
-
-    <div class="mt-10 grid gap-4 sm:grid-cols-3">
-      {cards.map((card) => (
-        <a href={card.href} class="brand-card rounded-2xl p-5">
-          <p class="text-3xl font-bold">{card.value}</p>
-          <p class="mt-1 text-sm text-[--color-ink-soft]">{card.label}</p>
-        </a>
-      ))}
+<DashboardLayout
+  active="overview"
+  title="Dashboard"
+  heading="Your account"
+  lead="Licences, compiled builds and receipts for everything you have bought."
+>
+  <div class="animate-fade-in-up">
+    <div class="stats-panel">
+      {
+        stats.map((stat) => (
+          <div class="stats-panel-item">
+            <p class="metric-value text-3xl">{stat.value}</p>
+            <p class="metric-label mt-1">{stat.label}</p>
+          </div>
+        ))
+      }
     </div>
 
-    <nav class="mt-10 flex flex-wrap gap-3 text-sm">
-      <a class="rounded-lg border border-white/10 px-3 py-2" href={url('/dashboard/licenses')}>My licenses</a>
-      <a class="rounded-lg border border-white/10 px-3 py-2" href={url('/dashboard/downloads')}>Downloads</a>
-      <a class="rounded-lg border border-white/10 px-3 py-2" href={url('/dashboard/orders')}>Orders</a>
-      <a class="rounded-lg border border-white/10 px-3 py-2" href={url('/dashboard/account')}>Account</a>
-      <a class="rounded-lg border border-white/10 px-3 py-2" href={url('/dashboard/support')}>Support</a>
-      <a class="rounded-lg border border-white/10 px-3 py-2" href="/logout/">Sign out</a>
-    </nav>
-  </section>
-</BaseLayout>
+    <div class="mt-8 grid gap-5 lg:grid-cols-[1.15fr_1fr]">
+      <!-- The next action -->
+      <div class="brand-card p-6 sm:p-7">
+        <p class="eyebrow">Next step</p>
+        <h2 class="mt-3 text-xl">{nextStep.title}</h2>
+        <p class="mt-3 text-sm leading-7 text-[var(--color-ink-soft)]">{nextStep.body}</p>
+        <a href={nextStep.href} class="btn btn-primary mt-6 !text-sm">{nextStep.cta}</a>
+      </div>
+
+      <!-- Licence state, compact -->
+      <div class="panel p-6 sm:p-7">
+        <div class="flex items-baseline justify-between gap-4">
+          <h2 class="text-lg">Licences</h2>
+          <a href={url('/dashboard/licenses')} class="text-xs font-semibold text-emerald-300 hover:text-emerald-200">
+            Manage
+          </a>
+        </div>
+        {
+          licenses.length === 0 ? (
+            <p class="mt-4 text-sm leading-7 text-[var(--color-ink-soft)]">
+              No licences yet. A licence appears here the moment a purchase settles.
+            </p>
+          ) : (
+            <ul class="mt-4 divide-y divide-white/5">
+              {licenses.slice(0, 3).map((license) => (
+                <li class="flex items-center justify-between gap-4 py-3 first:pt-0">
+                  <span class="min-w-0">
+                    <span class="metric-value block text-sm">{license.licenseKey}</span>
+                    <span class="mt-1 block text-xs text-[var(--color-ink-dim)]">
+                      {license.expiresAt ? `Runs to ${license.expiresAt.toISOString().slice(0, 10)}` : 'Lifetime'}
+                    </span>
+                  </span>
+                  <span
+                    class:list={[
+                      'shrink-0 text-xs font-semibold',
+                      license.status === 'ACTIVE'
+                        ? 'text-emerald-300'
+                        : license.status === 'REVOKED' || license.status === 'SUSPENDED'
+                          ? 'text-red-300'
+                          : 'text-amber-300',
+                    ]}
+                  >
+                    {license.status}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+    </div>
+
+    <!-- Receipts -->
+    <div class="mt-8">
+      <div class="flex items-baseline justify-between gap-4">
+        <h2 class="text-lg">Recent orders</h2>
+        <a href={url('/dashboard/orders')} class="text-xs font-semibold text-emerald-300 hover:text-emerald-200">
+          All orders
+        </a>
+      </div>
+      {
+        recentOrders.length === 0 ? (
+          <p class="mt-3 text-sm leading-7 text-[var(--color-ink-soft)]">
+            Nothing bought yet. <a class="underline" href={url('/shop')}>Browse the shop</a> to get started.
+          </p>
+        ) : (
+          <div class="table-shell mt-3">
+            <table class="data-table">
+              <caption class="sr-only">Your three most recent orders</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Order</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Status</th>
+                  <th scope="col" class="text-right">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {recentOrders.map((order) => (
+                  <tr>
+                    <td class="metric-value text-xs">{order.orderNumber}</td>
+                    <td class="text-[var(--color-ink-soft)]">{order.createdAt.toISOString().slice(0, 10)}</td>
+                    <td class:list={['text-xs font-semibold', statusTone(order.status)]}>{order.status}</td>
+                    <td class="metric-value text-right">{formatUsd(order.totalCents)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</DashboardLayout>

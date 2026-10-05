@@ -50,28 +50,28 @@ if (!affiliate) return null;
     }
   </span>
 
-  <h3 class="mt-4 text-lg font-bold text-[--color-ink]">{affiliate.label}</h3>
+  <h3 class="mt-4 text-lg font-bold text-[var(--color-ink]">{affiliate.label}</h3>
 
   <dl class="mt-4 flex-1 space-y-2 text-sm">
     <div class="flex justify-between gap-3">
-      <dt class="text-[--color-ink-dim]">Min deposit</dt>
-      <dd class="metric-value text-[--color-ink]">{broker.minDeposit}</dd>
+      <dt class="text-[var(--color-ink-dim]">Min deposit</dt>
+      <dd class="metric-value text-[var(--color-ink]">{broker.minDeposit}</dd>
     </div>
     <div class="flex justify-between gap-3">
-      <dt class="text-[--color-ink-dim]">Regulation</dt>
-      <dd class="text-right font-medium text-[--color-ink]">{broker.regulation}</dd>
+      <dt class="text-[var(--color-ink-dim]">Regulation</dt>
+      <dd class="text-right font-medium text-[var(--color-ink]">{broker.regulation}</dd>
     </div>
     <div class="flex justify-between gap-3">
-      <dt class="text-[--color-ink-dim]">Platforms</dt>
-      <dd class="text-right font-medium text-[--color-ink]">{broker.platforms}</dd>
+      <dt class="text-[var(--color-ink-dim]">Platforms</dt>
+      <dd class="text-right font-medium text-[var(--color-ink]">{broker.platforms}</dd>
     </div>
   </dl>
 
   {
     broker.offer && (
-      <p class="mt-4 rounded-lg border border-[--color-accent]/25 bg-[--color-accent]/[0.06] px-3 py-2 text-xs leading-5 text-[--color-ink-soft]">
+      <p class="mt-4 rounded-lg border border-[var(--color-accent]/25 bg-[var(--color-accent]/[0.06] px-3 py-2 text-xs leading-5 text-[var(--color-ink-soft]">
         <span class="metric-label">Offer</span>{' · '}
-        <span class="font-semibold text-[--color-accent-soft]">{broker.offer}</span>
+        <span class="font-semibold text-[var(--color-accent-soft]">{broker.offer}</span>
       </p>
     )
   }

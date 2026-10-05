@@ -49,7 +49,6 @@ export const POST: APIRoute = async ({ request, locals }) => {
         licenseId,
         accountNumber: pending.accountNumber,
         broker: pending.broker,
-        accountType: pending.accountType,
         actorId: session.subjectId,
       });
   }

@@ -113,10 +113,10 @@ const headline = [
   {
     label: 'Total gain',
     value: gain != null ? formatSignedPercent(gain) : '—',
-    tone: gain != null && gain < 0 ? 'text-[--color-danger]' : 'text-[--color-accent]',
+    tone: gain != null && gain < 0 ? 'text-[var(--color-danger]' : 'text-[var(--color-accent]',
   },
-  { label: 'Max drawdown', value: drawdown != null ? `${drawdown}%` : '—', tone: 'text-[--color-danger]' },
-  { label: 'Profit factor', value: profitFactor != null ? String(profitFactor) : '—', tone: 'text-[--color-ink]' },
+  { label: 'Max drawdown', value: drawdown != null ? `${drawdown}%` : '—', tone: 'text-[var(--color-danger]' },
+  { label: 'Profit factor', value: profitFactor != null ? String(profitFactor) : '—', tone: 'text-[var(--color-ink]' },
   {
     label: live?.winRatePct != null ? 'Win rate' : 'Trades',
     value:
@@ -125,7 +125,7 @@ const headline = [
         : perf?.totalTrades != null
           ? String(perf.totalTrades)
           : '—',
-    tone: 'text-[--color-ink]',
+    tone: 'text-[var(--color-ink]',
   },
 ];
 
@@ -409,17 +409,17 @@ const faqs = [
 >
   {/* ---------------------------------------------------------------- HERO */}
   <header class="relative overflow-hidden">
-    <div class="glow-orb left-[-6rem] top-[-8rem] h-[26rem] w-[26rem] bg-[--color-accent]/25" aria-hidden="true"></div>
-    <div class="glow-orb right-[-4rem] top-[2rem] h-[20rem] w-[20rem] bg-[--color-info]/15" aria-hidden="true"></div>
+    <div class="glow-orb left-[-6rem] top-[-8rem] h-[26rem] w-[26rem] bg-[var(--color-accent]/25" aria-hidden="true"></div>
+    <div class="glow-orb right-[-4rem] top-[2rem] h-[20rem] w-[20rem] bg-[var(--color-info]/15" aria-hidden="true"></div>
     <div class="grid-overlay absolute inset-0" aria-hidden="true"></div>
 
     <div class="container-x relative pb-12 pt-8">
-      <nav aria-label="Breadcrumb" class="text-xs text-[--color-ink-dim]">
-        <a href="/" class="hover:text-[--color-accent]">Home</a>
+      <nav aria-label="Breadcrumb" class="text-xs text-[var(--color-ink-dim]">
+        <a href="/" class="hover:text-[var(--color-accent]">Home</a>
         <span class="mx-2">/</span>
-        <a href={url('/shop')} class="hover:text-[--color-accent]">Shop</a>
+        <a href={url('/shop')} class="hover:text-[var(--color-accent]">Shop</a>
         <span class="mx-2">/</span>
-        <span class="text-[--color-ink-soft]">{product.data.title}</span>
+        <span class="text-[var(--color-ink-soft]">{product.data.title}</span>
       </nav>
 
       <div class="mt-8 grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_25rem]">
@@ -440,12 +440,12 @@ const faqs = [
             }
           </h1>
 
-          <p class="mt-5 max-w-2xl text-base leading-7 text-[--color-ink-soft] sm:text-lg">
+          <p class="mt-5 max-w-2xl text-base leading-7 text-[var(--color-ink-soft] sm:text-lg">
             {spec.tagline ?? product.data.description}
           </p>
 
           <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
-            <span class="inline-flex items-center gap-2 text-[--color-ink-dim]">
+            <span class="inline-flex items-center gap-2 text-[var(--color-ink-dim]">
               <span class="live-dot" aria-hidden="true"></span>
               {siteStats.customers} customers · {systems} systems
             </span>
@@ -484,23 +484,23 @@ const faqs = [
             }
           </div>
 
-          <ul class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs text-[--color-ink-dim]">
+          <ul class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs text-[var(--color-ink-dim]">
             {
               spec.guarantee && (
                 <li class="inline-flex items-center gap-1.5">
-                  <span class="text-[--color-accent]" aria-hidden="true">🔒</span>
+                  <span class="text-[var(--color-accent]" aria-hidden="true">🔒</span>
                   {spec.guarantee.label}
                 </li>
               )
             }
             <li class="inline-flex items-center gap-1.5">
-              <span class="text-[--color-accent]" aria-hidden="true">⚡</span>
+              <span class="text-[var(--color-accent]" aria-hidden="true">⚡</span>
               Delivered to your dashboard after checkout
             </li>
             {
               spec.included?.includes('Free lifetime updates') && (
                 <li class="inline-flex items-center gap-1.5">
-                  <span class="text-[--color-accent]" aria-hidden="true">♻</span>
+                  <span class="text-[var(--color-accent]" aria-hidden="true">♻</span>
                   Free lifetime updates
                 </li>
               )
@@ -525,7 +525,7 @@ const faqs = [
                 </a>
               ))
             }
-            <a href="#partners-heading" class="text-xs text-[--color-ink-dim] underline decoration-dotted">
+            <a href="#partners-heading" class="text-xs text-[var(--color-ink-dim] underline decoration-dotted">
               Sponsored
             </a>
           </div>
@@ -543,14 +543,14 @@ const faqs = [
                   width="800"
                   height="800"
                 />
-                <span class="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full border border-[--color-accent]/40 bg-black/70 px-3 py-1.5 text-xs font-semibold text-[--color-accent-soft] backdrop-blur">
+                <span class="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full border border-[var(--color-accent]/40 bg-black/70 px-3 py-1.5 text-xs font-semibold text-[var(--color-accent-soft] backdrop-blur">
                   <span class="live-dot" aria-hidden="true"></span>
                   {hasLive ? 'Live' : 'Verified'} · {platform}
                 </span>
                 {gain != null && (
-                  <div class="absolute bottom-5 left-5 rounded-2xl border border-[--color-accent]/30 bg-black/80 px-4 py-3 backdrop-blur">
+                  <div class="absolute bottom-5 left-5 rounded-2xl border border-[var(--color-accent]/30 bg-black/80 px-4 py-3 backdrop-blur">
                     <p class="metric-label">Total gain</p>
-                    <p class="display-stat mt-1 text-3xl text-[--color-accent]">
+                    <p class="display-stat mt-1 text-3xl text-[var(--color-accent]">
                       <CountUp value={formatSignedPercent(gain)} />
                     </p>
                   </div>
@@ -575,7 +575,7 @@ const faqs = [
                 </div>
               ))}
             </div>
-            <p class="mt-3 text-center text-xs text-[--color-ink-dim]">
+            <p class="mt-3 text-center text-xs text-[var(--color-ink-dim]">
               {syncedLabel}
               {isDemo ? ' · tracked account holds demo funds' : ''}
             </p>
@@ -684,7 +684,7 @@ const faqs = [
                 ))}
               </dl>
               {spec.verification.backtest?.note && (
-                <p class="mt-4 max-w-3xl text-sm leading-7 text-[--color-ink-soft]">
+                <p class="mt-4 max-w-3xl text-sm leading-7 text-[var(--color-ink-soft]">
                   {spec.verification.backtest.note}
                 </p>
               )}
@@ -708,7 +708,7 @@ const faqs = [
                     ))}
                   </dl>
                   {spec.verification.live?.note && (
-                    <p class="mt-4 max-w-3xl text-sm leading-7 text-[--color-ink-soft]">{spec.verification.live.note}</p>
+                    <p class="mt-4 max-w-3xl text-sm leading-7 text-[var(--color-ink-soft]">{spec.verification.live.note}</p>
                   )}
                 </div>
               )
@@ -721,7 +721,7 @@ const faqs = [
               aria-labelledby="tab-report"
               hidden={firstVerifyTab !== 'report'}
             >
-              <p class="max-w-3xl text-sm leading-7 text-[--color-ink-soft]">{spec.verification.report}</p>
+              <p class="max-w-3xl text-sm leading-7 text-[var(--color-ink-soft]">{spec.verification.report}</p>
             </div>
           </section>
         )
@@ -756,7 +756,7 @@ const faqs = [
                   </span>
                   <dl class="mt-4">
                     <dt class="metric-label">{setting.label}</dt>
-                    <dd class="mt-1 font-semibold text-[--color-ink]">{setting.value}</dd>
+                    <dd class="mt-1 font-semibold text-[var(--color-ink]">{setting.value}</dd>
                   </dl>
                 </div>
               ))}
@@ -778,7 +778,7 @@ const faqs = [
             <div class="mt-6 grid gap-5 lg:grid-cols-2">
               {spec.pros && spec.pros.length > 0 && (
                 <div class="brand-card p-6">
-                  <p class="inline-flex items-center gap-2 font-semibold text-[--color-accent]">
+                  <p class="inline-flex items-center gap-2 font-semibold text-[var(--color-accent]">
                     <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
                       <path d="M20 6 9 17l-5-5" />
                     </svg>
@@ -786,8 +786,8 @@ const faqs = [
                   </p>
                   <ul class="mt-4 space-y-3">
                     {spec.pros.map((item) => (
-                      <li class="flex gap-3 text-sm leading-6 text-[--color-ink-soft]">
-                        <span class="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[--color-accent]" aria-hidden="true" />
+                      <li class="flex gap-3 text-sm leading-6 text-[var(--color-ink-soft]">
+                        <span class="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-accent]" aria-hidden="true" />
                         {item}
                       </li>
                     ))}
@@ -796,7 +796,7 @@ const faqs = [
               )}
               {spec.cons && spec.cons.length > 0 && (
                 <div class="panel p-6">
-                  <p class="inline-flex items-center gap-2 font-semibold text-[--color-warn]">
+                  <p class="inline-flex items-center gap-2 font-semibold text-[var(--color-warn]">
                     <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
                       <path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z" />
                     </svg>
@@ -804,8 +804,8 @@ const faqs = [
                   </p>
                   <ul class="mt-4 space-y-3">
                     {spec.cons.map((item) => (
-                      <li class="flex gap-3 text-sm leading-6 text-[--color-ink-soft]">
-                        <span class="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[--color-warn]" aria-hidden="true" />
+                      <li class="flex gap-3 text-sm leading-6 text-[var(--color-ink-soft]">
+                        <span class="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-warn]" aria-hidden="true" />
                         {item}
                       </li>
                     ))}
@@ -839,9 +839,9 @@ const faqs = [
                 <tbody>
                   {parameters.map((param) => (
                     <tr>
-                      <th scope="row" class="font-mono text-[--color-accent-soft]">{param.variable}</th>
+                      <th scope="row" class="font-mono text-[var(--color-accent-soft]">{param.variable}</th>
                       <td class="metric-value">{param.value}</td>
-                      <td class="text-[--color-ink-soft]">{param.description}</td>
+                      <td class="text-[var(--color-ink-soft]">{param.description}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -874,9 +874,9 @@ const faqs = [
                         <path d={featureIcons[index % featureIcons.length]} />
                       </svg>
                     </span>
-                    <span class="metric-value text-sm text-[--color-ink-dim]">{String(index + 1).padStart(2, '0')}</span>
+                    <span class="metric-value text-sm text-[var(--color-ink-dim]">{String(index + 1).padStart(2, '0')}</span>
                   </div>
-                  <p class="mt-4 text-sm leading-6 text-[--color-ink-soft]">{item}</p>
+                  <p class="mt-4 text-sm leading-6 text-[var(--color-ink-soft]">{item}</p>
                 </div>
               ))}
             </div>
@@ -896,22 +896,22 @@ const faqs = [
             />
             <div class="mt-6 grid gap-5 lg:grid-cols-2">
               <div class="brand-card p-6">
-                <p class="font-semibold text-[--color-accent]">Good fit</p>
+                <p class="font-semibold text-[var(--color-accent]">Good fit</p>
                 <ul class="mt-4 space-y-3">
                   {spec.fit.good.map((item) => (
-                    <li class="flex gap-3 text-sm leading-6 text-[--color-ink-soft]">
-                      <span class="mt-0.5 text-[--color-accent]" aria-hidden="true">✓</span>
+                    <li class="flex gap-3 text-sm leading-6 text-[var(--color-ink-soft]">
+                      <span class="mt-0.5 text-[var(--color-accent]" aria-hidden="true">✓</span>
                       {item}
                     </li>
                   ))}
                 </ul>
               </div>
               <div class="panel p-6">
-                <p class="font-semibold text-[--color-danger]">Not a fit</p>
+                <p class="font-semibold text-[var(--color-danger]">Not a fit</p>
                 <ul class="mt-4 space-y-3">
                   {spec.fit.notFit.map((item) => (
-                    <li class="flex gap-3 text-sm leading-6 text-[--color-ink-soft]">
-                      <span class="mt-0.5 text-[--color-danger]" aria-hidden="true">✕</span>
+                    <li class="flex gap-3 text-sm leading-6 text-[var(--color-ink-soft]">
+                      <span class="mt-0.5 text-[var(--color-danger]" aria-hidden="true">✕</span>
                       {item}
                     </li>
                   ))}
@@ -936,12 +936,12 @@ const faqs = [
                   <ol class="mt-6 space-y-5">
                     {spec.installation.map((step, index) => (
                       <li class="flex gap-4">
-                        <span class="metric-value flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-[--color-accent]/35 bg-[--color-accent]/10 text-sm text-[--color-accent-soft]">
+                        <span class="metric-value flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-[var(--color-accent]/35 bg-[var(--color-accent]/10 text-sm text-[var(--color-accent-soft]">
                           {String(index + 1).padStart(2, '0')}
                         </span>
                         <div>
-                          <p class="font-semibold text-[--color-ink]">{step.step}</p>
-                          <p class="mt-1 text-sm leading-6 text-[--color-ink-soft]">{step.text}</p>
+                          <p class="font-semibold text-[var(--color-ink]">{step.step}</p>
+                          <p class="mt-1 text-sm leading-6 text-[var(--color-ink-soft]">{step.text}</p>
                         </div>
                       </li>
                     ))}
@@ -953,10 +953,10 @@ const faqs = [
                   <p class="section-mark eyebrow"><span>What's included</span></p>
                   <ul class="mt-5 space-y-3">
                     {spec.included.map((item) => (
-                      <li class="flex gap-3 text-sm leading-6 text-[--color-ink-soft]">
+                      <li class="flex gap-3 text-sm leading-6 text-[var(--color-ink-soft]">
                         <svg
                           viewBox="0 0 24 24"
-                          class="mt-0.5 h-5 w-5 flex-shrink-0 text-[--color-accent]"
+                          class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--color-accent]"
                           fill="none"
                           stroke="currentColor"
                           stroke-width="2"
@@ -970,7 +970,7 @@ const faqs = [
                     ))}
                   </ul>
                   {spec.guarantee && (
-                    <p class="mt-5 border-t border-[--color-line-soft] pt-4 text-xs leading-6 text-[--color-ink-dim]">
+                    <p class="mt-5 border-t border-[var(--color-line-soft] pt-4 text-xs leading-6 text-[var(--color-ink-dim]">
                       {spec.guarantee.text}
                     </p>
                   )}
@@ -1000,8 +1000,8 @@ const faqs = [
                   {spec.comparison.rows.map((row) => (
                     <tr>
                       <th scope="row">{row[0]}</th>
-                      <td class="text-[--color-accent]">{row[1]}</td>
-                      <td class="text-[--color-ink-dim]">{row[2]}</td>
+                      <td class="text-[var(--color-accent]">{row[1]}</td>
+                      <td class="text-[var(--color-ink-dim]">{row[2]}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -1037,21 +1037,21 @@ const faqs = [
                     {plan.badge && (
                       <span class:list={['badge absolute -top-3 left-6', featured && 'badge-accent']}>{plan.badge}</span>
                     )}
-                    <p class="font-heading text-lg font-bold text-[--color-ink]">{plan.name}</p>
+                    <p class="font-heading text-lg font-bold text-[var(--color-ink]">{plan.name}</p>
                     {plan.term && (
-                      <p class="mt-1 text-xs uppercase tracking-[0.16em] text-[--color-ink-dim]">{plan.term}</p>
+                      <p class="mt-1 text-xs uppercase tracking-[0.16em] text-[var(--color-ink-dim]">{plan.term}</p>
                     )}
                     <p class="mt-5 flex items-end gap-2">
-                      <span class="display-stat text-4xl text-[--color-ink]">
+                      <span class="display-stat text-4xl text-[var(--color-ink]">
                         {plan.price > 0 ? formatMoney(plan.price, currency) : 'Free'}
                       </span>
                       {save > 0 && <span class="strike text-sm">{formatMoney(plan.compareAt ?? 0, currency)}</span>}
                     </p>
-                    {save > 0 && <p class="mt-1 text-xs font-semibold text-[--color-accent]">Save {save}% today</p>}
-                    <ul class="mt-5 flex-1 space-y-2.5 border-t border-[--color-line-soft] pt-5">
+                    {save > 0 && <p class="mt-1 text-xs font-semibold text-[var(--color-accent]">Save {save}% today</p>}
+                    <ul class="mt-5 flex-1 space-y-2.5 border-t border-[var(--color-line-soft] pt-5">
                       {plan.features?.map((feature) => (
-                        <li class="flex gap-2.5 text-sm leading-6 text-[--color-ink-soft]">
-                          <span class="mt-0.5 text-[--color-accent]" aria-hidden="true">✓</span>
+                        <li class="flex gap-2.5 text-sm leading-6 text-[var(--color-ink-soft]">
+                          <span class="mt-0.5 text-[var(--color-accent]" aria-hidden="true">✓</span>
                           {feature}
                         </li>
                       ))}
@@ -1067,7 +1067,7 @@ const faqs = [
                 );
               })}
             </div>
-            <p class="mt-4 text-xs text-[--color-ink-dim]">
+            <p class="mt-4 text-xs text-[var(--color-ink-dim]">
               Prices in {currency}. Checkout and licensing are handled on your {site.name} account.
             </p>
           </section>
@@ -1096,7 +1096,7 @@ const faqs = [
               </span>
               <div class="min-w-[16rem] flex-1">
                 <h2 class="text-xl">{spec.guarantee.label}</h2>
-                <p class="mt-1.5 text-sm leading-6 text-[--color-ink-soft]">{spec.guarantee.text}</p>
+                <p class="mt-1.5 text-sm leading-6 text-[var(--color-ink-soft]">{spec.guarantee.text}</p>
               </div>
               <a href="#acquire" class="btn btn-primary">Start with confidence</a>
             </div>
@@ -1124,8 +1124,8 @@ const faqs = [
                     {'★'.repeat(review.rating)}
                     {'☆'.repeat(Math.max(0, 5 - review.rating))}
                   </p>
-                  <blockquote class="mt-2 text-sm leading-6 text-[--color-ink-soft]">{review.body}</blockquote>
-                  <figcaption class="mt-3 text-xs text-[--color-ink-dim]">
+                  <blockquote class="mt-2 text-sm leading-6 text-[var(--color-ink-soft]">{review.body}</blockquote>
+                  <figcaption class="mt-3 text-xs text-[var(--color-ink-dim]">
                     {review.name} · {formatDate(new Date(review.createdAt))}
                   </figcaption>
                 </figure>
@@ -1155,10 +1155,10 @@ const faqs = [
                   )}
                 </span>
                 <span class="flex w-full flex-wrap items-center justify-between gap-2">
-                  <span class="text-lg font-bold text-[--color-ink]">{partner.label}</span>
+                  <span class="text-lg font-bold text-[var(--color-ink]">{partner.label}</span>
                   <span class="partner-chip">Recommended</span>
                 </span>
-                <span class="block text-sm leading-6 text-[--color-ink-dim]">{partner.note}</span>
+                <span class="block text-sm leading-6 text-[var(--color-ink-dim]">{partner.note}</span>
                 <span class="partner-arrow" aria-hidden="true">
                   Visit site →
                 </span>
@@ -1166,7 +1166,7 @@ const faqs = [
             ))
           }
         </div>
-        <p class="mt-4 text-xs leading-6 text-[--color-ink-dim]">{AFFILIATE_DISCLOSURE}</p>
+        <p class="mt-4 text-xs leading-6 text-[var(--color-ink-dim]">{AFFILIATE_DISCLOSURE}</p>
       </section>
 
       {/* --------------------------------------------------- RECOMMENDED VPS */}
@@ -1188,7 +1188,7 @@ const faqs = [
                   <span>Recommended VPS</span>
                 </p>
                 <h2 id="vps-heading" class="mt-3 text-2xl">{vps.data.title}</h2>
-                <p class="mt-3 text-sm leading-6 text-[--color-ink-soft]">
+                <p class="mt-3 text-sm leading-6 text-[var(--color-ink-soft]">
                   Keep the system running 24/5 on a low-latency host, independent of your own machine.{' '}
                   {vps.data.description}
                 </p>
@@ -1196,7 +1196,7 @@ const faqs = [
                   <a href={url(`/product/${vps.data.slug}/`)} class="btn btn-primary">
                     View VPS plans
                   </a>
-                  <span class="text-sm text-[--color-ink-dim]">
+                  <span class="text-sm text-[var(--color-ink-dim]">
                     {formatPriceRange(vps.data.priceMin, vps.data.priceMax, vps.data.currency || 'USD')}
                   </span>
                 </div>
@@ -1212,7 +1212,7 @@ const faqs = [
           <div class="max-w-2xl">
             <p class="section-mark eyebrow"><span>Community</span></p>
             <h2 class="mt-3 text-2xl">Live updates on Telegram</h2>
-            <p class="mt-3 text-sm leading-6 text-[--color-ink-soft]">
+            <p class="mt-3 text-sm leading-6 text-[var(--color-ink-soft]">
               Result updates, promotions and new versions are posted to our official channel. Licensing and delivery
               always stay on your {site.name} account.
             </p>
@@ -1249,22 +1249,22 @@ const faqs = [
                       <th scope="row">
                         <a
                           href={url(`/product/${item.data.slug}/`)}
-                          class="font-semibold text-[--color-ink] hover:text-[--color-accent]"
+                          class="font-semibold text-[var(--color-ink] hover:text-[var(--color-accent]"
                         >
                           {item.data.title}
                         </a>
                       </th>
-                      <td class="metric-value text-[--color-accent]">
+                      <td class="metric-value text-[var(--color-accent]">
                         {p?.totalGainPct != null ? formatSignedPercent(p.totalGainPct) : '—'}
                       </td>
-                      <td class="metric-value text-[--color-danger]">
+                      <td class="metric-value text-[var(--color-danger]">
                         {p?.maxDrawdownPct != null ? `${p.maxDrawdownPct}%` : '—'}
                       </td>
                       <td class="metric-value">{p?.profitFactor != null ? String(p.profitFactor) : '—'}</td>
-                      <td class="text-[--color-ink-soft]">
+                      <td class="text-[var(--color-ink-soft]">
                         {item.data.platform === 'none' ? 'MT4 / MT5' : item.data.platform}
                       </td>
-                      <td class="text-[--color-ink-soft]">
+                      <td class="text-[var(--color-ink-soft]">
                         {p?.accountType === 'real' ? 'Real' : p?.accountType === 'demo' ? 'Demo' : '—'}
                       </td>
                     </tr>
@@ -1285,8 +1285,8 @@ const faqs = [
                     />
                   )}
                   <span class="min-w-0">
-                    <span class="block text-base font-semibold leading-6 text-[--color-ink]">{item.data.title}</span>
-                    <span class="mt-1 block text-xs text-[--color-ink-dim]">
+                    <span class="block text-base font-semibold leading-6 text-[var(--color-ink]">{item.data.title}</span>
+                    <span class="mt-1 block text-xs text-[var(--color-ink-dim]">
                       {item.data.platform === 'none' ? 'MT4 / MT5' : item.data.platform} ·{' '}
                       {item.data.productCategories[0] ?? 'Expert Advisor'}
                     </span>
@@ -1300,9 +1300,9 @@ const faqs = [
 
       <Faq items={faqs} heading="Questions about this system" />
 
-      <section class="rounded-2xl border border-[--color-warn]/30 bg-[--color-warn]/5 p-5">
-        <h2 class="text-sm font-semibold text-[--color-warn]">Risk warning</h2>
-        <p class="mt-2 text-xs leading-6 text-[--color-ink-soft]">{RISK_DISCLAIMER}</p>
+      <section class="rounded-2xl border border-[var(--color-warn]/30 bg-[var(--color-warn]/5 p-5">
+        <h2 class="text-sm font-semibold text-[var(--color-warn]">Risk warning</h2>
+        <p class="mt-2 text-xs leading-6 text-[var(--color-ink-soft]">{RISK_DISCLAIMER}</p>
       </section>
     </div>
 
@@ -1340,14 +1340,14 @@ const faqs = [
                       />
                       <span class="min-w-0 flex-1">
                         <span class="flex items-baseline justify-between gap-2">
-                          <span class="text-sm font-semibold text-[--color-ink]">
+                          <span class="text-sm font-semibold text-[var(--color-ink]">
                             {plan.name}
-                            {plan.term ? <span class="font-normal text-[--color-ink-dim]"> · {plan.term}</span> : null}
+                            {plan.term ? <span class="font-normal text-[var(--color-ink-dim]"> · {plan.term}</span> : null}
                           </span>
-                          <span class="metric-value text-sm text-[--color-ink]">{planPriceLabel(plan.price)}</span>
+                          <span class="metric-value text-sm text-[var(--color-ink]">{planPriceLabel(plan.price)}</span>
                         </span>
                         {plan.badge && (
-                          <span class="mt-1 inline-block text-[0.625rem] font-semibold uppercase tracking-[0.14em] text-[--color-accent]">
+                          <span class="mt-1 inline-block text-[0.625rem] font-semibold uppercase tracking-[0.14em] text-[var(--color-accent]">
                             {plan.badge}
                           </span>
                         )}
@@ -1360,9 +1360,9 @@ const faqs = [
               product.data.variants.length > 0 && (
                 <ul class="mt-5 space-y-2">
                   {product.data.variants.map((variant: any) => (
-                    <li class="flex items-center justify-between gap-3 rounded-xl border border-[--color-line-soft] bg-white/[0.02] px-3 py-2.5">
-                      <span class="text-sm text-[--color-ink-soft]">{variant.name ?? 'Licence'}</span>
-                      <span class="metric-value text-xs text-[--color-ink-dim]">
+                    <li class="flex items-center justify-between gap-3 rounded-xl border border-[var(--color-line-soft] bg-white/[0.02] px-3 py-2.5">
+                      <span class="text-sm text-[var(--color-ink-soft]">{variant.name ?? 'Licence'}</span>
+                      <span class="metric-value text-xs text-[var(--color-ink-dim]">
                         {variant.price ? formatMoney(Number(variant.price), currency) : 'included'}
                       </span>
                     </li>
@@ -1372,20 +1372,20 @@ const faqs = [
             )
           }
 
-          <ul class="mt-5 space-y-2 text-sm text-[--color-ink-soft]">
+          <ul class="mt-5 space-y-2 text-sm text-[var(--color-ink-soft]">
             <li class="flex gap-2.5">
-              <span class="text-[--color-accent]" aria-hidden="true">✓</span>Instant access from your dashboard
+              <span class="text-[var(--color-accent]" aria-hidden="true">✓</span>Instant access from your dashboard
             </li>
             <li class="flex gap-2.5">
-              <span class="text-[--color-accent]" aria-hidden="true">✓</span>Setup guide and recommended presets
+              <span class="text-[var(--color-accent]" aria-hidden="true">✓</span>Setup guide and recommended presets
             </li>
             <li class="flex gap-2.5">
-              <span class="text-[--color-accent]" aria-hidden="true">✓</span>Telegram support during installation
+              <span class="text-[var(--color-accent]" aria-hidden="true">✓</span>Telegram support during installation
             </li>
             {
               spec.guarantee && (
                 <li class="flex gap-2.5">
-                  <span class="text-[--color-accent]" aria-hidden="true">✓</span>
+                  <span class="text-[var(--color-accent]" aria-hidden="true">✓</span>
                   {spec.guarantee.label}
                 </li>
               )
@@ -1429,13 +1429,13 @@ const faqs = [
             }
           </div>
 
-          <p class="mt-3 flex items-center justify-center gap-1.5 text-xs text-[--color-ink-dim]">
+          <p class="mt-3 flex items-center justify-center gap-1.5 text-xs text-[var(--color-ink-dim]">
             <svg
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
-              class="h-3.5 w-3.5 text-[--color-accent]"
+              class="h-3.5 w-3.5 text-[var(--color-accent]"
               aria-hidden="true"
             >
               <rect x="4" y="10" width="16" height="10" rx="2"></rect>
@@ -1443,7 +1443,7 @@ const faqs = [
             </svg>
             Secure checkout · Card &amp; USDT (TRC20)
           </p>
-          <p class="mt-1 text-center text-xs text-[--color-ink-dim]">Checkout is handled by Stripe.</p>
+          <p class="mt-1 text-center text-xs text-[var(--color-ink-dim]">Checkout is handled by Stripe.</p>
           </form>
         </section>
 
@@ -1451,30 +1451,30 @@ const faqs = [
           <p class="metric-label">Fast specs</p>
           <dl class="mt-4 space-y-3 text-sm">
             <div class="flex justify-between gap-3">
-              <dt class="text-[--color-ink-dim]">Platform</dt>
-              <dd class="text-[--color-ink]">{platform}</dd>
+              <dt class="text-[var(--color-ink-dim]">Platform</dt>
+              <dd class="text-[var(--color-ink]">{platform}</dd>
             </div>
             <div class="flex justify-between gap-3">
-              <dt class="text-[--color-ink-dim]">Strategy</dt>
-              <dd class="text-right text-[--color-ink]">{perf?.strategy ?? '—'}</dd>
+              <dt class="text-[var(--color-ink-dim]">Strategy</dt>
+              <dd class="text-right text-[var(--color-ink]">{perf?.strategy ?? '—'}</dd>
             </div>
             <div class="flex justify-between gap-3">
-              <dt class="text-[--color-ink-dim]">Min capital</dt>
-              <dd class="metric-value text-[--color-ink]">
+              <dt class="text-[var(--color-ink-dim]">Min capital</dt>
+              <dd class="metric-value text-[var(--color-ink]">
                 {perf?.minCapitalUsd != null ? formatMoney(perf.minCapitalUsd, 'USD') : '—'}
               </dd>
             </div>
             <div class="flex justify-between gap-3">
-              <dt class="text-[--color-ink-dim]">Max drawdown</dt>
-              <dd class="metric-value text-[--color-ink]">{drawdown != null ? `${drawdown}%` : '—'}</dd>
+              <dt class="text-[var(--color-ink-dim]">Max drawdown</dt>
+              <dd class="metric-value text-[var(--color-ink]">{drawdown != null ? `${drawdown}%` : '—'}</dd>
             </div>
             <div class="flex justify-between gap-3">
-              <dt class="text-[--color-ink-dim]">Account</dt>
-              <dd class="text-right text-[--color-ink]">{isReal ? 'Real' : isDemo ? 'Demo' : 'Not published'}</dd>
+              <dt class="text-[var(--color-ink-dim]">Account</dt>
+              <dd class="text-right text-[var(--color-ink]">{isReal ? 'Real' : isDemo ? 'Demo' : 'Not published'}</dd>
             </div>
             <div class="flex justify-between gap-3">
-              <dt class="text-[--color-ink-dim]">Track record</dt>
-              <dd class="text-right text-[--color-ink]">
+              <dt class="text-[var(--color-ink-dim]">Track record</dt>
+              <dd class="text-right text-[var(--color-ink]">
                 {live?.sourceUrl || perf?.sourceUrl ? 'Myfxbook-verified' : 'Not published'}
               </dd>
             </div>
@@ -1488,8 +1488,8 @@ const faqs = [
               <dl class="mt-4 space-y-3 text-sm">
                 {raw.summary.slice(0, 4).map(([label, value]) => (
                   <div class="flex justify-between gap-3">
-                    <dt class="text-[--color-ink-dim]">{label}</dt>
-                    <dd class="metric-value text-[--color-ink]">{value}</dd>
+                    <dt class="text-[var(--color-ink-dim]">{label}</dt>
+                    <dd class="metric-value text-[var(--color-ink]">{value}</dd>
                   </div>
                 ))}
               </dl>
@@ -1498,7 +1498,7 @@ const faqs = [
         }
 
         <section class="panel-flat p-5">
-          <p class="text-xs leading-6 text-[--color-ink-dim]">
+          <p class="text-xs leading-6 text-[var(--color-ink-dim]">
             {hasLive
               ? 'Figures are synchronized from the public third-party tracking account on a schedule. Always confirm current results at the source before purchasing.'
               : perf?.verified
@@ -1512,7 +1512,7 @@ const faqs = [
 
   {/* Mobile sticky buy bar. The right padding keeps the floating Telegram
       button clear of the checkout CTA. */}
-  <div class="fixed inset-x-0 bottom-0 z-40 border-t border-[--color-line] bg-black/90 py-3 pl-4 pr-[4.75rem] backdrop-blur lg:hidden">
+  <div class="fixed inset-x-0 bottom-0 z-40 border-t border-[var(--color-line] bg-black/90 py-3 pl-4 pr-[4.75rem] backdrop-blur lg:hidden">
     <div class="flex items-center justify-between gap-3">
       <div class="min-w-0">
         <p class="metric-label">From</p>

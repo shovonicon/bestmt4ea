@@ -19,13 +19,13 @@ const fmt = (d?: Date) =>
   <div class="flex items-center gap-3">
     <span
       aria-hidden="true"
-      class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[--color-accent]/15 text-sm font-semibold text-[--color-accent]"
+      class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent]/15 text-sm font-semibold text-[var(--color-accent]"
     >
       BT
     </span>
     <div>
-      <p class="text-sm font-semibold text-[--color-ink]">BESTMT4EA Trading Desk</p>
-      <p class="text-xs text-[--color-ink-dim]">
+      <p class="text-sm font-semibold text-[var(--color-ink]">BESTMT4EA Trading Desk</p>
+      <p class="text-xs text-[var(--color-ink-dim]">
         MQL4/MQL5 developers and traders. We publish the live track record for everything we review.
       </p>
     </div>
@@ -36,7 +36,7 @@ const fmt = (d?: Date) =>
       published && (
         <div>
           <dt class="metric-label">Published</dt>
-          <dd class="mt-0.5 text-[--color-ink-soft]">{fmt(published)}</dd>
+          <dd class="mt-0.5 text-[var(--color-ink-soft]">{fmt(published)}</dd>
         </div>
       )
     }
@@ -44,7 +44,7 @@ const fmt = (d?: Date) =>
       updated && (
         <div>
           <dt class="metric-label">Reviewed</dt>
-          <dd class="mt-0.5 text-[--color-ink-soft]">{fmt(updated)}</dd>
+          <dd class="mt-0.5 text-[var(--color-ink-soft]">{fmt(updated)}</dd>
         </div>
       )
     }
@@ -52,14 +52,14 @@ const fmt = (d?: Date) =>
       readingMinutes && (
         <div>
           <dt class="metric-label">Reading time</dt>
-          <dd class="mt-0.5 text-[--color-ink-soft]">{readingMinutes} min</dd>
+          <dd class="mt-0.5 text-[var(--color-ink-soft]">{readingMinutes} min</dd>
         </div>
       )
     }
     <div>
       <dt class="metric-label">Support</dt>
       <dd class="mt-0.5">
-        <a href={site.telegram.support} rel="noopener" class="text-[--color-accent]">Telegram</a>
+        <a href={site.telegram.support} rel="noopener" class="text-[var(--color-accent]">Telegram</a>
       </dd>
     </div>
   </dl>

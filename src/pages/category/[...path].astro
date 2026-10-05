@@ -58,16 +58,16 @@ const fmt = (d: Date) =>
   description={`Every article filed under ${catName}: practical guides and reviews on automated forex trading, written to solve specific problems rather than to sell.`}
 >
   <div class="container-x py-14">
-    <nav aria-label="Breadcrumb" class="text-xs text-[--color-ink-dim]">
-      <a href="/" class="hover:text-[--color-accent]">Home</a>
+    <nav aria-label="Breadcrumb" class="text-xs text-[var(--color-ink-dim]">
+      <a href="/" class="hover:text-[var(--color-accent]">Home</a>
       <span class="mx-2">/</span>
-      <a href="/blog/" class="hover:text-[--color-accent]">Blog</a>
+      <a href="/blog/" class="hover:text-[var(--color-accent]">Blog</a>
       <span class="mx-2">/</span>
-      <span class="text-[--color-ink-soft]">{catName}</span>
+      <span class="text-[var(--color-ink-soft]">{catName}</span>
     </nav>
 
     <h1 class="mt-6 text-3xl md:text-4xl">{catName}</h1>
-    <p class="mt-4 max-w-2xl text-sm leading-7 text-[--color-ink-dim]">
+    <p class="mt-4 max-w-2xl text-sm leading-7 text-[var(--color-ink-dim]">
       {sorted.length} article{sorted.length === 1 ? '' : 's'} in this category.
     </p>
 
@@ -76,12 +76,12 @@ const fmt = (d: Date) =>
         sorted.map((post: any) => (
           <article class="panel p-5">
             <h2 class="text-base leading-snug">
-              <a href={url(`/${post.data.slug}/`)} class="hover:text-[--color-accent]">
+              <a href={url(`/${post.data.slug}/`)} class="hover:text-[var(--color-accent]">
                 {post.data.title}
               </a>
             </h2>
-            <p class="mt-2 line-clamp-3 text-sm leading-6 text-[--color-ink-dim]">{post.data.description}</p>
-            <p class="mt-4 text-xs text-[--color-ink-dim]">{fmt(post.data.updatedAt ?? post.data.publishedAt)}</p>
+            <p class="mt-2 line-clamp-3 text-sm leading-6 text-[var(--color-ink-dim]">{post.data.description}</p>
+            <p class="mt-4 text-xs text-[var(--color-ink-dim]">{fmt(post.data.updatedAt ?? post.data.publishedAt)}</p>
           </article>
         ))
       }

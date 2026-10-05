@@ -35,7 +35,7 @@ const hasFallback = Astro.slots.has('fallback');
   enabled && (
     <aside class:list={['ad-unit not-prose my-8', className]} aria-label="Advertisement" data-ad-unit>
       {showLabel && (
-        <p class="mb-1 text-[10px] font-medium uppercase tracking-[0.16em] text-[--color-ink-dim]">
+        <p class="mb-1 text-[10px] font-medium uppercase tracking-[0.16em] text-[var(--color-ink-dim]">
           Advertisement
         </p>
       )}
@@ -53,7 +53,21 @@ const hasFallback = Astro.slots.has('fallback');
           <slot name="fallback" />
         </div>
       )}
-      <script is:inline>
+      <script is:inline define:vars={{ client }}>
+        /*
+         * Load the AdSense library on the first unit on the page, and only then.
+         * Pages with no unit — the homepage, product pages, the dashboard — load
+         * nothing. The push below queues this unit until the library arrives, which
+         * is how the standard snippet behaves, so order does not matter.
+         */
+        if (!window.__adsenseRequested) {
+          window.__adsenseRequested = true;
+          const script = document.createElement('script');
+          script.async = true;
+          script.crossOrigin = 'anonymous';
+          script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + client;
+          document.head.appendChild(script);
+        }
         (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
       {hasFallback && (

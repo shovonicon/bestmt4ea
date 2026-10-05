@@ -4,18 +4,22 @@ import type { Db } from '../db/client';
 import { dbBatch } from '../db/client';
 import {
   customers,
+  entitlements,
+  licenses,
   orderItems,
   orders,
   payments,
   productPlans,
   products,
+  refunds,
   type Order,
 } from '../db/schema';
 import { randomToken, uuid } from '../lib/crypto';
+import { deliveryChannelFor, type DeliveryChannel } from '../lib/delivery';
 import { sendEmail } from '../emails/send';
 import { orderConfirmationEmail } from '../emails/order-confirmation';
-import { grantEntitlement } from './entitlements';
-import { createLicense } from './licenses';
+import { grantEntitlement, revokeEntitlement } from './entitlements';
+import { activateTrialLicense, createLicense, revokeLicense } from './licenses';
 
 /**
  * Orders and the single settlement path.
@@ -157,7 +161,8 @@ const money = (cents: number) => `$${(cents / 100).toFixed(2)}`;
 async function sendReceipt(
   db: Db,
   order: Order,
-  items: Array<{ titleSnapshot: string; unitPriceCents: number; quantity: number }>
+  items: Array<{ titleSnapshot: string; unitPriceCents: number; quantity: number }>,
+  channels: DeliveryChannel[]
 ): Promise<void> {
   try {
     const customer = await db
@@ -176,6 +181,7 @@ async function sendReceipt(
       total: money(order.totalCents),
       dashboardUrl: `${env.APP_URL}/dashboard/`,
       loginUrl: `${env.APP_URL}/login/`,
+      channels,
     });
 
     await sendEmail(db, env, {
@@ -239,6 +245,8 @@ export async function settleOrder(db: Db, input: SettleOrderInput): Promise<Sett
     }),
   ]);
 
+  const deliveryChannels = new Set<DeliveryChannel>();
+
   for (const item of items) {
     const entitlementId = await grantEntitlement(db, {
       customerId: order.customerId,
@@ -256,18 +264,116 @@ export async function settleOrder(db: Db, input: SettleOrderInput): Promise<Sett
       .from(products)
       .where(eq(products.id, item.productId))
       .get();
+    if (product?.type) deliveryChannels.add(deliveryChannelFor(product.type));
     if (product?.type === 'ea') {
-      await createLicense(db, {
+      const expiresAt = item.durationDays ? new Date(now.getTime() + item.durationDays * 86_400_000) : null;
+      const license = await createLicense(db, {
         entitlementId,
         customerId: order.customerId,
         productId: item.productId,
         maxAccounts: item.maxAccounts ?? 1,
-        expiresAt: item.durationDays ? new Date(now.getTime() + item.durationDays * 86_400_000) : null,
+        expiresAt,
       });
+
+      /*
+       * A trial has no account to bind, so its build carries only the expiry and
+       * nothing is left for the customer to do — it goes live here, and the build
+       * is queued immediately. A paid licence stays PENDING until the customer
+       * activates it on their own account.
+       */
+      const plan = item.planId
+        ? await db
+            .select({ code: productPlans.code, priceCents: productPlans.priceCents })
+            .from(productPlans)
+            .where(eq(productPlans.id, item.planId))
+            .get()
+        : null;
+      if (plan && (plan.code.startsWith('trial') || plan.priceCents === 0)) {
+        await activateTrialLicense(db, license.id);
+      }
     }
   }
 
-  await sendReceipt(db, order, items);
+  // The receipt describes how to collect what was actually bought.
+  await sendReceipt(
+    db,
+    order,
+    items,
+    (['licence', 'download', 'telegram'] as DeliveryChannel[]).filter((channel) =>
+      deliveryChannels.has(channel)
+    )
+  );
 
   return { applied: true, productIds: items.map((item) => item.productId) };
+}
+
+export interface RefundOrderInput {
+  orderId: string;
+  amountCents: number;
+  /** The provider's charge or refund id, for the audit trail. */
+  providerRefundId?: string | null;
+  reason?: string | null;
+}
+
+/**
+ * Undo a settled order: mark it refunded, record the refund, and revoke what that
+ * order granted. Only a *full* refund reaches here (see the Stripe webhook) — a
+ * goodwill part-refund should leave the licence running.
+ *
+ * Revocation is scoped to what *this* order created. Buying the same product twice
+ * re-points the entitlement at the newer order, so refunding the older one must
+ * leave the newer purchase's access alone rather than revoking it by product.
+ */
+export async function refundOrder(db: Db, input: RefundOrderInput): Promise<{ applied: boolean }> {
+  const order = await getOrder(db, input.orderId);
+  if (!order) return { applied: false };
+  if (order.status === 'refunded') return { applied: false };
+
+  const payment = await db
+    .select({ id: payments.id })
+    .from(payments)
+    .where(eq(payments.orderId, order.id))
+    .get();
+
+  await db.update(orders).set({ status: 'refunded' }).where(eq(orders.id, order.id));
+
+  if (payment) {
+    await db.insert(refunds).values({
+      id: uuid(),
+      paymentId: payment.id,
+      amountCents: input.amountCents,
+      reason: input.reason ?? null,
+      status: 'processed',
+      providerRefundId: input.providerRefundId ?? null,
+      processedAt: new Date(),
+    });
+  }
+
+  const items = await db.select().from(orderItems).where(eq(orderItems.orderId, order.id)).all();
+  for (const item of items) {
+    const entitlement = await db
+      .select({ id: entitlements.id })
+      .from(entitlements)
+      .where(
+        and(
+          eq(entitlements.customerId, order.customerId),
+          eq(entitlements.productId, item.productId),
+          eq(entitlements.orderId, order.id)
+        )
+      )
+      .get();
+    if (!entitlement) continue;
+
+    const licenceRows = await db
+      .select({ id: licenses.id, status: licenses.status })
+      .from(licenses)
+      .where(eq(licenses.entitlementId, entitlement.id))
+      .all();
+    for (const licence of licenceRows) {
+      if (licence.status !== 'REVOKED') await revokeLicense(db, licence.id, null);
+    }
+    await revokeEntitlement(db, order.customerId, item.productId);
+  }
+
+  return { applied: true };
 }

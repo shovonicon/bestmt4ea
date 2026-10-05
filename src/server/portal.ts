@@ -1,6 +1,14 @@
-import { and, desc, eq } from 'drizzle-orm';
+import { and, desc, eq, isNull, or, sql } from 'drizzle-orm';
 import type { Db } from '../db/client';
-import { licenseBuilds, licenses, orderItems, orders, productFiles, products } from '../db/schema';
+import {
+  entitlements,
+  licenseBuilds,
+  licenses,
+  orderItems,
+  orders,
+  productFiles,
+  products,
+} from '../db/schema';
 import { getActiveEntitlement } from './entitlements';
 
 /**
@@ -122,6 +130,42 @@ export async function listCustomerBuilds(db: Db, customerId: string): Promise<Po
       requestedAt: row.requestedAt,
       filename: (row.r2Key as string).split('/').pop() ?? `build-${row.accountNumber}.ex4`,
     }));
+}
+
+export interface PortalTelegramDelivery {
+  productId: string;
+  productTitle: string;
+  productSlug: string;
+}
+
+/**
+ * Purchases fulfilled by hand rather than from the dashboard — a service such as
+ * the VPS, whose credentials go out over Telegram. Surfaced on the downloads page
+ * so a service buyer is told how to collect it instead of staring at an empty
+ * download list that talks about licences.
+ */
+export async function listTelegramDeliveries(
+  db: Db,
+  customerId: string
+): Promise<PortalTelegramDelivery[]> {
+  return db
+    .select({
+      productId: products.id,
+      productTitle: products.title,
+      productSlug: products.slug,
+    })
+    .from(entitlements)
+    .innerJoin(products, eq(products.id, entitlements.productId))
+    .where(
+      and(
+        eq(entitlements.customerId, customerId),
+        eq(products.type, 'service'),
+        isNull(entitlements.revokedAt),
+        or(isNull(entitlements.expiresAt), sql`${entitlements.expiresAt} > ${Date.now()}`)
+      )
+    )
+    .orderBy(desc(entitlements.grantedAt))
+    .all();
 }
 
 export interface PortalOrderItem {

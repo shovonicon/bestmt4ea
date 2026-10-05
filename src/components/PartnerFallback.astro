@@ -59,18 +59,18 @@ const partners: Array<{ affiliate: AffiliateOffer; row?: BrokerRow }> = [
           )}
         </span>
 
-        <span class:list={['mt-2.5 block font-bold text-[--color-ink]', rail ? 'text-sm' : 'text-base']}>
+        <span class:list={['mt-2.5 block font-bold text-[var(--color-ink]', rail ? 'text-sm' : 'text-base']}>
           {affiliate.label}
         </span>
 
         {row && (
-          <span class="mt-1 block text-[10px] leading-4 text-[--color-ink-dim]">
+          <span class="mt-1 block text-[10px] leading-4 text-[var(--color-ink-dim]">
             {row.regulation} · from {row.minDeposit}
           </span>
         )}
 
         {row?.offer && (
-          <span class="mt-2 block rounded-lg border border-[--color-accent]/25 bg-[--color-accent]/[0.08] px-2 py-1 text-[10px] font-bold leading-4 text-[--color-accent-soft]">
+          <span class="mt-2 block rounded-lg border border-[var(--color-accent]/25 bg-[var(--color-accent]/[0.08] px-2 py-1 text-[10px] font-bold leading-4 text-[var(--color-accent-soft]">
             {row.offer}
           </span>
         )}
@@ -101,6 +101,6 @@ const partners: Array<{ affiliate: AffiliateOffer; row?: BrokerRow }> = [
   }
 </div>
 
-<p class="mt-3 text-[10px] leading-4 text-[--color-ink-dim]">
+<p class="mt-3 text-[10px] leading-4 text-[var(--color-ink-dim]">
   Sponsored links. We may earn a commission if you open an account, at no extra cost to you.
 </p>

@@ -1,11 +1,19 @@
 import { htmlEscape } from '../lib/http';
+import {
+  DELIVERY_LABEL,
+  TELEGRAM_FULFILMENT_URL,
+  deliverySteps,
+  type DeliveryChannel,
+} from '../lib/delivery';
 
 /**
  * The purchase receipt.
  *
- * Delivery is pull-based — nothing is attached here. The email confirms the
- * order, tells the customer exactly where to collect it, and (for an EA) that
- * they must activate the licence against their MT4/MT5 account first.
+ * Delivery is pull-based — nothing is attached here. The email confirms the order
+ * and tells the customer exactly where to collect it, using the same delivery
+ * vocabulary as the post-payment page and the dashboard: an EA needs its licence
+ * activated, a tool unlocks on the Downloads page at payment, and a service (the
+ * VPS) is arranged over Telegram.
  */
 export interface OrderConfirmationInput {
   orderNumber: string;
@@ -13,6 +21,8 @@ export interface OrderConfirmationInput {
   total: string;
   dashboardUrl: string;
   loginUrl: string;
+  /** One entry per delivery channel present in the order. */
+  channels: DeliveryChannel[];
 }
 
 export function orderConfirmationEmail(input: OrderConfirmationInput): {
@@ -21,6 +31,7 @@ export function orderConfirmationEmail(input: OrderConfirmationInput): {
   text: string;
 } {
   const subject = `Your BESTMT4EA order ${input.orderNumber}`;
+  const { channels } = input;
 
   const text = [
     'Payment received — thank you.',
@@ -30,20 +41,28 @@ export function orderConfirmationEmail(input: OrderConfirmationInput): {
     ...input.items.map((item) => `${item.title} — ${item.amount}`),
     `Total: ${input.total}`,
     '',
-    'To collect it:',
-    `1. Sign in at ${input.loginUrl}`,
-    `2. Open your dashboard: ${input.dashboardUrl}`,
-    '3. If you bought an expert advisor, activate your licence with the MT4/MT5',
-    '   account number you will run it on — the file unlocks once the licence is active.',
-    '4. Download your file from the Downloads page.',
+    'How you get it:',
+    ...channels.flatMap((channel) => [
+      '',
+      `${DELIVERY_LABEL[channel]}:`,
+      ...deliverySteps(channel).map((step, index) => `  ${index + 1}. ${step.title} — ${step.body}`),
+    ]),
     '',
-    'Your licence key and downloads live in your dashboard, not in this email.',
+    `Sign in at ${input.loginUrl}`,
     '',
+    ...(channels.includes('telegram')
+      ? [`Arrange it on Telegram: ${TELEGRAM_FULFILMENT_URL}`, '']
+      : []),
     'Run any EA on a demo account first. Trading carries risk, and nothing here is',
     'a promise of profit.',
     '',
     'If anything looks wrong, reply to this email or message us on Telegram.',
   ].join('\n');
+
+  const stepList = (channel: DeliveryChannel) =>
+    `<ul style="color:#9fb8ae;font-size:13px;padding-left:18px;margin:6px 0 0">${deliverySteps(channel)
+      .map((step) => `<li><strong style="color:#e7f5ef">${htmlEscape(step.title)}</strong> — ${htmlEscape(step.body)}</li>`)
+      .join('')}</ul>`;
 
   const html = `<!doctype html>
 <html><body style="margin:0;background:#000;color:#e7f5ef;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif">
@@ -70,19 +89,31 @@ export function orderConfirmationEmail(input: OrderConfirmationInput): {
 
     <p style="margin:0 0 8px"><a href="${htmlEscape(
       input.loginUrl
-    )}" style="display:inline-block;background:#00c190;color:#001b12;padding:12px 20px;border-radius:10px;font-weight:600;text-decoration:none">Sign in and collect your order</a></p>
-    <p style="margin:0 0 20px;color:#9fb8ae;font-size:13px">Your licence key and downloads are in <a href="${htmlEscape(
+    )}" style="display:inline-block;background:#00c190;color:#001b12;padding:12px 20px;border-radius:10px;font-weight:600;text-decoration:none">Sign in to your account</a></p>
+    <p style="margin:0 0 8px;color:#9fb8ae;font-size:13px">Your account is at <a href="${htmlEscape(
       input.dashboardUrl
-    )}" style="color:#00c190">your dashboard</a> — not in this email.</p>
+    )}" style="color:#00c190">your dashboard</a>.</p>
 
-    <ol style="color:#9fb8ae;font-size:13px;padding-left:18px;margin:0 0 20px">
-      <li>Sign in with the link above.</li>
-      <li>If you bought an expert advisor, activate your licence with the MT4/MT5 account number you will run it on.</li>
-      <li>Download your file from the Downloads page.</li>
-    </ol>
+    <h2 style="font-size:14px;margin:24px 0 0;color:#e7f5ef">How you get it</h2>
+    ${channels
+      .map(
+        (channel) =>
+          `<p style="margin:12px 0 0;color:#6f8a80;font-size:13px">${htmlEscape(DELIVERY_LABEL[channel])}</p>${stepList(
+            channel
+          )}`
+      )
+      .join('')}
 
-    <p style="color:#6f8a80;font-size:13px;margin:0 0 16px">Run any EA on a demo account first. Trading carries risk, and nothing here is a promise of profit.</p>
-    <p style="color:#6f8a80;font-size:13px;margin:0">If anything looks wrong, reply to this email or message us on Telegram.</p>
+    ${
+      channels.includes('telegram')
+        ? `<p style="margin:16px 0 0;font-size:13px"><a href="${htmlEscape(
+            TELEGRAM_FULFILMENT_URL
+          )}" style="color:#00c190">Message us on Telegram to arrange it →</a></p>`
+        : ''
+    }
+
+    <p style="color:#6f8a80;font-size:13px;margin:16px 0 0">Run any EA on a demo account first. Trading carries risk, and nothing here is a promise of profit.</p>
+    <p style="color:#6f8a80;font-size:13px;margin:8px 0 0">If anything looks wrong, reply to this email or message us on Telegram.</p>
   </div>
 </body></html>`;
 

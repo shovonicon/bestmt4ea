@@ -19,6 +19,8 @@ export interface BrevoMessage {
   text: string;
   fromName: string;
   fromEmail: string;
+  /** Overrides the from address as the reply target. */
+  replyTo?: string;
   tags?: string[];
 }
 
@@ -43,7 +45,7 @@ export async function sendViaBrevo(
     body: JSON.stringify({
       sender: { name: message.fromName, email: message.fromEmail },
       to: [{ email: message.to }],
-      replyTo: { email: message.fromEmail },
+      replyTo: { email: message.replyTo || message.fromEmail },
       subject: message.subject,
       htmlContent: message.html,
       textContent: message.text,

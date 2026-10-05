@@ -1,8 +1,8 @@
 import { eq } from 'drizzle-orm';
 import type { Db } from '../db/client';
-import { webhookEvents } from '../db/schema';
+import { payments, webhookEvents } from '../db/schema';
 import { uuid } from '../lib/crypto';
-import { settleOrder } from './orders';
+import { refundOrder, settleOrder } from './orders';
 import { stripeClient, verifyCheckoutSession } from './stripe';
 
 /**
@@ -55,6 +55,33 @@ export async function reconcileStripeSession(
   });
 
   return { result: settled.applied ? 'settled' : 'already_settled', orderId };
+}
+
+/**
+ * Undo the order a Stripe PaymentIntent paid for.
+ *
+ * `payments.transactionId` holds the PaymentIntent id for card payments, which is
+ * how a `charge.refunded` event finds its way back to the order.
+ */
+export async function refundOrderForPaymentIntent(
+  db: Db,
+  paymentIntentId: string,
+  input: { amountCents: number; providerRefundId?: string | null }
+): Promise<{ result: 'refunded' | 'already_refunded' | 'no_order'; orderId: string | null }> {
+  const payment = await db
+    .select({ orderId: payments.orderId })
+    .from(payments)
+    .where(eq(payments.transactionId, paymentIntentId))
+    .get();
+  if (!payment) return { result: 'no_order', orderId: null };
+
+  const applied = await refundOrder(db, {
+    orderId: payment.orderId,
+    amountCents: input.amountCents,
+    providerRefundId: input.providerRefundId ?? null,
+    reason: 'stripe_refund',
+  });
+  return { result: applied.applied ? 'refunded' : 'already_refunded', orderId: payment.orderId };
 }
 
 /** Insert the webhook delivery if new; returns false when it is a replay. */

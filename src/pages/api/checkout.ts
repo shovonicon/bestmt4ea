@@ -2,10 +2,11 @@ import type { APIRoute } from 'astro';
 import { eq } from 'drizzle-orm';
 import { env } from 'cloudflare:workers';
 import { getDb } from '../../db/client';
-import { customers } from '../../db/schema';
+import { customers, orders } from '../../db/schema';
 import { createOrder, OrderError, settleOrder } from '../../server/orders';
 import { createUsdtPayment } from '../../server/usdt-payments';
 import { createCheckoutSession, stripeClient } from '../../server/stripe';
+import { isCompEmail } from '../../lib/comps';
 import { json, jsonError, readBody, redirect, wantsHtml } from '../../lib/http';
 
 export const prerender = false;
@@ -25,20 +26,36 @@ export const POST: APIRoute = async ({ request, locals }) => {
       customerId: session.subjectId,
       items: [{ productId: body.productId ?? '', planCode: body.plan ?? '', quantity: 1 }],
     });
-    // A free tier (the 30-day trial) has nothing to charge, so it settles right
-    // here instead of going to a provider. This is the same `settleOrder` every
-    // paid rail uses, so the entitlement and licence are identical either way.
-    if (order.totalCents === 0) {
+    const customer = await db
+      .select({ email: customers.email })
+      .from(customers)
+      .where(eq(customers.id, session.subjectId))
+      .get();
+
+    /*
+     * Two ways an order settles without a provider: a free tier has nothing to
+     * charge, and a customer listed in COMP_EMAILS is buying a comp. A comp keeps
+     * the order intact but writes the whole subtotal off as a discount, so the
+     * receipt, the payment row and the licence all describe one $0 transaction.
+     */
+    const comped = isCompEmail(env.COMP_EMAILS, customer?.email);
+    if (order.totalCents === 0 || comped) {
+      if (comped && order.totalCents > 0) {
+        await db
+          .update(orders)
+          .set({ discountCents: order.subtotalCents, totalCents: 0 })
+          .where(eq(orders.id, order.id));
+      }
       await settleOrder(db, {
         orderId: order.id,
-        invoiceId: `free-${order.orderNumber}`,
+        invoiceId: `${comped ? 'comp' : 'free'}-${order.orderNumber}`,
         transactionId: null,
-        paymentMethod: 'free',
+        paymentMethod: comped ? 'comp' : 'free',
         chargedCents: 0,
       });
       return wantsHtml(request)
         ? redirect(`/checkout/return/?order=${encodeURIComponent(order.orderNumber)}`, 303)
-        : json({ ok: true, orderNumber: order.orderNumber, method: 'free' });
+        : json({ ok: true, orderNumber: order.orderNumber, method: comped ? 'comp' : 'free' });
     }
 
     const method = body.method === 'usdt' ? 'usdt' : 'card';
@@ -69,11 +86,6 @@ export const POST: APIRoute = async ({ request, locals }) => {
 
     const secret = env.STRIPE_SECRET_KEY;
     if (!secret) return jsonError(503, 'stripe_unavailable');
-    const customer = await db
-      .select({ email: customers.email })
-      .from(customers)
-      .where(eq(customers.id, session.subjectId))
-      .get();
 
     const checkout = await createCheckoutSession(stripeClient(secret), {
       orderId: order.id,

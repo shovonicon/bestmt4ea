@@ -5,7 +5,7 @@ import { json, jsonError, readBody, redirect, wantsHtml } from '../../../lib/htt
 
 export const prerender = false;
 
-/** Activate a PENDING licence by binding the customer's MT5 account. */
+/** Activate a PENDING licence by binding the customer's trading account. */
 export const POST: APIRoute = async ({ request, locals }) => {
   const session = locals.session;
   if (!session || session.subjectType !== 'customer') {
@@ -25,7 +25,8 @@ export const POST: APIRoute = async ({ request, locals }) => {
     licenseId: license.id,
     accountNumber,
     broker: body.broker ?? null,
-    accountType: body.accountType === 'real' ? 'real' : 'demo',
+    // Only consulted when the product ships for both terminals; ignored otherwise.
+    platform: body.platform ?? null,
     actorId: session.subjectId,
   });
   if (!result.ok) return jsonError(result.reason === 'max_accounts' ? 409 : 400, result.reason);

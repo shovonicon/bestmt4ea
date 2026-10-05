@@ -447,7 +447,12 @@ export const licenseAccounts = sqliteTable(
       .references(() => licenses.id, { onDelete: 'cascade' }),
     accountNumber: text('account_number').notNull(),
     broker: text('broker'),
-    accountType: text('account_type', { enum: ['real', 'demo'] }).notNull().default('demo'),
+    /**
+     * No longer asked for. Whether a terminal is demo or live cannot be read from
+     * an account number, and nothing in the build depends on it — so asking was one
+     * more thing for a customer to get wrong. Left nullable for historical rows.
+     */
+    accountType: text('account_type', { enum: ['real', 'demo'] }),
     active: integer('active', { mode: 'boolean' }).notNull().default(true),
     createdAt: createdAt(),
     deactivatedAt: integer('deactivated_at', { mode: 'timestamp_ms' }),

@@ -6,7 +6,7 @@
  *
  * Pure-black base with fixed emerald radial glows, #00c190 brand, Sora headings,
  * Manrope body. Token names are intentionally unchanged from the previous system
- * so every existing `text-[--color-ink-soft]`-style utility keeps working; only
+ * so every existing `text-[var(--color-ink-soft]`-style utility keeps working; only
  * the values moved to the strivealgo palette.
  */
 
@@ -250,6 +250,29 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--color-ink-dim);
+  }
+
+  /*
+   * Account nav: a horizontal rail that scrolls on narrow screens. The scrollbar
+   * is hidden and the right edge fades, so the overflow is discoverable rather
+   * than invisible — a tab strip that looks complete but hides two destinations
+   * is worse than one that shows there is more.
+   */
+  .nav-rail {
+    display: flex;
+    gap: 0.25rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    mask-image: linear-gradient(to right, #000 calc(100% - 1.75rem), transparent);
+  }
+  .nav-rail::-webkit-scrollbar {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    .nav-rail {
+      mask-image: none;
+    }
   }
 
   .metric-value {

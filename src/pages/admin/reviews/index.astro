@@ -41,12 +41,12 @@ const approved = all.filter((review) => review.status === 'approved');
   <section class="container-x py-16">
     <p class="section-kicker">Admin</p>
     <h1 class="mt-3 text-3xl font-bold">Review drafts</h1>
-    <p class="mt-3 text-sm text-[--color-ink-soft]">
+    <p class="mt-3 text-sm text-[var(--color-ink-soft]">
       <a class="underline" href={url('/admin')}>Dashboard</a> ·
       <a class="underline" href={url('/customer-feedback')}>Public feedback page</a>
     </p>
 
-    <p class="mt-6 max-w-3xl rounded-xl border border-[--color-warn]/30 bg-[--color-warn]/5 px-4 py-3 text-xs leading-6 text-[--color-ink-soft]">
+    <p class="mt-6 max-w-3xl rounded-xl border border-[var(--color-warn]/30 bg-[var(--color-warn]/5 px-4 py-3 text-xs leading-6 text-[var(--color-ink-soft]">
       <strong class="font-semibold">{drafts.length} draft{drafts.length === 1 ? '' : 's'}</strong> are not public.
       These are AI-assisted words built from real order records — the customer and order details are genuine, the
       wording is generated. Publish one only after that customer has confirmed it: set its
@@ -70,21 +70,21 @@ const approved = all.filter((review) => review.status === 'approved');
           {
             all.map((review) => (
               <tr>
-                <td class="metric-value text-[--color-ink-dim]">{review.id}</td>
+                <td class="metric-value text-[var(--color-ink-dim]">{review.id}</td>
                 <td>
                   <span class:list={['badge', review.status === 'approved' && 'badge-accent']}>{review.status}</span>
                 </td>
                 <td class="metric-value">{review.rating}/5</td>
-                <td class="text-sm text-[--color-ink]">
+                <td class="text-sm text-[var(--color-ink]">
                   {review.reviewer}
-                  <span class="mt-0.5 block text-xs text-[--color-ink-dim]">
+                  <span class="mt-0.5 block text-xs text-[var(--color-ink-dim]">
                     {review.location ?? ''}
                     {review.month ? ` · ${review.month}` : ''}
                   </span>
                 </td>
-                <td class="text-xs text-[--color-ink-soft]">{review.product ?? '—'}</td>
-                <td class="text-xs leading-6 text-[--color-ink-dim]">
-                  <strong class="text-[--color-ink-soft]">{review.title}</strong> — {review.body}
+                <td class="text-xs text-[var(--color-ink-soft]">{review.product ?? '—'}</td>
+                <td class="text-xs leading-6 text-[var(--color-ink-dim]">
+                  <strong class="text-[var(--color-ink-soft]">{review.title}</strong> — {review.body}
                 </td>
               </tr>
             ))

@@ -14,9 +14,9 @@ export const prerender = false;
  *
  * The bucket key is derived from the catalogue, never taken from the request: the
  * caller passes a product id, it is looked up, and only then is
- * `templates/<productId>/source.mq4` read — so this cannot be turned into an
- * arbitrary-object reader. Token-guarded, and no-store: the source is the owner's
- * IP and must not sit in any cache.
+ * `templates/<productId>/source.mq4` (or `source.mq5` for an MT5 product) read —
+ * so this cannot be turned into an arbitrary-object reader. Token-guarded, and
+ * no-store: the source is the owner's IP and must not sit in any cache.
  */
 async function run(request: Request): Promise<Response> {
   const provided = request.headers.get('x-cron-secret') ?? '';
@@ -29,13 +29,13 @@ async function run(request: Request): Promise<Response> {
 
   const db = getDb();
   const product = await db
-    .select({ id: products.id })
+    .select({ id: products.id, platform: products.platform })
     .from(products)
     .where(eq(products.id, productId))
     .get();
   if (!product) return jsonError(404, 'unknown_product');
 
-  const key = templateKeyFor(product.id);
+  const key = templateKeyFor(product.id, product.platform);
   const object = await env.FILES.get(key);
   if (!object) return jsonError(404, 'template_missing');
 

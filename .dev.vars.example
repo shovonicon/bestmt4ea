@@ -4,6 +4,13 @@
 
 SESSION_SECRET=dev-only-local-session-secret-change-me-0123456789
 APP_URL=http://localhost:4321
+# Comma-separated emails that may place orders at $0, for testing the whole
+# purchase → licence → build → download chain without moving money. Each comped
+# order is a normal order with its full subtotal written off as a discount and a
+# payment row at $0, so it stays visible and auditable. Keep the addresses out of
+# wrangler.jsonc (this repo is public): set the same list in production with
+#   wrangler secret put COMP_EMAILS
+COMP_EMAILS=
 TURNSTILE_SECRET_KEY=
 STRIPE_SECRET_KEY=
 STRIPE_WEBHOOK_SECRET=
@@ -20,3 +27,13 @@ PERF_INGEST_TOKEN=
 # logged to the console.
 # Set in production with: wrangler secret put BREVO_API_KEY
 BREVO_API_KEY=
+
+# Google sign-in (optional). Create an OAuth 2.0 "Web application" client in the
+# Google Cloud Console and register these redirect URIs exactly:
+#   https://bestmt4ea.com/auth/google/callback/
+#   http://localhost:4321/auth/google/callback/
+# Leave either blank to hide the "Continue with Google" button.
+# Set in production with: wrangler secret put GOOGLE_CLIENT_ID
+#                         wrangler secret put GOOGLE_CLIENT_SECRET
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=

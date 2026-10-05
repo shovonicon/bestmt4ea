@@ -5,9 +5,16 @@ import { eq } from 'drizzle-orm';
 import { env } from 'cloudflare:workers';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getDb } from '../../../db/client';
-import { orders } from '../../../db/schema';
+import { orderItems, orders, products } from '../../../db/schema';
 import { reconcileStripeSession } from '../../../server/payments';
 import { url } from '../../../lib/urls';
+import {
+  DELIVERY_LABEL,
+  TELEGRAM_FULFILMENT_URL,
+  deliveryChannelFor,
+  deliverySteps,
+  type DeliveryChannel,
+} from '../../../lib/delivery';
 
 /**
  * Where the buyer lands after paying.
@@ -16,6 +23,9 @@ import { url } from '../../../lib/urls';
  * the customer is already back — so this re-verifies the session with Stripe
  * and settles here too. Settlement is idempotent, so whichever runs second is a
  * no-op. The free-trial path has no session and arrives with `?order=`.
+ *
+ * What the buyer collects depends on what they bought, so the instructions below
+ * are derived from the order's own items rather than assuming an expert advisor.
  */
 const session = Astro.locals.session;
 if (!session || session.subjectType !== 'customer') return Astro.redirect('/login/', 303);
@@ -25,6 +35,7 @@ const sessionId = Astro.url.searchParams.get('session_id');
 const requestedOrder = Astro.url.searchParams.get('order');
 
 let paid = false;
+let orderId: string | null = null;
 let orderNumber: string | null = requestedOrder;
 
 if (sessionId && env.STRIPE_SECRET_KEY) {
@@ -36,16 +47,34 @@ if (sessionId && env.STRIPE_SECRET_KEY) {
       .from(orders)
       .where(eq(orders.id, outcome.orderId))
       .get();
-    if (row && row.customerId === session.subjectId) orderNumber = row.orderNumber;
+    if (row && row.customerId === session.subjectId) {
+      orderNumber = row.orderNumber;
+      orderId = outcome.orderId;
+    }
   }
 } else if (requestedOrder) {
   const row = await db.select().from(orders).where(eq(orders.orderNumber, requestedOrder)).get();
   if (row && row.customerId === session.subjectId) {
     paid = row.status === 'paid';
+    orderId = row.id;
   } else {
     orderNumber = null;
   }
 }
+
+// One instruction set per delivery channel present in the order.
+let channels: DeliveryChannel[] = [];
+if (paid && orderId) {
+  const rows = await db
+    .select({ type: products.type })
+    .from(orderItems)
+    .innerJoin(products, eq(products.id, orderItems.productId))
+    .where(eq(orderItems.orderId, orderId))
+    .all();
+  const present = new Set(rows.map((row) => deliveryChannelFor(row.type)));
+  channels = (['licence', 'download', 'telegram'] as DeliveryChannel[]).filter((channel) => present.has(channel));
+}
+const primary = channels[0] ?? null;
 ---
 
 <BaseLayout title="Order status" description="Your BestMT4EA order status." noindex>
@@ -55,37 +84,88 @@ if (sessionId && env.STRIPE_SECRET_KEY) {
         <>
           <p class="eyebrow">Payment received</p>
           <h1 class="mt-3 text-3xl font-bold sm:text-4xl">Thank you — your order is confirmed</h1>
-          <p class="mt-4 text-base leading-7 text-[--color-ink-soft]">
-            {orderNumber ? <>Order <span class="metric-value">{orderNumber}</span> is paid. </> : null}
+          <p class="mt-4 text-base leading-7 text-[var(--color-ink-soft]">
+            {orderNumber ? (
+              <>
+                Order <span class="metric-value">{orderNumber}</span> is paid.{' '}
+              </>
+            ) : null}
             A receipt is on its way to your inbox.
           </p>
 
-          <ol class="mt-8 space-y-3 text-sm leading-7 text-[--color-ink-soft]">
-            <li>
-              <span class="font-semibold text-[--color-ink]">1.</span> Open
-              <a href={url('/dashboard/licenses')} class="text-[--color-accent]">Licences</a> in your dashboard.
-            </li>
-            <li>
-              <span class="font-semibold text-[--color-ink]">2.</span> If you bought an expert advisor,
-              activate the licence with the MT4/MT5 account number you will run it on.
-            </li>
-            <li>
-              <span class="font-semibold text-[--color-ink]">3.</span> Download your file from
-              <a href={url('/dashboard/downloads')} class="text-[--color-accent]">Downloads</a>.
-            </li>
-          </ol>
+          {channels.length === 0 && (
+            <p class="mt-8 text-sm leading-7 text-[var(--color-ink-soft]">
+              Your purchase is on your account. Open{' '}
+              <a href={url('/dashboard/orders')} class="text-[var(--color-accent]">
+                Orders
+              </a>{' '}
+              for the details, or message us on Telegram if anything looks wrong.
+            </p>
+          )}
+
+          {
+            channels.map((channel) => (
+              <section class="mt-8">
+                <p class="metric-label">{DELIVERY_LABEL[channel]}</p>
+                <ol class="mt-3 space-y-3 text-sm leading-7 text-[var(--color-ink-soft]">
+                  {deliverySteps(channel).map((step, index) => (
+                    <li>
+                      <span class="metric-value mr-1 text-[var(--color-ink]">{index + 1}.</span>{' '}
+                      <span class="font-semibold text-[var(--color-ink]">{step.title}</span> — {step.body}
+                    </li>
+                  ))}
+                </ol>
+                {channel === 'telegram' && (
+                  <a
+                    href={TELEGRAM_FULFILMENT_URL}
+                    rel="noopener"
+                    class="mt-3 inline-block text-sm font-semibold text-[var(--color-accent]"
+                  >
+                    Message us on Telegram →
+                  </a>
+                )}
+              </section>
+            ))
+          }
 
           <div class="mt-8 flex flex-wrap gap-3">
-            <a href={url('/dashboard/licenses')} class="btn btn-primary">Activate your licence</a>
-            <a href={url('/dashboard/downloads')} class="btn btn-ghost">Go to downloads</a>
+            {channels.includes('licence') && (
+              <a
+                href={url('/dashboard/licenses')}
+                class:list={['btn', primary === 'licence' ? 'btn-primary' : 'btn-ghost']}
+              >
+                Activate your licence
+              </a>
+            )}
+            {channels.includes('download') && (
+              <a
+                href={url('/dashboard/downloads')}
+                class:list={['btn', primary === 'download' ? 'btn-primary' : 'btn-ghost']}
+              >
+                Go to downloads
+              </a>
+            )}
+            {channels.includes('telegram') && (
+              <a
+                href={TELEGRAM_FULFILMENT_URL}
+                rel="noopener"
+                class:list={['btn', primary === 'telegram' ? 'btn-primary' : 'btn-ghost']}
+              >
+                Message us on Telegram
+              </a>
+            )}
           </div>
         </>
       ) : (
         <>
           <p class="eyebrow">Order status</p>
           <h1 class="mt-3 text-3xl font-bold sm:text-4xl">We are still confirming your payment</h1>
-          <p class="mt-4 text-base leading-7 text-[--color-ink-soft]">
-            {orderNumber ? <>We have your order <span class="metric-value">{orderNumber}</span>, but the payment is not confirmed yet. </> : null}
+          <p class="mt-4 text-base leading-7 text-[var(--color-ink-soft]">
+            {orderNumber ? (
+              <>
+                We have your order <span class="metric-value">{orderNumber}</span>, but the payment is not confirmed yet.{' '}
+              </>
+            ) : null}
             If you were charged, it will appear on your account shortly — no need to pay again.
           </p>
           <div class="mt-8 flex flex-wrap gap-3">

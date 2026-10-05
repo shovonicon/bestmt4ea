@@ -174,15 +174,42 @@ describe('matchTransfersToPayments', () => {
     expect(outcomes[0]).toEqual({ paymentId: 'p1', outcome: 'ambiguous' });
   });
 
-  it('settles an overpayment and marks the order paid', () => {
+  it('settles a rounded-up payment, within the 1 USDT tolerance', () => {
+    // 49.037 -> 50.000: a payer rounding up to the next whole USDT.
     const outcomes = matchTransfersToPayments(
       [payment({ id: 'p1', expectedAmount: '49.037' })],
-      [transfer({ txid: 'tx-big', rawValue: '60000000' })],
+      [transfer({ txid: 'tx-big', rawValue: '50000000' })],
       options
     );
     expect(outcomes[0]).toEqual(
-      expect.objectContaining({ paymentId: 'p1', outcome: 'settled', amount: '60', comparison: 'over' })
+      expect.objectContaining({ paymentId: 'p1', outcome: 'settled', amount: '50', comparison: 'over' })
     );
+  });
+
+  it('does not settle on a larger deposit that has nothing to do with the order', () => {
+    // A receiving wallet can get unrelated transfers; 192.39 must not pay a 49.037 order.
+    const outcomes = matchTransfersToPayments(
+      [payment({ id: 'p1', expectedAmount: '49.037' })],
+      [transfer({ txid: 'tx-deposit', rawValue: '192390000' })],
+      options
+    );
+    expect(outcomes[0]).toEqual({ paymentId: 'p1', outcome: 'no_match' });
+  });
+
+  it('draws the tolerance line at exactly 1 USDT over', () => {
+    const atLimit = matchTransfersToPayments(
+      [payment({ id: 'p1', expectedAmount: '49.037' })],
+      [transfer({ txid: 'tx-limit', rawValue: '50037000' })],
+      options
+    );
+    expect(atLimit[0]).toMatchObject({ paymentId: 'p1', outcome: 'settled' });
+
+    const overLimit = matchTransfersToPayments(
+      [payment({ id: 'p2', expectedAmount: '49.037' })],
+      [transfer({ txid: 'tx-over', rawValue: '50038000' })],
+      options
+    );
+    expect(overLimit[0]).toEqual({ paymentId: 'p2', outcome: 'no_match' });
   });
 
   it('gives an overpayment to the closest order it covers', () => {
@@ -191,12 +218,12 @@ describe('matchTransfersToPayments', () => {
         payment({ id: 'small', expectedAmount: '49.037', createdAt: 1 }),
         payment({ id: 'close', expectedAmount: '55', createdAt: 2 }),
       ],
-      [transfer({ txid: 'tx-60', rawValue: '60000000' })],
+      [transfer({ txid: 'tx-55-8', rawValue: '55800000' })],
       options
     );
     expect(outcomes).toEqual([
       { paymentId: 'small', outcome: 'no_match' },
-      expect.objectContaining({ paymentId: 'close', outcome: 'settled', amount: '60', comparison: 'over' }),
+      expect.objectContaining({ paymentId: 'close', outcome: 'settled', amount: '55.8', comparison: 'over' }),
     ]);
   });
 
@@ -204,7 +231,7 @@ describe('matchTransfersToPayments', () => {
     const outcomes = matchTransfersToPayments(
       [
         payment({ id: 'exact', expectedAmount: '49.037', createdAt: 1 }),
-        payment({ id: 'over', expectedAmount: '40', createdAt: 2 }),
+        payment({ id: 'over', expectedAmount: '48.5', createdAt: 2 }),
       ],
       [transfer({ txid: 'tx-49', rawValue: '49037000' })],
       options

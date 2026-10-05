@@ -52,9 +52,9 @@ const last = valid[valid.length - 1]?.growthPct ?? 0;
     <figure class="panel p-6">
       <div class="flex flex-wrap items-center justify-between gap-3">
         <p class="eyebrow">{label}</p>
-        <p class="metric-value text-sm text-[--color-ink-soft]">
+        <p class="metric-value text-sm text-[var(--color-ink-soft]">
           {first.toFixed(2)}% → {last.toFixed(2)}%
-          <span class="ml-2 font-sans text-xs text-[--color-ink-dim]">({valid.length} synced points)</span>
+          <span class="ml-2 font-sans text-xs text-[var(--color-ink-dim]">({valid.length} synced points)</span>
         </p>
       </div>
       <svg
@@ -73,14 +73,14 @@ const last = valid[valid.length - 1]?.growthPct ?? 0;
         <path d={areaPath} fill="url(#growth-fill)"></path>
         <path d={linePath} fill="none" stroke="#00c190" stroke-width="2"></path>
       </svg>
-      <figcaption class="mt-2 text-xs text-[--color-ink-dim]">
+      <figcaption class="mt-2 text-xs text-[var(--color-ink-dim]">
         Cumulative growth from the synchronized account snapshots. No curve is drawn from data we do not have.
       </figcaption>
     </figure>
   ) : (
     <figure class="panel p-6">
       <p class="eyebrow">{label}</p>
-      <p class="mt-3 text-sm text-[--color-ink-soft]">
+      <p class="mt-3 text-sm text-[var(--color-ink-soft]">
         Not enough synchronized history to draw a curve yet. The chart fills in as the collector runs — no line is
         drawn from data we do not have.
       </p>

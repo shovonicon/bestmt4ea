@@ -5,6 +5,7 @@ import {
   licenseBuilds,
   licenseEvents,
   licenses,
+  products,
   type License,
   type LicenseAccount,
   type LicenseBuild,
@@ -158,11 +159,46 @@ export async function createLicense(db: Db, input: CreateLicenseInput): Promise<
   return row;
 }
 
+/**
+ * A trial is live the moment it is bought. There is no account to bind, so the
+ * only thing compiled into its build is the expiry.
+ *
+ * The bound `Account` value carries the whole rule, because the compiled source
+ * tests `(AccountNumber() != Account && Account != 0) && !IsDemoAccount()`:
+ *
+ *   `0`       any account at all   (the source's own default — never shipped)
+ *   `-1`      any demo account     (a trial: demos pass, a live terminal is refused)
+ *   `1234567` that one account     (a paid licence)
+ *
+ * `-1` is also why this is deliberately *not* `activateLicense` — that one requires
+ * an account number and a binding, which is exactly what a trial does not have.
+ */
+export const TRIAL_ACCOUNT = '-1';
+
+export async function activateTrialLicense(db: Db, licenseId: string): Promise<LicenseActionResult> {
+  const license = await getLicense(db, licenseId);
+  if (!license) return { ok: false, reason: 'not_found' };
+  if (license.status === 'REVOKED') return { ok: false, reason: 'revoked' };
+  if (license.status === 'ACTIVE') return { ok: true, license };
+
+  const now = new Date();
+  await db
+    .update(licenses)
+    .set({ status: 'ACTIVE', startsAt: license.startsAt ?? now, updatedAt: now })
+    .where(eq(licenses.id, license.id));
+  await enqueueBuild(db, license.id, TRIAL_ACCOUNT, license.expiresAt);
+  await logEvent(db, license.id, 'activated', 'system', null, { trial: true, accountNumber: null });
+
+  const updated = await getLicense(db, license.id);
+  return updated ? { ok: true, license: updated } : { ok: false, reason: 'not_found' };
+}
+
 export interface ActivateInput {
   licenseId: string;
   accountNumber: string;
   broker?: string | null;
-  accountType?: 'real' | 'demo';
+  /** Which terminal, when the product ships for both. Ignored for a single-platform product. */
+  platform?: string | null;
   actorId?: string | null;
 }
 
@@ -170,11 +206,38 @@ export type LicenseActionResult =
   | { ok: true; license: License }
   | { ok: false; reason: string };
 
-/** Bind an MT5 account and switch the licence on (PENDING → ACTIVE), then queue a build. */
+/**
+ * Which terminal an activation is for.
+ *
+ * The product decides whenever it was built for one terminal — the customer is
+ * never asked, and cannot get it wrong. Only a product published for both takes
+ * the customer's answer, and then a missing or contradictory one is refused
+ * rather than guessed: a build compiled for the wrong terminal simply will not run.
+ */
+async function resolvePlatform(
+  db: Db,
+  productId: string,
+  requested: string | null | undefined
+): Promise<string | null | 'invalid'> {
+  const product = await db
+    .select({ platform: products.platform })
+    .from(products)
+    .where(eq(products.id, productId))
+    .get();
+  const platform = product?.platform ?? 'none';
+  if (platform === 'MT4' || platform === 'MT5') return platform;
+  if (platform !== 'MT4/MT5') return null;
+  return requested === 'MT4' || requested === 'MT5' ? requested : 'invalid';
+}
+
+/** Bind an MT4/MT5 account and switch the licence on (PENDING → ACTIVE), then queue a build. */
 export async function activateLicense(db: Db, input: ActivateInput): Promise<LicenseActionResult> {
   const license = await getLicense(db, input.licenseId);
   if (!license) return { ok: false, reason: 'not_found' };
   if (license.status === 'REVOKED') return { ok: false, reason: 'revoked' };
+
+  const platform = await resolvePlatform(db, license.productId, input.platform);
+  if (platform === 'invalid') return { ok: false, reason: 'platform_required' };
 
   const accounts = await listActiveAccounts(db, license.id);
   if (accounts.length >= license.maxAccounts) return { ok: false, reason: 'max_accounts' };
@@ -185,7 +248,6 @@ export async function activateLicense(db: Db, input: ActivateInput): Promise<Lic
     licenseId: license.id,
     accountNumber: input.accountNumber,
     broker: input.broker ?? null,
-    accountType: input.accountType ?? 'demo',
     active: true,
     createdAt: now,
   });
@@ -196,6 +258,7 @@ export async function activateLicense(db: Db, input: ActivateInput): Promise<Lic
   await enqueueBuild(db, license.id, input.accountNumber, license.expiresAt);
   await logEvent(db, license.id, 'activated', input.actorId ? 'customer' : 'system', input.actorId ?? null, {
     accountNumber: input.accountNumber,
+    platform,
   });
 
   const updated = await getLicense(db, license.id);
@@ -232,7 +295,6 @@ export async function changeLicenseAccount(
     licenseId: string;
     accountNumber: string;
     broker?: string | null;
-    accountType?: 'real' | 'demo';
     actorId?: string | null;
   }
 ): Promise<LicenseActionResult> {
@@ -249,7 +311,6 @@ export async function changeLicenseAccount(
     licenseId: license.id,
     accountNumber: input.accountNumber,
     broker: input.broker ?? null,
-    accountType: input.accountType ?? 'demo',
     active: true,
     createdAt: now,
   });
@@ -302,7 +363,6 @@ export async function requestAccountChange(
     customerId: string;
     accountNumber: string;
     broker?: string | null;
-    accountType?: 'real' | 'demo';
   }
 ): Promise<{ ok: boolean; reason?: string }> {
   const license = await getLicense(db, input.licenseId);
@@ -310,7 +370,6 @@ export async function requestAccountChange(
   await logEvent(db, license.id, 'account_change_requested', 'customer', input.customerId, {
     accountNumber: input.accountNumber,
     broker: input.broker ?? null,
-    accountType: input.accountType ?? 'demo',
   });
   return { ok: true };
 }
@@ -406,7 +465,6 @@ export async function rebuildLicense(
 export interface PendingAccountChange {
   accountNumber: string;
   broker: string | null;
-  accountType: 'real' | 'demo';
 }
 
 /** The most recent un-actioned account-change request an admin can approve. */
@@ -427,6 +485,5 @@ export async function getPendingAccountChangeRequest(
   return {
     accountNumber: meta.accountNumber,
     broker: typeof meta.broker === 'string' ? meta.broker : null,
-    accountType: meta.accountType === 'real' ? 'real' : 'demo',
   };
 }

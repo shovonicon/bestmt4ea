@@ -42,7 +42,7 @@ const summary = `Monthly gain: ${monthly.map((m) => `${m.label} ${m.gain}`).join
                   />
                 )}
               </div>
-              <div class="h-px w-full bg-[--color-line]" aria-hidden="true" />
+              <div class="h-px w-full bg-[var(--color-line]" aria-hidden="true" />
               <div class="flex h-20 w-full items-start justify-center">
                 {!positive && (
                   <span
@@ -51,14 +51,14 @@ const summary = `Monthly gain: ${monthly.map((m) => `${m.label} ${m.gain}`).join
                   />
                 )}
               </div>
-              <span class="mt-2 whitespace-nowrap text-[0.6875rem] text-[--color-ink-dim]">{month.label}</span>
+              <span class="mt-2 whitespace-nowrap text-[0.6875rem] text-[var(--color-ink-dim]">{month.label}</span>
             </div>
           );
         })
       }
     </div>
   </div>
-  <figcaption class="mt-3 text-xs text-[--color-ink-dim]">
+  <figcaption class="mt-3 text-xs text-[var(--color-ink-dim]">
     Gain per calendar month from the synchronized account history. Green months gained, red months gave back.
   </figcaption>
 </figure>

@@ -29,15 +29,15 @@ const otpauth = enrolling && admin ? buildOtpAuthUrl(admin.email, ADMIN_ISSUER, 
     {enrolling && admin && (
       <div class="mt-6 rounded-xl border border-white/10 bg-white/5 p-4 text-sm">
         <p class="font-medium">Set up your authenticator</p>
-        <p class="mt-2 text-[--color-ink-soft]">Add this secret to Google Authenticator / Authy, then enter a code.</p>
-        <p class="mt-2 break-all font-mono text-[--color-ink]">{admin.totpSecret}</p>
-        {otpauth && <p class="mt-2 break-all text-xs text-[--color-ink-soft]">{otpauth}</p>}
+        <p class="mt-2 text-[var(--color-ink-soft]">Add this secret to Google Authenticator / Authy, then enter a code.</p>
+        <p class="mt-2 break-all font-mono text-[var(--color-ink]">{admin.totpSecret}</p>
+        {otpauth && <p class="mt-2 break-all text-xs text-[var(--color-ink-soft]">{otpauth}</p>}
       </div>
     )}
 
     <form method="post" action="/api/admin/verify/" class="mt-8 flex flex-col gap-3">
-      <input name="code" inputmode="numeric" autocomplete="one-time-code" required maxlength="10" placeholder="123456" class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center text-2xl tracking-[0.4em] outline-none focus:border-[--color-brand]" />
-      <button type="submit" class="mt-2 rounded-xl bg-[--color-brand] px-5 py-3 font-semibold text-black">Unlock</button>
+      <input name="code" inputmode="numeric" autocomplete="one-time-code" required maxlength="10" placeholder="123456" class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center text-2xl tracking-[0.4em] outline-none focus:border-[var(--color-accent]" />
+      <button type="submit" class="mt-2 rounded-xl bg-[var(--color-accent)] px-5 py-3 font-semibold text-black">Unlock</button>
     </form>
   </section>
 </BaseLayout>

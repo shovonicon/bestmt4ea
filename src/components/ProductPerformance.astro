@@ -47,11 +47,11 @@ const hasTrades = Boolean(raw?.statistics && raw.statistics.length > 0);
     <span class="terminal-dot"></span>
     <span class="terminal-dot"></span>
     <span class="terminal-dot"></span>
-    <span class="ml-2 inline-flex items-center gap-2 text-xs text-[--color-ink-dim]">
+    <span class="ml-2 inline-flex items-center gap-2 text-xs text-[var(--color-ink-dim]">
       <span class:list={['live-dot', { 'opacity-40': !hasLive }]} aria-hidden="true"></span>
       {hasLive ? 'Myfxbook live feed' : 'Published account record'}
     </span>
-    <span class="ml-auto hidden text-[0.6875rem] uppercase tracking-[0.18em] text-[--color-ink-dim] sm:block">
+    <span class="ml-auto hidden text-[0.6875rem] uppercase tracking-[0.18em] text-[var(--color-ink-dim] sm:block">
       {platform} · {symbol}
     </span>
   </div>
@@ -61,7 +61,7 @@ const hasTrades = Boolean(raw?.statistics && raw.statistics.length > 0);
       <div>
         <p class="eyebrow">Verified track record</p>
         <h2 id="performance-heading" class="mt-1 text-lg">{syncedLabel}</h2>
-        <p class="mt-1 text-xs text-[--color-ink-dim]">
+        <p class="mt-1 text-xs text-[var(--color-ink-dim]">
           Third-party tracking account — every figure is verifiable at the source.
         </p>
       </div>
@@ -97,7 +97,7 @@ const hasTrades = Boolean(raw?.statistics && raw.statistics.length > 0);
           <>
             <dl class="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3 lg:grid-cols-4">
               {raw.summary.map(([label, value]) => (
-                <div class="rounded-xl border border-[--color-line-soft] bg-white/[0.02] px-3 py-2.5">
+                <div class="rounded-xl border border-[var(--color-line-soft] bg-white/[0.02] px-3 py-2.5">
                   <dt class="metric-label">{label}</dt>
                   <dd class="metric-value mt-1 text-base">{value}</dd>
                 </div>
@@ -136,7 +136,7 @@ const hasTrades = Boolean(raw?.statistics && raw.statistics.length > 0);
             )}
           </>
         ) : (
-          <p class="text-sm text-[--color-ink-soft]">
+          <p class="text-sm text-[var(--color-ink-soft]">
             No verified figures are published for this system yet. Treat any performance claim you see elsewhere with
             caution and ask for the tracking account before buying.
           </p>
@@ -174,7 +174,7 @@ const hasTrades = Boolean(raw?.statistics && raw.statistics.length > 0);
             </table>
           </div>
         ) : (
-          <p class="mt-5 text-sm text-[--color-ink-soft]">
+          <p class="mt-5 text-sm text-[var(--color-ink-soft]">
             Monthly analytics fill in as the collector gathers history. No month is shown without real synced data.
           </p>
         )
@@ -186,19 +186,19 @@ const hasTrades = Boolean(raw?.statistics && raw.statistics.length > 0);
         hasTrades ? (
           <dl class="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3 lg:grid-cols-4">
             {raw!.statistics!.map(([label, value]) => (
-              <div class="rounded-xl border border-[--color-line-soft] bg-white/[0.02] px-3 py-2.5">
+              <div class="rounded-xl border border-[var(--color-line-soft] bg-white/[0.02] px-3 py-2.5">
                 <dt class="metric-label">{label}</dt>
                 <dd class="metric-value mt-1 text-base">{value}</dd>
               </div>
             ))}
           </dl>
         ) : (
-          <p class="text-sm text-[--color-ink-soft]">Trade-level statistics are not published for this system yet.</p>
+          <p class="text-sm text-[var(--color-ink-soft]">Trade-level statistics are not published for this system yet.</p>
         )
       }
       {
         raw?.statistics && raw.statistics.length > 0 && (
-          <p class="mt-4 text-xs text-[--color-ink-dim]">
+          <p class="mt-4 text-xs text-[var(--color-ink-dim]">
             Mirrored from the tracked account. Some figures (negative pip totals, zero Sharpe) are properties of this
             system's high-frequency style, not a warranty of performance.
           </p>
@@ -206,17 +206,17 @@ const hasTrades = Boolean(raw?.statistics && raw.statistics.length > 0);
       }
     </div>
 
-    <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-[--color-line-soft] pt-4">
+    <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-[var(--color-line-soft] pt-4">
       {
         sourceUrl ? (
-          <a href={sourceUrl} rel="sponsored nofollow noopener" class="text-sm font-semibold text-[--color-accent]">
+          <a href={sourceUrl} rel="sponsored nofollow noopener" class="text-sm font-semibold text-[var(--color-accent]">
             Verify {accountId ? `account #${accountId}` : 'this account'} on Myfxbook →
           </a>
         ) : (
-          <span class="text-sm text-[--color-warn]">No third-party account published for this system.</span>
+          <span class="text-sm text-[var(--color-warn]">No third-party account published for this system.</span>
         )
       }
-      {raw?.updated && <span class="text-xs text-[--color-ink-dim]">Myfxbook updated {raw.updated}</span>}
+      {raw?.updated && <span class="text-xs text-[var(--color-ink-dim]">Myfxbook updated {raw.updated}</span>}
     </div>
   </div>
 </section>

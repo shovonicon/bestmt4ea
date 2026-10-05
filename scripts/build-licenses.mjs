@@ -10,15 +10,21 @@
  * MetaEditor, which needs Windows. So this runs on a Windows runner (CI or a
  * scheduled task on the owner's machine).
  *
+ * Platform: the queue row carries the template key, and its extension decides
+ * everything else. An `.mq4` is compiled by MT4's MetaEditor into an `.ex4`; an
+ * `.mq5` needs MT5's editor and produces an `.ex5`. The two editors are not
+ * interchangeable — each one only understands its own language.
+ *
  * Usage:
  *   node scripts/build-licenses.mjs                # compile everything pending
  *   node scripts/build-licenses.mjs --dry-run      # compile, print, do not upload
  *   node scripts/build-licenses.mjs --limit 5      # cap this run
  *
  * Env:
- *   APP_URL       app origin                 (default http://localhost:4321)
- *   CRON_SECRET   shared secret              (required unless --dry-run)
- *   METAEDITOR    explicit metaeditor path   (default: first found in the usual installs)
+ *   APP_URL          app origin               (default http://localhost:4321)
+ *   CRON_SECRET      shared secret            (required unless --dry-run)
+ *   METAEDITOR       MT4 metaeditor path      (default: first found in the usual installs)
+ *   METAEDITOR_MT5   MT5 metaeditor path      (default: first found in the usual installs)
  *
  * Honesty rules: a build is only submitted when MetaEditor reported **0 errors** and
  * the artefact exists. MetaEditor's exit code is unreliable (it returns 1 on a clean
@@ -38,18 +44,35 @@ const LIMIT = limitIndex >= 0 ? Number(args[limitIndex + 1]) || 25 : 25;
 const APP_URL = (process.env.APP_URL ?? 'http://localhost:4321').replace(/\/+$/, '');
 const SECRET = process.env.CRON_SECRET ?? '';
 
-/** Where MetaEditor tends to live. MT4's is the one that compiles MQL4. */
-const METAEDITOR_CANDIDATES = [
-  process.env.METAEDITOR,
-  'C:/Program Files (x86)/MetaTrader 4 EXNESS/metaeditor.exe',
-  'C:/Program Files (x86)/MetaTrader 4/metaeditor.exe',
-  'C:/Program Files/MetaTrader 4/metaeditor.exe',
-  'C:/Program Files/MetaTrader 4 EXNESS/metaeditor.exe',
-  'C:/Program Files (x86)/MetaTrader 5/metaeditor.exe',
-  'C:/Program Files/MetaTrader 5/metaeditor64.exe',
-].filter(Boolean);
+/**
+ * Where MetaEditor tends to live, keyed by the source extension it can compile.
+ * MT4's editor compiles MQL4 only and MT5's compiles MQL5 only, so the choice
+ * follows the template rather than one global path.
+ */
+const METAEDITOR_CANDIDATES = {
+  '.mq4': [
+    process.env.METAEDITOR,
+    'C:/Program Files (x86)/MetaTrader 4 EXNESS/metaeditor.exe',
+    'C:/Program Files (x86)/MetaTrader 4/metaeditor.exe',
+    'C:/Program Files/MetaTrader 4/metaeditor.exe',
+    'C:/Program Files/MetaTrader 4 EXNESS/metaeditor.exe',
+  ].filter(Boolean),
+  '.mq5': [
+    process.env.METAEDITOR_MT5,
+    'C:/Program Files/MetaTrader 5/metaeditor64.exe',
+    'C:/Program Files/MetaTrader 5/metaeditor.exe',
+    'C:/Program Files (x86)/MetaTrader 5/metaeditor64.exe',
+    'C:/Program Files (x86)/MetaTrader 5/metaeditor.exe',
+  ].filter(Boolean),
+};
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/** The source extension a template key ends in. */
+const sourceExtFor = (key) => (/\.mq5$/i.test(String(key ?? '')) ? '.mq5' : '.mq4');
+
+/** What MetaEditor produces from that source. */
+const compiledExtFor = (sourceExt) => (sourceExt === '.mq5' ? '.ex5' : '.ex4');
 
 /**
  * Actions logs on a public repository are world-readable, so a customer's account
@@ -58,17 +81,32 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
  */
 const maskAccount = (value) => `••••${String(value ?? '').slice(-4)}`;
 
-function findMetaEditor() {
-  const found = METAEDITOR_CANDIDATES.find((candidate) => existsSync(candidate));
+/** The queue's marker for a trial: any demo account, no live account. */
+const TRIAL_ACCOUNT = '-1';
+
+const metaEditorCache = new Map();
+
+/** The compiler for a source extension. Throws, naming the env var, when none is installed. */
+function findMetaEditor(sourceExt) {
+  const cached = metaEditorCache.get(sourceExt);
+  if (cached) return cached;
+
+  const candidates = METAEDITOR_CANDIDATES[sourceExt] ?? METAEDITOR_CANDIDATES['.mq4'];
+  const found = candidates.find((candidate) => existsSync(candidate));
   if (!found) {
+    const envVar = sourceExt === '.mq5' ? 'METAEDITOR_MT5' : 'METAEDITOR';
     throw new Error(
-      `MetaEditor not found. Set METAEDITOR to your metaeditor.exe.\nTried:\n  ${METAEDITOR_CANDIDATES.join('\n  ')}`,
+      `No MetaEditor for ${sourceExt} found. Set ${envVar} to your metaeditor${
+        sourceExt === '.mq5' ? '64' : ''
+      }.exe.\nTried:\n  ${candidates.join('\n  ') || '(nothing configured)'}`,
     );
   }
+
+  metaEditorCache.set(sourceExt, found);
   return found;
 }
 
-/** `2027-01-01T00:00:00.000Z` -> `01.01.2027` (the format the .mq4 declares). */
+/** `2027-01-01T00:00:00.000Z` -> `01.01.2027` (the format the .mq4/.mq5 declares). */
 function toMqlDate(value) {
   if (!value) return '31.12.2099'; // perpetual licence: the check should never fire
   const d = new Date(value);
@@ -77,9 +115,14 @@ function toMqlDate(value) {
   return `${pad(d.getUTCDate())}.${pad(d.getUTCMonth() + 1)}.${d.getUTCFullYear()}`;
 }
 
-/** Bind the account + expiry into the source. Throws if the markers are absent. */
+/**
+ * Bind the account + expiry into the source. Throws if the markers are absent.
+ *
+ * The account value is signed, because a trial binds `-1` — the source's "any demo
+ * account" value — rather than a customer's account number.
+ */
 function bindLicence(source, accountNumber, expiry) {
-  const accountRe = /^(\s*int\s+Account\s*=\s*)\d+(\s*;)/m;
+  const accountRe = /^(\s*int\s+Account\s*=\s*)-?\d+(\s*;)/m;
   const expiryRe = /^(\s*datetime\s+Expire\s*=\s*D')[\d.]+(\s*';)/m;
 
   if (!accountRe.test(source)) throw new Error('source has no "int Account = <n>;" line to bind');
@@ -122,10 +165,14 @@ async function compile(metaEditor, mqPath, logPath) {
   if (!result) return { ok: false, reason: `no compile result in the log${log ? `: ${log.trim().slice(-200)}` : ''}` };
   if (Number(result[1]) > 0) return { ok: false, reason: `${result[1]} compile error(s)` };
 
-  const ex4 = mqPath.replace(/\.mq4$/i, '.ex4');
-  if (!existsSync(ex4)) return { ok: false, reason: 'compiled with 0 errors but no .ex4 was produced' };
+  const sourceExt = sourceExtFor(mqPath);
+  const outputExt = compiledExtFor(sourceExt);
+  const artifact = mqPath.replace(/\.(mq4|mq5)$/i, outputExt);
+  if (!existsSync(artifact)) {
+    return { ok: false, reason: `compiled with 0 errors but no ${outputExt} was produced` };
+  }
 
-  return { ok: true, ex4, warnings: Number(result[2]) };
+  return { ok: true, artifact, warnings: Number(result[2]) };
 }
 
 async function fetchPending() {
@@ -136,24 +183,22 @@ async function fetchPending() {
   return (await res.json()).builds ?? [];
 }
 
-async function fetchTemplate(productId) {
+async function fetchTemplate(productId, templateKey) {
   const res = await fetch(`${APP_URL}/api/internal/builds/template/?productId=${encodeURIComponent(productId)}`, {
     headers: { 'x-cron-secret': SECRET },
   });
   if (res.status === 404) {
-    throw new Error(
-      `no template published for "${productId}" — upload it to templates/${productId}/source.mq4 in the FILES bucket`,
-    );
+    throw new Error(`no template published for "${productId}" — upload it to ${templateKey} in the FILES bucket`);
   }
   if (!res.ok) throw new Error(`template ${productId} -> HTTP ${res.status}`);
   return res.text();
 }
 
-async function submit(buildId, filename, ex4Path) {
+async function submit(buildId, filename, artifactPath) {
   const res = await fetch(`${APP_URL}/api/internal/builds/ready/`, {
     method: 'POST',
     headers: { 'content-type': 'application/json', 'x-cron-secret': SECRET },
-    body: JSON.stringify({ buildId, filename, contentBase64: readFileSync(ex4Path).toString('base64') }),
+    body: JSON.stringify({ buildId, filename, contentBase64: readFileSync(artifactPath).toString('base64') }),
   });
   if (!res.ok) throw new Error(`submit -> HTTP ${res.status}: ${(await res.text()).slice(0, 200)}`);
   return res.json();
@@ -165,8 +210,6 @@ async function main() {
     process.exit(1);
   }
 
-  const metaEditor = findMetaEditor();
-  console.log(`using MetaEditor: ${metaEditor}`);
   console.log(`queue: ${APP_URL}\n`);
 
   const pending = await fetchPending();
@@ -182,31 +225,45 @@ async function main() {
 
   try {
     for (const build of pending) {
-      const label = `${build.productSlug} account ${build.accountNumber}`;
+      /*
+       * Never print a real account number: a public repository's Actions logs are
+       * world-readable. A trial carries the source's "any account" marker, which
+       * is not a customer's number, so it is named rather than masked.
+       */
+      const accountLabel = build.accountNumber === TRIAL_ACCOUNT ? 'demo' : maskAccount(build.accountNumber);
+      const sourceExt = sourceExtFor(build.templateKey);
+      const label = `${build.productSlug} ${sourceExt} account ${accountLabel}`;
       process.stdout.write(`${label} ... `);
 
       try {
         const expiry = toMqlDate(build.expiresAt);
         if (!expiry) throw new Error(`unreadable expiry "${build.expiresAt}"`);
 
-        const source = await fetchTemplate(build.productId);
+        const source = await fetchTemplate(build.productId, build.templateKey);
         const bound = bindLicence(source, build.accountNumber, expiry);
 
-        // Name the .mq4 after the artifact so the compiled .ex4 carries that name.
-        const base = build.artifactName.replace(/\.ex4$/i, '');
-        const mqPath = join(work, `${base}.mq4`);
+        // Name the source after the artefact, so the compiled file carries that name.
+        const base = build.artifactName.replace(/\.(ex4|ex5)$/i, '');
+        const mqPath = join(work, `${base}${sourceExt}`);
         const logPath = join(work, `${base}.log`);
         writeFileSync(mqPath, bound, 'utf8');
 
-        const result = await compile(metaEditor, mqPath, logPath);
+        const result = await compile(findMetaEditor(sourceExt), mqPath, logPath);
         if (!result.ok) throw new Error(result.reason);
 
-        const sizeKb = (readFileSync(result.ex4).length / 1024).toFixed(1);
+        const sizeKb = (readFileSync(result.artifact).length / 1024).toFixed(1);
+        /*
+         * The artefact is *named* after the account, so the name is masked here
+         * before printing — otherwise the mask on the label above is pointless on a
+         * public repository. The file the customer receives keeps its real name.
+         */
+        const shownName = build.artifactName.split(build.accountNumber).join(accountLabel);
         if (DRY_RUN) {
-          console.log(`compiled ${build.artifactName} (${sizeKb} KB, ${result.warnings} warnings) — dry run, not uploaded`);
+          console.log(`compiled ${shownName} (${sizeKb} KB, ${result.warnings} warnings) — dry run, not uploaded`);
         } else {
-          const posted = await submit(build.buildId, build.artifactName, result.ex4);
-          console.log(`built + attached ${build.artifactName} (${sizeKb} KB) -> ${posted.key}`);
+          const posted = await submit(build.buildId, build.artifactName, result.artifact);
+          const shownKey = posted.key.split(build.accountNumber).join(accountLabel);
+          console.log(`built + attached ${shownName} (${sizeKb} KB) -> ${shownKey}`);
         }
         built += 1;
       } catch (err) {

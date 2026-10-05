@@ -11,9 +11,14 @@
  *   - only the official USDT contract is accepted (never a symbol from a response);
  *   - the receiver must be our address, and the transfer must be confirmed;
  *   - an underpayment never settles;
- *   - an overpayment *does* settle the order — the customer paid at least what was
- *     asked, so the payment completes; the closest order is chosen when several
- *     are open, and an exact match always wins over an overpayment;
+ *   - a *small* overpayment settles. The expected amount is the base price plus an
+ *     identifier of 0.001–0.999, so a payer who rounds up to the next whole USDT
+ *     must still be matched — hence a tolerance of 1 USDT. Anything larger is not
+ *     treated as this order's payment at all, because a wallet can also receive
+ *     deposits that have nothing to do with an order, and one of those must never
+ *     settle a licence;
+ *   - the closest order is chosen when several are open, and an exact match always
+ *     wins over an overpayment;
  *   - a txid settles at most one order, ever;
  *   - one candidate settles, several is `ambiguous`, none is `no_match`;
  *   - an expired order is flagged, never silently re-used.
@@ -54,6 +59,24 @@ export function compareAmounts(expected: string, received: string): AmountCompar
   if (got < want) return 'under';
   if (got > want) return 'over';
   return 'exact';
+}
+
+/**
+ * The most a payer may send above the expected amount and still be matched: 1 USDT.
+ *
+ * That is not arbitrary — the expected amount carries an identifier of 0.001–0.999,
+ * so someone who rounds up to the next whole USDT can be up to 0.999 over. Any more
+ * than that is a different amount, and since a wallet can receive deposits that have
+ * nothing to do with an order, an unbounded overpayment rule would let one of them
+ * settle someone else's licence.
+ */
+export const OVERPAYMENT_TOLERANCE = 1_000_000n; // micro-USDT
+
+/** True when `received` covers `expected` without being more than the tolerance. */
+export function withinOverpaymentTolerance(expected: string, received: string): boolean {
+  const want = toMicro(expected);
+  const got = toMicro(received);
+  return got >= want && got - want <= OVERPAYMENT_TOLERANCE;
 }
 
 /**
@@ -243,6 +266,9 @@ export function matchTransfersToPayments(
       if (outcomes.get(payment.id)?.outcome === 'ambiguous') continue;
       const result = check(payment, transfer);
       if (!result.ok || result.comparison !== 'over') continue;
+      // Only a near-miss counts as this order's payment — an unrelated deposit of
+      // a larger amount is not a payment for this order.
+      if (!withinOverpaymentTolerance(payment.expectedAmount, result.amount)) continue;
       // Prefer the largest expected amount that is still within the payment.
       if (!best || toMicro(best.payment.expectedAmount) < toMicro(payment.expectedAmount)) {
         best = { payment, amount: result.amount };

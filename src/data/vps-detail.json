@@ -56,6 +56,12 @@
       ]
     },
     "paymentNote": "Mastercard, Visa, USDT and other supported payment methods are available at checkout.",
+    "delivery": {
+      "label": "Delivered over Telegram",
+      "note": "A VPS is set up by hand, so your credentials are sent over Telegram rather than from your dashboard. After payment, message us with your order number and we will arrange it.",
+      "handle": "@pizion",
+      "url": "https://t.me/pizion"
+    },
     "availabilityNote": "Service availability depends on the VPS infrastructure and network. If the VPS becomes temporarily unavailable, applications running on it may stop until service is restored. Open positions, if any, remain subject to the policies of the relevant trading provider.",
     "faqs": [
       {

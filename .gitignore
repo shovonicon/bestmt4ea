@@ -26,6 +26,16 @@ playwright-report/
 # paid product binaries — never committed (uploaded to the R2 bucket instead)
 product-files/
 
+# EA source and compiled experts — the templates live in the private R2 bucket
+# (`templates/<productId>/source.mq4`). These patterns are a backstop so a stray
+# copy anywhere in the tree can never be committed or published.
+*.mq4
+*.mq5
+*.mqh
+*.ex4
+*.ex5
+*.set
+
 # command code local session state and notes — never published
 .commandcode/
 

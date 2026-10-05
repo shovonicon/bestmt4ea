@@ -5,16 +5,41 @@
   "compatibility_flags": ["nodejs_compat"],
   "vars": {
     "PUBLIC_SITE_URL": "https://bestmt4ea.com",
-    "PUBLIC_R2_PUBLIC_URL": "https://files.bestmt4ea.com",
+    // Public bucket only: the free files live here. Never point this at the
+    // bucket holding templates/ and builds/ — that would expose the EA source.
+    // Interim r2.dev URL until the zone moves and files.bestmt4ea.com can front it.
+    "PUBLIC_R2_PUBLIC_URL": "https://pub-ed5ef2cd173044a19dc984efa5452986.r2.dev",
+    // Live host: must match the hostname the Worker serves, or Stripe redirects
+    // and email links land wrong. This is the apex, since the cutover is done.
     "APP_URL": "https://bestmt4ea.com",
     "EMAIL_FROM_EMAIL": "no-reply@bestmt4ea.com",
-    "EMAIL_FROM_NAME": "BestMT4EA"
+    "EMAIL_FROM_NAME": "BestMT4EA",
+    // Where a customer's reply lands. The From address is no-reply, so without this
+    // a reply to an order email is dropped — yet the copy invites them to reply.
+    "EMAIL_REPLY_TO": "bestmt4ea@gmail.com"
   },
+  // A route rather than a custom domain. The apex already has a proxied A record
+  // pointing at the WordPress origin, and a custom domain refuses to coexist with
+  // one (Cloudflare error 100117). A route sits in front of that record: the Worker
+  // answers, the origin is bypassed, and reverting is deleting these entries.
+  // WordPress is untouched and still reachable on 103.170.154.47.
+  "routes": [
+    {
+      "pattern": "bestmt4ea.com/*",
+      "zone_name": "bestmt4ea.com"
+    },
+    {
+      "pattern": "www.bestmt4ea.com/*",
+      "zone_name": "bestmt4ea.com"
+    }
+  ],
+  // Keep the workers.dev URL too, for debugging without going through the zone.
+  "workers_dev": true,
   "d1_databases": [
     {
       "binding": "DB",
       "database_name": "bestmt4ea",
-      "database_id": "5e9ca777-3a9b-486c-9229-30e7d3237447",
+      "database_id": "b3ba8e3e-f83b-41da-ab8a-3ef288603b32",
       "migrations_dir": "drizzle"
     }
   ],
@@ -22,11 +47,6 @@
     {
       "binding": "FILES",
       "bucket_name": "bestmt4ea-files"
-    }
-  ],
-  "send_email": [
-    {
-      "name": "EMAIL"
     }
   ],
   "observability": {

@@ -119,15 +119,15 @@ const trail = isDownload
     }
 
     <div class="longform">
-      <nav aria-label="Breadcrumb" class="text-xs text-[--color-ink-dim]">
-        <a href="/" class="hover:text-[--color-accent]">Home</a>
+      <nav aria-label="Breadcrumb" class="text-xs text-[var(--color-ink-dim]">
+        <a href="/" class="hover:text-[var(--color-accent]">Home</a>
         <span class="mx-2">/</span>
-        <a href="/blog/" class="hover:text-[--color-accent]">Blog</a>
+        <a href="/blog/" class="hover:text-[var(--color-accent]">Blog</a>
         {
           !isDownload && data.categories?.[0] && (
             <>
               <span class="mx-2">/</span>
-              <span class="text-[--color-ink-soft]">{data.categories[0]}</span>
+              <span class="text-[var(--color-ink-soft]">{data.categories[0]}</span>
             </>
           )
         }
@@ -144,7 +144,7 @@ const trail = isDownload
         <h1 class="mt-2 text-3xl leading-tight md:text-4xl">{data.title}</h1>
         {
           data.description && (
-            <p class="mt-4 text-lg leading-8 text-[--color-ink-soft]">{data.description}</p>
+            <p class="mt-4 text-lg leading-8 text-[var(--color-ink-soft]">{data.description}</p>
           )
         }
       </header>
@@ -207,9 +207,9 @@ const trail = isDownload
 
       <ArticleSources sources={data.sources} />
 
-      <section class="mt-12 rounded-xl border border-[--color-warn]/30 bg-[--color-warn]/5 p-5">
-        <h2 class="text-sm font-semibold text-[--color-warn]">Risk warning</h2>
-        <p class="mt-2 text-xs leading-6 text-[--color-ink-soft]">{RISK_DISCLAIMER}</p>
+      <section class="mt-12 rounded-xl border border-[var(--color-warn]/30 bg-[var(--color-warn]/5 p-5">
+        <h2 class="text-sm font-semibold text-[var(--color-warn]">Risk warning</h2>
+        <p class="mt-2 text-xs leading-6 text-[var(--color-ink-soft]">{RISK_DISCLAIMER}</p>
       </section>
 
       {
@@ -221,11 +221,11 @@ const trail = isDownload
                 <li>
                   <a
                     href={url(`/${item.data.slug}/`)}
-                    class="text-sm font-semibold text-[--color-ink] hover:text-[--color-accent]"
+                    class="text-sm font-semibold text-[var(--color-ink] hover:text-[var(--color-accent]"
                   >
                     {item.data.title}
                   </a>
-                  <p class="mt-1 text-xs leading-6 text-[--color-ink-dim]">{item.data.description}</p>
+                  <p class="mt-1 text-xs leading-6 text-[var(--color-ink-dim]">{item.data.description}</p>
                 </li>
               ))}
             </ul>
