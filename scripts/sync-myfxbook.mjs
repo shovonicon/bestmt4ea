@@ -83,7 +83,20 @@ function readSnapshots() {
  * rows written before that block was stored still publish.
  */
 function toStats(row) {
-  const m = row.raw?.metrics ?? {};
+  /*
+   * `raw` arrives as TEXT from the SQL path, not as an object. Without parsing it,
+   * the metrics block is silently ignored and only the indexed columns survive —
+   * three figures out of the dozen the pages show. The local fixture caught it.
+   */
+  let payload = row.raw;
+  if (typeof payload === 'string') {
+    try {
+      payload = JSON.parse(payload);
+    } catch {
+      payload = null;
+    }
+  }
+  const m = payload?.metrics ?? {};
   const stats = {
     accountId: String(row.account_id),
     accountType: m.accountType,
