@@ -68,6 +68,11 @@ function readSnapshots() {
       encoding: 'utf8',
       maxBuffer: 64 * 1024 * 1024,
     });
+  } catch (err) {
+    // execFileSync's message is just "Command failed" — wrangler's own reason
+    // (auth, permissions, a bad query) is on stderr/stdout.
+    const detail = `${err.stderr ?? ''}${err.stdout ?? ''}`.trim().slice(-600);
+    throw new Error(`wrangler d1 execute failed${detail ? `: ${detail}` : ''}`);
   } finally {
     rmSync(sqlPath, { force: true });
   }

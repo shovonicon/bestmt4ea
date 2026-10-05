@@ -252,7 +252,14 @@ async function main() {
     const page = await context.newPage();
 
     try {
-      const res = await page.goto(account.accountUrl, { waitUntil: 'domcontentloaded', timeout: 60000 });
+      // Myfxbook's bot protection answers 403 intermittently, and the same page
+      // usually loads a little later. Back off and retry before giving up.
+      let res = null;
+      for (let attempt = 0; attempt < 4; attempt += 1) {
+        if (attempt > 0) await sleep(attempt * 20000);
+        res = await page.goto(account.accountUrl, { waitUntil: 'domcontentloaded', timeout: 60000 });
+        if (res && res.status() < 400) break;
+      }
       if (!res || res.status() >= 400) throw new Error(`HTTP ${res?.status()}`);
       await page.waitForTimeout(6000);
 
