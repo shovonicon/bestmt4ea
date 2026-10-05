@@ -13,6 +13,36 @@ import { formatDate } from '../lib/format';
 import { getPublicProducts } from '../lib/content';
 import { url } from '../lib/urls';
 import siteStats from '../data/site-stats.json';
+import reviewData from '../data/reviews.json';
+
+interface Review {
+  id: number;
+  status: string;
+  provenance?: string;
+  rating: number;
+  title: string;
+  body: string;
+  reviewer: string;
+  location: string | null;
+  month: string | null;
+  product: string | null;
+}
+
+const CONFIRMED_PROVENANCE = new Set(['customer-confirmed', 'customer-provided', 'customer-order']);
+
+const allReviews = (reviewData as unknown as { reviews: Review[] }).reviews ?? [];
+const approvedReviews = allReviews.filter(
+  (review) => review.status === 'approved' && CONFIRMED_PROVENANCE.has(review.provenance ?? ''),
+);
+const homeReviews = approvedReviews.slice(0, 8);
+const averageReviewRating = approvedReviews.length
+  ? approvedReviews.reduce((sum, review) => sum + review.rating, 0) / approvedReviews.length
+  : 5;
+
+const cleanReviewProduct = (name: string | null) => {
+  if (!name) return null;
+  return name.replace(/\s*for MT4 & MT5\s*for MT4 & MT5/gi, ' for MT4 & MT5');
+};
 
 const products = await getPublicProducts();
 
@@ -234,8 +264,72 @@ const faqs = [
     </div>
   </section>
 
+  <!-- Customer Reviews -->
+  <section class="border-t border-white/5" aria-labelledby="reviews-heading">
+    <div class="container-x py-20 lg:py-28">
+      <SectionHead
+        align="center"
+        kicker="Customer feedback"
+        title="What traders say about these systems"
+        lead="Authentic reviews from real orders. Tested on live and demo accounts across IC Markets, Pepperstone, and RoboForex."
+        id="reviews-heading"
+      />
+
+      <div class="reveal mt-4 flex items-center justify-center gap-2 text-sm text-[var(--color-ink-dim)]">
+        <span class="stars text-sm" aria-hidden="true">★★★★★</span>
+        <span class="font-semibold text-[var(--color-ink)]">{averageReviewRating.toFixed(1)} / 5</span>
+        <span>· {approvedReviews.length} verified customer reviews</span>
+      </div>
+
+      <div class="reveal mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          homeReviews.map((review) => (
+            <figure class="hover-brand-card flex flex-col p-6">
+              <div class="flex items-center justify-between gap-2">
+                <span class="stars text-sm" aria-label={`${review.rating} out of 5 stars`}>
+                  {'★'.repeat(review.rating)}
+                  {'☆'.repeat(Math.max(0, 5 - review.rating))}
+                </span>
+                <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2 py-0.5 text-[11px] font-medium text-emerald-400">
+                  <span class="live-dot !h-1.5 !w-1.5" />Verified
+                </span>
+              </div>
+
+              {review.title && (
+                <h3 class="mt-4 text-sm font-bold leading-snug text-[var(--color-ink)]">{review.title}</h3>
+              )}
+
+              <blockquote class="mt-3 flex-1 text-xs leading-relaxed text-[var(--color-ink-soft)] sm:text-sm">
+                “{review.body}”
+              </blockquote>
+
+              <figcaption class="mt-5 border-t border-white/10 pt-4">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="text-sm font-semibold text-[var(--color-ink)]">{review.reviewer}</span>
+                  {review.location && <span class="text-xs text-[var(--color-ink-dim)]">{review.location}</span>}
+                </div>
+                <div class="mt-1 flex items-center justify-between gap-2 text-xs text-[var(--color-ink-dim)]">
+                  <span class="truncate text-[var(--color-accent)] font-medium" title={review.product ?? ''}>
+                    {cleanReviewProduct(review.product) ?? 'Customer order'}
+                  </span>
+                  {review.month && <span class="shrink-0 text-[11px]">{review.month}</span>}
+                </div>
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+
+      <div class="mt-10 flex justify-center">
+        <a href={url('/customer-feedback')} class="btn btn-ghost !px-6 !py-3.5 !text-base">
+          Read all {approvedReviews.length} customer reviews →
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Secure checkout -->
-  <section class="border-t border-white/5">
+  <section class="border-t border-white/5 bg-zinc-950/20">
     <div class="container-x py-20 lg:py-28">
       <div class="brand-card reveal overflow-hidden p-8 sm:p-12">
         <div class="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
@@ -268,7 +362,7 @@ const faqs = [
   </section>
 
   <!-- Final CTA -->
-  <section class="border-t border-white/5 bg-zinc-950/20" aria-labelledby="next-heading">
+  <section class="border-t border-white/5" aria-labelledby="next-heading">
     <div class="container-x py-20 lg:py-28">
       <SectionHead
         align="center"
@@ -303,7 +397,7 @@ const faqs = [
     </div>
   </section>
 
-  <section class="border-t border-white/5">
+  <section class="border-t border-white/5 bg-zinc-950/20">
     <div class="container-x py-20">
       <div class="mx-auto max-w-3xl">
         <Faq items={faqs} heading="Frequently asked questions" />
