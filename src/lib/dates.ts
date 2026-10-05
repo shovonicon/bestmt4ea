@@ -33,7 +33,16 @@ const MONTHS = [
   'December',
 ] as const;
 
-const now = new Date();
+/** Injected by astro.config.mjs from Node's clock; see the note there. */
+declare const __BUILD_TIME__: string | undefined;
+
+const buildTime = typeof __BUILD_TIME__ === 'string' ? Date.parse(__BUILD_TIME__) : Number.NaN;
+// Never fall back to a clock that can read 0: an unreadable build time is a
+// build error, not a page titled "January 1970".
+const now = Number.isFinite(buildTime) ? new Date(buildTime) : new Date();
+if (now.getUTCFullYear() < 2024) {
+  throw new Error(`dates.ts: build time resolved to ${now.toISOString()} — __BUILD_TIME__ was not injected`);
+}
 
 export const currentYear = now.getUTCFullYear();
 export const currentMonth = MONTHS[now.getUTCMonth()];

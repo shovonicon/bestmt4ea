@@ -20,12 +20,14 @@ export interface Props {
   slot: string;
   format?: string;
   layoutKey?: string;
+  /** A fixed unit size (e.g. 300x600). Omit for a responsive unit. */
+  fixedSize?: { width: number; height: number };
   class?: string;
   /** Set false when the unit sits in the sidebar to avoid stacking labels. */
   showLabel?: boolean;
 }
 
-const { slot, format = 'auto', layoutKey, class: className = '', showLabel = true } = Astro.props;
+const { slot, format = 'auto', layoutKey, class: className = '', showLabel = true, fixedSize } = Astro.props;
 const client = import.meta.env.PUBLIC_ADSENSE_CLIENT;
 const enabled = Boolean(client && slot);
 const hasFallback = Astro.slots.has('fallback');
@@ -41,12 +43,12 @@ const hasFallback = Astro.slots.has('fallback');
       )}
       <ins
         class="adsbygoogle block"
-        style="display:block"
+        style={fixedSize ? `display:inline-block;width:${fixedSize.width}px;height:${fixedSize.height}px` : 'display:block'}
         data-ad-client={client}
         data-ad-slot={slot}
-        data-ad-format={format}
+        data-ad-format={fixedSize ? undefined : format}
         data-ad-layout-key={layoutKey}
-        data-full-width-responsive="true"
+        data-full-width-responsive={fixedSize ? undefined : 'true'}
       />
       {hasFallback && (
         <div data-ad-fallback hidden>
@@ -68,7 +70,35 @@ const hasFallback = Astro.slots.has('fallback');
           script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + client;
           document.head.appendChild(script);
         }
-        (adsbygoogle = window.adsbygoogle || []).push({});
+        /*
+         * Request the ad only once the unit has a width. AdSense sizes a unit from
+         * its container and throws "No slot size for availableWidth=0" when asked
+         * while it is hidden or not laid out yet — the side rails are display:none
+         * below 1320px, and this script runs during parsing. Wait for a width
+         * instead; a unit that never becomes visible never asks, and never errors.
+         */
+        (() => {
+          const unit = document.currentScript?.closest('[data-ad-unit]');
+          const ins = unit?.querySelector('ins.adsbygoogle');
+          if (!ins) return;
+          const request = () => {
+            ins.dataset.adRequested = '1';
+            try {
+              (window.adsbygoogle = window.adsbygoogle || []).push({});
+            } catch {
+              /* a blocked or failed library must never break the page */
+            }
+          };
+          if (ins.offsetWidth > 0) return request();
+          if (typeof ResizeObserver === 'undefined') return request();
+          const watcher = new ResizeObserver(() => {
+            if (ins.offsetWidth > 0) {
+              watcher.disconnect();
+              request();
+            }
+          });
+          watcher.observe(ins);
+        })();
       </script>
       {hasFallback && (
         <script is:inline>
@@ -116,6 +146,8 @@ const hasFallback = Astro.slots.has('fallback');
               attributeFilter: ['data-ad-status'],
             });
             window.setTimeout(() => {
+              // A unit that never became visible never asked, so it is not "unfilled".
+              if (ad.dataset.adRequested !== '1') return;
               if (ad.getAttribute('data-ad-status') !== 'filled') {
                 fallback.hidden = false;
                 ad.style.display = 'none';

@@ -423,28 +423,30 @@
    * spans the full track set) — and the inner element is what sticks, because a
    * grid/flex item stretched to its full cell has no room to move.
    *
-   * The breakpoint clears the narrowest column that uses a rail — the tools
-   * page's 56rem column needs a 1312px viewport before a 160px unit fits beside
-   * it — so the rails are hidden below that rather than squeezed or overlapping.
+   * The units are fixed 300x600 half-page ads. They are placed from the page
+   * centre, outside the widest column that uses a rail (the 56rem breakout of
+   * the download card and the tools page), so they never overlap content:
+   * 28rem + 1.5rem gap + 300px each side needs a ~1560px viewport. Below that
+   * the rails are hidden rather than squeezed or overlapping.
    */
   .ad-rail {
     display: none;
   }
-  @media (min-width: 1320px) {
+  @media (min-width: 1560px) {
     .ad-rail {
       position: absolute;
       top: 0;
       bottom: 0;
       display: block;
-      width: 10rem;
+      width: 300px;
     }
-    .ad-rail-left { left: 0; }
-    .ad-rail-right { right: 0; }
+    .ad-rail-left { left: calc(50% - 28rem - 1.5rem - 300px); }
+    .ad-rail-right { left: calc(50% + 28rem + 1.5rem); }
     .ad-rail-inner {
       position: sticky;
       top: 6rem;
-      /* Reserve the skyscraper's height so the page does not jump when it fills. */
-      min-height: 37.5rem;
+      /* Reserve the 300x600 unit's height so the page does not jump when it fills. */
+      min-height: 600px;
     }
   }
   .longform > * {

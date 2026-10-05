@@ -1,5 +1,60 @@
 {
-  "fetchedAt": null,
+  "fetchedAt": "2026-10-05T23:01:00.967Z",
   "staleAfterDays": 3,
-  "accounts": {}
+  "accounts": {
+    "obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5": {
+      "accountId": "12080504",
+      "gainPct": 52.13,
+      "drawdownPct": 92.39,
+      "balance": 3182.54,
+      "equity": 20.37,
+      "profit": 1052.62,
+      "profitFactor": 1.29
+    },
+    "onix-stratos-xauusd-ea-ai-smart-scalper-for-mt5": {
+      "accountId": "12144557",
+      "gainPct": 10.84,
+      "drawdownPct": 6.81,
+      "balance": 11692.05,
+      "equity": 99.98,
+      "profit": 1692.1,
+      "profitFactor": 1.39
+    },
+    "zenith-matrix-ea-ai-gold-scalper-for-mt5": {
+      "accountId": "12049339",
+      "gainPct": 90.43,
+      "drawdownPct": 47.85,
+      "balance": 1539.47,
+      "equity": 85.53,
+      "profit": 869.43,
+      "profitFactor": 5.84
+    },
+    "nexora-manus-ea-ai-gold-scalper-for-mt5": {
+      "accountId": "12059490",
+      "gainPct": 51.46,
+      "drawdownPct": 37.42,
+      "balance": 1527.4,
+      "equity": 64.5,
+      "profit": 517.88,
+      "profitFactor": 276.47
+    },
+    "mythos-epic-ea-ai-gold-scalper-for-mt5": {
+      "accountId": "12049330",
+      "gainPct": 73.65,
+      "drawdownPct": 41.41,
+      "balance": 1736.31,
+      "equity": 89.6,
+      "profit": 736.31,
+      "profitFactor": 1.96
+    },
+    "equinox-cosmos-ea-ai-gbpjpy-scalper-for-mt5": {
+      "accountId": "12033689",
+      "gainPct": -36.56,
+      "drawdownPct": 63.9,
+      "balance": 634.36,
+      "equity": 100,
+      "profit": 365.64,
+      "profitFactor": 0.47
+    }
+  }
 }

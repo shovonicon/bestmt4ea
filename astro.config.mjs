@@ -111,5 +111,11 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+    define: {
+      // Prerendering runs inside a Workers runtime, where `new Date()` at module
+      // scope is the epoch ("January 1970" in every title). Take the build date
+      // from Node, where the clock is real, and hand it to src/lib/dates.ts.
+      __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
+    },
   },
 });

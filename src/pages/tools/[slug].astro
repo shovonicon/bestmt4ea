@@ -44,14 +44,14 @@ const showRails = Boolean(import.meta.env.PUBLIC_ADSENSE_CLIENT);
         <>
           <div class="ad-rail ad-rail-left">
             <div class="ad-rail-inner">
-              <AdSlot slot={site.adSlots.railLeft} format="vertical" showLabel={false} class="!my-0">
+              <AdSlot slot={site.adSlots.railLeft} fixedSize={{ width: 300, height: 600 }} showLabel={false} class="!my-0">
                 <PartnerFallback slot="fallback" variant="rail" />
               </AdSlot>
             </div>
           </div>
           <div class="ad-rail ad-rail-right">
             <div class="ad-rail-inner">
-              <AdSlot slot={site.adSlots.railRight} format="vertical" showLabel={false} class="!my-0">
+              <AdSlot slot={site.adSlots.railRight} fixedSize={{ width: 300, height: 600 }} showLabel={false} class="!my-0">
                 <PartnerFallback slot="fallback" variant="rail" />
               </AdSlot>
             </div>

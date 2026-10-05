@@ -22,10 +22,9 @@
  */
 
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
-import { writeFileSync, rmSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
-import { tmpdir } from 'node:os';
 
 const ACCOUNTS_FILE = 'src/data/myfxbook-accounts.json';
 const OUT_FILE = 'src/data/myfxbook-live.json';
@@ -50,21 +49,21 @@ const cents = (value) => {
 /** Every snapshot, newest first — there are only a handful per account. */
 function readSnapshots() {
   const sql =
-    'SELECT account_id, captured_at, raw, growth_pct, drawdown_pct, profit_factor, ' +
-    'win_rate_pct, balance_cents, equity_cents, profit_cents, open_trades ' +
-    'FROM performance_snapshots ORDER BY captured_at DESC';
-  // Through a file rather than --command: a shell is needed to reach npx.cmd on
-  // Windows, and a shell would split the SQL on its spaces. A file sidesteps both
-  // that and the command-line length limit. On Linux/CI either approach works.
-  const sqlPath = join(tmpdir(), `myfxbook-snapshots-${process.pid}.sql`);
-  writeFileSync(sqlPath, `${sql};\n`, 'utf8');
+    // Snapshots are keyed by our own account id; the accounts file is keyed by the
+    // Myfxbook number, so join across and expose that number as `account_id`.
+    'SELECT a.myfxbook_account_id AS account_id, s.captured_at, s.raw, s.growth_pct, s.drawdown_pct, ' +
+    's.profit_factor, s.win_rate_pct, s.balance_cents, s.equity_cents, s.profit_cents, s.open_trades ' +
+    'FROM performance_snapshots s JOIN performance_accounts a ON a.id = s.account_id ' +
+    'ORDER BY s.captured_at DESC';
+  // `--command`, not `--file`: a file goes through D1's import endpoint, which
+  // needs write permission even for a SELECT. Running wrangler's entry script with
+  // Node directly needs no shell (npx is npx.cmd on Windows), so the SQL reaches
+  // wrangler as one argument and is not split on its spaces.
+  const wranglerBin = fileURLToPath(new URL('../node_modules/wrangler/bin/wrangler.js', import.meta.url));
 
   let out;
   try {
-    out = execFileSync('npx', ['wrangler', 'd1', 'execute', DB, LOCAL ? '--local' : '--remote', '--json', '--file', sqlPath], {
-      // Only Windows needs a shell, because npx is npx.cmd there. Elsewhere it just
-      // adds Node's deprecation warning about unescaped arguments.
-      shell: process.platform === 'win32',
+    out = execFileSync(process.execPath, [wranglerBin, 'd1', 'execute', DB, LOCAL ? '--local' : '--remote', '--json', '--command', sql], {
       encoding: 'utf8',
       maxBuffer: 64 * 1024 * 1024,
     });
@@ -73,8 +72,6 @@ function readSnapshots() {
     // (auth, permissions, a bad query) is on stderr/stdout.
     const detail = `${err.stderr ?? ''}${err.stdout ?? ''}`.trim().slice(-600);
     throw new Error(`wrangler d1 execute failed${detail ? `: ${detail}` : ''}`);
-  } finally {
-    rmSync(sqlPath, { force: true });
   }
   const start = out.indexOf('[');
   if (start === -1) throw new Error(`unexpected wrangler output: ${out.slice(0, 200)}`);
