@@ -157,5 +157,9 @@ it automatically via the `predeploy` hook, so a broken build cannot ship.
 - Hidden mega-menu panels must keep `visibility: hidden` — opacity alone leaves
   their links in the tab order. `test:e2e` pins the keyboard contract
   (ArrowDown, Escape, focus restore) and the 44px touch targets.
+- **The WooCommerce Stripe webhook is deliberately left enabled.**
+  `https://bestmt4ea.com/wp-json/wc-stripe/v1/webhook` now resolves to the Worker, so it
+  is dead and accumulating failed deliveries. The owner will decide what to do with it —
+  **do not disable, delete or "fix" it.**
 - Legal pages (`/disclaimer`, `/dmca-policy`, `/affiliate-disclosure`) are required for
   AdSense review and are linked from the footer.
