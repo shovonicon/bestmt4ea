@@ -33,6 +33,9 @@ const DB = 'bestmt4ea';
 const STALE_AFTER_DAYS = 3;
 
 const onlySlug = process.argv.slice(2).find((a) => !a.startsWith('--'));
+// --local reads the local D1 instead of the deployed one, so the whole chain can be
+// checked on a developer machine without touching production.
+const LOCAL = process.argv.slice(2).includes('--local');
 
 const num = (value) => {
   if (value === null || value === undefined || value === '') return undefined;
@@ -58,7 +61,7 @@ function readSnapshots() {
 
   let out;
   try {
-    out = execFileSync('npx', ['wrangler', 'd1', 'execute', DB, '--remote', '--json', '--file', sqlPath], {
+    out = execFileSync('npx', ['wrangler', 'd1', 'execute', DB, LOCAL ? '--local' : '--remote', '--json', '--file', sqlPath], {
       // Only Windows needs a shell, because npx is npx.cmd there. Elsewhere it just
       // adds Node's deprecation warning about unescaped arguments.
       shell: process.platform === 'win32',
