@@ -281,10 +281,10 @@ const faqs = [
         <span>· {approvedReviews.length} verified customer reviews</span>
       </div>
 
-      <div class="reveal mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="reveal mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {
           homeReviews.map((review) => (
-            <figure class="hover-brand-card flex flex-col p-6">
+            <figure class="hover-brand-card flex min-w-0 flex-col p-6">
               <div class="flex items-center justify-between gap-2">
                 <span class="stars text-sm" aria-label={`${review.rating} out of 5 stars`}>
                   {'★'.repeat(review.rating)}
@@ -299,7 +299,7 @@ const faqs = [
                 <h3 class="mt-4 text-sm font-bold leading-snug text-[var(--color-ink)]">{review.title}</h3>
               )}
 
-              <blockquote class="mt-3 flex-1 text-xs leading-relaxed text-[var(--color-ink-soft)] sm:text-sm">
+              <blockquote class="mt-3 flex-1 break-words text-xs leading-relaxed text-[var(--color-ink-soft)] sm:text-sm">
                 “{review.body}”
               </blockquote>
 
@@ -309,7 +309,7 @@ const faqs = [
                   {review.location && <span class="text-xs text-[var(--color-ink-dim)]">{review.location}</span>}
                 </div>
                 <div class="mt-1 flex items-center justify-between gap-2 text-xs text-[var(--color-ink-dim)]">
-                  <span class="truncate text-[var(--color-accent)] font-medium" title={review.product ?? ''}>
+                  <span class="min-w-0 truncate text-[var(--color-accent)] font-medium" title={review.product ?? ''}>
                     {cleanReviewProduct(review.product) ?? 'Customer order'}
                   </span>
                   {review.month && <span class="shrink-0 text-[11px]">{review.month}</span>}
