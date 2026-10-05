@@ -163,7 +163,16 @@ async function compile(metaEditor, mqPath, logPath) {
 
   const result = log.match(/Result:\s*(\d+)\s*errors?,\s*(\d+)\s*warnings?/i);
   if (!result) return { ok: false, reason: `no compile result in the log${log ? `: ${log.trim().slice(-200)}` : ''}` };
-  if (Number(result[1]) > 0) return { ok: false, reason: `${result[1]} compile error(s)` };
+  if (Number(result[1]) > 0) {
+    // Surface the actual error lines — the count alone is undiagnosable from CI.
+    // Account numbers are masked by the caller; the log lines only quote source.
+    const lines = log
+      .split(/\r?\n/)
+      .filter((l) => /\berror\b/i.test(l) && !/^Result:/i.test(l.trim()))
+      .map((l) => l.trim().replace(/^.*[\/]/, '').slice(0, 240))
+      .slice(0, 5);
+    return { ok: false, reason: `${result[1]} compile error(s)${lines.length ? `: ${lines.join(' | ')}` : ''}` };
+  }
 
   const sourceExt = sourceExtFor(mqPath);
   const outputExt = compiledExtFor(sourceExt);
