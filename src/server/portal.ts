@@ -215,3 +215,38 @@ export async function listOrdersForCustomer(db: Db, customerId: string): Promise
   }
   return out;
 }
+
+export type BuildProgress = 'generating' | 'ready' | 'failed';
+
+/**
+ * Where each ACTIVE licence's newest build stands, keyed by licence id. A licence
+ * is only "ready" once a compiled file exists to download; until then it is being
+ * generated (PENDING / BUILDING) or, rarely, FAILED. A licence with no build row
+ * is absent from the map.
+ */
+export async function getBuildProgressByLicense(
+  db: Db,
+  customerId: string
+): Promise<Map<string, BuildProgress>> {
+  const rows = await db
+    .select({
+      licenseId: licenseBuilds.licenseId,
+      buildStatus: licenseBuilds.buildStatus,
+      r2Key: licenseBuilds.r2Key,
+    })
+    .from(licenseBuilds)
+    .innerJoin(licenses, eq(licenses.id, licenseBuilds.licenseId))
+    .where(and(eq(licenses.customerId, customerId), eq(licenses.status, 'ACTIVE')))
+    .orderBy(desc(licenseBuilds.requestedAt))
+    .all();
+
+  const progress = new Map<string, BuildProgress>();
+  for (const row of rows) {
+    if (progress.has(row.licenseId)) continue; // newest build wins
+    progress.set(
+      row.licenseId,
+      row.buildStatus === 'READY' && row.r2Key ? 'ready' : row.buildStatus === 'FAILED' ? 'failed' : 'generating'
+    );
+  }
+  return progress;
+}

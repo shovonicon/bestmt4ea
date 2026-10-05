@@ -6,6 +6,7 @@ import DashboardLayout from '../../../layouts/DashboardLayout.astro';
 import { getDb } from '../../../db/client';
 import { products } from '../../../db/schema';
 import { listActiveAccounts, listLicensesForCustomer } from '../../../server/licenses';
+import { getBuildProgressByLicense } from '../../../server/portal';
 import { url } from '../../../lib/urls';
 
 const session = Astro.locals.session;
@@ -24,6 +25,7 @@ const singlePlatform = (platform: string | null): string | null =>
 
 const db = getDb();
 const rows = await listLicensesForCustomer(db, session.subjectId);
+const buildProgress = await getBuildProgressByLicense(db, session.subjectId);
 const licenses = [];
 for (const license of rows) {
   const [product, accounts] = await Promise.all([
@@ -38,6 +40,7 @@ for (const license of rows) {
     id: license.id,
     key: license.licenseKey,
     status: license.status,
+    build: buildProgress.get(license.id) ?? null,
     product: product?.title ?? license.productId,
     platform: product?.platform ?? null,
     expiresAt: license.expiresAt,
@@ -91,7 +94,11 @@ const badgeTone = (status: string) =>
                 {license.product}
                 {singlePlatform(license.platform) && <span class="badge ml-1 align-middle">{license.platform}</span>}
               </h2>
-              <span class={badgeTone(license.status)}>{license.status}</span>
+              {license.status === 'ACTIVE' && license.build === 'generating' ? (
+                <span class="badge border-amber-400/30 bg-amber-400/10 text-amber-200">GENERATING</span>
+              ) : (
+                <span class={badgeTone(license.status)}>{license.status}</span>
+              )}
             </div>
 
             <dl class="mt-5 grid gap-x-8 gap-y-4 sm:grid-cols-3">
@@ -185,11 +192,35 @@ const badgeTone = (status: string) =>
             }
 
             {
+              license.status === 'ACTIVE' && license.build === 'generating' && (
+                <p class="mt-6 flex items-start gap-2.5 border-t border-white/5 pt-6 text-sm leading-7 text-amber-100">
+                  <span class="live-dot mt-2.5" aria-hidden="true" />
+                  <span>
+                    Your licence is being generated and will be ready to download in about 10 minutes. Please be
+                    patient — we will let you know here the moment it is ready.
+                  </span>
+                </p>
+              )
+            }
+
+            {
+              license.status === 'ACTIVE' && license.build === 'failed' && (
+                <p class="mt-6 border-t border-white/5 pt-6 text-sm leading-7 text-[var(--color-ink-soft)]">
+                  Your build is taking longer than expected. Message us on{' '}
+                  <a href={url('/dashboard/support')} class="text-emerald-300 hover:text-emerald-200">support</a>{' '}
+                  with your key and we will sort it out.
+                </p>
+              )
+            }
+
+            {
               license.status === 'ACTIVE' && (
                 <div class="mt-6 flex flex-wrap items-center gap-3 border-t border-white/5 pt-6">
-                  <a href={url('/dashboard/downloads')} class="btn btn-primary !px-5 !py-2.5 !text-sm">
-                    Downloads
-                  </a>
+                  {license.build !== 'generating' && (
+                    <a href={url('/dashboard/downloads')} class="btn btn-primary !px-5 !py-2.5 !text-sm">
+                      Downloads
+                    </a>
+                  )}
                   <a href={url('/dashboard/support')} class="btn btn-ghost !px-5 !py-2.5 !text-sm">
                     Get setup help
                   </a>

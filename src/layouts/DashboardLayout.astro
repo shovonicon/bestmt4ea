@@ -17,6 +17,7 @@ import { eq } from 'drizzle-orm';
 import BaseLayout from './BaseLayout.astro';
 import { getDb } from '../db/client';
 import { customers } from '../db/schema';
+import { getBuildProgressByLicense, listCustomerBuilds } from '../server/portal';
 import { url } from '../lib/urls';
 
 export interface Props {
@@ -36,6 +37,12 @@ const customer = await getDb()
   .from(customers)
   .where(eq(customers.id, session.subjectId))
   .get();
+
+const [buildProgress, readyBuilds] = await Promise.all([
+  getBuildProgressByLicense(getDb(), session.subjectId),
+  listCustomerBuilds(getDb(), session.subjectId),
+]);
+const generatingCount = [...buildProgress.values()].filter((state) => state === 'generating').length;
 
 const nav = [
   { key: 'overview', href: url('/dashboard'), label: 'Overview' },
@@ -115,7 +122,114 @@ const sessionUntil = session.expiresAt
     </div>
   </nav>
 
+  {
+    generatingCount > 0 && (
+      <div class="border-b border-amber-400/20 bg-amber-400/10">
+        <div
+          class="container-x flex flex-wrap items-center justify-between gap-3 py-3"
+          role="status"
+          data-build-banner
+        >
+          <p class="flex items-center gap-2.5 text-sm text-amber-100">
+            <span class="live-dot" aria-hidden="true" />
+            <span>
+              <strong class="font-semibold">
+                Your licence{generatingCount === 1 ? ' is' : 's are'} being generated.
+              </strong>{' '}
+              It will be ready to download in about 10 minutes — please be patient. You can leave this page open and we
+              will tell you the moment it is ready.
+            </span>
+          </p>
+          <button type="button" class="btn btn-ghost !px-4 !py-2 !text-xs" data-notify-optin hidden>
+            Notify me when ready
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  <div
+    class="pointer-events-none fixed inset-x-0 top-20 z-50 flex justify-center px-4"
+    data-build-toast-host
+    data-generating={generatingCount}
+    data-ready={readyBuilds.length}
+    data-downloads-url={url('/dashboard/downloads')}
+    aria-live="polite"
+  >
+  </div>
+
   <section class="container-x py-10 lg:py-12">
     <slot />
   </section>
 </BaseLayout>
+
+<script>
+  /*
+   * Build watcher. While a licence is generating, poll for progress; when a file
+   * becomes ready, raise an on-page popup and, if the visitor opted in, a system
+   * notification — so they do not have to sit refreshing the page.
+   */
+  const host = document.querySelector<HTMLElement>('[data-build-toast-host]');
+  const optIn = document.querySelector<HTMLButtonElement>('[data-notify-optin]');
+  const supportsNotifications = typeof Notification !== 'undefined';
+
+  if (optIn && supportsNotifications && Notification.permission === 'default') {
+    optIn.hidden = false;
+    optIn.addEventListener('click', async () => {
+      try {
+        await Notification.requestPermission();
+      } catch {
+        /* an old browser without the promise form: ignore */
+      }
+      optIn.hidden = true;
+    });
+  }
+
+  if (host && Number(host.dataset.generating) > 0) {
+    let knownReady = Number(host.dataset.ready ?? 0);
+    const downloadsUrl = host.dataset.downloadsUrl ?? '/dashboard/downloads/';
+    const originalTitle = document.title;
+    const deadline = Date.now() + 90 * 60_000; // stop after 90 minutes
+
+    const announce = (titles: string[]) => {
+      const names = titles.length ? titles.join(', ') : 'Your download';
+      const toast = document.createElement('div');
+      toast.className =
+        'pointer-events-auto flex max-w-md items-center gap-4 rounded-2xl border border-emerald-400/30 bg-zinc-950/95 px-5 py-4 shadow-[0_0_40px_rgba(0,193,144,0.25)] backdrop-blur';
+      toast.setAttribute('role', 'alert');
+      toast.innerHTML =
+        '<span class="live-dot" aria-hidden="true"></span><span class="text-sm text-slate-100"><strong class="block font-semibold text-emerald-300">Your download is ready</strong><span class="text-slate-300"></span></span><a class="btn btn-primary !px-4 !py-2 !text-xs" href="' +
+        downloadsUrl +
+        '">Download</a><button type="button" class="text-slate-400 hover:text-white" aria-label="Dismiss">✕</button>';
+      toast.querySelector('span.text-slate-300')!.textContent = names + ' is ready to download.';
+      toast.querySelector('button')!.addEventListener('click', () => toast.remove());
+      host.appendChild(toast);
+
+      document.title = '✅ Download ready — ' + originalTitle;
+      if (supportsNotifications && Notification.permission === 'granted') {
+        try {
+          new Notification('Your download is ready', { body: names + ' is ready to download.' });
+        } catch {
+          /* some mobile browsers only allow notifications via a service worker */
+        }
+      }
+      document.querySelector('[data-build-banner]')?.parentElement?.remove();
+    };
+
+    const timer = window.setInterval(async () => {
+      if (Date.now() > deadline) return window.clearInterval(timer);
+      try {
+        const res = await fetch('/api/licenses/build-status/', { credentials: 'same-origin' });
+        if (!res.ok) return;
+        const state = (await res.json()) as { generating: number; ready: { id: string; title: string }[] };
+        if (state.ready.length > knownReady) {
+          announce(state.ready.slice(0, state.ready.length - knownReady).map((build) => build.title));
+          knownReady = state.ready.length;
+        }
+        if (state.generating === 0) window.clearInterval(timer);
+      } catch {
+        /* offline blip: try again on the next tick */
+      }
+    }, 15_000);
+  }
+</script>
