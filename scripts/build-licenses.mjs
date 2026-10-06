@@ -122,11 +122,19 @@ function toMqlDate(value) {
  * account" value — rather than a customer's account number.
  */
 function bindLicence(source, accountNumber, expiry) {
-  const accountRe = /^(\s*int\s+Account\s*=\s*)-?\d+(\s*;)/m;
-  const expiryRe = /^(\s*datetime\s+Expire\s*=\s*D')[\d.]+(\s*';)/m;
+  // Two declaration styles ship across the templates. MQL4 and a few MQL5 files
+  // declare plain `int Account` / `datetime Expire`; the rest declare the constants
+  // as `const long c_AccountID` / `const datetime c_Expire`. Both gate identically
+  // (`!= 0` means the account is restricted; `-1` is the builder's demo marker).
+  const accountRe = /^(\s*(?:int\s+Account|const\s+long\s+c_AccountID)\s*=\s*)-?\d+(\s*;)/m;
+  const expiryRe = /^(\s*(?:datetime\s+Expire|const\s+datetime\s+c_Expire)\s*=\s*D')[\d.]+(\s*';)/m;
 
-  if (!accountRe.test(source)) throw new Error('source has no "int Account = <n>;" line to bind');
-  if (!expiryRe.test(source)) throw new Error("source has no \"datetime Expire = D'...';\" line to bind");
+  if (!accountRe.test(source)) {
+    throw new Error('source has no account declaration to bind (expected "int Account" or "const long c_AccountID")');
+  }
+  if (!expiryRe.test(source)) {
+    throw new Error('source has no expiry declaration to bind (expected "datetime Expire" or "const datetime c_Expire")');
+  }
 
   return source
     .replace(accountRe, (_m, a, b) => `${a}${accountNumber}${b}`)
