@@ -22,6 +22,9 @@ export const site = {
   },
   myfxbook: 'https://www.myfxbook.com/members/Bestmt4ea',
 
+  /** Cloudflare Turnstile site key (public; the widget is rendered from it). */
+  turnstileSiteKey: import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '0x4AAAAAAFPByHrDou0ULSww',
+
   /** AdSense. Leave PUBLIC_ADSENSE_CLIENT unset to disable all ad units. */
   adsenseClient: import.meta.env.PUBLIC_ADSENSE_CLIENT || '',
   /**

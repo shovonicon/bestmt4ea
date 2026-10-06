@@ -3,6 +3,7 @@ export const prerender = false;
 
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { url } from '../lib/urls';
+import { site } from '../lib/site';
 import { env } from 'cloudflare:workers';
 
 /**
@@ -22,6 +23,7 @@ const errorText: Record<string, string> = {
   email: 'That email address does not look right. Check it and try again.',
   link: 'That sign-in link has expired or was already used. Request a new one below.',
   google: 'Google sign-in did not complete. Try again, or use the email link below.',
+  turnstile: 'The security check did not pass. Please try again.',
 };
 const message = error ? (errorText[error] ?? null) : null;
 
@@ -191,6 +193,17 @@ const included = [
                     )
                   }
 
+                  {
+                    site.turnstileSiteKey && (
+                      <script
+                        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+                        async
+                        defer
+                      >
+                      </script>
+                    )
+                  }
+
                   <form method="post" action="/auth/request/" class="mt-5 flex flex-col gap-5">
                     <input type="hidden" name="csrf" value={Astro.locals.csrfToken} />
 
@@ -212,6 +225,17 @@ const included = [
                         Used only to sign you in and to reach you about your licences.
                       </p>
                     </div>
+
+                    {
+                      site.turnstileSiteKey && (
+                        <div
+                          class="cf-turnstile"
+                          data-sitekey={site.turnstileSiteKey}
+                          data-theme="dark"
+                        >
+                        </div>
+                      )
+                    }
 
                     <button type="submit" class="btn btn-primary w-full !py-3.5 !text-base">
                       Email me a sign-in link

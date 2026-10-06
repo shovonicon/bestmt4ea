@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { env } from 'cloudflare:workers';
 import { getDb } from '../../db/client';
 import { requestLogin } from '../../server/auth';
+import { verifyTurnstile } from '../../server/turnstile';
 import { rateLimit } from '../../lib/rate-limit';
 import { verifyCsrf } from '../../lib/csrf';
 import { sha256Hex } from '../../lib/crypto';
@@ -17,6 +18,20 @@ export const POST: APIRoute = async ({ request, locals }) => {
 
   if (!verifyCsrf(request, locals.csrfToken, body.csrf)) {
     return wantsHtml(request) ? redirect('/login/?error=csrf', 303) : jsonError(403, 'csrf');
+  }
+
+  // Turnstile is optional: when the Worker holds a secret the challenge must pass,
+  // and when it does not (dev / a deployment without the secret) the check is
+  // skipped so the sign-in flow still works.
+  if (env.TURNSTILE_SECRET_KEY) {
+    const turnstileOk = await verifyTurnstile(
+      env.TURNSTILE_SECRET_KEY,
+      body['cf-turnstile-response'] ?? '',
+      clientIpFrom(request)
+    );
+    if (!turnstileOk) {
+      return wantsHtml(request) ? redirect('/login/?error=turnstile', 303) : jsonError(400, 'turnstile_failed');
+    }
   }
 
   const db = getDb();
