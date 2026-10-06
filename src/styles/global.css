@@ -375,6 +375,23 @@
     flex-shrink: 0;
   }
 
+  /*
+   * Product pages carry a fixed buy bar along the bottom edge on small screens.
+   * The back-to-top arrow and the Telegram button are fixed to the same edge, so
+   * they sat on top of it. Where the bar exists they rise above it instead; from
+   * `lg` up the bar is hidden and they return to their normal corner.
+   */
+  @media (max-width: 1023.98px) {
+    body:has([data-buy-bar]) [data-back-to-top],
+    body:has([data-buy-bar]) [data-telegram-fab] {
+      bottom: calc(5.75rem + env(safe-area-inset-bottom)) !important;
+    }
+    /* Room at the end of the page so the bar never hides the last content. */
+    body:has([data-buy-bar]) {
+      padding-bottom: 5rem;
+    }
+  }
+
   /* ---- Sub-menu selection ------------------------------------------------ */
 
   /* The panel: glass, with a brand hairline along its top edge. */

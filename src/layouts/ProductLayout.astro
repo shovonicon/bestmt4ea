@@ -1527,9 +1527,12 @@ const faqs = [
     </aside>
   </div>
 
-  {/* Mobile sticky buy bar. The right padding keeps the floating Telegram
-      button clear of the checkout CTA. */}
-  <div class="fixed inset-x-0 bottom-0 z-40 border-t border-[var(--color-line] bg-black/90 py-3 pl-4 pr-[4.75rem] backdrop-blur lg:hidden">
+  {/* Mobile sticky buy bar. The floating buttons are lifted above it (see
+      `[data-buy-bar]` in global.css) so neither covers the checkout CTA. */}
+  <div
+    data-buy-bar
+    class="fixed inset-x-0 bottom-0 z-40 border-t border-[var(--color-line] bg-black/90 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pl-4 pr-4 backdrop-blur lg:hidden"
+  >
     <div class="flex items-center justify-between gap-3">
       <div class="min-w-0">
         <p class="metric-label">From</p>
