@@ -375,13 +375,140 @@
     flex-shrink: 0;
   }
 
+  /* ---- Sub-menu selection ------------------------------------------------ */
+
+  /* The panel: glass, with a brand hairline along its top edge. */
+  .menu-panel {
+    position: relative;
+    backdrop-filter: blur(18px);
+  }
+  .menu-panel::before {
+    content: '';
+    position: absolute;
+    left: 1.5rem;
+    right: 1.5rem;
+    top: 0;
+    height: 1px;
+    background-image: linear-gradient(90deg, transparent, rgba(0, 224, 168, 0.7), transparent);
+  }
+
+  /* One row per link: a brand bar slides in, the row lifts into a soft glow. */
+  .menu-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    padding: 0.5rem 0.75rem 0.5rem 0.875rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #cbd5e1;
+    transition: color 0.2s ease, background-color 0.2s ease, padding-left 0.2s ease, box-shadow 0.2s ease;
+  }
+  .menu-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 22%;
+    bottom: 22%;
+    width: 3px;
+    border-radius: 0 3px 3px 0;
+    background-image: linear-gradient(180deg, #00e0a8, #2dd4bf);
+    box-shadow: 0 0 12px rgba(0, 224, 168, 0.9);
+    transform: scaleY(0);
+    transition: transform 0.2s ease;
+  }
+  .menu-link .menu-link-arrow {
+    flex-shrink: 0;
+    height: 0.75rem;
+    width: 0.75rem;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .menu-link:hover,
+  .menu-link:focus-visible,
+  .menu-link[aria-current='page'] {
+    padding-left: 1.125rem;
+    color: #fff;
+    background-image: linear-gradient(90deg, rgba(0, 193, 144, 0.2), rgba(0, 193, 144, 0.04));
+    box-shadow: inset 0 0 0 1px rgba(0, 193, 144, 0.22);
+  }
+  .menu-link:hover::before,
+  .menu-link:focus-visible::before,
+  .menu-link[aria-current='page']::before {
+    transform: scaleY(1);
+  }
+  .menu-link:hover .menu-link-arrow,
+  .menu-link:focus-visible .menu-link-arrow,
+  .menu-link[aria-current='page'] .menu-link-arrow {
+    opacity: 1;
+    transform: none;
+    color: #34d399;
+  }
+  .menu-link:focus-visible {
+    outline: 2px solid rgba(52, 211, 153, 0.7);
+    outline-offset: -2px;
+  }
+  /* The page you are on reads as "selected", not just hovered. */
+  .menu-link[aria-current='page'] {
+    font-weight: 700;
+    color: #a7f3d0;
+  }
+
+  /* The same selection language inside the mobile accordion. */
+  .menu-link-m {
+    position: relative;
+    display: flex;
+    min-height: 44px;
+    align-items: center;
+    border-radius: 0.75rem;
+    padding: 0 0.75rem 0 1rem;
+    font-size: 0.875rem;
+    color: #94a3b8;
+    transition: color 0.2s ease, background-color 0.2s ease;
+  }
+  .menu-link-m::before {
+    content: '';
+    position: absolute;
+    left: 0.25rem;
+    top: 25%;
+    bottom: 25%;
+    width: 3px;
+    border-radius: 3px;
+    background-image: linear-gradient(180deg, #00e0a8, #2dd4bf);
+    transform: scaleY(0);
+    transition: transform 0.2s ease;
+  }
+  .menu-link-m:hover,
+  .menu-link-m:focus-visible,
+  .menu-link-m[aria-current='page'] {
+    color: #fff;
+    background-color: rgba(0, 193, 144, 0.1);
+  }
+  .menu-link-m:hover::before,
+  .menu-link-m:focus-visible::before,
+  .menu-link-m[aria-current='page']::before {
+    transform: scaleY(1);
+  }
+  .menu-link-m[aria-current='page'] {
+    font-weight: 600;
+    color: #a7f3d0;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .nav-explore::before {
       animation: none;
       opacity: 0;
     }
     .nav-explore,
-    .nav-link::after {
+    .nav-link::after,
+    .menu-link,
+    .menu-link::before,
+    .menu-link .menu-link-arrow,
+    .menu-link-m::before {
       transition: none;
     }
   }
