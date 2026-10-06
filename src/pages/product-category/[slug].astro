@@ -50,9 +50,9 @@ const isFallback = matched.length === 0;
       <span class="text-[var(--color-ink-soft]">{catName}</span>
     </nav>
 
-    <p class="eyebrow mt-6">{slug}</p>
-    <h1 class="mt-2 text-3xl md:text-4xl">{catName}</h1>
-    <p class="mt-4 max-w-2xl text-sm leading-7 text-[var(--color-ink-dim]">
+    <p class="eyebrow tone-gold mt-6 text-center">{slug}</p>
+    <h1 class="mt-2 text-center text-3xl md:text-5xl"><span class="text-gradient-gold">{catName}</span></h1>
+    <p class="mx-auto mt-4 max-w-2xl text-center text-sm leading-7 text-[var(--color-ink-dim]">
       {isFallback
         ? `Every expert advisor in the catalogue, ${products.length} in total.`
         : `${products.length} product${products.length === 1 ? '' : 's'} in this category.`}

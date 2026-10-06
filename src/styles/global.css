@@ -29,12 +29,25 @@
   --color-warn: #fbbf24;
   --color-danger: #f87171;
 
+  /* Secondary accents. Emerald stays the brand; these add range for highlights. */
+  --color-gold: #f5c04a;
+  --color-gold-soft: #fcd34d;
+  --color-violet: #8b7cff;
+  --color-violet-soft: #b4a9ff;
+  --color-sky: #38bdf8;
+  --color-sky-soft: #7dd3fc;
+
   --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-heading: "Sora", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
 
 @layer base {
+  :root {
+    /* The "tone" a section is painted in. Emerald unless a .tone-* class says otherwise. */
+    --tone-rgb: 0 193 144;
+    --tone-text: #00e0a8;
+  }
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
@@ -48,7 +61,10 @@
     background-image:
       radial-gradient(ellipse 80% 40% at 50% -5%, rgba(0, 193, 144, 0.22), transparent),
       radial-gradient(ellipse 50% 40% at 90% 5%, rgba(0, 193, 187, 0.1), transparent),
-      radial-gradient(ellipse 40% 30% at 10% 95%, rgba(0, 150, 110, 0.12), transparent);
+      radial-gradient(ellipse 40% 30% at 10% 95%, rgba(0, 150, 110, 0.12), transparent),
+      radial-gradient(ellipse 38% 34% at 100% 38%, rgba(139, 124, 255, 0.09), transparent),
+      radial-gradient(ellipse 34% 30% at 0% 55%, rgba(56, 189, 248, 0.07), transparent),
+      radial-gradient(ellipse 36% 26% at 82% 100%, rgba(245, 192, 74, 0.06), transparent);
     background-attachment: fixed;
   }
   h1, h2, h3, h4, h5, h6 {
@@ -119,7 +135,7 @@
     inset: 0;
     border-radius: 20px;
     padding: 1px;
-    background: linear-gradient(135deg, rgba(0, 193, 144, 0.6), rgba(0, 0, 0, 0.1) 50%, rgba(0, 193, 144, 0.3));
+    background: linear-gradient(135deg, rgb(var(--tone-rgb) / 0.6), rgba(0, 0, 0, 0.1) 50%, rgb(var(--tone-rgb) / 0.3));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -136,8 +152,8 @@
     transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
   }
   .hover-brand-card:hover {
-    border-color: rgba(0, 193, 144, 0.4);
-    box-shadow: 0 0 30px rgba(0, 193, 144, 0.12);
+    border-color: rgb(var(--tone-rgb) / 0.4);
+    box-shadow: 0 0 30px rgb(var(--tone-rgb) / 0.12);
     transform: translateY(-3px);
   }
 
@@ -157,7 +173,7 @@
     font-weight: 600;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--color-accent);
+    color: var(--tone-text);
   }
 
   .section-kicker {
@@ -173,8 +189,8 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--color-accent);
-    box-shadow: 0 0 10px rgba(0, 193, 144, 0.9);
+    background: rgb(var(--tone-rgb));
+    box-shadow: 0 0 10px rgb(var(--tone-rgb) / 0.9);
     animation: pulseDot 1.8s ease-in-out infinite;
     flex-shrink: 0;
   }
@@ -196,6 +212,27 @@
     border-right: 1px solid rgba(0, 193, 144, 0.14);
   }
   .stats-panel-item:last-child { border-right: none; }
+  .stats-panel-item:nth-child(4n + 2) { --tone-rgb: 56 189 248; --tone-text: #7dd3fc; }
+  .stats-panel-item:nth-child(4n + 3) { --tone-rgb: 139 124 255; --tone-text: #b4a9ff; }
+  .stats-panel-item:nth-child(4n + 4) { --tone-rgb: 245 192 74; --tone-text: #fcd34d; }
+  .stats-panel-item::before {
+    content: '';
+    position: absolute;
+    left: 18%;
+    right: 18%;
+    top: 0;
+    height: 2px;
+    border-radius: 0 0 2px 2px;
+    background-image: linear-gradient(90deg, transparent, rgb(var(--tone-rgb)), transparent);
+    box-shadow: 0 0 18px rgb(var(--tone-rgb) / 0.7);
+  }
+  .stats-panel-item .display-stat {
+    color: var(--tone-text);
+    text-shadow: 0 0 28px rgb(var(--tone-rgb) / 0.4);
+  }
+  .stats-panel-item .metric-label {
+    color: var(--color-ink-dim);
+  }
   /* Four tiles squeeze below the small breakpoint — fold to two. */
   @media (max-width: 639px) {
     .stats-panel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -242,6 +279,42 @@
   .menu-open .menu-chevron {
     transform: rotate(180deg);
     color: #34d399;
+  }
+
+  /* ---- Tones: secondary accents ---------------------------------------- */
+
+  .tone-emerald { --tone-rgb: 0 193 144; --tone-text: #00e0a8; }
+  .tone-gold { --tone-rgb: 245 192 74; --tone-text: #fcd34d; }
+  .tone-violet { --tone-rgb: 139 124 255; --tone-text: #b4a9ff; }
+  .tone-sky { --tone-rgb: 56 189 248; --tone-text: #7dd3fc; }
+
+  .text-gradient-aurora {
+    background-image: linear-gradient(100deg, #00e0a8 0%, #38bdf8 48%, #a99bff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-gradient-gold {
+    background-image: linear-gradient(135deg, #fde68a, #f5c04a 55%, #f59e0b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-gradient-violet {
+    background-image: linear-gradient(135deg, #c4b5fd, #8b7cff 55%, #6366f1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* A badge that takes the colour of whatever tone it sits in. */
+  .badge-tone {
+    border-color: rgb(var(--tone-rgb) / 0.4);
+    background-color: rgb(var(--tone-rgb) / 0.12);
+    color: var(--tone-text);
+  }
+  .shadow-glow-tone {
+    box-shadow: 0 0 40px -10px rgb(var(--tone-rgb) / 0.55);
   }
 
   /* ---- Premium header ---------------------------------------------------- */
@@ -373,6 +446,17 @@
   }
   .nav-pill svg {
     flex-shrink: 0;
+  }
+  .nav-pill-telegram {
+    border-color: rgba(56, 189, 248, 0.35);
+    background-color: rgba(56, 189, 248, 0.08);
+    color: #bae6fd;
+  }
+  .nav-pill-telegram:hover,
+  .nav-pill-telegram:focus-visible {
+    border-color: rgba(56, 189, 248, 0.7);
+    background-color: rgba(56, 189, 248, 0.14);
+    box-shadow: 0 0 24px -10px rgba(56, 189, 248, 0.9);
   }
 
   /*
@@ -776,7 +860,7 @@
     width: 1.75rem;
     height: 2px;
     border-radius: 2px;
-    background-image: linear-gradient(90deg, var(--color-accent), transparent);
+    background-image: linear-gradient(90deg, rgb(var(--tone-rgb)), transparent);
   }
 
   /* Glass chrome for the hero and terminal. */

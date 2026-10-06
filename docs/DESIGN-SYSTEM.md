@@ -29,8 +29,32 @@ them there, never inline.
 Gradient: `.brand-gradient` = `linear-gradient(135deg, #00e0a8, #00c190 50%, #2dd4bf)`.
 Gradient text: `.text-gradient-brand`.
 
+### Secondary accents (tones)
+
+Emerald is still the brand. Three secondary accents add range for highlights, so
+a page is not one flat green. They were added by owner request and are *accents*,
+not a new palette: the page stays black and emerald stays the primary colour.
+
+| Token | Value | Text on black | Typical use |
+|---|---|---|---|
+| `--color-gold` | `#f5c04a` | `#fcd34d` | Prices, ratings, the featured tier, "most popular" |
+| `--color-violet` | `#8b7cff` | `#b4a9ff` | Mid-tier plans, editorial / blog sections |
+| `--color-sky` | `#38bdf8` | `#7dd3fc` | Trials, Telegram, comparison / information sections |
+
+A section is painted in a tone by putting `tone-emerald|gold|violet|sky` on it (or
+`tone="..."` on `SectionHead`). Inside it, `.eyebrow`, `.section-mark`, `.live-dot`,
+`.brand-card`, `.hover-brand-card`, `.badge-tone` and `.shadow-glow-tone` follow the
+tone through `--tone-rgb` / `--tone-text`. Gradient text: `.text-gradient-aurora`
+(emerald to sky to violet), `.text-gradient-gold`, `.text-gradient-violet`.
+
+Use text colours from the *Text on black* column for copy; the base values are for
+fills, glows and borders. The e2e axe tests enforce contrast.
+
 **Rules**
 - Emerald is an accent, never a background wash. The page is black.
+- Secondary accents follow the same rule, and one colour per element: do not mix
+  tones inside a single card or heading.
+- Gold is not for loss or risk; use `--color-warn` for caution and red for drawdown.
 - Red is only ever used for drawdown / loss. Never for marketing emphasis.
 - Never hard-code a hex in a component — use the token.
 

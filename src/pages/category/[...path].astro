@@ -58,7 +58,7 @@ const fmt = (d: Date) =>
   description={`Every article filed under ${catName}: practical guides and reviews on automated forex trading, written to solve specific problems rather than to sell.`}
 >
   <div class="container-x py-14">
-    <nav aria-label="Breadcrumb" class="text-xs text-[var(--color-ink-dim]">
+    <nav aria-label="Breadcrumb" class="text-center text-xs text-[var(--color-ink-dim]">
       <a href="/" class="hover:text-[var(--color-accent]">Home</a>
       <span class="mx-2">/</span>
       <a href="/blog/" class="hover:text-[var(--color-accent]">Blog</a>
@@ -66,8 +66,8 @@ const fmt = (d: Date) =>
       <span class="text-[var(--color-ink-soft]">{catName}</span>
     </nav>
 
-    <h1 class="mt-6 text-3xl md:text-4xl">{catName}</h1>
-    <p class="mt-4 max-w-2xl text-sm leading-7 text-[var(--color-ink-dim]">
+    <h1 class="mt-6 text-center text-3xl md:text-5xl"><span class="text-gradient-violet">{catName}</span></h1>
+    <p class="mx-auto mt-4 max-w-2xl text-center text-sm leading-7 text-[var(--color-ink-dim]">
       {sorted.length} article{sorted.length === 1 ? '' : 's'} in this category.
     </p>
 

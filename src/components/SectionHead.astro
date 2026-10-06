@@ -3,14 +3,17 @@ export interface Props {
   kicker?: string;
   title: string;
   lead?: string;
+  /** Centred by default; pass `left` for a heading that sits beside other content. */
   align?: 'left' | 'center';
+  /** The accent the kicker and its rule are painted in. Emerald when omitted. */
+  tone?: 'emerald' | 'gold' | 'violet' | 'sky';
   id?: string;
 }
 
-const { kicker, title, lead, align = 'left', id } = Astro.props;
+const { kicker, title, lead, align = 'center', tone, id } = Astro.props;
 ---
 
-<div class:list={['max-w-3xl', align === 'center' && 'mx-auto text-center']}>
+<div class:list={['max-w-3xl', tone && `tone-${tone}`, align === 'center' && 'mx-auto text-center']}>
   {
     kicker && (
       <p class:list={['section-mark eyebrow', align === 'center' && 'justify-center']}>

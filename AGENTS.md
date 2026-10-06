@@ -50,7 +50,8 @@ Simple, direct, second-person language. Full word budgets and rules live in
 
 ## Design
 
-Match **`strivealgo.com` exactly**: pure-black `#000` base with fixed emerald radial glows,
+Match **`strivealgo.com`** as the base (the owner has since added gold / violet / sky secondary
+accents; see `docs/DESIGN-SYSTEM.md`): pure-black `#000` base with fixed emerald radial glows,
 `#00c190` brand, **Sora** headings + **Manrope** body + JetBrains Mono, glow-shadow cards
 (`.brand-card`), pulsing `.live-dot`, and the site chrome — **reading progress bar**,
 **back-to-top arrow**, and the **floating Telegram button**. Tokens are in

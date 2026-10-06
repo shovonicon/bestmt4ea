@@ -22,14 +22,14 @@ const sorted = products
   description="Browse every MetaTrader 4 and MetaTrader 5 expert advisor, indicator and tool in the BESTMT4EA library, each with a verifiable track record."
 >
   <div class="container-x py-14">
-    <p class="eyebrow">The EA store</p>
-    <h1 class="mt-2 text-3xl md:text-4xl">All systems</h1>
-    <p class="mt-4 max-w-2xl text-sm leading-7 text-[var(--color-ink-dim]">
+    <p class="eyebrow text-center">The EA store</p>
+    <h1 class="mt-2 text-center text-3xl md:text-5xl">All <span class="text-gradient-aurora">systems</span></h1>
+    <p class="mx-auto mt-4 max-w-2xl text-center text-sm leading-7 text-[var(--color-ink-dim]">
       {products.length} products, each with its licence tier, platform compatibility and a link to its independent
       performance record.
     </p>
 
-    <div class="mt-8 flex flex-wrap gap-2">
+    <div class="mt-8 flex flex-wrap justify-center gap-2">
       {categories.map((category) => <span class="badge">{category}</span>)}
       {brands.map((brand) => <a href={url(`/brand/${brand.toLowerCase()}`)} class="badge">{brand}</a>)}
     </div>

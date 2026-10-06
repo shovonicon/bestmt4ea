@@ -17,14 +17,14 @@ const fmt = (d: Date) =>
   description="Practical guides on automated forex trading: how expert advisors work, how to test them on demo, how to read a drawdown, and how to avoid the traps that cost retail traders money."
 >
   <div class="container-x py-14">
-    <p class="eyebrow">Learn</p>
-    <h1 class="mt-2 text-3xl md:text-4xl">Forex trading blog</h1>
-    <p class="mt-4 max-w-2xl text-sm leading-7 text-[var(--color-ink-dim]">
+    <p class="eyebrow tone-violet text-center">Learn</p>
+    <h1 class="mt-2 text-center text-3xl md:text-5xl">Forex trading <span class="text-gradient-violet">blog</span></h1>
+    <p class="mx-auto mt-4 max-w-2xl text-center text-sm leading-7 text-[var(--color-ink-dim]">
       Everything here is written to solve a specific problem — testing a robot properly, reading a drawdown, sizing a
       position, or spotting a system that will not survive a real account.
     </p>
 
-    <div class="mt-8 flex flex-wrap gap-2">
+    <div class="mt-8 flex flex-wrap justify-center gap-2">
       {categories.slice(0, 12).map((cat) => <span class="badge">{cat}</span>)}
     </div>
 

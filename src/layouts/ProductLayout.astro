@@ -434,7 +434,7 @@ const faqs = [
               titleSub && (
                 <>
                   <br />
-                  <span class="text-gradient-brand">{titleSub}</span>
+                  <span class="text-gradient-aurora">{titleSub}</span>
                 </>
               )
             }
@@ -1045,21 +1045,29 @@ const faqs = [
             <div class="mt-6 grid gap-5 lg:grid-cols-3">
               {plans.map((plan) => {
                 const featured = plan.badge === 'Most popular';
+                // Each tier gets its own colour: trial sky, 12 months violet, the featured lifetime tier gold.
+                const tone = featured ? 'gold' : String(plan.code ?? '').startsWith('trial') ? 'sky' : 'violet';
                 const save =
                   plan.compareAt && plan.compareAt > plan.price
                     ? Math.round(((plan.compareAt - plan.price) / plan.compareAt) * 100)
                     : 0;
                 return (
-                  <div class:list={['relative flex flex-col p-6', featured ? 'brand-card shadow-glow' : 'panel']}>
+                  <div
+                    class:list={[
+                      'relative flex flex-col p-6',
+                      `tone-${tone}`,
+                      featured ? 'brand-card shadow-glow-tone' : 'hover-brand-card',
+                    ]}
+                  >
                     {plan.badge && (
-                      <span class:list={['badge absolute -top-3 left-6', featured && 'badge-accent']}>{plan.badge}</span>
+                      <span class="badge badge-tone absolute -top-3 left-6">{plan.badge}</span>
                     )}
                     <p class="font-heading text-lg font-bold text-[var(--color-ink]">{plan.name}</p>
                     {plan.term && (
                       <p class="mt-1 text-xs uppercase tracking-[0.16em] text-[var(--color-ink-dim]">{plan.term}</p>
                     )}
                     <p class="mt-5 flex items-end gap-2">
-                      <span class="display-stat text-4xl text-[var(--color-ink]">
+                      <span class="display-stat text-4xl text-[var(--tone-text)]">
                         {plan.price > 0 ? formatMoney(plan.price, currency) : 'Free'}
                       </span>
                       {save > 0 && <span class="strike text-sm">{formatMoney(plan.compareAt ?? 0, currency)}</span>}
@@ -1128,6 +1136,7 @@ const faqs = [
             kicker="Reviews"
             title={reviewCount > 0 ? `Rated ${reviewAverage.toFixed(1)} / 5` : 'What traders say'}
             lead="Only real reviews. None are written to fill space — an empty section stays empty."
+            tone="gold"
             id="reviews-heading"
           />
         </div>
@@ -1158,6 +1167,7 @@ const faqs = [
           kicker="Partners"
           title="Brokers & platforms we use"
           lead="RoboForex and Exness are the two brokers our systems are built and tested on. Sponsored links, disclosed below."
+          tone="sky"
           id="partners-heading"
         />
         <div class="mt-6 grid gap-4 sm:grid-cols-2">
