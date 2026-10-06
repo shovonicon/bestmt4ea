@@ -24,23 +24,10 @@
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Never let a browser or proxy keep a personalised or licensed response.
-/api/*
-  Cache-Control: private, no-store
-  X-Robots-Tag: noindex
-
-# Private surfaces: no indexing, and no framing at all.
-/admin/*
-  X-Robots-Tag: noindex, nofollow
-  Cache-Control: private, no-store
-/dashboard/*
-  X-Robots-Tag: noindex, nofollow
-  Cache-Control: private, no-store
-/login/*
-  X-Robots-Tag: noindex, nofollow
-/checkout/*
-  X-Robots-Tag: noindex, nofollow
-  Cache-Control: private, no-store
+# Private surfaces (SSR) and the API set their own cache/noindex headers from the
+# app: `_headers` only applies to static assets, so it cannot reach a
+# server-rendered response. See `src/middleware.ts` for /login, /dashboard,
+# /checkout and /admin, and `src/lib/http.ts` for the API's `no-store`.
 
 # Product photography and the self-hosted fonts are not fingerprinted, so they get a
 # bounded cache rather than an immutable one: long enough that Lighthouse stops

@@ -24,6 +24,17 @@ type Rule = { from: string; to: string; status: number };
 
 const REDIRECT_MAP = buildMap((manifest as { rules: Rule[] }).rules);
 
+/**
+ * On-demand routes that must never be cached or indexed.
+ *
+ * `public/_headers` only applies to static assets, so it never reaches these
+ * server-rendered pages — the headers have to be set here, where every
+ * on-demand response actually passes through.
+ */
+const PRIVATE_PREFIXES = ['/login', '/dashboard', '/checkout', '/admin'];
+const isPrivatePath = (pathname: string) =>
+  PRIVATE_PREFIXES.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`));
+
 export const onRequest = defineMiddleware(async (context, next) => {
   const url = new URL(context.request.url);
   const matched = matchRedirect(REDIRECT_MAP, url.pathname, url.search);
@@ -64,5 +75,16 @@ export const onRequest = defineMiddleware(async (context, next) => {
   }
   context.locals.csrfToken = csrf;
 
-  return next();
+  const response = await next();
+
+  // A private page must never be cached by a browser or proxy, and must carry a
+  // header-level noindex rather than relying on the meta tag alone.
+  if (isPrivatePath(url.pathname) && response.status === 200) {
+    const headers = new Headers(response.headers);
+    if (!headers.has('cache-control')) headers.set('cache-control', 'private, no-store');
+    headers.set('x-robots-tag', 'noindex, nofollow');
+    return new Response(response.body, { status: response.status, headers });
+  }
+
+  return response;
 });
