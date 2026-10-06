@@ -74,6 +74,51 @@ const sessionDays = session.expiresAt ? Math.max(0, Math.round((session.expiresA
     </div>
   </div>
 
+  <div class="brand-card mt-5 p-6 sm:p-7">
+    <h2 class="text-lg">USDT wallet</h2>
+    <p class="mt-3 max-w-3xl text-sm leading-7 text-[var(--color-ink-soft)]">
+      Link your MetaMask wallet to identify your USDT (BEP-20) payments. When you pay with USDT, the transfer is credited
+      to the account that owns the wallet that sent it.
+    </p>
+
+    {
+      customer?.usdtWalletAddress ? (
+        <div class="mt-5 rounded-xl border border-emerald-400/20 bg-emerald-400/5 px-4 py-3">
+          <dt class="metric-label">Linked wallet</dt>
+          <dd class="mt-1 break-all font-mono text-sm text-[var(--color-ink)]">{customer.usdtWalletAddress}</dd>
+        </div>
+      ) : (
+        <>
+          <button type="button" data-metamask-connect class="btn btn-primary mt-5 w-full !py-3.5">
+            Connect MetaMask wallet
+          </button>
+          <p class="mt-3 text-center text-xs leading-6 text-[var(--color-ink-dim)]">
+            Do not have MetaMask?{' '}
+            <a
+              href="https://metamask.io/download/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-emerald-300 hover:text-emerald-200"
+            >
+              Click to install
+            </a>.
+          </p>
+          <p
+            role="alert"
+            data-metamask-status
+            class="mt-3 hidden rounded-xl border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm leading-6 text-red-200"
+          >
+          </p>
+        </>
+      )
+    }
+
+    <p class="mt-4 border-t border-white/5 pt-4 text-xs leading-6 text-[var(--color-ink-dim)]">
+      One account can only be linked to one wallet. Once a wallet is linked, it cannot be unlinked or linked to another
+      account.
+    </p>
+  </div>
+
   <div class="panel mt-5 p-6 sm:p-7">
     <h2 class="text-lg">Your data</h2>
     <p class="mt-3 max-w-3xl text-sm leading-7 text-[var(--color-ink-soft)]">
@@ -86,4 +131,57 @@ const sessionDays = session.expiresAt ? Math.max(0, Math.round((session.expiresA
       for the full picture.
     </p>
   </div>
+
+  <script is:inline>
+    (() => {
+      const button = document.querySelector('[data-metamask-connect]');
+      if (!button) return;
+      const status = document.querySelector('[data-metamask-status]');
+
+      const show = (message) => {
+        if (!status) return;
+        status.textContent = message;
+        status.classList.remove('hidden');
+      };
+
+      const ERRORS = {
+        invalid_address: 'That is not a valid wallet address.',
+        already_linked: 'This account already has a linked wallet.',
+        wallet_in_use: 'That wallet is already linked to another account.',
+        not_found: 'Account not found.',
+      };
+
+      button.addEventListener('click', async () => {
+        let address = null;
+        if (window.ethereum) {
+          try {
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            address = accounts && accounts[0] ? accounts[0] : null;
+          } catch {
+            address = null;
+          }
+        }
+        if (!address) {
+          show('Failed to connect your MetaMask wallet. Please try again later!');
+          return;
+        }
+
+        try {
+          const res = await fetch('/api/account/wallet/', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ address }),
+          });
+          const data = await res.json().catch(() => ({}));
+          if (res.ok && data.ok) {
+            window.location.reload();
+            return;
+          }
+          show(ERRORS[data.error] ?? 'Could not link that wallet. Please try again.');
+        } catch {
+          show('Could not link that wallet. Please try again.');
+        }
+      });
+    })();
+  </script>
 </DashboardLayout>

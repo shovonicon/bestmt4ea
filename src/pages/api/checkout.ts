@@ -27,7 +27,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
       items: [{ productId: body.productId ?? '', planCode: body.plan ?? '', quantity: 1 }],
     });
     const customer = await db
-      .select({ email: customers.email })
+      .select({ email: customers.email, usdtWallet: customers.usdtWalletAddress })
       .from(customers)
       .where(eq(customers.id, session.subjectId))
       .get();
@@ -61,12 +61,13 @@ export const POST: APIRoute = async ({ request, locals }) => {
     const method = body.method === 'usdt' ? 'usdt' : 'card';
 
     if (method === 'usdt') {
-      const address = env.TRON_RECEIVING_ADDRESS;
+      const address = env.USDT_RECEIVING_ADDRESS;
       if (!address) return jsonError(503, 'usdt_unavailable');
       const payment = await createUsdtPayment(db, {
         orderId: order.id,
         baseCents: order.totalCents,
         walletAddress: address,
+        expectedSender: customer?.usdtWallet ?? null,
       });
       return wantsHtml(request)
         ? redirect(`/checkout/usdt/?id=${payment.id}`, 303)

@@ -22,14 +22,14 @@ async function run(request: Request): Promise<Response> {
   if (!env.CRON_SECRET || !timingSafeEqual(provided, env.CRON_SECRET)) {
     return jsonError(401, 'unauthorized');
   }
-  const address = env.TRON_RECEIVING_ADDRESS;
+  const address = env.USDT_RECEIVING_ADDRESS;
   if (!address) return jsonError(503, 'usdt_not_configured');
 
   const result = await pollUsdtPayments(getDb(), {
     walletAddress: address,
-    tron: {
-      baseUrl: env.TRONGRID_BASE_URL || undefined,
-      apiKey: env.TRONGRID_API_KEY || undefined,
+    bsc: {
+      baseUrl: env.ETHERSCAN_BASE_URL || undefined,
+      apiKey: env.ETHERSCAN_API_KEY || undefined,
     },
   });
   return json(result);

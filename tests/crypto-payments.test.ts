@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
-  USDT_TRON_CONTRACT,
+  USDT_BEP20_CONTRACT,
   compareAmounts,
   expectedAmountFromCents,
   isExpired,
@@ -9,21 +9,24 @@ import {
   verifyTransfer,
   type WaitingPayment,
 } from '../src/server/crypto-payments';
-import type { TokenTransfer } from '../src/server/tron';
+import type { TokenTransfer } from '../src/server/bsc';
 
-const RECEIVING = 'TReceiverAddress00000000000000000000';
-const OTHER_ADDRESS = 'TOther000000000000000000000000000000';
-const FAKE_USDT = 'TFakeToken00000000000000000000000000';
+const RECEIVING = '0x5f46d54f7e039759ca727ca604f45ec30eccc0dd';
+const OTHER_ADDRESS = '0x0000000000000000000000000000000000000001';
+const FAKE_USDT = '0x000000000000000000000000000000000000dead';
+
+/** A 6-decimal amount expressed as BEP-20 raw units (18 decimals). */
+const raw = (amount6dp: string) => `${amount6dp}000000000000`;
 
 let counter = 0;
 function transfer(partial: Partial<TokenTransfer> & { rawValue: string }): TokenTransfer {
   counter += 1;
   return {
     txid: partial.txid ?? `tx-${counter}`,
-    from: partial.from ?? 'TSender',
+    from: partial.from ?? '0x00000000000000000000000000000000000000aA',
     to: partial.to ?? RECEIVING,
     rawValue: partial.rawValue,
-    tokenAddress: partial.tokenAddress ?? USDT_TRON_CONTRACT,
+    tokenAddress: partial.tokenAddress ?? USDT_BEP20_CONTRACT,
     confirmed: partial.confirmed ?? true,
     blockTimestamp: partial.blockTimestamp ?? counter,
   };
@@ -41,10 +44,10 @@ function payment(partial: Partial<WaitingPayment> & { expectedAmount: string }):
 
 describe('unitsToDecimal', () => {
   it('converts a raw USDT integer to a clean decimal', () => {
-    expect(unitsToDecimal('49037000')).toBe('49.037');
-    expect(unitsToDecimal('1000000')).toBe('1');
-    expect(unitsToDecimal('49000000')).toBe('49');
-    expect(unitsToDecimal('1')).toBe('0.000001');
+    expect(unitsToDecimal(raw('49037000'))).toBe('49.037');
+    expect(unitsToDecimal(raw('1000000'))).toBe('1');
+    expect(unitsToDecimal(raw('49000000'))).toBe('49');
+    expect(unitsToDecimal('1')).toBe('0.000000000000000001');
   });
 
   it('rejects a non-integer', () => {
@@ -87,24 +90,24 @@ describe('verifyTransfer', () => {
   const base = { expectedAmount: '49.037', receivingAddress: RECEIVING };
 
   it('accepts an exact, confirmed, correct-token transfer', () => {
-    const result = verifyTransfer({ ...base, transfer: transfer({ rawValue: '49037000' }) });
+    const result = verifyTransfer({ ...base, transfer: transfer({ rawValue: raw('49037000') }) });
     expect(result).toEqual({ ok: true, amount: '49.037', comparison: 'exact' });
   });
 
   it('accepts an overpayment but marks it as over', () => {
-    const result = verifyTransfer({ ...base, transfer: transfer({ rawValue: '50000000' }) });
+    const result = verifyTransfer({ ...base, transfer: transfer({ rawValue: raw('50000000') }) });
     expect(result).toEqual({ ok: true, amount: '50', comparison: 'over' });
   });
 
   it('rejects an underpayment', () => {
-    const result = verifyTransfer({ ...base, transfer: transfer({ rawValue: '49036000' }) });
+    const result = verifyTransfer({ ...base, transfer: transfer({ rawValue: raw('49036000') }) });
     expect(result).toEqual({ ok: false, reason: 'underpaid' });
   });
 
   it('rejects a wrong token contract even if it calls itself USDT', () => {
     const result = verifyTransfer({
       ...base,
-      transfer: transfer({ rawValue: '49037000', tokenAddress: FAKE_USDT }),
+      transfer: transfer({ rawValue: raw('49037000'), tokenAddress: FAKE_USDT }),
     });
     expect(result).toEqual({ ok: false, reason: 'wrong_contract' });
   });
@@ -112,15 +115,24 @@ describe('verifyTransfer', () => {
   it('rejects a transfer sent to someone else', () => {
     const result = verifyTransfer({
       ...base,
-      transfer: transfer({ rawValue: '49037000', to: OTHER_ADDRESS }),
+      transfer: transfer({ rawValue: raw('49037000'), to: OTHER_ADDRESS }),
     });
     expect(result).toEqual({ ok: false, reason: 'wrong_receiver' });
+  });
+
+  it('rejects a transfer from an unexpected sender', () => {
+    const result = verifyTransfer({
+      ...base,
+      expectedSender: '0x1111111111111111111111111111111111111111',
+      transfer: transfer({ rawValue: raw('49037000') }),
+    });
+    expect(result).toEqual({ ok: false, reason: 'wrong_sender' });
   });
 
   it('rejects an unconfirmed transfer', () => {
     const result = verifyTransfer({
       ...base,
-      transfer: transfer({ rawValue: '49037000', confirmed: false }),
+      transfer: transfer({ rawValue: raw('49037000'), confirmed: false }),
     });
     expect(result).toEqual({ ok: false, reason: 'not_confirmed' });
   });
@@ -132,7 +144,7 @@ describe('matchTransfersToPayments', () => {
   it('settles a matching order once', () => {
     const outcomes = matchTransfersToPayments(
       [payment({ id: 'p1', expectedAmount: '49.037' })],
-      [transfer({ txid: 'tx-a', rawValue: '49037000' })],
+      [transfer({ txid: 'tx-a', rawValue: raw('49037000') })],
       options
     );
     expect(outcomes).toEqual([
@@ -146,7 +158,7 @@ describe('matchTransfersToPayments', () => {
         payment({ id: 'p1', expectedAmount: '49.037', createdAt: 1 }),
         payment({ id: 'p2', expectedAmount: '49.037', createdAt: 2 }),
       ],
-      [transfer({ txid: 'tx-a', rawValue: '49037000' })],
+      [transfer({ txid: 'tx-a', rawValue: raw('49037000') })],
       options
     );
     expect(outcomes[0]).toMatchObject({ paymentId: 'p1', outcome: 'settled' });
@@ -156,7 +168,7 @@ describe('matchTransfersToPayments', () => {
   it('refuses a txid already spent by an earlier order', () => {
     const outcomes = matchTransfersToPayments(
       [payment({ id: 'p1', expectedAmount: '49.037' })],
-      [transfer({ txid: 'tx-used', rawValue: '49037000' })],
+      [transfer({ txid: 'tx-used', rawValue: raw('49037000') })],
       { ...options, usedTxids: ['tx-used'] }
     );
     expect(outcomes[0]).toEqual({ paymentId: 'p1', outcome: 'no_match' });
@@ -166,8 +178,8 @@ describe('matchTransfersToPayments', () => {
     const outcomes = matchTransfersToPayments(
       [payment({ id: 'p1', expectedAmount: '49.037' })],
       [
-        transfer({ txid: 'tx-a', rawValue: '49037000' }),
-        transfer({ txid: 'tx-b', rawValue: '49037000' }),
+        transfer({ txid: 'tx-a', rawValue: raw('49037000') }),
+        transfer({ txid: 'tx-b', rawValue: raw('49037000') }),
       ],
       options
     );
@@ -178,7 +190,7 @@ describe('matchTransfersToPayments', () => {
     // 49.037 -> 50.000: a payer rounding up to the next whole USDT.
     const outcomes = matchTransfersToPayments(
       [payment({ id: 'p1', expectedAmount: '49.037' })],
-      [transfer({ txid: 'tx-big', rawValue: '50000000' })],
+      [transfer({ txid: 'tx-big', rawValue: raw('50000000') })],
       options
     );
     expect(outcomes[0]).toEqual(
@@ -190,7 +202,7 @@ describe('matchTransfersToPayments', () => {
     // A receiving wallet can get unrelated transfers; 192.39 must not pay a 49.037 order.
     const outcomes = matchTransfersToPayments(
       [payment({ id: 'p1', expectedAmount: '49.037' })],
-      [transfer({ txid: 'tx-deposit', rawValue: '192390000' })],
+      [transfer({ txid: 'tx-deposit', rawValue: raw('192390000') })],
       options
     );
     expect(outcomes[0]).toEqual({ paymentId: 'p1', outcome: 'no_match' });
@@ -199,14 +211,14 @@ describe('matchTransfersToPayments', () => {
   it('draws the tolerance line at exactly 1 USDT over', () => {
     const atLimit = matchTransfersToPayments(
       [payment({ id: 'p1', expectedAmount: '49.037' })],
-      [transfer({ txid: 'tx-limit', rawValue: '50037000' })],
+      [transfer({ txid: 'tx-limit', rawValue: raw('50037000') })],
       options
     );
     expect(atLimit[0]).toMatchObject({ paymentId: 'p1', outcome: 'settled' });
 
     const overLimit = matchTransfersToPayments(
       [payment({ id: 'p2', expectedAmount: '49.037' })],
-      [transfer({ txid: 'tx-over', rawValue: '50038000' })],
+      [transfer({ txid: 'tx-over', rawValue: raw('50038000') })],
       options
     );
     expect(overLimit[0]).toEqual({ paymentId: 'p2', outcome: 'no_match' });
@@ -218,7 +230,7 @@ describe('matchTransfersToPayments', () => {
         payment({ id: 'small', expectedAmount: '49.037', createdAt: 1 }),
         payment({ id: 'close', expectedAmount: '55', createdAt: 2 }),
       ],
-      [transfer({ txid: 'tx-55-8', rawValue: '55800000' })],
+      [transfer({ txid: 'tx-55-8', rawValue: raw('55800000') })],
       options
     );
     expect(outcomes).toEqual([
@@ -233,7 +245,7 @@ describe('matchTransfersToPayments', () => {
         payment({ id: 'exact', expectedAmount: '49.037', createdAt: 1 }),
         payment({ id: 'over', expectedAmount: '48.5', createdAt: 2 }),
       ],
-      [transfer({ txid: 'tx-49', rawValue: '49037000' })],
+      [transfer({ txid: 'tx-49', rawValue: raw('49037000') })],
       options
     );
     expect(outcomes).toEqual([
@@ -245,7 +257,7 @@ describe('matchTransfersToPayments', () => {
   it('flags an expired order instead of attaching a late payment', () => {
     const outcomes = matchTransfersToPayments(
       [payment({ id: 'p1', expectedAmount: '49.037', expiresAt: options.now - 1 })],
-      [transfer({ txid: 'tx-a', rawValue: '49037000' })],
+      [transfer({ txid: 'tx-a', rawValue: raw('49037000') })],
       options
     );
     expect(outcomes[0]).toEqual({ paymentId: 'p1', outcome: 'expired' });
@@ -258,8 +270,8 @@ describe('matchTransfersToPayments', () => {
         payment({ id: 'p2', expectedAmount: '99.042', createdAt: 2 }),
       ],
       [
-        transfer({ txid: 'tx-1', rawValue: '49037000' }),
-        transfer({ txid: 'tx-2', rawValue: '99042000' }),
+        transfer({ txid: 'tx-1', rawValue: raw('49037000') }),
+        transfer({ txid: 'tx-2', rawValue: raw('99042000') }),
       ],
       options
     );

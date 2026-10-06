@@ -1,10 +1,10 @@
 /**
- * USDT (TRC20) payment engine — pure, Astro-free, environment-free.
+ * USDT (BEP-20) payment engine — pure, Astro-free, environment-free.
  *
  * This is the whole of §6b that can be reasoned about without a database or a
  * network: how a per-order amount is minted, how a transfer is checked, and how
  * a batch of transfers is matched against the orders waiting for them. The DB
- * orchestration and the cron that calls TronGrid layer on top of this.
+ * orchestration and the cron that calls the block-explorer API layer on top.
  *
  * The rules are deliberately strict, because they are the difference between a
  * paid order and a lost one:
@@ -25,11 +25,11 @@
  */
 
 import { randomInt } from '../lib/crypto';
-import type { TokenTransfer } from './tron';
+import type { TokenTransfer } from './bsc';
 
-/** Official Tether USDT contract on TRON mainnet. */
-export const USDT_TRON_CONTRACT = 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t';
-export const USDT_DECIMALS = 6;
+/** Official Tether USDT contract on BNB Smart Chain (BEP-20). */
+export const USDT_BEP20_CONTRACT = '0x55d398326f99059fF775485246999027B3197955';
+export const USDT_DECIMALS = 18;
 export const DEFAULT_PAYMENT_TTL_MS = 30 * 60 * 1000;
 
 /** Convert a raw token integer string to a decimal string: `'49037000'` → `'49.037'`. */
@@ -108,6 +108,7 @@ export function isExpired(expiresAt: number, now: number, graceMs = 0): boolean 
 export type VerifyFailure =
   | 'wrong_contract'
   | 'wrong_receiver'
+  | 'wrong_sender'
   | 'not_confirmed'
   | 'underpaid'
   | 'invalid_amount';
@@ -121,6 +122,8 @@ export interface VerifyInput {
   expectedAmount: string;
   receivingAddress: string;
   contractAddress?: string;
+  /** When set, the transfer must have come from this sender. */
+  expectedSender?: string;
   /** Default true — only a finalised transaction may settle. */
   requireConfirmed?: boolean;
 }
@@ -132,7 +135,7 @@ export interface VerifyInput {
  * to the matcher (below) which holds the set of spent txids.
  */
 export function verifyTransfer(input: VerifyInput): VerifyResult {
-  const contract = input.contractAddress ?? USDT_TRON_CONTRACT;
+  const contract = input.contractAddress ?? USDT_BEP20_CONTRACT;
   const { transfer } = input;
 
   if (transfer.tokenAddress.toLowerCase() !== contract.toLowerCase()) {
@@ -140,6 +143,9 @@ export function verifyTransfer(input: VerifyInput): VerifyResult {
   }
   if (transfer.to.toLowerCase() !== input.receivingAddress.toLowerCase()) {
     return { ok: false, reason: 'wrong_receiver' };
+  }
+  if (input.expectedSender && transfer.from.toLowerCase() !== input.expectedSender.toLowerCase()) {
+    return { ok: false, reason: 'wrong_sender' };
   }
   if ((input.requireConfirmed ?? true) && !transfer.confirmed) {
     return { ok: false, reason: 'not_confirmed' };
@@ -161,6 +167,8 @@ export function verifyTransfer(input: VerifyInput): VerifyResult {
 export interface WaitingPayment {
   id: string;
   expectedAmount: string;
+  /** When set, only a transfer from this sender may settle the order. */
+  senderAddress?: string;
   /** epoch-ms */
   expiresAt: number;
   /** epoch-ms; oldest first for deterministic matching. */
@@ -226,6 +234,7 @@ export function matchTransfersToPayments(
       expectedAmount: payment.expectedAmount,
       receivingAddress: options.receivingAddress,
       contractAddress: options.contractAddress,
+      expectedSender: payment.senderAddress,
     });
 
   const settled = new Set<string>();

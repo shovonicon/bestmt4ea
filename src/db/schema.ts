@@ -5,7 +5,7 @@ import { index, integer, sqliteTable, text, uniqueIndex } from 'drizzle-orm/sqli
  *
  * Ported from the proven `BD MARKET SYSTEM` schema (accounts, catalogue, orders,
  * payments, entitlements, audit) and extended for EA licensing (licence keys,
- * MT5 account bindings, EX5 builds) and the self-hosted USDT (TRC20) rail.
+ * MT5 account bindings, EX5 builds) and the self-hosted USDT (BEP-20) rail.
  *
  * Conventions kept from the reference:
  *  - money is an integer in minor units (USD cents) to avoid float drift;
@@ -29,12 +29,19 @@ export const customers = sqliteTable(
     email: text('email').notNull(),
     name: text('name'),
     phone: text('phone'),
+    /** Linked USDT (BEP-20 / BSC) wallet. One per account, set once, never changed. */
+    usdtWalletAddress: text('usdt_wallet_address'),
     emailVerifiedAt: integer('email_verified_at', { mode: 'timestamp_ms' }),
     lastLoginAt: integer('last_login_at', { mode: 'timestamp_ms' }),
     createdAt: createdAt(),
     updatedAt: updatedAt(),
   },
-  (t) => [uniqueIndex('customers_email_unique').on(t.email)]
+  (t) => [
+    uniqueIndex('customers_email_unique').on(t.email),
+    // NULLs are distinct in SQLite, so an unlinked account is allowed; a linked
+    // address can never appear on a second account.
+    uniqueIndex('customers_usdt_wallet_unique').on(t.usdtWalletAddress),
+  ]
 );
 
 export const adminUsers = sqliteTable(
@@ -331,7 +338,7 @@ export const webhookEvents = sqliteTable(
   (t) => [uniqueIndex('webhook_events_dedupe_unique').on(t.dedupeKey)]
 );
 
-/* ------------------------------------------------------------- USDT TRC20 */
+/* ------------------------------------------------------------- USDT BEP-20 */
 
 export const cryptoPayments = sqliteTable(
   'crypto_payments',
@@ -341,8 +348,10 @@ export const cryptoPayments = sqliteTable(
       .notNull()
       .references(() => orders.id, { onDelete: 'cascade' }),
     currency: text('currency').notNull().default('USDT'),
-    network: text('network').notNull().default('TRC20'),
+    network: text('network').notNull().default('BEP20'),
     walletAddress: text('wallet_address').notNull(),
+    /** Snapshot of the payer's linked wallet when it exists; the matcher then requires a matching sender. */
+    expectedSender: text('expected_sender'),
     /** Strings: the unique per-order fraction must survive exactly. */
     expectedAmount: text('expected_amount').notNull(),
     receivedAmount: text('received_amount'),

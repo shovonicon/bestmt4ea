@@ -14,10 +14,12 @@ COMP_EMAILS=
 TURNSTILE_SECRET_KEY=
 STRIPE_SECRET_KEY=
 STRIPE_WEBHOOK_SECRET=
-TRONGRID_API_KEY=
-# Point at a mock TronGrid in tests; leave blank for the real api.trongrid.io.
-TRONGRID_BASE_URL=
-TRON_RECEIVING_ADDRESS=
+# Etherscan (BSC/BEP-20) API key for the USDT transfer poll.
+ETHERSCAN_API_KEY=
+# Point at a mock explorer in tests; leave blank for the real api.etherscan.io.
+ETHERSCAN_BASE_URL=
+# The BSC address customers send USDT (BEP-20) to.
+USDT_RECEIVING_ADDRESS=
 CRON_SECRET=
 PERF_INGEST_TOKEN=
 # Brevo transactional email — the fallback sender behind the Cloudflare Email

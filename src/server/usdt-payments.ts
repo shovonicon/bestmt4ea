@@ -8,11 +8,11 @@ import {
   matchTransfersToPayments,
   randomIdentifier,
 } from './crypto-payments';
-import { fetchUsdtTransfers, type TokenTransfer, type TronGridConfig } from './tron';
+import { fetchBep20Transfers, type TokenTransfer, type BscScanConfig } from './bsc';
 import { settleOrder } from './orders';
 
 /**
- * USDT (TRC20) orchestration over the pure engine (P0) and TronGrid.
+ * USDT (BEP-20) orchestration over the pure engine (P0) and the BSC block-explorer API.
  *
  * `pollUsdtPayments` is what a 60s Cron Trigger runs: it fetches the wallet's
  * recent transfers once, matches them against every WAITING order in a single
@@ -24,6 +24,8 @@ export interface CreateUsdtPaymentInput {
   orderId: string;
   baseCents: number;
   walletAddress: string;
+  /** The payer's linked wallet, when they have one — the matcher then requires it. */
+  expectedSender?: string | null;
   ttlMs?: number;
 }
 
@@ -34,8 +36,9 @@ export async function createUsdtPayment(db: Db, input: CreateUsdtPaymentInput): 
     id,
     orderId: input.orderId,
     currency: 'USDT',
-    network: 'TRC20',
+    network: 'BEP20',
     walletAddress: input.walletAddress,
+    expectedSender: input.expectedSender ?? null,
     expectedAmount: expectedAmountFromCents(input.baseCents, randomIdentifier()),
     status: 'WAITING',
     createdAt: now,
@@ -65,7 +68,7 @@ export interface PollResult {
 /** Expire stale WAITING payments, fetch transfers once, match, and settle. */
 export async function pollUsdtPayments(
   db: Db,
-  config: { walletAddress: string; tron?: TronGridConfig; now?: number }
+  config: { walletAddress: string; bsc?: BscScanConfig; now?: number }
 ): Promise<PollResult> {
   const now = config.now ?? Date.now();
   const waiting = await db.select().from(cryptoPayments).where(eq(cryptoPayments.status, 'WAITING')).all();
@@ -86,9 +89,9 @@ export async function pollUsdtPayments(
   const minTimestamp = Math.min(...open.map((p) => p.createdAt.getTime())) - 60_000;
   let transfers: TokenTransfer[];
   try {
-    transfers = await fetchUsdtTransfers(config.walletAddress, config.tron ?? {}, { minTimestamp });
+    transfers = await fetchBep20Transfers(config.walletAddress, config.bsc ?? {}, { minTimestamp });
   } catch (error) {
-    console.error('trongrid_fetch_failed', error);
+    console.error('bsc_fetch_failed', error);
     return { matched: 0, expired, fetched: 0 };
   }
 
@@ -104,6 +107,7 @@ export async function pollUsdtPayments(
     open.map((p) => ({
       id: p.id,
       expectedAmount: p.expectedAmount,
+      senderAddress: p.expectedSender ?? undefined,
       expiresAt: p.expiresAt.getTime(),
       createdAt: p.createdAt.getTime(),
     })),

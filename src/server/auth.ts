@@ -125,6 +125,7 @@ export async function upsertCustomer(db: Db, email: string): Promise<Customer> {
     email: normalized,
     name: null,
     phone: null,
+    usdtWalletAddress: null,
     emailVerifiedAt: now,
     lastLoginAt: now,
     createdAt: now,

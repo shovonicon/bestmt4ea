@@ -8,7 +8,7 @@ import { getUsdtPayment } from '../../../server/usdt-payments';
 import { url } from '../../../lib/urls';
 
 /**
- * USDT (TRC20) payment page.
+ * USDT (BEP-20) payment page.
  *
  * The browser never decides anything: this renders the amount and address the
  * server created, and polls the owner-checked status endpoint until the cron
@@ -31,12 +31,12 @@ const minutesLeft = Math.max(0, Math.round((payment.expiresAt.getTime() - Date.n
 const settled = payment.status === 'PAID' || order.status === 'paid';
 ---
 
-<BaseLayout title="Pay with USDT" description="Send USDT (TRC20) to complete your order." noindex>
+<BaseLayout title="Pay with USDT" description="Send USDT (BEP-20) to complete your order." noindex>
   <section class="container-x mx-auto max-w-xl py-20">
     <p class="eyebrow">Step 2 of 2</p>
-    <h1 class="mt-3 text-3xl font-bold sm:text-4xl">Pay with USDT (TRC20)</h1>
+    <h1 class="mt-3 text-3xl font-bold sm:text-4xl">Pay with USDT (BEP-20)</h1>
     <p class="mt-4 text-base leading-7 text-[var(--color-ink-soft]">
-      Send exactly the amount below over the <strong>TRON (TRC20)</strong> network. It is matched to
+      Send exactly the amount below over the <strong>BNB Smart Chain (BEP-20)</strong> network. It is matched to
       order <span class="metric-value">{order.orderNumber}</span> automatically.
     </p>
 

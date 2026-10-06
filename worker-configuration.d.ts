@@ -15,9 +15,9 @@ interface __BaseEnv_Env {
 	TURNSTILE_SECRET_KEY: string;
 	STRIPE_SECRET_KEY: string;
 	STRIPE_WEBHOOK_SECRET: string;
-	TRONGRID_API_KEY: string;
-	TRONGRID_BASE_URL: string;
-	TRON_RECEIVING_ADDRESS: string;
+	ETHERSCAN_API_KEY: string;
+	ETHERSCAN_BASE_URL: string;
+	USDT_RECEIVING_ADDRESS: string;
 	CRON_SECRET: string;
 	PERF_INGEST_TOKEN: string;
 	BREVO_API_KEY: string;
@@ -32,7 +32,7 @@ type StringifyValues<EnvType extends Record<string, unknown>> = {
 	[Binding in keyof EnvType]: EnvType[Binding] extends string ? EnvType[Binding] : string;
 };
 declare namespace NodeJS {
-	interface ProcessEnv extends StringifyValues<Pick<Cloudflare.Env, "PUBLIC_SITE_URL" | "PUBLIC_R2_PUBLIC_URL" | "EMAIL_FROM_EMAIL" | "EMAIL_FROM_NAME" | "SESSION_SECRET" | "COMP_EMAILS" | "APP_URL" | "TURNSTILE_SECRET_KEY" | "STRIPE_SECRET_KEY" | "STRIPE_WEBHOOK_SECRET" | "TRONGRID_API_KEY" | "TRONGRID_BASE_URL" | "TRON_RECEIVING_ADDRESS" | "CRON_SECRET" | "PERF_INGEST_TOKEN" | "BREVO_API_KEY" | "GOOGLE_CLIENT_ID" | "GOOGLE_CLIENT_SECRET">> {}
+	interface ProcessEnv extends StringifyValues<Pick<Cloudflare.Env, "PUBLIC_SITE_URL" | "PUBLIC_R2_PUBLIC_URL" | "EMAIL_FROM_EMAIL" | "EMAIL_FROM_NAME" | "SESSION_SECRET" | "COMP_EMAILS" | "APP_URL" | "TURNSTILE_SECRET_KEY" | "STRIPE_SECRET_KEY" | "STRIPE_WEBHOOK_SECRET" | "ETHERSCAN_API_KEY" | "ETHERSCAN_BASE_URL" | "USDT_RECEIVING_ADDRESS" | "CRON_SECRET" | "PERF_INGEST_TOKEN" | "BREVO_API_KEY" | "GOOGLE_CLIENT_ID" | "GOOGLE_CLIENT_SECRET">> {}
 }
 
 // Begin runtime types
