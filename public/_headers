@@ -38,3 +38,9 @@
   Cache-Control: public, max-age=31536000, immutable
 /logo.png
   Cache-Control: public, max-age=604800
+
+# The sitemap stylesheet. `text/xsl` is what a browser expects when it applies a
+# `<?xml-stylesheet?>` reference; crawlers ignore it.
+/sitemap.xsl
+  Content-Type: text/xsl
+  Cache-Control: public, max-age=604800

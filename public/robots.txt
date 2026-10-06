@@ -1,29 +1,43 @@
+# robots.txt — https://bestmt4ea.com
+#
+# The public site is open to everything that respects robots.txt — search and
+# answer engines alike. GEO/AI traffic is a goal here, not something to block.
+#
+# Every agent below shares ONE rule set, so a named answer engine inherits the
+# same allowances as the wildcard rather than silently falling back to it.
 User-agent: *
-Allow: /
-
-# Answer / AI engines are explicitly welcome — GEO traffic is a goal.
 User-agent: GPTBot
-Allow: /
-
 User-agent: OAI-SearchBot
-Allow: /
-
 User-agent: ChatGPT-User
-Allow: /
-
 User-agent: ClaudeBot
-Allow: /
-
+User-agent: Claude-Web
+User-agent: anthropic-ai
 User-agent: PerplexityBot
-Allow: /
-
+User-agent: Perplexity-User
 User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+User-agent: cohere-ai
+User-agent: meta-externalagent
+User-agent: Amazonbot
+User-agent: DuckAssistBot
+User-agent: Bytespider
+User-agent: MistralAI-User
+User-agent: YouBot
+
 Allow: /
 
-User-agent: Applebot
-Allow: /
+# Private, per-customer surfaces: no crawl budget spent, no stray URLs indexed.
+# They also carry an `X-Robots-Tag: noindex, nofollow` header, so this is
+# belt-and-braces rather than the only guard.
+Disallow: /api/
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /checkout/
+Disallow: /login/
+Disallow: /auth/
+Disallow: /logout/
 
-User-agent: Bingbot
-Allow: /
-
+# Both index paths resolve — /sitemap_index.xml is the old Yoast URL, kept working.
 Sitemap: https://bestmt4ea.com/sitemap-index.xml
+Sitemap: https://bestmt4ea.com/sitemap_index.xml

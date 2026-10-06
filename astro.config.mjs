@@ -9,16 +9,20 @@ import { rehypeTableAccessibility } from './src/lib/rehype-table-a11y.mjs';
 const SITE = process.env.PUBLIC_SITE_URL || 'https://bestmt4ea.com';
 
 /**
- * Sitemap `lastmod` must come from the content itself.
+ * Sitemap metadata read straight from the content.
  *
- * Without this the sitemap either omits `lastmod` or, worse, dates every URL to
- * build time — which tells search engines the whole site changed on every
- * deploy and is exactly the false freshness signal this project removed from
- * structured data. Only entries with a real `updatedAt`/`publishedAt` get a
- * date; anything else is left without one.
+ * `lastmod` must come from the content itself: dating every URL to build time
+ * tells search engines the whole site changed on every deploy, which is exactly
+ * the false freshness signal this project removed from structured data. Only
+ * entries with a real `updatedAt`/`publishedAt` get a date.
+ *
+ * The same pass collects each entry's featured image so the sitemap can carry an
+ * <image:image> block, which feeds Google Images and gives answer engines a
+ * little more context per URL.
  */
-function contentDates() {
-  const map = new Map();
+function scanContent() {
+  const dates = new Map();
+  const images = new Map();
   const sources = [
     ['src/content/posts', (slug) => `/${slug}/`],
     ['src/content/pages', (slug) => `/${slug}/`],
@@ -37,16 +41,37 @@ function contentDates() {
       if (!file.endsWith('.md')) continue;
       const { data } = matter(readFileSync(`${dir}/${file}`, 'utf8'));
       if (data.draft) continue;
-      const date = data.updatedAt ?? data.publishedAt;
-      if (!date) continue;
       const slug = decode(String(data.slug ?? file.replace(/\.md$/, '')));
-      map.set(toPath(slug), new Date(date));
+      const path = toPath(slug);
+
+      const date = data.updatedAt ?? data.publishedAt;
+      if (date) dates.set(path, new Date(date));
+
+      const image = data.featuredImage ?? data.ogImage;
+      if (image) images.set(path, String(image));
     }
   }
-  return map;
+  return { dates, images };
 }
 
-const dates = contentDates();
+const { dates, images } = scanContent();
+
+/**
+ * Pages that must never appear in the sitemap: the private, per-customer
+ * surfaces (they carry `X-Robots-Tag: noindex`, so listing them would contradict
+ * their own header) and the custom 404.
+ */
+const EXCLUDED_PREFIXES = ['/admin', '/dashboard', '/login', '/checkout', '/auth', '/logout'];
+function isExcluded(page) {
+  let pathname = page;
+  try {
+    pathname = new URL(page).pathname;
+  } catch {
+    /* leave as-is */
+  }
+  if (pathname === '/custom-404' || pathname === '/custom-404/') return true;
+  return EXCLUDED_PREFIXES.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`));
+}
 
 /**
  * Product pages are served on demand (SSR) so their performance stays fresh,
@@ -91,6 +116,7 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [
     sitemap({
+      filter: (page) => !isExcluded(page),
       customPages: productPaths().map((path) => `${SITE}${path}`),
       serialize(item) {
         let pathname = item.url;
@@ -102,9 +128,41 @@ export default defineConfig({
         const date = dates.get(pathname);
         if (date) item.lastmod = date.toISOString();
         else delete item.lastmod;
+
+        const image = images.get(pathname);
+        if (image) {
+          item.img = [{ url: /^https?:\/\//.test(image) ? image : `${SITE}${image}` }];
+        }
         return item;
       },
     }),
+    {
+      // A browser renders a bare sitemap as an unstyled XML tree ("This XML file
+      // does not appear to have any style information…"). Point the generated
+      // files at public/sitemap.xsl so a human sees a readable page; crawlers
+      // ignore the stylesheet and read the XML directly.
+      name: 'sitemap-stylesheet',
+      hooks: {
+        'astro:build:done': async ({ dir }) => {
+          const { readFile, writeFile } = await import('node:fs/promises');
+          const { fileURLToPath } = await import('node:url');
+          const { join } = await import('node:path');
+          const pi = '\n<?xml-stylesheet href="/sitemap.xsl" type="text/xsl"?>';
+          const root = fileURLToPath(dir);
+
+          for (const name of ['sitemap-index.xml', 'sitemap-0.xml']) {
+            const file = join(root, name);
+            try {
+              const xml = await readFile(file, 'utf8');
+              if (xml.includes('<?xml-stylesheet')) continue;
+              await writeFile(file, xml.replace(/(<\?xml[^>]*\?>)/, `$1${pi}`), 'utf8');
+            } catch {
+              /* that sitemap was not generated — nothing to do */
+            }
+          }
+        },
+      },
+    },
   ],
   markdown: {
     rehypePlugins: [rehypeTableAccessibility],

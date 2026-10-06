@@ -1,0 +1,41 @@
+# BESTMT4EA
+
+> Myfxbook-verified MT4 and MT5 expert advisors (EAs), indicators and free
+> trading tools. Every system is traded on a real account before release, and
+> each page states the broker, the account type and the maximum drawdown behind
+> any figure shown. Products are sold with a per-account licence and delivered
+> from the BestMT4EA dashboard.
+
+This file is a map for AI assistants and answer engines. Every link is a public
+page with a short note on what it contains. Long-form guides are written to be
+read directly: they state the problem, the honest limits, and the numbers behind
+any claim. Performance figures come from real Myfxbook accounts and are labelled
+live or demo.
+
+## Start here
+
+- [All expert advisors](https://bestmt4ea.com/shop/): The full catalogue of MT4/MT5 systems with prices and licence tiers.
+- [Top ranking](https://bestmt4ea.com/top-ranking/): Every system ranked by verified total gain against maximum drawdown.
+- [Best MT4 EAs](https://bestmt4ea.com/best-mt4-ea/): Expert advisors built for MetaTrader 4.
+- [Best MT5 EAs](https://bestmt4ea.com/best-mt5-ea/): Expert advisors built for MetaTrader 5.
+- [Best forex EAs](https://bestmt4ea.com/best-forex-ea/): The whole EA catalogue on one board.
+- [Best forex brokers](https://bestmt4ea.com/best-forex-brokers/): The brokers used to verify tracked performance.
+
+## Tools
+
+- [Trading tools](https://bestmt4ea.com/tools/): Position-size, pip, margin, risk-reward, drawdown and other calculators.
+- [Live charts](https://bestmt4ea.com/tools/live-charts/): Live market charts.
+- [Economic calendar](https://bestmt4ea.com/tools/economic-calendar/): Forex economic calendar.
+
+## Learn
+
+- [Trading blog](https://bestmt4ea.com/blog/): Guides, comparisons and expert-advisor reviews.
+- [Copy trading](https://bestmt4ea.com/copy-trading/): How the copy-trading service works and what it costs.
+
+## Optional
+
+- [Contact](https://bestmt4ea.com/contact/): Support is answered over Telegram and email.
+- [Privacy policy](https://bestmt4ea.com/privacy-policy/)
+- [Terms & conditions](https://bestmt4ea.com/terms-conditions/)
+- [Affiliate disclosure](https://bestmt4ea.com/affiliate-disclosure/)
+- [Risk disclaimer](https://bestmt4ea.com/disclaimer/)

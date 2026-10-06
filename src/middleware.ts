@@ -37,6 +37,16 @@ const isPrivatePath = (pathname: string) =>
 
 export const onRequest = defineMiddleware(async (context, next) => {
   const url = new URL(context.request.url);
+
+  // The old WordPress site (Yoast) served its sitemap at `/sitemap_index.xml`,
+  // and that is the URL most likely registered with search engines. Astro writes
+  // the generated index to `/sitemap-index.xml`, so serve that same file under
+  // the Yoast path too rather than losing the familiar URL.
+  if (url.pathname === '/sitemap_index.xml') {
+    const assets = (env as unknown as { ASSETS?: { fetch(input: URL): Promise<Response> } }).ASSETS;
+    if (assets) return assets.fetch(new URL('/sitemap-index.xml', url));
+  }
+
   const matched = matchRedirect(REDIRECT_MAP, url.pathname, url.search);
 
   if (matched.kind === 'gone') {
