@@ -29,7 +29,7 @@ const {
   title,
   description = site.description,
   canonical,
-  ogImage,
+  ogImage = site.ogImage,
   robots,
   jsonLd,
   noindex = false,
@@ -43,7 +43,13 @@ const pageTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
 /** Self-canonical by default; a `seo.canonical` override wins when present. */
 const canonicalUrl = canonicalFor(Astro.url.pathname, canonical);
 /** OG images from the WordPress export can be relative — social needs absolute. */
-const ogImageUrl = resolveImage(ogImage);
+const candidateOg = resolveImage(ogImage);
+/**
+ * The import's `ogImage` values point at the deleted `wp-content` folder, so a
+ * broken one falls back to the branded banner rather than shipping a 404 to
+ * every social crawler.
+ */
+const ogImageUrl = candidateOg && !candidateOg.includes('/wp-content/') ? candidateOg : resolveImage(site.ogImage);
 const robotsContent = noindex ? 'noindex, nofollow' : robots || 'index, follow, max-image-preview:large';
 const jsonLdBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 ---

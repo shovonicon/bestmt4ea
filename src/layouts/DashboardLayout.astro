@@ -53,6 +53,22 @@ const nav = [
   { key: 'support', href: url('/dashboard/support'), label: 'Support' },
 ] as const;
 
+/** Section icons, drawn in the same stroke as the header's icon set. */
+const ICONS: Record<string, string> = {
+  overview:
+    '<rect x="3" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.6"/>',
+  licenses:
+    '<path d="M12.6 11.4a5.5 5.5 0 1 0-7.78 7.78 5.5 5.5 0 0 0 7.78-7.78Zm0 0L20 4m-3 0h3v3"/>',
+  downloads: '<path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/>',
+  orders: '<path d="M6 2h12v20l-3-2-3 2-3-2-3 2V2Z"/><path d="M9 7h6M9 11h6"/>',
+  account: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+  support: '<path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/>',
+};
+
+/** The person this shell belongs to, for the avatar and the greeting. */
+const displayName = customer?.name?.trim() || customer?.email?.split('@')[0] || 'your account';
+const initial = (displayName[0] ?? 'A').toUpperCase();
+
 /** The session's own expiry, so "signed in" is a fact with a date, not a mood. */
 const sessionUntil = session.expiresAt
   ? new Date(session.expiresAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
@@ -77,17 +93,22 @@ const sessionUntil = session.expiresAt
           }
         </div>
 
-        <div class="animate-fade-in-up-delay-1 flex flex-wrap items-center gap-x-5 gap-y-3">
-          <p class="text-xs leading-6 text-[var(--color-ink-dim)]">
-            <span class="flex items-center gap-2">
-              <span class="live-dot" aria-hidden="true"></span>
-              <span>
-                Signed in as
-                <span class="font-medium text-[var(--color-ink)]">{customer?.email ?? 'your account'}</span>
-              </span>
+        <div class="animate-fade-in-up-delay-1 flex flex-wrap items-center gap-x-4 gap-y-3">
+          <span
+            class="metric-value grid h-11 w-11 flex-none place-items-center rounded-full border border-emerald-400/25 bg-emerald-400/10 text-base text-[var(--color-accent-soft)]"
+            aria-hidden="true"
+          >
+            {initial}
+          </span>
+          <span class="min-w-0">
+            <span class="block truncate text-sm font-medium text-[var(--color-ink)]">
+              {customer?.email ?? 'your account'}
             </span>
-            {sessionUntil && <span class="mt-1 block pl-[18px]">Session stays open until {sessionUntil}</span>}
-          </p>
+            <span class="mt-0.5 block text-xs leading-6 text-[var(--color-ink-dim)]">
+              <span class="live-dot mr-1.5 inline-block align-middle" aria-hidden="true"></span>
+              {sessionUntil ? `Session open until ${sessionUntil}` : 'Signed in'}
+            </span>
+          </span>
           <a href="/logout/" class="btn btn-ghost !px-4 !py-2 !text-xs">Sign out</a>
         </div>
       </div>
@@ -107,12 +128,23 @@ const sessionUntil = session.expiresAt
                 href={item.href}
                 aria-current={active === item.key ? 'page' : undefined}
                 class:list={[
-                  'flex min-h-[44px] items-center whitespace-nowrap rounded-lg px-3.5 text-sm font-semibold transition-colors',
+                  'flex min-h-[44px] items-center gap-2 whitespace-nowrap rounded-lg px-3.5 text-sm font-semibold transition-colors',
                   active === item.key
                     ? 'bg-white/[0.07] text-white shadow-[inset_0_-1px_0_0_rgba(0,193,144,0.7)]'
                     : 'text-slate-400 hover:bg-white/[0.04] hover:text-white',
                 ]}
               >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="h-4 w-4"
+                  aria-hidden="true"
+                  set:html={ICONS[item.key]}
+                />
                 {item.label}
               </a>
             </li>

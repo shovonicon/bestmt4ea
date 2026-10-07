@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import { env } from 'cloudflare:workers';
 import { getDb } from '../../db/client';
-import { requestLogin } from '../../server/auth';
+import { requestLogin, pendingLoginEmailCookie } from '../../server/auth';
 import { verifyTurnstile } from '../../server/turnstile';
 import { rateLimit } from '../../lib/rate-limit';
 import { verifyCsrf } from '../../lib/csrf';
@@ -57,5 +57,9 @@ export const POST: APIRoute = async ({ request, locals }) => {
     template: 'magic-link',
   });
 
-  return wantsHtml(request) ? redirect('/login/?sent=1', 303) : json({ ok: true });
+  const response = wantsHtml(request) ? redirect('/login/?sent=1', 303) : json({ ok: true });
+  // Remember the address so the "check your inbox" step can offer the one-time
+  // code without asking for the email a second time.
+  response.headers.append('set-cookie', pendingLoginEmailCookie((body.email ?? '').trim().toLowerCase()));
+  return response;
 };

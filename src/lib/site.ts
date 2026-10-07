@@ -13,6 +13,8 @@ export const site = {
   tagline: 'AI-Powered Forex Expert Advisors for MT4 & MT5',
   description:
     'Myfxbook-verified MT4 and MT5 expert advisors for XAUUSD, EURUSD and major pairs. Live-traded on real accounts before release.',
+  /** Default social-share card (Open Graph / Twitter); a page can override it. */
+  ogImage: '/media/og-banner.png',
   url,
   reviewSiteUrl: 'https://strivealgo.com',
   contactEmail: import.meta.env.PUBLIC_CONTACT_EMAIL || 'bestmt4ea@gmail.com',
