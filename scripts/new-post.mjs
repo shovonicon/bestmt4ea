@@ -64,7 +64,7 @@ keyTakeaways:                   # 3-6 bullets -> rendered as the offer summary
   - "TODO — the single most useful concrete fact in this post."
   - "TODO"
   - "TODO"
-faqs:                           # 4-8 Q&As -> FAQPage schema (question >=5 chars, answer >=20)
+faqs:                           # 4-15 Q&As -> FAQPage schema (question >=5 chars, answer >=20)
   - question: "TODO — the question the reader actually types into Google"
     answer: "TODO — answer it straight away in the first sentence, then justify it."
   - question: "TODO — objection the reader raises before downloading"
@@ -79,20 +79,23 @@ sources:                        # >=2 primary sources -> E-E-A-T
   - label: "TODO — second primary source"
     url: "https://example.com/TODO"
 primaryKeyword: "TODO"
-installSteps:                   # required because this post carries a download (name >=3, text >=10)
-  - name: "TODO — download the file from this page"
-    text: "TODO — what to click and where the file lands once it is on your disk."
-  - name: "TODO — open the MetaTrader data folder"
-    text: "TODO — File, then Open Data Folder, then the MQL4 or MQL5 Experts folder."
-  - name: "TODO — attach on demo and enable AutoTrading"
-    text: "TODO — test in the Strategy Tester before risking real money on a live account."
+# installSteps (>=3) are required ONLY for an installable file — an EA, indicator
+# or setup, i.e. a download that sets \`platform\`. A resource — a checklist,
+# calculator, trading journal or template — omits \`platform\` and needs none.
+# installSteps:
+#   - name: "TODO — download the file from this page"
+#     text: "TODO — what to click and where the file lands once it is on your disk."
+#   - name: "TODO — open the MetaTrader data folder"
+#     text: "TODO — File, then Open Data Folder, then the MQL4 or MQL5 Experts folder."
+#   - name: "TODO — attach on demo and enable AutoTrading"
+#     text: "TODO — test in the Strategy Tester before risking real money on a live account."
 download:
   origin: "own"                 # "own" = our build, hosted | "opensource" = add author + sourceUrl
-  license: "TODO — e.g. MIT, GPL-3.0, or freeware licence name"
+  license: "TODO — e.g. MIT, GPL-3.0, or your own freeware licence name"
   licenseUrl: "https://example.com/TODO"
   version: "latest"
-  platform: "MT4/MT5"
-  fileKey: "TODO/path/to/file.ex4"
+  # platform: "MT4/MT5"         # set ONLY for an installable EA/indicator — it then requires installSteps
+  fileKey: "resources/TODO.pdf"
   # or: externalUrl: "https://example.com/TODO"   (hosted fileKey OR external link, never neither)
 ---
 

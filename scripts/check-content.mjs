@@ -33,7 +33,7 @@ import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import matter from 'gray-matter';
 import { countWords, shingles, jaccard } from '../src/lib/reading.ts';
-import { validateDoc } from './content-rules.mjs';
+import { isInstallableDownload, validateDoc } from './content-rules.mjs';
 import { changedFiles } from './changed-files.mjs';
 
 const POSTS_DIR = 'src/content/posts';
@@ -45,7 +45,7 @@ const MAX_QUICK_ANSWER_WORDS = 75;
 const MIN_TAKEAWAYS = 3;
 const MAX_TAKEAWAYS = 6;
 const MIN_FAQS = 4;
-const MAX_FAQS = 8;
+const MAX_FAQS = 15;
 const MIN_SOURCES = 2;
 const DUPLICATE_THRESHOLD = 0.25;
 const MIN_INTERNAL_LINKS = 4;
@@ -88,7 +88,7 @@ const CATEGORIES = [
   'missing quickAnswer',
   'quickAnswer outside 40-75 words',
   'keyTakeaways outside 3-6',
-  'faqs outside 4-8',
+  'faqs outside 4-15',
   'fewer than 2 sources',
   'fewer than 4 internal links',
   'missing download block',
@@ -132,6 +132,7 @@ async function loadDocs(dir, kind) {
       sourceCount: data.sources?.length ?? 0,
       hasPrimaryKeyword: Boolean(data.primaryKeyword),
       isDownload: Boolean(data.download),
+      download: data.download ?? null,
       banned: BANNED_CLAIMS.filter((c) => c.pattern.test(content)).map((c) => c.label),
       shingles: kind === 'post' ? shingles(content) : new Set(),
     });
@@ -315,10 +316,16 @@ if (!DUPES_ONLY) {
   console.log(`  thin internal linking   ${fewLinks.length}  (long posts only)`);
   console.log(`  thin citations          ${fewCites.length}  (long posts only)`);
   console.log(`  free-download posts     ${docs.filter((d) => d.isDownload).length}`);
+  console.log(
+    `    installable (needs installSteps)  ${docs.filter((d) => isInstallableDownload(d.download)).length}`,
+  );
+  console.log(
+    `    resources (no installSteps)      ${docs.filter((d) => d.download && !isInstallableDownload(d.download)).length}`,
+  );
   console.log(`  missing primaryKeyword  ${docs.filter((d) => !d.hasPrimaryKeyword).length}`);
   console.log(`  missing download        ${docs.filter((d) => !d.isDownload).length}`);
   console.log(`  keyTakeaways off 3-6    ${docs.filter((d) => d.takeawayCount < MIN_TAKEAWAYS || d.takeawayCount > MAX_TAKEAWAYS).length}`);
-  console.log(`  faqs off 4-8            ${docs.filter((d) => d.faqCount < MIN_FAQS || d.faqCount > MAX_FAQS).length}`);
+  console.log(`  faqs off 4-15           ${docs.filter((d) => d.faqCount < MIN_FAQS || d.faqCount > MAX_FAQS).length}`);
   console.log(`  sources under 2         ${docs.filter((d) => d.sourceCount < MIN_SOURCES).length}`);
   console.log(`  banned claim phrases    ${docs.filter((d) => d.banned.length > 0).length}`);
 }

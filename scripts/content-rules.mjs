@@ -23,7 +23,7 @@ export const LIMITS = {
   MIN_TAKEAWAYS: 3,
   MAX_TAKEAWAYS: 6,
   MIN_FAQS: 4,
-  MAX_FAQS: 8,
+  MAX_FAQS: 15,
   MIN_SOURCES: 2,
   MIN_INTERNAL_LINKS: 4,
   MIN_CITATIONS: 2,
@@ -137,6 +137,19 @@ export function bodySectionKinds(content) {
   return found;
 }
 
+/**
+ * A download is *installable* when it names a trading platform — an expert
+ * advisor, indicator or setup that is copied into MetaTrader and needs written
+ * install steps (for HowTo schema, and to keep genuine content between the
+ * download button and the first ad unit).
+ *
+ * A **resource** — a checklist, calculator, trading journal or spreadsheet
+ * template — omits `platform` and needs none: there is nothing to install.
+ */
+export function isInstallableDownload(download) {
+  return Boolean(download?.platform);
+}
+
 /** Validate the `download:` frontmatter shape (mirrors src/content.config.ts). */
 export function validateDownloadShape(download) {
   if (!download) return [ISSUE(CODES.MISSING_DOWNLOAD)];
@@ -204,7 +217,7 @@ export function validateDoc({ data, content, kind = 'post' }) {
 
   if (kind === 'post') {
     issues.push(...validateDownloadShape(data.download));
-    if (data.download && (data.installSteps?.length ?? 0) === 0) {
+    if (data.download && isInstallableDownload(data.download) && (data.installSteps?.length ?? 0) === 0) {
       issues.push(ISSUE(CODES.MISSING_INSTALL_STEPS));
     }
     if (words >= LIMITS.MIN_WORDS && countInternalLinks(content) < LIMITS.MIN_INTERNAL_LINKS) {
@@ -224,7 +237,7 @@ export function validateDoc({ data, content, kind = 'post' }) {
   const sections = bodySectionKinds(content);
   if (sections.has('faq')) issues.push(ISSUE(CODES.DUP_FAQ_SECTION));
   if (sections.has('sources')) issues.push(ISSUE(CODES.DUP_SOURCES_SECTION));
-  if (sections.has('install') && kind === 'post' && data.download) {
+  if (sections.has('install') && kind === 'post' && isInstallableDownload(data.download)) {
     issues.push(ISSUE(CODES.DUP_INSTALL_SECTION));
   }
 

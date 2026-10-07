@@ -8,12 +8,11 @@
  * primaryKeyword are missing — and writes a prioritised worklist to
  * src/data/rewrite-queue.json, plus a markdown table on stdout.
  *
- * Priority order:
- *   1  the free-download hub and the money pages
- *      (free-download-forex-ea-indicator, best-mt4-ea, best-forex-ea,
- *      top-ranking), plus every post whose slug names gold / XAUUSD
- *   2  posts missing a `download:` block (the second iron rule)
- *   3  everything else, lowest word count first
+ * Priority order (see `tierOf`):
+ *   1  money pages + every post whose slug names gold / XAUUSD
+ *   2  EA reviews / comparisons
+ *   3  indicators / systems
+ *   4  educational, how-to, listicles, tools
  *
  * Within a priority band, lowest word count first — the thinnest page is the
  * one losing the most traffic, and it is the cheapest rewrite.
@@ -22,13 +21,11 @@
  */
 
 import { readFile, readdir, writeFile, mkdir } from 'node:fs/promises';
-import { existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import matter from 'gray-matter';
 import { countWords } from '../src/lib/reading.ts';
 
 const POSTS_DIR = 'src/content/posts';
-const HUB_PAGE = 'src/content/pages/free-download-forex-ea-indicator.md';
 const OUT_FILE = 'src/data/rewrite-queue.json';
 
 const MIN_WORDS = 3500;
@@ -36,58 +33,49 @@ const MAX_WORDS = 7500;
 const MIN_QUICK_ANSWER_WORDS = 40;
 const MAX_QUICK_ANSWER_WORDS = 75;
 const MIN_FAQS = 4;
+const MAX_FAQS = 15;
 const MIN_SOURCES = 2;
 
-/** Batch 1 money pages (docs/CONTENT-STANDARD.md §12) plus the hub itself. */
-const MONEY_SLUGS = [
-  'free-download-forex-ea-indicator',
-  'best-mt4-ea',
-  'best-forex-ea',
-  'top-ranking',
-];
+/**
+ * The commercial core, rewritten before anything else in their tier.
+ * `free-download-forex-ea-indicator` left this list when that page was deleted
+ * along with the free-download library.
+ */
+const MONEY_SLUGS = ['best-mt4-ea', 'best-forex-ea', 'top-ranking'];
 
 /** Topics carrying the highest commercial intent in this niche. */
 const PRIORITY_TOPICS = ['gold', 'xauusd'];
 
-const PRIORITY_LABELS = {
-  1: 'money page / hub / gold',
-  2: 'missing download',
-  3: 'thin content',
-};
+/** Slug shapes: an EA review/comparison, an indicator/system, or neither. */
+const EA_REVIEW =
+  /\b(ea|eas|robot|bots?|scalper|grid|martingale|hedge|quantum|review|reviews|expert|automated|panel)\b/;
+const INDICATOR = /\b(indicator|indicators|system|systems|scanner|detector|signal|signals)\b/;
 
-/* ------------------------------------------------------------ hub links */
+const PRIORITY_LABELS = {
+  1: 'money page / gold',
+  2: 'EA review or comparison',
+  3: 'indicator or system',
+  4: 'educational / how-to',
+};
 
 /**
- * Slugs of posts linked from the free-download hub page. The hub is what the
- * advertising and affiliate traffic lands on, so everything it points at is
- * worth rewriting first. Returns [] when the page does not exist.
+ * Priority tiers (docs/CONTENT-STANDARD.md §12):
+ *
+ *   1  money pages + gold / XAUUSD — the pages that carry the revenue
+ *   2  EA reviews / comparisons
+ *   3  indicators / systems
+ *   4  educational, how-to, listicles, tools
+ *
+ * Within a tier the thinnest post goes first — it is losing the most traffic
+ * and is the cheapest rewrite. Tie-break: slug ascending.
  */
-async function hubSlugs() {
-  if (!existsSync(HUB_PAGE)) return [];
-
-  const { content } = matter(await readFile(HUB_PAGE, 'utf8'));
-  const slugs = new Set();
-
-  for (const match of content.matchAll(/\]\(\/([^)\s#?]+)/g)) {
-    let slug = match[1].replace(/\/+$/, '');
-    try {
-      slug = decodeURIComponent(slug);
-    } catch {
-      /* keep the encoded form */
-    }
-    if (slug && !slug.includes('/')) slugs.add(slug);
-  }
-
-  return [...slugs];
-}
-
-const HUB_SLUGS = await hubSlugs();
-const PRIORITY_SLUGS = new Set([...MONEY_SLUGS, ...HUB_SLUGS]);
-
-const isPriorityOne = (slug) => {
+function tierOf(slug) {
   const lower = slug.toLowerCase();
-  return PRIORITY_SLUGS.has(slug) || PRIORITY_TOPICS.some((topic) => lower.includes(topic));
-};
+  if (MONEY_SLUGS.includes(slug) || PRIORITY_TOPICS.some((topic) => lower.includes(topic))) return 1;
+  if (EA_REVIEW.test(lower)) return 2;
+  if (INDICATOR.test(lower)) return 3;
+  return 4;
+}
 
 /* ------------------------------------------------------------------ load */
 
@@ -122,7 +110,7 @@ for (const file of files) {
   if (!hasDownload) issues.push('missing download');
   if (!data.primaryKeyword) issues.push('missing primaryKeyword');
 
-  const priority = isPriorityOne(slug) ? 1 : hasDownload ? 3 : 2;
+  const priority = tierOf(slug);
 
   posts.push({
     file: `${POSTS_DIR}/${file}`,
@@ -142,6 +130,7 @@ const byPriority = {
   1: needsWork.filter((p) => p.priority === 1).length,
   2: needsWork.filter((p) => p.priority === 2).length,
   3: needsWork.filter((p) => p.priority === 3).length,
+  4: needsWork.filter((p) => p.priority === 4).length,
 };
 
 const queue = {
@@ -153,12 +142,13 @@ const queue = {
     minQuickAnswerWords: MIN_QUICK_ANSWER_WORDS,
     maxQuickAnswerWords: MAX_QUICK_ANSWER_WORDS,
     minFaqs: MIN_FAQS,
+    maxFaqs: MAX_FAQS,
     minSources: MIN_SOURCES,
     requiresDownload: true,
     requiresPrimaryKeyword: true,
     reference: 'docs/CONTENT-STANDARD.md §12',
   },
-  prioritySlugs: { moneyPages: MONEY_SLUGS, hubLinks: HUB_SLUGS, topics: PRIORITY_TOPICS },
+  prioritySlugs: { moneyPages: MONEY_SLUGS, topics: PRIORITY_TOPICS },
   total: posts.length,
   needsWork: needsWork.length,
   clean: posts.length - needsWork.length,
@@ -177,9 +167,10 @@ console.log('REWRITE QUEUE — docs/CONTENT-STANDARD.md §12');
 console.log(`  posts read       ${posts.length}`);
 console.log(`  needs work       ${needsWork.length}`);
 console.log(`  already clean    ${posts.length - needsWork.length}`);
-console.log(`  priority 1       ${byPriority[1]}  (money page / hub / gold)`);
-console.log(`  priority 2       ${byPriority[2]}  (missing download)`);
-console.log(`  priority 3       ${byPriority[3]}  (thin content, lowest words first)`);
+console.log(`  priority 1       ${byPriority[1]}  (money page / gold)`);
+console.log(`  priority 2       ${byPriority[2]}  (EA review / comparison)`);
+console.log(`  priority 3       ${byPriority[3]}  (indicator / system)`);
+console.log(`  priority 4       ${byPriority[4]}  (educational / how-to, lowest words first)`);
 console.log(`  written          ${OUT_FILE}`);
 
 console.log('\n| # | P | Slug | Words | Issues |');
