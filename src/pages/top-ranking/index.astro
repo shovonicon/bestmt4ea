@@ -11,7 +11,7 @@ import { monthYear, performanceVerifiedAt } from '../../lib/dates';
 import { formatDate } from '../../lib/format';
 import { getPublicProducts } from '../../lib/content';
 import { url } from '../../lib/urls';
-import { breadcrumbSchema, breadcrumbTrail, faqSchema } from '../../lib/seo';
+import { breadcrumbSchema, breadcrumbTrail, faqSchema, itemListSchema } from '../../lib/seo';
 import siteStats from '../../data/site-stats.json';
 import taxonomies from '../../data/taxonomies.json';
 
@@ -54,6 +54,11 @@ const trail = breadcrumbTrail([
   { name: 'Top ranking', href: url('/top-ranking') },
 ]);
 
+const rankedList = perfSorted.map((r) => ({
+  name: r.product.data.title,
+  url: `/product/${r.product.data.slug}/`,
+}));
+
 const faqs = [
   {
     question: 'How are these systems ranked?',
@@ -82,7 +87,7 @@ const faqs = [
   title={`Top Forex Expert Advisors ${monthYear} — Ranked and Verified`}
   description="Ranked comparison of MT4 and MT5 expert advisors by verified monthly return, maximum drawdown and absolute gain, with the licence price on every row. Account type stated for every system, live or demo."
   ogImage="/media/products/forex-windows-vps.png"
-  jsonLd={[breadcrumbSchema(trail), faqSchema(faqs)]}
+  jsonLd={[breadcrumbSchema(trail), itemListSchema('Top forex expert advisors', rankedList), faqSchema(faqs)]}
 >
   <section class="relative overflow-hidden">
     <div class="glow-orb animate-aurora left-1/2 top-[-14rem] h-[22rem] w-[34rem] -translate-x-1/2 bg-emerald-500/20"

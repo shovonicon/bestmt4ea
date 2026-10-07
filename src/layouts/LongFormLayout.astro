@@ -75,6 +75,10 @@ const trail = isDownload
   canonical={data.seo.canonical}
   ogImage={data.seo.ogImage || data.featuredImage}
   robots={data.seo.robots}
+  ogType="article"
+  published={data.publishedAt}
+  updated={data.updatedAt}
+  author={data.author}
   jsonLd={[
     articleSchema({
       title: data.title,
@@ -84,6 +88,8 @@ const trail = isDownload
       updated: data.updatedAt,
       image: data.featuredImage,
       author: data.author,
+      keywords: data.tags,
+      section: data.categories?.[0],
     }),
     breadcrumbSchema(trail),
     ...(isDownload && installSteps.length ? [howToSchema(data.title, installSteps)] : []),

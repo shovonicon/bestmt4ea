@@ -12,6 +12,7 @@ export function organizationSchema(): Json {
     legalName: site.legalName,
     url: site.url,
     description: site.description,
+    logo: { '@type': 'ImageObject', url: absoluteUrl('/logo.png') },
     sameAs: [site.reviewSiteUrl, site.telegram.community, site.myfxbook],
   };
 }
@@ -38,6 +39,26 @@ export function breadcrumbSchema(trail: { name: string; url: string }[]): Json {
       position: index + 1,
       name: node.name,
       item: `${site.url}${node.url}`,
+    })),
+  };
+}
+
+/**
+ * `ItemList` for a ranking or catalogue page. It tells a search engine that the
+ * page is an ordered list and what sits at each position, instead of leaving it
+ * to infer the ranking from markup.
+ */
+export function itemListSchema(name: string, items: { name: string; url?: string }[]): Json {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name,
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      ...(item.url ? { url: absoluteUrl(item.url) } : {}),
     })),
   };
 }
@@ -147,6 +168,8 @@ export function articleSchema(opts: {
   updated?: Date;
   image?: string;
   author?: string;
+  keywords?: string[];
+  section?: string;
 }): Json {
   const canonical = absoluteUrl(opts.url);
   const image = resolveImage(opts.image);
@@ -161,13 +184,19 @@ export function articleSchema(opts: {
     ...(image ? { image: [image] } : {}),
     ...(opts.published ? { datePublished: opts.published.toISOString() } : {}),
     ...(opts.updated ? { dateModified: opts.updated.toISOString() } : {}),
-    author: { '@type': 'Organization', name: opts.author ?? site.name, url: site.url },
+    // A named author is a `Person` — that is what E-E-A-T asks for. Only fall
+    // back to the Organization when the content carries no individual's name.
+    author: opts.author
+      ? { '@type': 'Person', name: opts.author }
+      : { '@type': 'Organization', name: site.name, url: site.url },
     publisher: {
       '@type': 'Organization',
       name: site.name,
       url: site.url,
       logo: { '@type': 'ImageObject', url: absoluteUrl('/logo.png') },
     },
+    ...(opts.keywords?.length ? { keywords: opts.keywords.join(', ') } : {}),
+    ...(opts.section ? { articleSection: opts.section } : {}),
   };
 }
 

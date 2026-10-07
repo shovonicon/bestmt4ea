@@ -98,6 +98,7 @@ const trail = breadcrumbTrail([
   description={product.data.seo.description || product.data.description}
   canonical={product.data.seo.canonical}
   ogImage={product.data.seo.ogImage || product.data.featuredImage}
+  ogType="article"
   jsonLd={[
     productSchema(product, { currency, min: product.data.priceMin, max: product.data.priceMax, reviews }),
     breadcrumbSchema(trail),

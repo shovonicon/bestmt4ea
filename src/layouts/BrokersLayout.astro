@@ -18,7 +18,7 @@ import BrokerCard from '../components/BrokerCard.astro';
 import Faq from '../components/Faq.astro';
 import CountUp from '../components/CountUp.astro';
 import { getAffiliate, AFFILIATE_REL, AFFILIATE_DISCLOSURE } from '../lib/affiliates';
-import { breadcrumbSchema, breadcrumbTrail, faqSchema } from '../lib/seo';
+import { breadcrumbSchema, breadcrumbTrail, faqSchema, itemListSchema } from '../lib/seo';
 import { RISK_DISCLAIMER } from '../lib/site';
 import { formatDate } from '../lib/format';
 import { url } from '../lib/urls';
@@ -44,6 +44,8 @@ type Row = {
 const brokers = (brokerData as unknown as { brokers: Row[] }).brokers ?? [];
 const faqs = (brokerData as unknown as { faqs: Array<{ question: string; answer: string }> }).faqs ?? [];
 const recommended = brokers.filter((broker) => broker.recommended);
+/** The ranked broker list, in the order the page shows it. */
+const brokerList = brokers.map((broker) => ({ name: broker.key }));
 
 // Proof figures, all read straight from the comparison data.
 const offerCount = brokers.filter((broker) => broker.offer).length;
@@ -76,7 +78,7 @@ const trail = breadcrumbTrail([
   description={data.seo.description || data.description}
   canonical={data.seo.canonical}
   ogImage={data.seo.ogImage || data.featuredImage}
-  jsonLd={[breadcrumbSchema(trail), faqSchema(faqs)]}
+  jsonLd={[breadcrumbSchema(trail), itemListSchema('Best forex brokers', brokerList), faqSchema(faqs)]}
 >
   <!-- Hero -->
   <section class="relative overflow-hidden">

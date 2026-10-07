@@ -18,6 +18,11 @@ export interface Props {
   robots?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   noindex?: boolean;
+  /** Open Graph object type — `article` for posts and product/review pages. */
+  ogType?: 'website' | 'article';
+  published?: Date;
+  updated?: Date;
+  author?: string;
 }
 
 const {
@@ -28,6 +33,10 @@ const {
   robots,
   jsonLd,
   noindex = false,
+  ogType = 'website',
+  published,
+  updated,
+  author,
 } = Astro.props;
 
 const pageTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
@@ -49,13 +58,21 @@ const jsonLdBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     <meta name="robots" content={robotsContent} />
     <link rel="canonical" href={canonicalUrl} />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content="en_US" />
     {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+    {ogImageUrl && <meta property="og:image:alt" content={pageTitle} />}
+    {ogType === 'article' && published && <meta property="article:published_time" content={published.toISOString()} />}
+    {ogType === 'article' && updated && <meta property="article:modified_time" content={updated.toISOString()} />}
+    {ogType === 'article' && author && <meta property="article:author" content={author} />}
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
 
     <link rel="icon" type="image/webp" href="/favicon.webp" />
     <link rel="apple-touch-icon" href="/favicon.webp" />
