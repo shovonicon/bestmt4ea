@@ -14,11 +14,13 @@
  * invented. It fills a placement the layout already keeps clear of any download
  * button.
  */
-import { affiliates, AFFILIATE_REL, type AffiliateOffer } from '../lib/affiliates';
+import { getAffiliate, AFFILIATE_REL, type AffiliateOffer } from '../lib/affiliates';
 import brokerData from '../data/brokers.json';
 
 export interface Props {
   variant?: 'rail' | 'wide';
+  /** Which partners to show, in order. Defaults to the full registry pair. */
+  keys?: string[];
 }
 
 interface BrokerRow {
@@ -28,17 +30,17 @@ interface BrokerRow {
   offer?: string;
 }
 
-const { variant = 'rail' } = Astro.props;
+const { variant = 'rail', keys = ['roboforex', 'exness'] } = Astro.props;
 const rail = variant === 'rail';
 
 const rows = (brokerData as unknown as { brokers: BrokerRow[] }).brokers ?? [];
 
 // Annotated so the const registry widens to `AffiliateOffer` here — otherwise
 // `logo` stays a truthy literal and the "no logo" branch narrows to `never`.
-const partners: Array<{ affiliate: AffiliateOffer; row?: BrokerRow }> = [
-  { key: 'roboforex', affiliate: affiliates.roboforex },
-  { key: 'exness', affiliate: affiliates.exness },
-].map(({ key, affiliate }) => ({ affiliate, row: rows.find((row) => row.key === key) }));
+const partners: Array<{ affiliate: AffiliateOffer; row?: BrokerRow }> = keys
+  .map((key) => ({ key, affiliate: getAffiliate(key) }))
+  .filter((entry): entry is { key: string; affiliate: AffiliateOffer } => Boolean(entry.affiliate))
+  .map(({ key, affiliate }) => ({ affiliate, row: rows.find((row) => row.key === key) }));
 ---
 
 <div class:list={[rail ? 'flex flex-col gap-3' : 'grid gap-3 sm:grid-cols-2']}>

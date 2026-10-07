@@ -1,0 +1,58 @@
+---
+/**
+ * Static banner after the article body.
+ *
+ * From the reference build (TBK). The creative is the broker's own asset, so it
+ * stays on their CDN and stays current; ours just points at it. The link goes
+ * through the affiliate registry — never a hard-coded tracking URL — and carries
+ * the required `rel` plus a visible disclosure (CONTENT-STANDARD §7).
+ */
+import { AFFILIATE_DISCLOSURE, AFFILIATE_REL, affiliates } from '../lib/affiliates';
+
+const offer = affiliates.exness;
+const creative = 'https://d3dpet1g0ty5ed.cloudfront.net/EN_Take_Control_990x250px.png';
+---
+
+<div class="bottom-banner-ad">
+  <span class="bottom-banner-ad__label">Advertisement</span>
+  <a class="bottom-banner-ad__link" href={offer.url} target="_blank" rel={AFFILIATE_REL}>
+    <img src={creative} width="990" height="250" alt={offer.label} loading="lazy" decoding="async" />
+  </a>
+  <p class="bottom-banner-ad__note">{AFFILIATE_DISCLOSURE}</p>
+</div>
+
+<style>
+  .bottom-banner-ad {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .bottom-banner-ad__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--color-ink-dim);
+  }
+
+  .bottom-banner-ad__link {
+    display: block;
+    width: 100%;
+    max-width: 990px;
+    margin-inline: auto;
+  }
+
+  .bottom-banner-ad img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+  }
+
+  .bottom-banner-ad__note {
+    margin-top: 0.6rem;
+    font-size: 0.625rem;
+    line-height: 1.5;
+    color: var(--color-ink-dim);
+  }
+</style>

@@ -1,0 +1,144 @@
+---
+/**
+ * Sidebar house creative for the VPS product.
+ *
+ * Mirrors the reference build (TBK), which puts a VPS card at the top of its
+ * article sidebar. Here it is the rail fallback: when AdSense has nothing to
+ * serve, this stands in so the reserved space still earns. Labelled
+ * "Advertisement" because that is exactly what it is — a promotion for our own
+ * product, not a paid placement.
+ *
+ * Every figure comes from `src/content/products/vps.md` and
+ * `src/data/product-plans.json`. No rating is shown: CONTENT-STANDARD §4 forbids
+ * displaying an imported rating count with no readable reviews behind it.
+ */
+import { url } from '../lib/urls';
+
+const points = [
+  'Windows Server 2022 · 2 CPU cores, 4 GB RAM, 60 GB SSD',
+  'Full Remote Desktop access — run MT4/MT5 around the clock',
+  '1 Gbps network · host 5–10 trading platforms',
+];
+---
+
+<div class="sidebar-ad">
+  <span class="sidebar-ad__label">Advertisement</span>
+
+  <a class="sidebar-ad__card hover-brand-card" href={url('/product/vps')}>
+    <span class="sidebar-ad__kicker">Forex VPS hosting · from $44.99/mo</span>
+    <span class="sidebar-ad__title">Windows VPS built for MT4 &amp; MT5</span>
+
+    <ul class="sidebar-ad__list">
+      {
+        points.map((point) => (
+          <li>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            <span>{point}</span>
+          </li>
+        ))
+      }
+    </ul>
+
+    <span class="btn btn-primary sidebar-ad__cta">
+      View VPS plans
+      <svg
+        viewBox="0 0 24 24"
+        class="h-3.5 w-3.5"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M5 12h14" />
+        <path d="m12 5 7 7-7 7" />
+      </svg>
+    </span>
+  </a>
+</div>
+
+<style>
+  .sidebar-ad__label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--color-ink-dim);
+    text-align: center;
+  }
+
+  .sidebar-ad__card {
+    display: block;
+    padding: 1rem;
+    border: 1px solid rgba(0, 193, 144, 0.25);
+    border-radius: 1rem;
+    background-image: linear-gradient(150deg, rgba(0, 193, 144, 0.1), rgba(0, 0, 0, 0.35) 60%);
+    text-decoration: none;
+  }
+
+  .sidebar-ad__kicker {
+    display: inline-block;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    background-color: rgba(0, 193, 144, 0.12);
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent-soft);
+  }
+
+  .sidebar-ad__title {
+    display: block;
+    margin-top: 0.6rem;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--color-ink);
+  }
+
+  .sidebar-ad__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0.85rem 0 1rem;
+    padding: 0;
+  }
+
+  .sidebar-ad__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1.45;
+    color: var(--color-ink-soft);
+  }
+
+  .sidebar-ad__list svg {
+    flex: none;
+    width: 12px;
+    height: 12px;
+    margin-top: 0.2em;
+    color: var(--color-accent-soft);
+  }
+
+  .sidebar-ad__cta {
+    width: 100%;
+    !padding-block: 0.5rem;
+    font-size: 0.75rem;
+  }
+</style>

@@ -26,12 +26,16 @@ import KeyTakeaways from '../components/KeyTakeaways.astro';
 import TableOfContents from '../components/TableOfContents.astro';
 import AdSlot from '../components/AdSlot.astro';
 import PartnerFallback from '../components/PartnerFallback.astro';
+import SidebarAd from '../components/SidebarAd.astro';
+import FixedSideAd from '../components/FixedSideAd.astro';
+import BottomBannerAd from '../components/BottomBannerAd.astro';
 import Faq from '../components/Faq.astro';
 import DownloadCard from '../components/DownloadCard.astro';
 import InstallSteps from '../components/InstallSteps.astro';
 import ArticleSources from '../components/ArticleSources.astro';
 import { countWords, readingMinutes } from '../lib/reading';
 import { site, RISK_DISCLAIMER } from '../lib/site';
+import { AFFILIATE_REL, affiliates } from '../lib/affiliates';
 import { articleSchema, breadcrumbSchema, faqSchema, howToSchema } from '../lib/seo';
 import { url } from '../lib/urls';
 
@@ -52,6 +56,30 @@ const pageUrl = `/${data.slug}/`;
 const download = data.download;
 const isDownload = Boolean(download);
 const installSteps = data.installSteps ?? [];
+
+/**
+ * Fixed-edge skyscrapers, from the reference build. The left creative is the
+ * broker's own asset, so it stays on their CDN and stays current; the right one
+ * is ours, served from `public/ads`. Both only appear on very wide screens, and
+ * the broker link carries the affiliate `rel` (never a hard-coded tracking URL —
+ * the URL comes from the registry).
+ */
+const sideAds: { side: 'left' | 'right'; href: string; image: string; alt: string; rel?: string }[] = [
+  {
+    side: 'left' as const,
+    href: affiliates.exness.url,
+    rel: AFFILIATE_REL,
+    image:
+      'https://d3dpet1g0ty5ed.cloudfront.net/EN_MENA_GOOGLE_C1_BB2_C2_T1_FSECURITY_CONFIDENCE_T2_PERFORMANCE_D-3-13_STATIC_300x600.jpg',
+    alt: 'Exness',
+  },
+  {
+    side: 'right' as const,
+    href: url('/copy-trading'),
+    image: '/ads/bestmt4ea-copy-trading-300x600.webp',
+    alt: 'Barakah Account Management — copy trading Gold (XAUUSD) and EURUSD',
+  },
+];
 
 // Sticky left/right rails. They only exist when ads are configured and the post
 // has not opted out — AdSlot itself renders nothing without a client ID.
@@ -109,19 +137,32 @@ const trail = isDownload
           <div class="ad-rail ad-rail-left">
             <div class="ad-rail-inner">
               <AdSlot slot={site.adSlots.railLeft} fixedSize={{ width: 300, height: 600 }} showLabel={false} class="!my-0">
-                <PartnerFallback slot="fallback" variant="rail" />
+                <div slot="fallback" class="flex flex-col gap-3">
+                  <PartnerFallback keys={['exness']} variant="rail" />
+                  <SidebarAd />
+                </div>
               </AdSlot>
             </div>
           </div>
           <div class="ad-rail ad-rail-right">
             <div class="ad-rail-inner">
               <AdSlot slot={site.adSlots.railRight} fixedSize={{ width: 300, height: 600 }} showLabel={false} class="!my-0">
-                <PartnerFallback slot="fallback" variant="rail" />
+                <div slot="fallback" class="flex flex-col gap-3">
+                  <PartnerFallback keys={['exness']} variant="rail" />
+                  <SidebarAd />
+                </div>
               </AdSlot>
             </div>
           </div>
         </>
       )
+    }
+
+    {
+      /* Fixed-edge skyscrapers, from the reference build. CSS keeps them out of the way below 1700px. */
+      sideAds.map((ad) => (
+        <FixedSideAd side={ad.side} href={ad.href} image={ad.image} alt={ad.alt} rel={ad.rel} />
+      ))
     }
 
     <div class="longform">
@@ -181,8 +222,11 @@ const trail = isDownload
         )
       }
 
-      <!-- First ad: never adjacent to the download action (install steps sit between). -->
-      <AdSlot slot={site.adSlots.inArticle} class="mt-8" />
+      <!--
+        The in-article units are injected into the body by
+        `src/lib/rehype-in-article-ads.mjs` (at 5/35/65/90% depth), so there is
+        no layout-level in-article slot here — a post must not carry both.
+      -->
 
       <div class="mt-10">
         <AuthorBox published={data.publishedAt} updated={data.updatedAt} readingMinutes={minutes} />
@@ -238,6 +282,8 @@ const trail = isDownload
           </section>
         )
       }
+
+      <BottomBannerAd />
     </div>
   </div>
 </BaseLayout>

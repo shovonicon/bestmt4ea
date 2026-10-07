@@ -4,9 +4,19 @@ import sitemap from '@astrojs/sitemap';
 import cloudflare from '@astrojs/cloudflare';
 import tailwindcss from '@tailwindcss/vite';
 import matter from 'gray-matter';
+import { loadEnv } from 'vite';
 import { rehypeTableAccessibility } from './src/lib/rehype-table-a11y.mjs';
+import { rehypeInArticleAds } from './src/lib/rehype-in-article-ads.mjs';
 
-const SITE = process.env.PUBLIC_SITE_URL || 'https://bestmt4ea.com';
+/*
+ * Vite loads `.env` *after* this config file has already been evaluated, so
+ * `process.env` is still empty here. Load it explicitly: the rehype plugin below
+ * needs the AdSense client at config time, and reading it late silently means no
+ * in-article ad is ever injected.
+ */
+const env = loadEnv(process.env.NODE_ENV || 'production', process.cwd(), '');
+
+const SITE = process.env.PUBLIC_SITE_URL || env.PUBLIC_SITE_URL || 'https://bestmt4ea.com';
 
 /**
  * Sitemap metadata read straight from the content.
@@ -165,7 +175,25 @@ export default defineConfig({
     },
   ],
   markdown: {
-    rehypePlugins: [rehypeTableAccessibility],
+    /*
+     * In-article ads are injected here rather than placed by the layout, so
+     * density scales with article length (see rehype-in-article-ads.mjs). The
+     * client and slot are read from the same env vars AdSlot uses; with no
+     * client set, nothing is injected and no ad code reaches the page.
+     */
+    rehypePlugins: [
+      rehypeTableAccessibility,
+      [
+        rehypeInArticleAds,
+        {
+          client: env.PUBLIC_ADSENSE_CLIENT || process.env.PUBLIC_ADSENSE_CLIENT || '',
+          slot:
+            env.PUBLIC_ADSENSE_SLOT_IN_ARTICLE ||
+            process.env.PUBLIC_ADSENSE_SLOT_IN_ARTICLE ||
+            '6721931734',
+        },
+      ],
+    ],
   },
   vite: {
     plugins: [tailwindcss()],
