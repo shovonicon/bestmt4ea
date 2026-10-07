@@ -2,12 +2,11 @@
 export const prerender = false;
 
 import { desc, eq } from 'drizzle-orm';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AdminLayout from '../../../layouts/AdminLayout.astro';
 import { getDb } from '../../../db/client';
 import { customers, licenses, products } from '../../../db/schema';
 import { getPendingAccountChangeRequest } from '../../../server/licenses';
 import { requireAdminMfa } from '../../../server/admin-auth';
-import { url } from '../../../lib/urls';
 
 const session = Astro.locals.session;
 if (!requireAdminMfa(session)) return Astro.redirect('/admin/login/');
@@ -33,47 +32,66 @@ const withPending = [];
 for (const row of rows) {
   withPending.push({ ...row, pending: await getPendingAccountChangeRequest(db, row.id) });
 }
+
+const badgeTone = (status: string) => {
+  if (status === 'ACTIVE') return 'badge-accent';
+  if (status === 'PENDING') return 'badge-warn';
+  if (status === 'REVOKED' || status === 'SUSPENDED' || status === 'EXPIRED') return 'badge-danger';
+  return '';
+};
 ---
 
-<BaseLayout title="Admin — licenses" description="Admin licenses." noindex>
-  <section class="container-x py-16">
-    <p class="section-kicker">Admin</p>
-    <h1 class="mt-3 text-3xl font-bold">Licenses</h1>
-    <p class="mt-3 text-sm text-[var(--color-ink-soft]">
-      <a class="underline" href={url('/admin')}>Dashboard</a>
-    </p>
+<AdminLayout
+  active="licenses"
+  title="Licences"
+  heading="Licences"
+  lead="Each licence binds one MT4/MT5 account. Suspending or revoking stops the compiled build working; extend pushes the expiry out."
+>
+  {
+    withPending.length === 0 ? (
+      <p class="admin-empty">No licences yet. One appears the moment an order settles.</p>
+    ) : (
+      <div style="display:flex;flex-direction:column;gap:0.85rem">
+        {withPending.map((license) => (
+          <div class="admin-panel">
+            <div class="admin-panel-head">
+              <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap">
+                <span class="admin-mono">{license.key}</span>
+                <span class:list={['badge', badgeTone(license.status)]}>{license.status}</span>
+                {license.pending && <span class="badge badge-warn">change requested</span>}
+              </div>
+              <span class="admin-mono muted">
+                {license.expiresAt ? `expires ${license.expiresAt.toISOString().slice(0, 10)}` : 'lifetime'}
+              </span>
+            </div>
 
-    <div class="mt-8 flex flex-col gap-4">
-      {withPending.map((license) => (
-        <div class="brand-card rounded-2xl p-4">
-          <div class="flex flex-wrap items-center justify-between gap-2 text-sm">
-            <span class="font-mono">{license.key}</span>
-            <span>{license.status}{license.pending ? ' · change requested' : ''}</span>
+            <p class="admin-empty">
+              {license.product ?? '—'} · {license.email ?? '—'}
+            </p>
+
+            <div class="admin-actions" style="margin-top:0.9rem">
+              {['suspend', 'resume', 'revoke', 'extend', 'rebuild'].map((action) => (
+                <form method="post" action="/api/admin/license/">
+                  <input type="hidden" name="licenseId" value={license.id} />
+                  <input type="hidden" name="action" value={action} />
+                  <button class="admin-btn" type="submit">
+                    {action}
+                  </button>
+                </form>
+              ))}
+              {license.pending && (
+                <form method="post" action="/api/admin/license/">
+                  <input type="hidden" name="licenseId" value={license.id} />
+                  <input type="hidden" name="action" value="approve-account-change" />
+                  <button class="admin-btn admin-btn-primary" type="submit">
+                    approve account change
+                  </button>
+                </form>
+              )}
+            </div>
           </div>
-          <p class="mt-1 text-sm text-[var(--color-ink-soft]">
-            {license.product} — {license.email ?? '—'} · expires
-            {license.expiresAt ? license.expiresAt.toISOString().slice(0, 10) : ' never'}
-          </p>
-          <div class="mt-3 flex flex-wrap gap-2">
-            {['suspend', 'resume', 'revoke', 'extend', 'rebuild'].map((action) => (
-              <form method="post" action="/api/admin/license/">
-                <input type="hidden" name="licenseId" value={license.id} />
-                <input type="hidden" name="action" value={action} />
-                <button class="rounded-lg border border-white/10 px-3 py-1.5 text-xs">{action}</button>
-              </form>
-            ))}
-            {license.pending && (
-              <form method="post" action="/api/admin/license/">
-                <input type="hidden" name="licenseId" value={license.id} />
-                <input type="hidden" name="action" value="approve-account-change" />
-                <button class="rounded-lg bg-[var(--color-accent)] px-3 py-1.5 text-xs font-semibold text-black">
-                  approve account change
-                </button>
-              </form>
-            )}
-          </div>
-        </div>
-      ))}
-    </div>
-  </section>
-</BaseLayout>
+        ))}
+      </div>
+    )
+  }
+</AdminLayout>

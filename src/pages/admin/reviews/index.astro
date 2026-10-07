@@ -11,9 +11,8 @@
  */
 export const prerender = false;
 
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AdminLayout from '../../../layouts/AdminLayout.astro';
 import { requireAdminMfa } from '../../../server/admin-auth';
-import { url } from '../../../lib/urls';
 import reviewData from '../../../data/reviews.json';
 
 const session = Astro.locals.session;
@@ -37,32 +36,35 @@ const drafts = all.filter((review) => review.status !== 'approved');
 const approved = all.filter((review) => review.status === 'approved');
 ---
 
-<BaseLayout title="Admin — review drafts" description="Admin review drafts." noindex>
-  <section class="container-x py-16">
-    <p class="section-kicker">Admin</p>
-    <h1 class="mt-3 text-3xl font-bold">Review drafts</h1>
-    <p class="mt-3 text-sm text-[var(--color-ink-soft]">
-      <a class="underline" href={url('/admin')}>Dashboard</a> ·
-      <a class="underline" href={url('/customer-feedback')}>Public feedback page</a>
+<AdminLayout
+  active="reviews"
+  title="Review drafts"
+  heading="Review drafts"
+  lead="Imported reviews held back from the public page until the customer who wrote them confirms the wording."
+>
+  <div class="admin-panel" style="border-color:rgba(251,191,36,0.25);background-color:rgba(251,191,36,0.05)">
+    <p class="admin-empty" style="color:var(--color-ink-soft);line-height:1.7">
+      <strong style="color:var(--color-ink)">{drafts.length} draft{drafts.length === 1 ? '' : 's'}</strong> are not public.
+      The customer and order details are genuine; the wording is generated. Publish one only after that customer has
+      confirmed it — set its <code>status</code> to <code>approved</code> in <code>src/data/reviews.json</code>.
+      {approved.length} published.
     </p>
+  </div>
 
-    <p class="mt-6 max-w-3xl rounded-xl border border-[var(--color-warn]/30 bg-[var(--color-warn]/5 px-4 py-3 text-xs leading-6 text-[var(--color-ink-soft]">
-      <strong class="font-semibold">{drafts.length} draft{drafts.length === 1 ? '' : 's'}</strong> are not public.
-      These are AI-assisted words built from real order records — the customer and order details are genuine, the
-      wording is generated. Publish one only after that customer has confirmed it: set its
-      <code>status</code> to <code>approved</code> in <code>src/data/reviews.json</code>. {approved.length} published.
-    </p>
-
-    <div class="mt-10 overflow-x-auto panel">
-      <table class="data-table min-w-[52rem]">
-        <caption class="sr-only">Imported review drafts and their status</caption>
+  <div class="admin-panel" style="margin-top:1rem">
+    <div class="admin-panel-head">
+      <h2>All imported reviews</h2>
+      <span class="admin-mono muted">{all.length} rows</span>
+    </div>
+    <div style="overflow-x:auto">
+      <table class="admin-table">
         <thead>
           <tr>
-            <th scope="col" class="w-12">#</th>
-            <th scope="col" class="w-24">Status</th>
-            <th scope="col" class="w-16">Rating</th>
-            <th scope="col" class="w-40">Reviewer</th>
-            <th scope="col" class="w-56">Product</th>
+            <th scope="col">#</th>
+            <th scope="col">Status</th>
+            <th scope="col">Rating</th>
+            <th scope="col">Reviewer</th>
+            <th scope="col">Product</th>
             <th scope="col">Review</th>
           </tr>
         </thead>
@@ -70,21 +72,23 @@ const approved = all.filter((review) => review.status === 'approved');
           {
             all.map((review) => (
               <tr>
-                <td class="metric-value text-[var(--color-ink-dim]">{review.id}</td>
+                <td class="admin-mono muted">{review.id}</td>
                 <td>
-                  <span class:list={['badge', review.status === 'approved' && 'badge-accent']}>{review.status}</span>
+                  <span class:list={['badge', review.status === 'approved' ? 'badge-accent' : 'badge-warn']}>
+                    {review.status}
+                  </span>
                 </td>
-                <td class="metric-value">{review.rating}/5</td>
-                <td class="text-sm text-[var(--color-ink]">
+                <td class="admin-mono">{review.rating}/5</td>
+                <td>
                   {review.reviewer}
-                  <span class="mt-0.5 block text-xs text-[var(--color-ink-dim]">
+                  <span class="admin-mono muted" style="display:block;margin-top:0.15rem">
                     {review.location ?? ''}
                     {review.month ? ` · ${review.month}` : ''}
                   </span>
                 </td>
-                <td class="text-xs text-[var(--color-ink-soft]">{review.product ?? '—'}</td>
-                <td class="text-xs leading-6 text-[var(--color-ink-dim]">
-                  <strong class="text-[var(--color-ink-soft]">{review.title}</strong> — {review.body}
+                <td class="muted" style="max-width:16rem">{review.product ?? '—'}</td>
+                <td class="muted" style="max-width:32rem;line-height:1.6">
+                  <strong style="color:var(--color-ink-soft)">{review.title}</strong> — {review.body}
                 </td>
               </tr>
             ))
@@ -92,5 +96,5 @@ const approved = all.filter((review) => review.status === 'approved');
         </tbody>
       </table>
     </div>
-  </section>
-</BaseLayout>
+  </div>
+</AdminLayout>

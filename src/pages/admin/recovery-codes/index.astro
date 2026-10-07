@@ -1,0 +1,69 @@
+---
+export const prerender = false;
+
+import AdminLayout from '../../../layouts/AdminLayout.astro';
+import { RECOVERY_CODES_COOKIE, requireAdminMfa } from '../../../server/admin-auth';
+import { url } from '../../../lib/urls';
+
+const session = Astro.locals.session;
+if (!requireAdminMfa(session)) return Astro.redirect('/admin/login/');
+
+/**
+ * Recovery codes, shown once.
+ *
+ * The hashes live in the database; the plaintext arrives on a short-lived cookie
+ * set by the enrolment step. Reading it here clears it, so a refresh shows the
+ * empty state rather than the same codes a second time.
+ */
+const raw = Astro.cookies.get(RECOVERY_CODES_COOKIE)?.value ?? '';
+const codes = raw ? raw.split('.').filter(Boolean) : [];
+if (codes.length) Astro.cookies.delete(RECOVERY_CODES_COOKIE, { path: '/' });
+---
+
+<AdminLayout
+  active="dashboard"
+  title="Recovery codes"
+  heading="Recovery codes"
+  lead="One code signs you in when the authenticator is lost or the phone is gone. Keep them somewhere offline, not in the same place as your password."
+>
+  {
+    codes.length ? (
+      <div class="admin-panel">
+        <div class="admin-panel-head">
+          <h2>Save these now</h2>
+          <span class="badge badge-accent">Shown once</span>
+        </div>
+        <ul class="admin-code-list">
+          {codes.map((code) => (
+            <li>{code}</li>
+          ))}
+        </ul>
+        <p class="admin-empty" style="margin-top:1rem">
+          These will not be shown again. Each is single-use and is accepted anywhere a 6-digit code is asked for.
+        </p>
+        <div class="admin-actions" style="margin-top:1rem">
+          <a class="admin-btn admin-btn-primary" href={url('/admin')}>Go to the dashboard</a>
+          <button type="button" class="admin-btn" data-print>Print</button>
+        </div>
+      </div>
+    ) : (
+      <div class="admin-panel">
+        <div class="admin-panel-head">
+          <h2>No codes to show</h2>
+        </div>
+        <p class="admin-empty">
+          Codes are displayed once, the moment two-factor setup is confirmed. If you missed them, mint a fresh set —
+          the old codes stop working the moment you do.
+        </p>
+        <form method="post" action="/api/admin/recovery-codes/" class="admin-actions" style="margin-top:1rem">
+          <input type="hidden" name="csrf" value={Astro.locals.csrfToken} />
+          <button type="submit" class="admin-btn admin-btn-primary">Generate a new set</button>
+        </form>
+      </div>
+    )
+  }
+</AdminLayout>
+
+<script>
+  document.querySelector('[data-print]')?.addEventListener('click', () => window.print());
+</script>

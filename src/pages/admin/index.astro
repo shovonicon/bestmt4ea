@@ -1,68 +1,275 @@
 ---
 export const prerender = false;
 
-import { sql } from 'drizzle-orm';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import { and, desc, eq, gte, inArray, sql } from 'drizzle-orm';
+import AdminLayout from '../../layouts/AdminLayout.astro';
 import { getDb } from '../../db/client';
 import { cryptoPayments, customers, licenseBuilds, licenses, orders } from '../../db/schema';
 import { requireAdminMfa } from '../../server/admin-auth';
 import { formatUsd } from '../../lib/money';
 import { url } from '../../lib/urls';
 
+/**
+ * Admin overview.
+ *
+ * The job is to answer "is the shop healthy, and what needs me" before the
+ * operator reads a single number they did not come for. So the top is grouped
+ * by the question it answers (money, customers, delivery), and the two panels
+ * underneath are the only two things that ever require a human: an order to
+ * look at, or a licence stuck in the pipeline.
+ */
 const session = Astro.locals.session;
 if (!requireAdminMfa(session)) return Astro.redirect('/admin/login/');
 
 const db = getDb();
+const count = async (query: Promise<{ n: number } | undefined>) => (await query)?.n ?? 0;
+const since30 = new Date(Date.now() - 30 * 86_400_000);
 
-const customersN = (await db.select({ n: sql<number>`count(*)` }).from(customers).get())?.n ?? 0;
-const activeLicenses =
-  (await db.select({ n: sql<number>`count(*)` }).from(licenses).where(sql`status = 'ACTIVE'`).get())?.n ?? 0;
-const pendingBuilds =
-  (await db.select({ n: sql<number>`count(*)` }).from(licenseBuilds).where(sql`build_status = 'PENDING'`).get())?.n ?? 0;
-const waitingUsdt =
-  (await db.select({ n: sql<number>`count(*)` }).from(cryptoPayments).where(sql`status = 'WAITING'`).get())?.n ?? 0;
-const paidOrders =
-  (await db.select({ n: sql<number>`count(*)` }).from(orders).where(sql`status = 'paid'`).get())?.n ?? 0;
-const revenueCents =
-  (await db.select({ n: sql<number>`coalesce(sum(total_cents), 0)` }).from(orders).where(sql`status = 'paid'`).get())?.n ?? 0;
+const [
+  customerCount,
+  revenueCents,
+  revenue30Cents,
+  paidOrders,
+  pendingOrders,
+  activeLicences,
+  pendingLicences,
+  queuedBuilds,
+  failedBuilds,
+  usdtWaiting,
+  usdtPaid,
+] = await Promise.all([
+  count(db.select({ n: sql<number>`count(*)` }).from(customers).get()),
+  count(
+    db
+      .select({ n: sql<number>`coalesce(sum(total_cents), 0)` })
+      .from(orders)
+      .where(eq(orders.status, 'paid'))
+      .get()
+  ),
+  count(
+    db
+      .select({ n: sql<number>`coalesce(sum(total_cents), 0)` })
+      .from(orders)
+      .where(and(eq(orders.status, 'paid'), gte(orders.createdAt, since30)))
+      .get()
+  ),
+  count(db.select({ n: sql<number>`count(*)` }).from(orders).where(eq(orders.status, 'paid')).get()),
+  count(db.select({ n: sql<number>`count(*)` }).from(orders).where(eq(orders.status, 'pending')).get()),
+  count(db.select({ n: sql<number>`count(*)` }).from(licenses).where(eq(licenses.status, 'ACTIVE')).get()),
+  count(db.select({ n: sql<number>`count(*)` }).from(licenses).where(eq(licenses.status, 'PENDING')).get()),
+  count(
+    db
+      .select({ n: sql<number>`count(*)` })
+      .from(licenseBuilds)
+      .where(inArray(licenseBuilds.buildStatus, ['PENDING', 'BUILDING']))
+      .get()
+  ),
+  count(db.select({ n: sql<number>`count(*)` }).from(licenseBuilds).where(eq(licenseBuilds.buildStatus, 'FAILED')).get()),
+  count(db.select({ n: sql<number>`count(*)` }).from(cryptoPayments).where(eq(cryptoPayments.status, 'WAITING')).get()),
+  count(db.select({ n: sql<number>`count(*)` }).from(cryptoPayments).where(eq(cryptoPayments.status, 'PAID')).get()),
+]);
 
-const kpis = [
-  { label: 'Customers', value: String(customersN) },
-  { label: 'Active licenses', value: String(activeLicenses) },
-  { label: 'Paid orders', value: String(paidOrders) },
-  { label: 'Revenue', value: formatUsd(revenueCents) },
-  { label: 'Pending builds', value: String(pendingBuilds) },
-  { label: 'USDT waiting', value: String(waitingUsdt) },
-];
+const recentOrders = await db
+  .select({
+    id: orders.id,
+    orderNumber: orders.orderNumber,
+    status: orders.status,
+    totalCents: orders.totalCents,
+    createdAt: orders.createdAt,
+    email: customers.email,
+  })
+  .from(orders)
+  .leftJoin(customers, eq(customers.id, orders.customerId))
+  .orderBy(desc(orders.createdAt))
+  .limit(8)
+  .all();
 
-const nav = [
-  ['Licenses', '/admin/licenses'],
-  ['Orders', '/admin/orders'],
-  ['Payments', '/admin/payments'],
-  ['Builds', '/admin/builds'],
-  ['Customers', '/admin/customers'],
-];
+const newestCustomers = await db
+  .select({ email: customers.email, name: customers.name, createdAt: customers.createdAt })
+  .from(customers)
+  .orderBy(desc(customers.createdAt))
+  .limit(5)
+  .all();
+
+/** Everything that is genuinely waiting on a person, biggest first. */
+const attention = [
+  { count: pendingLicences, label: 'licence(s) awaiting activation', href: url('/admin/licenses') },
+  { count: failedBuilds, label: 'build(s) failed in the queue', href: url('/admin/builds') },
+  { count: usdtWaiting, label: 'USDT payment(s) still waiting', href: url('/admin/payments') },
+  { count: pendingOrders, label: 'order(s) awaiting payment', href: url('/admin/orders') },
+].filter((row) => row.count > 0);
+
+const badgeTone = (status: string) => {
+  if (status === 'paid' || status === 'ACTIVE' || status === 'READY') return 'badge-accent';
+  if (status === 'pending' || status === 'PENDING' || status === 'WAITING' || status === 'BUILDING') return 'badge-warn';
+  if (status === 'failed' || status === 'FAILED' || status === 'REVOKED') return 'badge-danger';
+  return '';
+};
 ---
 
-<BaseLayout title="Admin" description="Admin dashboard." noindex>
-  <section class="container-x py-16">
-    <p class="section-kicker">Admin</p>
-    <h1 class="mt-3 text-3xl font-bold sm:text-4xl">Dashboard</h1>
+<AdminLayout
+  active="dashboard"
+  title="Dashboard"
+  heading="Dashboard"
+  lead="Everything the shop is doing, and the few things that are waiting on you."
+>
+  <section class="admin-section">
+    <h2 class="admin-section-label">Money</h2>
+    <div class="admin-cards">
+      <div class="admin-stat">
+        <div class="admin-stat-value">{formatUsd(revenueCents)}</div>
+        <div class="admin-stat-label">Collected, all time</div>
+      </div>
+      <div class="admin-stat">
+        <div class="admin-stat-value">{formatUsd(revenue30Cents)}</div>
+        <div class="admin-stat-label">Last 30 days</div>
+      </div>
+      <div class="admin-stat">
+        <div class="admin-stat-value">{paidOrders}</div>
+        <div class="admin-stat-label">Paid orders</div>
+      </div>
+      <div class="admin-stat">
+        <div class="admin-stat-value">{pendingOrders}</div>
+        <div class="admin-stat-label">Pending orders</div>
+      </div>
+    </div>
+  </section>
 
-    <div class="mt-8 grid gap-4 sm:grid-cols-3">
-      {kpis.map((kpi) => (
-        <div class="brand-card rounded-2xl p-5">
-          <p class="text-3xl font-bold">{kpi.value}</p>
-          <p class="mt-1 text-sm text-[var(--color-ink-soft]">{kpi.label}</p>
-        </div>
-      ))}
+  <section class="admin-section">
+    <h2 class="admin-section-label">Customers &amp; licences</h2>
+    <div class="admin-cards">
+      <div class="admin-stat">
+        <div class="admin-stat-value">{customerCount}</div>
+        <div class="admin-stat-label">Customers</div>
+      </div>
+      <div class="admin-stat">
+        <div class="admin-stat-value">{activeLicences}</div>
+        <div class="admin-stat-label">Active licences</div>
+      </div>
+      <div class="admin-stat">
+        <div class="admin-stat-value">{pendingLicences}</div>
+        <div class="admin-stat-label">Awaiting activation</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="admin-section">
+    <h2 class="admin-section-label">Delivery &amp; rail</h2>
+    <div class="admin-cards">
+      <div class="admin-stat">
+        <div class="admin-stat-value">{queuedBuilds}</div>
+        <div class="admin-stat-label">Builds in the queue</div>
+      </div>
+      <div class="admin-stat">
+        <div class="admin-stat-value">{failedBuilds}</div>
+        <div class="admin-stat-label">Builds failed</div>
+      </div>
+      <div class="admin-stat">
+        <div class="admin-stat-value">{usdtWaiting}</div>
+        <div class="admin-stat-label">USDT waiting</div>
+      </div>
+      <div class="admin-stat">
+        <div class="admin-stat-value">{usdtPaid}</div>
+        <div class="admin-stat-label">USDT settled</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="admin-split">
+    <div class="admin-panel">
+      <div class="admin-panel-head">
+        <h2>Recent orders</h2>
+        <a href={url('/admin/orders')}>All orders</a>
+      </div>
+      {
+        recentOrders.length === 0 ? (
+          <p class="admin-empty">No orders yet.</p>
+        ) : (
+          <div style="overflow-x:auto">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th scope="col">Order</th>
+                  <th scope="col">Customer</th>
+                  <th scope="col">Total</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {recentOrders.map((order) => (
+                  <tr>
+                    <td class="admin-mono">{order.orderNumber}</td>
+                    <td class="muted">{order.email ?? '—'}</td>
+                    <td class="admin-mono">{formatUsd(order.totalCents)}</td>
+                    <td>
+                      <span class:list={['badge', badgeTone(order.status)]}>{order.status}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )
+      }
     </div>
 
-    <nav class="mt-10 flex flex-wrap gap-3 text-sm">
-      {nav.map(([label, href]) => (
-        <a class="rounded-lg border border-white/10 px-3 py-2" href={url(href)}>{label}</a>
-      ))}
-      <a class="rounded-lg border border-white/10 px-3 py-2" href="/logout/">Sign out</a>
-    </nav>
+    <div>
+      <div class="admin-panel">
+        <div class="admin-panel-head">
+          <h2>Needs attention</h2>
+        </div>
+        {
+          attention.length === 0 ? (
+            <p class="admin-empty">Nothing outstanding. The pipeline is clear.</p>
+          ) : (
+            <ul class="admin-attention">
+              {attention.map((row) => (
+                <li>
+                  <strong>{row.count}</strong>
+                  <a href={row.href}>{row.label}</a>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+
+      <div class="admin-panel">
+        <div class="admin-panel-head">
+          <h2>Newest customers</h2>
+          <a href={url('/admin/customers')}>All customers</a>
+        </div>
+        {
+          newestCustomers.length === 0 ? (
+            <p class="admin-empty">No accounts yet.</p>
+          ) : (
+            <ul class="admin-attention">
+              {newestCustomers.map((person) => (
+                <li>
+                  <a href={url('/admin/customers')}>{person.name?.trim() || person.email}</a>
+                  <span class="admin-mono muted" style="margin-left:auto">
+                    {person.createdAt.toISOString().slice(0, 10)}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+    </div>
+  </div>
+
+  <section class="admin-section">
+    <div class="admin-panel">
+      <div class="admin-panel-head">
+        <h2>Security</h2>
+      </div>
+      <p class="admin-empty">
+        Two-factor is on. Keep a copy of your <a href={url('/admin/recovery-codes')}
+          style="color:var(--color-accent-soft)">recovery codes</a
+        > somewhere offline — they are the way back in if the authenticator is lost. Every admin action is recorded in
+        the <a href={url('/admin/audit')} style="color:var(--color-accent-soft)">audit log</a>.
+      </p>
+    </div>
   </section>
-</BaseLayout>
+</AdminLayout>

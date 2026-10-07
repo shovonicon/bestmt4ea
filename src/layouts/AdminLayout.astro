@@ -1,0 +1,168 @@
+---
+/**
+ * The admin shell: `/admin/*`.
+ *
+ * A portal, not another page of the public site — its own document with a
+ * grouped sidebar and a top bar, so the panel reads as a back office and never
+ * carries the marketing chrome. Every admin page renders through here, which is
+ * what keeps the section nav, the signed-in identity and the sign-out action in
+ * exactly one place.
+ *
+ * The page passes `active` rather than the shell guessing from the URL: the nav
+ * is a fixed list, and an explicit key cannot silently point at the wrong tab
+ * when a route is renamed.
+ */
+export const prerender = false;
+
+import '../styles/global.css';
+import '../styles/admin.css';
+import { eq } from 'drizzle-orm';
+import { getDb } from '../db/client';
+import { adminUsers } from '../db/schema';
+import { requireAdminMfa } from '../server/admin-auth';
+import { url } from '../lib/urls';
+import { site } from '../lib/site';
+
+export interface Props {
+  title: string;
+  heading: string;
+  lead?: string;
+  active:
+    | 'dashboard'
+    | 'customers'
+    | 'licenses'
+    | 'orders'
+    | 'payments'
+    | 'builds'
+    | 'reviews'
+    | 'audit'
+    | 'recovery-codes';
+}
+
+const { title, heading, lead, active } = Astro.props;
+
+const session = Astro.locals.session;
+if (!requireAdminMfa(session)) return Astro.redirect('/admin/login/');
+
+const admin = await getDb()
+  .select({ email: adminUsers.email })
+  .from(adminUsers)
+  .where(eq(adminUsers.id, session.subjectId))
+  .get();
+
+const adminEmail = admin?.email ?? 'admin';
+const initial = (adminEmail[0] ?? 'A').toUpperCase();
+
+/** Section icons, drawn at the same stroke as the rest of the site's icons. */
+const ICONS: Record<string, string> = {
+  dashboard:
+    '<rect x="3" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.6"/>',
+  customers: '<circle cx="9" cy="8" r="3.4"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M17 5.5a3 3 0 0 1 0 5.6M18.5 20a6 6 0 0 0-2-4.5"/>',
+  licenses: '<path d="M12.6 11.4a5.5 5.5 0 1 0-7.78 7.78 5.5 5.5 0 0 0 7.78-7.78Zm0 0L20 4m-3 0h3v3"/>',
+  orders: '<path d="M6 2h12v20l-3-2-3 2-3-2-3 2V2Z"/><path d="M9 7h6M9 11h6"/>',
+  payments: '<rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6.5 15h4"/>',
+  builds: '<path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/>',
+  reviews: '<path d="m12 3.5 2.6 5.3 5.9.9-4.25 4.15 1 5.85L12 16.9l-5.25 2.8 1-5.85L3.5 9.7l5.9-.9Z"/>',
+  audit: '<path d="M9 3h6l5 5v13H4V3h5Z"/><path d="M14 3v5h5M8 13h8M8 17h5"/>',
+  key: '<circle cx="7.5" cy="15.5" r="3.6"/><path d="m10.3 13.3 8.4-8.4M16 7.6l2.6 2.6M13.3 10.3l2.6 2.6"/>',
+};
+
+const groups = [
+  { label: 'Overview', links: [{ key: 'dashboard', label: 'Dashboard', href: url('/admin'), icon: 'dashboard' }] },
+  {
+    label: 'Clients',
+    links: [
+      { key: 'customers', label: 'Customers', href: url('/admin/customers'), icon: 'customers' },
+      { key: 'licenses', label: 'Licences', href: url('/admin/licenses'), icon: 'licenses' },
+    ],
+  },
+  {
+    label: 'Billing',
+    links: [
+      { key: 'orders', label: 'Orders', href: url('/admin/orders'), icon: 'orders' },
+      { key: 'payments', label: 'USDT payments', href: url('/admin/payments'), icon: 'payments' },
+    ],
+  },
+  { label: 'Delivery', links: [{ key: 'builds', label: 'EA builds', href: url('/admin/builds'), icon: 'builds' }] },
+  { label: 'Content', links: [{ key: 'reviews', label: 'Reviews', href: url('/admin/reviews'), icon: 'reviews' }] },
+  {
+    label: 'System',
+    links: [
+      { key: 'audit', label: 'Audit log', href: url('/admin/audit'), icon: 'audit' },
+      { key: 'recovery-codes', label: 'Recovery codes', href: url('/admin/recovery-codes'), icon: 'key' },
+    ],
+  },
+] as const;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · {site.name} admin</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/webp" href="/favicon.webp" />
+    <link rel="preload" href="/fonts/manrope-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/sora-700-latin.woff2" as="font" type="font/woff2" crossorigin />
+  </head>
+  <body class="admin">
+    <div class="admin-bg" aria-hidden="true"></div>
+
+    <aside class="admin-side">
+      <a class="admin-brand" href={url('/admin')}>
+        <span class="admin-brand-mark" aria-hidden="true">M4</span>
+        <span>BestMT4EA <em>admin</em></span>
+      </a>
+
+      <nav class="admin-nav" aria-label="Admin sections">
+        {
+          groups.map((group) => (
+            <div class="admin-nav-group">
+              <p>{group.label}</p>
+              <ul>
+                {group.links.map((link) => (
+                  <li>
+                    <a href={link.href} aria-current={active === link.key ? 'page' : undefined}>
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        set:html={ICONS[link.icon]}
+                      />
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </nav>
+    </aside>
+
+    <div class="admin-body">
+      <header class="admin-topbar">
+        <a class="admin-view-site" href="/">View site <span aria-hidden="true">→</span></a>
+        <div class="admin-who">
+          <span class="admin-avatar" aria-hidden="true">{initial}</span>
+          <span class="admin-email">{adminEmail}</span>
+          <a class="admin-signout" href="/logout/">Sign out</a>
+        </div>
+      </header>
+
+      <main class="admin-main">
+        <div class="admin-head">
+          <p class="section-kicker">Admin</p>
+          <h1>{heading}</h1>
+          {lead && <p class="admin-lead">{lead}</p>}
+        </div>
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>

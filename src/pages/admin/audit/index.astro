@@ -1,0 +1,82 @@
+---
+export const prerender = false;
+
+import { desc, eq } from 'drizzle-orm';
+import AdminLayout from '../../../layouts/AdminLayout.astro';
+import { getDb } from '../../../db/client';
+import { adminUsers, auditLog } from '../../../db/schema';
+import { requireAdminMfa } from '../../../server/admin-auth';
+
+/**
+ * Admin audit log.
+ *
+ * Every privileged action writes a row (see `audit()` in server/admin-auth.ts),
+ * so this is the read side of that trail: who did what, to which record, and
+ * when. The IP is stored as a hash, so it proves "the same network" without
+ * holding an address.
+ */
+const session = Astro.locals.session;
+if (!requireAdminMfa(session)) return Astro.redirect('/admin/login/');
+
+const rows = await getDb()
+  .select({
+    id: auditLog.id,
+    action: auditLog.action,
+    entity: auditLog.entity,
+    entityId: auditLog.entityId,
+    ipHash: auditLog.ipHash,
+    createdAt: auditLog.createdAt,
+    email: adminUsers.email,
+  })
+  .from(auditLog)
+  .leftJoin(adminUsers, eq(adminUsers.id, auditLog.adminUserId))
+  .orderBy(desc(auditLog.createdAt))
+  .limit(100)
+  .all();
+
+const stamp = (date: Date) => date.toISOString().slice(0, 16).replace('T', ' ');
+---
+
+<AdminLayout
+  active="audit"
+  title="Audit log"
+  heading="Audit log"
+  lead="The last 100 privileged actions. Sign-ins, licence changes, build attachments and code regenerations all land here."
+>
+  <div class="admin-panel">
+    <div class="admin-panel-head">
+      <h2>Recent activity</h2>
+      <span class="admin-mono muted">{rows.length} shown</span>
+    </div>
+    {
+      rows.length === 0 ? (
+        <p class="admin-empty">No activity recorded yet.</p>
+      ) : (
+        <div style="overflow-x:auto">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th scope="col">When</th>
+                <th scope="col">Admin</th>
+                <th scope="col">Action</th>
+                <th scope="col">Record</th>
+                <th scope="col">Network</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row) => (
+                <tr>
+                  <td class="admin-mono">{stamp(row.createdAt)}</td>
+                  <td class="muted">{row.email ?? 'system'}</td>
+                  <td>{row.action}</td>
+                  <td class="admin-mono muted">{row.entity ? `${row.entity}${row.entityId ? ` · ${row.entityId.slice(0, 12)}` : ''}` : '—'}</td>
+                  <td class="admin-mono muted">{row.ipHash ? row.ipHash.slice(0, 10) : '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )
+    }
+  </div>
+</AdminLayout>

@@ -1,19 +1,20 @@
 ---
 export const prerender = false;
 
-import { desc, eq } from 'drizzle-orm';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { desc, eq, inArray } from 'drizzle-orm';
+import AdminLayout from '../../../layouts/AdminLayout.astro';
 import { getDb } from '../../../db/client';
-import { customers, orders } from '../../../db/schema';
+import { customers, entitlements, orders } from '../../../db/schema';
 import { requireAdminMfa } from '../../../server/admin-auth';
 import { formatUsd } from '../../../lib/money';
-import { url } from '../../../lib/urls';
 
 const session = Astro.locals.session;
 if (!requireAdminMfa(session)) return Astro.redirect('/admin/login/');
 
-const rows = await getDb()
+const db = getDb();
+const rows = await db
   .select({
+    id: orders.id,
     number: orders.orderNumber,
     status: orders.status,
     total: orders.totalCents,
@@ -23,33 +24,144 @@ const rows = await getDb()
   .from(orders)
   .leftJoin(customers, eq(customers.id, orders.customerId))
   .orderBy(desc(orders.createdAt))
-  .limit(50)
+  .limit(100)
   .all();
+
+/**
+ * An order that granted an entitlement cannot be deleted — the entitlement row
+ * still points at it — so those rows offer no delete button.
+ */
+const granted = rows.length
+  ? await db
+      .select({ orderId: entitlements.orderId })
+      .from(entitlements)
+      .where(inArray(entitlements.orderId, rows.map((row) => row.id)))
+      .all()
+  : [];
+const grantedOrders = new Set(granted.map((row) => row.orderId));
+
+const done = Astro.url.searchParams.get('done');
+const error = Astro.url.searchParams.get('error');
+const flash =
+  done === 'approved'
+    ? { tone: 'ok', text: 'Order approved — marked paid, and the licence is queued.' }
+    : done === 'deleted'
+      ? { tone: 'ok', text: 'Order deleted.' }
+      : error === 'has_entitlements'
+        ? {
+            tone: 'warn',
+            text: 'That order granted access, so it cannot be deleted. Reverse a real purchase with a refund instead.',
+          }
+        : error === 'already_paid'
+          ? { tone: 'warn', text: 'That order is already paid.' }
+          : error === 'not_found'
+            ? { tone: 'warn', text: 'That order no longer exists.' }
+            : error
+              ? { tone: 'warn', text: `That action did not complete (${error.replace(/_/g, ' ')}).` }
+              : null;
+
+const badgeTone = (status: string) => {
+  if (status === 'paid') return 'badge-accent';
+  if (status === 'pending') return 'badge-warn';
+  if (status === 'failed' || status === 'cancelled') return 'badge-danger';
+  return '';
+};
 ---
 
-<BaseLayout title="Admin — orders" description="Admin orders." noindex>
-  <section class="container-x py-16">
-    <p class="section-kicker">Admin</p>
-    <h1 class="mt-3 text-3xl font-bold">Orders</h1>
-    <p class="mt-3 text-sm text-[var(--color-ink-soft]"><a class="underline" href={url('/admin')}>Dashboard</a></p>
+<AdminLayout
+  active="orders"
+  title="Orders"
+  heading="Orders"
+  lead="Every order in the shop, newest first. Approve settles a pending order by hand; delete removes one that never granted anything."
+>
+  {
+    flash && (
+      <div
+        class="admin-panel"
+        style={flash.tone === 'ok'
+          ? 'border-color:rgba(0,193,144,0.35);background-color:rgba(0,193,144,0.07);margin-bottom:1rem'
+          : 'border-color:rgba(251,191,36,0.35);background-color:rgba(251,191,36,0.07);margin-bottom:1rem'}
+        role="status"
+      >
+        <p class="admin-empty" style="color:var(--color-ink-soft);margin:0">{flash.text}</p>
+      </div>
+    )
+  }
 
-    <div class="mt-8 overflow-x-auto">
-      <table class="w-full text-left text-sm">
-        <thead class="text-[var(--color-ink-soft]">
-          <tr><th class="py-2">Order</th><th>Customer</th><th>Status</th><th>Total</th><th>Date</th></tr>
-        </thead>
-        <tbody>
-          {rows.map((row) => (
-            <tr class="border-t border-white/5">
-              <td class="py-2 font-mono">{row.number}</td>
-              <td>{row.email ?? '—'}</td>
-              <td>{row.status}</td>
-              <td>{formatUsd(row.total)}</td>
-              <td>{row.createdAt.toISOString().slice(0, 10)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+  <div class="admin-panel">
+    <div class="admin-panel-head">
+      <h2>All orders</h2>
+      <span class="admin-mono muted">{rows.length} shown</span>
     </div>
-  </section>
-</BaseLayout>
+    {
+      rows.length === 0 ? (
+        <p class="admin-empty">No orders yet.</p>
+      ) : (
+        <div style="overflow-x:auto">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th scope="col">Order</th>
+                <th scope="col">Customer</th>
+                <th scope="col">Status</th>
+                <th scope="col">Total</th>
+                <th scope="col">Date</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row) => (
+                <tr>
+                  <td class="admin-mono">{row.number}</td>
+                  <td class="muted">{row.email ?? '—'}</td>
+                  <td>
+                    <span class:list={['badge', badgeTone(row.status)]}>{row.status}</span>
+                  </td>
+                  <td class="admin-mono">{formatUsd(row.total)}</td>
+                  <td class="admin-mono muted">{row.createdAt.toISOString().slice(0, 10)}</td>
+                  <td>
+                    <div class="admin-actions">
+                      {row.status === 'pending' && (
+                        <form method="post" action="/api/admin/order/">
+                          <input type="hidden" name="orderId" value={row.id} />
+                          <input type="hidden" name="action" value="approve" />
+                          <button class="admin-btn admin-btn-primary" type="submit">
+                            Approve
+                          </button>
+                        </form>
+                      )}
+                      {grantedOrders.has(row.id) ? (
+                        <span class="admin-mono muted">refund only</span>
+                      ) : (
+                        <form
+                          method="post"
+                          action="/api/admin/order/"
+                          data-confirm={`Delete order ${row.number} for good? This cannot be undone.`}
+                        >
+                          <input type="hidden" name="orderId" value={row.id} />
+                          <input type="hidden" name="action" value="delete" />
+                          <button class="admin-btn" type="submit">
+                            Delete
+                          </button>
+                        </form>
+                      )}
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )
+    }
+  </div>
+</AdminLayout>
+
+<script>
+  // Deleting is irreversible, so the second click is asked for explicitly.
+  document.querySelectorAll('form[data-confirm]').forEach((form) => {
+    form.addEventListener('submit', (event) => {
+      if (!window.confirm(form.getAttribute('data-confirm') ?? 'Are you sure?')) event.preventDefault();
+    });
+  });
+</script>

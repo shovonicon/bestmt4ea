@@ -67,7 +67,10 @@ export async function createRecoveryCodes(
 ): Promise<string[]> {
   const codes: string[] = [];
   for (let i = 0; i < count; i += 1) {
-    const raw = randomToken(8).replace(/[^A-Za-z0-9]/g, '').slice(0, 10).toUpperCase();
+    // 12 bytes b64url-decodes to 16 characters, so stripping the `-`/`_` still
+    // leaves at least 10 — every code comes out the same `XXXXX-XXXXX` shape
+    // rather than the ragged length an 8-byte token produced.
+    const raw = randomToken(12).replace(/[^A-Za-z0-9]/g, '').toUpperCase();
     codes.push(`${raw.slice(0, 5)}-${raw.slice(5, 10)}`);
   }
   await db.delete(adminRecoveryCodes).where(eq(adminRecoveryCodes.adminUserId, adminUserId));
@@ -81,6 +84,26 @@ export async function createRecoveryCodes(
     )
   );
   return codes;
+}
+
+/**
+ * The codes are hashed in the database, so a plaintext copy has to reach the
+ * page that shows them. They ride a short-lived, HttpOnly cookie set at
+ * enrolment and are cleared the moment that page renders — shown once, then gone.
+ */
+export const RECOVERY_CODES_COOKIE = 'bmt4_admin_codes';
+const RECOVERY_CODES_TTL_S = 10 * 60;
+
+export function recoveryCodesCookie(codes: string[]): string {
+  return [
+    // `.` is cookie-safe and cannot appear in a code (base36 + a single dash).
+    `${RECOVERY_CODES_COOKIE}=${codes.join('.')}`,
+    'Path=/',
+    'HttpOnly',
+    'Secure',
+    'SameSite=Lax',
+    `Max-Age=${RECOVERY_CODES_TTL_S}`,
+  ].join('; ');
 }
 
 async function consumeRecoveryCode(db: Db, adminUserId: string, code: string): Promise<boolean> {
