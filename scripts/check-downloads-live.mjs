@@ -24,7 +24,9 @@ import { join } from 'node:path';
 import matter from 'gray-matter';
 
 const POSTS_DIR = 'src/content/posts';
-const R2_PUBLIC_URL = (process.env.PUBLIC_R2_PUBLIC_URL || 'https://files.bestmt4ea.com').replace(/\/+$/, '');
+const R2_PUBLIC_URL = (
+  process.env.PUBLIC_R2_PUBLIC_URL || 'https://pub-ed5ef2cd173044a19dc984efa5452986.r2.dev'
+).replace(/\/+$/, '');
 const TIMEOUT_MS = 20_000;
 const RETRIES = 1;
 const VERBOSE = process.argv.includes('--verbose');

@@ -167,7 +167,15 @@ for (const post of loadPosts()) {
     if (stepCount > 0 && countAttr(html, 'data-install-steps') !== 1) {
       fail('download page is missing its install steps section');
     }
-    const adIdx = html.indexOf('class="ad-unit');
+    /*
+     * Scope the ad search to the reading column. The desktop rails are siblings
+     * of `.longform` (positioned against the container, not the column) and so
+     * appear earlier in the DOM — but a sidebar unit is explicitly permitted by
+     * CONTENT-STANDARD §6. The rule is about an ad above the download card *in
+     * the article*, so the search starts at the column.
+     */
+    const columnStart = html.indexOf('class="longform"');
+    const adIdx = html.indexOf('class="ad-unit', columnStart === -1 ? 0 : columnStart);
     const cardIdx = html.indexOf('data-download-card');
     const installIdx = html.indexOf('data-install-steps');
     if (adIdx !== -1 && cardIdx !== -1 && adIdx < cardIdx) {

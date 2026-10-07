@@ -23,7 +23,7 @@ import { join } from 'node:path';
 import matter from 'gray-matter';
 
 const POSTS_DIR = 'src/content/posts';
-const R2_PUBLIC_URL = process.env.PUBLIC_R2_PUBLIC_URL || 'https://files.bestmt4ea.com';
+const R2_PUBLIC_URL = process.env.PUBLIC_R2_PUBLIC_URL || 'https://pub-ed5ef2cd173044a19dc984efa5452986.r2.dev';
 const MIN_INSTALL_STEPS = 3;
 const FILE_EXT = /\.(?:ex4|ex5|mq4|mq5|set|zip|rar|7z|pdf|xlsx?|csv|txt|tpl|ind|mqh)$/i;
 
@@ -91,9 +91,12 @@ for (const file of readdirSync(POSTS_DIR).filter((f) => f.endsWith('.md'))) {
     uses.push({ slug, source: `r2://${String(download.fileKey)}`, kind: 'hosted' });
   }
 
+  // Install steps exist to carry HowTo schema and to keep the download action
+  // away from the first ad unit. A resource (a checklist, calculator, journal)
+  // has a platform of its own and nothing to install, so it is exempt.
   const steps = data.installSteps?.length ?? 0;
-  if (steps < MIN_INSTALL_STEPS) {
-    fail(`download post has ${steps} install step(s), expected at least ${MIN_INSTALL_STEPS}`);
+  if (download.platform && steps < MIN_INSTALL_STEPS) {
+    fail(`installable download has ${steps} install step(s), expected at least ${MIN_INSTALL_STEPS}`);
   }
 
   notes.push(`${slug}: ${hasKey ? 'hosted' : 'external'} · ${download.license}${download.platform ? ` · ${download.platform}` : ''}`);
