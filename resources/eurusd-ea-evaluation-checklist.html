@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>EUR/USD Expert Advisor Evaluation Checklist — BestMT4EA</title>
+    <style>
+      :root {
+        --ink: #101418;
+        --muted: #5a6570;
+        --line: #d7dde3;
+        --accent: #0b7a5d;
+        --warn: #a8410f;
+      }
+      * { box-sizing: border-box; }
+      @page { size: A4; margin: 14mm 13mm; }
+      html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: #fff;
+        font: 10.5pt/1.45 "Helvetica Neue", Arial, sans-serif;
+      }
+      h1 { font-size: 19pt; line-height: 1.15; margin: 0 0 2mm; letter-spacing: -0.01em; }
+      h2 {
+        font-size: 11.5pt;
+        margin: 7mm 0 2.5mm;
+        padding-bottom: 1.2mm;
+        border-bottom: 1px solid var(--line);
+        break-after: avoid;
+      }
+      h3 { font-size: 10pt; margin: 4mm 0 1.5mm; break-after: avoid; }
+      p { margin: 0 0 2.5mm; }
+      .lede { color: var(--muted); max-width: 165mm; }
+      .brand {
+        display: flex; justify-content: space-between; align-items: baseline;
+        border-bottom: 2px solid var(--accent); padding-bottom: 2mm; margin-bottom: 4mm;
+      }
+      .brand strong { font-size: 11pt; letter-spacing: 0.02em; }
+      .brand span { color: var(--muted); font-size: 8.5pt; }
+      ul { margin: 0 0 2.5mm; padding-left: 0; list-style: none; }
+      ul.check li { position: relative; padding-left: 6.5mm; margin-bottom: 1.4mm; break-inside: avoid; }
+      ul.check li::before {
+        content: ""; position: absolute; left: 0; top: 0.4mm;
+        width: 3.6mm; height: 3.6mm; border: 1px solid var(--muted); border-radius: 0.6mm;
+      }
+      ul.plain { padding-left: 5mm; list-style: disc; }
+      ul.plain li { margin-bottom: 1.2mm; }
+      table { width: 100%; border-collapse: collapse; margin: 0 0 3mm; font-size: 9.5pt; break-inside: avoid; }
+      th, td { border: 1px solid var(--line); padding: 1.6mm 2mm; text-align: left; vertical-align: top; }
+      th { background: #f2f5f7; font-weight: 600; }
+      .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 8mm; }
+      .note {
+        border-left: 3px solid var(--warn); background: #fdf6f2;
+        padding: 2.5mm 3mm; margin: 3mm 0; font-size: 9.5pt; break-inside: avoid;
+      }
+      .box { border: 1px solid var(--line); border-radius: 1.5mm; padding: 3mm; margin: 3mm 0; break-inside: avoid; }
+      .box h3 { margin-top: 0; }
+      .flag { color: var(--warn); font-weight: 600; }
+      footer {
+        margin-top: 8mm; padding-top: 2.5mm; border-top: 1px solid var(--line);
+        color: var(--muted); font-size: 8.5pt;
+      }
+      .page-break { break-before: page; }
+      .formula { font-family: "Courier New", monospace; font-size: 9.5pt; background: #f2f5f7; padding: 2mm 2.5mm; border-radius: 1mm; }
+    </style>
+  </head>
+  <body>
+    <div class="brand">
+      <strong>BestMT4EA</strong>
+      <span>bestmt4ea.com — free trading resources</span>
+    </div>
+
+    <h1>EUR/USD Expert Advisor Evaluation Checklist</h1>
+    <p class="lede">
+      A EUR/USD expert advisor (EA) is the most widely sold automated system in retail forex, and the
+      most widely misrepresented. This checklist is the sequence to run <em>before</em> you attach any
+      EUR/USD robot to a live account: prove where the file came from, read the strategy rather than the
+      equity curve, demand five specific numbers, test the backtest for dishonesty, then run a fixed demo
+      period. Print it, or keep it open while you work.
+    </p>
+    <p class="lede">
+      It is a <strong>framework, not a recommendation</strong>. It does not rate any EA and contains no
+      performance figures. Every verdict on this sheet is one you reach from evidence you gathered.
+    </p>
+
+    <h2>Section A — Prove where the file came from</h2>
+    <ul class="check">
+      <li>The download comes from a named developer, a broker, or the MQL5 Market (mql5.com) — not a file-sharing host, a Telegram repost, or a renamed copy.</li>
+      <li>You can state the <strong>licence</strong> in one sentence: freeware, open source (MIT/GPL), a demo of a paid product, or a time-limited trial.</li>
+      <li>The <strong>version</strong> and its date are visible, and the changelog explains what changed.</li>
+      <li>If it is open source, you found the repository yourself and the compiled <code>.ex4</code>/<code>.ex5</code> matches that source release.</li>
+      <li>You know whether it needs a <strong>licence key, account binding, or a DLL</strong> — a DLL is a hard stop on a machine you trade from, because it can reach outside MetaTrader.</li>
+      <li>Nobody has asked you to disable antivirus, run an installer with admin rights, or paste a wallet address to “activate” it.</li>
+    </ul>
+    <div class="note">
+      <span class="flag">Why this is first.</span> Almost every reported “EA scam” in retail forex is a
+      provenance failure, not a strategy failure. A file of unknown origin cannot be evaluated at all.
+    </div>
+
+    <h2>Section B — Read the strategy before you read the curve</h2>
+    <p>A rising equity curve proves nothing on its own. The strategy behind it tells you what will happen the
+      first week the market behaves differently.</p>
+    <div class="two">
+      <ul class="check">
+        <li><strong>Entry logic</strong> — you can describe it in one sentence without the manual (trend, mean-reversion, breakout, session, news).</li>
+        <li><strong>Exit logic</strong> — fixed take-profit, trailing stop, time-based, or “reverse on the next signal”.</li>
+        <li><strong>Does it add to a losing position?</strong> Grid, averaging, and martingale all do. Say which one, if any.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>Is a stop-loss genuinely used?</strong> A “virtual” stop held in software disappears when the terminal, VPS, or connection drops.</li>
+        <li><strong>Position size</strong> — fixed, percentage-risk, or multiplied after a loss (see B3).</li>
+        <li><strong>Filters</strong> — a news filter, a spread filter, a session window, or none.</li>
+      </ul>
+    </div>
+    <div class="note">
+      <span class="flag">The adding-to-losers question is the one that matters.</span> A system that
+      multiplies size after a loss has a return profile shaped like a long flat climb with a rare,
+      total loss at the end. It usually looks excellent for months, which is exactly why it sells.
+    </div>
+
+    <h2>Section C — Demand five numbers</h2>
+    <p>Ask for these five. If any one is missing, treat it as a “no” rather than a maybe — a number that
+      cannot be produced is usually a number that would not help.</p>
+    <table>
+      <thead>
+        <tr><th style="width: 34%">Number</th><th style="width: 33%">What to ask for</th><th>Why a missing value is a red flag</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Maximum drawdown</strong></td>
+          <td>The largest peak-to-trough fall, shown separately for <em>balance</em> and <em>equity</em>.</td>
+          <td>Balance-only drawdown hides floating losses. Equity drawdown is what closes accounts.</td>
+        </tr>
+        <tr>
+          <td><strong>Profit factor</strong></td>
+          <td>Gross profit ÷ gross loss over the whole tested period — with the trade count.</td>
+          <td>A profit factor is meaningless without the sample size; ten trades prove nothing.</td>
+        </tr>
+        <tr>
+          <td><strong>Trade count &amp; span</strong></td>
+          <td>How many trades, over how many months, and how many of those were live.</td>
+          <td>A “ten-year” backtest of 40 trades is closer to an anecdote than a test.</td>
+        </tr>
+        <tr>
+          <td><strong>Average trade</strong></td>
+          <td>Average win, average loss, and the win rate.</td>
+          <td>A high win rate with a large average loss means one bad day erases many good ones.</td>
+        </tr>
+        <tr>
+          <td><strong>Cost assumptions</strong></td>
+          <td>The spread and commission used in the test.</td>
+          <td>EUR/USD strategies are spread-sensitive; a test at 0.0 pips is fiction.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Label every figure you are given</strong> as one of: a live account result, a forward (demo)
+      test, a backtest, a vendor claim, or a screenshot of unknown origin. They are not interchangeable, and
+      a vendor claim is not evidence.</p>
+
+    <div class="page-break"></div>
+
+    <h2>Section D — Test the backtest for dishonesty</h2>
+    <p>A backtest is a claim about the past that is easy to tune until it fits. These checks separate a test
+      from a sales graphic.</p>
+    <ul class="check">
+      <li><strong>Data and modelling quality.</strong> “Every tick” on real broker data, not “Open prices only”, and a stated modelling quality above 90%.</li>
+      <li><strong>Spread and commission are modelled.</strong> Many strategies look fine at zero spread and lose at the real EUR/USD spread around the London open and on news.</li>
+      <li><strong>In-sample vs out-of-sample.</strong> The settings were chosen on one period and then confirmed on a period they were not tuned on.</li>
+      <li><strong>Walk-forward or rolling tests</strong> exist, rather than one continuous optimised run.</li>
+      <li><strong>Slippage and execution delay</strong> are recognised — a backtest fills at the requested price; a live order does not.</li>
+      <li><strong>News periods are included.</strong> A test that quietly skips the first Friday of the month excludes the exact moments most EAs are tested by.</li>
+      <li><strong>You re-ran it yourself</strong> in your own MetaTrader, on your own broker’s data, and got a broadly similar shape.</li>
+    </ul>
+    <div class="note">
+      <span class="flag">The one-line test.</span> Ask what the strategy was optimised on, and what it has
+      since done untouched. If both answers are the same period, the result describes the past, not the
+      method.
+    </div>
+
+    <h2>Section E — The fixed demo protocol</h2>
+    <p>Fourteen calendar days on a demo account, run identically for every EA you are considering, so the
+      comparison is fair.</p>
+    <div class="two">
+      <ul class="check">
+        <li>Same broker and account type you intend to trade live — EUR/USD spreads differ considerably between brokers.</li>
+        <li>Same deposit size you would fund, and the same lot sizing you would use.</li>
+        <li>Same VPS or machine, so latency is constant.</li>
+        <li>AutoTrading on, terminal left running through the session the EA trades.</li>
+      </ul>
+      <ul class="check">
+        <li>A journal entry per day: trades opened, floating drawdown at its worst, and anything you changed.</li>
+        <li>At the end, compare the demo curve against the backtest over the same dates.</li>
+        <li>Decide before you fund: continue, adjust sizing, or discard it.</li>
+        <li>If you go live, start at the smallest size that still respects the EA’s minimum, and review after a fixed period.</li>
+      </ul>
+    </div>
+
+    <h2>Section F — Position sizing worksheet</h2>
+    <p>Do this once per account so a losing run is survivable by design rather than by hope.</p>
+    <div class="box">
+      <h3>Formula</h3>
+      <p class="formula">
+        risk per trade (USD) = account equity × risk %<br />
+        pip value per lot = (pip size × contract size) converted to your account currency<br />
+        lot size = risk per trade ÷ (stop distance in pips × pip value per lot)
+      </p>
+    </div>
+    <table>
+      <thead>
+        <tr><th style="width: 46%">Item</th><th>Your figure</th><th>Example (EUR/USD)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Account equity</td><td>&nbsp;</td><td>$5,000</td></tr>
+        <tr><td>Risk per trade</td><td>&nbsp;</td><td>1% = $50</td></tr>
+        <tr><td>Stop distance</td><td>&nbsp;</td><td>20 pips</td></tr>
+        <tr><td>Pip value, 1.00 standard lot</td><td>&nbsp;</td><td>≈ $10</td></tr>
+        <tr><td><strong>Lot size</strong> = 50 ÷ (20 × 10)</td><td>&nbsp;</td><td><strong>0.25 lot</strong></td></tr>
+      </tbody>
+    </table>
+    <p>The example is arithmetic, not a target. If the EA cannot trade at the size your risk rule produces,
+      the honest answer is a larger account or a different EA — not a wider stop.</p>
+
+    <h2>Section G — Red flags</h2>
+    <ul class="plain">
+      <li>A claimed win rate above 90% with no drawdown figure anywhere.</li>
+      <li>Any wording about certainty of returns, or an “insured”, “capital-protected” or “risk-free” EA.</li>
+      <li>Results shown only as cropped screenshots, with no account link, statement, or verified third-party record.</li>
+      <li>A different strategy described on every page, or a strategy so vague it cannot be wrong.</li>
+      <li>A push to fund immediately, or a price that rises when you hesitate.</li>
+      <li>A request for your investor password, or to copy trades onto an account you do not control.</li>
+      <li>No way to reach the developer once the sale is complete.</li>
+    </ul>
+
+    <h2>Section H — Go / no-go gate</h2>
+    <div class="two">
+      <ul class="check">
+        <li>Origin and licence proven (Section A).</li>
+        <li>Strategy understood in plain language (Section B).</li>
+        <li>All five numbers produced, and each labelled by evidence type (Section C).</li>
+      </ul>
+      <ul class="check">
+        <li>Backtest re-run on my own data with realistic spread (Section D).</li>
+        <li>Fourteen demo days complete, journal written, curve compared (Section E).</li>
+        <li>Sizing fits my risk rule at my account size (Section F).</li>
+      </ul>
+    </div>
+    <p><strong>Any unchecked box is a no-go</strong> until it is resolved. That rule is the point of the
+      sheet: it moves the decision from how the curve looks to whether the evidence exists.</p>
+
+    <footer>
+      <p>
+        <strong>EUR/USD Expert Advisor Evaluation Checklist</strong> — a free resource from bestmt4ea.com.
+        Free to use, print and share with credit. It is general information, not financial advice, and it
+        rates no product.
+      </p>
+      <p>
+        Trading forex and CFDs on margin carries a high risk of loss and is not suitable for everyone.
+        Leverage works against you as readily as for you. Historical results, backtests and demo results do
+        not predict future performance. Test any expert advisor on a demo account, with money you can afford
+        to lose, before trading it live.
+      </p>
+      <p>bestmt4ea.com — full guides, EA reviews and free tools for MetaTrader 4 and MetaTrader 5 traders.</p>
+    </footer>
+  </body>
+</html>
