@@ -2,12 +2,12 @@
 wpId: 7826
 title: "Privacy Policy"
 slug: "privacy-policy"
-description: "What this site collects and why: Google AdSense advertising cookies, affiliate-link tracking, Cloudflare hosting logs, and how to exercise your data rights."
+description: "What this site collects and why: Google AdSense advertising cookies, affiliate-link tracking, Cloudflare hosting logs, download emails, and how to exercise your data rights."
 publishedAt: "2019-03-02T08:51:12.000Z"
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-07"
 seo:
   title: "Privacy Policy — Cookies, Advertising and Your Data"
-  description: "What BESTMT4EA collects and why: AdSense advertising cookies, affiliate-link tracking, Cloudflare hosting logs, and how to exercise your privacy rights."
+  description: "What BESTMT4EA collects and why: AdSense advertising cookies, affiliate-link tracking, Cloudflare hosting logs, download emails, and how to exercise your privacy rights."
   canonical: "https://bestmt4ea.com/privacy-policy/"
 menuOrder: 0
 systemPage: true
@@ -17,7 +17,7 @@ draft: false
 
 This policy explains what data **bestmt4ea.com** collects, why, and what you can do about it.
 
-It is short because the site is simple. Pages are pre-built files served from a content network. There are no user accounts, no newsletter list, and no requirement to give us anything to read, download or compare anything here. We do not sell personal data.
+It is short because the site is simple. Pages are pre-built files served from a content network. There are no user accounts, and nothing to sign up for to read a page or compare anything. Some free downloads ask for an email address so we can send you the file; where they do, the form says so before you submit it, and the rest of the site asks nothing of you. We do not sell personal data.
 
 ## Who is responsible
 
@@ -41,7 +41,11 @@ The site is served through Cloudflare. Like any host, Cloudflare processes reque
 
 ### Downloads
 
-Free files are stored on Cloudflare R2 and delivered from `files.bestmt4ea.com`. Downloading a file is an ordinary request to that host and is logged in the same way. We do not ask for an email address, and no account is needed.
+Free files are stored on Cloudflare R2 and delivered from `files.bestmt4ea.com`. Downloading a file is an ordinary request to that host and is logged in the same way.
+
+Some free downloads ask for an email address before they are released. Where that happens, the form says so plainly before you submit it. The address is used to send you the file, and to send occasional updates about new tools and guides only if you asked for them. You can unsubscribe from those updates at any time, and asking us to delete the address does not take back a file you have already downloaded.
+
+Where a download does not ask for an email address, no account is needed and nothing is required from you. Blocking cookies does not prevent you downloading anything.
 
 ### Messages you send us
 
@@ -55,6 +59,7 @@ When you buy a licence, the information needed to process the order — contact 
 
 - **To serve the site and keep it working** — legitimate interest in operating a functional, secure website.
 - **To measure and fund the site** — advertising and affiliate attribution, on the basis of consent where consent is required, and legitimate interest otherwise.
+- **To send you a file you asked for** — your consent, given on the download form. Any updates beyond that file are sent only if you asked for them, and you can withdraw at any time.
 - **To answer you** — performance of our agreement with you, or your consent, when you contact us.
 - **To complete a purchase and provide support** — performance of the contract between us.
 - **To meet legal obligations** — for example, tax and accounting records.
@@ -66,6 +71,7 @@ We do not sell personal data. We share it only with the processors that operate 
 | Provider | Purpose |
 |---|---|
 | Cloudflare | Hosting, content delivery, download storage and security |
+| Cloudflare Email and Brevo | Delivering a download link and any updates you asked for by email |
 | Google (AdSense) | Display advertising and ad measurement |
 | Our checkout and payment provider | Order processing and payment |
 | Affiliate networks and partners | Crediting a referral when you follow an affiliate link |
@@ -74,7 +80,7 @@ Each is bound by its own terms and, where required, a data-processing agreement.
 
 ## How long it is kept
 
-Server and security logs are retained by the host for a short period. Support correspondence is kept while it is useful and then removed. Order records are kept for as long as accounting and tax rules require. We do not keep data we have no reason to hold.
+Server and security logs are retained by the host for a short period. An email address given for a download is kept for as long as it is useful for re-sending the file and for any updates you asked for; ask us to remove it and we will. Support correspondence is kept while it is useful and then removed. Order records are kept for as long as accounting and tax rules require. We do not keep data we have no reason to hold.
 
 ## Your rights
 
@@ -113,4 +119,4 @@ If this policy changes, the new version is published on this page and the review
 Email: **bestmt4ea@gmail.com**
 Telegram: [t.me/pizion](https://t.me/pizion)
 
-*Last reviewed: 29 September 2026.*
+*Last reviewed: 7 October 2026.*
