@@ -319,6 +319,17 @@ const valueLabel = (coupon: (typeof rows)[number]) =>
     border-color: var(--color-accent);
   }
 
+  /*
+   * Belt and braces for the select popup. The shell declares `color-scheme:
+   * dark`, which is what actually makes Chrome and Edge draw the list dark; these
+   * colours cover a browser that ignores the scheme and renders the options in
+   * its own palette — white on this page.
+   */
+  .coupon-field select option {
+    background-color: #0b111e;
+    color: var(--color-ink);
+  }
+
   /* --------------------------------------------------------------- the list */
 
   .coupons-panel {

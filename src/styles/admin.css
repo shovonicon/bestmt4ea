@@ -212,9 +212,23 @@
 
 /* -------------------------------------------------------------------- main */
 
+/*
+ * Native controls — the select popup, the date picker, checkboxes, scrollbars —
+ * are drawn in the operating system's palette, not the page's. Without this the
+ * select popup renders white on a dark page. Declaring the scheme is what tells
+ * the browser to draw them dark.
+ */
+.admin {
+  color-scheme: dark;
+}
+
 .admin-main {
   width: 100%;
-  max-width: 1240px;
+  /*
+   * No max-width: this is a back office, not an article. The panels used to stop
+   * at 1240px and leave a wide dead margin on a large screen, which is exactly
+   * the space a coupon table or an order list wants for its columns.
+   */
   padding: 1.6rem 1.6rem 3.5rem;
 }
 
