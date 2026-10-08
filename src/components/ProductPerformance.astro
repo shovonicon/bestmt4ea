@@ -1,6 +1,4 @@
 ---
-import GrowthChart from './GrowthChart.astro';
-
 type StatPair = [string, string];
 
 export interface Props {
@@ -12,7 +10,6 @@ export interface Props {
     periods?: Array<{ label: string; gain: string; profit: string; pips: string; win: string; trades: string; lots: string }>;
     statistics?: StatPair[];
   };
-  growthPoints?: Array<{ capturedAt: number; growthPct: number }>;
   syncedLabel: string;
   hasLive: boolean;
   isDemo?: boolean;
@@ -25,7 +22,6 @@ export interface Props {
 
 const {
   raw = null,
-  growthPoints = [],
   syncedLabel,
   hasLive,
   isDemo = false,
@@ -128,15 +124,6 @@ const hasTrades = Boolean(raw?.statistics && raw.statistics.length > 0);
                 </table>
               </div>
             )}
-
-            <!--
-              The equity curve from our own dated captures. It lived in the Monthly
-              log panel, which is now hidden until it has a breakdown to show, and a
-              real chart should not be buried behind a tab that cannot open.
-            -->
-            <div class="mt-5">
-              <GrowthChart points={growthPoints} />
-            </div>
           </>
         ) : (
           <p class="text-sm text-[var(--color-ink-soft)]">

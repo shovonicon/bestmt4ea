@@ -8,7 +8,7 @@ import VpsLayout from '../../layouts/VpsLayout.astro';
 import { getPublicProducts, isFreeProduct, isUnpublishedProduct } from '../../lib/content';
 import { getDb } from '../../db/client';
 import { reviews as reviewsTable } from '../../db/schema';
-import { getLatestSnapshot, getSeries } from '../../server/performance';
+import { getLatestSnapshot } from '../../server/performance';
 import { reviewsForProduct } from '../../lib/product-reviews';
 
 const slug = Astro.params.slug ?? '';
@@ -39,10 +39,9 @@ const related = products
 // The VPS we recommend for running the system — omitted on the VPS page itself.
 const vps = products.find((entry) => entry.data.slug === 'vps' && entry.data.slug !== product.data.slug) ?? null;
 
-// Live MyFxBook figures, the real growth series, and any published customer
-// reviews. The transcribed editorial record is the fallback when nothing is live.
+// Live MyFxBook figures and any published customer reviews. The transcribed
+// editorial record is the fallback when nothing is live.
 let live = null;
-let series: Array<{ capturedAt: number; growthPct: string | null; profitCents: number | null }> = [];
 // Approved customer reviews on file come first; anything customers post on the live
 // site (the database table) is added to them. Both are shown, and both are rated.
 let productReviews: Array<{ rating: number; body: string; name: string; createdAt: number }> = reviewsForProduct({
@@ -52,14 +51,6 @@ let productReviews: Array<{ rating: number; body: string; name: string; createdA
 try {
   const db = getDb();
   live = await getLatestSnapshot(db, product.data.slug);
-  const rows = await getSeries(db, product.data.slug, 500);
-  series = rows
-    .map((row) => ({
-      capturedAt: row.capturedAt.getTime(),
-      growthPct: row.growthPct,
-      profitCents: row.profitCents,
-    }))
-    .sort((a, b) => a.capturedAt - b.capturedAt);
 
   const published = await db
     .select()
@@ -91,7 +82,6 @@ Astro.response.headers.set('cache-control', 'public, s-maxage=300, stale-while-r
       product={product}
       related={related}
       live={live}
-      series={series}
       reviews={productReviews}
       systems={systemCount}
       vps={vps}

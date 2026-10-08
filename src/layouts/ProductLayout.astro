@@ -37,14 +37,13 @@ export interface Props {
   product: any;
   related?: any[];
   live?: LatestPerformance | null;
-  series?: Array<{ capturedAt: number; growthPct: string | null; profitCents: number | null }>;
   reviews?: Array<{ rating: number; body: string; name: string; createdAt: number }>;
   systems?: number;
   /** The VPS product to recommend for running the system. */
   vps?: any;
 }
 
-const { product, related = [], live = null, series = [], reviews = [], systems = 0, vps = null } = Astro.props;
+const { product, related = [], live = null, reviews = [], systems = 0, vps = null } = Astro.props;
 
 const base = getPerformance(product.data.slug);
 // A live D1 snapshot (from the MyFxBook collector) wins over the transcribed
@@ -152,10 +151,6 @@ const raw = (live?.raw ?? null) as null | {
   }>;
   statistics?: StatPair[];
 };
-
-// Real synced growth points. The month-over-month view that used to sit beside
-// them is gone, so nothing aggregates captures into months any more.
-const growthPoints = series.filter((p) => p.growthPct != null);
 
 // ---- Data-driven premium blocks -------------------------------------------
 type Plan = {
@@ -545,7 +540,6 @@ const faqs = [
           <div class="reveal">
             <ProductPerformance
               raw={raw}
-              growthPoints={growthPoints.map((p) => ({ capturedAt: p.capturedAt, growthPct: Number(p.growthPct) }))}
               syncedLabel={syncedLabel}
               hasLive={hasLive}
               isDemo={isDemo}
