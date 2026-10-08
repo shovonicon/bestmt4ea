@@ -23,12 +23,14 @@
  */
 
 import { spawn } from 'node:child_process';
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
-import { createWriteStream } from 'node:fs';
+import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
+import { closeSync, openSync } from 'node:fs';
 import { join } from 'node:path';
+import matter from 'gray-matter';
 
 const ROOT = process.cwd();
 const QUEUE = 'src/data/rewrite-queue.json';
+const POSTS_DIR = 'src/content/posts';
 const LOG_DIR = 'test-results/rewrite-batch';
 const REFERENCE_POST = 'src/content/posts/eur-usd-expert-advisor-ea-overview-free-download-guide.md';
 
@@ -118,19 +120,37 @@ if (pending.length === 0) {
 }
 
 // Assign resources, honouring the reuse cap.
+//
+// The counter is seeded from the posts already on disk, not just this batch.
+// `check-downloads` counts reuse across the whole site and exits 1 above four
+// posts per file, so a batch that only counted its own assignments would sail
+// past the cap and fail the gate after the rewrites were already paid for.
+const pendingFiles = new Set(pending.map((entry) => entry.file));
 const useCount = new Map();
+for (const file of (await readdir(POSTS_DIR)).filter((f) => f.endsWith('.md'))) {
+  const rel = `${POSTS_DIR}/${file}`;
+  if (pendingFiles.has(rel)) continue;
+  const { data } = matter(await readFile(join(ROOT, rel), 'utf8'));
+  const key = data.download?.fileKey;
+  if (typeof key === 'string') useCount.set(key, (useCount.get(key) ?? 0) + 1);
+}
+
+const POOL = [...RESOURCES, DEFAULT_RESOURCE];
 for (const entry of pending) {
-  const hit = RESOURCES.find((r) => r.match.test(entry.slug)) ?? DEFAULT_RESOURCE;
-  const key = hit.fileKey;
-  const used = useCount.get(key) ?? 0;
-  if (used >= MAX_REUSE) {
+  const preferred = RESOURCES.find((r) => r.match.test(entry.slug)) ?? DEFAULT_RESOURCE;
+  const order = [preferred, ...POOL.filter((r) => r !== preferred)];
+  const pick = order.find((r) => (useCount.get(r.fileKey) ?? 0) < MAX_REUSE);
+  if (!pick) {
     console.error(
-      `WARN  ${entry.slug}: ${key} is already backing ${used} posts (cap ${MAX_REUSE}). ` +
-        `Author a new resource, or this post needs a different one.`,
+      `WARN  ${entry.slug}: every resource is at the ${MAX_REUSE}-post cap — author a new one.`,
     );
   }
-  useCount.set(key, used + 1);
-  entry.resource = hit;
+  if (pick && pick !== preferred) {
+    console.log(`  move   ${entry.slug}: ${preferred.fileKey} is full → ${pick.fileKey}`);
+  }
+  const chosen = pick ?? preferred;
+  useCount.set(chosen.fileKey, (useCount.get(chosen.fileKey) ?? 0) + 1);
+  entry.resource = chosen;
 }
 
 /* ------------------------------------------------------------- the prompt */
@@ -164,6 +184,8 @@ download:
   fileKey: "${entry.resource.fileKey}"
 
 That file is ${entry.resource.about}. It already exists and is uploaded; describe it accurately and do not claim anything else about it.
+
+Because that block has no platform field, this download is a resource, not software. Add NO installSteps to the frontmatter and no install, setup or how-to-install section to the body: check-rendered-html fails a download page that has both.
 
 CONSTRAINTS - a batch driver handles these, and doing them yourself would collide with the other workers:
 - Do NOT run any build, gate, test, lint or type-check command.
@@ -207,13 +229,14 @@ const runOne = async (entry, index) => {
   // Node refuses to spawn a batch file without a shell — it throws, the worker
   // rejects, and the whole batch dies before writing a single post. The argument
   // list is fixed and contains no spaces, so going through the shell is safe.
-  // The FileHandle must stay referenced until the child has inherited the fd.
-  // Returning just `.fd` leaves the handle unreferenced, so a GC between here
-  // and spawn closes it and the spawn fails — an intermittent 0.2s batch death.
-  const { open } = await import('node:fs/promises');
-  const promptHandle = await open(promptFile, 'r');
+  // Plain descriptors, not streams. `createWriteStream` opens asynchronously,
+  // so at spawn time the stream can still carry `fd: null` and Node rejects the
+  // whole stdio array with ERR_INVALID_ARG_VALUE — the intermittent 0.2s batch
+  // death with an empty log. A descriptor from `openSync` exists before spawn
+  // looks at it. The same log descriptor feeds both stdout and stderr.
+  const promptFd = openSync(promptFile, 'r');
+  const logFd = openSync(logFile, 'w');
 
-  const out = createWriteStream(logFile);
   const child = spawn(
     cmdc,
     [
@@ -227,17 +250,16 @@ const runOne = async (entry, index) => {
       '--output-format',
       'text',
     ],
-    { cwd: ROOT, shell: process.platform === 'win32', stdio: [promptHandle.fd, out, out] },
+    { cwd: ROOT, shell: process.platform === 'win32', stdio: [promptFd, logFd, logFd] },
   );
 
   const started = Date.now();
-  // A failed spawn must surface as one failed worker, not an uncaught exception
-  // that kills the whole batch.
   const code = await new Promise((resolve) => {
     child.on('exit', (c) => resolve(c ?? -1));
     child.on('error', () => resolve(-1));
   });
-  await promptHandle.close().catch(() => {});
+  closeSync(promptFd);
+  closeSync(logFd);
 
   return { entry, code, ms: Date.now() - started, logFile };
 }
