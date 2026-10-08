@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Grid EA Settings Audit &amp; Stress Test — BestMT4EA</title>
+    <style>
+      :root {
+        --ink: #101418;
+        --muted: #5a6570;
+        --line: #d7dde3;
+        --accent: #0b7a5d;
+        --warn: #a8410f;
+      }
+      * { box-sizing: border-box; }
+      @page { size: A4; margin: 14mm 13mm; }
+      html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: #fff;
+        font: 10.5pt/1.45 "Helvetica Neue", Arial, sans-serif;
+      }
+      h1 { font-size: 19pt; line-height: 1.15; margin: 0 0 2mm; letter-spacing: -0.01em; }
+      h2 {
+        font-size: 11.5pt;
+        margin: 7mm 0 2.5mm;
+        padding-bottom: 1.2mm;
+        border-bottom: 1px solid var(--line);
+        break-after: avoid;
+      }
+      h3 { font-size: 10pt; margin: 4mm 0 1.5mm; break-after: avoid; }
+      p { margin: 0 0 2.5mm; }
+      .lede { color: var(--muted); max-width: 165mm; }
+      .brand {
+        display: flex; justify-content: space-between; align-items: baseline;
+        border-bottom: 2px solid var(--accent); padding-bottom: 2mm; margin-bottom: 4mm;
+      }
+      .brand strong { font-size: 11pt; letter-spacing: 0.02em; }
+      .brand span { color: var(--muted); font-size: 8.5pt; }
+      ul { margin: 0 0 2.5mm; padding-left: 0; list-style: none; }
+      ul.plain { padding-left: 5mm; list-style: disc; }
+      ul.plain li { margin-bottom: 1.2mm; }
+      table { width: 100%; border-collapse: collapse; margin: 0 0 3mm; font-size: 9.5pt; break-inside: avoid; }
+      th, td { border: 1px solid var(--line); padding: 1.6mm 2mm; text-align: left; vertical-align: top; }
+      th { background: #f2f5f7; font-weight: 600; }
+      td.write { background: #fbfcfd; }
+      .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 8mm; }
+      .note {
+        border-left: 3px solid var(--warn); background: #fdf6f2;
+        padding: 2.5mm 3mm; margin: 3mm 0; font-size: 9.5pt; break-inside: avoid;
+      }
+      .box { border: 1px solid var(--line); border-radius: 1.5mm; padding: 3mm; margin: 3mm 0; break-inside: avoid; }
+      .box h3 { margin-top: 0; }
+      .flag { color: var(--warn); font-weight: 600; }
+      footer {
+        margin-top: 8mm; padding-top: 2.5mm; border-top: 1px solid var(--line);
+        color: var(--muted); font-size: 8.5pt;
+      }
+      .page-break { break-before: page; }
+      .formula { font-family: "Courier New", monospace; font-size: 9.5pt; background: #f2f5f7; padding: 2mm 2.5mm; border-radius: 1mm; }
+      .fields { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm 8mm; margin: 0 0 3mm; }
+      .field { border-bottom: 1px solid var(--line); padding-bottom: 4.5mm; }
+      .field label { display: block; color: var(--muted); font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.04em; }
+      .legend { font-size: 8.5pt; color: var(--muted); }
+      .verdict { display: grid; grid-template-columns: 1fr 1fr; gap: 0 8mm; margin-top: 3mm; }
+      .verdict div { border: 1.5px solid var(--line); border-radius: 1.5mm; padding: 4mm; }
+      .verdict strong { display: block; font-size: 10pt; margin-bottom: 1mm; }
+      .sign { margin-top: 6mm; display: grid; grid-template-columns: 1fr 1fr; gap: 0 8mm; }
+      .sign .field { padding-bottom: 8mm; }
+    </style>
+  </head>
+  <body>
+    <div class="brand">
+      <strong>BestMT4EA</strong>
+      <span>bestmt4ea.com — free trading resources</span>
+    </div>
+
+    <h1>Grid EA Settings Audit &amp; Stress Test</h1>
+    <p class="lede">
+      Grid, martingale and averaging systems do not fail because of a bad setting. They fail because
+      nobody checked what the settings add up to when the market moves one way for long enough. This
+      worksheet does that arithmetic before the account does it for you.
+    </p>
+
+    <div class="note">
+      <span class="flag">A smooth equity curve is not evidence of safety.</span>
+      Grid systems show small, regular gains for long periods and then a single large loss that
+      removes the account. Leveraged trading of this kind can lose money rapidly; nothing here
+      predicts a result, and no setting makes a grid system safe.
+    </div>
+
+    <h2>1 — Audit each setting: what it actually controls</h2>
+    <p class="legend">
+      Fill the middle column from the EA's own inputs, not from documentation, and the right column
+      from a decision you have already made. If you cannot say what a setting does, set it to its
+      most conservative value or leave the EA switched off until you can.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Setting</th>
+          <th>What it controls</th>
+          <th>Your value</th>
+          <th>Your cap, and why</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>First lot / base lot</td><td>Exposure at level 1</td><td class="write"></td><td class="write"></td></tr>
+        <tr><td>Grid step (pips)</td><td>How far price must move before exposure grows</td><td class="write"></td><td class="write"></td></tr>
+        <tr><td>Lot multiplier</td><td>Growth rate of each added level — the accelerator</td><td class="write"></td><td class="write"></td></tr>
+        <tr><td>Max levels / max trades</td><td>The point at which it must stop, or the point at which it must not</td><td class="write"></td><td class="write"></td></tr>
+        <tr><td>Take profit per basket</td><td>How little it needs to recover, and how rarely that comes</td><td class="write"></td><td class="write"></td></tr>
+        <tr><td>Stop loss</td><td>Whether a loss can be bounded at all — many grids disable it</td><td class="write"></td><td class="write"></td></tr>
+        <tr><td>Drawdown limit</td><td>The automatic circuit breaker, if the EA has a working one</td><td class="write"></td><td class="write"></td></tr>
+        <tr><td>Trading hours filter</td><td>Whether it adds levels into thin or gapping markets</td><td class="write"></td><td class="write"></td></tr>
+        <tr><td>News filter</td><td>Whether it opens through a spike</td><td class="write"></td><td class="write"></td></tr>
+      </tbody>
+    </table>
+
+    <h2>2 — Stress scenarios: run all three, in writing</h2>
+    <p class="legend">
+      These are the three conditions that break grids in practice. Use your own account balance and
+      contract specification. The purpose is not to predict which happens — it is to know the number
+      in advance.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Scenario</th>
+          <th>What happens</th>
+          <th>Your exposure at worst point</th>
+          <th>% of account</th>
+          <th>Your action, decided now</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sustained one-way trend</td>
+          <td>A pair trends 300+ pips over two or three sessions — common around a rate decision</td>
+          <td class="write"></td>
+          <td class="write"></td>
+          <td class="write"></td>
+        </tr>
+        <tr>
+          <td>News spike</td>
+          <td>60 pips in seconds, spread widening several times normal, fills worse than the chart</td>
+          <td class="write"></td>
+          <td class="write"></td>
+          <td class="write"></td>
+        </tr>
+        <tr>
+          <td>Weekend gap</td>
+          <td>Friday close to Sunday open with a jump — no price in between to trade out at</td>
+          <td class="write"></td>
+          <td class="write"></td>
+          <td class="write"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="page-break">
+      <div class="brand">
+        <strong>BestMT4EA</strong>
+        <span>Grid stress test — margin and stop-out</span>
+      </div>
+
+      <h2>3 — Margin and stop-out: the number that decides the ending</h2>
+      <p>
+        Whether a grid survives to its final level is not decided by the strategy. It is decided by
+        leverage, because leverage sets how much margin each additional level consumes and therefore
+        how much equity is left when the last level opens.
+      </p>
+      <div class="formula">
+        Margin required per lot = (Contract size x Price) / Leverage<br />
+        Margin level % = (Equity / Used margin) x 100<br />
+        Stop-out occurs when Margin level falls to the broker's threshold, commonly 50%
+      </div>
+
+      <h3>Worked comparison — EUR/USD at 1.10, $1,000 account</h3>
+      <p class="legend">
+        Using a 1.13-lot cumulative position, which is roughly what a 0.01 start reaches by its tenth
+        level on a 30-pip step with a 1.5 multiplier.
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Leverage</th>
+            <th>Margin per lot</th>
+            <th>Margin used at 1.13 lots</th>
+            <th>Equity at which stop-out triggers (50%)</th>
+            <th>Floating loss that causes it</th>
+            <th>What it means</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1:500</td>
+            <td>$220</td>
+            <td>$248.60</td>
+            <td>$124.30</td>
+            <td>$875.70</td>
+            <td>Survives past level 10 — then loses most of the account in one event</td>
+          </tr>
+          <tr>
+            <td>1:100</td>
+            <td>$1,100</td>
+            <td>Not reachable</td>
+            <td>n/a</td>
+            <td>n/a</td>
+            <td>Caps out near 0.91 lots — the tenth level cannot be opened at all</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note">
+        This is the counter-intuitive part. <strong>Higher leverage does not make a grid safer by
+        giving it room.</strong> It lets the system keep adding levels until the loss is large enough
+        to be unrecoverable. Lower leverage stops it earlier and caps the damage. If your broker
+        offers a choice, the lower setting is the protective one — and a grid EA marketed as needing
+        high leverage is telling you something about its risk.
+      </div>
+
+      <h3>Your margin numbers</h3>
+      <div class="fields">
+        <div class="field"><label>Account balance</label></div>
+        <div class="field"><label>Leverage on the account</label></div>
+        <div class="field"><label>Contract size (from the spec)</label></div>
+        <div class="field"><label>Margin per lot</label></div>
+        <div class="field"><label>Max cumulative lots you allow</label></div>
+        <div class="field"><label>Margin used at that size</label></div>
+        <div class="field"><label>Broker stop-out level (%)</label></div>
+        <div class="field"><label>Equity that triggers it</label></div>
+        <div class="field"><label>Loss that triggers it</label></div>
+      </div>
+
+      <h2>4 — Decision record</h2>
+      <p class="legend">
+        Complete this before switching the EA on. It is the only version of your judgement that will
+        not be revised by a losing position.
+      </p>
+      <table>
+        <thead>
+          <tr><th>Question</th><th>Your answer</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Worst-case loss I accept on this account</td><td class="write"></td></tr>
+          <tr><td>Equity level at which I close everything manually</td><td class="write"></td></tr>
+          <tr><td>Maximum levels I permit the EA to reach</td><td class="write"></td></tr>
+          <tr><td>Conditions in which I switch it off entirely</td><td class="write"></td></tr>
+          <tr><td>How I will check it is behaving as expected, and how often</td><td class="write"></td></tr>
+          <tr><td>Demo period completed before live, and its result</td><td class="write"></td></tr>
+        </tbody>
+      </table>
+
+      <div class="verdict">
+        <div>
+          <strong>Proceed</strong>
+          <p class="legend">
+            Every scenario above has a number I chose, a cap I will respect, and a stop-out figure I
+            can survive without affecting my finances.
+          </p>
+        </div>
+        <div>
+          <strong>Do not proceed</strong>
+          <p class="legend">
+            Any scenario has no number, any cap depends on the market being reasonable, or the
+            worst-case loss is money I cannot afford to lose.
+          </p>
+        </div>
+      </div>
+
+      <div class="sign">
+        <div class="field"><label>Signed</label></div>
+        <div class="field"><label>Date</label></div>
+      </div>
+
+      <footer>
+        Free to use, print and share with credit to bestmt4ea.com — this worksheet is educational and
+        is not investment advice. It analyses no specific product and guarantees no outcome; the
+        worked figures use the stated assumptions and your own broker's contract specifications will
+        differ. Version 1.0.
+      </footer>
+    </div>
+  </body>
+</html>

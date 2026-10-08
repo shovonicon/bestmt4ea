@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Scalping EA Demo Test Log — BestMT4EA</title>
+    <style>
+      :root {
+        --ink: #101418;
+        --muted: #5a6570;
+        --line: #d7dde3;
+        --accent: #0b7a5d;
+        --warn: #a8410f;
+      }
+      * { box-sizing: border-box; }
+      @page { size: A4; margin: 14mm 13mm; }
+      @page landscape { size: A4 landscape; margin: 12mm 10mm; }
+      html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: #fff;
+        font: 10.5pt/1.45 "Helvetica Neue", Arial, sans-serif;
+      }
+      h1 { font-size: 19pt; line-height: 1.15; margin: 0 0 2mm; letter-spacing: -0.01em; }
+      h2 {
+        font-size: 11.5pt;
+        margin: 7mm 0 2.5mm;
+        padding-bottom: 1.2mm;
+        border-bottom: 1px solid var(--line);
+        break-after: avoid;
+      }
+      h3 { font-size: 10pt; margin: 4mm 0 1.5mm; break-after: avoid; }
+      p { margin: 0 0 2.5mm; }
+      .lede { color: var(--muted); max-width: 165mm; }
+      .brand {
+        display: flex; justify-content: space-between; align-items: baseline;
+        border-bottom: 2px solid var(--accent); padding-bottom: 2mm; margin-bottom: 4mm;
+      }
+      .brand strong { font-size: 11pt; letter-spacing: 0.02em; }
+      .brand span { color: var(--muted); font-size: 8.5pt; }
+      ul { margin: 0 0 2.5mm; padding-left: 0; list-style: none; }
+      ul.plain { padding-left: 5mm; list-style: disc; }
+      ul.plain li { margin-bottom: 1.2mm; }
+      table { width: 100%; border-collapse: collapse; margin: 0 0 3mm; font-size: 9.5pt; break-inside: avoid; }
+      th, td { border: 1px solid var(--line); padding: 1.6mm 2mm; text-align: left; vertical-align: top; }
+      th { background: #f2f5f7; font-weight: 600; }
+      .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 8mm; }
+      .note {
+        border-left: 3px solid var(--warn); background: #fdf6f2;
+        padding: 2.5mm 3mm; margin: 3mm 0; font-size: 9.5pt; break-inside: avoid;
+      }
+      .box { border: 1px solid var(--line); border-radius: 1.5mm; padding: 3mm; margin: 3mm 0; break-inside: avoid; }
+      .box h3 { margin-top: 0; }
+      .flag { color: var(--warn); font-weight: 600; }
+      footer {
+        margin-top: 8mm; padding-top: 2.5mm; border-top: 1px solid var(--line);
+        color: var(--muted); font-size: 8.5pt;
+      }
+      .page-break { break-before: page; }
+      .landscape { page: landscape; }
+      .formula { font-family: "Courier New", monospace; font-size: 9.5pt; background: #f2f5f7; padding: 2mm 2.5mm; border-radius: 1mm; }
+      /* Field grids: print as ruled lines to write on. */
+      .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 8mm; margin: 0 0 3mm; }
+      .fields.wide { grid-template-columns: repeat(4, 1fr); }
+      .field { border-bottom: 1px solid var(--line); padding-bottom: 4.5mm; }
+      .field label { display: block; color: var(--muted); font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.04em; }
+      /* The log itself: landscape, ruled rows. */
+      table.log { font-size: 8pt; }
+      table.log th { font-size: 7.5pt; padding: 1.4mm 1.2mm; }
+      table.log td { height: 7.5mm; padding: 1mm 1.2mm; }
+      table.log td.n { text-align: center; color: var(--muted); }
+      table.summary td:first-child { width: 46%; }
+      table.summary td:last-child { height: 7mm; }
+      .legend { font-size: 8.5pt; color: var(--muted); }
+    </style>
+  </head>
+  <body>
+    <div class="brand">
+      <strong>BestMT4EA</strong>
+      <span>bestmt4ea.com — free trading resources</span>
+    </div>
+
+    <h1>Scalping EA Demo Test Log</h1>
+    <p class="lede">
+      Twenty trades on a demo account before a single unit of real money. A scalper lives or dies
+      on execution quality — spread at entry, slippage between the signal and the fill, and how the
+      positions are closed — and almost none of that shows up in a win rate. This log captures the
+      numbers that decide whether the edge is real.
+    </p>
+
+    <h2>Setup — record this before trade one</h2>
+    <p class="legend">
+      Every entry below changes how the results should be read. A test run without these recorded is
+      not comparable to anything, including a second run of the same EA.
+    </p>
+    <div class="fields wide">
+      <div class="field"><label>EA name</label></div>
+      <div class="field"><label>Version / build</label></div>
+      <div class="field"><label>Platform (MT4 / MT5)</label></div>
+      <div class="field"><label>Symbol</label></div>
+      <div class="field"><label>Broker</label></div>
+      <div class="field"><label>Account type (standard / raw / cent)</label></div>
+      <div class="field"><label>Starting demo balance</label></div>
+      <div class="field"><label>Leverage</label></div>
+      <div class="field"><label>Typical spread observed</label></div>
+      <div class="field"><label>Timeframe</label></div>
+      <div class="field"><label>Test start date</label></div>
+      <div class="field"><label>Test end date</label></div>
+      <div class="field"><label>Risk setting used (% or fixed lots)</label></div>
+      <div class="field"><label>Max trades allowed open</label></div>
+      <div class="field"><label>VPS or home machine</label></div>
+      <div class="field"><label>Connection drops during test</label></div>
+    </div>
+
+    <div class="box">
+      <h3>Why the setup block matters more for a scalper than for a swing EA</h3>
+      <p>
+        A strategy that holds positions for days is barely affected by a half-pip of slippage. A
+        strategy that opens and closes in minutes can have its entire statistical edge consumed by
+        it. The same EA run on a standard account and on a raw-spread account, or run from a home
+        connection instead of a VPS, can produce two different results — not because the logic
+        changed, but because the costs did. Record the conditions so the result is attributable.
+      </p>
+    </div>
+
+    <div class="page-break landscape">
+      <div class="brand">
+        <strong>BestMT4EA</strong>
+        <span>Scalping EA demo test log — 20 trades</span>
+      </div>
+
+      <h2>Trade log</h2>
+      <p class="legend">
+        Fill one row per closed trade. <strong>Session</strong>: A = Asian, L = London, N = New York,
+        O = overlap. <strong>Exit</strong>: TP = target, SL = stop, T = time, S = opposite signal,
+        M = manual intervention, MS = margin stop-out. Record slippage in pips — positive means the
+        fill was worse than the signal price. A manual intervention is a finding, not a failure:
+        write down what prompted it.
+      </p>
+
+      <table class="log">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Date / time</th>
+            <th>Sess.</th>
+            <th>Dir</th>
+            <th>Lots</th>
+            <th>Entry</th>
+            <th>Stop</th>
+            <th>Target</th>
+            <th>Spread at entry</th>
+            <th>Slippage</th>
+            <th>Exit</th>
+            <th>Pips</th>
+            <th>P / L</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="n">1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="n">2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="n">3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="n">4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="n">5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="n">6</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="n">7</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="n">8</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="n">9</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="n">10</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="n">11</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="n">12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="n">13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="n">14</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="n">15</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="n">16</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="n">17</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="n">18</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="n">19</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="n">20</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+
+      <div class="two">
+        <div>
+          <h3>Floating exposure</h3>
+          <p class="legend">
+            The worst moment is what decides survival, and it is almost never one of the twenty
+            closed rows above. Log peak open drawdown separately.
+          </p>
+          <table class="summary">
+            <tr><td>Maximum simultaneous open positions</td><td></td></tr>
+            <tr><td>Worst floating loss (account currency)</td><td></td></tr>
+            <tr><td>Worst floating loss (% of balance)</td><td></td></tr>
+            <tr><td>Margin level at that moment</td><td></td></tr>
+            <tr><td>Closest approach to stop-out</td><td></td></tr>
+          </table>
+        </div>
+        <div>
+          <h3>Benchmark for the same window</h3>
+          <p class="legend">
+            Without this you cannot tell skill from a favourable week. Record what the market did
+            while the EA traded.
+          </p>
+          <table class="summary">
+            <tr><td>Symbol's range over the test</td><td></td></tr>
+            <tr><td>Trend, range or news-driven</td><td></td></tr>
+            <tr><td>High-impact news events in window</td><td></td></tr>
+            <tr><td>Days the EA did not trade</td><td></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-break">
+      <div class="brand">
+        <strong>BestMT4EA</strong>
+        <span>Scalping EA demo test log — results</span>
+      </div>
+
+      <h2>Summary — work these out from the log, do not estimate them</h2>
+      <div class="two">
+        <div>
+          <table class="summary">
+            <tr><td>Total trades closed</td><td></td></tr>
+            <tr><td>Wins / losses</td><td></td></tr>
+            <tr><td>Win rate</td><td></td></tr>
+            <tr><td>Average win (pips)</td><td></td></tr>
+            <tr><td>Average loss (pips)</td><td></td></tr>
+            <tr><td>Largest single loss (pips)</td><td></td></tr>
+          </table>
+        </div>
+        <div>
+          <table class="summary">
+            <tr><td>Total slippage cost (pips)</td><td></td></tr>
+            <tr><td>Total spread paid (pips)</td><td></td></tr>
+            <tr><td>Gross result before costs</td><td></td></tr>
+            <tr><td>Net result after costs</td><td></td></tr>
+            <tr><td>Worst losing streak</td><td></td></tr>
+            <tr><td>Manual interventions</td><td></td></tr>
+          </table>
+        </div>
+      </div>
+
+      <h3>Expectancy — the one figure to calculate</h3>
+      <p class="formula">
+        Expectancy per trade = (win rate x average win) - (loss rate x average loss)
+      </p>
+      <p>
+        Then subtract the average spread and average slippage. A scalper with a 70% win rate,
+        an average win of 6 pips and an average loss of 12 pips has a positive expectancy on paper
+        and a negative one the moment 2 pips of cost per trade are applied. This is the single most
+        common way a promising scalper turns out not to be one, and the log above is what shows it.
+      </p>
+
+      <div class="note">
+        <span class="flag">Only risk what you can lose.</span> Trading leveraged instruments carries a
+        high risk of losing money rapidly, and past performance — including any demo result — does not
+        predict future results. A demo account does not reproduce real fills, requotes or emotional
+        pressure. Test on demo, then size the smallest live position you can, and never risk money you
+        cannot afford to lose.
+      </div>
+
+      <h2>How to read the result — four questions in order</h2>
+      <ul class="plain">
+        <li>
+          <strong>Does it survive its own costs?</strong> Compare the gross and net columns. If
+          removing one pip per trade turns a profit into a loss, the edge is smaller than the spread
+          and no amount of tuning will fix the account.
+        </li>
+        <li>
+          <strong>Is the win rate hiding the loss size?</strong> A scalper can win seven trades in ten
+          and still lose money. Look at the largest single loss against the average win. If one loss
+          erases eight wins, the strategy is one bad session from a large drawdown.
+        </li>
+        <li>
+          <strong>Is the sample big enough to mean anything?</strong> Twenty trades is a floor, not a
+          verdict. It is enough to detect a broken system and not enough to confirm a working one.
+          Continue logging past twenty before drawing a conclusion — and keep the same setup block.
+        </li>
+        <li>
+          <strong>How much of the result was the market?</strong> Check the benchmark column. An EA
+          that made money in a clean trend may be untested in the range that follows it.
+        </li>
+      </ul>
+
+      <h3>What disqualifies a test run</h3>
+      <ul class="plain">
+        <li>Changing settings part-way through — restart the log and the count.</li>
+        <li>Manually closing trades to protect the result, then reporting the result without them.</li>
+        <li>Running on a demo with different spreads or execution from the intended live account.</li>
+        <li>Reporting a backtest as though it were this log. They answer different questions.</li>
+      </ul>
+
+      <footer>
+        Free to use, print and share with credit to bestmt4ea.com — this worksheet is educational and
+        is not investment advice. It records no guarantee of performance and tests no specific
+        product. Version 1.0.
+      </footer>
+    </div>
+  </body>
+</html>
