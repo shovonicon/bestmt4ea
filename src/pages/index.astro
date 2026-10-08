@@ -146,7 +146,7 @@ const faqs = [
       </h1>
 
       <p
-        class="animate-fade-in-up-delay-2 mt-6 max-w-3xl text-base leading-8 text-[var(--color-ink-soft] sm:text-lg"
+        class="animate-fade-in-up-delay-2 mt-6 max-w-3xl text-base leading-8 text-[var(--color-ink-soft)] sm:text-lg"
       >
         Every system here links to its live third-party account, so you can check the drawdown as easily as the returns
         before you spend anything. No hidden curves, no cherry-picked months.
@@ -161,7 +161,7 @@ const faqs = [
       </div>
 
       <div
-        class="animate-fade-in-up-delay-3 mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-[var(--color-ink-dim]"
+        class="animate-fade-in-up-delay-3 mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-[var(--color-ink-dim)]"
       >
         <span class="inline-flex items-center gap-2">
           <span>{siteStats.customers} customers</span>
@@ -208,7 +208,7 @@ const faqs = [
           pillars.map((pillar) => (
             <div class="hover-brand-card reveal p-8">
               <h3 class="text-lg font-bold text-emerald-400">{pillar.title}</h3>
-              <p class="mt-3 text-sm leading-7 text-[var(--color-ink-dim]">{pillar.body}</p>
+              <p class="mt-3 text-sm leading-7 text-[var(--color-ink-dim)]">{pillar.body}</p>
             </div>
           ))
         }
@@ -232,11 +232,11 @@ const faqs = [
         <ComparisonRegistry products={ranked.slice(0, 10).map((entry) => entry.product)} />
       </div>
 
-      <p class="mt-4 text-center text-xs text-[var(--color-ink-dim]">
+      <p class="mt-4 text-center text-xs text-[var(--color-ink-dim)]">
         Third-party figures checked {formatDate(performanceVerifiedAt)} · a demo account is labelled as a demo on every
         row.
       </p>
-      <p class="mx-auto mt-6 max-w-3xl text-center text-xs leading-6 text-[var(--color-ink-dim]">{RISK_DISCLAIMER}</p>
+      <p class="mx-auto mt-6 max-w-3xl text-center text-xs leading-6 text-[var(--color-ink-dim)]">{RISK_DISCLAIMER}</p>
       <div class="mt-8 flex justify-center">
         <a href={url('/top-ranking')} class="btn btn-primary">See the full ranking</a>
       </div>
@@ -340,7 +340,7 @@ const faqs = [
               <span class="live-dot"></span>Checkout
             </span>
             <h2 class="mt-4 text-2xl font-bold sm:text-3xl">Pay once, delivered to your dashboard</h2>
-            <p class="mt-3 text-sm leading-7 text-[var(--color-ink-dim]">
+            <p class="mt-3 text-sm leading-7 text-[var(--color-ink-dim)]">
               Card and USDT (BEP-20) are both accepted. Checkout is handled by Stripe — card details never touch this
               site — and your licence, download and activation land in your BestMT4EA account. Setup help is a Telegram
               message away.
@@ -375,25 +375,25 @@ const faqs = [
       />
       <div class="mt-12 grid gap-6 lg:grid-cols-3">
         <a href={url('/top-ranking')} class="hover-brand-card reveal flex flex-col p-8">
-          <h3 class="text-lg font-bold text-[var(--color-ink]">Compare all {products.length} systems</h3>
-          <p class="mt-3 flex-1 text-sm leading-7 text-[var(--color-ink-dim]">
+          <h3 class="text-lg font-bold text-[var(--color-ink)]">Compare all {products.length} systems</h3>
+          <p class="mt-3 flex-1 text-sm leading-7 text-[var(--color-ink-dim)]">
             Monthly return, drawdown, total gain, account type and licence price in one table.
           </p>
-          <span class="mt-6 text-sm font-semibold text-[var(--color-accent]">Open the ranking →</span>
+          <span class="mt-6 text-sm font-semibold text-[var(--color-accent)]">Open the ranking →</span>
         </a>
         <a href={url('/shop')} class="hover-brand-card reveal flex flex-col p-8">
-          <h3 class="text-lg font-bold text-[var(--color-ink]">Browse the EA library</h3>
-          <p class="mt-3 flex-1 text-sm leading-7 text-[var(--color-ink-dim]">
+          <h3 class="text-lg font-bold text-[var(--color-ink)]">Browse the EA library</h3>
+          <p class="mt-3 flex-1 text-sm leading-7 text-[var(--color-ink-dim)]">
             Every licence with its price, specs and tracked record, filterable by platform.
           </p>
-          <span class="mt-6 text-sm font-semibold text-[var(--color-accent]">Open the shop →</span>
+          <span class="mt-6 text-sm font-semibold text-[var(--color-accent)]">Open the shop →</span>
         </a>
         <a href={url('/best-forex-brokers')} class="hover-brand-card reveal flex flex-col p-8">
-          <h3 class="text-lg font-bold text-[var(--color-ink]">Choose a broker</h3>
-          <p class="mt-3 flex-1 text-sm leading-7 text-[var(--color-ink-dim]">
+          <h3 class="text-lg font-bold text-[var(--color-ink)]">Choose a broker</h3>
+          <p class="mt-3 flex-1 text-sm leading-7 text-[var(--color-ink-dim)]">
             Regulation, minimum deposit, platforms and account types for the brokers we test on.
           </p>
-          <span class="mt-6 text-sm font-semibold text-[var(--color-accent]">Compare brokers →</span>
+          <span class="mt-6 text-sm font-semibold text-[var(--color-accent)]">Compare brokers →</span>
         </a>
       </div>
     </div>

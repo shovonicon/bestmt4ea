@@ -24,13 +24,13 @@ if (slides.length === 0) return null;
     <div class="max-w-2xl">
       <p class="section-mark eyebrow"><span>{eyebrow}</span></p>
       <h2 id="results-heading" class="mt-3 text-3xl leading-tight md:text-4xl">{title}</h2>
-      <p class="mt-2 text-sm leading-6 text-[var(--color-ink-dim]">
+      <p class="mt-2 text-sm leading-6 text-[var(--color-ink-dim)]">
         {note}
       </p>
     </div>
     <div class="flex items-center gap-2">
       <button type="button" class="btn btn-ghost !px-3.5" data-results-prev aria-label="Previous screenshot">←</button>
-      <span class="metric-value min-w-[3.5rem] text-center text-xs text-[var(--color-ink-dim]" data-results-count>
+      <span class="metric-value min-w-[3.5rem] text-center text-xs text-[var(--color-ink-dim)]" data-results-count>
         1 / {slides.length}
       </span>
       <button type="button" class="btn btn-ghost !px-3.5" data-results-next aria-label="Next screenshot">→</button>
@@ -59,7 +59,7 @@ if (slides.length === 0) return null;
               </svg>
             </span>
           </button>
-          {slide.caption && <p class="mt-2 text-xs text-[var(--color-ink-dim]">{slide.caption}</p>}
+          {slide.caption && <p class="mt-2 text-xs text-[var(--color-ink-dim)]">{slide.caption}</p>}
         </li>
       ))
     }
@@ -80,7 +80,7 @@ if (slides.length === 0) return null;
     }
   </div>
 
-  <p class="mt-4 text-xs leading-6 text-[var(--color-ink-dim]">
+  <p class="mt-4 text-xs leading-6 text-[var(--color-ink-dim)]">
     {footnote}
   </p>
 </section>

@@ -63,15 +63,15 @@ const average = approved.length
       >
         What traders say about <span class="text-gradient-brand">these systems</span>
       </h1>
-      <p class="animate-fade-in-up-delay-2 mx-auto mt-6 max-w-2xl text-base leading-8 text-[var(--color-ink-soft]">
+      <p class="animate-fade-in-up-delay-2 mx-auto mt-6 max-w-2xl text-base leading-8 text-[var(--color-ink-soft)]">
         Only feedback we can attribute to a real customer is published here. Individual results vary, and one trader's
         experience is not a forecast.
       </p>
       {
         approved.length > 0 && (
-          <p class="animate-fade-in-up-delay-3 mt-6 inline-flex items-center gap-2 text-sm text-[var(--color-ink-dim]">
+          <p class="animate-fade-in-up-delay-3 mt-6 inline-flex items-center gap-2 text-sm text-[var(--color-ink-dim)]">
             <span class="stars" aria-hidden="true">★★★★★</span>
-            <span class="font-semibold text-[var(--color-ink]">{average.toFixed(1)}</span>
+            <span class="font-semibold text-[var(--color-ink)]">{average.toFixed(1)}</span>
             <span>· {approved.length} published</span>
           </p>
         )
@@ -98,11 +98,11 @@ const average = approved.length
                 {'★'.repeat(review.rating)}
                 {'☆'.repeat(Math.max(0, 5 - review.rating))}
               </span>
-              {review.title && <h3 class="text-sm font-bold text-[var(--color-ink]">{review.title}</h3>}
-              <blockquote class="flex-1 text-sm leading-7 text-[var(--color-ink-soft]">“{review.body}”</blockquote>
+              {review.title && <h3 class="text-sm font-bold text-[var(--color-ink)]">{review.title}</h3>}
+              <blockquote class="flex-1 text-sm leading-7 text-[var(--color-ink-soft)]">“{review.body}”</blockquote>
               <figcaption class="border-t border-white/10 pt-3">
-                <span class="block text-sm font-semibold text-[var(--color-ink]">{review.reviewer}</span>
-                <span class="mt-1 block text-xs text-[var(--color-ink-dim]">
+                <span class="block text-sm font-semibold text-[var(--color-ink)]">{review.reviewer}</span>
+                <span class="mt-1 block text-xs text-[var(--color-ink-dim)]">
                   {review.location ? `${review.location} · ` : ''}
                   {review.month ?? ''}
                   {review.product ? ` · ${review.product}` : ''}
@@ -112,7 +112,7 @@ const average = approved.length
           ))}
         </div>
       ) : (
-        <p class="mx-auto mt-10 max-w-2xl text-center text-sm leading-7 text-[var(--color-ink-dim]">
+        <p class="mx-auto mt-10 max-w-2xl text-center text-sm leading-7 text-[var(--color-ink-dim)]">
           No customer feedback has been published yet. A quote goes live here only once the customer who wrote it has
           confirmed the wording as their own.
         </p>
@@ -125,7 +125,7 @@ const average = approved.length
     <div class="container-x py-20 lg:py-24">
       <div class="brand-card reveal mx-auto max-w-4xl p-8 text-center sm:p-12">
         <h2 class="text-3xl leading-tight md:text-4xl">Run the system, then tell us how it went</h2>
-        <p class="mx-auto mt-4 max-w-2xl text-[var(--color-ink-soft]">
+        <p class="mx-auto mt-4 max-w-2xl text-[var(--color-ink-soft)]">
           Every licence is delivered to your dashboard with the setup guide and presets, and support is a Telegram
           message away.
         </p>
@@ -134,7 +134,7 @@ const average = approved.length
           <a href={url('/top-ranking')} class="btn btn-ghost !px-6 !py-3.5 !text-base">Compare every system</a>
         </div>
       </div>
-      <p class="mx-auto mt-8 max-w-3xl text-center text-xs leading-6 text-[var(--color-ink-dim]">{RISK_DISCLAIMER}</p>
+      <p class="mx-auto mt-8 max-w-3xl text-center text-xs leading-6 text-[var(--color-ink-dim)]">{RISK_DISCLAIMER}</p>
     </div>
   </section>
 </BaseLayout>

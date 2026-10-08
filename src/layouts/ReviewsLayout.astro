@@ -72,9 +72,9 @@ const products = all.filter((product) => product.data.slug !== 'vps' && page.tes
         class="animate-fade-in-up-delay-1 mx-auto mt-6 max-w-4xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl"
       >
         Best {page.label} <span class="text-gradient-brand">expert advisors</span>
-        <span class="block text-[var(--color-ink-soft]">{monthYear}</span>
+        <span class="block text-[var(--color-ink-soft)]">{monthYear}</span>
       </h1>
-      <p class="animate-fade-in-up-delay-2 mx-auto mt-6 max-w-3xl text-base leading-8 text-[var(--color-ink-soft]">
+      <p class="animate-fade-in-up-delay-2 mx-auto mt-6 max-w-3xl text-base leading-8 text-[var(--color-ink-soft)]">
         Every {page.label === 'Forex' ? '' : `${page.label} `}system in the catalogue, ranked on its third-party tracked
         record — gain, monthly return and maximum drawdown shown for each, with the account type stated.
       </p>
@@ -95,10 +95,10 @@ const products = all.filter((product) => product.data.slug !== 'vps' && page.tes
       <ComparisonRegistry products={products} />
     </div>
 
-    <p class="mt-4 text-center text-xs text-[var(--color-ink-dim]">
+    <p class="mt-4 text-center text-xs text-[var(--color-ink-dim)]">
       Third-party figures checked {formatDate(performanceVerifiedAt)}.
     </p>
-    <p class="mx-auto mt-6 max-w-3xl text-center text-xs leading-6 text-[var(--color-ink-dim]">{RISK_DISCLAIMER}</p>
+    <p class="mx-auto mt-6 max-w-3xl text-center text-xs leading-6 text-[var(--color-ink-dim)]">{RISK_DISCLAIMER}</p>
 
     <div class="mt-10 flex flex-wrap justify-center gap-3">
       <a href={url('/top-ranking')} class="btn btn-primary !px-7 !py-3.5 !text-base">Compare every system</a>

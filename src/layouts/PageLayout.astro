@@ -40,10 +40,10 @@ const hasFaqs = Boolean(data.faqs?.length);
   jsonLd={[breadcrumbSchema(trail), ...(data.faqs?.length ? [faqSchema(data.faqs)] : [])]}
 >
   <div class="container-x pt-8">
-    <nav aria-label="Breadcrumb" class="text-xs text-[var(--color-ink-dim]">
-      <a href="/" class="hover:text-[var(--color-accent]">Home</a>
+    <nav aria-label="Breadcrumb" class="text-xs text-[var(--color-ink-dim)]">
+      <a href="/" class="hover:text-[var(--color-accent)]">Home</a>
       <span class="mx-2">/</span>
-      <span class="text-[var(--color-ink-soft]">{data.title}</span>
+      <span class="text-[var(--color-ink-soft)]">{data.title}</span>
     </nav>
   </div>
 
@@ -52,7 +52,7 @@ const hasFaqs = Boolean(data.faqs?.length);
       <h1 class="text-3xl leading-tight tracking-tight sm:text-4xl lg:text-5xl">{data.title}</h1>
       {
         data.description && (
-          <p class="mt-5 max-w-3xl text-base leading-8 text-[var(--color-ink-soft] sm:text-lg">{data.description}</p>
+          <p class="mt-5 max-w-3xl text-base leading-8 text-[var(--color-ink-soft)] sm:text-lg">{data.description}</p>
         )
       }
     </header>

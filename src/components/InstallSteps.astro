@@ -21,12 +21,12 @@ const { steps, title = 'How to install it' } = Astro.props;
       <ol class="mt-5 space-y-5">
         {steps.map((step, index) => (
           <li class="flex gap-4">
-            <span class="metric-value mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent]/15 text-xs text-[var(--color-accent]">
+            <span class="metric-value mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent)]/15 text-xs text-[var(--color-accent)]">
               {index + 1}
             </span>
             <div>
-              <h3 class="text-sm font-semibold text-[var(--color-ink]">{step.name}</h3>
-              <p class="mt-1 text-sm leading-7 text-[var(--color-ink-soft]">{step.text}</p>
+              <h3 class="text-sm font-semibold text-[var(--color-ink)]">{step.name}</h3>
+              <p class="mt-1 text-sm leading-7 text-[var(--color-ink-soft)]">{step.text}</p>
             </div>
           </li>
         ))}

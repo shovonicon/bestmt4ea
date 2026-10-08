@@ -25,12 +25,12 @@ const items = headings.filter((h) => h.depth === 2);
       <details class:list={['panel-flat p-5', className]} data-toc="collapsible">
         <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
           <span class="metric-label">{title}</span>
-          <span aria-hidden="true" class="text-xs text-[var(--color-accent]">{items.length} sections</span>
+          <span aria-hidden="true" class="text-xs text-[var(--color-accent)]">{items.length} sections</span>
         </summary>
         <ol class="mt-3 space-y-2 text-sm">
           {items.map((item) => (
             <li>
-              <a href={`#${item.id}`} class="text-[var(--color-ink-dim] transition-colors hover:text-[var(--color-accent]">
+              <a href={`#${item.id}`} class="text-[var(--color-ink-dim)] transition-colors hover:text-[var(--color-accent)]">
                 {item.text}
               </a>
             </li>
@@ -43,7 +43,7 @@ const items = headings.filter((h) => h.depth === 2);
         <ol class="mt-3 space-y-2 text-sm">
           {items.map((item) => (
             <li>
-              <a href={`#${item.id}`} class="text-[var(--color-ink-dim] transition-colors hover:text-[var(--color-accent]">
+              <a href={`#${item.id}`} class="text-[var(--color-ink-dim)] transition-colors hover:text-[var(--color-accent)]">
                 {item.text}
               </a>
             </li>

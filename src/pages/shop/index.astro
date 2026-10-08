@@ -31,7 +31,7 @@ const catalogue = sorted.map(({ product }) => ({
   <div class="container-x py-14">
     <p class="eyebrow text-center">The EA store</p>
     <h1 class="mt-2 text-center text-3xl md:text-5xl">All <span class="text-gradient-aurora">systems</span></h1>
-    <p class="mx-auto mt-4 max-w-2xl text-center text-sm leading-7 text-[var(--color-ink-dim]">
+    <p class="mx-auto mt-4 max-w-2xl text-center text-sm leading-7 text-[var(--color-ink-dim)]">
       {products.length} products, each with its licence tier, platform compatibility and a link to its independent
       performance record.
     </p>
@@ -45,6 +45,6 @@ const catalogue = sorted.map(({ product }) => ({
       {sorted.map(({ product }) => <ProductCard product={product} />)}
     </div>
 
-    <p class="mt-12 text-xs text-[var(--color-ink-dim]">{RISK_DISCLAIMER}</p>
+    <p class="mt-12 text-xs text-[var(--color-ink-dim)]">{RISK_DISCLAIMER}</p>
   </div>
 </BaseLayout>

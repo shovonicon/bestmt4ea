@@ -115,17 +115,17 @@ const trail = breadcrumbTrail([
 >
   {/* ---------------------------------------------------------------- HERO */}
   <header class="relative overflow-hidden">
-    <div class="glow-orb left-[-6rem] top-[-8rem] h-[26rem] w-[26rem] bg-[var(--color-accent]/25" aria-hidden="true"></div>
-    <div class="glow-orb right-[-4rem] top-[2rem] h-[20rem] w-[20rem] bg-[var(--color-info]/15" aria-hidden="true"></div>
+    <div class="glow-orb left-[-6rem] top-[-8rem] h-[26rem] w-[26rem] bg-[var(--color-accent)]/25" aria-hidden="true"></div>
+    <div class="glow-orb right-[-4rem] top-[2rem] h-[20rem] w-[20rem] bg-[var(--color-info)]/15" aria-hidden="true"></div>
     <div class="grid-overlay absolute inset-0" aria-hidden="true"></div>
 
     <div class="container-x relative pb-12 pt-8">
-      <nav aria-label="Breadcrumb" class="text-xs text-[var(--color-ink-dim]">
-        <a href="/" class="hover:text-[var(--color-accent]">Home</a>
+      <nav aria-label="Breadcrumb" class="text-xs text-[var(--color-ink-dim)]">
+        <a href="/" class="hover:text-[var(--color-accent)]">Home</a>
         <span class="mx-2">/</span>
-        <a href={url('/shop')} class="hover:text-[var(--color-accent]">Shop</a>
+        <a href={url('/shop')} class="hover:text-[var(--color-accent)]">Shop</a>
         <span class="mx-2">/</span>
-        <span class="text-[var(--color-ink-soft]">{product.data.title}</span>
+        <span class="text-[var(--color-ink-soft)]">{product.data.title}</span>
       </nav>
 
       <div class="mt-8 grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_25rem]">
@@ -140,10 +140,10 @@ const trail = breadcrumbTrail([
             <span class="text-gradient-brand">MT4 &amp; MT5</span>
           </h1>
 
-          <p class="mt-5 max-w-2xl text-base leading-7 text-[var(--color-ink-soft] sm:text-lg">{detail.tagline}</p>
+          <p class="mt-5 max-w-2xl text-base leading-7 text-[var(--color-ink-soft)] sm:text-lg">{detail.tagline}</p>
 
           <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
-            <span class="inline-flex items-center gap-2 text-[var(--color-ink-dim]">
+            <span class="inline-flex items-center gap-2 text-[var(--color-ink-dim)]">
               <span class="live-dot" aria-hidden="true"></span>
               Windows Server 2022 · 1 Gbps · RDP
             </span>
@@ -154,10 +154,10 @@ const trail = breadcrumbTrail([
               <p class="metric-label">Starting from</p>
               <p class="display-stat mt-1 text-4xl">
                 {formatMoney(priceFrom, currency)}
-                <span class="text-base font-semibold text-[var(--color-ink-dim]">/month</span>
+                <span class="text-base font-semibold text-[var(--color-ink-dim)]">/month</span>
               </p>
             </div>
-            <p class="mb-1 max-w-xs text-xs leading-5 text-[var(--color-ink-dim]">
+            <p class="mb-1 max-w-xs text-xs leading-5 text-[var(--color-ink-dim)]">
               Plans range from {formatMoney(priceFrom, currency)} to {formatMoney(priceMax, currency)} depending on the
               billing period.
             </p>
@@ -168,17 +168,17 @@ const trail = breadcrumbTrail([
             <a href="#specifications" class="btn btn-ghost !px-6 !py-3.5 !text-base">See specifications</a>
           </div>
 
-          <ul class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs text-[var(--color-ink-dim]">
+          <ul class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs text-[var(--color-ink-dim)]">
             <li class="inline-flex items-center gap-1.5">
-              <span class="text-[var(--color-accent]" aria-hidden="true">⚡</span>
+              <span class="text-[var(--color-accent)]" aria-hidden="true">⚡</span>
               Provisioned after checkout
             </li>
             <li class="inline-flex items-center gap-1.5">
-              <span class="text-[var(--color-accent]" aria-hidden="true">🧭</span>
+              <span class="text-[var(--color-accent)]" aria-hidden="true">🧭</span>
               Setup guide included
             </li>
             <li class="inline-flex items-center gap-1.5">
-              <span class="text-[var(--color-accent]" aria-hidden="true">💬</span>
+              <span class="text-[var(--color-accent)]" aria-hidden="true">💬</span>
               Support via Telegram
             </li>
           </ul>
@@ -201,7 +201,7 @@ const trail = breadcrumbTrail([
                 <div class="brand-card absolute bottom-6 left-6 px-5 py-3.5">
                   <p class="metric-label">Runs</p>
                   <p class="display-stat mt-1 text-4xl">5–10</p>
-                  <p class="mt-1 text-xs text-[var(--color-ink-dim]">MT4 / MT5 platforms</p>
+                  <p class="mt-1 text-xs text-[var(--color-ink-dim)]">MT4 / MT5 platforms</p>
                 </div>
               </div>
             </div>
@@ -241,7 +241,7 @@ const trail = breadcrumbTrail([
                 </span>
                 <dl class="mt-4">
                   <dt class="metric-label">{spec.label}</dt>
-                  <dd class="mt-1 font-semibold text-[var(--color-ink]">{spec.value}</dd>
+                  <dd class="mt-1 font-semibold text-[var(--color-ink)]">{spec.value}</dd>
                 </dl>
               </div>
             ))
@@ -261,8 +261,8 @@ const trail = breadcrumbTrail([
           {
             benefits.map((benefit) => (
               <article class="hover-brand-card p-6">
-                <h3 class="text-lg text-[var(--color-ink]">{benefit.title}</h3>
-                <p class="mt-2 text-sm leading-6 text-[var(--color-ink-soft]">{benefit.text}</p>
+                <h3 class="text-lg text-[var(--color-ink)]">{benefit.title}</h3>
+                <p class="mt-2 text-sm leading-6 text-[var(--color-ink-soft)]">{benefit.text}</p>
               </article>
             ))
           }
@@ -293,8 +293,8 @@ const trail = breadcrumbTrail([
                   {comparison.rows.map((row) => (
                     <tr>
                       <th scope="row">{row[0]}</th>
-                      <td class="text-[var(--color-accent-soft]">{row[1]}</td>
-                      <td class="text-[var(--color-ink-dim]">{row[2]}</td>
+                      <td class="text-[var(--color-accent-soft)]">{row[1]}</td>
+                      <td class="text-[var(--color-ink-dim)]">{row[2]}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -311,8 +311,8 @@ const trail = breadcrumbTrail([
           {
             whoFor.map((item) => (
               <div class="panel p-5">
-                <h3 class="text-base font-semibold text-[var(--color-ink]">{item.title}</h3>
-                <p class="mt-1.5 text-sm leading-6 text-[var(--color-ink-soft]">{item.text}</p>
+                <h3 class="text-base font-semibold text-[var(--color-ink)]">{item.title}</h3>
+                <p class="mt-1.5 text-sm leading-6 text-[var(--color-ink-soft)]">{item.text}</p>
               </div>
             ))
           }
@@ -342,7 +342,7 @@ const trail = breadcrumbTrail([
                       </div>
                       {savingsPct(plan) > 0 && <span class="ribbon">-{savingsPct(plan)}%</span>}
                     </div>
-                    <p class="mt-1 text-xs text-[var(--color-ink-dim]">
+                    <p class="mt-1 text-xs text-[var(--color-ink-dim)]">
                       {plan.term}
                       {plan.compareAt ? (
                         <>
@@ -352,11 +352,11 @@ const trail = breadcrumbTrail([
                       ) : null}
                       {perMonth ? ` · ≈ ${formatMoney(perMonth, currency)}/mo` : ''}
                     </p>
-                    <p class="mt-3 text-sm leading-6 text-[var(--color-ink-soft]">{plan.note}</p>
+                    <p class="mt-3 text-sm leading-6 text-[var(--color-ink-soft)]">{plan.note}</p>
                     <ul class="mt-4 flex-1 space-y-2">
                       {(plan.features ?? []).map((feature) => (
-                        <li class="flex gap-2 text-sm leading-6 text-[var(--color-ink-soft]">
-                          <span class="mt-0.5 text-[var(--color-accent]" aria-hidden="true">
+                        <li class="flex gap-2 text-sm leading-6 text-[var(--color-ink-soft)]">
+                          <span class="mt-0.5 text-[var(--color-accent)]" aria-hidden="true">
                             ✓
                           </span>
                           {feature}
@@ -374,7 +374,7 @@ const trail = breadcrumbTrail([
                 );
               })}
             </div>
-            <p class="mt-4 text-xs leading-6 text-[var(--color-ink-dim]">
+            <p class="mt-4 text-xs leading-6 text-[var(--color-ink-dim)]">
               Prices in {currency}. The exact total is confirmed at checkout.
             </p>
           </section>
@@ -384,7 +384,7 @@ const trail = breadcrumbTrail([
       {/* ----------------------------------------------------- PAYMENTS */}
       <section class="panel reveal p-6 sm:p-7" aria-labelledby="payments-heading">
         <h2 id="payments-heading" class="text-xl">Payment methods</h2>
-        <p class="mt-2 text-sm leading-6 text-[var(--color-ink-soft]">{detail.paymentNote}</p>
+        <p class="mt-2 text-sm leading-6 text-[var(--color-ink-soft)]">{detail.paymentNote}</p>
         <div class="mt-5 flex flex-wrap items-center gap-2">
           {
             payments.map((method) => (
@@ -394,13 +394,13 @@ const trail = breadcrumbTrail([
             ))
           }
         </div>
-        <p class="mt-4 flex items-center gap-1.5 text-xs text-[var(--color-ink-dim]">
+        <p class="mt-4 flex items-center gap-1.5 text-xs text-[var(--color-ink-dim)]">
           <svg
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
             stroke-width="2"
-            class="h-3.5 w-3.5 text-[var(--color-accent]"
+            class="h-3.5 w-3.5 text-[var(--color-accent)]"
             aria-hidden="true"
           >
             <rect x="4" y="10" width="16" height="10" rx="2"></rect>
@@ -430,16 +430,16 @@ const trail = breadcrumbTrail([
                   )}
                 </span>
                 <span class="flex w-full flex-wrap items-center justify-between gap-2">
-                  <span class="text-lg font-bold text-[var(--color-ink]">{partner.label}</span>
+                  <span class="text-lg font-bold text-[var(--color-ink)]">{partner.label}</span>
                   <span class="partner-chip">Recommended</span>
                 </span>
-                <span class="block text-sm leading-6 text-[var(--color-ink-dim]">{partner.note}</span>
+                <span class="block text-sm leading-6 text-[var(--color-ink-dim)]">{partner.note}</span>
                 <span class="partner-arrow" aria-hidden="true">Visit site →</span>
               </a>
             ))
           }
         </div>
-        <p class="mt-4 text-xs leading-6 text-[var(--color-ink-dim]">{AFFILIATE_DISCLOSURE}</p>
+        <p class="mt-4 text-xs leading-6 text-[var(--color-ink-dim)]">{AFFILIATE_DISCLOSURE}</p>
       </section>
 
       {/* ------------------------------------------------------ DELIVERY */}
@@ -447,10 +447,10 @@ const trail = breadcrumbTrail([
         detail.delivery && (
           <section class="panel p-5" aria-labelledby="delivery-heading">
             <p class="section-kicker">Delivery</p>
-            <h2 id="delivery-heading" class="mt-1 text-lg text-[var(--color-ink]">
+            <h2 id="delivery-heading" class="mt-1 text-lg text-[var(--color-ink)]">
               {detail.delivery.label}
             </h2>
-            <p class="mt-2 text-sm leading-7 text-[var(--color-ink-soft]">{detail.delivery.note}</p>
+            <p class="mt-2 text-sm leading-7 text-[var(--color-ink-soft)]">{detail.delivery.note}</p>
             <a href={detail.delivery.url} rel="noopener" class="btn btn-ghost mt-4">
               Message {detail.delivery.handle} on Telegram
             </a>
@@ -480,8 +480,8 @@ const trail = breadcrumbTrail([
                     {'★'.repeat(review.rating)}
                     {'☆'.repeat(Math.max(0, 5 - review.rating))}
                   </p>
-                  <blockquote class="mt-2 text-sm leading-6 text-[var(--color-ink-soft]">{review.body}</blockquote>
-                  <figcaption class="mt-3 text-xs text-[var(--color-ink-dim]">
+                  <blockquote class="mt-2 text-sm leading-6 text-[var(--color-ink-soft)]">{review.body}</blockquote>
+                  <figcaption class="mt-3 text-xs text-[var(--color-ink-dim)]">
                     {review.name} · {formatDate(new Date(review.createdAt))}
                   </figcaption>
                 </figure>
@@ -492,9 +492,9 @@ const trail = breadcrumbTrail([
       </section>
 
       {/* ---------------------------------------------------- AVAILABILITY */}
-      <section class="rounded-2xl border border-[var(--color-warn]/30 bg-[var(--color-warn]/5 p-5">
-        <h2 class="text-sm font-semibold text-[var(--color-warn]">Service availability</h2>
-        <p class="mt-2 text-xs leading-6 text-[var(--color-ink-soft]">{detail.availabilityNote}</p>
+      <section class="rounded-2xl border border-[var(--color-warn)]/30 bg-[var(--color-warn)]/5 p-5">
+        <h2 class="text-sm font-semibold text-[var(--color-warn)]">Service availability</h2>
+        <p class="mt-2 text-xs leading-6 text-[var(--color-ink-soft)]">{detail.availabilityNote}</p>
       </section>
 
       {/* ------------------------------------------------------- TELEGRAM */}
@@ -503,7 +503,7 @@ const trail = breadcrumbTrail([
           <div class="max-w-2xl">
             <p class="section-mark eyebrow"><span>Support</span></p>
             <h2 class="mt-3 text-2xl">Need help choosing a plan?</h2>
-            <p class="mt-3 text-sm leading-6 text-[var(--color-ink-soft]">
+            <p class="mt-3 text-sm leading-6 text-[var(--color-ink-soft)]">
               Ask us how many platforms you need and which location is closest to your broker. Setup help is included with
               every VPS.
             </p>
@@ -531,7 +531,7 @@ const trail = breadcrumbTrail([
             )}
           </div>
 
-          <p class="mt-2 text-xs leading-6 text-[var(--color-ink-dim]">
+          <p class="mt-2 text-xs leading-6 text-[var(--color-ink-dim)]">
             One VPS, four billing periods. Longer periods cost less per month.
           </p>
 
@@ -553,13 +553,13 @@ const trail = breadcrumbTrail([
                       />
                       <span class="min-w-0 flex-1">
                         <span class="flex items-baseline justify-between gap-2">
-                          <span class="text-sm font-semibold text-[var(--color-ink]">
+                          <span class="text-sm font-semibold text-[var(--color-ink)]">
                             {plan.name}
-                            {plan.term ? <span class="font-normal text-[var(--color-ink-dim]"> · {plan.term}</span> : null}
+                            {plan.term ? <span class="font-normal text-[var(--color-ink-dim)]"> · {plan.term}</span> : null}
                           </span>
                           <span class="metric-value text-sm">{planLabel(plan.price)}</span>
                         </span>
-                        {plan.note && <span class="mt-1 block text-xs text-[var(--color-ink-dim]">{plan.note}</span>}
+                        {plan.note && <span class="mt-1 block text-xs text-[var(--color-ink-dim)]">{plan.note}</span>}
                       </span>
                     </label>
                   ))}
@@ -593,13 +593,13 @@ const trail = breadcrumbTrail([
             }
           </div>
 
-          <p class="mt-3 flex items-center justify-center gap-1.5 text-xs text-[var(--color-ink-dim]">
+          <p class="mt-3 flex items-center justify-center gap-1.5 text-xs text-[var(--color-ink-dim)]">
             <svg
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
-              class="h-3.5 w-3.5 text-[var(--color-accent]"
+              class="h-3.5 w-3.5 text-[var(--color-accent)]"
               aria-hidden="true"
             >
               <rect x="4" y="10" width="16" height="10" rx="2"></rect>
@@ -607,7 +607,7 @@ const trail = breadcrumbTrail([
             </svg>
             Secure checkout · Card &amp; USDT (BEP-20)
           </p>
-          <p class="mt-1 text-center text-xs text-[var(--color-ink-dim]">Checkout is handled by Stripe.</p>
+          <p class="mt-1 text-center text-xs text-[var(--color-ink-dim)]">Checkout is handled by Stripe.</p>
           </form>
         </section>
 
@@ -615,27 +615,27 @@ const trail = breadcrumbTrail([
           <p class="metric-label">At a glance</p>
           <dl class="mt-4 space-y-3 text-sm">
             <div class="flex justify-between gap-3">
-              <dt class="text-[var(--color-ink-dim]">Platform</dt>
-              <dd class="text-right font-medium text-[var(--color-ink]">MT4 / MT5</dd>
+              <dt class="text-[var(--color-ink-dim)]">Platform</dt>
+              <dd class="text-right font-medium text-[var(--color-ink)]">MT4 / MT5</dd>
             </div>
             <div class="flex justify-between gap-3">
-              <dt class="text-[var(--color-ink-dim]">Operating system</dt>
-              <dd class="text-right font-medium text-[var(--color-ink]">Windows Server 2022</dd>
+              <dt class="text-[var(--color-ink-dim)]">Operating system</dt>
+              <dd class="text-right font-medium text-[var(--color-ink)]">Windows Server 2022</dd>
             </div>
             <div class="flex justify-between gap-3">
-              <dt class="text-[var(--color-ink-dim]">Access</dt>
-              <dd class="text-right font-medium text-[var(--color-ink]">Remote Desktop</dd>
+              <dt class="text-[var(--color-ink-dim)]">Access</dt>
+              <dd class="text-right font-medium text-[var(--color-ink)]">Remote Desktop</dd>
             </div>
             <div class="flex justify-between gap-3">
-              <dt class="text-[var(--color-ink-dim]">Setup guide</dt>
-              <dd class="text-right font-medium text-[var(--color-ink]">Included</dd>
+              <dt class="text-[var(--color-ink-dim)]">Setup guide</dt>
+              <dd class="text-right font-medium text-[var(--color-ink)]">Included</dd>
             </div>
           </dl>
         </section>
 
         <section class="panel p-6">
           <p class="metric-label">Availability</p>
-          <p class="mt-3 text-xs leading-6 text-[var(--color-ink-dim]">
+          <p class="mt-3 text-xs leading-6 text-[var(--color-ink-dim)]">
             Uptime and availability depend on the VPS infrastructure and network. Applications resume when service is
             restored.
           </p>
