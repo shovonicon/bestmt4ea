@@ -26,9 +26,11 @@ import planData from '../data/product-plans.json';
 export interface Props {
   product: any;
   reviews?: Array<{ rating: number; body: string; name: string; createdAt: number }>;
+  /** Show the discount-code field. False unless a code can actually be used. */
+  hasCoupons?: boolean;
 }
 
-const { product, reviews = [] } = Astro.props;
+const { product, reviews = [], hasCoupons = false } = Astro.props;
 const reviewCount = reviews.length;
 const reviewAverage = reviewCount > 0 ? reviews.reduce((sum, r) => sum + r.rating, 0) / reviewCount : 0;
 const detail = (vpsData as unknown as { vps?: Record<string, any> }).vps ?? {};
@@ -568,21 +570,27 @@ const trail = breadcrumbTrail([
             )
           }
 
-          {/* Optional discount code, posted as `coupon`. An unusable one is
-              refused by the server rather than quietly ignored, so the buyer is
-              told instead of being charged full price. */}
-          <div class="mt-5">
-            <label class="metric-label block" for="coupon">Discount code</label>
-            <input
-              id="coupon"
-              name="coupon"
-              class="mt-2 w-full rounded-xl border border-[var(--color-line)] bg-white/[0.03] px-3 py-2.5 text-sm text-[var(--color-ink)] outline-none placeholder:text-[var(--color-ink-dim)] focus:border-[var(--color-accent)]"
-              placeholder="Optional"
-              autocomplete="off"
-              autocapitalize="characters"
-              spellcheck="false"
-            />
-          </div>
+          {/* Optional discount code, posted as `coupon`. Hidden entirely when no
+              code is usable — a field that can only reject what is typed into it
+              is worse than no field — and an unusable one is refused by the
+              server rather than quietly ignored, so the buyer is told instead of
+              being charged full price. */}
+          {
+            hasCoupons && (
+              <div class="mt-5">
+                <label class="metric-label block" for="coupon">Discount code</label>
+                <input
+                  id="coupon"
+                  name="coupon"
+                  class="mt-2 w-full rounded-xl border border-[var(--color-line)] bg-white/[0.03] px-3 py-2.5 text-sm text-[var(--color-ink)] outline-none placeholder:text-[var(--color-ink-dim)] focus:border-[var(--color-accent)]"
+                  placeholder="Optional"
+                  autocomplete="off"
+                  autocapitalize="characters"
+                  spellcheck="false"
+                />
+              </div>
+            )
+          }
 
           {
             plans.length > 0 ? (

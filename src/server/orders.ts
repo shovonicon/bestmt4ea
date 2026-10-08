@@ -99,6 +99,24 @@ export async function loadCoupon(db: Db, code: string): Promise<Coupon | null> {
   return isCouponUsable(coupon, Date.now()) ? coupon : null;
 }
 
+/**
+ * Whether any code could actually be used right now.
+ *
+ * Checkout uses this to decide whether to render the code field at all, so a
+ * shop with no live codes does not offer a box that can only reject whatever is
+ * typed into it. Deliberately the *same* test checkout applies, not "is any row
+ * marked active": a code that is on but expired, or on but used up, is just as
+ * unusable as one that was switched off, and showing the field for it would
+ * promise something the next screen refuses. The coupons table is small enough
+ * that reading it whole is cheaper than expressing the same rule in SQL and
+ * risking the two drifting apart.
+ */
+export async function hasUsableCoupon(db: Db): Promise<boolean> {
+  const rows = await db.select().from(coupons).all();
+  const now = Date.now();
+  return rows.some((coupon) => isCouponUsable(coupon, now));
+}
+
 export async function createOrder(db: Db, input: CreateOrderInput): Promise<CreatedOrder> {
   if (input.items.length === 0) throw new OrderError('empty_order');
 

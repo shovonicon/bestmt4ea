@@ -9,6 +9,7 @@ import { getPublicProducts, isFreeProduct, isUnpublishedProduct } from '../../li
 import { getDb } from '../../db/client';
 import { reviews as reviewsTable } from '../../db/schema';
 import { getLatestSnapshot } from '../../server/performance';
+import { hasUsableCoupon } from '../../server/orders';
 import { reviewsForProduct } from '../../lib/product-reviews';
 
 const slug = Astro.params.slug ?? '';
@@ -42,6 +43,8 @@ const vps = products.find((entry) => entry.data.slug === 'vps' && entry.data.slu
 // Live MyFxBook figures and any published customer reviews. The transcribed
 // editorial record is the fallback when nothing is live.
 let live = null;
+/** Whether to offer a discount-code field at all. Off unless a code can be used. */
+let hasCoupons = false;
 // Approved customer reviews on file come first; anything customers post on the live
 // site (the database table) is added to them. Both are shown, and both are rated.
 let productReviews: Array<{ rating: number; body: string; name: string; createdAt: number }> = reviewsForProduct({
@@ -51,6 +54,7 @@ let productReviews: Array<{ rating: number; body: string; name: string; createdA
 try {
   const db = getDb();
   live = await getLatestSnapshot(db, product.data.slug);
+  hasCoupons = await hasUsableCoupon(db);
 
   const published = await db
     .select()
@@ -76,10 +80,11 @@ Astro.response.headers.set('cache-control', 'public, s-maxage=300, stale-while-r
 
 {
   product.data.slug === 'vps' ? (
-    <VpsLayout product={product} reviews={productReviews} />
+    <VpsLayout product={product} reviews={productReviews} hasCoupons={hasCoupons} />
   ) : (
     <ProductLayout
       product={product}
+      hasCoupons={hasCoupons}
       related={related}
       live={live}
       reviews={productReviews}
