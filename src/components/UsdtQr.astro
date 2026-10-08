@@ -38,6 +38,13 @@ export interface Props {
   network?: string;
   /** Shown above the code. */
   label?: string;
+  /**
+   * Render the amount and address beneath the code. Set false where the page
+   * already renders them — a checkout page usually has, and its own copy is the
+   * one its polling script reads, so duplicating the values would be both
+   * redundant and a trap for whoever edits it next.
+   */
+  showDetails?: boolean;
 }
 
 const {
@@ -48,6 +55,7 @@ const {
   decimals = 18,
   network = 'BEP-20 · BSC',
   label = 'Pay with USDT',
+  showDetails = true,
 } = Astro.props;
 
 /**
@@ -94,16 +102,22 @@ const svg = await QRCode.toString(uri, {
 
   <p class="usdt-qr__hint">Scan with any wallet that supports {network}</p>
 
-  <dl class="usdt-qr__fields">
-    <div>
-      <dt>Amount</dt>
-      <dd class="usdt-qr__amount">{amount} <span>USDT</span></dd>
-    </div>
-    <div>
-      <dt>Address</dt>
-      <dd class="usdt-qr__address">{address}</dd>
-    </div>
-  </dl>
+  {
+    showDetails && (
+      <dl class="usdt-qr__fields">
+        <div>
+          <dt>Amount</dt>
+          <dd class="usdt-qr__amount">
+            {amount} <span>USDT</span>
+          </dd>
+        </div>
+        <div>
+          <dt>Address</dt>
+          <dd class="usdt-qr__address">{address}</dd>
+        </div>
+      </dl>
+    )
+  }
 
   <p class="usdt-qr__warn">
     Send USDT on <strong>BNB Smart Chain (BEP-20)</strong> only. A transfer on another network will

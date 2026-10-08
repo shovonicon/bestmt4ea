@@ -2,6 +2,7 @@
 export const prerender = false;
 
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import UsdtQr from '../../../components/UsdtQr.astro';
 import { getDb } from '../../../db/client';
 import { getOrder } from '../../../server/orders';
 import { getUsdtPayment } from '../../../server/usdt-payments';
@@ -39,6 +40,16 @@ const settled = payment.status === 'PAID' || order.status === 'paid';
       Send exactly the amount below over the <strong>BNB Smart Chain (BEP-20)</strong> network. It is matched to
       order <span class="metric-value">{order.orderNumber}</span> automatically.
     </p>
+
+    {/*
+      The scan-to-pay code. Address-only details are hidden (`showDetails={false}`)
+      because the card below already prints the amount and address, and those two
+      elements are what the polling script reads — the component's copy would be a
+      second source of truth for a value that decides whether a payment matches.
+    */}
+    <div class="mt-8">
+      <UsdtQr address={payment.walletAddress} amount={payment.expectedAmount} showDetails={false} />
+    </div>
 
     <div class="brand-card mt-8 p-6" data-usdt data-payment={payment.id} data-confirm-url={`/checkout/return/?order=${encodeURIComponent(order.orderNumber)}`}>
       <dl class="space-y-5">
