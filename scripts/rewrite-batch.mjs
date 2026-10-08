@@ -181,6 +181,11 @@ const runOne = async (entry, index) => {
 
   // The prompt is piped through a file rather than passed as an argument: it is
   // several kilobytes of Markdown, and shell quoting would mangle it.
+  //
+  // `shell: true` on Windows is not optional. `cmdc` resolves to `cmdc.cmd`, and
+  // Node refuses to spawn a batch file without a shell — it throws, the worker
+  // rejects, and the whole batch dies before writing a single post. The argument
+  // list is fixed and contains no spaces, so going through the shell is safe.
   const out = createWriteStream(logFile);
   const child = spawn(
     cmdc,
@@ -195,7 +200,7 @@ const runOne = async (entry, index) => {
       '--output-format',
       'text',
     ],
-    { cwd: ROOT, shell: false, stdio: [await openRead(promptFile), out, out] },
+    { cwd: ROOT, shell: process.platform === 'win32', stdio: [await openRead(promptFile), out, out] },
   );
 
   const started = Date.now();
