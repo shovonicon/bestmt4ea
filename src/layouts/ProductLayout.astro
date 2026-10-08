@@ -1347,6 +1347,22 @@ const faqs = [
             }
           </ul>
 
+          {/* Optional discount code, posted as `coupon`. An unusable one is
+              refused by the server rather than quietly ignored, so the buyer is
+              told instead of being charged full price. */}
+          <div class="mt-5">
+            <label class="metric-label block" for="coupon">Discount code</label>
+            <input
+              id="coupon"
+              name="coupon"
+              class="mt-2 w-full rounded-xl border border-[var(--color-line)] bg-white/[0.03] px-3 py-2.5 text-sm text-[var(--color-ink)] outline-none placeholder:text-[var(--color-ink-dim)] focus:border-[var(--color-accent)]"
+              placeholder="Optional"
+              autocomplete="off"
+              autocapitalize="characters"
+              spellcheck="false"
+            />
+          </div>
+
           {
             plans.length > 0 ? (
               <div class="mt-6 grid gap-2">

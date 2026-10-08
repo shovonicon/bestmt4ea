@@ -1,8 +1,9 @@
-import { and, eq } from 'drizzle-orm';
+import { and, eq, sql } from 'drizzle-orm';
 import { env } from 'cloudflare:workers';
 import type { Db } from '../db/client';
 import { dbBatch } from '../db/client';
 import {
+  coupons,
   customers,
   entitlements,
   licenses,
@@ -12,6 +13,7 @@ import {
   productPlans,
   products,
   refunds,
+  type Coupon,
   type Order,
 } from '../db/schema';
 import { randomToken, uuid } from '../lib/crypto';
@@ -52,11 +54,49 @@ function newOrderNumber(): string {
 export interface CreateOrderInput {
   customerId: string;
   items: Array<{ productId: string; planCode: string; quantity?: number }>;
+  /** A discount code from checkout. Unusable codes are refused, not ignored. */
+  couponCode?: string | null;
 }
 
 export interface CreatedOrder {
   order: Order;
   items: Array<{ productId: string; titleSnapshot: string; unitPriceCents: number; quantity: number }>;
+  coupon: Coupon | null;
+}
+
+/**
+ * What a code takes off a subtotal. A percentage rounds *down*, so the discount
+ * can never exceed the fraction it claims, and a fixed amount is capped at the
+ * subtotal so an order can reach zero but never go negative.
+ */
+export function computeDiscount(subtotalCents: number, coupon: Coupon): number {
+  if (coupon.type === 'percent') {
+    return Math.floor((subtotalCents * coupon.value) / 100);
+  }
+  return Math.min(coupon.value, subtotalCents);
+}
+
+/** Whether a code can be used right now: switched on, unexpired, and not used up. */
+function isCouponUsable(coupon: Coupon, now: number): boolean {
+  if (!coupon.active) return false;
+  if (coupon.expiresAt && coupon.expiresAt.getTime() < now) return false;
+  if (coupon.maxRedemptions !== null && coupon.redemptions >= coupon.maxRedemptions) return false;
+  return true;
+}
+
+/**
+ * Look up a code by what the customer typed. Returns null for a code that does
+ * not exist *and* for one that exists but is unusable — checkout shows the same
+ * message either way, so a disabled code is not a way to probe which codes exist.
+ */
+export async function loadCoupon(db: Db, code: string): Promise<Coupon | null> {
+  const coupon = await db
+    .select()
+    .from(coupons)
+    .where(eq(coupons.code, code.trim().toUpperCase()))
+    .get();
+  if (!coupon) return null;
+  return isCouponUsable(coupon, Date.now()) ? coupon : null;
 }
 
 export async function createOrder(db: Db, input: CreateOrderInput): Promise<CreatedOrder> {
@@ -98,6 +138,16 @@ export async function createOrder(db: Db, input: CreateOrderInput): Promise<Crea
     });
   }
 
+  let coupon: Coupon | null = null;
+  let discount = 0;
+  if (input.couponCode) {
+    coupon = await loadCoupon(db, input.couponCode);
+    // Refused rather than ignored: silently charging full price for a code the
+    // customer typed is worse than telling them it did not work.
+    if (!coupon) throw new OrderError('invalid_coupon');
+    discount = computeDiscount(subtotal, coupon);
+  }
+
   const id = uuid();
   const now = new Date();
   await db.insert(orders).values({
@@ -106,11 +156,27 @@ export async function createOrder(db: Db, input: CreateOrderInput): Promise<Crea
     customerId: input.customerId,
     status: 'pending',
     subtotalCents: subtotal,
-    discountCents: 0,
-    totalCents: subtotal,
+    discountCents: discount,
+    totalCents: Math.max(0, subtotal - discount),
     currency: 'USD',
+    couponId: coupon?.id ?? null,
     createdAt: now,
   });
+
+  /*
+   * The use is counted here, when the order is created rather than when it is
+   * paid. A capped code has to reserve its place: if the count moved only on
+   * payment, two buyers could both pass a `maxRedemptions: 1` check and only one
+   * of them would be right. The cost of that choice is that an abandoned
+   * checkout spends a use, which is visible in the admin's usage column and can
+   * be corrected by turning the code off or deleting it.
+   */
+  if (coupon) {
+    await db
+      .update(coupons)
+      .set({ redemptions: sql`${coupons.redemptions} + 1` })
+      .where(eq(coupons.id, coupon.id));
+  }
 
   for (const row of resolved) {
     await db.insert(orderItems).values({
@@ -138,6 +204,7 @@ export async function createOrder(db: Db, input: CreateOrderInput): Promise<Crea
       unitPriceCents: row.priceCents,
       quantity: row.quantity,
     })),
+    coupon,
   };
 }
 
@@ -226,7 +293,17 @@ export async function settleOrder(db: Db, input: SettleOrderInput): Promise<Sett
 
   const items = await db.select().from(orderItems).where(eq(orderItems.orderId, order.id)).all();
   const now = new Date();
-  const provider = input.paymentMethod === 'usdt' ? 'usdt' : input.paymentMethod === 'card' ? 'stripe' : 'manual';
+  // `coupon` is its own provider: a code that covered the whole total settled
+  // without money changing hands, and the payment row should say so rather than
+  // claiming a manual collection nobody made.
+  const provider =
+    input.paymentMethod === 'usdt'
+      ? 'usdt'
+      : input.paymentMethod === 'card'
+        ? 'stripe'
+        : input.paymentMethod === 'coupon'
+          ? 'coupon'
+          : 'manual';
 
   await dbBatch(db, [
     db.update(orders).set({ status: 'paid', paidAt: now }).where(eq(orders.id, order.id)),

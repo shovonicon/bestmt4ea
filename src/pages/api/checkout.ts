@@ -22,9 +22,10 @@ export const POST: APIRoute = async ({ request, locals }) => {
   const db = getDb();
 
   try {
-    const { order, items } = await createOrder(db, {
+    const { order, items, coupon } = await createOrder(db, {
       customerId: session.subjectId,
       items: [{ productId: body.productId ?? '', planCode: body.plan ?? '', quantity: 1 }],
+      couponCode: body.coupon ?? null,
     });
     const customer = await db
       .select({ email: customers.email, usdtWallet: customers.usdtWalletAddress })
@@ -37,6 +38,11 @@ export const POST: APIRoute = async ({ request, locals }) => {
      * charge, and a customer listed in COMP_EMAILS is buying a comp. A comp keeps
      * the order intact but writes the whole subtotal off as a discount, so the
      * receipt, the payment row and the licence all describe one $0 transaction.
+     *
+     * A third case lands here too: a coupon that covered the whole total. That
+     * one already carries its own discount from `createOrder`, so it is settled
+     * as `coupon` rather than `free`, and the payment row records that no money
+     * was collected because a code paid for it.
      */
     const comped = isCompEmail(env.COMP_EMAILS, customer?.email);
     if (order.totalCents === 0 || comped) {
@@ -46,16 +52,19 @@ export const POST: APIRoute = async ({ request, locals }) => {
           .set({ discountCents: order.subtotalCents, totalCents: 0 })
           .where(eq(orders.id, order.id));
       }
+      const coveredByCoupon = !comped && order.totalCents === 0;
+      const kind = comped ? 'comp' : coveredByCoupon ? 'coupon' : 'free';
       await settleOrder(db, {
         orderId: order.id,
-        invoiceId: `${comped ? 'comp' : 'free'}-${order.orderNumber}`,
+        invoiceId: `${kind}-${order.orderNumber}`,
         transactionId: null,
-        paymentMethod: comped ? 'comp' : 'free',
+        paymentMethod: kind,
         chargedCents: 0,
+        rawPayload: coupon ? { source: 'coupon', coupon: coupon.code } : undefined,
       });
       return wantsHtml(request)
         ? redirect(`/checkout/return/?order=${encodeURIComponent(order.orderNumber)}`, 303)
-        : json({ ok: true, orderNumber: order.orderNumber, method: comped ? 'comp' : 'free' });
+        : json({ ok: true, orderNumber: order.orderNumber, method: kind });
     }
 
     const method = body.method === 'usdt' ? 'usdt' : 'card';
