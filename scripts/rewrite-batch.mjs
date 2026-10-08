@@ -207,6 +207,12 @@ const runOne = async (entry, index) => {
   // Node refuses to spawn a batch file without a shell — it throws, the worker
   // rejects, and the whole batch dies before writing a single post. The argument
   // list is fixed and contains no spaces, so going through the shell is safe.
+  // The FileHandle must stay referenced until the child has inherited the fd.
+  // Returning just `.fd` leaves the handle unreferenced, so a GC between here
+  // and spawn closes it and the spawn fails — an intermittent 0.2s batch death.
+  const { open } = await import('node:fs/promises');
+  const promptHandle = await open(promptFile, 'r');
+
   const out = createWriteStream(logFile);
   const child = spawn(
     cmdc,
@@ -221,19 +227,19 @@ const runOne = async (entry, index) => {
       '--output-format',
       'text',
     ],
-    { cwd: ROOT, shell: process.platform === 'win32', stdio: [await openRead(promptFile), out, out] },
+    { cwd: ROOT, shell: process.platform === 'win32', stdio: [promptHandle.fd, out, out] },
   );
 
   const started = Date.now();
-  const code = await new Promise((resolve) => child.on('exit', (c) => resolve(c ?? -1)));
+  // A failed spawn must surface as one failed worker, not an uncaught exception
+  // that kills the whole batch.
+  const code = await new Promise((resolve) => {
+    child.on('exit', (c) => resolve(c ?? -1));
+    child.on('error', () => resolve(-1));
+  });
+  await promptHandle.close().catch(() => {});
 
   return { entry, code, ms: Date.now() - started, logFile };
-};
-
-/** `spawn` needs a file descriptor for stdin, not a path. */
-async function openRead(path) {
-  const { open } = await import('node:fs/promises');
-  return (await open(path, 'r')).fd;
 }
 
 const results = [];
