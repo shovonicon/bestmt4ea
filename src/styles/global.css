@@ -859,6 +859,45 @@
     min-width: 0;
   }
 
+  /*
+   * One column below the promo breakpoint.
+   *
+   * The three tracks exist to hold the promo column and the side rails, and none
+   * of them render under 1280px — but the two 2.5rem column gaps still cost 80px,
+   * and the article kept sitting in track 2. At 390px that pushed the reading
+   * column right and clipped 24px off the end of every line: the headline ran off
+   * the screen mid-word and the lede was cut mid-sentence. Collapsing to a single
+   * track removes both the offset and the gaps, and the content returns to track 1
+   * to match.
+   */
+  @media (max-width: 1279px) {
+    .longform {
+      grid-template-columns: minmax(0, 1fr);
+      column-gap: 0;
+    }
+    .longform > * {
+      grid-column: 1;
+    }
+  }
+
+  /*
+   * Fixed-width broker creatives on a phone.
+   *
+   * A 728x90 scaled into a 297px column is 37px tall — the offer copy inside it
+   * is unreadable, so it converts nothing while still taking 143px of the fold and
+   * pushing the article down. The 990x250 Exness banner has the same problem at
+   * 83px. Both are desktop formats with no legible mobile form, so they are hidden
+   * here rather than shrunk into decoration. Bring them back when there is a
+   * mobile-format creative; until then a hidden banner costs nothing a scaled one
+   * was not already losing.
+   */
+  @media (max-width: 767px) {
+    .banner-ad,
+    .bottom-banner-ad {
+      display: none;
+    }
+  }
+
   /* ---------- Premium product-page layer ---------- */
 
   /* Full-bleed tinted band, used to break the card rhythm between sections. */
