@@ -44,23 +44,27 @@ const has = (name) => args.includes(`--${name}`);
 const COUNT = Number(flag('count', '6'));
 const JOBS = Number(flag('jobs', String(COUNT)));
 /*
- * Default model: the cheapest fast one in the catalogue, because this is a
- * high-volume, low-judgement job — 117 posts of the same shape. Ids are exact;
- * check `reference/models.md` before changing one.
+ * Default model: DeepSeek V4.1 Flash Fast, chosen for throughput over price.
+ * Ids are exact — a model id that is nearly right fails in a way that is painful
+ * to diagnose — so check `reference/models.md` before changing one.
  *
- *   Qwen/Qwen3.7-Flash                 $0.03 / $0.13   fast, agentic coding   <-- default
+ *   deepseek/deepseek-v4.1-flash-fast  $0.16 / $0.58   high-throughput V4.1   <-- default
+ *   Qwen/Qwen3.7-Flash                 $0.03 / $0.13   cheapest, fast
  *   stepfun/Step-3.5-Flash             $0.09 / $0.30   fast sparse-MoE
  *   deepseek/deepseek-v4-flash         $0.15 / $0.60   fast hybrid-attention
- *   deepseek/deepseek-v4.1-flash-fast  $0.16 / $0.58   high-throughput V4.1
  *   z-ai/glm-5.3-flash                 $0.15 / $0.50   affordable GLM, 1M ctx
  *
- * Speed is worth paying a little for here — throughput, not cost, is what makes
- * a six-worker batch finish — so `--model` is the dial. Note that the cheap
- * models pass the gates or they do not: `check:content:changed` enforces word
- * count, quickAnswer bounds, FAQ count, banned claims and title length, but it
- * cannot judge prose. A cheaper model means more editing afterwards, not less.
+ * Roughly five times the cheapest option, bought deliberately: with six workers
+ * running at once, wall-clock throughput is what decides when a batch lands,
+ * and the difference between 0.13 and 0.58 per million output tokens is small
+ * against the cost of the batch taking twice as long.
+ *
+ * What price cannot buy is judgement. `check:content:changed` enforces the
+ * structure — word count, quickAnswer bounds, FAQ count, banned claims, title
+ * length — and cannot judge prose, so whatever model runs here, the reading
+ * still has to be done by a person.
  */
-const MODEL = flag('model', 'Qwen/Qwen3.7-Flash');
+const MODEL = flag('model', 'deepseek/deepseek-v4.1-flash-fast');
 const MAX_TURNS = flag('max-turns', '120');
 const DRY = has('dry-run');
 const GATE = has('gate');
