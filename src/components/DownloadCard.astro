@@ -52,7 +52,7 @@ const fmt = (d?: Date) =>
     <span class="badge badge-accent">{isExternal ? 'Third-party' : isOwn ? 'Our own build' : 'Open source'}</span>
     {download.platform && <span class="badge">{download.platform}</span>}
     {download.version && <span class="badge">v{download.version}</span>}
-    <span class="badge">{download.license}</span>
+    {!isExternal && <span class="badge">{download.license}</span>}
   </div>
 
   <h2 class="mt-4 text-xl">Download {title}</h2>
@@ -66,21 +66,29 @@ const fmt = (d?: Date) =>
     }
   </p>
 
-  <dl class="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-4">
-    {
-      [
-        ['Platform', download.platform ?? '—'],
-        ['Version', download.version ?? '—'],
-        ['File size', download.fileSize ?? '—'],
-        ['Licence', download.license],
-      ].map(([label, value]) => (
-        <div>
-          <dt class="metric-label">{label}</dt>
-          <dd class="mt-1 text-sm text-[var(--color-ink)]">{value}</dd>
-        </div>
-      ))
-    }
-  </dl>
+  {
+    !isExternal && (
+      <dl class="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        {(
+          [
+            ['Platform', download.platform],
+            ['Version', download.version],
+            ['File size', download.fileSize],
+            ['Licence', download.license],
+          ] as const
+        )
+          // A row with no value is worse than no row: "Platform —" reads as a
+          // missing field rather than a field that does not apply.
+          .filter(([, value]) => Boolean(value))
+          .map(([label, value]) => (
+            <div>
+              <dt class="metric-label">{label}</dt>
+              <dd class="mt-1 text-sm text-[var(--color-ink)]">{value}</dd>
+            </div>
+          ))}
+      </dl>
+    )
+  }
 
   <div class="mt-6 flex flex-wrap items-center gap-3">
     <a
@@ -100,25 +108,32 @@ const fmt = (d?: Date) =>
     }
   </div>
 
-  <div class="mt-5 space-y-1 border-t border-[var(--color-line-soft)] pt-4 text-xs text-[var(--color-ink-dim)]">
-    <p>
-      <span class="text-[var(--color-ink-soft)]">Licence:</span>
-      {download.license}{download.updatedAt ? ` · updated ${fmt(download.updatedAt)}` : ''}
-    </p>
-    {
-      download.author && (
+  {
+    /*
+     * Skipped for an external card: "Licence: <a sentence>" under a Download
+     * heading reads as a missing value, and the author/source line duplicates
+     * the button that already opens the archive.
+     */
+    !isExternal && (
+      <div class="mt-5 space-y-1 border-t border-[var(--color-line-soft)] pt-4 text-xs text-[var(--color-ink-dim)]">
         <p>
-          <span class="text-[var(--color-ink-soft)]">Original author:</span> {download.author}
-          {download.sourceUrl && (
-            <>
-              {' · '}
-              <a href={download.sourceUrl} rel="noopener nofollow" class="text-[var(--color-accent)]">
-                view source
-              </a>
-            </>
-          )}
+          <span class="text-[var(--color-ink-soft)]">Licence:</span>
+          {download.license}{download.updatedAt ? ` · updated ${fmt(download.updatedAt)}` : ''}
         </p>
-      )
-    }
-  </div>
+        {download.author && (
+          <p>
+            <span class="text-[var(--color-ink-soft)]">Original author:</span> {download.author}
+            {download.sourceUrl && (
+              <>
+                {' · '}
+                <a href={download.sourceUrl} rel="noopener nofollow" class="text-[var(--color-accent)]">
+                  view source
+                </a>
+              </>
+            )}
+          </p>
+        )}
+      </div>
+    )
+  }
 </section>
