@@ -56,6 +56,15 @@ const steps = [
   ['Internal links', 'node scripts/check-links.mjs'],
   ['Downloads (static)', 'node scripts/check-downloads.mjs'],
   ['Downloads (live targets)', 'node scripts/check-downloads-live.mjs'],
+  /*
+   * The delivery chain, verified against the live bucket. check-downloads proves
+   * the frontmatter is well formed and the URL resolves; this proves the object
+   * a paying customer would be handed actually exists in remote R2. Two paid
+   * orders were undeliverable because an upload had gone to local storage and
+   * both the upload and its verification agreed with each other while the live
+   * bucket stayed empty.
+   */
+  ['Deliverables in remote R2', 'node scripts/check-files.mjs'],
   ['Browser + accessibility tests', 'npx playwright test'],
   ['Worker redirect tests', 'node scripts/worker.test.mjs'],
   ...(skipDryRun
