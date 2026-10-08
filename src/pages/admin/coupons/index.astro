@@ -1,0 +1,249 @@
+---
+export const prerender = false;
+
+import { desc } from 'drizzle-orm';
+import AdminLayout from '../../../layouts/AdminLayout.astro';
+import { getDb } from '../../../db/client';
+import { coupons } from '../../../db/schema';
+import { formatUsd } from '../../../lib/money';
+import { requireAdminMfa } from '../../../server/admin-auth';
+
+const session = Astro.locals.session;
+if (!requireAdminMfa(session)) return Astro.redirect('/admin/login/');
+
+const db = getDb();
+const rows = await db.select().from(coupons).orderBy(desc(coupons.createdAt)).all();
+
+/** ?edit=CODE loads that coupon into the form so it can be changed in place. */
+const editCode = (Astro.url.searchParams.get('edit') ?? '').trim().toUpperCase();
+const editing = editCode ? (rows.find((row) => row.code === editCode) ?? null) : null;
+
+/** A fixed coupon is stored in cents but edited in dollars. */
+const valueField = editing
+  ? editing.type === 'fixed'
+    ? String(editing.value / 100)
+    : String(editing.value)
+  : '';
+
+const done = Astro.url.searchParams.get('done');
+const error = Astro.url.searchParams.get('error');
+
+const ERRORS: Record<string, string> = {
+  missing_fields: 'A code is required.',
+  invalid_value: 'The value must be greater than zero (and at most 100 for a percentage).',
+  invalid_max: 'Max redemptions must be a whole number above zero.',
+  invalid_expiry: 'That expiry date could not be read.',
+  not_found: 'That coupon no longer exists.',
+};
+
+const flash = done
+  ? { tone: 'ok', text: done === 'deleted' ? 'Coupon deleted.' : done === 'toggled' ? 'Coupon switched.' : 'Saved.' }
+  : error
+    ? { tone: 'warn', text: ERRORS[error] ?? `That action did not complete (${error.replace(/_/g, ' ')}).` }
+    : null;
+
+const valueLabel = (coupon: (typeof rows)[number]) =>
+  coupon.type === 'fixed' ? formatUsd(coupon.value) : `${coupon.value}%`;
+---
+
+<AdminLayout
+  active="coupons"
+  title="Coupons"
+  heading="Coupons"
+  lead="Discount codes for the shop. Creating one publishes it immediately — nothing else has to be switched on — and every change is written to the audit log."
+>
+  {
+    flash && (
+      <div
+        class="admin-panel"
+        style={flash.tone === 'ok'
+          ? 'border-color:rgba(0,193,144,0.35);background-color:rgba(0,193,144,0.07);margin-bottom:1rem'
+          : 'border-color:rgba(251,191,36,0.35);background-color:rgba(251,191,36,0.07);margin-bottom:1rem'}
+        role="status"
+      >
+        <p class="admin-empty" style="color:var(--color-ink-soft);margin:0">{flash.text}</p>
+      </div>
+    )
+  }
+
+  <div class="admin-panel">
+    <div class="admin-panel-head">
+      <h2>{editing ? `Edit ${editing.code}` : 'Create a coupon'}</h2>
+      {editing && <a class="admin-btn" href="/admin/coupons/">Cancel</a>}
+    </div>
+
+    <form method="post" action="/api/admin/coupon/" class="coupon-form">
+      <input type="hidden" name="action" value="save" />
+
+      <label class="coupon-field">
+        <span>Code</span>
+        <input name="code" required value={editing?.code ?? ''} placeholder="WELCOME40" autocapitalize="characters" />
+        {
+          editing && (
+            <small>Codes are stored in capitals. Changing this one creates a second coupon — delete this one instead if you meant to replace it.</small>
+          )
+        }
+      </label>
+
+      <label class="coupon-field">
+        <span>Type</span>
+        <select name="type">
+          <option value="percent" selected={editing?.type !== 'fixed'}>percent off</option>
+          <option value="fixed" selected={editing?.type === 'fixed'}>fixed amount off (USD)</option>
+        </select>
+      </label>
+
+      <label class="coupon-field">
+        <span>Value</span>
+        <input name="value" inputmode="decimal" required value={valueField} placeholder="40" />
+        <small>A percentage (40 means 40% off) or a dollar amount, depending on the type.</small>
+      </label>
+
+      <label class="coupon-field">
+        <span>Max redemptions</span>
+        <input name="maxRedemptions" inputmode="numeric" value={editing?.maxRedemptions ?? ''} placeholder="unlimited" />
+        <small>Leave blank for unlimited. The count is enforced at checkout.</small>
+      </label>
+
+      <label class="coupon-field">
+        <span>Expires</span>
+        <input name="expiresAt" type="date" value={editing?.expiresAt?.toISOString().slice(0, 10) ?? ''} />
+        <small>Optional. Runs to the end of that day, UTC.</small>
+      </label>
+
+      <button class="admin-btn admin-btn-primary" type="submit">
+        {editing ? 'Save changes' : 'Create coupon'}
+      </button>
+    </form>
+  </div>
+
+  <div class="admin-panel">
+    <div class="admin-panel-head">
+      <h2>All coupons</h2>
+      <span class="admin-mono muted">{rows.length} total</span>
+    </div>
+    {
+      rows.length === 0 ? (
+        <p class="admin-empty">
+          No coupons yet. Create one above — it is live the moment you save.
+        </p>
+      ) : (
+        <div style="overflow-x:auto">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th scope="col">Code</th>
+                <th scope="col">Type</th>
+                <th scope="col">Value</th>
+                <th scope="col">Used</th>
+                <th scope="col">Expires</th>
+                <th scope="col">State</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((coupon) => (
+                <tr>
+                  <td class="admin-mono">{coupon.code}</td>
+                  <td class="muted">{coupon.type === 'fixed' ? 'fixed' : 'percent'}</td>
+                  <td class="admin-mono">{valueLabel(coupon)}</td>
+                  <td class="admin-mono">
+                    {coupon.redemptions}
+                    {coupon.maxRedemptions ? `/${coupon.maxRedemptions}` : ''}
+                  </td>
+                  <td class="admin-mono muted">{coupon.expiresAt?.toISOString().slice(0, 10) ?? '—'}</td>
+                  <td>
+                    <span class:list={['badge', coupon.active ? 'badge-accent' : '']}>
+                      {coupon.active ? 'active' : 'off'}
+                    </span>
+                  </td>
+                  <td>
+                    <div class="admin-actions">
+                      <a class="admin-btn" href={`/admin/coupons/?edit=${encodeURIComponent(coupon.code)}`}>
+                        Edit
+                      </a>
+                      <form method="post" action="/api/admin/coupon/">
+                        <input type="hidden" name="id" value={coupon.id} />
+                        <input type="hidden" name="action" value="toggle" />
+                        <button class="admin-btn" type="submit">
+                          {coupon.active ? 'Turn off' : 'Turn on'}
+                        </button>
+                      </form>
+                      <form
+                        method="post"
+                        action="/api/admin/coupon/"
+                        data-confirm={`Delete ${coupon.code} for good? Past orders keep their discount, but the code stops working.`}
+                      >
+                        <input type="hidden" name="id" value={coupon.id} />
+                        <input type="hidden" name="action" value="delete" />
+                        <button class="admin-btn" type="submit">
+                          Delete
+                        </button>
+                      </form>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )
+    }
+    <p class="admin-empty" style="margin-top:1rem">
+      Turning a code off keeps it and its history; deleting removes it. Orders keep their own discount
+      amount either way, so a past receipt never changes — which is why deleting a code is safe.
+    </p>
+  </div>
+</AdminLayout>
+
+<script>
+  // Deleting is irreversible, so the second click is asked for explicitly.
+  document.querySelectorAll('form[data-confirm]').forEach((form) => {
+    form.addEventListener('submit', (event) => {
+      if (!window.confirm(form.getAttribute('data-confirm') ?? 'Are you sure?')) event.preventDefault();
+    });
+  });
+</script>
+
+<style>
+  .coupon-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .coupon-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .coupon-field > span {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-dim);
+  }
+
+  .coupon-field input,
+  .coupon-field select {
+    width: 100%;
+  }
+
+  .coupon-field small {
+    font-size: 0.72rem;
+    line-height: 1.5;
+    color: var(--color-ink-dim);
+  }
+
+  .coupon-form button {
+    align-self: end;
+  }
+
+  /* The Edit control is a link styled as a button; the shell's button class does
+     not reset the underline an anchor would otherwise carry. */
+  a.admin-btn {
+    text-decoration: none;
+  }
+</style>

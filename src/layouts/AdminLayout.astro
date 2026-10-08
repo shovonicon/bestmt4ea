@@ -32,6 +32,7 @@ export interface Props {
     | 'customers'
     | 'licenses'
     | 'orders'
+    | 'coupons'
     | 'payments'
     | 'builds'
     | 'reviews'
@@ -65,6 +66,8 @@ const ICONS: Record<string, string> = {
   reviews: '<path d="m12 3.5 2.6 5.3 5.9.9-4.25 4.15 1 5.85L12 16.9l-5.25 2.8 1-5.85L3.5 9.7l5.9-.9Z"/>',
   audit: '<path d="M9 3h6l5 5v13H4V3h5Z"/><path d="M14 3v5h5M8 13h8M8 17h5"/>',
   key: '<circle cx="7.5" cy="15.5" r="3.6"/><path d="m10.3 13.3 8.4-8.4M16 7.6l2.6 2.6M13.3 10.3l2.6 2.6"/>',
+  coupons:
+    '<path d="M3 11.5V6a2 2 0 0 1 2-2h5.5a2 2 0 0 1 1.4.6l9 9a2 2 0 0 1 0 2.8l-5.5 5.5a2 2 0 0 1-2.8 0l-9-9a2 2 0 0 1-.6-1.4Z"/><circle cx="7.5" cy="7.5" r="1.2"/>',
 };
 
 const groups = [
@@ -80,6 +83,7 @@ const groups = [
     label: 'Billing',
     links: [
       { key: 'orders', label: 'Orders', href: url('/admin/orders'), icon: 'orders' },
+      { key: 'coupons', label: 'Coupons', href: url('/admin/coupons'), icon: 'coupons' },
       { key: 'payments', label: 'USDT payments', href: url('/admin/payments'), icon: 'payments' },
     ],
   },
