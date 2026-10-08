@@ -18,8 +18,6 @@
  * Env:
  *   INGEST_URL          base URL of the app            (default http://localhost:4321)
  *   PERF_INGEST_TOKEN   shared secret for the endpoint (required unless --dry-run)
- *   MYFXBOOK_SESSION    optional session cookie value  (enables the monthly breakdown;
- *                       the /private/charts.json endpoint 403s for anonymous visitors)
  *
  * Honesty rules: a figure is only sent when it was actually read from the page.
  * A missing metric is omitted rather than guessed, so a parse change shows up as
@@ -41,7 +39,6 @@ const onlySlug = (() => {
 })();
 const INGEST_URL = (process.env.INGEST_URL ?? 'http://localhost:4321').replace(/\/$/, '');
 const TOKEN = process.env.PERF_INGEST_TOKEN ?? '';
-const SESSION = process.env.MYFXBOOK_SESSION ?? '';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 /* ---------------------------------------------------------------- helpers */
@@ -153,43 +150,6 @@ function buildRaw(tables, pageText) {
   return { header, chips, summary, periods, statistics };
 }
 
-/** The monthly breakdown only loads for a signed-in visitor. */
-async function readMonthly(page) {
-  // The monthly Highcharts instance renders after the rest of the page settles, so
-  // poll for it. Reading on a fixed timer made the month set depend on load timing
-  // — the same account returned a different number of months between runs.
-  await page
-    .waitForFunction(
-      () => {
-        const HC = globalThis.Highcharts;
-        const chart = HC?.charts?.filter(Boolean).find((c) => c.renderTo?.id === 'monthlyCont');
-        return Boolean(chart?.series?.some((s) => s.data?.length));
-      },
-      { timeout: 25000 },
-    )
-    .catch(() => {});
-
-  const charts = await page.evaluate(() => {
-    const HC = globalThis.Highcharts;
-    if (!HC?.charts) return null;
-    const chart = HC.charts.filter(Boolean).find((c) => c.renderTo?.id === 'monthlyCont');
-    if (!chart?.series?.length) return null;
-    return chart.series.map((s) => ({
-      name: s.name,
-      points: s.data.map((p) => ({ cat: p.category ?? p.name ?? String(p.x), y: p.y })),
-    }));
-  });
-  if (!charts) return [];
-
-  const series = charts.find((s) => /change|gain/i.test(String(s.name))) ?? charts[0];
-  return series.points
-    .filter((p) => p.y != null && Number.isFinite(Number(p.y)))
-    .map((p) => {
-      const y = Number(p.y);
-      return { label: clean(String(p.cat)), gain: `${y >= 0 ? '+' : ''}${y.toFixed(2)}%` };
-    });
-}
-
 function buildPayload(slug, account, raw, pageText) {
   const pick = (name) => raw.summary.find(([l]) => l.toLowerCase() === name.toLowerCase())?.[1];
   const stat = (name) => raw.statistics.find(([l]) => l.toLowerCase() === name.toLowerCase())?.[1];
@@ -266,12 +226,6 @@ async function main() {
       const tables = await readTables(page);
       const pageText = await page.innerText('body');
       const raw = buildRaw(tables, pageText);
-      // The monthly chart is served intermittently and a retry does not help —
-      // measured: the same account returned 6 points / 0 / 0 across three loads,
-      // and reloading inside a run returned fewer accounts with months than not
-      // retrying at all. Treat an empty series as "Myfxbook did not serve it this
-      // time" and let the next scheduled run pick it up.
-      raw.monthly = await readMonthly(page);
 
       if (!raw.summary.length) throw new Error('no summary figures parsed');
 
@@ -282,7 +236,6 @@ async function main() {
         `pf=${payload.metrics.profitFactor ?? '?'}`,
         `periods=${raw.periods.length}`,
         `stats=${raw.statistics.length}`,
-        `months=${raw.monthly.length}`,
       ].join(' ');
 
       if (DRY_RUN) {
@@ -310,17 +263,12 @@ async function main() {
   await browser.close();
 
   console.log(`\n${DRY_RUN ? 'Scraped' : 'Ingested'} ${DRY_RUN ? slugs.length - problems.length : posted}/${slugs.length} accounts.`);
-  if (rawMonthlyHint) console.log(rawMonthlyHint);
   if (problems.length) {
     console.log('\nProblems:');
     for (const p of problems) console.log('  - ' + p);
     process.exitCode = 2;
   }
 }
-
-const rawMonthlyHint = SESSION
-  ? ''
-  : 'Note: monthly breakdown skipped — set MYFXBOOK_SESSION to include it (/private/charts.json 403s anonymously).';
 
 main().catch((err) => {
   console.error('Collector failed:', err.message);
