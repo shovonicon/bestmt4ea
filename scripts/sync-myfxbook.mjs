@@ -19,6 +19,7 @@
  * Usage:
  *   node scripts/sync-myfxbook.mjs            # every mapped account
  *   node scripts/sync-myfxbook.mjs <slug>     # one
+ *   node scripts/sync-myfxbook.mjs --tolerant # warn instead of failing (predeploy)
  */
 
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
@@ -35,6 +36,14 @@ const onlySlug = process.argv.slice(2).find((a) => !a.startsWith('--'));
 // --local reads the local D1 instead of the deployed one, so the whole chain can be
 // checked on a developer machine without touching production.
 const LOCAL = process.argv.slice(2).includes('--local');
+/*
+ * `--tolerant` is for the `predeploy` hook. A slightly stale file is still worth
+ * deploying, and a blocked or unauthenticated wrangler must not be able to stop a
+ * deploy outright — you should still be able to ship a copy fix from a train. On a
+ * hard failure the existing file is left untouched and the pages report the last known
+ * figures as stale, which is the honest outcome.
+ */
+const TOLERANT = process.argv.slice(2).includes('--tolerant');
 
 const num = (value) => {
   if (value === null || value === undefined || value === '') return undefined;
@@ -181,11 +190,17 @@ async function main() {
   if (problems.length) {
     console.log('\nProblems:');
     for (const p of problems) console.log(`  - ${p}`);
-    process.exitCode = 2;
+    if (!TOLERANT) process.exitCode = 2;
   }
 }
 
 main().catch((err) => {
   console.error('Publish failed:', err.message);
+  if (TOLERANT) {
+    console.error(
+      'Continuing anyway (--tolerant): the existing file is unchanged, so the pages keep the last known figures and report them as stale.',
+    );
+    return;
+  }
   process.exit(1);
 });

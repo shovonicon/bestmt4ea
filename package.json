@@ -47,7 +47,7 @@
     "cron:dry-run": "wrangler deploy --config worker-cron/wrangler.jsonc --dry-run",
     "cron:deploy": "wrangler deploy --config worker-cron/wrangler.jsonc",
     "release:check": "node scripts/release-gate.mjs",
-    "predeploy": "npm run release:check",
+    "predeploy": "node scripts/sync-myfxbook.mjs --tolerant && npm run release:check",
     "deploy": "wrangler deploy"
   },
   "dependencies": {

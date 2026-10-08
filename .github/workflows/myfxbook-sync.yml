@@ -1,20 +1,27 @@
 name: Myfxbook performance sync
 
-# Drives the scheduled collector: a headless browser reads each public Myfxbook
-# account page and POSTs a snapshot to the app's ingest endpoint. Myfxbook 403s
-# plain server-side fetches, which is why this runs in a real browser rather
-# than inside the Cloudflare Worker.
+# After a collection, rebuild the pages that carry performance figures.
+#
+# This workflow does not collect anything. Collection needs a real browser from a
+# residential connection — Myfxbook 403s both plain server-side fetches and GitHub's
+# runner IPs — so it runs locally via scripts/local/collect-myfxbook.cmd, which POSTs
+# to the app's token-guarded ingest endpoint. What is left here is the half that can
+# run anywhere: read D1, write src/data/myfxbook-live.json, rebuild, deploy.
 #
 # Required repository secrets:
-#   BESTMT4EA_INGEST_URL  e.g. https://bestmt4ea.com
-#   PERF_INGEST_TOKEN     the same secret the Worker holds
-#   MYFXBOOK_SESSION      optional; enables the monthly breakdown (403s anonymously)
+#   CLOUDFLARE_API_TOKEN   Workers Scripts: Edit + D1: Read
+#   CLOUDFLARE_ACCOUNT_ID  the account that owns the bestmt4ea database
 
 on:
-  # No schedule: Myfxbook returns 403 to GitHub's runner IPs on every attempt, so a
-  # scheduled run only fails. Collect from a normal connection instead
-  # (scripts/local/collect-myfxbook.cmd), then publish with scripts/sync-myfxbook.mjs.
-  # Re-add a `schedule:` here if the collector ever moves somewhere Myfxbook allows.
+  # Dispatch-only, and deliberately so. Collection cannot run here at all: Myfxbook
+  # returns 403 to GitHub's runner IPs, so a `collect` job and a `schedule:` could only
+  # ever burn ~13 minutes and fail. Collection runs from a normal connection instead —
+  # scripts/local/collect-myfxbook.cmd -> the token-guarded ingest endpoint -> D1.
+  #
+  # Everything below is a pure D1 reader, so it cannot be blocked and needs no browser.
+  # It is the only step that has to run after a collection. A deploy from a developer
+  # machine refreshes the same file through the `predeploy` hook, which is why the two
+  # paths cannot drift apart.
   workflow_dispatch: {}
 
 concurrency:
@@ -22,39 +29,12 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  collect:
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Install Chromium
-        run: npx playwright install --with-deps chromium
-
-      - name: Collect and ingest
-        env:
-          INGEST_URL: ${{ secrets.BESTMT4EA_INGEST_URL }}
-          PERF_INGEST_TOKEN: ${{ secrets.PERF_INGEST_TOKEN }}
-          MYFXBOOK_SESSION: ${{ secrets.MYFXBOOK_SESSION }}
-        run: node scripts/collect-myfxbook.mjs
-
   # The collector only fills the database. The prerendered pages — homepage, /shop/,
   # /top-ranking/, the header column, the promo, the product cards — are built from
   # src/data/myfxbook-live.json, so without this job they keep whatever figures they
   # were last built with. This reads the newest snapshot per account out of D1,
   # writes that file, and rebuilds and deploys.
   publish:
-    needs: collect
-    # Runs even when some accounts were rate-limited: a partial refresh beats none.
-    if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
