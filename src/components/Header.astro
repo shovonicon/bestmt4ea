@@ -5,6 +5,7 @@ import { getPerformance } from '../lib/performance';
 import { site } from '../lib/site';
 import { url } from '../lib/urls';
 import taxonomies from '../data/taxonomies.json';
+import myfxbookAccounts from '../data/myfxbook-accounts.json';
 
 /**
  * Mega-menu icons. The reference (`forexcracked.com`) labels every menu section
@@ -28,11 +29,31 @@ const CHEVRON = '<path d="m9 18 6-6-6-6"/>';
 
 // Public products only — a withdrawn one must not reappear in the mega menu.
 const products = await getPublicProducts();
-const featured = products
+
+/*
+ * The menu splits the catalogue in two: the systems with a public Myfxbook
+ * account — the ones whose figures can be verified at the source — are the
+ * featured column, and everything else (the VPS, the indicator, and the systems
+ * with no tracking account) fills the second.
+ *
+ * Both are derived rather than named. Giving a product an account moves it into
+ * Featured on its own, and taking one away moves it back, with no edit here; and
+ * because the second column is defined as the remainder, every public product
+ * stays reachable even if the two groups stop being six and six.
+ */
+const syncedSlugs = new Set(Object.keys(myfxbookAccounts).filter((key) => !key.startsWith('_')));
+
+const rankedProducts = products
   .map((product) => ({ product, perf: getPerformance(product.data.slug) }))
-  .sort((a, b) => (b.perf?.totalGainPct ?? -Infinity) - (a.perf?.totalGainPct ?? -Infinity))
-  .slice(0, 8)
-  .map(({ product }) => ({ href: url(`/product/${product.data.slug}`), label: product.data.title }));
+  .sort((a, b) => (b.perf?.totalGainPct ?? -Infinity) - (a.perf?.totalGainPct ?? -Infinity));
+
+const menuLink = (product: any) => ({
+  href: url(`/product/${product.data.slug}`),
+  label: product.data.title,
+});
+
+const featured = rankedProducts.filter(({ product }) => syncedSlugs.has(product.data.slug)).map(({ product }) => menuLink(product));
+const otherProducts = rankedProducts.filter(({ product }) => !syncedSlugs.has(product.data.slug)).map(({ product }) => menuLink(product));
 
 /**
  * Blog categories, grouped for the mega menu.
@@ -103,14 +124,7 @@ const menusRaw = [
     label: 'Products',
     columns: [
       { title: 'Featured Expert Advisors', icon: 'flash', links: featured },
-      {
-        title: 'Tools & Infrastructure',
-        icon: 'tools',
-        links: [
-          { href: '/product/golden-deer-holy-grail-indicator', label: 'Golden Deer Indicator' },
-          { href: '/product/vps', label: 'Low Latency Forex VPS' },
-        ],
-      },
+      { title: 'Tools & Infrastructure', icon: 'tools', links: otherProducts },
     ],
   },
   {
