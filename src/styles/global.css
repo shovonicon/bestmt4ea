@@ -805,7 +805,11 @@
    */
   @media (min-width: 1280px) {
     .longform {
-      grid-template-columns: minmax(0, 1fr) min(40rem, 100%) 25rem minmax(0, 1fr);
+      /*
+       * The last track matches the card width in PromoAd exactly (325px), so the
+       * cards fill the column edge to edge rather than floating inside a wider box.
+       */
+      grid-template-columns: minmax(0, 1fr) min(40rem, 100%) 325px minmax(0, 1fr);
     }
     /* Two classes deep so it beats `.longform > * { grid-column: 2 }` below. */
     .longform > .longform-aside {
