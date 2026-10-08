@@ -99,6 +99,12 @@ const RESOURCES = [
     fileKey: 'resources/scalping-ea-demo-test-log.pdf',
     about: 'a printable 20-trade demo log that records spread, slippage and exit reason',
   },
+  {
+    match: /review|reviews|comparison|best|vetting|checklist|red flag|before you (buy|install)/i,
+    fileKey: 'resources/eurusd-ea-evaluation-checklist.pdf',
+    about:
+      'a printable eight-section EA evaluation checklist — where the file came from, reading the strategy before the curve, the five numbers to demand, testing a backtest for dishonesty, a fixed demo protocol, a position-size worksheet, red flags and a go / no-go gate',
+  },
 ];
 const DEFAULT_RESOURCE = {
   fileKey: 'resources/ea-risk-position-size-calculator.pdf',
