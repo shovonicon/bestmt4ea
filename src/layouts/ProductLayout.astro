@@ -150,78 +150,12 @@ const raw = (live?.raw ?? null) as null | {
     trades: string;
     lots: string;
   }>;
-  /** Myfxbook's month-by-month breakdown, when the collector captures it. */
-  monthly?: Array<{ label?: string; gain?: string; profit?: string }>;
   statistics?: StatPair[];
 };
 
-// Real synced growth points, and a month-over-month view derived from them.
-// Nothing here is invented: a month appears only when real captures exist for it.
+// Real synced growth points. The month-over-month view that used to sit beside
+// them is gone, so nothing aggregates captures into months any more.
 const growthPoints = series.filter((p) => p.growthPct != null);
-const byMonth = new Map<
-  string,
-  {
-    label: string;
-    first: number;
-    last: number;
-    captures: number;
-    profitFirst: number | null;
-    profitLast: number | null;
-  }
->();
-for (const point of growthPoints) {
-  const date = new Date(point.capturedAt);
-  const key = `${date.getUTCFullYear()}-${String(date.getUTCMonth() + 1).padStart(2, '0')}`;
-  const label = date.toLocaleString('en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' });
-  const value = Number(point.growthPct);
-  const entry = byMonth.get(key);
-  if (!entry) {
-    byMonth.set(key, {
-      label,
-      first: value,
-      last: value,
-      captures: 1,
-      profitFirst: point.profitCents ?? null,
-      profitLast: point.profitCents ?? null,
-    });
-  } else {
-    entry.last = value;
-    entry.captures += 1;
-    if (point.profitCents != null) entry.profitLast = point.profitCents;
-  }
-}
-// A month needs at least two captures before it has a change to report. A single
-// capture is a snapshot, not a month's result, and would read as a flat 0.00%.
-const derivedMonthly = [...byMonth.entries()]
-  .filter(([, m]) => m.captures > 1)
-  .sort((a, b) => (a[0] < b[0] ? -1 : 1))
-  .map(([, m]) => ({
-    label: m.label,
-    gain: `${m.last - m.first >= 0 ? '+' : ''}${(m.last - m.first).toFixed(2)}%`,
-    value: Number((m.last - m.first).toFixed(2)),
-    profit:
-      m.profitFirst != null && m.profitLast != null
-        ? formatMoney((m.profitLast - m.profitFirst) / 100, currency)
-        : '—',
-  }));
-
-// Best source first: Myfxbook's own month-by-month breakdown when the collector
-// captures it (`raw.monthly`), otherwise the months we can derive from our own
-// synced history. Nothing is invented — a month appears only when data backs it.
-const rawMonthly = Array.isArray(raw?.monthly) ? raw.monthly : [];
-const monthly = rawMonthly.length
-  ? rawMonthly.map((m) => {
-      const gain = String(m.gain ?? '');
-      const parsed = Number(gain.replace(/[^\d.-]/g, ''));
-      const value = Number.isFinite(parsed) ? parsed : 0;
-      return {
-        label: String(m.label ?? ''),
-        gain: gain || `${value >= 0 ? '+' : ''}${value.toFixed(2)}%`,
-        value,
-        profit: m.profit != null ? String(m.profit) : '—',
-      };
-    })
-  : derivedMonthly;
 
 // ---- Data-driven premium blocks -------------------------------------------
 type Plan = {
@@ -611,7 +545,6 @@ const faqs = [
           <div class="reveal">
             <ProductPerformance
               raw={raw}
-              monthly={monthly}
               growthPoints={growthPoints.map((p) => ({ capturedAt: p.capturedAt, growthPct: Number(p.growthPct) }))}
               syncedLabel={syncedLabel}
               hasLive={hasLive}

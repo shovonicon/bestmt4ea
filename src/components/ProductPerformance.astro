@@ -1,6 +1,5 @@
 ---
 import GrowthChart from './GrowthChart.astro';
-import MonthlyGainChart from './MonthlyGainChart.astro';
 
 type StatPair = [string, string];
 
@@ -13,7 +12,6 @@ export interface Props {
     periods?: Array<{ label: string; gain: string; profit: string; pips: string; win: string; trades: string; lots: string }>;
     statistics?: StatPair[];
   };
-  monthly?: Array<{ label: string; gain: string; value: number; profit: string }>;
   growthPoints?: Array<{ capturedAt: number; growthPct: number }>;
   syncedLabel: string;
   hasLive: boolean;
@@ -27,7 +25,6 @@ export interface Props {
 
 const {
   raw = null,
-  monthly = [],
   growthPoints = [],
   syncedLabel,
   hasLive,
@@ -75,20 +72,6 @@ const hasTrades = Boolean(raw?.statistics && raw.statistics.length > 0);
       <button class="tab" type="button" role="tab" id="tab-account" aria-controls="panel-account" aria-selected="true">
         Account statistics
       </button>
-      {
-        /*
-         * Hidden until it has something to show. The month-by-month breakdown only
-         * exists when Myfxbook serves its signed-in chart (or when our own captures
-         * span two months), and a tab named "Monthly log" that opens onto an apology
-         * costs more trust than the tab is worth. It reappears on its own the first
-         * time `monthly` is non-empty.
-         */
-        monthly.length > 0 && (
-          <button class="tab" type="button" role="tab" id="tab-monthly" aria-controls="panel-monthly" aria-selected="false">
-            Monthly log
-          </button>
-        )
-      }
       <button
         class="tab"
         type="button"
@@ -163,35 +146,6 @@ const hasTrades = Boolean(raw?.statistics && raw.statistics.length > 0);
         )
       }
     </div>
-
-    {
-      monthly.length > 0 && (
-        <div class="tab-panel mt-5" role="tabpanel" id="panel-monthly" aria-labelledby="tab-monthly" hidden>
-          <MonthlyGainChart monthly={monthly} />
-
-          <div class="table-shell mt-5">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Month</th>
-                  <th>Gain</th>
-                  <th>Profit</th>
-                </tr>
-              </thead>
-              <tbody>
-                {monthly.map((row) => (
-                  <tr>
-                    <th scope="row">{row.label}</th>
-                    <td class="metric-value">{row.gain}</td>
-                    <td class="metric-value">{row.profit}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      )
-    }
 
     <div class="tab-panel mt-5" role="tabpanel" id="panel-trades" aria-labelledby="tab-trades" hidden>
       {

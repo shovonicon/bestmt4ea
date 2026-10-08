@@ -61,23 +61,6 @@ try {
     }))
     .sort((a, b) => a.capturedAt - b.capturedAt);
 
-  // Myfxbook serves the monthly breakdown intermittently, so the newest capture can
-  // arrive without it while still carrying current summary and trade figures. Fall
-  // back to the most recent capture that DID include the chart, rather than blanking
-  // the Monthly log for a day. The chart is month-by-month, so a day or two of lag
-  // on it is not a stale figure.
-  const monthsOf = (raw: Record<string, unknown> | null | undefined) =>
-    Array.isArray((raw as { monthly?: unknown } | null | undefined)?.monthly)
-      ? ((raw as { monthly: unknown[] }).monthly)
-      : [];
-
-  if (live && monthsOf(live.raw).length === 0) {
-    const withMonths = rows.find((row) => monthsOf(row.raw).length > 0);
-    if (withMonths) {
-      live = { ...live, raw: { ...(live.raw ?? {}), monthly: monthsOf(withMonths.raw) } };
-    }
-  }
-
   const published = await db
     .select()
     .from(reviewsTable)
