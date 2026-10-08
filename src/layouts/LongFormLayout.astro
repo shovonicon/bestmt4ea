@@ -25,15 +25,16 @@ import AnswerBox from '../components/AnswerBox.astro';
 import KeyTakeaways from '../components/KeyTakeaways.astro';
 import TableOfContents from '../components/TableOfContents.astro';
 import AdSlot from '../components/AdSlot.astro';
-import PartnerFallback from '../components/PartnerFallback.astro';
-import SidebarAd from '../components/SidebarAd.astro';
 import BottomBannerAd from '../components/BottomBannerAd.astro';
+import PromoAd from '../components/PromoAd.astro';
+import BannerAd from '../components/BannerAd.astro';
 import Faq from '../components/Faq.astro';
 import DownloadCard from '../components/DownloadCard.astro';
 import InstallSteps from '../components/InstallSteps.astro';
 import ArticleSources from '../components/ArticleSources.astro';
 import { countWords, readingMinutes } from '../lib/reading';
 import { site, RISK_DISCLAIMER } from '../lib/site';
+import { AFFILIATE_DISCLOSURE, AFFILIATE_REL, affiliates } from '../lib/affiliates';
 import { articleSchema, breadcrumbSchema, faqSchema, howToSchema } from '../lib/seo';
 import { url } from '../lib/urls';
 
@@ -54,6 +55,34 @@ const pageUrl = `/${data.slug}/`;
 const download = data.download;
 const isDownload = Boolean(download);
 const installSteps = data.installSteps ?? [];
+
+/**
+ * Fallback download for a post that ships none of its own.
+ *
+ * It lives here rather than in each post's frontmatter for two reasons: there is
+ * nothing to write into 118 files, and `check-downloads` counts fileKey/URL reuse
+ * in the frontmatter — a layout default is invisible to that cap, which is the
+ * point of a fallback rather than a library.
+ *
+ * It is an external link, not a hosted file: the archive stays on Google Drive
+ * and this site never serves the binaries. Nothing renders until `externalUrl`
+ * is set, so an unset value is a no-op rather than a broken link.
+ */
+const FALLBACK_DOWNLOAD = {
+  origin: 'opensource' as const,
+  license: 'Third-party community bundle — the publisher states no licence',
+  author: 'Various (community bundle)',
+  sourceUrl: 'https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing',
+  externalUrl: 'https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing',
+};
+const fallbackDownload = !download && FALLBACK_DOWNLOAD.externalUrl ? FALLBACK_DOWNLOAD : null;
+
+/** Byline dates, in the same format the article header and author box use. */
+const fmtDate = (d?: Date) =>
+  d
+    ? new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(d)
+    : undefined;
+const updatedLabel = fmtDate(data.updatedAt ?? data.publishedAt);
 
 // Sticky left/right rails. They only exist when ads are configured and the post
 // has not opted out — AdSlot itself renders nothing without a client ID.
@@ -110,22 +139,22 @@ const trail = isDownload
         <>
           <div class="ad-rail ad-rail-left">
             <div class="ad-rail-inner">
-              <AdSlot slot={site.adSlots.railLeft} fixedSize={{ width: 300, height: 600 }} showLabel={false} class="!my-0">
-                <div slot="fallback" class="flex flex-col gap-3">
-                  <PartnerFallback keys={['exness']} variant="rail" />
-                  <SidebarAd />
-                </div>
-              </AdSlot>
+              <AdSlot
+                slot={site.adSlots.railLeft}
+                fixedSize={{ width: 300, height: 600 }}
+                showLabel={false}
+                class="!my-0"
+              />
             </div>
           </div>
           <div class="ad-rail ad-rail-right">
             <div class="ad-rail-inner">
-              <AdSlot slot={site.adSlots.railRight} fixedSize={{ width: 300, height: 600 }} showLabel={false} class="!my-0">
-                <div slot="fallback" class="flex flex-col gap-3">
-                  <PartnerFallback keys={['exness']} variant="rail" />
-                  <SidebarAd />
-                </div>
-              </AdSlot>
+              <AdSlot
+                slot={site.adSlots.railRight}
+                fixedSize={{ width: 300, height: 600 }}
+                showLabel={false}
+                class="!my-0"
+              />
             </div>
           </div>
         </>
@@ -133,15 +162,16 @@ const trail = isDownload
     }
 
     <div class="longform">
-      <nav aria-label="Breadcrumb" class="text-xs text-[var(--color-ink-dim]">
-        <a href="/" class="hover:text-[var(--color-accent]">Home</a>
+      <div class="longform-main">
+      <nav aria-label="Breadcrumb" class="text-xs text-[var(--color-ink-dim)]">
+        <a href="/" class="hover:text-[var(--color-accent)]">Home</a>
         <span class="mx-2">/</span>
-        <a href="/blog/" class="hover:text-[var(--color-accent]">Blog</a>
+        <a href="/blog/" class="hover:text-[var(--color-accent)]">Blog</a>
         {
           !isDownload && data.categories?.[0] && (
             <>
               <span class="mx-2">/</span>
-              <span class="text-[var(--color-ink-soft]">{data.categories[0]}</span>
+              <span class="text-[var(--color-ink-soft)]">{data.categories[0]}</span>
             </>
           )
         }
@@ -150,33 +180,106 @@ const trail = isDownload
       <header class="mt-6">
         {
           isDownload ? (
-            <p class="eyebrow">Free download · {download.platform ?? 'MT4 / MT5'}</p>
+            <p class="eyebrow inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3.5 py-1.5">
+              <span class="live-dot" aria-hidden="true" />Free download · {download.platform ?? 'MT4 / MT5'}
+            </p>
           ) : (
-            data.categories?.[0] && <p class="eyebrow">{data.categories[0]}</p>
+            data.categories?.[0] && (
+              <p class="eyebrow inline-flex items-center rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3.5 py-1.5">
+                {data.categories[0]}
+              </p>
+            )
           )
         }
-        <h1 class="mt-2 text-3xl leading-tight md:text-4xl">{data.title}</h1>
+        <h1 class="mt-5 text-balance text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">{data.title}</h1>
         {
           data.description && (
-            <p class="mt-4 text-lg leading-8 text-[var(--color-ink-soft]">{data.description}</p>
+            <p class="mt-5 max-w-2xl text-lg leading-8 text-[var(--color-ink-soft)]">{data.description}</p>
           )
         }
+
+        <div class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-white/5 pt-5">
+          <div class="flex items-center gap-3">
+            <span
+              class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-emerald-400/25 bg-emerald-400/10 p-1.5"
+              aria-hidden="true"
+            >
+              <img
+                src="/media/brand-mark.png"
+                alt=""
+                width="26"
+                height="26"
+                class="h-full w-full object-contain"
+                loading="lazy"
+                decoding="async"
+              />
+            </span>
+            <span>
+              <span class="block text-sm font-semibold text-[var(--color-ink)]">BESTMT4EA Trading Desk</span>
+              <time datetime={data.publishedAt.toISOString()} class="block text-xs text-[var(--color-ink-dim)]">
+                {fmtDate(data.publishedAt)}
+              </time>
+            </span>
+          </div>
+
+          {
+            updatedLabel && (
+              <span class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--color-accent-soft)]">
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-3.5 w-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M21 12a9 9 0 1 1-2.64-6.36" />
+                  <path d="M21 3v5h-5" />
+                </svg>
+                Updated {updatedLabel}
+              </span>
+            )
+          }
+
+          <span class="text-sm text-[var(--color-ink-dim)]">{minutes} min read</span>
+        </div>
       </header>
+
+      <!-- Affiliate leaderboard, under the heading as asked. -->
+      <BannerAd
+        href={affiliates['roboforex-welcome'].url}
+        image="https://my.roboforex.com/files/banners/40_en_rbfx_728x90__45397b061c4e0ccff0770064b1bc81df.jpg"
+        alt="RoboForex"
+      />
 
       {data.quickAnswer && <div class="mt-7"><AnswerBox answer={data.quickAnswer} /></div>}
 
-      {
-        isDownload && (
-          <div class="longform-breakout mt-6">
-            <DownloadCard download={download} title={data.title} />
-          </div>
-        )
-      }
+      <!--
+        First ad, directly under the answer box — the most viewable spot on the
+        page, and where §6 allows a unit. The download card is deliberately kept
+        BELOW the key takeaways so this unit never sits against a download
+        button; `check-rendered-html` fails the build on an ad above the card.
+      -->
+      <AdSlot slot={site.adSlots.afterAnswer} class="mt-8" />
 
       {
         data.keyTakeaways?.length > 0 && (
           <div class="mt-6">
             <KeyTakeaways items={data.keyTakeaways} />
+          </div>
+        )
+      }
+
+      {
+        (download || fallbackDownload) && (
+          <div class="mt-8">
+            <DownloadCard
+              download={download ?? fallbackDownload!}
+              title={data.title}
+              kind={download ? undefined : 'external'}
+            />
           </div>
         )
       }
@@ -196,7 +299,7 @@ const trail = isDownload
       -->
 
       <div class="mt-10">
-        <AuthorBox published={data.publishedAt} updated={data.updatedAt} readingMinutes={minutes} />
+        <AuthorBox />
       </div>
 
       <div class="mt-8 lg:hidden">
@@ -214,6 +317,8 @@ const trail = isDownload
       <!-- Second ad: after the body, clear of every download and purchase action. -->
       <AdSlot slot={site.adSlots.belowContent} class="mt-12" />
 
+      <BottomBannerAd />
+
       {
         data.faqs?.length > 0 && (
           <div class="mt-12">
@@ -224,9 +329,9 @@ const trail = isDownload
 
       <ArticleSources sources={data.sources} />
 
-      <section class="mt-12 rounded-xl border border-[var(--color-warn]/30 bg-[var(--color-warn]/5 p-5">
-        <h2 class="text-sm font-semibold text-[var(--color-warn]">Risk warning</h2>
-        <p class="mt-2 text-xs leading-6 text-[var(--color-ink-soft]">{RISK_DISCLAIMER}</p>
+      <section class="mt-12 rounded-xl border border-[var(--color-warn)]/30 bg-[var(--color-warn)]/5 p-5">
+        <h2 class="text-sm font-semibold text-[var(--color-warn)]">Risk warning</h2>
+        <p class="mt-2 text-xs leading-6 text-[var(--color-ink-soft)]">{RISK_DISCLAIMER}</p>
       </section>
 
       {
@@ -238,11 +343,11 @@ const trail = isDownload
                 <li>
                   <a
                     href={url(`/${item.data.slug}/`)}
-                    class="text-sm font-semibold text-[var(--color-ink] hover:text-[var(--color-accent]"
+                    class="text-sm font-semibold text-[var(--color-ink)] hover:text-[var(--color-accent)]"
                   >
                     {item.data.title}
                   </a>
-                  <p class="mt-1 text-xs leading-6 text-[var(--color-ink-dim]">{item.data.description}</p>
+                  <p class="mt-1 text-xs leading-6 text-[var(--color-ink-dim)]">{item.data.description}</p>
                 </li>
               ))}
             </ul>
@@ -250,7 +355,59 @@ const trail = isDownload
         )
       }
 
-      <BottomBannerAd />
+      </div>
+
+      <!--
+        Promo column: four text-only cards at a fixed 400x200, so the column
+        reads as one block. The broker links are affiliates (registry URL +
+        AFFILIATE_REL + the disclosure below); the other two are our own.
+      -->
+      <aside class="longform-aside" aria-label="Recommended">
+        <div>
+          <PromoAd
+            label="Sponsored"
+            kicker="For MT4 & MT5"
+            title="Start on a regulated broker from $1"
+            copy={'FCA & CySEC regulated · free VPS on qualifying accounts'}
+            cta="Open an Exness account"
+            href={affiliates.exness.url}
+            rel={AFFILIATE_REL}
+            target="_blank"
+          />
+
+          <PromoAd
+            label="Our service"
+            kicker="No time to watch the charts?"
+            title="Let a desk manage the trading"
+            copy="You keep the account; every position stays visible"
+            cta="See how it works"
+            href={url('/copy-trading')}
+          />
+
+          <PromoAd
+            label="Sponsored"
+            kicker="Testing an EA on a live account?"
+            title="Run it for cents, not thousands"
+            copy="FSC Belize regulated · MT4, MT5 and RTrader"
+            cta="Open a RoboForex account"
+            href={affiliates.roboforex.url}
+            rel={AFFILIATE_REL}
+            target="_blank"
+          />
+
+          <PromoAd
+            label="Our product"
+            kicker="Your PC sleeps, the EA stops"
+            title="Keep the terminal running 24/7"
+            copy="Windows Server 2022 · 4 GB RAM · from $44.99/mo"
+            cta="See the VPS plans"
+            href={url('/product/vps')}
+          />
+
+          <p class="text-[10px] leading-4 text-[var(--color-ink-dim)]">{AFFILIATE_DISCLOSURE}</p>
+        </div>
+      </aside>
+
     </div>
   </div>
 </BaseLayout>

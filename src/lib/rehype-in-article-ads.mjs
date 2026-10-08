@@ -1,8 +1,8 @@
 /**
  * Inject AdSense units into a post body at fixed depths.
  *
- * Same placement model as the reference build (TBK): units land at 5%, 35%, 65%
- * and 90% of the body's top-level blocks, so ad density scales with article
+ * Same placement model as the reference build (TBK): units land at fixed depths
+ * through the body — 10%, 30%, 50% and 70% — so ad density scales with article
  * length instead of a fixed count. Only top-level block elements are counted, so
  * a unit never lands mid-list or mid-heading.
  *
@@ -17,7 +17,7 @@
  */
 
 const BLOCK_TAGS = new Set(['h2', 'h3', 'h4', 'p', 'ul', 'ol', 'blockquote', 'pre', 'table']);
-const PERCENTAGES = [0.05, 0.35, 0.65, 0.9];
+const PERCENTAGES = [0.1, 0.3, 0.5, 0.7];
 
 /** Below this many blocks the units would crowd the body — inject nothing. */
 const MIN_BLOCKS = 8;

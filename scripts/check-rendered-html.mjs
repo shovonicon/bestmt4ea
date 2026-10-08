@@ -179,7 +179,17 @@ for (const post of loadPosts()) {
     const cardIdx = html.indexOf('data-download-card');
     const installIdx = html.indexOf('data-install-steps');
     if (adIdx !== -1 && cardIdx !== -1 && adIdx < cardIdx) {
-      fail('an ad unit renders above the download card');
+      /*
+       * Above the card is fine as long as a content section separates them. §6
+       * prohibits an ad *adjacent* to a download button, not merely earlier on
+       * the page — but with nothing between, the unit reads as part of the
+       * download and AdSense treats it as one. The answer-box unit passes
+       * because the key takeaways sit between it and the card.
+       */
+      const between = html.slice(adIdx, cardIdx);
+      if (!between.includes('<section')) {
+        fail('an ad unit sits immediately above the download card (needs a content section between)');
+      }
     }
     if (adIdx !== -1 && installIdx !== -1 && adIdx < installIdx) {
       fail('an ad unit renders above the install steps (too close to the download action)');

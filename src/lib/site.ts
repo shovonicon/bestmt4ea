@@ -35,6 +35,11 @@ export const site = {
    */
   adSlots: {
     inArticle: import.meta.env.PUBLIC_ADSENSE_SLOT_IN_ARTICLE || '6721931734',
+    /** Sits directly under the answer box — the highest-value viewable spot. */
+    afterAnswer:
+      import.meta.env.PUBLIC_ADSENSE_SLOT_AFTER_ANSWER ||
+      import.meta.env.PUBLIC_ADSENSE_SLOT_IN_ARTICLE ||
+      '6721931734',
     sidebar: import.meta.env.PUBLIC_ADSENSE_SLOT_SIDEBAR || '6721931734',
     belowContent: import.meta.env.PUBLIC_ADSENSE_SLOT_BELOW || '6721931734',
     /** Sticky vertical rails either side of the post reading column. */

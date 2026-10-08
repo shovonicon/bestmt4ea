@@ -26,13 +26,20 @@ export interface Props {
     updatedAt?: Date;
   };
   title: string;
+  /**
+   * How the card describes the file. `external` is for a third-party archive we
+   * link to but do not publish or verify — the frontmatter schema has no such
+   * origin on purpose, so only a layout-level fallback passes it in.
+   */
+  kind?: 'own' | 'opensource' | 'external';
 }
 
-const { download, title } = Astro.props;
+const { download, title, kind } = Astro.props;
 
 const hosted = isHosted(download);
 const href = download.fileKey ? publicUrl(download.fileKey) : download.externalUrl!;
 const isOwn = download.origin === 'own';
+const isExternal = kind === 'external';
 
 const fmt = (d?: Date) =>
   d
@@ -40,20 +47,22 @@ const fmt = (d?: Date) =>
     : undefined;
 ---
 
-<section id="download" class="panel border-[var(--color-accent]/30 p-6" data-download-card>
+<section id="download" class="panel border-[var(--color-accent)]/30 p-6" data-download-card>
   <div class="flex flex-wrap items-center gap-2">
-    <span class="badge badge-accent">{isOwn ? 'Our own build' : 'Open source'}</span>
+    <span class="badge badge-accent">{isExternal ? 'Third-party' : isOwn ? 'Our own build' : 'Open source'}</span>
     {download.platform && <span class="badge">{download.platform}</span>}
     {download.version && <span class="badge">v{download.version}</span>}
     <span class="badge">{download.license}</span>
   </div>
 
   <h2 class="mt-4 text-xl">Download {title}</h2>
-  <p class="mt-2 text-sm leading-7 text-[var(--color-ink-soft]">
+  <p class="mt-2 text-sm leading-7 text-[var(--color-ink-soft)]">
     {
-      isOwn
-        ? 'Built in-house and released free. Use it on a demo account first, then decide whether it earns a place on your live terminal.'
-        : 'Distributed here under its original licence, with full credit to the author. The licence terms below govern how you may use and share it.'
+      isExternal
+        ? 'A third-party community EA bundle with no stated license; use for educational/demo testing only and entirely at your own risk.'
+        : isOwn
+          ? 'Built in-house and released free. Use it on a demo account first, then decide whether it earns a place on your live terminal.'
+          : 'Distributed here under its original licence, with full credit to the author. The licence terms below govern how you may use and share it.'
     }
   </p>
 
@@ -67,7 +76,7 @@ const fmt = (d?: Date) =>
       ].map(([label, value]) => (
         <div>
           <dt class="metric-label">{label}</dt>
-          <dd class="mt-1 text-sm text-[var(--color-ink]">{value}</dd>
+          <dd class="mt-1 text-sm text-[var(--color-ink)]">{value}</dd>
         </div>
       ))
     }
@@ -80,7 +89,7 @@ const fmt = (d?: Date) =>
       rel={hosted ? undefined : 'noopener nofollow'}
       data-download-link
     >
-      {hosted ? 'Download file' : 'Download from source'}
+      {hosted ? 'Download file' : isExternal ? 'Open the download link' : 'Download from source'}
     </a>
     {
       download.licenseUrl && (
@@ -91,19 +100,19 @@ const fmt = (d?: Date) =>
     }
   </div>
 
-  <div class="mt-5 space-y-1 border-t border-[var(--color-line-soft] pt-4 text-xs text-[var(--color-ink-dim]">
+  <div class="mt-5 space-y-1 border-t border-[var(--color-line-soft)] pt-4 text-xs text-[var(--color-ink-dim)]">
     <p>
-      <span class="text-[var(--color-ink-soft]">Licence:</span>
+      <span class="text-[var(--color-ink-soft)]">Licence:</span>
       {download.license}{download.updatedAt ? ` · updated ${fmt(download.updatedAt)}` : ''}
     </p>
     {
       download.author && (
         <p>
-          <span class="text-[var(--color-ink-soft]">Original author:</span> {download.author}
+          <span class="text-[var(--color-ink-soft)]">Original author:</span> {download.author}
           {download.sourceUrl && (
             <>
               {' · '}
-              <a href={download.sourceUrl} rel="noopener nofollow" class="text-[var(--color-accent]">
+              <a href={download.sourceUrl} rel="noopener nofollow" class="text-[var(--color-accent)]">
                 view source
               </a>
             </>

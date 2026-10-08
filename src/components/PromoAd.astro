@@ -1,0 +1,171 @@
+---
+/**
+ * Promotional card for the article sidebar.
+ *
+ * Text-only and a fixed 400x185 so the column reads as one block. The copy runs
+ * hook (kicker) → offer (title) → proof (copy) → action (cta): a reader who
+ * scans only the right column should be able to tell what each one is and why
+ * it is worth a click without reading the article.
+ *
+ * `rel` is passed in by the caller: broker links carry the affiliate rel, our own
+ * products carry none. No claim here promises a result — the figures are the
+ * vendor's own published ones.
+ */
+export interface Props {
+  label: string;
+  kicker: string;
+  title: string;
+  copy?: string;
+  cta: string;
+  href: string;
+  rel?: string;
+  target?: string;
+}
+
+const { label, kicker, title, copy, cta, href, rel, target } = Astro.props;
+---
+
+<a class="promo-ad" href={href} rel={rel} target={target}>
+  <span class="promo-ad__head">
+    <span class="promo-ad__kicker">{kicker}</span>
+    <span class="promo-ad__label">{label}</span>
+  </span>
+
+  <span class="promo-ad__stack">
+    <span class="promo-ad__title">{title}</span>
+    {copy && <span class="promo-ad__copy">{copy}</span>}
+  </span>
+
+  <span class="promo-ad__cta">
+    {cta}
+    <svg
+      viewBox="0 0 24 24"
+      class="h-3.5 w-3.5"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M5 12h14" />
+      <path d="m12 5 7 7-7 7" />
+    </svg>
+  </span>
+</a>
+
+<style>
+  .promo-ad {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 185px;
+    padding: 0.95rem 1rem;
+    border: 1px solid var(--color-line);
+    border-radius: 0.9rem;
+    background-image: linear-gradient(158deg, rgba(0, 193, 144, 0.09), rgba(0, 0, 0, 0.42) 58%);
+    text-decoration: none;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+
+  /* A hairline of brand colour down the leading edge, so the four read as a set. */
+  .promo-ad::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--color-accent), transparent);
+    opacity: 0.55;
+    transition: opacity 0.2s;
+  }
+
+  .promo-ad:hover,
+  .promo-ad:focus-visible {
+    border-color: rgba(0, 193, 144, 0.5);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+    transform: translateY(-2px);
+  }
+
+  .promo-ad:hover::before {
+    opacity: 1;
+  }
+
+  .promo-ad__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  /*
+   * Sentence case, not uppercase: the kicker now carries a question in the
+   * reader's own words ("No time to watch the charts?"), and shouting that in
+   * letter-spaced caps reads as a label rather than a hook.
+   */
+  .promo-ad__kicker {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    color: var(--color-accent-soft);
+  }
+
+  .promo-ad__label {
+    flex: none;
+    font-size: 0.5625rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-ink-dim);
+  }
+
+  .promo-ad__stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .promo-ad__title {
+    font-family: var(--font-heading);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+  }
+
+  .promo-ad__copy {
+    font-size: 0.75rem;
+    line-height: 1.45;
+    color: var(--color-ink-dim);
+  }
+
+  .promo-ad__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-accent-soft);
+  }
+
+  .promo-ad__cta svg {
+    transition: transform 0.2s;
+  }
+
+  .promo-ad:hover .promo-ad__cta svg {
+    transform: translateX(3px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .promo-ad,
+    .promo-ad__cta svg {
+      transition: none;
+    }
+    .promo-ad:hover {
+      transform: none;
+    }
+  }
+</style>
