@@ -5,7 +5,8 @@
  * per-tool page.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getAvailableTools } from '../../data/tools';
+import { getAvailableTools, PLATFORM_DOWNLOADS } from '../../data/tools';
+import { publicUrl } from '../../lib/files';
 import { url } from '../../lib/urls';
 
 const tools = getAvailableTools();
@@ -107,6 +108,64 @@ const ARROW_RIGHT = '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>';
           </a>
         ))
       }
+    </div>
+  </section>
+
+  {/*
+    Platform installers. Deliberately a plain download rather than a card that
+    opens a page: there is nothing to configure, so the link is the whole tool.
+    Hosted in the public bucket, so no account is needed — the same deal as every
+    calculator above.
+  */}
+  <section class="container-x pb-20">
+    <div class="mx-auto max-w-5xl">
+      <span class="eyebrow">Platform downloads</span>
+      <h2 class="mt-3 text-2xl font-bold tracking-tight text-[var(--color-ink)]">
+        MetaTrader <span class="text-gradient-brand">terminals</span>
+      </h2>
+      <p class="mt-3 max-w-2xl text-sm leading-7 text-[var(--color-ink-soft)]">
+        Every expert advisor and indicator on this site runs inside MetaTrader, so here are the
+        terminals themselves. Free to download, no account needed, and the two install side by side
+        without conflicting — an MT4 robot will not run on MT5, or the reverse.
+      </p>
+
+      <div class="mt-8 grid gap-4 sm:grid-cols-2">
+        {
+          PLATFORM_DOWNLOADS.map((item) => (
+            <a
+              href={publicUrl(item.fileKey)}
+              class="brand-card group flex flex-col p-6 transition-transform duration-200 hover:-translate-y-0.5"
+              download
+              rel="noopener"
+            >
+              <div class="flex items-center justify-between gap-3">
+                <span class="badge badge-accent">{item.platform}</span>
+                <span class="metric-label">{item.sizeLabel} · Windows</span>
+              </div>
+
+              <h3 class="mt-4 text-lg font-bold text-[var(--color-ink)] transition-colors group-hover:text-emerald-300">
+                {item.name}
+              </h3>
+              <p class="mt-2 flex-1 text-sm leading-6 text-[var(--color-ink-dim)]">{item.description}</p>
+
+              <span class="mt-5 inline-flex items-center gap-1.5 text-xs font-bold text-emerald-400 transition-all group-hover:gap-2.5">
+                Download installer
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-3.5 w-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  set:html={ARROW_RIGHT}
+                />
+              </span>
+            </a>
+          ))
+        }
+      </div>
     </div>
   </section>
 </BaseLayout>

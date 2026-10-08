@@ -19,6 +19,49 @@ export interface TradingTool {
   available: boolean;
 }
 
+/**
+ * Platform installers.
+ *
+ * These are files, not web tools, so they deliberately do not live in
+ * `TRADING_TOOLS`: that list drives `/tools/<slug>/`, and an installer has no
+ * page to open — the card *is* the download. They are hosted in the public R2
+ * bucket so anyone can take one without an account, which is the same deal as
+ * every other free tool here.
+ *
+ * The MT4 build is also the file the licence-build runner installs (the
+ * `MT4_INSTALLER_URL` repo secret points at the same object), so if these move,
+ * that secret has to move with them.
+ */
+export interface PlatformDownload {
+  name: string;
+  shortName: string;
+  description: string;
+  platform: 'MT4' | 'MT5';
+  fileKey: string;
+  sizeLabel: string;
+}
+
+export const PLATFORM_DOWNLOADS: PlatformDownload[] = [
+  {
+    name: 'MetaTrader 4 Terminal',
+    shortName: 'MT4 Terminal',
+    description:
+      'The Exness build of MetaTrader 4 for Windows. Install it to run any MT4 expert advisor or indicator, including every system on this site.',
+    platform: 'MT4',
+    fileKey: 'tools/exness4setup.exe',
+    sizeLabel: '1.3 MB',
+  },
+  {
+    name: 'MetaTrader 5 Terminal',
+    shortName: 'MT5 Terminal',
+    description:
+      'The Exness build of MetaTrader 5 for Windows. Needed for MT5 robots — MT4 cannot run MT5 code, and the two terminals install side by side without conflict.',
+    platform: 'MT5',
+    fileKey: 'tools/exness5setup.exe',
+    sizeLabel: '5.1 MB',
+  },
+];
+
 export const TRADING_TOOLS: TradingTool[] = [
   {
     slug: 'live-forex-rates',
