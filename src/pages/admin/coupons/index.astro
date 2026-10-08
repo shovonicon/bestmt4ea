@@ -108,88 +108,114 @@ const valueLabel = (coupon: (typeof rows)[number]) =>
       <label class="coupon-field">
         <span>Expires</span>
         <input name="expiresAt" type="date" value={editing?.expiresAt?.toISOString().slice(0, 10) ?? ''} />
-        <small>Optional. Runs to the end of that day, UTC.</small>
+        <small>Optional. To the end of that day, UTC.</small>
       </label>
 
-      <button class="admin-btn admin-btn-primary" type="submit">
-        {editing ? 'Save changes' : 'Create coupon'}
-      </button>
+      <div class="coupon-field coupon-submit">
+        <span aria-hidden="true">&nbsp;</span>
+        <button class="admin-btn admin-btn-primary" type="submit">
+          {editing ? 'Save changes' : 'Create coupon'}
+        </button>
+      </div>
     </form>
   </div>
 
-  <div class="admin-panel">
+  <div class="admin-panel coupons-panel">
     <div class="admin-panel-head">
       <h2>All coupons</h2>
       <span class="admin-mono muted">{rows.length} total</span>
     </div>
     {
       rows.length === 0 ? (
-        <p class="admin-empty">
-          No coupons yet. Create one above — it is live the moment you save.
-        </p>
+        <div class="coupons-empty">
+          <p class="coupons-empty-title">No coupons yet</p>
+          <p class="admin-empty" style="margin:0">
+            Create one above — it goes live the moment you save, and the code field appears on every
+            product page and on the VPS page while at least one code can be used.
+          </p>
+        </div>
       ) : (
-        <div style="overflow-x:auto">
-          <table class="admin-table">
+        <div class="coupons-scroll">
+          <table class="admin-table coupons-table">
             <thead>
               <tr>
                 <th scope="col">Code</th>
-                <th scope="col">Type</th>
-                <th scope="col">Value</th>
-                <th scope="col">Used</th>
+                <th scope="col">Discount</th>
+                <th scope="col">Usage</th>
                 <th scope="col">Expires</th>
                 <th scope="col">State</th>
-                <th scope="col">Actions</th>
+                <th scope="col" class="coupons-actions-head">Actions</th>
               </tr>
             </thead>
             <tbody>
-              {rows.map((coupon) => (
-                <tr>
-                  <td class="admin-mono">{coupon.code}</td>
-                  <td class="muted">{coupon.type === 'fixed' ? 'fixed' : 'percent'}</td>
-                  <td class="admin-mono">{valueLabel(coupon)}</td>
-                  <td class="admin-mono">
-                    {coupon.redemptions}
-                    {coupon.maxRedemptions ? `/${coupon.maxRedemptions}` : ''}
-                  </td>
-                  <td class="admin-mono muted">{coupon.expiresAt?.toISOString().slice(0, 10) ?? '—'}</td>
-                  <td>
-                    <span class:list={['badge', coupon.active ? 'badge-accent' : '']}>
-                      {coupon.active ? 'active' : 'off'}
-                    </span>
-                  </td>
-                  <td>
-                    <div class="admin-actions">
-                      <a class="admin-btn" href={`/admin/coupons/?edit=${encodeURIComponent(coupon.code)}`}>
-                        Edit
-                      </a>
-                      <form method="post" action="/api/admin/coupon/">
-                        <input type="hidden" name="id" value={coupon.id} />
-                        <input type="hidden" name="action" value="toggle" />
-                        <button class="admin-btn" type="submit">
-                          {coupon.active ? 'Turn off' : 'Turn on'}
-                        </button>
-                      </form>
-                      <form
-                        method="post"
-                        action="/api/admin/coupon/"
-                        data-confirm={`Delete ${coupon.code} for good? Past orders keep their discount, but the code stops working.`}
-                      >
-                        <input type="hidden" name="id" value={coupon.id} />
-                        <input type="hidden" name="action" value="delete" />
-                        <button class="admin-btn" type="submit">
-                          Delete
-                        </button>
-                      </form>
-                    </div>
-                  </td>
-                </tr>
-              ))}
+              {rows.map((coupon) => {
+                const usedUp = coupon.maxRedemptions !== null && coupon.redemptions >= coupon.maxRedemptions;
+                const pct =
+                  coupon.maxRedemptions && coupon.maxRedemptions > 0
+                    ? Math.min(100, Math.round((coupon.redemptions / coupon.maxRedemptions) * 100))
+                    : 0;
+                return (
+                  <tr>
+                    <td>
+                      <span class="coupon-code">{coupon.code}</span>
+                    </td>
+                    <td>
+                      <span class="coupon-value">{valueLabel(coupon)}</span>
+                      <span class="coupon-type muted">{coupon.type === 'fixed' ? 'fixed' : 'percent'}</span>
+                    </td>
+                    <td>
+                      <span class="coupon-usage">
+                        <span class="admin-mono">
+                          {coupon.redemptions}
+                          {coupon.maxRedemptions !== null ? ` / ${coupon.maxRedemptions}` : ' used'}
+                        </span>
+                        {coupon.maxRedemptions !== null && (
+                          <span class="coupon-meter" aria-hidden="true">
+                            <span class={usedUp ? 'coupon-meter-fill is-full' : 'coupon-meter-fill'} style={`width:${pct}%`} />
+                          </span>
+                        )}
+                      </span>
+                    </td>
+                    <td class="admin-mono muted">{coupon.expiresAt?.toISOString().slice(0, 10) ?? 'never'}</td>
+                    <td>
+                      <span class:list={['badge', coupon.active ? (usedUp ? 'badge-warn' : 'badge-accent') : '']}>
+                        {coupon.active ? (usedUp ? 'used up' : 'active') : 'off'}
+                      </span>
+                    </td>
+                    <td>
+                      <div class="admin-actions coupons-actions">
+                        <a class="admin-btn" href={`/admin/coupons/?edit=${encodeURIComponent(coupon.code)}`}>
+                          Edit
+                        </a>
+                        <form method="post" action="/api/admin/coupon/">
+                          <input type="hidden" name="id" value={coupon.id} />
+                          <input type="hidden" name="action" value="toggle" />
+                          <button class="admin-btn" type="submit">
+                            {coupon.active ? 'Turn off' : 'Turn on'}
+                          </button>
+                        </form>
+                        <form
+                          method="post"
+                          action="/api/admin/coupon/"
+                          data-confirm={`Delete ${coupon.code} for good? Past orders keep their discount, but the code stops working.`}
+                        >
+                          <input type="hidden" name="id" value={coupon.id} />
+                          <input type="hidden" name="action" value="delete" />
+                          <button class="admin-btn coupons-delete" type="submit">
+                            Delete
+                          </button>
+                        </form>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
       )
     }
-    <p class="admin-empty" style="margin-top:1rem">
+    <p class="coupons-note">
       Turning a code off keeps it and its history; deleting removes it. Orders keep their own discount
       amount either way, so a past receipt never changes — which is why deleting a code is safe.
     </p>
@@ -206,11 +232,30 @@ const valueLabel = (coupon: (typeof rows)[number]) =>
 </script>
 
 <style>
+  /*
+   * One row per coupon entry — code, type, value, cap, expiry and the button on
+   * one line. The fields are aligned from the top rather than the bottom so the
+   * inputs line up with each other even though only some of them carry a hint
+   * underneath. The row collapses to three, then one, as the viewport narrows, so
+   * it is only "one row" where there is genuinely room for one.
+   */
   .coupon-form {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-    gap: 1rem;
+    grid-template-columns: 1.35fr 0.95fr 0.7fr 0.95fr 1fr auto;
+    gap: 0.85rem 0.9rem;
     align-items: start;
+  }
+
+  @media (max-width: 1180px) {
+    .coupon-form {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 720px) {
+    .coupon-form {
+      grid-template-columns: 1fr;
+    }
   }
 
   .coupon-field {
@@ -241,9 +286,178 @@ const valueLabel = (coupon: (typeof rows)[number]) =>
     align-self: end;
   }
 
+  /*
+   * The submit sits in a field of its own with an empty label row above it, so
+   * its top lines up with the inputs beside it rather than with their labels.
+   * No `justify-content` here: defaulting to flex-start is what keeps it up
+   * there, and `flex-end` would drop it to the bottom of the row.
+   */
+  .coupon-submit > span {
+    display: block;
+  }
+
   /* The Edit control is a link styled as a button; the shell's button class does
      not reset the underline an anchor would otherwise carry. */
   a.admin-btn {
     text-decoration: none;
+  }
+
+  /* Let the fields look like fields even if the shell leaves bare inputs alone. */
+  .coupon-field input,
+  .coupon-field select {
+    padding: 0.5rem 0.65rem;
+    border: 1px solid var(--color-line);
+    border-radius: 0.6rem;
+    background-color: rgba(255, 255, 255, 0.03);
+    font-size: 0.85rem;
+    color: var(--color-ink);
+    outline: none;
+  }
+
+  .coupon-field input:focus,
+  .coupon-field select:focus {
+    border-color: var(--color-accent);
+  }
+
+  /* --------------------------------------------------------------- the list */
+
+  .coupons-panel {
+    padding: 1.25rem;
+  }
+
+  .coupons-scroll {
+    overflow-x: auto;
+    margin: 0 -1.25rem;
+    padding: 0 1.25rem;
+  }
+
+  /*
+   * One row per coupon, and it has to stay one row. The action cluster never
+   * wraps and every cell is middle-aligned, so a coupon reads as a single line
+   * rather than a stack of buttons; the horizontal scroll above is what keeps
+   * that true on a narrow screen instead of letting the row break apart.
+   */
+  .coupons-table th,
+  .coupons-table td {
+    vertical-align: middle;
+    white-space: nowrap;
+    padding-top: 0.72rem;
+    padding-bottom: 0.72rem;
+  }
+
+  .coupons-table tbody tr {
+    transition: background-color 0.15s;
+  }
+
+  .coupons-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+
+  .coupons-actions {
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  /*
+   * Pin the control height. Edit is an anchor; the other two are buttons inside
+   * forms. Their natural heights differ — a bare anchor takes the inherited
+   * line-height into its box and measured several pixels taller than a button —
+   * which is exactly the kind of difference that pushes one control out of line
+   * with the others. A fixed height removes the dependency.
+   */
+  .coupons-actions .admin-btn {
+    height: 30px;
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 1;
+    align-items: center;
+  }
+
+  .coupons-actions-head {
+    text-align: right;
+  }
+
+  /* The code is the thing being scanned for, so it gets the emphasis. */
+  .coupon-code {
+    display: inline-block;
+    padding: 0.2rem 0.55rem;
+    border: 1px solid rgba(0, 193, 144, 0.3);
+    border-radius: 0.5rem;
+    background-color: rgba(0, 193, 144, 0.08);
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-accent-soft);
+  }
+
+  .coupon-value {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-ink);
+  }
+
+  .coupon-type {
+    margin-left: 0.4rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .coupon-usage {
+    display: flex;
+    flex-direction: column;
+    gap: 0.32rem;
+    min-width: 5.5rem;
+  }
+
+  .coupon-meter {
+    display: block;
+    height: 4px;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+  }
+
+  .coupon-meter-fill {
+    display: block;
+    height: 100%;
+    border-radius: 999px;
+    background-color: var(--color-accent);
+  }
+
+  .coupon-meter-fill.is-full {
+    background-color: #fbbf24;
+  }
+
+  .coupons-delete:hover {
+    border-color: rgba(248, 113, 113, 0.45);
+    color: #fca5a5;
+  }
+
+  .coupons-note {
+    margin-top: 1rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--color-line-soft);
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: var(--color-ink-dim);
+  }
+
+  .coupons-empty {
+    padding: 1.6rem 1rem;
+    border: 1px dashed var(--color-line);
+    border-radius: 0.8rem;
+    text-align: center;
+  }
+
+  .coupons-empty-title {
+    margin-bottom: 0.4rem;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-ink);
   }
 </style>
