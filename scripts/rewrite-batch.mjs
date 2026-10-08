@@ -43,7 +43,24 @@ const has = (name) => args.includes(`--${name}`);
 
 const COUNT = Number(flag('count', '6'));
 const JOBS = Number(flag('jobs', String(COUNT)));
-const MODEL = flag('model', 'meta/muse-spark-1.3-contributor');
+/*
+ * Default model: the cheapest fast one in the catalogue, because this is a
+ * high-volume, low-judgement job — 117 posts of the same shape. Ids are exact;
+ * check `reference/models.md` before changing one.
+ *
+ *   Qwen/Qwen3.7-Flash                 $0.03 / $0.13   fast, agentic coding   <-- default
+ *   stepfun/Step-3.5-Flash             $0.09 / $0.30   fast sparse-MoE
+ *   deepseek/deepseek-v4-flash         $0.15 / $0.60   fast hybrid-attention
+ *   deepseek/deepseek-v4.1-flash-fast  $0.16 / $0.58   high-throughput V4.1
+ *   z-ai/glm-5.3-flash                 $0.15 / $0.50   affordable GLM, 1M ctx
+ *
+ * Speed is worth paying a little for here — throughput, not cost, is what makes
+ * a six-worker batch finish — so `--model` is the dial. Note that the cheap
+ * models pass the gates or they do not: `check:content:changed` enforces word
+ * count, quickAnswer bounds, FAQ count, banned claims and title length, but it
+ * cannot judge prose. A cheaper model means more editing afterwards, not less.
+ */
+const MODEL = flag('model', 'Qwen/Qwen3.7-Flash');
 const MAX_TURNS = flag('max-turns', '120');
 const DRY = has('dry-run');
 const GATE = has('gate');
