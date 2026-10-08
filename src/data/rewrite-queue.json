@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-07T09:19:54.552Z",
+  "generatedAt": "2026-10-08T10:28:21.508Z",
   "source": "src/content/posts",
   "standards": {
     "minWords": 3500,
@@ -25,175 +25,15 @@
     ]
   },
   "total": 119,
-  "needsWork": 119,
-  "clean": 0,
+  "needsWork": 109,
+  "clean": 10,
   "byPriority": {
     "1": 0,
-    "2": 61,
+    "2": 51,
     "3": 54,
     "4": 4
   },
   "queue": [
-    {
-      "file": "src/content/posts/eur-usd-expert-advisor-ea-overview-free-download-guide.md",
-      "slug": "eur-usd-expert-advisor-ea-overview-free-download-guide",
-      "words": 694,
-      "priority": 2,
-      "issues": [
-        "words 694 (below 3500)",
-        "missing quickAnswer",
-        "faqs 0 (needs 4+)",
-        "sources 0 (needs 2+)",
-        "missing download",
-        "missing primaryKeyword"
-      ],
-      "rank": 1,
-      "priorityLabel": "EA review or comparison"
-    },
-    {
-      "file": "src/content/posts/murasaki-scalper-free-download-powerful-secrets-every-trader-must-know-before-installing.md",
-      "slug": "murasaki-scalper-free-download-powerful-secrets-every-trader-must-know-before-installing",
-      "words": 785,
-      "priority": 2,
-      "issues": [
-        "words 785 (below 3500)",
-        "missing quickAnswer",
-        "faqs 0 (needs 4+)",
-        "sources 0 (needs 2+)",
-        "missing download",
-        "missing primaryKeyword"
-      ],
-      "rank": 2,
-      "priorityLabel": "EA review or comparison"
-    },
-    {
-      "file": "src/content/posts/us30-scalping-ea-free-download-powerful-proven-7-step-guide-to-maximize-profits.md",
-      "slug": "us30-scalping-ea-free-download-powerful-proven-7-step-guide-to-maximize-profits",
-      "words": 786,
-      "priority": 2,
-      "issues": [
-        "words 786 (below 3500)",
-        "missing quickAnswer",
-        "faqs 0 (needs 4+)",
-        "sources 0 (needs 2+)",
-        "missing download",
-        "missing primaryKeyword"
-      ],
-      "rank": 3,
-      "priorityLabel": "EA review or comparison"
-    },
-    {
-      "file": "src/content/posts/forex-velocity-ea-free-download-7-powerful-truths-you-must-know-before-installing.md",
-      "slug": "forex-velocity-ea-free-download-7-powerful-truths-you-must-know-before-installing",
-      "words": 826,
-      "priority": 2,
-      "issues": [
-        "words 826 (below 3500)",
-        "missing quickAnswer",
-        "faqs 0 (needs 4+)",
-        "sources 0 (needs 2+)",
-        "missing download",
-        "missing primaryKeyword"
-      ],
-      "rank": 4,
-      "priorityLabel": "EA review or comparison"
-    },
-    {
-      "file": "src/content/posts/10-powerful-grid-trading-ea-safe-settings-for-mt4-to-reduce-risk-and-boost-profitability.md",
-      "slug": "10-powerful-grid-trading-ea-safe-settings-for-mt4-to-reduce-risk-and-boost-profitability",
-      "words": 834,
-      "priority": 2,
-      "issues": [
-        "words 834 (below 3500)",
-        "missing quickAnswer",
-        "faqs 0 (needs 4+)",
-        "sources 0 (needs 2+)",
-        "missing download",
-        "missing primaryKeyword"
-      ],
-      "rank": 5,
-      "priorityLabel": "EA review or comparison"
-    },
-    {
-      "file": "src/content/posts/%f0%9f%9a%80-bitcoin-scalper-ea-free-download-powerful-guide-with-7-shocking-benefits-for-traders.md",
-      "slug": "%f0%9f%9a%80-bitcoin-scalper-ea-free-download-powerful-guide-with-7-shocking-benefits-for-traders",
-      "words": 855,
-      "priority": 2,
-      "issues": [
-        "words 855 (below 3500)",
-        "missing quickAnswer",
-        "faqs 0 (needs 4+)",
-        "sources 0 (needs 2+)",
-        "missing download",
-        "missing primaryKeyword"
-      ],
-      "rank": 6,
-      "priorityLabel": "EA review or comparison"
-    },
-    {
-      "file": "src/content/posts/quantum-algo-trading-ea-free-download-powerful-proven-automated-strategy.md",
-      "slug": "quantum-algo-trading-ea-free-download-powerful-proven-automated-strategy",
-      "words": 855,
-      "priority": 2,
-      "issues": [
-        "words 855 (below 3500)",
-        "missing quickAnswer",
-        "faqs 0 (needs 4+)",
-        "sources 0 (needs 2+)",
-        "missing download",
-        "missing primaryKeyword"
-      ],
-      "rank": 7,
-      "priorityLabel": "EA review or comparison"
-    },
-    {
-      "file": "src/content/posts/dark-mimas-highly-customizable-ea-mt4-mt5-free-download-7-powerful-features-every-trader-must-know.md",
-      "slug": "dark-mimas-highly-customizable-ea-mt4-mt5-free-download-7-powerful-features-every-trader-must-know",
-      "words": 868,
-      "priority": 2,
-      "issues": [
-        "words 868 (below 3500)",
-        "missing quickAnswer",
-        "faqs 0 (needs 4+)",
-        "sources 0 (needs 2+)",
-        "missing download",
-        "missing primaryKeyword"
-      ],
-      "rank": 8,
-      "priorityLabel": "EA review or comparison"
-    },
-    {
-      "file": "src/content/posts/news-straddle-expert-advisor-setup-tutorial-the-ultimate-step-by-step-guide.md",
-      "slug": "news-straddle-expert-advisor-setup-tutorial-the-ultimate-step-by-step-guide",
-      "words": 870,
-      "priority": 2,
-      "issues": [
-        "words 870 (below 3500)",
-        "missing quickAnswer",
-        "faqs 0 (needs 4+)",
-        "sources 0 (needs 2+)",
-        "missing download",
-        "missing primaryKeyword"
-      ],
-      "rank": 9,
-      "priorityLabel": "EA review or comparison"
-    },
-    {
-      "file": "src/content/posts/cobra-scalper-best-trading-indicator-free-download-7-powerful-reasons-traders-love-it.md",
-      "slug": "cobra-scalper-best-trading-indicator-free-download-7-powerful-reasons-traders-love-it",
-      "words": 890,
-      "priority": 2,
-      "issues": [
-        "words 890 (below 3500)",
-        "missing quickAnswer",
-        "faqs 0 (needs 4+)",
-        "sources 0 (needs 2+)",
-        "missing download",
-        "missing primaryKeyword"
-      ],
-      "rank": 10,
-      "priorityLabel": "EA review or comparison"
-    },
     {
       "file": "src/content/posts/forex-order-manager-trade-panel-for-mt4-free-download-powerful-7-benefits-every-trader-must-know.md",
       "slug": "forex-order-manager-trade-panel-for-mt4-free-download-powerful-7-benefits-every-trader-must-know",
@@ -207,7 +47,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 11,
+      "rank": 1,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -223,7 +63,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 12,
+      "rank": 2,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -239,7 +79,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 13,
+      "rank": 3,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -255,7 +95,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 14,
+      "rank": 4,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -271,7 +111,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 15,
+      "rank": 5,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -287,7 +127,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 16,
+      "rank": 6,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -303,7 +143,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 17,
+      "rank": 7,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -319,7 +159,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 18,
+      "rank": 8,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -335,7 +175,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 19,
+      "rank": 9,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -351,7 +191,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 20,
+      "rank": 10,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -367,7 +207,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 21,
+      "rank": 11,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -383,7 +223,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 22,
+      "rank": 12,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -399,7 +239,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 23,
+      "rank": 13,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -415,7 +255,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 24,
+      "rank": 14,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -431,7 +271,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 25,
+      "rank": 15,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -447,7 +287,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 26,
+      "rank": 16,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -463,7 +303,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 27,
+      "rank": 17,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -479,7 +319,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 28,
+      "rank": 18,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -495,7 +335,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 29,
+      "rank": 19,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -511,7 +351,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 30,
+      "rank": 20,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -527,7 +367,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 31,
+      "rank": 21,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -543,7 +383,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 32,
+      "rank": 22,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -559,7 +399,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 33,
+      "rank": 23,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -575,7 +415,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 34,
+      "rank": 24,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -591,7 +431,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 35,
+      "rank": 25,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -607,7 +447,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 36,
+      "rank": 26,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -623,7 +463,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 37,
+      "rank": 27,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -639,7 +479,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 38,
+      "rank": 28,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -655,7 +495,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 39,
+      "rank": 29,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -671,7 +511,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 40,
+      "rank": 30,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -687,7 +527,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 41,
+      "rank": 31,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -703,7 +543,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 42,
+      "rank": 32,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -719,7 +559,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 43,
+      "rank": 33,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -735,7 +575,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 44,
+      "rank": 34,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -751,7 +591,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 45,
+      "rank": 35,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -767,7 +607,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 46,
+      "rank": 36,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -783,7 +623,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 47,
+      "rank": 37,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -799,7 +639,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 48,
+      "rank": 38,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -815,7 +655,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 49,
+      "rank": 39,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -831,7 +671,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 50,
+      "rank": 40,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -847,7 +687,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 51,
+      "rank": 41,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -863,7 +703,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 52,
+      "rank": 42,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -879,7 +719,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 53,
+      "rank": 43,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -895,7 +735,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 54,
+      "rank": 44,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -911,7 +751,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 55,
+      "rank": 45,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -927,7 +767,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 56,
+      "rank": 46,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -943,7 +783,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 57,
+      "rank": 47,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -959,7 +799,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 58,
+      "rank": 48,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -975,7 +815,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 59,
+      "rank": 49,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -991,7 +831,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 60,
+      "rank": 50,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -1007,7 +847,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 61,
+      "rank": 51,
       "priorityLabel": "EA review or comparison"
     },
     {
@@ -1023,7 +863,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 62,
+      "rank": 52,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1039,7 +879,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 63,
+      "rank": 53,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1055,7 +895,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 64,
+      "rank": 54,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1071,7 +911,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 65,
+      "rank": 55,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1087,7 +927,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 66,
+      "rank": 56,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1103,7 +943,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 67,
+      "rank": 57,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1119,7 +959,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 68,
+      "rank": 58,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1135,7 +975,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 69,
+      "rank": 59,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1151,7 +991,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 70,
+      "rank": 60,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1167,7 +1007,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 71,
+      "rank": 61,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1183,7 +1023,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 72,
+      "rank": 62,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1199,7 +1039,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 73,
+      "rank": 63,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1215,7 +1055,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 74,
+      "rank": 64,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1231,7 +1071,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 75,
+      "rank": 65,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1247,7 +1087,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 76,
+      "rank": 66,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1263,7 +1103,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 77,
+      "rank": 67,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1279,7 +1119,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 78,
+      "rank": 68,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1295,7 +1135,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 79,
+      "rank": 69,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1311,7 +1151,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 80,
+      "rank": 70,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1327,7 +1167,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 81,
+      "rank": 71,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1343,7 +1183,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 82,
+      "rank": 72,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1359,7 +1199,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 83,
+      "rank": 73,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1375,7 +1215,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 84,
+      "rank": 74,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1391,7 +1231,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 85,
+      "rank": 75,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1407,7 +1247,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 86,
+      "rank": 76,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1423,7 +1263,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 87,
+      "rank": 77,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1439,7 +1279,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 88,
+      "rank": 78,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1455,7 +1295,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 89,
+      "rank": 79,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1471,7 +1311,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 90,
+      "rank": 80,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1487,7 +1327,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 91,
+      "rank": 81,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1503,7 +1343,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 92,
+      "rank": 82,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1519,7 +1359,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 93,
+      "rank": 83,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1535,7 +1375,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 94,
+      "rank": 84,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1551,7 +1391,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 95,
+      "rank": 85,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1567,7 +1407,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 96,
+      "rank": 86,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1583,7 +1423,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 97,
+      "rank": 87,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1599,7 +1439,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 98,
+      "rank": 88,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1615,7 +1455,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 99,
+      "rank": 89,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1631,7 +1471,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 100,
+      "rank": 90,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1647,7 +1487,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 101,
+      "rank": 91,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1663,7 +1503,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 102,
+      "rank": 92,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1679,7 +1519,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 103,
+      "rank": 93,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1695,7 +1535,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 104,
+      "rank": 94,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1711,7 +1551,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 105,
+      "rank": 95,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1727,7 +1567,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 106,
+      "rank": 96,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1743,7 +1583,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 107,
+      "rank": 97,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1759,7 +1599,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 108,
+      "rank": 98,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1775,7 +1615,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 109,
+      "rank": 99,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1791,7 +1631,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 110,
+      "rank": 100,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1807,7 +1647,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 111,
+      "rank": 101,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1823,7 +1663,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 112,
+      "rank": 102,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1839,7 +1679,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 113,
+      "rank": 103,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1855,7 +1695,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 114,
+      "rank": 104,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1871,7 +1711,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 115,
+      "rank": 105,
       "priorityLabel": "indicator or system"
     },
     {
@@ -1887,7 +1727,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 116,
+      "rank": 106,
       "priorityLabel": "educational / how-to"
     },
     {
@@ -1903,7 +1743,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 117,
+      "rank": 107,
       "priorityLabel": "educational / how-to"
     },
     {
@@ -1919,7 +1759,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 118,
+      "rank": 108,
       "priorityLabel": "educational / how-to"
     },
     {
@@ -1935,7 +1775,7 @@
         "missing download",
         "missing primaryKeyword"
       ],
-      "rank": 119,
+      "rank": 109,
       "priorityLabel": "educational / how-to"
     }
   ]
