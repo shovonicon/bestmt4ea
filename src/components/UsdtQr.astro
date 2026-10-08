@@ -1,0 +1,228 @@
+---
+/**
+ * USDT (BEP-20) payment QR with the details a client needs to pay by hand.
+ *
+ * Deliberately standalone: every value arrives as a prop, nothing is read from
+ * this site's env or design tokens, and the QR is rendered server-side to SVG.
+ * That is what makes it droppable into another project — copy the file, pass it
+ * an address and an amount.
+ *
+ * Why not an image API (api.qrserver.com and friends): it would send the
+ * receiving address to a third party on every checkout, and the page would break
+ * whenever that service did. Encoder runs locally, so the address never leaves
+ * the server.
+ *
+ * What is encoded is EIP-681:
+ *   ethereum:<token>@<chainId>/transfer?address=<to>&uint256=<base units>
+ * which a wallet can scan to pre-fill the transfer. Because support for that URI
+ * is uneven, the plain address and amount are also rendered underneath — a
+ * client whose wallet ignores the URI can still pay by copying them.
+ */
+import QRCode from 'qrcode';
+
+export interface Props {
+  /** Receiving address, 0x… */
+  address: string;
+  /** Human amount, e.g. "10.40" — a string, never a float. */
+  amount: string;
+  /** EVM chain id. 56 is BNB Smart Chain (BEP-20). */
+  chainId?: number;
+  /** Token contract. Defaults to USDT on BSC. */
+  token?: string;
+  /**
+   * Token decimals. USDT on BSC uses 18 — NOT the 6 that TRON's USDT uses.
+   * Getting this wrong mis-sends the amount by a factor of a trillion.
+   */
+  decimals?: number;
+  /** Network badge, e.g. "BEP-20". */
+  network?: string;
+  /** Shown above the code. */
+  label?: string;
+}
+
+const {
+  address,
+  amount,
+  chainId = 56,
+  token = '0x55d398326f99059fF775485246999027B3197955',
+  decimals = 18,
+  network = 'BEP-20 · BSC',
+  label = 'Pay with USDT',
+} = Astro.props;
+
+/**
+ * Amount → base units, via BigInt.
+ *
+ * Measured first: `Number(amount) * 10 ** decimals` round-trips every
+ * two-decimal amount tested, so for today's USDT this is not a live bug. It is
+ * still the wrong tool — 18-decimal base units exceed Number.MAX_SAFE_INTEGER,
+ * so any amount with a longer tail, or a token with different decimals, loses
+ * digits silently. BigInt does the arithmetic exactly, which is the only
+ * defensible thing to do with a figure a customer is about to send.
+ */
+function toBaseUnits(value: string, dp: number): bigint {
+  const clean = value.trim().replace(/,/g, '');
+  if (!/^\d*\.?\d*$/.test(clean) || clean === '' || clean === '.') {
+    throw new Error(`UsdtQr: amount "${value}" is not a plain decimal`);
+  }
+  const [whole, frac = ''] = clean.split('.');
+  // Truncate rather than round: asking for a hair less is recoverable, asking
+  // for more than the order expects is not.
+  return BigInt((whole || '0') + frac.padEnd(dp, '0').slice(0, dp));
+}
+
+const baseUnits = toBaseUnits(amount, decimals);
+const uri = `ethereum:${token}@${chainId}/transfer?address=${address}&uint256=${baseUnits}`;
+
+// SVG, so it stays sharp at any size and needs no canvas or client JS. `margin`
+// is the quiet zone the spec requires — without it many scanners fail.
+const svg = await QRCode.toString(uri, {
+  type: 'svg',
+  margin: 2,
+  errorCorrectionLevel: 'M',
+  color: { dark: '#000000', light: '#ffffff' },
+});
+---
+
+<section class="usdt-qr" aria-labelledby="usdt-qr-label">
+  <header class="usdt-qr__head">
+    <span class="usdt-qr__label" id="usdt-qr-label">{label}</span>
+    <span class="usdt-qr__badge">{network}</span>
+  </header>
+
+  <div class="usdt-qr__code" set:html={svg} />
+
+  <p class="usdt-qr__hint">Scan with any wallet that supports {network}</p>
+
+  <dl class="usdt-qr__fields">
+    <div>
+      <dt>Amount</dt>
+      <dd class="usdt-qr__amount">{amount} <span>USDT</span></dd>
+    </div>
+    <div>
+      <dt>Address</dt>
+      <dd class="usdt-qr__address">{address}</dd>
+    </div>
+  </dl>
+
+  <p class="usdt-qr__warn">
+    Send USDT on <strong>BNB Smart Chain (BEP-20)</strong> only. A transfer on another network will
+    not arrive automatically and has to be recovered by hand.
+  </p>
+</section>
+
+<style>
+  .usdt-qr {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    max-width: 22rem;
+    padding: 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 1rem;
+    background-color: rgba(5, 8, 24, 0.5);
+  }
+
+  .usdt-qr__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .usdt-qr__label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .usdt-qr__badge {
+    padding: 0.15rem 0.5rem;
+    border: 1px solid rgba(0, 193, 144, 0.35);
+    border-radius: 0.4rem;
+    background-color: rgba(0, 193, 144, 0.1);
+    color: #5ee0bd;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /*
+   * The code keeps a white plate whatever the surrounding theme is: a scanner
+   * needs contrast, and an inverted or transparent QR often will not read.
+   */
+  .usdt-qr__code {
+    display: flex;
+    justify-content: center;
+    padding: 0.85rem;
+    border-radius: 0.7rem;
+    background-color: #ffffff;
+  }
+
+  .usdt-qr__code :global(svg) {
+    display: block;
+    width: 100%;
+    max-width: 15rem;
+    height: auto;
+  }
+
+  .usdt-qr__hint {
+    margin: 0;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #8b95a5;
+  }
+
+  .usdt-qr__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin: 0;
+  }
+
+  .usdt-qr__fields dt {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8b95a5;
+  }
+
+  .usdt-qr__fields dd {
+    margin: 0.2rem 0 0;
+  }
+
+  .usdt-qr__amount {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .usdt-qr__amount span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #8b95a5;
+  }
+
+  .usdt-qr__address {
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 0.72rem;
+    line-height: 1.5;
+    word-break: break-all;
+    user-select: all;
+  }
+
+  .usdt-qr__warn {
+    margin: 0;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    font-size: 0.72rem;
+    line-height: 1.55;
+    color: #8b95a5;
+  }
+
+  .usdt-qr__warn strong {
+    color: #eef2f7;
+  }
+</style>
