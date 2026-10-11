@@ -22,6 +22,7 @@ import { affiliates, AFFILIATE_REL, AFFILIATE_DISCLOSURE, type AffiliateOffer } 
 import { productSchema, breadcrumbSchema, breadcrumbTrail } from '../lib/seo';
 import vpsData from '../data/vps-detail.json';
 import planData from '../data/product-plans.json';
+import { productPriceRange } from '../lib/product-pricing';
 
 export interface Props {
   product: any;
@@ -104,22 +105,13 @@ const trail = breadcrumbTrail([
   jsonLd={[
     productSchema(product, {
       currency,
-      /*
-       * Two products carry only the WooCommerce regular/sale price and no
-       * `priceMin`/`priceMax` (fxcore100-ea, golden-deer-holy-grail-indicator).
-       * With both undefined, `productSchema` emits no `offers` node at all — and a
-       * Product without `offers` earns no rich result, which is why those two
-       * pages never appeared as products. Falling back to the sale price, and to
-       * the regular price as the high end, gives every product with a real price
-       * an `offers` node.
-       *
-       * Zero still filters out inside `productSchema`, which is what keeps the
-       * free trial tier from being published as the product's price.
-       */
-      min: product.data.priceMin ?? (Number(product.data.salePrice) || undefined),
-      max:
-        product.data.priceMax ??
-        (Number(product.data.regularPrice) || Number(product.data.salePrice) || undefined),
+      // The paid range, from the licence plans — not the frontmatter, whose
+      // `priceMin: 0` is the free trial and would leave only the top tier. See
+      // src/lib/product-pricing.ts.
+      ...productPriceRange(
+        product.data,
+        (planData as unknown as Record<string, Array<{ price?: number }>>)[product.data.slug] ?? [],
+      ),
       reviews,
     }),
     breadcrumbSchema(trail),

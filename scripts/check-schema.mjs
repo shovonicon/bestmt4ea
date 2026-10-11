@@ -24,6 +24,7 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import matter from 'gray-matter';
+import { productPriceRange } from '../src/lib/product-pricing.ts';
 
 const DIST = 'dist/client';
 const SITE_HOST = 'bestmt4ea.com';
@@ -34,7 +35,10 @@ const ALLOWED_AVAILABILITY = new Set([
   'https://schema.org/PreOrder',
 ]);
 
+const plansData = JSON.parse(readFileSync('src/data/product-plans.json', 'utf8'));
+
 const errors = [];
+let pricedProducts = 0;
 let productPages = 0;
 let articlePages = 0;
 let websiteNodes = 0;
@@ -107,6 +111,38 @@ for (const file of sourceFiles('src')) {
   }
 }
 
+/*
+ * A Product with no `offers` node earns no rich result, and that is a silence
+ * rather than an error: nothing fails, the product just never appears. It
+ * happened two ways at once — products carrying only `regularPrice`/`salePrice`
+ * with no price fields, and products whose `priceMin: 0` (the free trial) left
+ * only the most expensive tier. Both are decisions about *data*, so they are
+ * asserted here, over the content and the licence plans, where they can be
+ * caught before a deploy rather than after somebody notices the page missing
+ * from search. This is the same reasoning as the rating rule above: the product
+ * pages are server-rendered, so nothing in dist/ can police them.
+ */
+for (const file of readdirSync('src/content/products')) {
+  if (!file.endsWith('.md')) continue;
+  const { data } = matter(readFileSync(join('src/content/products', file), 'utf8'));
+  if (data.draft) continue;
+
+  const slug = decode(String(data.slug ?? file.replace(/\.md$/, '')));
+  const plans = Array.isArray(plansData[slug]) ? plansData[slug] : [];
+  const paid = plans.filter((plan) => Number(plan?.price) > 0);
+  if (!paid.length) continue;
+
+  pricedProducts++;
+  const { min, max } = productPriceRange(data, plans);
+  if (min == null) {
+    errors.push(
+      `${file}: has ${paid.length} paid plan(s) but no positive price reaches the schema — its Product would carry no offers node and could never earn a rich result`,
+    );
+  } else if (max != null && min > max) {
+    errors.push(`${file}: price range is inverted (${min} > ${max})`);
+  }
+}
+
 function routeOf(file) {
   const rel = relative(DIST, file).replace(/\\/g, '/');
   if (rel === 'index.html') return '/';
@@ -140,10 +176,27 @@ for (const file of htmlFiles()) {
 
     if (block?.['@type'] === 'Product') {
       productPages++;
-      if ('aggregateRating' in block) {
-        errors.push(
-          `${label}: Product carries aggregateRating — rating markup must be backed by reviews published on the page`,
-        );
+      /*
+       * `aggregateRating` is deliberately NOT an error here. It contradicted the
+       * design: `productSchema` emits a rating only when the page renders the
+       * reviews it summarises, which is precisely what Google's review-snippet
+       * policy asks for, and those pages are the goal rather than a fault. The
+       * real guard is the source-level rule above — only productSchema may author
+       * the node, only conditionally, and only counted from the reviews it is
+       * handed — which is strictly stronger than banning the node outright.
+       */
+      const rating = block.aggregateRating;
+      if (rating) {
+        const count = Number(rating.reviewCount ?? 0);
+        if (!(count > 0)) {
+          errors.push(`${label}: Product aggregateRating has reviewCount ${rating.reviewCount}`);
+        }
+        const rendered = (block.review ?? []).length;
+        if (rendered !== count) {
+          errors.push(
+            `${label}: Product aggregateRating counts ${count} but carries ${rendered} review node(s) — the rating must describe the reviews on the page`,
+          );
+        }
       }
       const offers = block.offers;
       if (offers) {
@@ -204,5 +257,6 @@ if (errors.length > 0) {
 
 console.log(
   `check-schema PASS: ${productPages} Product, ${articlePages} Article, ${websiteNodes} WebSite node(s) valid ` +
-    '(no zero prices, no invented availability or brand, no unbacked rating markup, no build-time dates).',
+    `(${pricedProducts} priced product(s) reach a positive offers price; no zero prices, no invented ` +
+    'availability or brand, no unbacked rating markup, no build-time dates).',
 );
