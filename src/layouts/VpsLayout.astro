@@ -102,7 +102,26 @@ const trail = breadcrumbTrail([
   ogImage={product.data.seo.ogImage || product.data.featuredImage}
   ogType="article"
   jsonLd={[
-    productSchema(product, { currency, min: product.data.priceMin, max: product.data.priceMax, reviews }),
+    productSchema(product, {
+      currency,
+      /*
+       * Two products carry only the WooCommerce regular/sale price and no
+       * `priceMin`/`priceMax` (fxcore100-ea, golden-deer-holy-grail-indicator).
+       * With both undefined, `productSchema` emits no `offers` node at all — and a
+       * Product without `offers` earns no rich result, which is why those two
+       * pages never appeared as products. Falling back to the sale price, and to
+       * the regular price as the high end, gives every product with a real price
+       * an `offers` node.
+       *
+       * Zero still filters out inside `productSchema`, which is what keeps the
+       * free trial tier from being published as the product's price.
+       */
+      min: product.data.priceMin ?? (Number(product.data.salePrice) || undefined),
+      max:
+        product.data.priceMax ??
+        (Number(product.data.regularPrice) || Number(product.data.salePrice) || undefined),
+      reviews,
+    }),
     breadcrumbSchema(trail),
     {
       '@context': 'https://schema.org',
