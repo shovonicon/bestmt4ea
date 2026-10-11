@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Backtest Honesty Checklist — BestMT4EA</title>
+    <style>
+      :root {
+        --ink: #101418;
+        --muted: #5a6570;
+        --line: #d7dde3;
+        --accent: #0b7a5d;
+        --warn: #a8410f;
+      }
+      * { box-sizing: border-box; }
+      @page { size: A4; margin: 14mm 13mm; }
+      html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: #fff;
+        font: 10.5pt/1.45 "Helvetica Neue", Arial, sans-serif;
+      }
+      h1 { font-size: 19pt; line-height: 1.15; margin: 0 0 2mm; letter-spacing: -0.01em; }
+      h2 {
+        font-size: 11.5pt;
+        margin: 7mm 0 2.5mm;
+        padding-bottom: 1.2mm;
+        border-bottom: 1px solid var(--line);
+        break-after: avoid;
+      }
+      h3 { font-size: 10pt; margin: 4mm 0 1.5mm; break-after: avoid; }
+      p { margin: 0 0 2.5mm; }
+      .lede { color: var(--muted); max-width: 165mm; }
+      .brand {
+        display: flex; justify-content: space-between; align-items: baseline;
+        border-bottom: 2px solid var(--accent); padding-bottom: 2mm; margin-bottom: 4mm;
+      }
+      .brand strong { font-size: 11pt; letter-spacing: 0.02em; }
+      .brand span { color: var(--muted); font-size: 8.5pt; }
+      ul { margin: 0 0 2.5mm; padding-left: 0; list-style: none; }
+      ul.check li { position: relative; padding-left: 6.5mm; margin-bottom: 1.4mm; break-inside: avoid; }
+      ul.check li::before {
+        content: ""; position: absolute; left: 0; top: 0.4mm;
+        width: 3.6mm; height: 3.6mm; border: 1px solid var(--muted); border-radius: 0.6mm;
+      }
+      ul.plain { padding-left: 5mm; list-style: disc; }
+      ul.plain li { margin-bottom: 1.2mm; }
+      table { width: 100%; border-collapse: collapse; margin: 0 0 3mm; font-size: 9.5pt; break-inside: avoid; }
+      th, td { border: 1px solid var(--line); padding: 1.6mm 2mm; text-align: left; vertical-align: top; }
+      th { background: #f2f5f7; font-weight: 600; }
+      .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 8mm; }
+      .note {
+        border-left: 3px solid var(--warn); background: #fdf6f2;
+        padding: 2.5mm 3mm; margin: 3mm 0; font-size: 9.5pt; break-inside: avoid;
+      }
+      .box { border: 1px solid var(--line); border-radius: 1.5mm; padding: 3mm; margin: 3mm 0; break-inside: avoid; }
+      .box h3 { margin-top: 0; }
+      .flag { color: var(--warn); font-weight: 600; }
+      footer {
+        margin-top: 8mm; padding-top: 2.5mm; border-top: 1px solid var(--line);
+        color: var(--muted); font-size: 8.5pt;
+      }
+      .page-break { break-before: page; }
+      .formula { font-family: "Courier New", monospace; font-size: 9.5pt; background: #f2f5f7; padding: 2mm 2.5mm; border-radius: 1mm; }
+      .line { border-bottom: 1px solid var(--line); height: 5mm; }
+    </style>
+  </head>
+  <body>
+    <div class="brand">
+      <strong>BestMT4EA</strong>
+      <span>bestmt4ea.com — free trading resources</span>
+    </div>
+
+    <h1>Backtest Honesty Checklist</h1>
+    <p class="lede">
+      A backtest is not a result. It is a claim about the past, produced by a program whose settings were
+      chosen by someone with an interest in the claim looking good. That does not make every backtest
+      false — it makes it <em>unverified</em> until you have asked how it was made.
+    </p>
+    <p class="lede">
+      This sheet is the sequence to run before you believe one. It rates no product and contains no
+      performance figures. Every verdict on it is one you reach from evidence you gathered yourself.
+    </p>
+
+    <h2>Section A — Read the report, not the curve</h2>
+    <p>The equity curve is the most persuasive chart in trading and the least informative. Demand these
+      five numbers from the Strategy Tester report, and treat a missing one as an answer in itself.</p>
+    <table>
+      <thead>
+        <tr><th style="width: 30%">Number</th><th style="width: 34%">Where it is</th><th>What it exposes</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Equity drawdown</strong></td>
+          <td>Not balance drawdown — look for the equity figure.</td>
+          <td>Balance drawdown hides floating losses. Equity drawdown is what closes accounts.</td>
+        </tr>
+        <tr>
+          <td><strong>Total trades</strong></td>
+          <td>Alongside the period tested.</td>
+          <td>A long period with few trades is a small sample wearing a long label.</td>
+        </tr>
+        <tr>
+          <td><strong>Profit factor</strong></td>
+          <td>Gross profit ÷ gross loss.</td>
+          <td>Meaningless without the trade count next to it.</td>
+        </tr>
+        <tr>
+          <td><strong>Average win / average loss</strong></td>
+          <td>Both, plus the win rate.</td>
+          <td>A high win rate with a large average loss means one bad day erases many good ones.</td>
+        </tr>
+        <tr>
+          <td><strong>Cost assumptions</strong></td>
+          <td>Spread, commission and swap used in the test.</td>
+          <td>A run at zero spread describes a market that does not exist.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">
+      <span class="flag">Write the numbers down before you look at the curve.</span> Once you have seen a
+      rising line, every figure afterwards gets read in its favour. That is not cynicism, it is how
+      reading works.
+    </div>
+
+    <h2>Section B — The data underneath the test</h2>
+    <ul class="check">
+      <li><strong>Every tick, on real ticks.</strong> “Open prices only” is not a backtest of an intraday system; it decides each bar at its open and cannot see what happened inside it.</li>
+      <li><strong>Modelling quality is stated and high.</strong> The Strategy Tester prints it — if the report does not say, the test was not run to be judged.</li>
+      <li><strong>Spread is modelled, not fixed at zero.</strong> A fixed spread is still a simplification, but zero is a fiction.</li>
+      <li><strong>Commission and swap are included</strong> if your broker charges them. A strategy that holds overnight and ignores swap is being measured on a different instrument to the one you would trade.</li>
+      <li><strong>The history is long enough to contain a bad regime</strong> — a trending year and a ranging year, not a single quiet stretch.</li>
+      <li><strong>You can say which broker's data it used,</strong> because ticks are not identical between brokers.</li>
+    </ul>
+
+    <h2>Section C — The optimisation audit</h2>
+    <p>This is where most attractive backtests come from, and it is rarely dishonest on purpose — a
+      parameter search is a normal step that quietly becomes the result.</p>
+    <div class="two">
+      <ul class="check">
+        <li>You know <strong>which inputs were optimised</strong>, and roughly over what ranges.</li>
+        <li>You know <strong>how many combinations</strong> were tried. A search over many combinations will always find some that look excellent in hindsight.</li>
+        <li>The chosen settings were then run <strong>on a period they were not chosen on</strong>.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>Walk-forward or rolling tests</strong> exist, rather than one continuous tuned run.</li>
+        <li>The settings are <strong>not on the edge of their range</strong> — a value that only works at its maximum is a fitted value.</li>
+        <li>Small changes to an input <strong>do not destroy the result</strong>.</li>
+      </ul>
+    </div>
+    <div class="note">
+      <span class="flag">The ratio worth estimating.</span> Compare the number of trades to the number of
+      adjustable inputs. When a system has many inputs and few trades, there is enough freedom to fit the
+      noise — and the equity curve will look superb precisely because it was fitted.
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>Section D — Seven tells of a tuned result</h2>
+    <table>
+      <thead>
+        <tr><th style="width: 38%">What you see</th><th>Why it is suspicious</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>A curve that climbs almost in a straight line</td><td>Real trading has losing stretches. A line without them usually means losses are absorbed somewhere off the chart — averaging, grid, or a stop that is never reached in the test.</td></tr>
+        <tr><td>No losing months at all</td><td>Plausible over a short window, not over years of varying conditions.</td></tr>
+        <tr><td>The same trade appearing at the same hour, over and over</td><td>Often a fill assumption the tester grants and the broker does not.</td></tr>
+        <tr><td>A test period that ends just before a known crisis</td><td>Date ranges are chosen, and the end date is the easiest thing to choose.</td></tr>
+        <tr><td>A very large average win beside a very high win rate</td><td>Both together usually mean the losing column is incomplete.</td></tr>
+        <tr><td>The result collapses when spread is raised slightly</td><td>The edge is smaller than the cost of taking it.</td></tr>
+        <tr><td>Settings that only work at one exact value</td><td>That is the signature of fitting, not of a market behaviour.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Section E — Re-run it yourself</h2>
+    <p>This is the only step that turns a claim into evidence, and it is tedious. Do it anyway — the effort
+      is small next to a funded account.</p>
+    <ul class="check">
+      <li>Same EA, same version, <strong>your own MetaTrader</strong>, <strong>your broker's data</strong>.</li>
+      <li>Same symbol, same period, same starting balance as the report you are checking.</li>
+      <li>Spread set to what <em>you</em> actually pay, not what the vendor used.</li>
+      <li>Commission and swap set to your account's terms.</li>
+      <li>Run it once with the published settings, and <strong>change nothing else</strong>.</li>
+      <li>Compare the <strong>shape and the drawdown</strong>, not the final balance. A different ending with a similar character is usable information; a completely different character means the report described a different test.</li>
+      <li>If it matches, run it again over a different stretch of the same length, chosen before you look.</li>
+    </ul>
+    <div class="box">
+      <h3>What a match does and does not prove</h3>
+      <p>
+        A repeat proves the test can be reproduced from the stated assumptions. It does <strong>not</strong>
+        prove the strategy will make money — it proves the claim was made honestly about a past that has
+        already happened. Those are different sentences, and sales pages rely on you hearing the second
+        when only the first is true.
+      </p>
+    </div>
+
+    <h2>Section F — From backtest to demo to live</h2>
+    <p>Each step forward removes an assumption. Expect the numbers to get worse at every one, and treat a
+      strategy that <em>improves</em> in live conditions as an anomaly to explain rather than a bonus.</p>
+    <table>
+      <thead>
+        <tr><th style="width: 24%">Stage</th><th style="width: 38%">What it assumes away</th><th>What stays unknown</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Backtest</strong></td><td>Nothing is assumed — but fills, spread and slippage are modelled, and the settings were chosen with knowledge of this period.</td><td>Everything about the future.</td></tr>
+        <tr><td><strong>Forward / demo</strong></td><td>Fills and spread are real; the settings are fixed in advance.</td><td>Whether the same fills hold under live routing, and how you behave when it draws down.</td></tr>
+        <tr><td><strong>Live, small</strong></td><td>Nothing.</td><td>Whether the edge survives real slippage, news spreads and your own decisions.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Section G — Verdict</h2>
+    <div class="two">
+      <ul class="check">
+        <li>Five numbers written down before the curve was read (A).</li>
+        <li>Data quality and cost assumptions known (B).</li>
+        <li>Optimisation described, including what was tried (C).</li>
+      </ul>
+      <ul class="check">
+        <li>No unexplained item from the tells table (D).</li>
+        <li>Re-run reproduced on my own data (E).</li>
+        <li>A written decision: discard, adjust, or proceed to a fixed demo period (F).</li>
+      </ul>
+    </div>
+    <p class="formula">
+      Verdict: continue &nbsp;&#9744;&nbsp;&nbsp; adjust and re-test &nbsp;&#9744;&nbsp;&nbsp; discard &nbsp;&#9744;
+    </p>
+    <p class="lede">
+      Notes — what would change my mind, and the date I decided:
+    </p>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+
+    <footer>
+      <p>
+        <strong>Backtest Honesty Checklist</strong> — a free resource from bestmt4ea.com. Free to use, print
+        and share with credit. It is general information, not financial advice, and it rates no product.
+      </p>
+      <p>
+        Trading forex and CFDs on margin carries a high risk of loss and is not suitable for everyone.
+        Leverage works against you as readily as for you. Historical results, backtests and demo results do
+        not predict future performance. Test any expert advisor on a demo account, with money you can afford
+        to lose, before trading it live.
+      </p>
+      <p>bestmt4ea.com — full guides, EA reviews and free tools for MetaTrader 4 and MetaTrader 5 traders.</p>
+    </footer>
+  </body>
+</html>

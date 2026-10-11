@@ -100,6 +100,12 @@ const RESOURCES = [
     about: 'a printable 20-trade demo log that records spread, slippage and exit reason',
   },
   {
+    match: /backtest|strategy tester|optimis|history quality|curve/i,
+    fileKey: 'resources/backtest-honesty-checklist.pdf',
+    about:
+      'a printable eight-section backtest honesty checklist — reading the report before the curve, the data quality underneath a test, the optimisation audit, seven tells of a tuned result, re-running it yourself on your own broker data, what backtest-to-demo-to-live each assume away, and a written verdict',
+  },
+  {
     match: /review|reviews|comparison|best|vetting|checklist|red flag|before you (buy|install)/i,
     fileKey: 'resources/eurusd-ea-evaluation-checklist.pdf',
     about:
