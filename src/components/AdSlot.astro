@@ -71,17 +71,29 @@ const hasFallback = Astro.slots.has('fallback');
           document.head.appendChild(script);
         }
         /*
-         * Request the ad only once the unit has a width. AdSense sizes a unit from
-         * its container and throws "No slot size for availableWidth=0" when asked
-         * while it is hidden or not laid out yet — the side rails are display:none
-         * below 1320px, and this script runs during parsing. Wait for a width
-         * instead; a unit that never becomes visible never asks, and never errors.
+         * Request the ad only once the unit has a real box. AdSense sizes a unit
+         * from its container and throws "No slot size for availableWidth=0" when
+         * asked while hidden or not laid out yet — the side rails are display:none
+         * below 1320px, and this script runs during parsing.
+         *
+         * Height matters as much as width: measured on a live post, units at
+         * 640x0 passed a width-only test, asked, and came back unfilled, because
+         * AdSense had nothing to fit into. A unit that is not visible in both
+         * axes has not been laid out, whatever its width says.
+         *
+         * The observer alone is not enough either. Units measured at a healthy
+         * 640x280 were still recorded as never having asked, so a slow, bounded
+         * poll runs alongside it: whichever notices first wins, and `request` is
+         * idempotent, so both firing is harmless.
          */
         (() => {
           const unit = document.currentScript?.closest('[data-ad-unit]');
           const ins = unit?.querySelector('ins.adsbygoogle');
           if (!ins) return;
+
+          const ready = () => ins.offsetWidth > 0 && ins.offsetHeight > 0;
           const request = () => {
+            if (ins.dataset.adRequested === '1') return;
             ins.dataset.adRequested = '1';
             try {
               (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -89,15 +101,30 @@ const hasFallback = Astro.slots.has('fallback');
               /* a blocked or failed library must never break the page */
             }
           };
-          if (ins.offsetWidth > 0) return request();
-          if (typeof ResizeObserver === 'undefined') return request();
-          const watcher = new ResizeObserver(() => {
-            if (ins.offsetWidth > 0) {
-              watcher.disconnect();
+
+          if (ready()) return request();
+
+          if (typeof ResizeObserver !== 'undefined') {
+            const watcher = new ResizeObserver(() => {
+              if (ready()) {
+                watcher.disconnect();
+                request();
+              }
+            });
+            watcher.observe(ins);
+          }
+
+          /* Roughly 20 seconds, then stop: a unit that never appears in the
+             viewport should not keep a timer alive for the life of the page. */
+          let tries = 0;
+          const poll = window.setInterval(() => {
+            if (ready()) {
+              window.clearInterval(poll);
               request();
+            } else if (++tries > 40) {
+              window.clearInterval(poll);
             }
-          });
-          watcher.observe(ins);
+          }, 500);
         })();
       </script>
       {hasFallback && (
