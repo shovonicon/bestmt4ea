@@ -158,9 +158,17 @@ it automatically via the `predeploy` hook, so a broken build cannot ship.
 - Hidden mega-menu panels must keep `visibility: hidden` — opacity alone leaves
   their links in the tab order. `test:e2e` pins the keyboard contract
   (ArrowDown, Escape, focus restore) and the 44px touch targets.
-- **The WooCommerce Stripe webhook is deliberately left enabled.**
-  `https://bestmt4ea.com/wp-json/wc-stripe/v1/webhook` now resolves to the Worker, so it
-  is dead and accumulating failed deliveries. The owner will decide what to do with it —
-  **do not disable, delete or "fix" it.**
+- **The WooCommerce Stripe webhook is dead, and Stripe retires it on 2026-10-17.**
+  `https://bestmt4ea.com/wp-json/wc-stripe/v1/webhook` belongs to the old WordPress store and now
+  resolves to the Worker: measured 2026-10-11, it **301/308-redirects** to the slashed form, which
+  **404s**. That 404 is the entirety of Stripe's "19 failed deliveries" notice — noise, not a fault,
+  and nothing on this site depends on it. Stripe stops retrying by itself, so the only action is
+  removing the endpoint from the Dashboard — and that is the owner's call.
+  **Do not re-point this URL at anything, and do not "fix" it.**
+- **The live store's Stripe webhook is `/api/webhooks/stripe/`.** Note `/api/stripe/webhook/` is the
+  wrong path and 404s. Verified 2026-10-11: an unsigned POST returns **400**, and `webhook_events`
+  holds 5 processed deliveries including real `cs_live_…` Checkout sessions — so fulfilment does
+  **not** depend on the return URL alone. Both paths settle through the same
+  `reconcileStripeSession`, and only a *full* refund reaches `refundOrderForPaymentIntent`.
 - Legal pages (`/disclaimer`, `/dmca-policy`, `/affiliate-disclosure`) are required for
   AdSense review and are linked from the footer.
