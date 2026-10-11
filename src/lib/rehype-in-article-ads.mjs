@@ -7,10 +7,14 @@
  * a unit never lands mid-list or mid-heading.
  *
  * Notes for this site:
- *  - Emits the same `[data-ad-unit]` markup `AdSlot.astro` renders, minus the
- *    width-wait (these units are always in flow and full width, so there is no
- *    "availableWidth=0" case to guard). It still claims `window.__adsenseRequested`,
- *    so the library loads exactly once per page whichever unit appears first.
+ *  - Emits the same `[data-ad-unit]` markup `AdSlot.astro` renders. It still
+ *    claims `window.__adsenseRequested`, so the library loads exactly once per
+ *    page whichever unit appears first.
+ *  - The ask is width-guarded and sets `data-ad-requested`. Width only — never
+ *    height. An empty `ins.adsbygoogle` has no intrinsic height; the box it gets
+ *    is the one AdSense reserves, so requiring height before asking deadlocks it
+ *    (no ask, no reserved box, no height, never asks). Measured: a height check
+ *    collapsed these units from 640x280 to 640x0 and stopped them asking.
  *  - Nothing is injected when `PUBLIC_ADSENSE_CLIENT` is unset, matching AdSlot.
  *  - Only posts use this. The layout's own in-article slot is removed so a post
  *    does not carry both.
@@ -29,7 +33,16 @@ function adNode({ client, slot, index }) {
     `var s=document.createElement('script');s.async=true;s.crossOrigin='anonymous';` +
     `s.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client='+c;` +
     `document.head.appendChild(s);}` +
-    `(window.adsbygoogle=window.adsbygoogle||[]).push({});})();`;
+    `var u=document.currentScript&&document.currentScript.closest('[data-ad-unit]');` +
+    `var ins=u&&u.querySelector('ins.adsbygoogle');if(!ins)return;` +
+    `var go=function(){if(ins.dataset.adRequested==='1')return;` +
+    `if(!(ins.offsetWidth>0))return;` +
+    `ins.dataset.adRequested='1';` +
+    `try{(window.adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}};` +
+    `if(ins.offsetWidth>0){go();}` +
+    `else{var n=0,t=setInterval(function(){` +
+    `if(ins.offsetWidth>0){clearInterval(t);go();}` +
+    `else if(++n>40){clearInterval(t);}},500);}})();`;
 
   return {
     type: 'element',

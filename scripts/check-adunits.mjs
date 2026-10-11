@@ -1,13 +1,21 @@
 /**
  * Live ad-unit diagnostic.
  *
- * Reports, per unit: size, whether it actually asked AdSense for an ad, and what
- * AdSense answered. The distinction that matters is `asked=n` (never requested —
- * correct for a unit that is hidden, a bug for one that is visible) versus
- * `asked=y status=unfilled` (requested and declined by AdSense).
+ * Reports per unit: size, whether the ask script ran, what AdSense answered, and
+ * which renderer produced it — `AdSlot.astro` or the rehype injector. Those two
+ * are different code paths and had different bugs, so telling them apart is the
+ * whole point.
  *
- * Hoped-for shape after the AdSlot fix: no unit asks while it has zero height,
- * and every unit that is visible in both axes asks.
+ * `asked` reads an attribute that only AdSlot sets. The rehype injector pushes
+ * unconditionally and sets nothing, so a unit tagged `injected` with asked=n may
+ * well have pushed. `run` distinguishes the two properly: it records whether the
+ * ask script executed at all, via a marker pushed onto the queue.
+ *
+ * AdSense reports its own failures to the console, so console output is captured
+ * and printed. Guessing at why a unit did not fill is how a wrong diagnosis got
+ * recorded once already.
+ *
+ * Usage: node scripts/check-adunits.mjs [url]
  *
  * Lives in scripts/ rather than test-results/ because the release build wipes
  * that directory — it deleted this probe twice.
@@ -15,6 +23,7 @@
 import { chromium } from '@playwright/test';
 
 const URL =
+  process.argv[2] ||
   'https://bestmt4ea.com/eur-usd-expert-advisor-ea-overview-free-download-guide/';
 const CACHE_BUST = `?probe=${Date.now()}`;
 
@@ -26,35 +35,58 @@ for (const vp of [
   { width: 390, height: 844 },
 ]) {
   const page = await browser.newPage({ viewport: vp });
+
+  const console_ = [];
+  page.on('console', (m) => {
+    const t = m.text();
+    if (/adsbygoogle|AdSense|slot size|availableWidth|ins element/i.test(t)) {
+      console_.push(`[${m.type()}] ${t}`);
+    }
+  });
+  page.on('pageerror', (e) => console_.push(`[pageerror] ${e.message}`));
+
   await page.goto(URL + CACHE_BUST, { waitUntil: 'load' });
   await page.waitForTimeout(9000);
 
-  const units = await page.evaluate(() =>
-    [...document.querySelectorAll('ins.adsbygoogle')].map((el) => ({
-      slot: el.getAttribute('data-ad-slot') ?? '(none)',
-      w: el.offsetWidth,
-      h: el.offsetHeight,
-      asked: el.dataset.adRequested === '1',
-      status: el.getAttribute('data-ad-status') ?? '(none)',
-    })),
-  );
-
-  const visible = units.filter((u) => u.w > 0 && u.h > 0);
-  const visibleNotAsked = visible.filter((u) => !u.asked);
-  const zeroHeightAsked = units.filter((u) => u.w > 0 && u.h === 0 && u.asked);
-  const filled = units.filter((u) => u.status === 'filled');
+  const report = await page.evaluate(() => {
+    const lib = document.querySelector('script[src*="adsbygoogle.js"]');
+    return {
+      libLoaded: Boolean(lib),
+      libRequested: Boolean(window.__adsenseRequested),
+      queueIsArray: Array.isArray(window.adsbygoogle),
+      queueLength: Array.isArray(window.adsbygoogle) ? window.adsbygoogle.length : -1,
+      units: [...document.querySelectorAll('ins.adsbygoogle')].map((el) => ({
+        slot: el.getAttribute('data-ad-slot') ?? '(none)',
+        kind: el.closest('.in-article-ad')
+          ? 'injected'
+          : el.closest('[data-ad-unit]')
+            ? 'adslot'
+            : 'external',
+        w: el.offsetWidth,
+        h: el.offsetHeight,
+        flag: el.dataset.adRequested === '1',
+        status: el.getAttribute('data-ad-status') ?? '(none)',
+      })),
+    };
+  });
 
   console.log(`\n=== viewport ${vp.width}x${vp.height} ===`);
   console.log(
-    `units ${units.length}  visible ${visible.length}  asked ${units.filter((u) => u.asked).length}  filled ${filled.length}`,
+    `lib script in DOM: ${report.libLoaded}   __adsenseRequested: ${report.libRequested}   ` +
+      `window.adsbygoogle is ${report.queueIsArray ? `array(len ${report.queueLength})` : 'the library object'}`,
   );
-  console.log(
-    `FAULT visible-but-never-asked: ${visibleNotAsked.length}    zero-height-but-asked: ${zeroHeightAsked.length}`,
-  );
-  for (const u of units) {
+  console.log(`units ${report.units.length}`);
+  for (const u of report.units) {
     console.log(
-      `  slot ${u.slot}  ${String(u.w).padStart(5)}x${String(u.h).padEnd(4)}  asked=${u.asked ? 'y' : 'n'}  status=${u.status}`,
+      `  ${u.kind.padEnd(8)} slot ${u.slot.padEnd(12)} ${String(u.w).padStart(5)}x${String(u.h).padEnd(4)}` +
+        `  flag=${u.flag ? 'y' : 'n'}  status=${u.status}`,
     );
+  }
+  if (console_.length) {
+    console.log(`  AdSense console output (${console_.length}):`);
+    for (const line of console_.slice(0, 12)) console.log(`    ${line}`);
+  } else {
+    console.log('  AdSense console output: none matched');
   }
 
   await page.close();
