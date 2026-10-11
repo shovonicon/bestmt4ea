@@ -1,0 +1,38 @@
+---
+/**
+ * Google Analytics 4.
+ *
+ * Renders nothing when `PUBLIC_GA_ID` is unset — the same contract as `AdSlot`,
+ * so dev, preview, and any build without the id ship no analytics at all. The id
+ * is inlined at build time, so it has to be present in the environment that
+ * builds, not just at runtime.
+ *
+ * Two things to know before adding the id:
+ *
+ *   1. `public/_headers` must allow `googletagmanager.com` in `script-src` and
+ *      `google-analytics.com` in `connect-src`. It is easy to assume the existing
+ *      `*.google.com` entry covers this; it does not, they are different domains,
+ *      and a blocked tag fails silently — no script, no error, no data. That is
+ *      how AdSense telemetry was lost once already.
+ *   2. GA4 sets cookies, so it needs a lawful basis for EU/UK visitors, and
+ *      `/privacy-policy` has to name Google as a processor.
+ */
+const gaId = import.meta.env.PUBLIC_GA_ID;
+
+// No admin or API surface is worth measuring, and the admin is the owner's own
+// traffic — measuring it would only pollute the reports with their own visits.
+const path = Astro.url.pathname;
+const measured = Boolean(gaId) && !path.startsWith('/admin') && !path.startsWith('/api');
+---
+
+{
+  measured && (
+    <>
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
+      <script
+        is:inline
+        set:html={`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${gaId}');`}
+      />
+    </>
+  )
+}

@@ -7,6 +7,7 @@ import BackToTop from '../components/BackToTop.astro';
 import TelegramFab from '../components/TelegramFab.astro';
 import ParticleField from '../components/ParticleField.astro';
 import ObsidianPromo from '../components/ObsidianPromo.astro';
+import GoogleAnalytics from '../components/GoogleAnalytics.astro';
 import { site } from '../lib/site';
 import { canonicalFor, resolveImage } from '../lib/urls';
 
@@ -95,6 +96,13 @@ const jsonLdBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
       Loading it here meant every page — the homepage, product pages, the dashboard —
       pulled ~180 KB of JavaScript for ads that were never shown.
     -->
+
+    <!--
+      Analytics is the one thing that genuinely belongs on every page, since every
+      pageview is the measurement. It still renders nothing without PUBLIC_GA_ID,
+      and it skips /admin and /api.
+    -->
+    <GoogleAnalytics />
 
     {
       jsonLdBlocks.map((block) => (

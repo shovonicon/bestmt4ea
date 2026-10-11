@@ -1,10 +1,16 @@
 # Security headers for every response.
 #
 # The scripts below are allow-listed to what the site actually loads: Google
-# AdSense (the only third-party script), Cloudflare Turnstile if it is ever wired
+# AdSense, Google Analytics 4 (both conditional — neither renders without its
+# PUBLIC_ id), Cloudflare Turnstile if it is ever wired
 # up, and Cloudflare's own insights beacon. Stripe needs no allowance — checkout
 # is a redirect to Stripe's own hosted page, so there is no Stripe.js on this site
 # and no iframe to permit.
+#
+# Note that `googletagmanager.com` and `google-analytics.com` are NOT covered by
+# the `*.google.com` entries in the policy below — they are different domains. A
+# missing entry blocks the tag silently, with no error and no data, which is how
+# AdSense telemetry was lost once already.
 #
 # 'unsafe-inline' is present in script-src because Astro inlines its island boot
 # script. Removing it needs build-time hashes; until then it is the honest gap in
@@ -18,7 +24,7 @@
   X-Frame-Options: SAMEORIGIN
   Cross-Origin-Opener-Policy: same-origin-allow-popups
   Permissions-Policy: camera=(), microphone=(), geolocation=(), usb=(), payment=()
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; upgrade-insecure-requests; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://partner.googleadservices.com https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net https://*.adtrafficquality.google https://challenges.cloudflare.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://*.adtrafficquality.google https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net https://challenges.cloudflare.com https://cloudflareinsights.com; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.googlesyndication.com https://*.adtrafficquality.google https://www.google.com https://challenges.cloudflare.com https://www.youtube.com https://www.youtube-nocookie.com; manifest-src 'self'
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; upgrade-insecure-requests; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://partner.googleadservices.com https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net https://*.adtrafficquality.google https://challenges.cloudflare.com https://static.cloudflareinsights.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://*.adtrafficquality.google https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net https://challenges.cloudflare.com https://cloudflareinsights.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.googlesyndication.com https://*.adtrafficquality.google https://www.google.com https://challenges.cloudflare.com https://www.youtube.com https://www.youtube-nocookie.com; manifest-src 'self'
 
 # Hashed assets are immutable, so they can be cached hard.
 /_astro/*
