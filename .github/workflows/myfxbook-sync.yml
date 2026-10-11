@@ -54,11 +54,13 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: node scripts/sync-myfxbook.mjs
 
-      # PUBLIC_ADSENSE_CLIENT is inlined at build time, so a build without it ships
-      # pages with no ad units. The value is public — it is in every served page.
+      # PUBLIC_ADSENSE_CLIENT and PUBLIC_GA_ID are inlined at build time, so a
+      # build without them ships pages with no ad units and no analytics. Both
+      # values are public — they appear in every served page.
       - name: Build
         env:
           PUBLIC_ADSENSE_CLIENT: ca-pub-3205201421095170
+          PUBLIC_GA_ID: G-H5HXGJFL95
         run: npm run build
 
       - name: Deploy
