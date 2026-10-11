@@ -273,7 +273,26 @@ const runOne = async (entry, index) => {
   closeSync(promptFd);
   closeSync(logFd);
 
-  return { entry, code, ms: Date.now() - started, logFile };
+  /*
+   * Did it actually write? A worker can exit 0 having changed nothing — it hit
+   * the permission wall and routed around it, or gave up — and the previous
+   * batch lost two posts to exactly that while reporting success. A worker's
+   * exit code says it ran; only the file says it worked.
+   *
+   * The word count is the cheap discriminator: an untouched legacy import sits
+   * around 700-900 words, a rewritten post is 3,500 or more. `check:content`
+   * remains the authority on whether those words are any good.
+   */
+  const target = join(ROOT, entry.file ?? `src/content/posts/${entry.slug}.md`);
+  let words = 0;
+  try {
+    words = (await readFile(target, 'utf8')).split(/\s+/).filter(Boolean).length;
+  } catch {
+    words = 0;
+  }
+  const wrote = words >= 3500;
+
+  return { entry, code, ms: Date.now() - started, logFile, words, wrote };
 }
 
 const results = [];
@@ -294,11 +313,55 @@ const worker = async () => {
 
 await Promise.all(Array.from({ length: Math.min(JOBS, pending.length) }, worker));
 
-const failed = results.filter((r) => r.code !== 0);
-console.log(`\n${results.length - failed.length}/${results.length} worker(s) exited 0.`);
-for (const f of failed) {
-  console.log(`  exit ${f.code} (${f.code === 8 ? 'max turns reached' : f.code === 4 ? 'permission denied' : 'error'}) — ${f.logFile}`);
+/*
+ * A worker counts as failed if it exited non-zero OR left its post unrewritten.
+ * The second case is the one that used to pass silently, so it sets the exit
+ * code too — a batch that quietly wrote four of six posts is not a success and
+ * must not be treated as one.
+ */
+const failed = results.filter((r) => r.code !== 0 || !r.wrote);
+console.log(`\n${results.length - failed.length}/${results.length} post(s) written.`);
+for (const r of results) {
+  console.log(
+    `  ${r.wrote ? 'wrote  ' : 'NO-WRITE'} exit ${r.code}  ${r.words}w  rank ${r.entry.rank}  ${r.entry.slug}`,
+  );
 }
+for (const f of failed) {
+  const why =
+    f.code === 8
+      ? 'max turns reached'
+      : f.code === 4
+        ? 'permission denied'
+        : !f.wrote
+          ? 'exited 0 but wrote nothing — grep its log for "requires permissions"'
+          : 'error';
+  console.log(`  why: ${why} — ${f.logFile}`);
+}
+
+/*
+ * The same summary to a file. The driver's own stdout has come back 0 bytes on
+ * a green run, which is how a batch's outcome became unreadable even to the
+ * person who ran it. A file on disk does not depend on the console capturing
+ * anything.
+ */
+const summaryLines = [
+  `rewrite-batch — ${stamp}`,
+  `model ${MODEL}   jobs ${JOBS}   posts ${pending.length}`,
+  '',
+  ...results.map(
+    (r) =>
+      `${r.wrote ? 'wrote   ' : 'NO-WRITE'} exit ${r.code}  ${String(r.words).padStart(5)}w  ${Math.round(r.ms / 1000)}s  ${r.entry.slug}`,
+  ),
+  '',
+  `${results.length - failed.length}/${results.length} post(s) written.`,
+  failed.length
+    ? 'FAILED — do not deploy until every post above reads "wrote".'
+    : 'All posts written. Gates and deploy are safe to run.',
+];
+const summaryFile = join(ROOT, LOG_DIR, `${stamp}-summary.txt`);
+await writeFile(summaryFile, summaryLines.join('\n'), 'utf8');
+console.log(`\nSummary: ${summaryFile}`);
+if (failed.length) process.exitCode = 1;
 
 if (GATE) {
   console.log('\nRunning the content gates…');
