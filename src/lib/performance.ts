@@ -235,14 +235,12 @@ export const editorial: Record<string, EditorialPerf> = {
     verified: true,
     sourceUrl: 'https://www.myfxbook.com/portfolio/apex-quant-btcusd-ea-ai/12059493',
     accountId: '12059493',
-    lastSynced: '2026-09-28',
+    lastSynced: '2026-10-13',
     strategy: 'AI Bitcoin Scalping',
+    totalGainPct: 72.09,
+    maxDrawdownPct: 35.44,
     minCapitalUsd: 500,
     terminal: 'MetaTrader 5',
-    conflicts: [
-      'Gain listed as 82% on the directory page and N/A on the product page.',
-      'Monthly listed as 14.2% on one page and 10-20% on another.',
-    ],
   },
 };
 
