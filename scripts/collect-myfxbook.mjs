@@ -204,11 +204,10 @@ async function main() {
     const account = accounts[slug];
     process.stdout.write(`Collecting ${slug} ... `);
     const context = await browser.newContext({ userAgent: UA });
-    if (SESSION) {
-      await context.addCookies([
-        { name: 'PHPSESSID', value: SESSION, domain: '.myfxbook.com', path: '/', secure: true, httpOnly: true },
-      ]);
-    }
+    /* No session cookie is set: every page this reads is a public account
+       page. The MYFXBOOK_SESSION constant is gone and the block that used it
+       was left behind as a bare `SESSION` reference, which threw on every run
+       and aborted the collector before it scraped anything. */
     const page = await context.newPage();
 
     try {

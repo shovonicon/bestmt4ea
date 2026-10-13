@@ -46,15 +46,6 @@
       "equity": 89.6,
       "profit": 736.31,
       "profitFactor": 1.96
-    },
-    "equinox-cosmos-ea-ai-gbpjpy-scalper-for-mt5": {
-      "accountId": "12033689",
-      "gainPct": -36.56,
-      "drawdownPct": 63.9,
-      "balance": 634.36,
-      "equity": 100,
-      "profit": 365.64,
-      "profitFactor": 0.47
     }
   }
 }

@@ -471,13 +471,11 @@
     "verification": {
       "live": {
         "rows": [
-          ["Status", "Active — tracked on Myfxbook"],
+          ["Status", "Being re-verified — the tracked account changed"],
           ["Account type", "Demo (USD)"],
-          ["Total gain", "+32.66%"],
-          ["Max drawdown", "63.9%"],
           ["Auditing", "Myfxbook"]
         ],
-        "note": "Figures are the published Myfxbook record for account 12033689, checked 28 September 2026. The tracked account holds demo funds, not live money — the page says so everywhere the numbers appear. Confirm current results at the source before buying."
+        "note": "This system's Myfxbook account was replaced on 13 October 2026 and the new one has not been synced yet. The previous figures belonged to the old account, so they have been withdrawn rather than presented against the new one. Confirm current results at the source before buying."
       },
       "report": "Equinox Cosmos applies the same rule-based scalping framework to GBPJPY, a pair that moves further and faster than the majors it sits beside here. The trade-off is visible in the record: a lower total gain than the gold systems, but also entries that do not depend on gold's specific session behaviour."
     },

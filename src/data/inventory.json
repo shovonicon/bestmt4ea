@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-11T23:49:02.057Z",
+  "generatedAt": "2026-10-13T10:32:33.762Z",
   "source": "https://bestmt4ea.com",
   "generatedBy": "scripts/build-inventory.mjs",
   "counts": {
-    "products": 12,
+    "products": 11,
     "posts": 119,
     "pages": 23,
     "productCategories": 4,
@@ -718,12 +718,6 @@
       "url": "/product/mythos-epic-ea-ai-gold-scalper-for-mt5/",
       "title": "Mythos Epic XAUUSD EA: AI Gold Scalper for MT5",
       "source": "https://bestmt4ea.com/product/mythos-epic-ea-ai-gold-scalper-for-mt5/"
-    },
-    {
-      "type": "product",
-      "url": "/product/nexora-manus-ea-ai-gold-scalper-for-mt5/",
-      "title": "Nexora Manus XAUUSD EA: AI Gold Scalper for MT5",
-      "source": "https://bestmt4ea.com/product/nexora-manus-ea-ai-gold-scalper-for-mt5/"
     },
     {
       "type": "product",

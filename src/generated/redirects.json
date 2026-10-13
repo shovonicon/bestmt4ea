@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-11T23:49:01.838Z",
+  "generatedAt": "2026-10-13T10:32:33.512Z",
   "source": "wordpress-seo-redirects (2).csv",
-  "count": 2377,
+  "count": 2378,
   "dropped": [
     {
       "from": "/special-discount",
@@ -3432,7 +3432,7 @@
     },
     {
       "from": "/category/indicators",
-      "to": "/product/nexora-manus-ea-ai-gold-scalper-for-mt5/",
+      "to": "/product/zenith-matrix-ea-ai-gold-scalper-for-mt5/",
       "status": 301
     },
     {
@@ -7112,7 +7112,7 @@
     },
     {
       "from": "/kingle-hedger-ea",
-      "to": "/product/nexora-manus-ea-ai-gold-scalper-for-mt5/",
+      "to": "/product/zenith-matrix-ea-ai-gold-scalper-for-mt5/",
       "status": 301
     },
     {
@@ -8212,7 +8212,7 @@
     },
     {
       "from": "/pattern-finder-indicator",
-      "to": "/product/nexora-manus-ea-ai-gold-scalper-for-mt5/",
+      "to": "/product/zenith-matrix-ea-ai-gold-scalper-for-mt5/",
       "status": 301
     },
     {
@@ -8733,6 +8733,11 @@
     {
       "from": "/product/millionaire-pound-scalper-pro-ea",
       "to": "/blog/",
+      "status": 301
+    },
+    {
+      "from": "/product/nexora-manus-ea-ai-gold-scalper-for-mt5/",
+      "to": "/product/zenith-matrix-ea-ai-gold-scalper-for-mt5/",
       "status": 301
     },
     {
@@ -11902,7 +11907,7 @@
     },
     {
       "from": "/yeti-forex-robot",
-      "to": "/product/nexora-manus-ea-ai-gold-scalper-for-mt5/",
+      "to": "/product/zenith-matrix-ea-ai-gold-scalper-for-mt5/",
       "status": 301
     },
     {

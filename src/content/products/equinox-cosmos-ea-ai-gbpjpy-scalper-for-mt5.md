@@ -58,9 +58,9 @@ You don’t need to watch charts all day, guess entries, or survive on willpower
 
 BUY NOW
 
-★★★★★ Trusted by traders worldwide. Track record verified on [MyFxBook](https://www.myfxbook.com/members/Bestmt4ea/equinox-cosmos-gbpjpy-ea-ai/12033689).
+★★★★★ Trusted by traders worldwide. Track record verified on [MyFxBook](https://www.myfxbook.com/portfolio/equinox-cosmos-gbpjpy-ea-ai/12256314).
 
-[![Myfxbook Widget](https://widget.myfxbook.com/widget/widget.png?accountOid=12033689&type=5)](https://www.myfxbook.com/members/Bestmt4ea/equinox-cosmos-gbpjpy-ea-ai/12033689)
+[![Myfxbook Widget](https://widget.myfxbook.com/widget/widget.png?accountOid=12256314&type=5)](https://www.myfxbook.com/portfolio/equinox-cosmos-gbpjpy-ea-ai/12256314)
 
 ## The Problem With Trading GBPJPY Yourself
 
@@ -84,11 +84,11 @@ GBPJPY moves fast and punishes hesitation. Most traders don’t lose because the
 
 Don’t take our word for it. The full trade history is public and updates in real time on MyFxBook — win rate, drawdown, profit factor, every trade. If a seller won’t show you the numbers, that’s the real red flag.
 
-[![widget](https://widgets.myfxbook.com/custom-widget?id=12033689&width=800&height=500&bart=2&linet=0&symbol=XAUUSD&magic=-1&title=Equinox Cosmos EA: AI GBPJPY Scalper for MT5&titles=25&bgColor=ffffff&gridColor=bdbdbd&lineColor=00cb05&barColor=82ff85&bar1Color=82ff85&fontColor=525252&chartbgc=ffffff&equityColor=eff45a)](https://www.myfxbook.com/members/Bestmt4ea/equinox-cosmos-gbpjpy-ea-ai/12033689)
+[![widget](https://widgets.myfxbook.com/custom-widget?id=12256314&width=800&height=500&bart=2&linet=0&symbol=XAUUSD&magic=-1&title=Equinox Cosmos EA: AI GBPJPY Scalper for MT5&titles=25&bgColor=ffffff&gridColor=bdbdbd&lineColor=00cb05&barColor=82ff85&bar1Color=82ff85&fontColor=525252&chartbgc=ffffff&equityColor=eff45a)](https://www.myfxbook.com/portfolio/equinox-cosmos-gbpjpy-ea-ai/12256314)
 
 Live Accounts – MyFxBook Verified –  MT5 – [Exness](https://one.exness.link/a/te38he38), [RoboForex](https://my.roboforex.com/en/?a=lwek), [XM](https://clicks.pipaffiliates.com/c?c=210814&l=en&p=0), [Fusion Markets](https://fusionmarkets.com/?refcode=111982) broker
 
-[![Myfxbook Widget](https://widget.myfxbook.com/widget/widget.png?accountOid=12033689&type=3)](https://www.myfxbook.com/members/Bestmt4ea/equinox-cosmos-gbpjpy-ea-ai/12033689)
+[![Myfxbook Widget](https://widget.myfxbook.com/widget/widget.png?accountOid=12256314&type=3)](https://www.myfxbook.com/portfolio/equinox-cosmos-gbpjpy-ea-ai/12256314)
 
 Don’t take our word for it—verify our live MyFxBook track record yourself before buying.
 

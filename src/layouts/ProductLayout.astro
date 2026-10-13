@@ -980,7 +980,22 @@ const faqs = [
               {discountPct > 0 && <span class="ribbon">SAVE {discountPct}%</span>}
             </div>
 
-            <div class="mt-6 grid gap-5 lg:grid-cols-3">
+            {/*
+              A fixed three-column grid strands a single plan in the first
+              column with two thirds of the row empty, and does the same to a
+              two-plan product. Below three plans the row centres itself and the
+              cards keep a readable width; at three nothing changes.
+            */}
+            <div
+              class:list={[
+                'mt-6 grid gap-5',
+                plans.length === 1
+                  ? 'mx-auto max-w-md'
+                  : plans.length === 2
+                    ? 'mx-auto max-w-3xl sm:grid-cols-2'
+                    : 'lg:grid-cols-3',
+              ]}
+            >
               {plans.map((plan) => {
                 const featured = plan.badge === 'Most popular';
                 // Each tier gets its own colour: trial sky, 12 months violet, the featured lifetime tier gold.

@@ -161,6 +161,7 @@ const menusRaw = [
   },
   {
     label: 'Blog',
+    href: '/blog',
     columns: blogColumns,
   },
 ];
@@ -176,6 +177,9 @@ const leadLinks = withUrls(leadLinksRaw);
 const tailLinks = withUrls(tailLinksRaw);
 const menus = menusRaw.map((menu) => ({
   ...menu,
+  /* A menu may carry its own destination as well as a panel — Blog goes to the
+     archive — so its href needs the same trailing-slash normalisation. */
+  href: menu.href ? url(menu.href) : undefined,
   columns: menu.columns.map((col) => ({ ...col, links: withUrls(col.links) })),
 }));
 
@@ -223,29 +227,61 @@ const signedIn = Astro.locals.session?.subjectType === 'customer';
       {
         menus.map((menu) => (
           <div class="relative" data-menu>
-            <button
-              type="button"
-              data-menu-toggle
-              aria-haspopup="true"
-              aria-expanded="false"
-              class="nav-link"
-            >
-              <span>{menu.label}</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="menu-chevron h-3.5 w-3.5 text-slate-400"
+            {/*
+              An item with a destination renders as a link, so clicking it
+              navigates as well as opening the panel; everything else stays a
+              button. `data-menu-toggle` carries the panel behaviour either way,
+              which is what the script and the keyboard contract bind to.
+            */}
+            {menu.href ? (
+              <a
+                href={menu.href}
+                data-menu-toggle
+                aria-haspopup="true"
+                aria-expanded="false"
+                class="nav-link"
               >
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-            </button>
+                <span>{menu.label}</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="menu-chevron h-3.5 w-3.5 text-slate-400"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </a>
+            ) : (
+              <button
+                type="button"
+                data-menu-toggle
+                aria-haspopup="true"
+                aria-expanded="false"
+                class="nav-link"
+              >
+                <span>{menu.label}</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="menu-chevron h-3.5 w-3.5 text-slate-400"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+            )}
 
             <div class="pointer-events-none absolute left-1/2 top-full z-50 -translate-x-1/2 pt-2">
               <div
@@ -569,9 +605,12 @@ const signedIn = Astro.locals.session?.subjectType === 'customer';
       menu.addEventListener('mouseleave', scheduleClose);
 
       /* Click keeps the menu open (mouseenter already opened it on hover) and is
-         the only way in on touch, where hover never fires. */
+         the only way in on touch, where hover never fires.
+         An item with a destination keeps its default action, so the click both
+         opens the panel and follows the link — Blog reaches the archive that way.
+         Only a plain toggle is prevented, because it has nowhere to go. */
       btn?.addEventListener('click', (event) => {
-        event.preventDefault();
+        if (!btn.hasAttribute('href')) event.preventDefault();
         open();
       });
 

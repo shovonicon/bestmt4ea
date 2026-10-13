@@ -3,8 +3,10 @@
   "_freeDownloadsNote": "The 31 free-download posts and their library hub were deleted from the site. They are indexed live URLs with backlinks, they return at these same URLs later, and /top-ranking/ is the closest buying-intent match — so they 301 rather than 404. DELETE these rules in the same change that restores the posts: check-routes fails when a redirect source becomes a live route.",
   "_emptiedArchivesNote": "The Gold (XAUUSD) Trading archive and its two children lost every post to that deletion, so Astro no longer generates them. They 301 to the blog index, matching how build-redirects.mjs already retires the other empty archives. Remove these rules if the categories refill.",
   "_wooPagesNote": "WooCommerce plugin/account endpoints with no equivalent in the rebuild and no search value. Sent to the shop rather than left as dead ends.",
+  "_withdrawnProductNote": "Nexora Manus is a draft pending republication, so its page no longer builds. Its URL keeps working by redirecting to Zenith, a live AI gold scalper in the same range — so anyone following a link, a bookmark or a legacy redirect still lands on a product. The four legacy rows that point at Nexora follow this one, because chains are flattened. Undrafting Nexora makes /product/nexora-manus-ea-ai-gold-scalper-for-mt5/ a live route again, which collides with this source and fails check-routes — delete this rule in the same change that republishes the product.",
   "redirects": [
     { "from": "/product/2000-trading-tools/", "to": "/top-ranking/", "status": 301 },
+    { "from": "/product/nexora-manus-ea-ai-gold-scalper-for-mt5/", "to": "/product/zenith-matrix-ea-ai-gold-scalper-for-mt5/", "status": 301 },
 
     { "from": "/free-download-forex-ea-indicator/", "to": "/top-ranking/", "status": 301 },
     { "from": "/%f0%9f%93%88-gold-trend-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know/", "to": "/top-ranking/", "status": 301 },

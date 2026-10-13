@@ -19,7 +19,7 @@
       "code": "personal-12m",
       "name": "Personal",
       "term": "12 months",
-      "price": 349.99,
+      "price": 179,
       "badge": "Most affordable",
       "cta": "Get 12 months",
       "features": [
@@ -33,7 +33,7 @@
       "code": "personal-lifetime",
       "name": "Personal",
       "term": "Lifetime",
-      "price": 999.99,
+      "price": 497,
       "compareAt": 1204.81,
       "badge": "Most popular",
       "cta": "Get lifetime",
@@ -64,7 +64,7 @@
       "code": "personal-12m",
       "name": "Personal",
       "term": "12 months",
-      "price": 279.99,
+      "price": 199,
       "badge": "Most affordable",
       "cta": "Get 12 months",
       "features": [
@@ -78,7 +78,7 @@
       "code": "personal-lifetime",
       "name": "Personal",
       "term": "Lifetime",
-      "price": 797.99,
+      "price": 549,
       "badge": "Most popular",
       "cta": "Get lifetime",
       "features": [
@@ -108,7 +108,7 @@
       "code": "personal-12m",
       "name": "Personal",
       "term": "12 months",
-      "price": 329.99,
+      "price": 329,
       "badge": "Most affordable",
       "cta": "Get 12 months",
       "features": [
@@ -122,7 +122,7 @@
       "code": "personal-lifetime",
       "name": "Personal",
       "term": "Lifetime",
-      "price": 899.99,
+      "price": 899,
       "badge": "Most popular",
       "cta": "Get lifetime",
       "features": [
@@ -196,7 +196,7 @@
       "code": "personal-12m",
       "name": "Personal",
       "term": "12 months",
-      "price": 299.99,
+      "price": 239,
       "badge": "Most affordable",
       "cta": "Get 12 months",
       "features": [
@@ -210,7 +210,7 @@
       "code": "personal-lifetime",
       "name": "Personal",
       "term": "Lifetime",
-      "price": 849.99,
+      "price": 649,
       "badge": "Most popular",
       "cta": "Get lifetime",
       "features": [
@@ -240,7 +240,7 @@
       "code": "personal-12m",
       "name": "Personal",
       "term": "12 months",
-      "price": 149.99,
+      "price": 139,
       "badge": "Most affordable",
       "cta": "Get 12 months",
       "features": [
@@ -254,7 +254,7 @@
       "code": "personal-lifetime",
       "name": "Personal",
       "term": "Lifetime",
-      "price": 399.99,
+      "price": 379,
       "badge": "Most popular",
       "cta": "Get lifetime",
       "features": [
@@ -358,7 +358,7 @@
       "code": "personal-12m",
       "name": "Personal",
       "term": "12 months",
-      "price": 239.99,
+      "price": 279,
       "badge": "Most affordable",
       "cta": "Get 12 months",
       "features": [
@@ -372,7 +372,7 @@
       "code": "personal-lifetime",
       "name": "Personal",
       "term": "Lifetime",
-      "price": 679.99,
+      "price": 765,
       "badge": "Most popular",
       "cta": "Get lifetime",
       "features": [
@@ -389,7 +389,7 @@
       "name": "Lifetime",
       "term": "one payment",
       "note": "Lifetime access to the EA, including free updates.",
-      "price": 7.99,
+      "price": 9,
       "compareAt": 10.99,
       "badge": "Most popular",
       "cta": "Get lifetime access",
@@ -407,7 +407,7 @@
       "name": "Lifetime Premium",
       "term": "one payment",
       "note": "Lifetime premium access to the indicator.",
-      "price": 87.99,
+      "price": 49,
       "compareAt": 109.99,
       "badge": "Most popular",
       "cta": "Get lifetime access",
@@ -438,7 +438,7 @@
       "code": "personal-12m",
       "name": "Personal",
       "term": "12 months",
-      "price": 89.99,
+      "price": 165,
       "badge": "Most affordable",
       "cta": "Get 12 months",
       "features": [
@@ -452,7 +452,7 @@
       "code": "personal-lifetime",
       "name": "Personal",
       "term": "Lifetime",
-      "price": 159.99,
+      "price": 449,
       "badge": "Most popular",
       "cta": "Get lifetime",
       "features": [
@@ -482,7 +482,7 @@
       "code": "personal-12m",
       "name": "Personal",
       "term": "12 months",
-      "price": 99.99,
+      "price": 123,
       "badge": "Most affordable",
       "cta": "Get 12 months",
       "features": [
@@ -496,7 +496,7 @@
       "code": "personal-lifetime",
       "name": "Personal",
       "term": "Lifetime",
-      "price": 199.99,
+      "price": 339,
       "badge": "Most popular",
       "cta": "Get lifetime",
       "features": [
