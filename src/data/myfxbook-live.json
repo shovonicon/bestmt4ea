@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-05T23:00:00.786Z",
+  "fetchedAt": "2026-10-13T13:29:00.328Z",
   "staleAfterDays": 3,
   "accounts": {
     "obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5": {
@@ -37,6 +37,15 @@
       "equity": 64.5,
       "profit": 517.88,
       "profitFactor": 276.47
+    },
+    "apex-quant-ea-ai-bitcoin-scalper-for-mt5": {
+      "accountId": "12059493",
+      "gainPct": 72.09,
+      "drawdownPct": 35.44,
+      "balance": 1594.02,
+      "equity": 97.02,
+      "profit": 677.8,
+      "profitFactor": 9.33
     },
     "mythos-epic-ea-ai-gold-scalper-for-mt5": {
       "accountId": "12049330",
