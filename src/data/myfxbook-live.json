@@ -1,31 +1,31 @@
 {
-  "fetchedAt": "2026-10-13T13:29:00.328Z",
+  "fetchedAt": "2026-10-17T13:44:17.463Z",
   "staleAfterDays": 3,
   "accounts": {
     "obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5": {
       "accountId": "12080504",
-      "gainPct": 52.13,
-      "drawdownPct": 92.39,
-      "balance": 3182.54,
-      "equity": 20.37,
-      "profit": 1052.62,
-      "profitFactor": 1.29
+      "gainPct": 68.43,
+      "drawdownPct": 95.21,
+      "balance": 3524.71,
+      "equity": 29.83,
+      "profit": 1394.79,
+      "profitFactor": 1.37
     },
     "onix-stratos-xauusd-ea-ai-smart-scalper-for-mt5": {
       "accountId": "12144557",
-      "gainPct": 10.84,
-      "drawdownPct": 6.81,
-      "balance": 11692.05,
-      "equity": 99.98,
-      "profit": 1692.1,
-      "profitFactor": 1.39
+      "gainPct": 16.11,
+      "drawdownPct": 9.89,
+      "balance": 12246.17,
+      "equity": 100,
+      "profit": 2246.17,
+      "profitFactor": 1.36
     },
     "zenith-matrix-ea-ai-gold-scalper-for-mt5": {
       "accountId": "12049339",
       "gainPct": 90.43,
       "drawdownPct": 47.85,
       "balance": 1539.47,
-      "equity": 85.53,
+      "equity": 86.99,
       "profit": 869.43,
       "profitFactor": 5.84
     },
@@ -43,18 +43,26 @@
       "gainPct": 72.09,
       "drawdownPct": 35.44,
       "balance": 1594.02,
-      "equity": 97.02,
+      "equity": 92.33,
       "profit": 677.8,
       "profitFactor": 9.33
     },
     "mythos-epic-ea-ai-gold-scalper-for-mt5": {
       "accountId": "12049330",
-      "gainPct": 73.65,
+      "gainPct": 82.16,
       "drawdownPct": 41.41,
-      "balance": 1736.31,
-      "equity": 89.6,
-      "profit": 736.31,
-      "profitFactor": 1.96
+      "balance": 1821.34,
+      "equity": 100,
+      "profit": 821.34,
+      "profitFactor": 1.92
+    },
+    "equinox-cosmos-ea-ai-gbpjpy-scalper-for-mt5": {
+      "accountId": "12256314",
+      "gainPct": 0,
+      "drawdownPct": 0.07,
+      "balance": 10000,
+      "equity": 100.07,
+      "profit": 0
     }
   }
 }
