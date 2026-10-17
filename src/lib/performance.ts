@@ -242,6 +242,19 @@ export const editorial: Record<string, EditorialPerf> = {
     minCapitalUsd: 500,
     terminal: 'MetaTrader 5',
   },
+  // Figures are deliberately left to the live Myfxbook snapshot: this account is days
+  // old, so a transcribed gain or drawdown would be stale almost at once.
+  'astrion-caelix-eurusd-ea-ai-hedging-scalper-for-mt5': {
+    verified: true,
+    accountType: 'demo',
+    sourceUrl: 'https://www.myfxbook.com/portfolio/astrion-caelix-hedging-ea-ai/12257183',
+    accountId: '12257183',
+    lastSynced: '2026-10-17',
+    strategy: 'Hedging with Scalping',
+    minCapitalUsd: 10000,
+    broker: 'Exness',
+    terminal: 'MetaTrader 5',
+  },
 };
 
 type LiveFile = {
