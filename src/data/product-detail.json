@@ -6,7 +6,7 @@
     "settings": [
       { "label": "Recommended pair", "value": "XAUUSD (Gold)", "icon": "pair" },
       { "label": "Platform", "value": "MetaTrader 5", "icon": "platform" },
-      { "label": "Minimum equity", "value": "$2,000", "icon": "equity" },
+      { "label": "Minimum equity", "value": "$10,000", "icon": "equity" },
       { "label": "Timeframe", "value": "M1 (1 minute)", "icon": "timeframe" },
       { "label": "Strategy", "value": "Scalping with trend", "icon": "strategy" },
       { "label": "Broker", "value": "Fusion Markets MT5", "icon": "broker" },
@@ -22,7 +22,7 @@
     ],
     "cons": [
       "Configured for the Fusion Markets MT5 broker only — it is not built to run on other broker networks.",
-      "The recommended $2,000 minimum deposit is high for starter traders.",
+      "The recommended $10,000 minimum deposit is high for starter traders.",
       "Needs low-latency execution (a co-located VPS) to hold its intended performance."
     ],
     "parameters": [
@@ -61,7 +61,7 @@
       "notFit": [
         "Anyone expecting a set-and-forget system with zero risk",
         "Anyone unwilling to test on a demo account first",
-        "Accounts below the recommended $2,000 minimum equity"
+        "Accounts below the recommended $10,000 minimum equity"
       ]
     },
     "installation": [

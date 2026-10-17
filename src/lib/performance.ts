@@ -141,7 +141,7 @@ export const editorial: Record<string, EditorialPerf> = {
     totalGainPct: 9.39,
     monthlyGainPct: 6.82,
     maxDrawdownPct: 5.54,
-    minCapitalUsd: 2000,
+    minCapitalUsd: 10000,
     terminal: 'MetaTrader 5',
     conflicts: [
       'Myfxbook lists this as a DEMO account; bestmt4ea.com badges it "LIVE".',
