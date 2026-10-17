@@ -5,12 +5,12 @@ slug: "astrion-caelix-eurusd-ea-ai-hedging-scalper-for-mt5"
 description: "Astrion Caelix is a hedging scalper for EURUSD on MetaTrader 5. Its demo track record is published on Myfxbook, so you can check the drawdown before you buy."
 publishedAt: "2026-10-17T00:00:00.000Z"
 updatedAt: "2026-10-17T00:00:00.000Z"
-featuredImage: "/media/products/metatrader-5-mt5-trading-platform-interface-for-bestmt4ea-forex-expert-advisors.png"
+featuredImage: "/media/products/astrion-caelix-eurusd-ea-ai-hedging-scalper-for-mt5.webp"
 seo: 
   title: "Astrion Caelix EURUSD EA: AI Hedging Scalper for MT5 2026"
   description: "Astrion Caelix is a hedging scalper for EURUSD on MetaTrader 5. Its demo track record is published on Myfxbook, so you can check the drawdown before you buy."
   canonical: "https://bestmt4ea.com/product/astrion-caelix-eurusd-ea-ai-hedging-scalper-for-mt5/"
-  ogImage: "/media/products/metatrader-5-mt5-trading-platform-interface-for-bestmt4ea-forex-expert-advisors.png"
+  ogImage: "/media/products/astrion-caelix-eurusd-ea-ai-hedging-scalper-for-mt5.webp"
 sourceUrl: "https://bestmt4ea.com/product/astrion-caelix-eurusd-ea-ai-hedging-scalper-for-mt5/"
 platform: "MT5"
 productCategories: 
@@ -41,13 +41,13 @@ variants:
 quickAnswer: "Astrion Caelix is a rules-based hedging scalper for EURUSD on MetaTrader 5. Its results are tracked on a public Myfxbook demo account, so you can check the gain and the drawdown yourself. It comes with a free 30-day demo trial, and paid licences are bound to your account number."
 primaryKeyword: "Astrion Caelix EURUSD EA"
 keyTakeaways:
-  - "Hedging scalper for EURUSD on MetaTrader 5."
+  - "Hedging grid strategy for EURUSD on MetaTrader 5, built for the M15 chart."
   - "Results are tracked on a public Myfxbook account, and it is a demo account, not live money."
   - "A free 30-day trial runs on any demo account before you pay."
-  - "Paid licences are bound to your MT5 account number."
+  - "The EA recommends at least $10,000 equity (a cent account is preferred); paid licences are bound to your MT5 account number."
 faqs:
   - question: "What does Astrion Caelix trade?"
-    answer: "It trades EURUSD on MetaTrader 5, using a hedging scalping approach with fixed, rule-based entries and exits."
+    answer: "It trades EURUSD on MetaTrader 5, using a hedging grid approach with fixed, rule-based entries and exits. The EA recommends at least $10,000 of equity (a cent account is preferred) and the M15 chart."
   - question: "Where can I check its results?"
     answer: "Its results are published on a public Myfxbook account linked from this page, so you can read the gain and the drawdown at the source."
   - question: "Is the tracked account live money?"
@@ -60,9 +60,9 @@ sources:
   - label: "MetaTrader 5 platform"
     url: "https://www.metatrader5.com/en"
 gallery: 
-  - "/media/products/metatrader-5-mt5-trading-platform-interface-for-bestmt4ea-forex-expert-advisors.png"
+  - "/media/products/astrion-caelix-eurusd-ea-ai-hedging-scalper-for-mt5.webp"
 systemPage: false
-draft: true
+draft: false
 ---
 
 ## Astrion Caelix EA
@@ -99,7 +99,15 @@ MT5
 
 ## Strategy
 
-Hedging scalper
+Hedging grid
+
+## Minimum Equity
+
+$10,000 (a cent account is preferred)
+
+## Timeframe
+
+M15 (15 minutes)
 
 ## Track record
 

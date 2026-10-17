@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-17T13:52:55.093Z",
+  "fetchedAt": "2026-10-17T14:17:09.913Z",
   "staleAfterDays": 3,
   "accounts": {
     "obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5": {
@@ -72,6 +72,15 @@
       "equity": 100.02,
       "profit": 15.95,
       "profitFactor": 94.82
+    },
+    "astrion-caelix-eurusd-ea-ai-hedging-scalper-for-mt5": {
+      "accountId": "12257183",
+      "gainPct": 1.15,
+      "drawdownPct": 3.22,
+      "balance": 10117.52,
+      "equity": 99.97,
+      "profit": 117.52,
+      "profitFactor": 1.69
     }
   }
 }

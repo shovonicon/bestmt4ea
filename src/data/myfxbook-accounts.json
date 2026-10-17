@@ -31,5 +31,9 @@
   "ava-aigpt5-ea": {
     "accountId": "12256570",
     "accountUrl": "https://www.myfxbook.com/portfolio/ava-aigpt5-xauusd-ea-ai/12256570"
+  },
+  "astrion-caelix-eurusd-ea-ai-hedging-scalper-for-mt5": {
+    "accountId": "12257183",
+    "accountUrl": "https://www.myfxbook.com/portfolio/astrion-caelix-hedging-ea-ai/12257183"
   }
 }
