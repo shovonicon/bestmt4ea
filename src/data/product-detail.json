@@ -916,5 +916,71 @@
       "Premium Telegram support",
       "Licence activation for your account(s)"
     ]
+  },
+  "astrion-caelix-eurusd-ea-ai-hedging-scalper-for-mt5": {
+    "settings": [
+      {
+        "label": "Recommended pair",
+        "value": "EURUSD",
+        "icon": "pair"
+      },
+      {
+        "label": "Platform",
+        "value": "MetaTrader 5",
+        "icon": "platform"
+      },
+      {
+        "label": "Strategy",
+        "value": "Hedging scalper",
+        "icon": "strategy"
+      },
+      {
+        "label": "Track record",
+        "value": "Myfxbook-tracked demo account",
+        "icon": "track"
+      }
+    ],
+    "features": [
+      "Fully automated execution — no manual entries, no screen time required",
+      "Fixed rule-based logic — every trade follows the same criteria, no emotion involved",
+      "Configurable risk controls — set your own drawdown cap and lot size",
+      "Free lifetime updates — the strategy improves, you don't pay again",
+      "24/7 Telegram support — real answers, not a ticket queue"
+    ],
+    "fit": {
+      "good": [
+        "Traders who want rules-based EURUSD exposure without watching charts all day",
+        "Traders who already use an ECN broker with tight EURUSD spreads",
+        "Traders comfortable running EAs on a VPS"
+      ],
+      "notFit": [
+        "Traders looking for a set-and-forget system with zero risk",
+        "Anyone unwilling to test on a demo account first"
+      ]
+    },
+    "installation": [
+      {
+        "step": "Download",
+        "text": "Download the EA file from your dashboard after purchase."
+      },
+      {
+        "step": "Install",
+        "text": "Copy it into your MT5 Experts folder."
+      },
+      {
+        "step": "Attach",
+        "text": "Restart MT5 and drag the EA onto your EURUSD chart."
+      },
+      {
+        "step": "Activate",
+        "text": "Enable AutoTrading and apply the recommended settings."
+      }
+    ],
+    "included": [
+      "Expert Advisor file (.ex5)",
+      "Free lifetime updates",
+      "Premium Telegram support",
+      "Licence activation for your account(s)"
+    ]
   }
 }
