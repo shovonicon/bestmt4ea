@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-17T13:44:17.463Z",
+  "fetchedAt": "2026-10-17T13:52:55.093Z",
   "staleAfterDays": 3,
   "accounts": {
     "obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5": {
@@ -63,6 +63,15 @@
       "balance": 10000,
       "equity": 100.07,
       "profit": 0
+    },
+    "ava-aigpt5-ea": {
+      "accountId": "12256570",
+      "gainPct": 0.16,
+      "drawdownPct": 0.02,
+      "balance": 10015.95,
+      "equity": 100.02,
+      "profit": 15.95,
+      "profitFactor": 94.82
     }
   }
 }

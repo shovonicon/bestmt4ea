@@ -27,5 +27,9 @@
   "equinox-cosmos-ea-ai-gbpjpy-scalper-for-mt5": {
     "accountId": "12256314",
     "accountUrl": "https://www.myfxbook.com/portfolio/equinox-cosmos-gbpjpy-ea-ai/12256314"
+  },
+  "ava-aigpt5-ea": {
+    "accountId": "12256570",
+    "accountUrl": "https://www.myfxbook.com/portfolio/ava-aigpt5-xauusd-ea-ai/12256570"
   }
 }
