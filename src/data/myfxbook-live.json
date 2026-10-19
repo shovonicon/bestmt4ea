@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-19T09:58:59.076Z",
+  "fetchedAt": "2026-10-19T10:34:35.986Z",
   "staleAfterDays": 3,
   "accounts": {
     "obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5": {
@@ -7,17 +7,17 @@
       "gainPct": 70.08,
       "drawdownPct": 95.21,
       "balance": 3559.05,
-      "equity": 25.8,
+      "equity": 25.62,
       "profit": 1429.13,
       "profitFactor": 1.38
     },
     "onix-stratos-xauusd-ea-ai-smart-scalper-for-mt5": {
       "accountId": "12144557",
-      "gainPct": 16.34,
+      "gainPct": 16.35,
       "drawdownPct": 9.89,
-      "balance": 12270.2,
+      "balance": 12270.7,
       "equity": 100,
-      "profit": 2270.2,
+      "profit": 2270.8,
       "profitFactor": 1.36
     },
     "zenith-matrix-ea-ai-gold-scalper-for-mt5": {
@@ -25,7 +25,7 @@
       "gainPct": 90.43,
       "drawdownPct": 47.85,
       "balance": 1539.47,
-      "equity": 87.31,
+      "equity": 87.18,
       "profit": 869.43,
       "profitFactor": 5.84
     },
@@ -43,7 +43,7 @@
       "gainPct": 72.09,
       "drawdownPct": 35.44,
       "balance": 1594.02,
-      "equity": 95.91,
+      "equity": 94.2,
       "profit": 677.8,
       "profitFactor": 9.33
     },
@@ -52,7 +52,7 @@
       "gainPct": 82.16,
       "drawdownPct": 41.41,
       "balance": 1821.34,
-      "equity": 99.14,
+      "equity": 99.03,
       "profit": 821.34,
       "profitFactor": 1.92
     },
@@ -61,7 +61,7 @@
       "gainPct": 0,
       "drawdownPct": 0.07,
       "balance": 10000,
-      "equity": 100.08,
+      "equity": 100.09,
       "profit": 0
     },
     "ava-aigpt5-ea": {
