@@ -35,5 +35,13 @@
   "astrion-caelix-eurusd-ea-ai-hedging-scalper-for-mt5": {
     "accountId": "12257183",
     "accountUrl": "https://www.myfxbook.com/portfolio/astrion-caelix-hedging-ea-ai/12257183"
+  },
+  "fxcore100-ea": {
+    "accountId": "12267016",
+    "accountUrl": "https://www.myfxbook.com/portfolio/fxcore100-ea-bestmt4ea/12267016"
+  },
+  "elysium-vortex-eurcad-ea-ai-eurcad-scalper-for-mt5": {
+    "accountId": "12266982",
+    "accountUrl": "https://www.myfxbook.com/portfolio/elysium-vortex-eurcad-ea-ai/12266982"
   }
 }

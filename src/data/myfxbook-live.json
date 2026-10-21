@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-19T10:34:35.986Z",
+  "fetchedAt": "2026-10-21T13:39:41.880Z",
   "staleAfterDays": 3,
   "accounts": {
     "obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5": {
@@ -81,6 +81,30 @@
       "equity": 100,
       "profit": 132.67,
       "profitFactor": 1.73
+    },
+    "fxcore100-ea": {
+      "accountId": "12267016",
+      "gainPct": 0.02,
+      "absGainPct": 0.05,
+      "dailyPct": 0,
+      "monthlyPct": 0.02,
+      "drawdownPct": 0.04,
+      "balance": 100047.1,
+      "equity": 100,
+      "profit": 47.1,
+      "profitFactor": 3.26
+    },
+    "elysium-vortex-eurcad-ea-ai-eurcad-scalper-for-mt5": {
+      "accountId": "12266982",
+      "gainPct": 6.9,
+      "absGainPct": 6.9,
+      "dailyPct": 3.39,
+      "monthlyPct": 6.9,
+      "drawdownPct": 17.27,
+      "balance": 1069.03,
+      "equity": 100.01,
+      "profit": 69.03,
+      "profitFactor": 4.08
     }
   }
 }
