@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-09-29T14:28:16.682Z",
+  "generatedAt": "2026-10-22T07:01:22.902Z",
   "rules": "scripts/content-rules.mjs",
   "totals": {
-    "docs": 166,
-    "withViolations": 132,
-    "clean": 34,
+    "docs": 167,
+    "withViolations": 116,
+    "clean": 51,
     "duplicatePairs": 0
   },
   "duplicates": [],
@@ -189,44 +189,6 @@
         ],
         "title-length": [
           "77 chars"
-        ]
-      }
-    },
-    "post:%f0%9f%9a%80-bitcoin-scalper-ea-free-download-powerful-guide-with-7-shocking-benefits-for-traders": {
-      "file": "src/content/posts/%f0%9f%9a%80-bitcoin-scalper-ea-free-download-powerful-guide-with-7-shocking-benefits-for-traders.md",
-      "violations": {
-        "word-count": [
-          "855 words"
-        ],
-        "missing-quickanswer": [
-          ""
-        ],
-        "takeaways-count": [
-          "0 bullet(s)"
-        ],
-        "faqs-count": [
-          "0 Q&A(s)"
-        ],
-        "sources-count": [
-          "0 source(s)"
-        ],
-        "missing-primary-keyword": [
-          ""
-        ],
-        "missing-download": [
-          ""
-        ],
-        "banned-claim": [
-          "guaranteed"
-        ],
-        "body-h1": [
-          ""
-        ],
-        "dup-faq-section": [
-          ""
-        ],
-        "description-length": [
-          "182 chars"
         ]
       }
     },
@@ -469,41 +431,6 @@
         ]
       }
     },
-    "post:10-powerful-grid-trading-ea-safe-settings-for-mt4-to-reduce-risk-and-boost-profitability": {
-      "file": "src/content/posts/10-powerful-grid-trading-ea-safe-settings-for-mt4-to-reduce-risk-and-boost-profitability.md",
-      "violations": {
-        "word-count": [
-          "834 words"
-        ],
-        "missing-quickanswer": [
-          ""
-        ],
-        "takeaways-count": [
-          "0 bullet(s)"
-        ],
-        "faqs-count": [
-          "0 Q&A(s)"
-        ],
-        "sources-count": [
-          "0 source(s)"
-        ],
-        "missing-primary-keyword": [
-          ""
-        ],
-        "missing-download": [
-          ""
-        ],
-        "banned-claim": [
-          "risk-free"
-        ],
-        "body-h1": [
-          ""
-        ],
-        "description-length": [
-          "188 chars"
-        ]
-      }
-    },
     "post:10-powerful-ways-on-how-to-export-tradingview-data-to-csv-free-methods-no-paid-plan-needed": {
       "file": "src/content/posts/10-powerful-ways-on-how-to-export-tradingview-data-to-csv-free-methods-no-paid-plan-needed.md",
       "violations": {
@@ -533,38 +460,6 @@
         ],
         "description-length": [
           "206 chars"
-        ]
-      }
-    },
-    "post:10-powerful-ways-to-use-news-time-trading-disable-ea-automatically-for-safer-forex-trading": {
-      "file": "src/content/posts/10-powerful-ways-to-use-news-time-trading-disable-ea-automatically-for-safer-forex-trading.md",
-      "violations": {
-        "word-count": [
-          "907 words"
-        ],
-        "missing-quickanswer": [
-          ""
-        ],
-        "takeaways-count": [
-          "0 bullet(s)"
-        ],
-        "faqs-count": [
-          "0 Q&A(s)"
-        ],
-        "sources-count": [
-          "0 source(s)"
-        ],
-        "missing-primary-keyword": [
-          ""
-        ],
-        "missing-download": [
-          ""
-        ],
-        "body-h1": [
-          ""
-        ],
-        "description-length": [
-          "199 chars"
         ]
       }
     },
@@ -1046,38 +941,6 @@
         ]
       }
     },
-    "post:best-scalper-ea-mt4-free-download-powerful-proven-guide": {
-      "file": "src/content/posts/best-scalper-ea-mt4-free-download-powerful-proven-guide.md",
-      "violations": {
-        "word-count": [
-          "898 words"
-        ],
-        "missing-quickanswer": [
-          ""
-        ],
-        "takeaways-count": [
-          "0 bullet(s)"
-        ],
-        "faqs-count": [
-          "0 Q&A(s)"
-        ],
-        "sources-count": [
-          "0 source(s)"
-        ],
-        "missing-primary-keyword": [
-          ""
-        ],
-        "missing-download": [
-          ""
-        ],
-        "dup-faq-section": [
-          ""
-        ],
-        "description-length": [
-          "140 chars"
-        ]
-      }
-    },
     "post:best-scalping-indicator-scalper-inside-v7-9-free-download-7-powerful-reasons-traders-love-it": {
       "file": "src/content/posts/best-scalping-indicator-scalper-inside-v7-9-free-download-7-powerful-reasons-traders-love-it.md",
       "violations": {
@@ -1431,38 +1294,6 @@
         ]
       }
     },
-    "post:cobra-scalper-best-trading-indicator-free-download-7-powerful-reasons-traders-love-it": {
-      "file": "src/content/posts/cobra-scalper-best-trading-indicator-free-download-7-powerful-reasons-traders-love-it.md",
-      "violations": {
-        "word-count": [
-          "890 words"
-        ],
-        "missing-quickanswer": [
-          ""
-        ],
-        "takeaways-count": [
-          "0 bullet(s)"
-        ],
-        "faqs-count": [
-          "0 Q&A(s)"
-        ],
-        "sources-count": [
-          "0 source(s)"
-        ],
-        "missing-primary-keyword": [
-          ""
-        ],
-        "missing-download": [
-          ""
-        ],
-        "dup-faq-section": [
-          ""
-        ],
-        "description-length": [
-          "175 chars"
-        ]
-      }
-    },
     "post:cpr-forex-indicator-for-mt4-free-download-7-powerful-benefits-proven-trading-secrets": {
       "file": "src/content/posts/cpr-forex-indicator-for-mt4-free-download-7-powerful-benefits-proven-trading-secrets.md",
       "violations": {
@@ -1521,38 +1352,6 @@
         ],
         "description-length": [
           "171 chars"
-        ]
-      }
-    },
-    "post:dark-mimas-highly-customizable-ea-mt4-mt5-free-download-7-powerful-features-every-trader-must-know": {
-      "file": "src/content/posts/dark-mimas-highly-customizable-ea-mt4-mt5-free-download-7-powerful-features-every-trader-must-know.md",
-      "violations": {
-        "word-count": [
-          "868 words"
-        ],
-        "missing-quickanswer": [
-          ""
-        ],
-        "takeaways-count": [
-          "0 bullet(s)"
-        ],
-        "faqs-count": [
-          "0 Q&A(s)"
-        ],
-        "sources-count": [
-          "0 source(s)"
-        ],
-        "missing-primary-keyword": [
-          ""
-        ],
-        "missing-download": [
-          ""
-        ],
-        "title-length": [
-          "100 chars"
-        ],
-        "description-length": [
-          "210 chars"
         ]
       }
     },
@@ -1728,41 +1527,6 @@
         ],
         "description-length": [
           "188 chars"
-        ]
-      }
-    },
-    "post:eur-usd-expert-advisor-ea-overview-free-download-guide": {
-      "file": "src/content/posts/eur-usd-expert-advisor-ea-overview-free-download-guide.md",
-      "violations": {
-        "word-count": [
-          "694 words"
-        ],
-        "missing-quickanswer": [
-          ""
-        ],
-        "takeaways-count": [
-          "0 bullet(s)"
-        ],
-        "faqs-count": [
-          "0 Q&A(s)"
-        ],
-        "sources-count": [
-          "0 source(s)"
-        ],
-        "missing-primary-keyword": [
-          ""
-        ],
-        "missing-download": [
-          ""
-        ],
-        "banned-claim": [
-          "guaranteed"
-        ],
-        "dup-faq-section": [
-          ""
-        ],
-        "description-length": [
-          "164 chars"
         ]
       }
     },
@@ -1976,70 +1740,6 @@
         ]
       }
     },
-    "post:forex-order-manager-trade-panel-for-mt4-free-download-powerful-7-benefits-every-trader-must-know": {
-      "file": "src/content/posts/forex-order-manager-trade-panel-for-mt4-free-download-powerful-7-benefits-every-trader-must-know.md",
-      "violations": {
-        "word-count": [
-          "893 words"
-        ],
-        "missing-quickanswer": [
-          ""
-        ],
-        "takeaways-count": [
-          "0 bullet(s)"
-        ],
-        "faqs-count": [
-          "0 Q&A(s)"
-        ],
-        "sources-count": [
-          "0 source(s)"
-        ],
-        "missing-primary-keyword": [
-          ""
-        ],
-        "missing-download": [
-          ""
-        ],
-        "dup-faq-section": [
-          ""
-        ],
-        "description-length": [
-          "177 chars"
-        ]
-      }
-    },
-    "post:forex-order-manager-trade-panel-for-mt4-free-download-powerful-smart-tool-every-trader-needs": {
-      "file": "src/content/posts/forex-order-manager-trade-panel-for-mt4-free-download-powerful-smart-tool-every-trader-needs.md",
-      "violations": {
-        "word-count": [
-          "913 words"
-        ],
-        "missing-quickanswer": [
-          ""
-        ],
-        "takeaways-count": [
-          "0 bullet(s)"
-        ],
-        "faqs-count": [
-          "0 Q&A(s)"
-        ],
-        "sources-count": [
-          "0 source(s)"
-        ],
-        "missing-primary-keyword": [
-          ""
-        ],
-        "missing-download": [
-          ""
-        ],
-        "dup-faq-section": [
-          ""
-        ],
-        "description-length": [
-          "206 chars"
-        ]
-      }
-    },
     "post:forex-plutus-best-premium-indicator-free-download-7-powerful-reasons-traders-love-it": {
       "file": "src/content/posts/forex-plutus-best-premium-indicator-free-download-7-powerful-reasons-traders-love-it.md",
       "violations": {
@@ -2148,70 +1848,6 @@
         ],
         "description-length": [
           "175 chars"
-        ]
-      }
-    },
-    "post:forex-tester-online-backtesting-with-eas-tutorial-the-ultimate-step-by-step-guide": {
-      "file": "src/content/posts/forex-tester-online-backtesting-with-eas-tutorial-the-ultimate-step-by-step-guide.md",
-      "violations": {
-        "word-count": [
-          "902 words"
-        ],
-        "missing-quickanswer": [
-          ""
-        ],
-        "takeaways-count": [
-          "0 bullet(s)"
-        ],
-        "faqs-count": [
-          "0 Q&A(s)"
-        ],
-        "sources-count": [
-          "0 source(s)"
-        ],
-        "missing-primary-keyword": [
-          ""
-        ],
-        "missing-download": [
-          ""
-        ],
-        "body-h1": [
-          ""
-        ],
-        "description-length": [
-          "200 chars"
-        ]
-      }
-    },
-    "post:forex-velocity-ea-free-download-7-powerful-truths-you-must-know-before-installing": {
-      "file": "src/content/posts/forex-velocity-ea-free-download-7-powerful-truths-you-must-know-before-installing.md",
-      "violations": {
-        "word-count": [
-          "826 words"
-        ],
-        "missing-quickanswer": [
-          ""
-        ],
-        "takeaways-count": [
-          "0 bullet(s)"
-        ],
-        "faqs-count": [
-          "0 Q&A(s)"
-        ],
-        "sources-count": [
-          "0 source(s)"
-        ],
-        "missing-primary-keyword": [
-          ""
-        ],
-        "missing-download": [
-          ""
-        ],
-        "dup-faq-section": [
-          ""
-        ],
-        "description-length": [
-          "182 chars"
         ]
       }
     },
@@ -2644,70 +2280,6 @@
         ]
       }
     },
-    "post:murasaki-scalper-free-download-powerful-secrets-every-trader-must-know-before-installing": {
-      "file": "src/content/posts/murasaki-scalper-free-download-powerful-secrets-every-trader-must-know-before-installing.md",
-      "violations": {
-        "word-count": [
-          "785 words"
-        ],
-        "missing-quickanswer": [
-          ""
-        ],
-        "takeaways-count": [
-          "0 bullet(s)"
-        ],
-        "faqs-count": [
-          "0 Q&A(s)"
-        ],
-        "sources-count": [
-          "0 source(s)"
-        ],
-        "missing-primary-keyword": [
-          ""
-        ],
-        "missing-download": [
-          ""
-        ],
-        "dup-faq-section": [
-          ""
-        ],
-        "description-length": [
-          "178 chars"
-        ]
-      }
-    },
-    "post:news-straddle-expert-advisor-setup-tutorial-the-ultimate-step-by-step-guide": {
-      "file": "src/content/posts/news-straddle-expert-advisor-setup-tutorial-the-ultimate-step-by-step-guide.md",
-      "violations": {
-        "word-count": [
-          "870 words"
-        ],
-        "missing-quickanswer": [
-          ""
-        ],
-        "takeaways-count": [
-          "0 bullet(s)"
-        ],
-        "faqs-count": [
-          "0 Q&A(s)"
-        ],
-        "sources-count": [
-          "0 source(s)"
-        ],
-        "missing-primary-keyword": [
-          ""
-        ],
-        "missing-download": [
-          ""
-        ],
-        "body-h1": [
-          ""
-        ],
-        "description-length": [
-          "195 chars"
-        ]
-      }
-    },
     "post:nexus-6-0-binary-indicator-free-download-powerful-proven-trading-tool-guide": {
       "file": "src/content/posts/nexus-6-0-binary-indicator-free-download-powerful-proven-trading-tool-guide.md",
       "violations": {
@@ -3008,44 +2580,6 @@
         ]
       }
     },
-    "post:pip-scalper-ea-mt4-free-download-7-powerful-benefits-and-smart-setup-guide": {
-      "file": "src/content/posts/pip-scalper-ea-mt4-free-download-7-powerful-benefits-and-smart-setup-guide.md",
-      "violations": {
-        "word-count": [
-          "893 words"
-        ],
-        "missing-quickanswer": [
-          ""
-        ],
-        "takeaways-count": [
-          "0 bullet(s)"
-        ],
-        "faqs-count": [
-          "0 Q&A(s)"
-        ],
-        "sources-count": [
-          "0 source(s)"
-        ],
-        "missing-primary-keyword": [
-          ""
-        ],
-        "missing-download": [
-          ""
-        ],
-        "banned-claim": [
-          "risk-free"
-        ],
-        "dup-faq-section": [
-          ""
-        ],
-        "title-length": [
-          "75 chars"
-        ],
-        "description-length": [
-          "149 chars"
-        ]
-      }
-    },
     "post:powerful-profitable-fair-value-gap-fvg-ea-mt5-free-download-ultimate-guide-for-smart-traders": {
       "file": "src/content/posts/powerful-profitable-fair-value-gap-fvg-ea-mt5-free-download-ultimate-guide-for-smart-traders.md",
       "violations": {
@@ -3107,41 +2641,6 @@
         ],
         "description-length": [
           "149 chars"
-        ]
-      }
-    },
-    "post:quantum-algo-trading-ea-free-download-powerful-proven-automated-strategy": {
-      "file": "src/content/posts/quantum-algo-trading-ea-free-download-powerful-proven-automated-strategy.md",
-      "violations": {
-        "word-count": [
-          "855 words"
-        ],
-        "missing-quickanswer": [
-          ""
-        ],
-        "takeaways-count": [
-          "0 bullet(s)"
-        ],
-        "faqs-count": [
-          "0 Q&A(s)"
-        ],
-        "sources-count": [
-          "0 source(s)"
-        ],
-        "missing-primary-keyword": [
-          ""
-        ],
-        "missing-download": [
-          ""
-        ],
-        "banned-claim": [
-          "guaranteed"
-        ],
-        "dup-faq-section": [
-          ""
-        ],
-        "description-length": [
-          "168 chars"
         ]
       }
     },
@@ -3839,35 +3338,6 @@
         ]
       }
     },
-    "post:us30-scalping-ea-free-download-powerful-proven-7-step-guide-to-maximize-profits": {
-      "file": "src/content/posts/us30-scalping-ea-free-download-powerful-proven-7-step-guide-to-maximize-profits.md",
-      "violations": {
-        "word-count": [
-          "786 words"
-        ],
-        "missing-quickanswer": [
-          ""
-        ],
-        "takeaways-count": [
-          "0 bullet(s)"
-        ],
-        "faqs-count": [
-          "0 Q&A(s)"
-        ],
-        "sources-count": [
-          "0 source(s)"
-        ],
-        "missing-primary-keyword": [
-          ""
-        ],
-        "missing-download": [
-          ""
-        ],
-        "body-h1": [
-          ""
-        ]
-      }
-    },
     "post:usdjpy-safe-expert-advisor-free-download-7-powerful-benefits-smart-setup-guide": {
       "file": "src/content/posts/usdjpy-safe-expert-advisor-free-download-7-powerful-benefits-smart-setup-guide.md",
       "violations": {
@@ -4373,9 +3843,6 @@
       "violations": {
         "missing-quickanswer": [
           ""
-        ],
-        "takeaways-count": [
-          "0 bullet(s)"
         ],
         "faqs-count": [
           "0 Q&A(s)"

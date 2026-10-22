@@ -191,8 +191,18 @@ for (const post of loadPosts()) {
         fail('an ad unit sits immediately above the download card (needs a content section between)');
       }
     }
-    if (adIdx !== -1 && installIdx !== -1 && adIdx < installIdx) {
-      fail('an ad unit renders above the install steps (too close to the download action)');
+    /*
+     * The same rule as the card, measured from the NEAREST ad above the install
+     * steps rather than the first one in the column. The answer-box unit always
+     * precedes the install steps (the card and takeaways sit between), so "any ad
+     * earlier on the page" could never pass; what matters is that the closest
+     * unit is separated from the install steps by a content section.
+     */
+    const adBeforeInstall = installIdx === -1 ? -1 : html.lastIndexOf('class="ad-unit', installIdx);
+    if (adBeforeInstall !== -1 && adBeforeInstall >= (columnStart === -1 ? 0 : columnStart)) {
+      if (!html.slice(adBeforeInstall, installIdx).includes('<section')) {
+        fail('an ad unit renders directly above the install steps (needs a content section between)');
+      }
     }
   }
 }

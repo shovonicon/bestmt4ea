@@ -1,0 +1,239 @@
+{
+  "_note": "Search-traffic priorities for the rewrite queue (scripts/rewrite-queue.mjs). A post listed here is forced into priority 1 and ranked by clicks, even when it already meets the content standard: these URLs earned real traffic before the redesign, so improving them first protects the most search traffic. Source: Search Console \"Performance on Search\", May 2025 - Sep 2026 (clicks / impressions / average position).",
+  "posts": {
+    "golden-line-v3-indicator-free-download-7-powerful-benefits-safe-installation-guide": {
+      "clicks": 206,
+      "impressions": 2653,
+      "position": 6.5,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 147
+    },
+    "top-10-best-mt4-indicators-for-gold-xauusd-powerful-tools-for-accurate-trading": {
+      "clicks": 161,
+      "impressions": 6498,
+      "position": 11.8,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 50
+    },
+    "free-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide": {
+      "clicks": 118,
+      "impressions": 1741,
+      "position": 12.2,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 60
+    },
+    "xauusd-trading-robot-free-download-7-powerful-secrets-to-maximize-gold-profits-safely": {
+      "clicks": 95,
+      "impressions": 2487,
+      "position": 10.5,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 53
+    },
+    "the-7-best-mt4-ea-for-gold-trading-with-low-risk-proven-tools-for-consistent-results": {
+      "clicks": 79,
+      "impressions": 11635,
+      "position": 8.5,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 80
+    },
+    "pharaoh-gold-ea-mt4-free-download-7-powerful-facts-every-trader-must-know-before-installing": {
+      "clicks": 67,
+      "impressions": 692,
+      "position": 9.2,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 3
+    },
+    "gold-investor-best-forex-gold-ea-free-download-powerful-proven-guide": {
+      "clicks": 64,
+      "impressions": 929,
+      "position": 15.4,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 88
+    },
+    "gold-cycle-trader-ea-free-download-7-powerful-secrets-smart-traders-must-know": {
+      "clicks": 57,
+      "impressions": 446,
+      "position": 6.6,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 12
+    },
+    "📈-gold-trend-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know": {
+      "clicks": 50,
+      "impressions": 577,
+      "position": 10.1,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 16
+    },
+    "7-best-top-gold-scalping-ea-for-beginners-with-low-drawdown-ultimate-safe-trading-guide": {
+      "clicks": 45,
+      "impressions": 4454,
+      "position": 8.4,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 43
+    },
+    "mt4-gold-scalper-ea-free-download-powerful-2026-guide-proven-setup-tips": {
+      "clicks": 45,
+      "impressions": 2203,
+      "position": 8.3,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 8
+    },
+    "gold-hitter-ea-mt4-free-download-powerful-2026-guide-to-safe-setup-profitable-trading": {
+      "clicks": 42,
+      "impressions": 1395,
+      "position": 10.0,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 24
+    },
+    "gold-sniper-master-indicator-system-free-download-powerful-secrets-7-proven-trading-advantages": {
+      "clicks": 42,
+      "impressions": 538,
+      "position": 10.6,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 6
+    },
+    "best-gold-robot-for-mt4-mt5-ea-7-powerful-picks-for-consistent-trading-profits": {
+      "clicks": 35,
+      "impressions": 7460,
+      "position": 10.8,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 16
+    },
+    "goldbaron-xauusd-ea-forex-ea-reviews-7-powerful-truths-every-trader-must-know": {
+      "clicks": 35,
+      "impressions": 1565,
+      "position": 7.2,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 28
+    },
+    "gold-high-frequency-scalping-ea-free-download-7-powerful-truths-you-must-know-before-installing": {
+      "clicks": 34,
+      "impressions": 1009,
+      "position": 9.4,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 9
+    },
+    "best-gold-scalper-ea-for-mt4-mt5-the-only-guide-you-need": {
+      "clicks": 32,
+      "impressions": 2498,
+      "position": 21.1,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 111
+    },
+    "gold-quantum-ea-free-download-the-ultimate-guide-to-safe-smart-profitable-trading": {
+      "clicks": 32,
+      "impressions": 613,
+      "position": 20.1,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 11
+    },
+    "ai-gold-scalping-ea-free-download-powerful-profitable-2026-guide-7-proven-insights": {
+      "clicks": 30,
+      "impressions": 432,
+      "position": 11.6,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 12
+    },
+    "gold-buster-mt4-expert-advisor-free-download-powerful-profitable-trading-guide": {
+      "clicks": 27,
+      "impressions": 983,
+      "position": 11.5,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 45
+    },
+    "forex-holy-grail-indicator-golden-eagle-system-free-download-powerful-secrets-7-proven-benefits": {
+      "clicks": 24,
+      "impressions": 345,
+      "position": 13.9,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md."
+    },
+    "gold-breakout-ea-free-download-7-powerful-benefits-proven-setup-guide-for-massive-trading-success": {
+      "clicks": 24,
+      "impressions": 515,
+      "position": 8.8,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 5
+    },
+    "gold-scalping-expert-advisor-mt4-free-download-powerful-proven-guide-7-winning-secrets": {
+      "clicks": 23,
+      "impressions": 677,
+      "position": 13.7,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 7
+    },
+    "scalper-xauusd-ea-free-download-7-powerful-truths-you-must-know-before-installing": {
+      "clicks": 23,
+      "impressions": 470,
+      "position": 18.2,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 6
+    },
+    "top-10-powerful-scalping-strategies-for-gold-trading-complete-guide": {
+      "clicks": 23,
+      "impressions": 3016,
+      "position": 22.0,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 72
+    },
+    "xauusd-scalping-robot-settings-and-tips-10-powerful-strategies-for-better-trading-results": {
+      "clicks": 21,
+      "impressions": 2348,
+      "position": 16.0,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 31
+    },
+    "gold-1-minute-grid-forex-ea-reviews-7-powerful-truths-you-must-know-before-investing": {
+      "clicks": 20,
+      "impressions": 1867,
+      "position": 11.9,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 30
+    },
+    "🚀-supergold-m1-scalping-ea-free-download-powerful-proven-7-step-setup-guide-for-maximum-profits": {
+      "clicks": 18,
+      "impressions": 462,
+      "position": 7.5,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 4
+    },
+    "gold-trading-smc-ea-free-download-the-ultimate-guide-to-smart-money-concept-ea-for-profitable-gold-trading": {
+      "clicks": 16,
+      "impressions": 577,
+      "position": 9.8,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 7
+    },
+    "the-gold-reaper-forex-ea-reviews-powerful-truths-7-critical-insights-before-you-invest": {
+      "clicks": 16,
+      "impressions": 2297,
+      "position": 8.7,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 26
+    },
+    "gold-prop-firm-robot-free-download-7-powerful-secrets-to-maximize-funded-trading-success": {
+      "clicks": 14,
+      "impressions": 235,
+      "position": 14.8,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md.",
+      "recentImpressions": 8
+    },
+    "ea31337-libre-free-download": {
+      "clicks": 0,
+      "impressions": 0,
+      "position": 0,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md."
+    },
+    "geraked-mt5-expert-advisors-free-download": {
+      "clicks": 0,
+      "impressions": 0,
+      "position": 0,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md."
+    },
+    "teknotrader-mql4-indicators-free-download": {
+      "clicks": 0,
+      "impressions": 0,
+      "position": 0,
+      "note": "Restored 2026-10-22 at its original URL. Ranked before the 2026-10 redesign; improve against docs/AI-POST-BRIEF.md."
+    }
+  }
+}

@@ -43,6 +43,19 @@ const MIN_SOURCES = 2;
  */
 const MONEY_SLUGS = ['best-mt4-ea', 'best-forex-ea', 'top-ranking'];
 
+/**
+ * Posts that earned real search traffic before the 2026-10 redesign
+ * (`src/data/seo-priority.json`, from Search Console). They are forced into
+ * priority 1 and ranked by clicks, even when they already meet the content
+ * standard: improving the pages Google already knows protects the most traffic.
+ */
+let SEO_PRIORITY = {};
+try {
+  SEO_PRIORITY = JSON.parse(await readFile('src/data/seo-priority.json', 'utf8')).posts ?? {};
+} catch {
+  /* no traffic list: fall back to the topic tiers alone */
+}
+
 /** Topics carrying the highest commercial intent in this niche. */
 const PRIORITY_TOPICS = ['gold', 'xauusd'];
 
@@ -110,7 +123,9 @@ for (const file of files) {
   if (!hasDownload) issues.push('missing download');
   if (!data.primaryKeyword) issues.push('missing primaryKeyword');
 
-  const priority = tierOf(slug);
+  const traffic = SEO_PRIORITY[slug] ?? null;
+  if (traffic && issues.length === 0) issues.push('restored page with search traffic - improve against the brief');
+  const priority = traffic ? 1 : tierOf(slug);
 
   posts.push({
     file: `${POSTS_DIR}/${file}`,
@@ -118,12 +133,19 @@ for (const file of files) {
     words,
     priority,
     issues,
+    ...(traffic ? { traffic: { clicks: traffic.clicks, impressions: traffic.impressions, position: traffic.position } } : {}),
   });
 }
 
 const needsWork = posts
   .filter((p) => p.issues.length > 0)
-  .sort((a, b) => a.priority - b.priority || a.words - b.words || a.slug.localeCompare(b.slug))
+  .sort(
+    (a, b) =>
+      a.priority - b.priority ||
+      (b.traffic?.clicks ?? 0) - (a.traffic?.clicks ?? 0) ||
+      a.words - b.words ||
+      a.slug.localeCompare(b.slug),
+  )
   .map((p, index) => ({ ...p, rank: index + 1, priorityLabel: PRIORITY_LABELS[p.priority] }));
 
 const byPriority = {
@@ -148,7 +170,7 @@ const queue = {
     requiresPrimaryKeyword: true,
     reference: 'docs/CONTENT-STANDARD.md §12',
   },
-  prioritySlugs: { moneyPages: MONEY_SLUGS, topics: PRIORITY_TOPICS },
+  prioritySlugs: { moneyPages: MONEY_SLUGS, topics: PRIORITY_TOPICS, searchTraffic: Object.keys(SEO_PRIORITY) },
   total: posts.length,
   needsWork: needsWork.length,
   clean: posts.length - needsWork.length,
