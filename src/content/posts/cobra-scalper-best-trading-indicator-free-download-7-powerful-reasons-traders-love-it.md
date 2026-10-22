@@ -14,11 +14,11 @@ tags: []
 quickAnswer: "The Cobra Scalper is a free scalping indicator name used across several MetaTrader 4 and MetaTrader 5 builds, so the version you download decides the behaviour. Read it honestly: only act on signals that survive the candle close, test for repainting yourself, and treat the grid or averaging layer around it as the real risk. The free worksheet with this guide stress-tests that layer."
 
 keyTakeaways:
-  - "The Cobra Scalper is a name shared by several free scalping builds for MetaTrader 4 and MetaTrader 5, so the exact version you install decides how it behaves â€” verify the one you have."
+  - "The Cobra Scalper is a name shared by several free scalping builds for MetaTrader 4 and MetaTrader 5, so the exact version you install decides how it behaves — verify the one you have."
   - "Two signals can look identical on a finished chart and completely different while the candle is still forming; trade confirmed closes, not live arrows."
   - "Repainting is the first thing to prove or disprove on your own charts, because a signal that moves after the fact cannot be traded."
   - "An indicator has no position size; the grid, martingale or averaging layer you attach to it is what can turn an ordinary losing run into an account-level loss."
-  - "Stress-test that recovery layer with real numbers â€” maximum levels, margin use, stop-out level and the loss you can survive â€” before it trades a single lot."
+  - "Stress-test that recovery layer with real numbers — maximum levels, margin use, stop-out level and the loss you can survive — before it trades a single lot."
 
 faqs:
   - question: "What is the Cobra Scalper indicator?"
@@ -28,7 +28,7 @@ faqs:
   - question: "Does Cobra Scalper repaint its signals?"
     answer: "It depends on the build. Repainting means an arrow that appears on the live bar later moves or disappears once the candle closes. Some free arrow indicators recalculate on the current bar, which makes them look accurate in hindsight and unreliable in real time. You cannot trust a vendor's answer here. Prove it on your own charts with bar replay before you trade the signals."
   - question: "Which timeframe and markets suit the Cobra Scalper?"
-    answer: "Scalping builds are usually aimed at short timeframes such as M1, M5 and M15, and at liquid instruments where spreads are tight â€” EUR/USD, GBP/USD and, on many brokers, XAUUSD. Higher volatility cuts both ways: gold and news-driven pairs produce more signals and also more false ones. Match the timeframe and symbol to how the build behaves in your own tests, not to a marketing list."
+    answer: "Scalping builds are usually aimed at short timeframes such as M1, M5 and M15, and at liquid instruments where spreads are tight — EUR/USD, GBP/USD and, on many brokers, XAUUSD. Higher volatility cuts both ways: gold and news-driven pairs produce more signals and also more false ones. Match the timeframe and symbol to how the build behaves in your own tests, not to a marketing list."
 
   - question: "Can I automate the Cobra Scalper with an expert advisor?"
     answer: "You can, but that changes what you are really trading. An EA does not just follow arrows; it decides position size, and many free recovery experts add to losing trades with grid, martingale or averaging logic. That layer, not the arrow, is what usually empties an account. Before you automate any signal, stress-test the recovery rules and prove the exposure on a demo account."
@@ -40,13 +40,13 @@ faqs:
     answer: "Run it on a demo account that matches your intended live conditions, keep one fixed configuration, and log every signal: whether it survived the candle close, the spread you paid, the slippage you saw and why each trade closed. Then stress-test any recovery layer with a printable worksheet so you know your worst-case exposure in advance. Demo first, live capital last, and only after the numbers agree."
 
 sources:
-  - label: "MQL5 Documentation â€” Custom Indicators"
+  - label: "MQL5 Documentation — Custom Indicators"
     url: "https://www.mql5.com/en/docs/indicators"
-  - label: "MetaTrader 5 Help â€” Automated Trading and Strategy Tester"
+  - label: "MetaTrader 5 Help — Automated Trading and Strategy Tester"
     url: "https://www.metatrader5.com/en/terminal/help"
-  - label: "Investopedia â€” Scalping"
+  - label: "Investopedia — Scalping"
     url: "https://www.investopedia.com/terms/s/scalping.asp"
-  - label: "Investopedia â€” Leverage"
+  - label: "Investopedia — Leverage"
     url: "https://www.investopedia.com/terms/l/leverage.asp"
 
 primaryKeyword: "cobra scalper indicator"
@@ -62,13 +62,13 @@ download:
 
 You open an M1 chart on EUR/USD. An arrow prints. Price runs twenty pips in your favour. You scroll back and it happens again, twenty candles earlier, and again before that. Sitting still on a finished chart, a scalping indicator looks like a machine that hands you the answer.
 
-Then you trade it. Live, the arrow appears on the candle that is still moving. You wait for confirmation and price walks away. You enter anyway and it snaps back. You close for a small loss, and the deeper signal â€” the one that only settles at the close â€” turns out to have been the good one. The two experiences are not the indicator lying and then telling the truth. They are the difference between what you can know while price is still forming and what a chart shows once the story is over.
+Then you trade it. Live, the arrow appears on the candle that is still moving. You wait for confirmation and price walks away. You enter anyway and it snaps back. You close for a small loss, and the deeper signal — the one that only settles at the close — turns out to have been the good one. The two experiences are not the indicator lying and then telling the truth. They are the difference between what you can know while price is still forming and what a chart shows once the story is over.
 
 If you are honest with yourself, the real problem is narrower than "is this indicator good". You cannot tell, from a clean screenshot, whether a signal was available in real time or drawn after the fact. You cannot tell, from a free forum download, how the version in your hands behaves when a trend refuses to turn. And you cannot tell, from a smooth demo line, what will happen to your account when the recovery logic you bolt onto the signal starts adding size to a losing trade.
 
-Here is the direct answer, before any of the detail. Cobra Scalper is not one product. It is a name that several independent developers have used for free scalping indicators on MetaTrader 4 and MetaTrader 5. Different builds, different logic, different behaviour. So there is no single honest review of "the" Cobra Scalper, and anyone who offers you one is describing the version they happened to hold â€” or a version they made up. What you can do, and what this page teaches, is judge the build in front of you: read its signals honestly, prove whether it repaints, and stress-test the recovery layer you wrap around it. That last part, not the arrow, is what decides whether you survive a bad week.
+Here is the direct answer, before any of the detail. Cobra Scalper is not one product. It is a name that several independent developers have used for free scalping indicators on MetaTrader 4 and MetaTrader 5. Different builds, different logic, different behaviour. So there is no single honest review of "the" Cobra Scalper, and anyone who offers you one is describing the version they happened to hold — or a version they made up. What you can do, and what this page teaches, is judge the build in front of you: read its signals honestly, prove whether it repaints, and stress-test the recovery layer you wrap around it. That last part, not the arrow, is what decides whether you survive a bad week.
 
-This guide is education first and product second. It walks through how to read a scalping signal without chasing it, how to test any free build for repainting, why the grid or averaging layer underneath is the real danger, how to size a position so a normal losing run cannot end the account, and how to run a demo period that actually tells you something. The free download attached to this page is a working tool for one specific job â€” putting numbers on the hidden risk in a grid or averaging system â€” not a promise about the outcome. Nothing here can promise an outcome, and you should distrust any page that does.
+This guide is education first and product second. It walks through how to read a scalping signal without chasing it, how to test any free build for repainting, why the grid or averaging layer underneath is the real danger, how to size a position so a normal losing run cannot end the account, and how to run a demo period that actually tells you something. The free download attached to this page is a working tool for one specific job — putting numbers on the hidden risk in a grid or averaging system — not a promise about the outcome. Nothing here can promise an outcome, and you should distrust any page that does.
 
 ## The recovery habit that turns one calm week into a closed account
 
@@ -78,7 +78,7 @@ Then London opens on a Wednesday with a rate decision in the air. An arrow fires
 
 Then the move accelerates. The floating loss grows past everything the quiet week taught you. By the time you close, one session has erased three weeks of small wins and then taken a slice of the account with it. The next morning you are not asking whether the indicator was accurate. You are asking how a tool that looked so reliable could end a week like that.
 
-Here is the uncomfortable part, and the reason this page exists. The indicator did not lie. Every arrow was a real arrow. What failed was the layer you added on top of it â€” the decision to keep adding size to an idea that had already gone wrong. The same trap waits for anyone who hands a scalping signal to a free expert advisor with grid or martingale recovery, or who improvises that recovery by hand. The expensive part of scalping is rarely the signal. It is the position management nobody stress-tested.
+Here is the uncomfortable part, and the reason this page exists. The indicator did not lie. Every arrow was a real arrow. What failed was the layer you added on top of it — the decision to keep adding size to an idea that had already gone wrong. The same trap waits for anyone who hands a scalping signal to a free expert advisor with grid or martingale recovery, or who improvises that recovery by hand. The expensive part of scalping is rarely the signal. It is the position management nobody stress-tested.
 
 ## What is the Cobra Scalper indicator, and what does a free download actually give you?
 
@@ -149,7 +149,7 @@ Three patterns do most of the damage, and they often appear together.
 - **Martingale.** The system increases the size of each new position after a loss, so the next trade needs to win less to cover the last ones. It works often enough to feel safe and fails completely when it does not work.
 - **Averaging.** The system adds to an open losing position to improve the average entry, betting that price will return far enough to exit the whole basket at a small profit.
 
-Each pattern produces the same shape: a long stretch of small, calm gains, followed by one large loss when price trends one way and refuses to come back. On a scrolled-back equity curve that looks like a reliable machine. In the moment it is a bet that the market will be reasonable, and the market is not obliged to be. A scalping signal makes this feel urgent, because scalpers take many trades â€” and a recovery layer attaches itself to every one that goes the wrong way.
+Each pattern produces the same shape: a long stretch of small, calm gains, followed by one large loss when price trends one way and refuses to come back. On a scrolled-back equity curve that looks like a reliable machine. In the moment it is a bet that the market will be reasonable, and the market is not obliged to be. A scalping signal makes this feel urgent, because scalpers take many trades — and a recovery layer attaches itself to every one that goes the wrong way.
 
 The detail that surprises most traders is how leverage fits in. You might assume more leverage gives a grid more room to survive. The opposite is true. Higher leverage lets each added level consume less margin, so the system can keep stacking positions further than it should, right up to the point where the floating loss is too large to recover. Lower leverage stops the expansion earlier and caps the damage at a smaller number. A "recovery" expert that needs high leverage to reach all its levels is telling you something important about its risk, whether it means to or not.
 
@@ -159,7 +159,7 @@ That is why the honest answer to "is Cobra Scalper worth using" is incomplete wi
 
 Talking about "worst case" is easy and useless. Writing the number down is what changes behaviour. That is the single job of the free worksheet attached to this page: to make you do the arithmetic on a grid, martingale or averaging system before the account does it for you.
 
-The worksheet is a printable PDF, and it is built in four parts. The first is a settings audit: you list the controls that actually define your exposure â€” base lot, grid step, lot multiplier, maximum levels or trades, basket take profit, stop loss, drawdown limit, trading-hours filter and news filter â€” and next to each you write the value from your own terminal and the cap you are willing to accept. A setting you cannot explain is a setting you should set to its most conservative value, or switch the system off until you can.
+The worksheet is a printable PDF, and it is built in four parts. The first is a settings audit: you list the controls that actually define your exposure — base lot, grid step, lot multiplier, maximum levels or trades, basket take profit, stop loss, drawdown limit, trading-hours filter and news filter — and next to each you write the value from your own terminal and the cap you are willing to accept. A setting you cannot explain is a setting you should set to its most conservative value, or switch the system off until you can.
 
 The second part runs three stress scenarios in writing, because these are the conditions that break grids in practice:
 
@@ -184,7 +184,7 @@ Used properly, the sheet is arithmetic on your own inputs, and that is all it is
 
 ## How do you size a scalping position so one losing run cannot end the account?
 
-Position sizing is where the whole method becomes personal, because a signal can be perfect and still drain the account if the size is wrong. Start from the account, not the arrow. If you trade a funded challenge or a live account with a daily and a total loss limit, those limits set the heat you can take before the account closes. Your sizing has to keep a normal losing streak â€” several trades in a row, plus a spread spike â€” comfortably inside those lines.
+Position sizing is where the whole method becomes personal, because a signal can be perfect and still drain the account if the size is wrong. Start from the account, not the arrow. If you trade a funded challenge or a live account with a daily and a total loss limit, those limits set the heat you can take before the account closes. Your sizing has to keep a normal losing streak — several trades in a row, plus a spread spike — comfortably inside those lines.
 
 Then translate the design into exposure. A single-position scalping approach with a real stop risks a bounded amount per trade, and the maths is straightforward: the distance to your stop, multiplied by the value per pip, multiplied by the lot size. A grid or averaging layer is different, because several positions share the same direction and can be open at once, so the amount at risk is the sum of the whole basket, not one trade. Ask for that maximum exposure in plain terms and map it to your balance. If the answer is unclear, the size is too large or the design is too opaque for your account.
 
@@ -200,7 +200,7 @@ Preparation comes first. Build a demo account that mirrors your intended live co
 
 During the test, change nothing unless safety demands it, and log every trade. Capture whether the signal existed at the candle close, the spread you actually paid, any slippage between the price the arrow implied and the fill you got, and the reason each trade closed. If you find yourself tempted to tune the settings after a losing day, write the urge down instead of acting on it, because a mid-test change restarts the clock and the result no longer belongs to one configuration.
 
-Behaviour is the test; balance is only one output. Compare the demo to what the indicator showed live. Did arrows behave the same way they did in bar replay, or did they start moving? Did the spread widen during the busiest minutes and eat the edge? Did the exposure peak stay inside the limit you wrote on the worksheet? Small differences are normal between a chart and a demo fill, but large or repeated mismatches are information, and the right response to them is caution, not optimism. When the demo and the documentation agree, extend the test. When they do not, reject it and keep your evidence â€” a written record is the one thing marketing cannot rewrite.
+Behaviour is the test; balance is only one output. Compare the demo to what the indicator showed live. Did arrows behave the same way they did in bar replay, or did they start moving? Did the spread widen during the busiest minutes and eat the edge? Did the exposure peak stay inside the limit you wrote on the worksheet? Small differences are normal between a chart and a demo fill, but large or repeated mismatches are information, and the right response to them is caution, not optimism. When the demo and the documentation agree, extend the test. When they do not, reject it and keep your evidence — a written record is the one thing marketing cannot rewrite.
 
 ## What red flags and honest limits should you accept before you install anything?
 
@@ -208,7 +208,7 @@ Red flags save you time, so treat them as hard stops rather than debate points. 
 
 Provenance is the first. If there is no traceable origin, no version note and no way to know who compiled the file, you are running an unknown executable inside your terminal. Scan every archive before you open it, keep it off your live terminal until it has survived a demo test, and never give an indicator or expert advisor your broker password, investor password or account details. Software that asks for credentials is not an indicator problem; it is a security problem, and it ends the review immediately.
 
-Repainting and hidden automation are the second and third flags. A build that revises its signals after the fact cannot be traded live, no matter how tidy the finished chart looks. A build that wants to place orders on your behalf is no longer an indicator at all â€” it is an automated system, with all the recovery and exposure questions that came with it. Force the question: does this file only draw, or does it trade? If it trades, apply the same grid and sizing stress test you would apply to any recovery expert.
+Repainting and hidden automation are the second and third flags. A build that revises its signals after the fact cannot be traded live, no matter how tidy the finished chart looks. A build that wants to place orders on your behalf is no longer an indicator at all — it is an automated system, with all the recovery and exposure questions that came with it. Force the question: does this file only draw, or does it trade? If it trades, apply the same grid and sizing stress test you would apply to any recovery expert.
 
 Pressure is the fourth. A download page with a countdown, a "today only" bonus or a demand that you fund a specific account before you can see evidence is telling you who benefits from your haste. Sound evaluation takes days. Keep the pace that suits you, and let urgency disqualify an offer. A related flag is the fake-proof post: anonymous screenshots, borrowed lifestyle images and unverifiable account pictures. They prove nothing about execution, costs or drawdown, so ignore them and look for files, statements and your own demo record instead. If you are weighing up handling signals yourself against letting someone else trade for you, read the [copy trading and fund management overview](/copy-trading/) and notice how it separates evidence from a pitch.
 
@@ -222,8 +222,8 @@ By now the honest shape of this page should be clear. It is not another Cobra Sc
 |---|---|
 | Format | Printable PDF worksheet |
 | Purpose | Stress-test a grid or averaging system before it trades |
-| Part 1 | Settings audit â€” each control, its value and your cap |
-| Part 2 | Three stress scenarios â€” sustained trend, news spike, weekend gap |
+| Part 1 | Settings audit — each control, its value and your cap |
+| Part 2 | Three stress scenarios — sustained trend, news spike, weekend gap |
 | Part 3 | Margin and stop-out arithmetic, with a worked EUR/USD example and blank fields |
 | Part 4 | Decision record with a proceed or do-not-proceed verdict to sign |
 | Who it is for | Any trader using or automating grid, martingale or averaging systems |
@@ -245,13 +245,13 @@ Now the honest limits, because they matter more than the features.
 
 Read that list twice. If a page like this one had promised a profit figure or a tested win rate, you would be right to close the tab. This page deliberately does not, because inventing a number would be a lie and borrowing someone else's would be someone else's result on someone else's account. What it offers instead is a method you can repeat and a tool you can print.
 
-If you want to see how serious indicator and system write-ups separate method from marketing, study the [scalper-style indicator breakdown](/best-scalping-indicator-scalper-inside-v7-9-free-download-7-powerful-reasons-traders-love-it/) and see how transparent records are presented on the [ranking hub](/top-ranking/) before you apply the same lens to every Cobra Scalper file you meet. When you are ready to compare systems properly, browse the [best MT4 EA shortlist](/best-mt4-ea/) and the [shop](/shop/) â€” but only after your own gate says a longer test is justified. Tools support judgement. They do not replace it.
+If you want to see how serious indicator and system write-ups separate method from marketing, study the [scalper-style indicator breakdown](/best-scalping-indicator-scalper-inside-v7-9-free-download-7-powerful-reasons-traders-love-it/) and see how transparent records are presented on the [ranking hub](/top-ranking/) before you apply the same lens to every Cobra Scalper file you meet. When you are ready to compare systems properly, browse the [best MT4 EA shortlist](/best-mt4-ea/) and the [shop](/shop/) — but only after your own gate says a longer test is justified. Tools support judgement. They do not replace it.
 
 ## Your next step: stress-test the layer that can actually end your account
 
 You now have a method and a tool. The only thing left is to use them on the next free scalping build that catches your eye, instead of installing it and hoping.
 
-Here is the one action to take now. Download the free Grid EA Settings Audit and Stress Test, print it, and fill in the settings audit and all three stress scenarios for whatever grid, martingale or averaging system you are considering â€” including any expert advisor you plan to point at a Cobra Scalper signal. Write your maximum levels, your margin use, your stop-out equity and the worst-case loss you are willing to accept. Then sign the verdict. If any scenario has no number, or the loss is money you cannot afford to part with, the answer is do not proceed, and that answer just protected you.
+Here is the one action to take now. Download the free Grid EA Settings Audit and Stress Test, print it, and fill in the settings audit and all three stress scenarios for whatever grid, martingale or averaging system you are considering — including any expert advisor you plan to point at a Cobra Scalper signal. Write your maximum levels, your margin use, your stop-out equity and the worst-case loss you are willing to accept. Then sign the verdict. If any scenario has no number, or the loss is money you cannot afford to part with, the answer is do not proceed, and that answer just protected you.
 
 After that, put the indicator itself through the same discipline. Trade only confirmed closes, verify repainting on your own charts, keep one fixed configuration on a demo account for at least two weeks, and log every signal with the spread and slippage you actually saw. Move to live capital last, sized so an ordinary losing streak and one bad gap stay well inside your limits.
 
