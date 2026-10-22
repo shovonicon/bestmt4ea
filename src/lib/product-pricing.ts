@@ -34,7 +34,7 @@ export interface PriceRangeFrontmatter {
 export function productPriceRange(
   frontmatter: PriceRangeFrontmatter,
   plans: Array<{ price?: number | string | null }> = [],
-): { min?: number; max?: number } {
+): { min?: number; max?: number; offerCount?: number } {
   const positive = (value: unknown): number | undefined => {
     const n = Number(value);
     return Number.isFinite(n) && n > 0 ? n : undefined;
@@ -44,7 +44,7 @@ export function productPriceRange(
     .map((plan) => positive(plan?.price))
     .filter((n): n is number => n !== undefined);
 
-  if (paid.length) return { min: Math.min(...paid), max: Math.max(...paid) };
+  if (paid.length) return { min: Math.min(...paid), max: Math.max(...paid), offerCount: paid.length };
 
   const fallback = [
     positive(frontmatter.salePrice),

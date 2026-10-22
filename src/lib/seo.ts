@@ -99,11 +99,13 @@ export function productSchema(
     currency?: string;
     min?: number;
     max?: number;
+    /** How many paid licence plans make up the range (schema offerCount). */
+    offerCount?: number;
     /** The reviews rendered on the page — the only ones a rating may describe. */
     reviews?: Array<{ rating: number; body: string; name: string; createdAt: number }>;
   } = {},
 ): Json {
-  const { currency = 'USD', min, max, reviews = [] } = opts;
+  const { currency = 'USD', min, max, offerCount, reviews = [] } = opts;
   const image = resolveImage(product.data.featuredImage);
   const url = absoluteUrl(`/product/${product.data.slug}/`);
 
@@ -117,7 +119,7 @@ export function productSchema(
       ? {
           '@type': low === high ? 'Offer' : 'AggregateOffer',
           priceCurrency: currency,
-          ...(low === high ? { price: low } : { lowPrice: low, highPrice: high }),
+          ...(low === high ? { price: low } : { lowPrice: low, highPrice: high, offerCount }),
           ...(availability ? { availability } : {}),
           url,
         }
