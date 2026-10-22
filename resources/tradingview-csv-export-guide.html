@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TradingView CSV Export Guide</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  :root { --accent: #00c190; --ink: #111; --dim: #555; --rule: #d6d6d6; }
+  * { box-sizing: border-box; }
+  body { font-family: "Segoe UI", Arial, sans-serif; color: var(--ink); font-size: 10.5pt; line-height: 1.5; margin: 0; }
+  header { border-bottom: 3px solid var(--accent); padding-bottom: 8px; margin-bottom: 14px; }
+  h1 { font-size: 20pt; margin: 0 0 4px; }
+  h2 { font-size: 13pt; margin: 18px 0 6px; color: #003d2e; break-after: avoid; }
+  p { margin: 0 0 8px; }
+  .meta { color: var(--dim); font-size: 9pt; }
+  .step { display: flex; gap: 10px; margin: 6px 0; break-inside: avoid; }
+  .n { flex: 0 0 22px; height: 22px; border-radius: 50%; background: var(--accent); color: #fff; text-align: center; line-height: 22px; font-weight: 700; font-size: 9pt; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 9.5pt; break-inside: avoid; }
+  th, td { border: 1px solid var(--rule); padding: 5px 7px; text-align: left; vertical-align: top; }
+  th { background: #f2f7f5; }
+  .box { border: 1px solid var(--accent); border-radius: 6px; padding: 8px 10px; margin: 10px 0; break-inside: avoid; }
+  .check { margin: 4px 0; }
+  .box-title { font-weight: 700; margin-bottom: 4px; }
+  footer { margin-top: 18px; border-top: 1px solid var(--rule); padding-top: 6px; font-size: 8.5pt; color: var(--dim); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>TradingView CSV Export Guide</h1>
+  <div class="meta">A practical checklist for exporting chart data to CSV, what each method captures, and how to check the file before you use it. Version 1.0 · Free to use, print and share with credit to bestmt4ea.com</div>
+</header>
+
+<h2>1. Start with what your account can do</h2>
+<p>Free TradingView accounts can copy the values shown on the screen. A full historical export depends on the plan you hold, so check your own account before you build a workflow around any one option. This guide does not assume a plan, and it does not promise a complete file.</p>
+
+<h2>2. Choose a method</h2>
+<table>
+  <tr><th>Method</th><th>Works on</th><th>What it captures</th><th>Main limit</th></tr>
+  <tr><td>A. Copy the Data Window</td><td>Every plan</td><td>Open, high, low, close, volume for loaded bars</td><td>Manual; only what is on screen</td></tr>
+  <tr><td>B. Chart-data export</td><td>Plans that include it</td><td>Bars for the active chart</td><td>Availability and menu location change</td></tr>
+  <tr><td>C. Pine Script values</td><td>Every plan</td><td>Your own calculated column, per bar</td><td>You must write and test the script</td></tr>
+  <tr><td>D. Broker or public feed</td><td>Depends on the source</td><td>Long history, often the same feed your EA trades</td><td>Check the licence and terms first</td></tr>
+</table>
+
+<h2>3. Method A: copy the Data Window</h2>
+<div class="step"><div class="n">1</div><div>Open the chart and set the symbol, exchange and timeframe. Write them in your notes.</div></div>
+<div class="step"><div class="n">2</div><div>Scroll left until the history you need is loaded. The chart only holds bars that are loaded.</div></div>
+<div class="step"><div class="n">3</div><div>Hover over each bar to read the Data Window, or copy the values for the range you need.</div></div>
+<div class="step"><div class="n">4</div><div>Paste into a spreadsheet with a header row: time, open, high, low, close, volume.</div></div>
+<div class="step"><div class="n">5</div><div>Save as CSV and record the first and last timestamp beside the file.</div></div>
+
+<h2>4. Method B: chart-data export</h2>
+<p>If your plan includes a chart-data export, use it for longer ranges. Read the current option on your own screen, not an old screenshot. Then confirm three things: the file covers the range you asked for, the column order and time format are as expected, and the first and last ten rows match the chart.</p>
+
+<h2>5. Method C: indicator values with Pine Script</h2>
+<p>A Pine Script indicator can calculate any value for each bar and plot it. The Data Window then shows that value beside the price, so it can be copied with the candles. Test the script on a few bars where you already know the answer before you build a dataset from it. The official Pine Script documentation is the reference for functions and plotting.</p>
+
+<h2>6. Method D: broker or public feed</h2>
+<p>Your broker's MetaTrader terminal can export history for a symbol, and that history matches the prices your EA sees. Public feeds can suit research, but check the licence and usage terms before you download or redistribute the data. Pick one source for a project and keep it, because mixing sources creates differences that are hard to trace.</p>
+
+<div class="box">
+  <div class="box-title">The five checks before you calculate anything</div>
+  <div class="check">☐ <strong>Count.</strong> Compare the row count with the bars expected for the period and timeframe.</div>
+  <div class="check">☐ <strong>Order.</strong> Timestamps rise from the top row to the bottom row.</div>
+  <div class="check">☐ <strong>Prices.</strong> High is never below open or close; low is never above them.</div>
+  <div class="check">☐ <strong>Time zone.</strong> Note whether timestamps are local or exchange time.</div>
+  <div class="check">☐ <strong>Sample.</strong> Match three bars in the file against the chart, all six values each.</div>
+</div>
+
+<h2>7. What a candle export cannot tell you</h2>
+<p>A candle export records one summary per bar. It does not show the order of prices inside the bar, so it cannot show which level was reached first. It also usually shows traded prices, not the bid and ask you pay, so spread is missing. Add a spread assumption to any test, and treat a candle-based result as a rough guide until it is tested on data that includes spread and fills.</p>
+
+<h2>8. Keep a repeatable record</h2>
+<p>Name each file with symbol, timeframe, source, date range and export date, for example <em>XAUUSD_M15_source_2025-01-01_to_2025-12-31_exported-2026-10-22.csv</em>. Keep the raw export unchanged and make cleaning or calculations in a copy. Record the method and the plan that produced the file, because features change.</p>
+
+<h2>9. Before you rely on any result</h2>
+<p>An exported file shows history, not the future. Use it to form a hypothesis, then test on data you did not use to build the rule, and on a demo account before any live capital. Trading carries a real risk of loss. Past results do not guarantee future performance, and this guide does not promise any outcome.</p>
+
+<footer>BESTMT4EA · bestmt4ea.com · Not affiliated with TradingView. TradingView is a trademark of its owner. Plans and menus change; check your own account.</footer>
+
+</body>
+</html>
