@@ -63,7 +63,7 @@ if (kind === 'post') {
     const all = await getCollection('posts');
     related = all
       .filter((p: any) => p.data.slug !== entry.data.slug && p.data.categories?.includes(category))
-      .slice(0, 5);
+      .slice(0, 6);
   }
 }
 ---

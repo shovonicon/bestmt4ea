@@ -337,11 +337,11 @@ const trail = [
 
       {
         related.length > 0 && (
-          <section class="mt-12">
-            <h2 class="text-xl">Continue reading</h2>
-            <ul class="mt-5 space-y-3">
+          <section class="brand-card mt-12 p-6 sm:p-8">
+            <h2 class="text-xl text-gradient-aurora">Continue reading</h2>
+            <ul class="mt-5 grid gap-4 sm:grid-cols-2">
               {related.map((item) => (
-                <li>
+                <li class="rounded-xl border border-emerald-400/20 bg-emerald-400/5 p-4">
                   <a
                     href={url(`/${item.data.slug}/`)}
                     class="text-sm font-semibold text-[var(--color-ink)] hover:text-[var(--color-accent)]"
