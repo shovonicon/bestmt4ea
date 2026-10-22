@@ -238,7 +238,7 @@ Do not compare a tool on a demo account against a memory of a live account, or a
 
 If the tool fails your test, you have learned something valuable at no cost. You can move on to a method you can explain without a name on the box, such as a simple trend filter with a clear stop. Keep the log even then, because the skipped arrows are as informative as the taken ones. The [top ranking](/top-ranking/) pages group tools by category, which helps you compare alternatives without relying on one product's claims. The [customer feedback](/customer-feedback/) page explains how we publish reviews and why we only show feedback that customers have confirmed.
 
-If you want to automate part of your process later, the [shop](/shop/) lists licensed products with stated limits, and a [forex VPS](/product/forex-vps/) can keep a terminal running when your own computer is off. Use a VPS only after your demo results justify running a strategy without you watching it.
+If you want to automate part of your process later, the [shop](/shop/) lists licensed products with stated limits, and a [forex VPS](/product/vps/) can keep a terminal running when your own computer is off. Use a VPS only after your demo results justify running a strategy without you watching it.
 
 ## Closing: what should you do this week?
 

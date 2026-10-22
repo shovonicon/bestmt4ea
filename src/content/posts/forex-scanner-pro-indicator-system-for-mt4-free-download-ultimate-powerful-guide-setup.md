@@ -234,7 +234,7 @@ Finally, decide what to change, if anything. Change one thing at a time, record 
 
 If you decide the scanner earns a place in your process, you can build from there. Add a higher-timeframe filter, keep the pair list short, and review the log once a week. Over time, the log will show you which pairs and timeframes the scanner handles well, and you can narrow your focus to those.
 
-For a wider view, the [top ranking](/top-ranking/) pages show how indicators and EAs are grouped and compared, which helps when you want to see alternatives to a single file. The [customer feedback](/customer-feedback/) page explains how we publish reviews, and why only confirmed feedback appears on the site. If you want to automate parts of your process, the [shop](/shop/) lists licensed products with their stated limits, and a [forex VPS](/product/forex-vps/) can keep a terminal running when your own computer is off. A VPS does not improve a signal, so use one only after your demo results support running a strategy unattended.
+For a wider view, the [top ranking](/top-ranking/) pages show how indicators and EAs are grouped and compared, which helps when you want to see alternatives to a single file. The [customer feedback](/customer-feedback/) page explains how we publish reviews, and why only confirmed feedback appears on the site. If you want to automate parts of your process, the [shop](/shop/) lists licensed products with their stated limits, and a [forex VPS](/product/vps/) can keep a terminal running when your own computer is off. A VPS does not improve a signal, so use one only after your demo results support running a strategy unattended.
 
 ## Closing: what should you do this week?
 
