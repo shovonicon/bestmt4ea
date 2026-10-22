@@ -1,19 +1,30 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import { RISK_DISCLAIMER } from '../../lib/site';
+import ComparisonRegistry from '../../components/ComparisonRegistry.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import { RISK_DISCLAIMER, site } from '../../lib/site';
 import { getPublicProducts } from '../../lib/content';
+import { monthYear, performanceVerifiedAt } from '../../lib/dates';
 import { url } from '../../lib/urls';
 import taxonomies from '../../data/taxonomies.json';
 
 /**
- * Product category archive (/product-category/<slug>).
+ * Strategy category archive (/product-category/<slug>), linked from the
+ * Compare Strategies menu. Same composition as the Compare Platforms pages:
+ * a hero with the catalogue month, an honest one-line intro, and the
+ * ComparisonRegistry board with verified figures.
  *
- * Rebuilds the WooCommerce `product_cat` archive, which is live and indexed
- * today. Slugs come from the exported taxonomy so they match exactly.
+ * Slugs come from the exported taxonomy so they match exactly.
  */
 
 type Cat = { id: number; name: string; slug: string; count: number };
+
+/** Plain-language intro for each strategy page. Describes the category, not performance. */
+const INTROS: Record<string, string> = {
+  'gold-forex-ea': 'Expert advisors built for gold (XAUUSD). Gold moves fast, so each system shows its drawdown beside its return.',
+  'forex-robot': 'Automated trading systems for MetaTrader, ranked on their third-party tracked record. Drawdown and account type are shown for each.',
+  indicator: 'Indicators for MetaTrader 4 and 5. Indicators have no account of their own, so a result is only shown where a published record exists.',
+};
 
 export async function getStaticPaths() {
   const cats = ((taxonomies as any).productCategories ?? []) as Cat[];
@@ -35,33 +46,72 @@ const matched = all.filter((p) => p.data.productCategories.includes(catName));
  */
 const products = matched.length > 0 ? matched : all.filter((p) => p.data.slug !== 'vps');
 const isFallback = matched.length === 0;
+
+const title = `Best ${catName} ${monthYear}`;
+const intro = INTROS[slug] ?? `Every system in the ${catName} category, ranked on its third-party tracked record.`;
+const fmtDate = (d: Date) =>
+  new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(d);
 ---
 
 <BaseLayout
-  title={`${catName} — Expert Advisors and Tools`}
-  description={`${catName}: every system in this category, with its licence options, platform compatibility and a link to its independent performance record.`}
+  title={`${title} — Myfxbook Verified`}
+  description={`${catName}: ${products.length} systems with licence options, platform compatibility and their independent performance record. Updated ${monthYear}.`}
 >
-  <div class="container-x py-14">
-    <nav aria-label="Breadcrumb" class="text-xs text-[var(--color-ink-dim)]">
-      <a href="/" class="hover:text-[var(--color-accent)]">Home</a>
-      <span class="mx-2">/</span>
-      <a href={url('/shop')} class="hover:text-[var(--color-accent)]">Shop</a>
-      <span class="mx-2">/</span>
-      <span class="text-[var(--color-ink-soft)]">{catName}</span>
-    </nav>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="glow-orb animate-aurora left-1/2 top-[-14rem] h-[24rem] w-[36rem] -translate-x-1/2 bg-emerald-500/25"></div>
+    <div class="grid-overlay pointer-events-none absolute inset-0"></div>
 
-    <p class="eyebrow tone-gold mt-6 text-center">{slug}</p>
-    <h1 class="mt-2 text-center text-3xl md:text-5xl"><span class="text-gradient-gold">{catName}</span></h1>
-    <p class="mx-auto mt-4 max-w-2xl text-center text-sm leading-7 text-[var(--color-ink-dim)]">
-      {isFallback
-        ? `Every expert advisor in the catalogue, ${products.length} in total.`
-        : `${products.length} product${products.length === 1 ? '' : 's'} in this category.`}
-    </p>
+    <div class="container-x relative py-20 text-center lg:py-24">
+      <nav aria-label="Breadcrumb" class="text-xs text-[var(--color-ink-dim)]">
+        <a href="/" class="hover:text-[var(--color-accent)]">Home</a>
+        <span class="mx-2">/</span>
+        <a href={url('/shop')} class="hover:text-[var(--color-accent)]">Shop</a>
+        <span class="mx-2">/</span>
+        <span class="text-[var(--color-ink-soft)]">{catName}</span>
+      </nav>
 
-    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {products.map((product) => <ProductCard product={product} />)}
+      <span
+        class="eyebrow animate-fade-in-up mt-8 inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2"
+      >
+        <span class="live-dot"></span>Strategy directory · updated {monthYear}
+      </span>
+      <h1
+        class="animate-fade-in-up-delay-1 mx-auto mt-6 max-w-4xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl"
+      >
+        Best <span class="text-gradient-gold">{catName}</span>
+        <span class="block text-[var(--color-ink-soft)]">{monthYear}</span>
+      </h1>
+      <p class="animate-fade-in-up-delay-2 mx-auto mt-6 max-w-3xl text-base leading-8 text-[var(--color-ink-soft)]">
+        {intro}
+      </p>
+    </div>
+  </section>
+
+  <!-- The board -->
+  <section class="container-x pb-20" aria-labelledby="strategy-heading">
+    <SectionHead
+      align="center"
+      kicker="The full list"
+      title={`${products.length} ${products.length === 1 ? 'system' : 'systems'} in ${catName}`}
+      lead={isFallback
+        ? 'This archive lists every expert advisor in the catalogue. A system with no published record says so.'
+        : 'Ranked by verified gain. A demo account is labelled as a demo, and a system with no published record says so.'}
+      id="strategy-heading"
+    />
+
+    <div class="reveal mt-10">
+      <ComparisonRegistry products={products} />
     </div>
 
-    <p class="mt-12 text-xs leading-6 text-[var(--color-ink-dim)]">{RISK_DISCLAIMER}</p>
-  </div>
+    <p class="mt-4 text-center text-xs text-[var(--color-ink-dim)]">
+      Third-party figures checked {fmtDate(performanceVerifiedAt)}.
+    </p>
+    <p class="mx-auto mt-6 max-w-3xl text-center text-xs leading-6 text-[var(--color-ink-dim)]">{RISK_DISCLAIMER}</p>
+
+    <div class="mt-10 flex flex-wrap justify-center gap-3">
+      <a href={url('/top-ranking')} class="btn btn-primary !px-7 !py-3.5 !text-base">Compare every system</a>
+      <a href={url('/shop')} class="btn btn-ghost !px-6 !py-3.5 !text-base">Browse the EA library</a>
+    </div>
+  </section>
 </BaseLayout>
