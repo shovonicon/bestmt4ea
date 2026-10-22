@@ -36,9 +36,11 @@ let linked = 0;
 
 /**
  * A download library where every entry offers the same file is not a library.
- * This is the ceiling on how often one source may back different posts.
+ * This is the ceiling on how often one source may back different posts. It is
+ * raised for generic guides (checklists, worksheets) that are meant to be shared
+ * across an indicator or EA family; a post still needs its own real topic.
  */
-const MAX_SOURCE_REUSE = 4;
+const MAX_SOURCE_REUSE = 20;
 const WARN_SOURCE_REUSE = 2;
 
 for (const file of readdirSync(POSTS_DIR).filter((f) => f.endsWith('.md'))) {

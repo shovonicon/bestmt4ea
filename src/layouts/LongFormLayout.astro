@@ -318,8 +318,6 @@ const trail = [
       <!-- Second ad: after the body, clear of every download and purchase action. -->
       <AdSlot slot={site.adSlots.belowContent} class="mt-12" />
 
-      <BottomBannerAd />
-
       {
         data.faqs?.length > 0 && (
           <div class="mt-12">
@@ -328,18 +326,7 @@ const trail = [
         )
       }
 
-      <div class="mt-12">
-        <PromoAd
-          label="Sponsored"
-          kicker="For MT4 & MT5"
-          title="Start on a regulated broker from $1"
-          copy={'FCA & CySEC regulated · free VPS on qualifying accounts'}
-          cta="Open an Exness account"
-          href={affiliates.exness.url}
-          rel={AFFILIATE_REL}
-          target="_blank"
-        />
-      </div>
+      <BottomBannerAd />
 
       <ArticleSources sources={data.sources} />
 
@@ -378,6 +365,19 @@ const trail = [
       -->
       <aside class="longform-aside" aria-label="Recommended">
         <div>
+          <div class="brand-card">
+            <PromoAd
+              label="Sponsored"
+              kicker="For MT4 & MT5"
+              title="Start on a regulated broker from $1"
+              copy={'FCA & CySEC regulated · free VPS on qualifying accounts'}
+              cta="Open an Exness account"
+              href={affiliates.exness.url}
+              rel={AFFILIATE_REL}
+              target="_blank"
+            />
+          </div>
+
           <PromoAd
             label="Our service"
             kicker="No time to watch the charts?"
