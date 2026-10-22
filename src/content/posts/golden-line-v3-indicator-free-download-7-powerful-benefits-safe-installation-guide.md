@@ -2,13 +2,13 @@
 wpId: 139488
 title: "Golden Line V3 Indicator: Safe Install Guide"
 slug: "golden-line-v3-indicator-free-download-7-powerful-benefits-safe-installation-guide"
-description: "Golden Line V3 is a free MT4 indicator you did not write. Here is the safe install routine: .ex4 vs .mq4, MetaEditor logs, file writes and repaint checks."
+description: "Golden Line V3 is a free MT4 indicator from a shared file, not one we wrote. Check its code, watch for repaint and test on demo before you trust any arrow."
 publishedAt: "2026-02-22T16:19:10.000Z"
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-22"
 featuredImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_139488_featured.webp"
 seo:
   title: "Golden Line V3 Indicator: Safe Install Guide 2026"
-  description: "Golden Line V3 is a free MT4 indicator you did not write. Here is the safe install routine: .ex4 vs .mq4, MetaEditor logs, file writes and repaint checks."
+  description: "Golden Line V3 is a free MT4 indicator from a shared file, not one we wrote. Check its code, watch for repaint and test on demo before you trust any arrow."
   canonical: "https://bestmt4ea.com/golden-line-v3-indicator-free-download-7-powerful-benefits-safe-installation-guide/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_139488_featured.webp"
 sourceUrl: "https://bestmt4ea.com/golden-line-v3-indicator-free-download-7-powerful-benefits-safe-installation-guide/"
@@ -18,34 +18,29 @@ categoryPaths:
   - "/category/mt4-mt5-expert-advisors/"
 tags: []
 draft: false
-quickAnswer: "Installing a free MetaTrader indicator you did not write is the risky part, not the trading. Check the file type first: .mq4 source you can read and compile beats a closed .ex4 binary. Compile it in MetaEditor, read the Errors and Experts logs, check what it writes to disk, and confirm on a demo chart that historical signals do not move. Five minutes of install discipline prevents the expensive kind of surprise."
+quickAnswer: "Golden Line V3 is a free MetaTrader 4 indicator that we did not write and have not verified. Before you attach it to a chart, read the source if you have it, compile it yourself in MetaEditor, check what it writes to disk, and confirm on a demo account that its past arrows do not move. Treat every signal as a hypothesis to test, not a result to trade."
 keyTakeaways:
-  - "A free indicator is a program, not a picture — a compiled .ex4 can run code, write files and, if you allow it, call DLLs inside your terminal."
-  - "Prefer .mq4 source: you can read it, compile it yourself, and see exactly what it does before it ever touches a chart."
-  - "Read the MetaEditor Errors tab for compile and runtime faults, and the Experts tab for what the tool does while it runs."
-  - "Confirm non-repainting on a demo account by checking whether closed signals stay put a day later — not by trusting a backtest."
-  - "The safest first download is an open-source indicator that ships with source code, so you can audit it before you trust it."
+  - "We did not write Golden Line V3 and have not verified its signals or performance."
+  - "A .mq4 file you can read and compile is safer than a closed .ex4 binary from an unknown source."
+  - "Repaint is the first test: if past arrows move after the candle closes, the indicator cannot be judged on its history."
+  - "Run it on a demo account for at least four weeks before a single live trade, and log every signal."
 faqs:
-  - question: "Is the Golden Line V3 indicator safe to install?"
-    answer: "Not by default. If you only have a compiled .ex4 from an unknown reupload, you cannot see what the file does. Copy it into a separate MetaTrader install, attach it to a demo chart, read the Experts log, and watch what it writes before it goes near a live account."
-  - question: "Should I install an .ex4 file or an .mq4 file?"
-    answer: "Install the .mq4 source whenever it exists. Source is plain text you can read, audit for repaint code, and compile yourself in MetaEditor. A compiled .ex4 can only be trusted, never checked, so a lone .ex4 from a file host is a warning rather than a convenience."
-  - question: "How do I check whether an indicator is repainting?"
-    answer: "Load it on a demo chart, note where the arrows appear, then reopen the chart the next day and compare. If closed signals move, the indicator redraws history and its backtest is a fiction. A flicker on the current forming bar is normal; a moving closed bar is not."
-  - question: "What do the Errors and Experts tabs in MetaEditor tell me?"
-    answer: "The Errors tab lists compile and runtime problems, so you can see whether the file even builds cleanly. The Experts tab logs what the indicator prints while it runs — alerts, failed file writes, DLL load failures. A tool that spams errors or warnings is telling you it is fragile."
-  - question: "Can a free indicator place trades or write files on my computer?"
-    answer: "An indicator can request DLL imports and read or write files inside the terminal data folder. Without your permission it stays inside that sandbox, but if you tick 'Allow DLL imports' for a binary you cannot read, you are giving unknown code a much wider reach. Only allow it when you have read the source."
-  - question: "Do I need to enable DLL imports to run an indicator?"
-    answer: "Usually no. Most indicators draw lines and nothing more. Enable DLL imports only when you have read the source and can explain exactly why the tool needs outside code. If a binary asks for DLL access and you cannot read it, decline and use a source alternative."
+  - question: "Is Golden Line V3 a profitable indicator?"
+    answer: "We have not verified any profit figure for Golden Line V3, and nothing on this page is a claim that it makes money. Only a tracked, dated record on a real or demo account can tell you how it performs, and this indicator does not have one on this site."
+  - question: "Is it safe to install a free indicator I downloaded?"
+    answer: "It is safer after you read it, compile it yourself and check what it does. A file from a shared link can contain anything, so run it only on a demo account until those checks pass."
+  - question: "Why does repaint matter so much?"
+    answer: "An indicator that repaints redraws its past signals as new candles form. Its history then looks accurate even when its live signals were not, so a backtest or a screenshot of old arrows proves nothing."
+  - question: "What should I do if the code asks for a DLL or internet access?"
+    answer: "Stop and do not attach it to a live terminal. An indicator has no business importing a DLL or sending data out for a simple chart tool, and you should ask the author to explain why before going further."
 sources:
-  - label: "EarnForex/MarketProfile — open-source MetaTrader Market Profile indicator repository"
-    url: "https://github.com/EarnForex/MarketProfile"
-  - label: "MQL4 Reference — compilation, errors and file functions"
-    url: "https://docs.mql4.com/"
-  - label: "Apache License 2.0 — full text"
-    url: "https://www.apache.org/licenses/LICENSE-2.0"
-primaryKeyword: "Golden Line V3 Indicator"
+  - label: "MQL4 reference: MetaQuotes language documentation"
+    url: "https://www.mql5.com/en/docs"
+  - label: "MetaTrader 4 platform, MetaQuotes"
+    url: "https://www.metatrader4.com/"
+  - label: "Myfxbook, independent tracked account statistics"
+    url: "https://www.myfxbook.com/"
+primaryKeyword: "Golden Line V3 indicator"
 installSteps:
   - name: "Take the source, not the binary"
     text: "If both a .mq4 and a .ex4 exist, always take the .mq4. Source is text you can open and read. A lone .ex4 from a reupload is a file you can only trust blind."
@@ -62,181 +57,197 @@ installSteps:
 download:
   origin: "shared"
   license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  author: "EarnForex"
-  sourceUrl: "https://github.com/EarnForex/MarketProfile"
   version: "latest"
   platform: "MT4/MT5"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: "2026-09-29"
+  updatedAt: 2026-10-22
 ---
 
-You found a free indicator. Maybe it is the one that brought you here — Golden Line V3, shared in a Telegram group, bundled with a YouTube video, or posted in a forum thread that promised clean gold signals. You downloaded the file. Now a folder on your computer holds code you did not write, and the instinct is to drag it into MetaTrader and see what happens.
+You found a free indicator. Maybe it is the one that brought you here: Golden Line V3, passed around a Telegram group, bundled with a video, or posted in a forum thread that promised clean gold signals. You downloaded the file. Now a folder on your computer holds code you did not write, and the pull is to drag it onto a chart and see what happens.
 
-That instinct is the exact thing this page is about.
+That pull is the exact thing this page is about. The arrows on a free indicator look convincing on a screenshot, and a screenshot is the cheapest thing in trading to fake. The file you have may be the one its author intended, or it may have been changed on the way to you. You cannot tell from the name.
 
-A MetaTrader indicator is not a picture or a colour theme. On MetaTrader 4 and MetaTrader 5 it is a program that runs inside your terminal. A compiled file (`.ex4` or `.ex5`) is a binary you cannot read. A source file (`.mq4` or `.mq5`) is text you can open, read, and compile yourself. Both run with the permissions your terminal already has, on an account that may hold real money, with no sandbox between the file and your balance.
+## Why a free indicator you did not write is a real risk
 
-The trading conversation almost never mentions this. People argue about win rates, about "accuracy", about which arrow fires first. Almost nobody talks about the ten minutes around the install. That is backwards. The install happens before any trade and quietly sets the ceiling on everything that follows it.
+Most traders assume the danger in a free tool is that it does not work. That is one danger. The more serious one is that it does something you never asked for. A MetaTrader indicator runs inside your terminal, and depending on how it is written it can read your chart history, draw on the screen, write files to disk, or in some builds call functions in a DLL that can do almost anything the operating system allows. None of that is visible from the chart.
 
-A convincing backtest is not evidence of a safe file, because the person who built the file also built the backtest. The chart is drawn by the software you are trying to judge. A history full of perfect arrows only proves that someone knew where the arrows needed to be. It does not prove the tool is honest, that it behaves the same tomorrow, or that it stops at drawing lines.
+A closed binary makes this worse. A compiled .ex4 file can only be read by the people who compiled it, which means you have to trust its author completely. A source file, the .mq4 text that the compiler turns into a binary, can be read by anyone who opens it. That does not make every source file safe, but it turns a blind trust decision into an inspection you can actually perform.
 
-If that sounds paranoid, consider that you are being asked to run an unknown executable inside the program that manages your money. You would not install an unknown browser extension that could read every page you open, and you would not sideload an app from a random link onto your phone. A trading terminal deserves the same caution, because the stakes are higher and the file is harder to inspect after the fact.
+So the first question is never "does it work". It is "what does this file do, and can I check that myself". The rest of this guide is about answering that question before the indicator touches a chart you care about.
 
-### Why the word "free" changes nothing here
+## What an indicator can and cannot tell you
 
-Free is a price, not a safety feature. The real cost of a bad indicator is not the download fee — it is what the file does after you start trusting it. A £197 tool from an unknown seller has exactly the same problem as a free one from a Telegram channel: you still cannot see inside it. Price tells you nothing about whether the code is careful, honest, or harmless.
+An indicator is a calculation on past prices. A moving average, an RSI reading or a custom line is a transformation of the candles that have already closed. It can describe what the market did. It cannot promise what the market will do next, and no indicator can. Every chart tool that claims otherwise is selling you a feeling.
 
-The good news is that safety is not a mystery. It is a short routine, and you can run it on any indicator, free or paid, in about five minutes. This page walks through that routine step by step, the way I would run it myself, and then hands you a starting download that is built for it: an open-source indicator that ships as readable source rather than a closed binary.
+That matters for Golden Line V3 because the name suggests a precise, dependable line. We have not verified its calculation, its signals or any result it produced, and nothing on this page should be read as a claim that it is accurate. Treat any arrow it draws as a question to test: would this have helped, under which conditions, and what did it cost when it was wrong?
 
-## What does "safe" even mean for an indicator you did not write?
+## The first test: does it repaint?
 
-Safe means you have checked four things before the file touches a chart: it is a type you can inspect, it compiles cleanly, it does not write anything you did not expect, and it does not redraw its own past signals. Those four checks take about five minutes. Skipping them is how a free tool turns into an expensive lesson.
+Repaint is the single most important check for any signal indicator, and it is the one most free downloads fail without anyone noticing. An indicator repaints when its past signals move after the candle that produced them has closed. The chart looks right when you scroll back, because the indicator redrew history to fit the outcome.
 
-None of those checks require you to be a programmer. You do not need to understand every line of code. You need to know how to look — which folder the file belongs in, how to compile it, where the logs are, and what a repainting signal looks like when it moves. That is the whole skill. It is smaller than people assume and worth more than any single indicator.
+Here is how to test it in an afternoon. Attach the indicator to a demo chart at a timeframe you actually trade. Each time a new candle opens, write down every arrow or line value that the last closed candle produced. Do not look back at old candles while you wait. Then, after a day or two, scroll back and compare. If any recorded signal has moved, disappeared or changed direction, the indicator cannot be judged on its history, and any backtest you run on it is measuring the redraw, not the edge.
 
-There is one honest caveat before we start. No install routine can make a bad strategy good. An indicator that produces weak signals will still produce weak signals after a flawless install; you have only confirmed it is not doing something worse behind your back. The routine protects your account from the file, not from the market. You still have to test the tool, size your positions, and accept that losses are part of trading.
+A repainting indicator is not automatically a bad tool. Some useful indicators are designed to update their current candle. The problem is that a repainting signal cannot be traded honestly, because the entry you see on the chart is not the entry you would have received in real time. If Golden Line V3 repaints, that alone is enough reason not to use it for entries.
 
-It is worth saying why this matters so much for a tool like Golden Line V3 specifically. Signals indicators are the most downloaded and least audited category in retail trading, because they promise something for nothing: a line on a chart that tells you when to act. That promise is why the install gets rushed. People treat the file as a lollipop rather than a program. The routine below is simply a way of taking the free gift seriously enough to check it before you rely on it.
+## The second test: read what the code touches
 
-### The story of the arrow that moved
+If you have the .mq4 source, open it in MetaEditor and search for a few things before you compile it. These are not signs of a scam by themselves, but each one deserves a clear reason.
 
-Picture a trader we will call Daniel. He trades XAUUSD, known simply as gold, on a modest account, and he is careful with entries. He found Golden Line V3 in a forum thread, downloaded the `.ex4`, and dropped it into a fresh MetaTrader 4 install. The demo chart looked beautiful. Buy arrows sat near the lows, sell arrows near the highs, and the history was so clean it looked like a highlight reel.
+File writes are the first. Look for calls that open, write or delete files. An indicator that draws lines has no real need to write to disk. If you find one, find out what it saves and where.
 
-Daniel did the thing most traders do. He went live the next morning.
+Network access is the second. Look for anything that sends data out or downloads something. Many legitimate indicators do not touch the network at all, so an indicator that does should explain why in a comment you can read.
 
-For two weeks nothing looked wrong. Then he noticed something he had to see twice to believe. The arrow from Monday — the one he had entered on — was no longer where he remembered it. It had shifted three candles to the right, landing on a low that was now closer to an obvious bottom. The chart agreed with the market again. His entry, taken when the arrow first appeared, had become the mistake.
+DLL imports are the third. In MQL4 an import declaration names a DLL file and the functions it exports. A simple chart tool almost never needs one. If you see a DLL import in a free indicator you did not write, stop and ask the author, and do not attach it to a live terminal until you have a satisfying answer.
 
-That is what repainting looks like in practice. The indicator rewrites its own past so the historical picture stays flawless while your live entries quietly lose. Daniel had no way to catch it by reading a review, because the review was written against the same flattering history he was staring at. He could only have caught it by testing on a demo chart and watching whether closed signals moved once the bar had finished.
+Finally, look at the inputs. Settings that change alert behaviour, sound files or account details deserve more attention than settings that change a line's colour or length.
 
-He never found out what else the file did. He never read the MetaEditor logs. He never checked which folders it touched or whether it tried to load outside code. He deleted it and started again — this time with a routine, and this time on demo first. The expensive part was never the file. It was the two weeks he spent trusting an arrow that kept changing its mind.
+## Compile it yourself, then read the logs
 
-Five minutes of discipline — the same routine below — would have caught it on day one, before a single live trade. That is the whole argument of this page: the surprise you want to avoid is not a bad signal, it is a file that behaves one way in public and another way on your machine.
+Compiling is more than a formality. When you press F7 in MetaEditor, the compiler checks the code, and the Errors tab in the Toolbox window shows anything it cannot resolve. A clean compile tells you the code is valid. It does not tell you the code is safe, which is why the first two tests come first.
 
-## Should you install an .ex4 file or an .mq4 file?
+After the compile, attach the indicator to a demo chart and open the Experts tab in the Terminal window. Errors that repeat on every tick, array index warnings, and alert messages you did not expect are all signs that the code does something its description does not mention. Keep a copy of the original file in a separate folder, so you can compare any later version with the one you first tested.
 
-You should install the `.mq4` source whenever it exists, and treat a lone `.ex4` as a warning rather than a convenience. Source you can read and compile. A binary you can only trust. That single difference is the biggest safety lever you personally control.
+## What the download on this page is
 
-When you compile source yourself in MetaEditor, the `.ex4` that ends up on your machine is one you produced from code you can read. If the author ships only a compiled file, you have no way to check for repaint logic, hidden file writes, or a call to outside code — you can only observe what it does after it is already running. That is a much weaker position.
+The download card on this page links to a shared folder of third-party tools. We did not make these files, we have not verified each one, and the bundle is not a licensed product. It holds a large set of expert advisors and indicators in three zip parts, and the folder does not tell you which file is Golden Line V3 or what each one does.
 
-Here is the comparison most traders never make:
+That means the download itself is the start of the work, not the end. Unzip the parts, find the indicator you want, read it, compile it and run the tests above before you trust it with money. If you cannot find it, or you cannot read it, do not use it.
 
-| What you get | `.mq4` (source) | `.ex4` (compiled) |
-|---|---|---|
-| Can you read the logic? | Yes — it is plain text | No — it is binary |
-| Can you check for repaint code? | Yes, directly in the source | No — only by watching it live |
-| Can you see file or DLL calls? | Yes, before it ever runs | No — only after you allow it |
-| Can you fix a compile error? | Yes, in MetaEditor | No |
-| Risk from an unknown author | Lower — verifiable | Higher — unverifiable |
-| Typical source | Open-source repos, developer sites | Telegram, reuploads, file hosts |
+## How to run the demo test without fooling yourself
 
-Compiling yourself also teaches you something a download never will. You will see the messages, the warnings, the includes, and the way the author structured the logic. Even a five-minute skim tells you whether the code is careful or thrown together. For a deeper look at what good, source-available MT4 tools look like in practice, see the [top MT4 indicators for gold trading](/top-10-best-mt4-indicators-for-gold-xauusd-powerful-tools-for-accurate-trading/), which covers tools you can actually inspect.
+The demo test is only useful if you run it honestly. Use a demo account with a broker you would actually use live, so spreads and execution are realistic. Keep the indicator on one symbol and one timeframe. Write every signal down with the time, the direction and what the price did in the next three candles. Four weeks is a sensible minimum, because it covers different market sessions and at least one period of unusually quiet and unusually busy trading.
 
-If the only version you can find is `.ex4`, do not throw it away automatically — just change how you treat it. Never run it on a live account first. Give it its own MetaTrader install if you can. Read its logs. Watch what it writes. And if it asks for DLL permissions, and you cannot read its code, decline. That is the correct default, and it costs you nothing.
+Do not change the settings halfway through. Each change starts a new test. And do not count a week in which you were not watching the chart, because a signal you did not record cannot be judged.
 
-## How do you know an indicator is not repainting?
+At the end, look at the record. Did the signals hold after the candle closed? Did the wins and losses look like something a human could trade through, or were the drawdowns deep enough that you would have stopped? Those two questions matter more than any single good week.
 
-You know an indicator is not repainting by watching its closed signals over time and confirming they stay put. The test is simple: load it on a demo chart, note where the arrows land, then reopen the chart the next day and compare. If old arrows have moved, the indicator rewrites history and its backtest is fiction.
+## Why this is harder for gold
 
-Repainting has a few causes. Some indicators recalculate past bars as new data arrives, so a signal that looked perfect at the close turns into something else by morning. Others peek at data from the bar that has not finished forming, which is why the current candle flickers. A third group simply draws the "best" signal after the fact, placing arrows where the move already happened. All three produce the same result: a chart that looks brilliant in review and fails in real time.
+Gold, quoted as XAUUSD, often moves in larger swings per candle than most major currency pairs, and it reacts quickly to news. An indicator that looks calm on a daily chart can produce whipsaws on a short timeframe that wipe out a small account in a few trades. Position size and stop distance matter more on gold than on a quiet pair, and an indicator that does not tell you how large a move to expect gives you no way to size a trade.
 
-The distinction that matters is current bar versus closed bar. A signal that flickers on the forming bar is normal and often harmless; the bar is not finished, so the indicator is guessing. A signal on a bar that closed an hour ago should be fixed forever. If it moves, you are looking at a repainting tool, and no amount of good-looking history changes that.
+If you trade gold with any indicator, pair it with a measure of volatility, such as the Average True Range, so the stop you set reflects how the market is moving now and not how it moved last month. Our [companion guide on the best gold indicators](/top-10-best-mt4-indicators-for-gold-xauusd-powerful-tools-for-accurate-trading/) goes through that pairing in detail.
 
-Testing repaint behaviour is the one check you cannot rush, because it needs a day to pass. That is exactly why the install routine front-loads the other checks. You can verify file type, compilation, and logs in five minutes. Repainting you confirm overnight, on demo, while the account that matters sits untouched. If you want to go deeper on the design choices behind honest signals, the guide to a [non-repainting arrow indicator for forex](/best-non-repainting-arrow-indicator-for-forex/) explains how to tell a fixed signal from a redrawn one.
+## Warning signs in a shared file before you open it
 
-One more habit helps. Take a screenshot of the chart when you first load the indicator, arrows and all. When you check back, compare against the screenshot rather than your memory. Memory is generous to tools you want to believe in.
+Before you spend an hour on any shared indicator, look at the package it came in. Several of the most common problems show up before a single line of code is read.
 
-## What do the MetaEditor Errors and Experts tabs tell you?
+A zip file that asks for a password before it opens is the first warning sign. A password on a free tool is usually there to stop you checking the contents, and it is often there because the contents would fail a check. Refuse to run anything from such a file until you can open it normally.
 
-The Errors tab lists compile and runtime problems, and the Experts tab logs what the indicator actually does while it runs. Together they are your only window into a file that otherwise runs silently. Read both before you trust the tool, and read the Experts tab again during the first live session on demo.
+A file that asks you to switch off your antivirus, add an exclusion or run an installer as administrator is the second. A chart indicator needs none of those. If the instructions tell you to disable protection, the author has told you the file would be blocked if you looked at it properly.
 
-Start with the Errors tab after you compile. A clean build reports "0 errors, 0 warnings". Warnings are often harmless, but errors are not: an indicator that fails to compile is not a tool, it is a broken file, and the person who sent it to you either did not test it or shipped a version that does not match the one you have. If the errors mention missing includes, you are usually missing a library the author assumed you had — a sign the download was never meant to be self-contained.
+A folder full of unrelated tools with no list of what each file does is the third. A bundle that mixes expert advisors, indicators and random utilities makes it hard to tell which file is which and whether any of them has been changed. Treat such a bundle as a set of unknown files, not as a set of tested tools.
 
-The Experts tab is more interesting. It shows what the indicator prints while it works, and careless tools talk a lot. You might see alert spam on every tick, repeated "file not found" messages, array index errors, or a failed DLL load. Each of those is the file telling you it is fragile. An indicator that throws runtime errors on a quiet demo chart will throw more of them when the market is busy, and a tool that misbehaves when it is stressed is not one to hand real money.
+A file name that promises a result, such as one that says it is "100% accurate" or "never loses", is the fourth. A file name is a marketing decision, and the people who write code for a serious indicator rarely need to put guarantees in its name. Ignore the name and judge the code.
 
-Read the Experts log with a question in mind: does this look like a finished tool, or does it look like something patched together and never cleaned up? A tidy log is a small but real signal of quality. A log full of complaints is a warning you can act on before any money is involved. The same discipline applies when you install an expert advisor rather than an indicator, which the [free EA and indicator library](/category/free-forex-ea/) covers in the same spirit.
+None of these signs proves a file is malicious. Each one is a reason to slow down, and several together are a reason to stop.
 
-## How do you check what an indicator writes to your disk?
+## A signal log that can actually be judged
 
-You check what an indicator writes by looking in the terminal's `MQL4/Files` and `MQL4/Logs` folders after you have run it. Indicators can save state, cache signals, or run a licence check to disk, and those folders are the receipt. If a free indicator quietly creates files you never asked for, that is a reason to stop and look closer.
+The demo test is only as good as the record behind it. Most people who run a repaint test write a few arrows in a notebook and then forget the timing. A useful log has a fixed shape, and you should set it up before the first candle.
 
-MetaTrader keeps this reasonably contained. By default, file functions write inside the terminal's own data folder rather than anywhere on your machine, which is a useful sandbox. The catch is permissions. If you tick "Allow DLL imports" for an indicator, you widen that reach considerably — outside code is no longer boxed in. That is why the rule is blunt: only allow DLL imports when you have read the source and can explain why the tool needs them.
+Use one row per signal. Record the date and time the signal appeared, the symbol and timeframe, the direction, the price at the moment you saw the signal, and whether the signal was still on the chart when you checked it again after the candle closed. Add a column for what the next three candles did. Keep a final column for your decision, written before you check the outcome.
 
-So the check runs in two passes. First, before you allow anything, note which files already exist in `MQL4/Files`. Then load the indicator, let it run for a few minutes, and look again. New files you can explain — a settings cache, a saved signal list — are fine. New files you cannot explain, especially anything that looks like it is phoning home, are not. You do not need to be a security analyst to notice that a chart tool suddenly created a folder it never mentioned.
+Write the rows in the order they happened, and never rewrite a past row. If a signal disappeared, record that it disappeared, with the time you noticed. A log that only contains the signals that stayed put is not a record. It is a selection.
 
-This is also where open source pays off directly. With source, you can search the code for the words that matter — `FileOpen`, `FileWrite`, `DLL` — and see every place the tool touches the disk or reaches outside the terminal, before you ever run it. You cannot do that with a binary. Auditing a small indicator for file and DLL calls takes minutes, and it is the difference between trusting a tool and merely hoping.
+After four weeks, count the rows where a signal changed after it had appeared. That number is the repaint rate you measured yourself, and it is more useful than any figure on a download page.
 
-## Where does an indicator file actually live on your machine?
+## Reading inputs and alerts with suspicion
 
-An indicator lives inside the terminal's own data folder, not in your Documents or a shared Windows folder, and knowing that one path prevents most install mistakes. On MetaTrader 4 you reach it through File, then Open Data Folder; MT4 files go in `MQL4`, MT5 files go in `MQL5`. Drop the file anywhere else and the terminal simply never sees it.
+Most indicators have inputs, the settings you can change without touching the code. The defaults are the author's choice, and a free indicator can hide a lot in them. Look at each input and ask what it controls. An input that changes a colour or a line width is harmless. An input that changes when alerts fire, how many bars the indicator uses to calculate its result, or whether it sends messages outside the terminal needs a clear explanation from the author.
 
-The confusion is understandable, because MetaTrader often has two homes. There is the folder you installed the platform into, and there is the per-user data folder it actually writes to, which usually sits deep under `AppData`. Beginners copy files into the first and then wonder why the indicator never appears in the Navigator. The correct one is always the one the platform opens for you when you click Open Data Folder.
+Alerts deserve particular care. A popup, a sound and a push notification are all useful, but an indicator that sends a message to an outside service on every signal is doing something you probably did not agree to. If the code calls a function that sends data out, find out what is sent and to whom before you enable that input.
 
-This matters for safety, not just convenience. Keeping a copy of the original file outside the terminal lets you compare it later, after a run, and see whether anything changed. It also means you can remove a suspect indicator cleanly — delete it from `MQL4/Indicators` along with its compiled `.ex4`, rather than wondering which of two folders is the live one.
+Write down the defaults you tested with. If you change an input during the test, start the test again. A result that depends on settings you tuned after seeing the outcome is a fit to the past, not a test of the indicator.
 
-If you intend to test unknown files at all, give them their own terminal. A second MetaTrader install that never logs into your main account costs nothing and turns every experiment into a sandbox. An unknown indicator goes there first, always. Only after it passes the checklist does it earn a place in the terminal you actually trade from.
+## A worked repaint test, step by step
 
-There is one more pair of paths worth knowing. `MQL4/Files` is where an indicator writes its own data, and `MQL4/Logs` is where MetaTrader records what happened. Those two folders are your audit trail. You do not need to memorise them; you need to know they exist and to glance at them once after the first run. The habit takes seconds, and it is the difference between a tool you have verified and a tool you are guessing about.
+Here is the repaint test written out as a sequence you can follow on a demo chart. The timings are illustrative, so adapt them to the timeframe you trade.
 
-## What is the five-minute install checklist?
+Attach the indicator to a demo chart for one symbol and one timeframe, and leave the chart alone for a full session. Note the time. Wait until the current candle closes. Write down every arrow or line value that appeared on the candle that just closed, with its time.
 
-The five-minute checklist turns "I downloaded this" into "I verified this": check the file type, copy it into the right folder, compile it yourself, read both logs, watch what it writes, and confirm on demo that old signals stay put. Work through it in order, before the file ever touches a live chart.
+Repeat that for the next candle, and for every candle in the session. Do not scroll back to the earlier candles while you are doing this, because scrolling back is how people fool themselves into seeing what they expect.
 
-| Step | What you do | Pass signal | Warning sign |
-|---|---|---|---|
-| 1. File type | Inspect the extension before copying | `.mq4` source you can open | Lone `.ex4` from a reupload |
-| 2. Location | Copy into `MQL4/Indicators` or `MQL5/Indicators` | File appears in the Navigator | Placed elsewhere and never loads |
-| 3. Compile | Open in MetaEditor and press F7 | "0 errors, 0 warnings" | Errors about missing includes |
-| 4. Errors tab | Read every line after building | Clean or explained | Array out of range, unknown function |
-| 5. Experts tab | Watch the first run on demo | Only the messages you expect | Alert spam, DLL load failures |
-| 6. Disk | Check `MQL4/Files` and `MQL4/Logs` | Nothing you did not expect | Silent files you never asked for |
-| 7. Repaint | Compare arrows a day later | Closed signals stay fixed | Old arrows move to new lows |
-| 8. Demo | Run it on a demo account first | Behaviour matches the description | Anything that needs a live account to "work" |
+At the end of the session, scroll back and compare each row of your log with the chart. If a recorded signal is now missing, has moved to a different candle, or has changed direction, record that next to the row. Count the changed rows and divide by the total signals. Repeat the test on a second session, ideally a different day, before drawing any conclusion.
 
-If a step fails, stop. You do not need to find out why in order to protect yourself — you simply do not install the file. The routine is deliberately cheap to fail, because failing at step one costs you nothing, while a live surprise can cost you a chunk of your account. That asymmetry is the entire reason to bother.
+If the rate is zero across several sessions, the indicator may still be fine, but only as far as your test can show. If the rate is above zero, the indicator cannot be traded from its live signals, however good its history looks.
 
-One note on step eight, because it is the one traders skip. Demo-first is not a formality. It is the only way to see how a tool behaves on the slow, quiet bars and the violent ones without risking capital. If an indicator only performs on a live account, that is not a feature — for a signals tool it is a marketing line, and for anything that touches your orders it is a red flag. Test on demo, and let the demo do its job.
+## What a clean compile does and does not prove
 
-## What exactly are you getting with this download?
+A compile that finishes with zero errors tells you that the source code is valid MQL4 and that the compiler could turn it into a binary. It does not tell you that the logic is correct, that the calculation matches the description, or that the code is free of unwanted behaviour. A compiled indicator can be wrong in a dozen ways and still compile cleanly.
 
-What you are getting is **EarnForex Market Profile**, an open-source Market Profile indicator for MetaTrader 4 and MetaTrader 5 that ships as readable source, which makes it the ideal tool to practise this routine: you can read it, compile it, and watch it before you trust it. It is not Golden Line V3. It is the honest starting point you should use to learn what a safe install feels like.
+Warnings deserve reading too. A warning about an unused variable is usually harmless. A warning about an array index that might be out of range can explain a crash on a particular chart, and an indicator that crashes on some charts but not others is one you should not trust with a live account.
 
-The indicator is published on GitHub by EarnForex, a developer that has released MetaTrader tools for years. Because the code is open, every check above becomes something you can actually perform — you can read the logic, confirm there is no repaint trick, and watch the compile and the logs yourself. That is the whole point of choosing it as your first download.
+## Telling a useful indicator from a decorative one
 
-| Spec | Detail |
-|---|---|
-| What it is | A Market Profile (TPO) charting indicator, with full source |
-| File type | Source you compile yourself — `.mq4` for MT4, `.mq5` for MT5 |
-| Licence | Apache-2.0 — free to use, modify and share with attribution |
-| Author | EarnForex |
-| Platform | MetaTrader 4 and MetaTrader 5 |
-| Included | Session and value-area controls for building a price-by-time profile |
-| Cost | Free, from the linked repository |
-| Where to get it | The project's GitHub page, linked above |
+A useful indicator changes a decision you were already going to make. It tells you where a trend is, where volatility is high, or where a level sits that you would not have found yourself. A decorative indicator adds lines, colours and arrows without changing any decision, and it often makes a chart look more confident than the market warrants.
 
-Market Profile is the one worth your attention first, because it answers a question the arrow tools never do: where price actually spent its time. It plots the distribution of trade across price, so you can see which levels the market accepted and which it rejected, and that context is what turns a signal into a trade you can size, stop and defend. The arrow indicators you were originally curious about show a single moment of agreement; a profile shows the whole auction behind it.
+To tell the difference, cover the indicator on the chart and write down what you would do. Then uncover it and write down what you would do now. If nothing changed, the indicator is decoration. If it changed a decision, test whether the new decision was better over your demo log, not whether it looked better on the screen.
 
-### What this download does not do
+## After a failed test
 
-It is just as important to be clear about the limits:
+A failed test is useful. It tells you that the indicator is not a reliable tool for your trading, and it saves you the cost of learning that on a live account. Write a short note: what you tested, for how long, what the repaint rate was, and what you would need to see before you would test it again.
 
-- It does not place trades. These are indicators; they draw and they print, nothing more.
-- It does not predict the market or promise a profit. No tool does, and any that claims to is selling you a story.
-- It does not fix a weak strategy. Signals still need a plan, a stop, and position sizing.
-- It does not tell you when to trade. A market profile maps where value formed; it does not generate entry signals, stops or targets.
-- It does not replace the checklist. It is the tool you apply the checklist to.
-- It does not come with a warranty. Like almost all open-source software, it is provided as-is.
+Do not respond to a failed test by changing the inputs and running the same test again on the same data. That is the most common way a failed indicator becomes a passed one, and it is the reason the log has to be written before the test starts.
 
-Read the licence before you use anything. Apache-2.0 is generous — you can use it, change it, and share it, provided the original attribution and notices stay in place. That permissiveness is exactly what you want in a teaching download, because it invites you to open the file and see how it works rather than treating it as a black box.
+## Keep the file, the log and the notes together
 
-There is also a risk warning worth stating plainly. Trading forex and CFDs carries a high risk of losing money, and indicators do not remove that risk — they only inform decisions that still carry it. Nothing on this page is financial advice. The correct sequence is always the same: install carefully, test on demo, size small when you finally go live, and accept that some trades will lose. If you want the wider picture on where these tools sit in a real account, the [blog](/blog/) is the hub for the rest of our guides.
+Keep the original download, the extracted source, your compiled copy, your signal log and your notes in one dated folder. If the author releases a new version, compare it against your tested version before you trust it. A new file with the same name is not the same tool.
 
-## What should you do next?
+These habits take an hour to set up and save you from a much more expensive mistake later, when you cannot remember which version you tested or what it did.
 
-Do one thing: download the source-available Market Profile indicator, run it through the five-minute checklist on a demo chart, and confirm that its history does not move once the bars have closed. That single pass teaches you the routine on a harmless tool, so that the next mystery `.ex4` you meet gets the same treatment before it ever touches your money.
+## What the Experts tab is telling you
 
-The order matters more than the tool. Install safely, verify honestly, test on demo, and only then consider live capital. If you follow that order, the worst outcome is a wasted afternoon. If you skip it, the worst outcome is the story at the top of this page — an arrow that quietly changed its mind while your account paid for it.
+The Experts tab in the Terminal window is where an indicator or an expert advisor writes its messages while it runs. Most of those messages are routine. A few are the most useful evidence you will get in a demo test, so it is worth reading them slowly rather than scrolling past.
 
-Start with the download, keep the checklist handy, and treat every indicator you did not write as something to inspect rather than something to trust. Five minutes of install discipline is cheap. The surprise you avoid is not.
+Look first for messages that repeat. An indicator that prints the same warning on every tick is doing a calculation it should not need to do, or it is failing on a condition it does not handle. Repeated messages can also mean the indicator is reading data that the terminal does not have yet, which can make its signals depend on when you attached it.
 
-You can browse more free, source-available tools in the [free indicator library](/category/free-forex-ea/), see how these fit alongside expert advisors on the [best MT4 EA page](/best-mt4-ea/), or read our step-by-step guides under [Installation & Setup](/category/installation-setup/). Take the five minutes. You will not miss the money you keep.
+Look next for messages about arrays, indexes and memory. A message that mentions an index out of range or an array that could not be resized points to a bug in the calculation. A bug like that may not stop the indicator from drawing, but it can change which candle a signal is attached to, which is the exact behaviour the repaint test is trying to catch.
+
+Finally, look for any message that mentions a file, a connection or an external resource. Those messages should match what you read in the source. If the Experts tab reports an attempt to open a file or connect to a server and the code does not explain why, stop the test and find out before you continue.
+
+Copy anything unusual into your log, with the time it appeared. An unexplained message that appears again later is a question you should answer before you trust the indicator.
+
+## Keeping the demo chart honest
+
+A test chart should show only what the test is about. Before you begin, remove every other indicator, every drawn line and every template that might add a signal you are not logging. Use a clean chart with the candles, the one indicator under test and nothing else.
+
+Turn off any automatic chart changes you have set, such as a template that loads new indicators when the terminal starts. Check that the symbol and timeframe are the ones in your log. A chart that switches timeframe overnight has quietly changed the test.
+
+Write the chart setup into the first line of your log: symbol, timeframe, broker, account type, the indicator's file name and its input values. When you come back to the log next week, that line tells you whether the test is still the same test.
+
+## A short decision path after the tests
+
+Once the repaint test, the code review and the log review are done, the next decision is usually one of three. The path is short, and writing it down before you start prevents you from talking yourself into the answer you wanted.
+
+If the indicator repainted, or the code showed behaviour you cannot explain, do not use it for entries on any account, demo or live. Keep the note and move on.
+
+If the indicator did not repaint, the code is readable and the Experts tab is clean, but the recorded signals did not add anything you could not see on the bare chart, treat it as decoration. Keep it off your chart, and do not spend more time testing it for a benefit it does not have.
+
+If the indicator did not repaint, the code is readable, the logs are clean, and the signals changed a decision in a way your log can measure, then you have a candidate worth a longer test. Extend the demo period, keep the inputs fixed, and ask the same questions again. Even then, a candidate is not a verified tool. It is a tool that has passed the checks so far, and the checks are never finished.
+
+## Questions people ask after a test
+
+Traders who run this test often ask whether a single bad week means the indicator has failed. A single week is not enough data to decide that either way. The log should cover several sessions and at least one news day, and the decision should rest on the whole log, not on the last few rows.
+
+Others ask whether they can use the indicator for alerts only, without trading on it. That can be reasonable, but alerts are still signals, so the repaint test applies to them too. An alert that fires on a candle that later moves is a false alarm, however useful it seemed at the time.
+
+Some ask whether a paid version of the same indicator would be safer. Price does not change the code. A paid indicator still needs the same reading, the same compile and the same demo log before you trust it. A licence can make support easier to reach, which matters, but it is not a substitute for the checks.
+
+## The offer, honestly described
+
+What you get from this page is a checklist and a shared download. What you do not get is a verified indicator, a performance record, support from us, or any guarantee that Golden Line V3 does what its name suggests.
+
+**What it does:** shows you how to check a free MetaTrader indicator before you trust it. It covers the repaint test, the code checks, the compile and log review, and a demo routine you can run yourself.
+
+**What it does not do:** it does not verify Golden Line V3's signals, does not confirm its results, does not prove it is safe, and does not replace testing on your own account. We have not tracked it, and we will not describe it as profitable.
+
+If you want a system with a published, dated record you can check at the source, the [ranked list on our top ranking page](/top-ranking/) shows the tracked accounts we link to, with drawdown and account type beside every figure. Those records come from third-party accounts and are not guarantees either, but you can inspect them yourself. Our [shop](/shop/) lists the licensed systems with their tiers, and the [VPS page](/product/vps/) explains how to keep an expert advisor running when your own computer is off.
+
+## Before you go live
+
+Run the repaint test first. Read the code if you have it. Compile it, check the logs, and then run four weeks on demo with a written record. If any of those steps fails, stop there. A free indicator that fails a check is not worth the time it would take to argue with it.
+
+Keep the original file, your notes and your demo results together in one folder. If a later version appears, you can compare it against the version you tested rather than trusting the new name. And never increase the size of a position because an indicator has had a good run. A short winning streak on a shared file is one of the most common ways traders lose a small account, and it tells you nothing about the next trade.
+
+If you are ready to look at tracked systems instead, start with the ranking and the shop. Test whichever one you choose on a demo account first, and keep your live size small until your own record justifies a change.

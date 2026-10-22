@@ -2,12 +2,12 @@
 wpId: 1933
 title: "Best MT4 Indicators for Gold XAUUSD: Pick Three, Not Ten"
 slug: "top-10-best-mt4-indicators-for-gold-xauusd-powerful-tools-for-accurate-trading"
-description: "Which MT4 indicators work on gold, in what order, and with what settings. An honest ranking, plus a free Apache-2.0 MT4/MT5 price alert and demo-first tests."
+description: "Which MT4 indicators suit gold, and why three built-ins beat ten downloads. Covers ATR, moving averages and RSI, with demo-first tests and honest limits."
 publishedAt: "2025-12-07T08:45:20.000Z"
-updatedAt: "2026-09-28"
+updatedAt: "2026-10-22"
 seo:
   title: "Best MT4 Indicators for Gold XAUUSD: Pick Three, Not Ten"
-  description: "Which MT4 indicators work on gold, in what order, and with what settings. An honest ranking, plus a free Apache-2.0 MT4/MT5 price alert and demo-first tests."
+  description: "Which MT4 indicators suit gold, and why three built-ins beat ten downloads. Covers ATR, moving averages and RSI, with demo-first tests and honest limits."
   canonical: "https://bestmt4ea.com/top-10-best-mt4-indicators-for-gold-xauusd-powerful-tools-for-accurate-trading/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_1933_featured.webp"
 sourceUrl: "https://bestmt4ea.com/top-10-best-mt4-indicators-for-gold-xauusd-powerful-tools-for-accurate-trading/"
@@ -23,254 +23,239 @@ tags:
   - "position sizing"
 draft: false
 primaryKeyword: "best MT4 indicators for gold XAUUSD"
-quickAnswer: "There is no single best MT4 indicator for gold. Three do the job: ATR (14) for volatility and stop distance, a 50/200 EMA pair for trend direction, and RSI (14) for timing pullbacks. XAUUSD moves far more than any currency pair, so position size decides whether you survive, not indicator count. Add another tool only when it answers a question the first three cannot."
+quickAnswer: "There is no single best MT4 indicator for gold. Three tools cover most of the job: ATR(14) to measure volatility and set stop distance, a 50 and 200 period moving average pair to read trend direction, and RSI(14) to time pullbacks. Gold moves far more per candle than most currency pairs, so position size decides whether you survive, not how many indicators you stack."
 keyTakeaways:
-  - "Gold rewards a chain of command, not a crowd. Three indicators with separate jobs beat ten that all try to call direction."
-  - "ATR (14) is the only tool in the standard MT4 set that tells you how much room a gold trade needs. That number sets your stop and your lot size."
-  - "A 50/200 EMA pair answers which way. RSI (14) answers whether this is a good price right now. No single oscillator answers both."
-  - "Every standard MT4 indicator describes what price already did. None of them predicts the next candle, and none of them sizes a position for you."
-  - "The free download on this page is the EarnForex Price Alert, an Apache-2.0 MT4/MT5 indicator that fires the moment gold reaches a level your written plan already chose."
-  - "Test any new indicator on a demo account for at least 100 trades before it touches real capital. A backtest with high modelling quality is still only a description of the past."
+  - "Three built-in MT4 indicators cover volatility, trend and timing for XAUUSD."
+  - "Use ATR to size stops and positions, so your risk reflects how gold is moving now."
+  - "Adding a fourth indicator only helps if it answers a question the first three cannot."
+  - "Test every setup on a demo account, and record drawdown next to every win."
 faqs:
-  - question: "What is the single best MT4 indicator for gold XAUUSD?"
-    answer: "If you can only keep one, keep ATR (14). It measures how far gold is actually travelling, which is what your stop distance and your lot size are built from. It will never tell you which way to trade, and that is the point: direction is the cheapest part of the decision and the easiest to get wrong twice."
-  - question: "How many indicators should I put on a gold chart?"
-    answer: "Three, plus an alert tool. One for trend, one for volatility, one for timing. Every additional overlay multiplies the number of ways your chart can disagree with itself, and you are the one who has to resolve those disagreements in real time. Fewer tools with defined jobs produce faster, more consistent decisions."
-  - question: "Which indicator is best for setting a stop loss on gold?"
-    answer: "ATR (14) on the timeframe you actually trade. A stop of roughly 1.5 to 2.5 times ATR is a common starting point because it scales with conditions instead of with your mood. Then convert that distance into lot size rather than guessing the lot first and hoping the stop fits."
-  - question: "Do these gold indicators work on MetaTrader 5?"
-    answer: "The concepts carry over, and the download on this page does too — EarnForex Price Alert ships source for both MetaTrader 4 and MetaTrader 5, so you can compile it on whichever terminal you use. The standard set is different: MT5 ships its own equivalents of ATR, moving averages, RSI and Bollinger Bands in its navigator, so you rebuild the three-tool stack there with those files rather than with MQL4 ones."
-  - question: "Why do my gold indicators show different signals on different brokers?"
-    answer: "Because the underlying price feed is different. Gold has no single centralised exchange, so each broker streams its own blend of liquidity, and feeds diverge around news by more than your stop. The indicator is not broken; it is reading a different chart. Always judge a gold setup on the feed you will actually execute on."
-  - question: "Do the standard MT4 indicators repaint?"
-    answer: "They do not rewrite history. A 14-period ATR or a 50 EMA changes only on the bar that is still forming, then freezes when that bar closes. That is different from an arrow indicator that deletes a signal it already printed. When a vendor claims a tool is non-repainting, the real question is whether old signals ever move, not whether the latest one ticks."
-  - question: "Is a paid gold-specific indicator better than the standard MT4 set?"
-    answer: "Sometimes, but never because it is gold-specific. The standard set is free, documented by MetaQuotes, and open to inspection. A paid tool has to justify its price with something you can verify: published logic, a stated licence, and signals you can reproduce. Coloured arrows on a screenshot are marketing, not evidence."
+  - question: "What is the best MT4 indicator for gold?"
+    answer: "No single indicator is best. ATR for volatility, a 50 and 200 moving average pair for trend, and RSI for timing cover most of what a gold trader needs, and all three ship with MetaTrader 4."
+  - question: "Do I need to pay for a gold indicator?"
+    answer: "Not for these three. ATR, moving averages and RSI are standard MT4 indicators, so you can test the full set on a demo account before you spend anything on a paid tool."
+  - question: "Why does position size matter more than the indicator?"
+    answer: "Gold can move a long way inside a single session. A correct signal sized too large can still end an account, while a mediocre signal sized carefully leaves room to learn from the record."
+  - question: "Can an indicator predict gold prices?"
+    answer: "No. These tools describe past and current price behaviour. They can help you judge volatility and trend, but they do not forecast the next move, and no backtest proves they will keep working."
+  - question: "How long should I test an indicator setup on demo?"
+    answer: "Several weeks at minimum, covering different sessions and news days. Write each trade down with its stop distance, its size and the drawdown it caused before you decide anything."
 sources:
-  - label: "MetaQuotes — MQL4 Reference: iATR (Average True Range)"
-    url: "https://docs.mql4.com/indicators/iatr"
-  - label: "CME Group — Gold Futures contract specifications and price drivers"
-    url: "https://www.cmegroup.com/markets/metals/precious/gold.contractSpecs.html"
-  - label: "LBMA — LBMA Precious Metal Prices (the London gold benchmark)"
-    url: "https://www.lbma.org.uk/prices-and-data/lbma-precious-metal-prices"
-  - label: "Apache Software Foundation — Apache License 2.0"
-    url: "https://www.apache.org/licenses/LICENSE-2.0"
+  - label: "MetaTrader 4 platform, MetaQuotes"
+    url: "https://www.metatrader4.com/"
+  - label: "MQL4 reference, indicator functions and constants"
+    url: "https://www.mql5.com/en/docs"
+  - label: "Myfxbook, tracked account statistics and drawdown"
+    url: "https://www.myfxbook.com/"
 installSteps:
-  - name: "Read the licence first"
-    text: "Open the repository and read the LICENSE file. It is the Apache-2.0 licence, copyright EarnForex, which permits use, modification and sharing provided the notices stay with the code. Like most trading tools, it carries no warranty and no promise of profit."
-  - name: "Download the source file"
-    text: "From the repository, open the source file and download it. You are getting readable MQL4 and MQL5 code, not a compiled .ex4 or .ex5, so you can check how the alerts are wired before you compile anything."
-  - name: "Open your MetaTrader data folder"
-    text: "In your terminal choose File, then Open Data Folder. That is the directory the platform actually reads. Your normal Documents folder is not it, and a file placed in the wrong folder simply never appears in the Navigator."
-  - name: "Copy the file into the Indicators folder"
-    text: "Inside the data folder, open MQL4/Indicators for MetaTrader 4 or MQL5/Indicators for MetaTrader 5, and place the source file there."
-  - name: "Compile it in MetaEditor"
-    text: "Right-click the file in the Navigator and choose Modify, or open it in MetaEditor and press Compile. Fixing compile errors yourself is the advantage of source: you know exactly what binary ends up on your terminal."
-  - name: "Attach it to XAUUSD and set your levels"
-    text: "Drag the indicator onto a gold chart and add the price levels your written plan defines, then confirm each level sits where you intended before you rely on the alert. Check your broker's digits and contract size first."
+  - name: "Open a demo chart for XAUUSD"
+    text: "Open a demo account in MetaTrader 4, then open a chart for XAUUSD on the timeframe you plan to trade. Keep one timeframe for the whole test."
+  - name: "Add ATR(14)"
+    text: "From the Insert menu choose Indicators, then Oscillators, then Average True Range. Use a period of 14 unless you have a tested reason to change it."
+  - name: "Add the moving average pair"
+    text: "Add two Moving Average indicators, one with period 50 and one with period 200, both on Close price. Note where the 50 crosses the 200 on your chart."
+  - name: "Add RSI(14)"
+    text: "Add Relative Strength Index with period 14. Mark the levels you will use, and write them down before you look at any trades."
+  - name: "Write the rules before you trade"
+    text: "Write one sentence each for trend, timing and stop distance. Trade only when all three agree, and do not change the rules mid-test."
+  - name: "Record every trade on demo"
+    text: "Log the entry, the stop distance in ATR multiples, the size, the result and the drawdown. Review the log after at least four weeks."
 download:
   origin: "shared"
   license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  author: "EarnForex"
-  sourceUrl: "https://github.com/EarnForex/PriceAlert"
   version: "latest"
   platform: "MT4/MT5"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: "2026-09-28"
+  updatedAt: 2026-10-22
 ---
 
-## Why more indicators on your gold chart made things worse
+Search for the best MT4 indicator for gold and you will find lists of ten, twenty, sometimes fifty tools, each one promising accurate entries on XAUUSD. Most of those lists were written to get you to download something. The honest answer is shorter. Gold needs three things from its indicators: a way to measure how far it moves, a way to read which direction it is heading, and a way to time a pullback. Three tools cover all three, and all three come with MetaTrader 4.
 
-**XAUUSD** is one troy ounce of gold priced in US dollars. On most MetaTrader 4 feeds it is quoted to two decimal places, one standard lot is 100 ounces, and a one-dollar move in the gold price is worth roughly $100 on a full lot. Check your own broker's contract specification, because digits and contract size vary — but that is the shape of the instrument sitting on your chart.
+This guide explains which three, how to set them up, what each one can and cannot tell you, and how to test the whole set before you risk real money. It also explains why a tenth indicator usually makes the result worse, not better.
 
-Now count the indicators on that chart.
+## Why gold punishes a crowded chart
 
-Five or six, usually. A couple of moving averages. RSI in a lower window. MACD next to it. Bollinger Bands laid over the candles. Plus something you installed last month that draws coloured zones and arrows, because its sales page implied the other five would no longer be necessary.
+Gold is one of the most actively traded instruments in retail forex. It reacts quickly to economic data, central bank comments and shifts in the dollar, and on many days its candles are much larger than the candles on a quiet currency pair. That size is what attracts traders, and it is also what hurts them, because a stop that works on EURUSD can be inside the normal noise on XAUUSD.
 
-Here is what all of that actually does. It gives you four opinions, and one of them is always wrong. When you are flat, the trend filter says long while the stochastic says overbought, so you wait for a better price that never arrives. When you are in a trade, the MACD histogram turns against you while the moving averages still agree with you, so you hold through a retracement that eventually takes your stop. When you close and walk away, Bollinger Bands squeeze and gold breaks out without you, and the arrow indicator's screenshot claims it called the whole move.
+A crowded chart makes this worse. Ten indicators usually give you ten opinions, and in practice traders pick whichever opinion they hoped for. You end up with a setup that looks confirmed in hindsight and gives no clear rule for the next trade. The problem is not the number of tools. It is that most people never write down what each tool is supposed to decide.
 
-That is not bad luck. That is a chart with no chain of command. Every tool on it has an opinion, none of them has a job, and you are the one asked to arbitrate between them while money is moving. Arbitration in real time is the single worst thing to ask of a person under pressure.
+So the first rule is to match each indicator to one question. If a tool does not answer a question you have already written down, it is decoration.
 
-The other half of the problem is quieter, and it does more damage.
+## The volatility question: ATR(14)
 
-Indicators tell you direction. They do not tell you how far gold can travel against you before it agrees with you. On EURUSD the gap between "my stop is tight" and "the noise is wide" is small enough to ignore for months. On XAUUSD that gap is the entire game. Gold's daily range in dollar terms is several times that of a major currency pair, and the range is not evenly distributed — it clusters around a handful of scheduled events. The LBMA Gold Price is auctioned twice daily in London, at 10:30 and 15:00 London time, and CME Group lists US CPI, Nonfarm Payrolls, FOMC rate decisions and moves in the dollar index as the recurring reports that drive gold prices. Those are the moments your five indicators will all fire at once, in opposite directions, with the spread at its widest.
+The Average True Range measures how far price typically moves over a set number of candles. It does not tell you direction. It tells you scale. On a 14 period ATR, a reading of 12.00 on XAUUSD means the average candle range over the last 14 bars was around that size, in the same price units the chart uses.
 
-So the real problem is not that you picked the wrong indicators. It is that you built a chart where nothing has a job, and you never solved the one variable that gold actually punishes. That variable is not direction. It is size.
+That single number is what most gold traders need and most gold indicator lists ignore. If you set your stop as a multiple of ATR, your stop grows when the market is wild and shrinks when it is calm. A fixed stop of 10 points is a very different trade when ATR has risen to 25 than when it sits at 6.
 
-This page fixes both. You will get a specific three-tool stack with settings that suit gold, an honest verdict on the other seven indicators people install, and a free, open-source MT4/MT5 alert tool that handles the part no signal indicator will handle for you — waiting at the level your plan defines, so you act on the number instead of on the feeling. If you would rather browse the wider library first, the [free MT4 and MT5 downloads](/category/free-forex-ea/) hub is the place to start.
+Here is a worked example, labelled as an example with made-up numbers. Suppose ATR(14) reads 12.00. A stop 1.5 times ATR sits 18.00 points from entry. If your rule is to risk 1% of a 5,000 account, that is 50 currency units, and your position size is whatever puts an 18.00 point move at that risk. The point is that the size changes with the market, and the rule stays the same.
 
-## What one CPI morning on gold actually costs you
+To use ATR properly, write down your stop multiple before you trade and keep it fixed for the whole test. Changing it after a losing trade is the most common way traders turn a plan into guesswork.
 
-It is 13:24 GMT on a Thursday. US CPI prints at 13:30.
+## The trend question: the 50 and 200 moving average pair
 
-You are flat on gold. On the H1 chart your 50 and 200 EMAs are stacked upward, so the trend filter says long. RSI reads 68 and has been above 70 twice this week, which on a currency pair would make you cautious. Your Bollinger Bands have narrowed into a squeeze. The MACD histogram is faintly red, barely worth mentioning.
+A moving average smooths price over a set number of candles. The pair of 50 and 200 periods is one of the oldest ways to read trend direction, and it is the one most traders recognise. When the 50 sits above the 200 the recent trend is up, and when it sits below, the trend is down.
 
-Three of your four tools point up. One points down. You take the long before the number, because sitting out feels like missing the trade of the week.
+Be clear about what this tells you and what it does not. A moving average pair is slow. It reacts after price has already moved, so it works best as a filter for which direction you are willing to trade, not as a signal to enter at the exact turn. It also produces many false readings in sideways markets, where the lines cross back and forth without a trend.
 
-The print comes in hot. Gold drops sharply in ninety seconds. Your stop, set at what felt like a generous distance, is taken before the candle even closes — and the fill is worse than the stop you set, because the spread that is normally tight on gold blew out to several times its usual width during those ninety seconds.
+Use it to answer one question only: is the larger trend up, down or unclear? If the answer is unclear, the rule should be to wait, not to pick a side.
 
-Twenty minutes later, gold is trading well above your entry. Your trend filter was right the whole time.
+## The timing question: RSI(14)
 
-You did not lose because an indicator was broken. You lost because you put a fourteen-dollar stop on an instrument that eats fourteen-dollar stops before breakfast, and because four conflicting tools gave you the confidence of one clear decision.
+The Relative Strength Index compares recent up moves with recent down moves on a scale from zero to one hundred. Readings above 70 are often called overbought and readings below 30 oversold. Those labels are conventions, not laws. In a strong trend, RSI can stay above 70 for a long time while price keeps rising.
 
-Now run that morning four times in a month. That is not a strategy problem and it is not a discipline problem in the way people mean it. It is arithmetic. The next ten indicators you install will not touch it, and the free download on this page is the item here that keeps you from acting before the arithmetic is done — it waits at the level your plan defines and tells you when price gets there.
+Use RSI for timing a pullback in the direction the trend already shows. If the moving averages say the trend is up, you might look for RSI to dip toward the middle of its range and then turn back up, rather than buying the first sign of weakness. That rule is more specific than "buy when oversold", and it is the one you can test.
 
-## What is different about XAUUSD that changes which indicators you need?
+RSI does not tell you where a trend ends. Traders who sell every time RSI reaches 70 in an uptrend often spend months being right too early and losing money while they wait.
 
-Gold is not a currency pair with a different name. Three structural differences change how any indicator behaves on it.
+## The fourth indicator test
 
-**Gold has no single centralised price.** Currencies are quoted against each other through deep interbank markets with tight, broadly consistent pricing. Gold is traded across London OTC, COMEX futures and a long list of broker liquidity providers, each streaming its own blend. The LBMA Gold Price gives the market a twice-daily institutional reference, but between those auctions your broker's feed is its own thing. A signal that looks perfect on one feed can be a different signal on another.
+Before you add any tool beyond these three, ask a precise question. What decision will this tool change that the first three cannot change? If the honest answer is "it gives me a second opinion", the tool is adding confusion, not information. If the answer is "it tells me when a news release has moved volatility outside its normal range", you may have a real use, and you should test it on its own.
 
-**Gold reacts, hard, to a small calendar.** CME Group's own gold pages name US CPI, Nonfarm Payrolls, FOMC meetings, PPI and the dollar index as the recurring drivers. That is a short list, which means gold's volatility is concentrated into a few windows rather than spread evenly across the week. Most indicators assume a roughly even distribution of noise. Gold does not provide one.
+Most downloads on gold indicator lists fail this test. They repaint, they duplicate what ATR or the moving averages already show, or they cannot be explained in one sentence. Our [post on Golden Line V3](/golden-line-v3-indicator-free-download-7-powerful-benefits-safe-installation-guide/) covers how to check a free indicator for repaint and unsafe code, and the same checks apply to any tool on this list.
 
-**Gold's range scales differently.** Mean-reversion tools built for a 60-point EURUSD day will fire constantly on gold, because a fixed period that felt calm on FX is twitchy on a metal that moves further in the same number of minutes. The fix is not more tools. It is longer periods and a volatility measure that adapts on its own.
+## How to set it up without fooling yourself
 
-This is also why so many gold traders concentrate on the London and New York overlaps instead of working the whole clock. If you want the session-level version of that argument, the [gold scalping strategies](/top-10-powerful-scalping-strategies-for-gold-trading-complete-guide/) breakdown goes deeper into timing than this page needs to.
+Start on a demo account with a broker you would actually use live, so spreads and execution are realistic. Put all three indicators on one chart, on one timeframe, and leave the settings alone for the whole test. Write your rules down before the first trade: the stop multiple, the trend filter, the RSI level that triggers a pullback entry, and the maximum risk per trade.
 
-## Which MT4 indicators actually earn a slot on a gold chart?
+Then trade the rules, not the chart. Log every trade with the entry time, the ATR reading at entry, the stop distance, the size, the result and the drawdown the account reached while the trade was open. Keep the log for at least four weeks, so you see more than one kind of market.
 
-Three of them. Here is the honest ranking of the ten tools people install on gold, with the job each one can hold and the reason most of them lose that job.
+The drawdown column matters most. A strategy that wins often but drops the account by a third on one bad week has not earned trust, even if its total result is positive. Record the worst point, not only the end.
 
-| # | Indicator | The one job it can hold | Starting setting for XAUUSD | Verdict |
-|---|---|---|---|---|
-| 1 | ATR (Average True Range) | Measures how far gold is travelling, so stops and lot sizes have a basis | Period 14, on the timeframe you trade | **Keep.** Non-negotiable. |
-| 2 | Moving averages (EMA pair) | Answers direction, once | EMA 50 and EMA 200 on H1 or H4 | **Keep.** Two lines, not five. |
-| 3 | RSI | Times entries inside an existing trend | Period 14, no fixed 30/70 trigger | **Keep.** One rendering only. |
-| 4 | Bollinger Bands | Flags volatility compression before expansion | Period 20, deviation 2.0 | Optional. Useful, never standalone. |
-| 5 | MACD | Momentum shifts | 12, 26, 9 | Redundant if you already have RSI plus EMAs. |
-| 6 | Stochastic Oscillator | Short-term exhaustion | 5, 3, 3 | Redundant with RSI. Pick one oscillator. |
-| 7 | Ichimoku Cloud | Multi-layer trend and support mapping | 9, 26, 52 | Powerful, heavy, needs its own learning curve. |
-| 8 | Fibonacci retracement | Marks candidate pullback levels | Drawn from a confirmed swing | A drawing tool, not a signal. Use it, do not stack it. |
-| 9 | Supply and demand zones | Marks areas of prior imbalance | No standard setting | A judgement overlay. Fine, but it is an opinion, not a measurement. |
-| 10 | "Gold scalper" arrow indicators | Claims to call entries | Vendor-defined | Not in MT4 and not verifiable. Test it, never trust the screenshot. |
+## What the record should show before you go live
 
-The pattern is worth stating plainly: the tools that survive are the ones that measure something, not the ones that opine. ATR measures. Moving averages measure. RSI measures. Most of the rest describe what a human already drew with their eyes.
+Before you consider a live account, look at the log and ask three questions. Did the rules produce the trades you expected, or did you bend them when a trade looked tempting? Did the position sizes stay consistent with the stop distances, or did they drift up after a winning streak? And could you have kept trading through the worst drawdown in the log without changing the plan?
 
-Here is the same information as a working decision rather than a list.
+If the answer to any of those is no, you are not ready. A setup that needs you to override its own rules is not a tested setup, however good its chart looked on the day you wrote the rules.
 
-| Question you are actually asking | Tool that answers it | What it cannot tell you |
-|---|---|---|
-| Which way is the market leaning? | 200 EMA, with the 50 EMA for short-term alignment | Whether this is a good price to enter |
-| How much room does this trade need? | ATR (14) on your trading timeframe | Which direction to take |
-| Is this a good price right now? | RSI (14) relative to recent swings | Whether the trend will continue |
-| Is this price worth acting on yet? | The alert tool in the download — it fires only at the level you set | Whether that level was a good choice; that is your plan's job |
+## Gold tools that are not indicators
 
-If you want a broader look at how these tools behave across different styles, our ranking of [custom MT4 indicators for scalping](/best-custom-mt4-indicators-for-scalping/) covers the fast-timeframe case in detail, and the [non-repainting trend reversal indicators](/top-10-best-trend-reversal-indicator-mt4-non-repaint-solutions/) guide is the place to go if arrow tools are your thing.
+Some of the best risk tools for gold are not on the chart at all. A position size calculator that takes your account balance, your risk percentage and your stop distance will stop you from taking a trade that is too large, and it costs nothing. A journal that records each trade with its reason protects you from the memory of your best trades, which is always more flattering than the real record.
 
-### How do the three tools work together on a gold chart?
+Neither replaces the indicators, and neither makes a weak plan profitable. They make a plan easier to test honestly and harder to abandon at the wrong moment.
 
-Here is the sequence, and it only runs in one direction.
+## Where to look next
 
-First, direction. Look at the 200 EMA on your chosen timeframe. Above it, you are only interested in longs. Below it, only shorts. That is not a prediction; it is a filter that removes half your decisions and therefore half your mistakes.
+If you want to see how a tracked gold system is documented, the [top ranking page](/top-ranking/) lists the systems we link to with their drawdown and account type beside every figure. Those figures come from third-party accounts and are not guarantees, but they show you the kind of record worth asking for from any gold tool, free or paid.
 
-Second, room. Read ATR (14) on the same timeframe. That number is your unit of measurement for everything that follows: the minimum distance your stop needs, and the maximum size your account can justify. If ATR says gold is moving $22 a bar on H4, a six-dollar stop is not a stop. It is a lottery ticket with a time limit.
+If you are building your own setup, the [shop](/shop/) lists the licensed gold systems with their licence tiers, and our [customer feedback](/customer-feedback/) page shows what buyers have written, good and bad, without us editing it for length. Read the negative reviews as carefully as the positive ones.
 
-Third, timing. With direction fixed and room measured, RSI tells you whether price is currently stretched against the trend. In an uptrend, a dip toward the lower end of its recent range is where you act. In a downtrend, the mirror image. RSI does not tell you a market is oversold and therefore must reverse, because nothing in technical analysis says that.
+## Reading ATR across sessions, not one candle
 
-Three tools, three jobs, one order. There is no fourth step where you ask all of them to agree unanimously.
+A single ATR reading tells you the average range over the last fourteen candles. It does not tell you whether that average is high or low for the market you are watching. To judge that, look at ATR across several sessions: the Asian session, the London open, the New York session and the quiet hours between them.
 
-## What settings should you change for gold, and which should you leave alone?
+Gold often shows a different ATR profile in each session. Some traders use that to decide when to trade. They take signals during the session where the ATR matches the stop distance their rules allow, and they skip the sessions where the range is too wide for the stop they are willing to set.
 
-Change the periods, not the tools. A setting that felt balanced on a currency pair is too sensitive on gold.
+Write down the ATR at the same time each day for a week. You do not need a precise number. You need to know whether a reading of 12.00 is normal at the open or unusual at the close, because that changes how much risk the same stop carries. Make the session check part of your written rules before you trade.
 
-| Input | Typical FX setting | Reasonable XAUUSD starting point | Why |
-|---|---|---|---|
-| ATR period | 14 | 14 (keep it) | ATR already adapts to volatility. Its period is not the problem. |
-| EMA pair | 20 / 50 | 50 / 200 | Longer periods strip out gold's constant small whipsaws. |
-| RSI period | 14 | 14 to 21 | Higher periods reduce false exhaustion signals on a fast instrument. |
-| RSI levels | 30 / 70 | Track 20 / 80 zones instead | Gold trends further than FX before mean-reverting. Fixed levels misfire. |
-| Bollinger Bands | 20, 2.0 | 20, 2.0 to 2.5 | Wider deviation stops gold's normal activity looking like a breakout. |
-| Stochastic | 5, 3, 3 | Remove it | It duplicates RSI and adds a fourth opinion. |
-| Stop distance | Fixed pips | 1.5 to 2.5 times ATR (14) | Scales with conditions rather than with hope. |
+## Five trend filter cases to practise on
 
-Two cautions on that table, and they matter more than the numbers.
+The moving average filter is easiest to misuse when the lines are close together or crossing often. Practise the filter on five chart situations and write down what your rule says in each one.
 
-The first is that every row is a starting point, not a rule. Gold's character changes across regimes — quiet months and violent ones behave differently, and a setting that was sensible in one is misleading in the other. Change one input at a time, keep a record of what you changed, and treat any result that only appears at one very specific setting as noise until you have seen it on data you did not use to choose it.
+In the first case the 50 sits clearly above the 200 and both lines slope up. The rule says the trend is up and you look only for buy setups.
 
-The second is that none of these inputs are secret. They are all visible in the standard MetaTrader 4 indicator dialogs, and the underlying maths is documented by MetaQuotes — the MQL4 reference for `iATR`, for example, defines the Average True Range function MetaTrader itself uses. You can read the specification for free. Any vendor charging you for a "gold-tuned RSI" is selling you a period input you could have typed yourself.
+In the second case the 50 sits clearly below the 200 and both slope down. The rule says the trend is down and you look only for sell setups.
 
-## How do you combine three indicators without lying to yourself?
+In the third case the 50 and 200 are close together and nearly flat. The rule should say the trend is unclear, and that you wait. This is the case that most often gets traders into trouble, because the temptation is to pick a side anyway.
 
-Write the rules down before you open a chart, and make them boring.
+In the fourth case the 50 has just crossed the 200 after a long period in the other direction. The rule should say how many candles must pass, or how far price must move, before the new trend counts. Without that rule, every cross becomes a trade.
 
-A workable gold plan looks like this on paper:
+In the fifth case the lines are aligned but price is far from both of them. The rule should say whether you wait for a pullback toward the moving averages or trade the direction without one. Write the answer down, because the two choices produce very different trade frequencies.
 
-| Step | Rule | What it prevents |
-|---|---|---|
-| 1 | Only trade in the direction of the 200 EMA on your chosen timeframe | Counter-trend trades in a market that trends harder than FX |
-| 2 | Read ATR (14); your stop is at least 1.5 times that value from entry | Stops that sit inside normal noise |
-| 3 | Use RSI to wait for a pullback into value rather than chasing the breakout | Buying the top of a news spike |
-| 4 | Set an alert at the price your plan defines, and work out lot size from the stop distance before you enter | Chasing price and sizing by feeling |
-| 5 | Risk a fixed small fraction of the account per trade, commonly under 1% | One bad week liquidating months of work |
-| 6 | Stand aside inside 15 minutes either side of CPI, NFP and FOMC | Spread widening and slippage you cannot model |
+## An RSI pullback rule written as a checklist
 
-Rule six is the one people skip, and it is the one that changes survival rates most. Your indicators do not see the spread. Your broker's execution engine absolutely does.
+The RSI rule in this setup is easiest to test when it is written as a checklist with no room for interpretation. Here is one way to write it. Adjust the levels to match your own tests, and do not change them after you see results.
 
-Two honest notes about the whole approach. First, this stack lags. The 200 EMA tells you what already happened, ATR describes a range that has already printed, and RSI is calculated from the last 14 closes. You will enter after the move begins and exit after it ends, and you will give some back at every turn. That is the price of a system that can be written down and repeated.
+The trend filter must already point in one direction. The RSI must have fallen toward its middle band, for example toward the 40 to 50 zone in an uptrend, rather than dropping below 30. The RSI must then turn back in the direction of the trend, meaning it rises after an uptrend pullback and falls after a downtrend pullback. The candle that confirms the turn must close before you act, so the signal does not depend on the current candle.
 
-Second, three tools still produce losing trades. Expect them. A gold setup that meets all five conditions and still fails is not evidence that the rules are wrong; it is a normal cost of doing business in a market this volatile. The question is never "did this trade win" but "did I follow the rules, and was the size survivable".
+Each condition is a yes or no. If any one is no, there is no trade. That is what makes the rule testable, because you can count how often each condition held and how the trades that followed performed.
 
-## How do you know an indicator is working before it costs you money?
+## Mistakes that break a three-indicator setup
 
-You test it, and you accept what testing can and cannot prove.
+Most three-indicator setups fail for reasons that have nothing to do with the indicators. The most common is changing a period after a losing trade. A period of 14 becomes 10, then 21, then 14 again, and at the end of the week nobody can say what the setup was.
 
-The MetaTrader 4 Strategy Tester will run an indicator-driven template over historical gold data, and the visual mode lets you watch signals fire bar by bar. Two limits are worth being blunt about. Modelling quality describes how faithfully price data was reconstructed, not whether your idea has any edge. And a backtest shows how a rule set behaved on data you already had; it says nothing about prices the market has not printed yet.
+The second mistake is mixing timeframes. An ATR read on the one-hour chart and a moving average read on the five-minute chart are not one setup, and the stop you set from one may not match the trend you read from the other. Keep one timeframe for the whole test and note it in the log.
 
-So build the habit instead of hunting the perfect metric:
+The third mistake is stacking alerts. Every indicator can send its own alert, and three alerts at once feel like confirmation. They are usually three versions of the same information, and they encourage you to trade more often than your rules allow. Turn off everything except the rule you wrote.
 
-- **Forward-test on a demo account for at least 100 trades.** Gold's volatility means small samples look like signal when they are noise.
-- **Journal every trade with a screenshot and the reason.** If you cannot state the reason, the trade was not part of a process.
-- **Judge the process, not a run of results.** Ten winners in a row tells you less than the fact that all ten followed the same written rules.
-- **Watch for signals that move.** Note the bar a signal appeared on and check it a week later. If it has vanished or shifted, the tool rewrites history and nothing else about it matters.
-- **Re-test after every regime change.** Gold in a quiet month and gold in a crisis month are different instruments wearing the same ticker.
+The fourth mistake is ignoring spread. Gold can have a wide spread at quiet hours and around news. A setup that works with a narrow spread can lose its edge when the spread widens, and the signal on the chart does not show you that.
 
-If you want to see how this plays out for automated systems rather than manual ones, the [XAUUSD robot settings](/xauusd-scalping-robot-settings-and-tips-10-powerful-strategies-for-better-trading-results/) guide covers the same discipline applied to EAs, and our [best gold scalper EA](/best-gold-scalper-ea-for-mt4-mt5-the-only-guide-you-need/) review shows what an honest assessment of a gold robot looks like.
+## What a week of logging looks like
 
-## What exactly do you get, and what does it not do?
+A week of demo logging should produce a table you can read in five minutes. Each row is one signal or one trade, and each column answers one question: when, which direction, what the ATR was, what the trend filter said, what RSI did, what the stop was, what the size was, what the result was, and what the drawdown reached.
 
-You get the one component of the stack that no signal indicator gives you: something that waits at the price your plan already chose, instead of inventing an opinion about where price should go.
+On the first day the table will look thin. By the end of the week you will have enough rows to see patterns: which sessions produced most of the signals, which trend readings were followed by losses, and whether your stops were usually wide enough for the ATR you were trading into.
 
-**It is not another signal.** Nothing about the download will tell you when to buy or sell gold. That is deliberate. Direction is the part you have already solved with three tools and a written rule; execution is the part traders leave to nerve, and it is where the plan quietly dies. A trader with a mediocre entry rule who acts only at planned levels survives long enough to improve. A trader with an excellent entry rule who chases every flicker does not.
+Do not change the rules during the week. If a pattern worries you, write it down as a question for the end of the test. Mid-week changes turn a test into a series of separate experiments, and none of them tells you what the setup would have done on its own.
 
-The download is **EarnForex Price Alert**, a free price-alert indicator from **EarnForex**, released under the **Apache-2.0 licence**. It ships with source for MetaTrader 4 and MetaTrader 5, and you can read it before you compile it.
+## Explaining the setup to someone else
 
-| What | Detail |
-|---|---|
-| Name | EarnForex Price Alert |
-| Platform | MetaTrader 4 and MetaTrader 5 (MQL4 and MQL5 source) |
-| Source | Full source you compile yourself, not a downloaded binary |
-| Author | EarnForex |
-| Licence | Apache-2.0 — use, modify, share, keep the notices |
-| What it does | Fires an alert when price reaches a level you set, with an on-chart panel for adding and managing levels |
-| What it does not do | It does not predict direction, generate signals, size a position, place or manage trades, or produce a particular result |
-| Cost | Free. No sign-up, no upsell, no email required |
+A useful test of whether you understand a setup is to explain it to someone who does not trade. If you cannot say in two minutes what each indicator decides, when you trade, where your stop sits and when you stop trading for the day, the setup is not yet written clearly enough to test honestly.
 
-**What the Apache-2.0 licence actually means for you.** Apache-2.0 is one of the most permissive open-source licences in existence. You may use this software, modify it, embed it in your own tools, and share it, including commercially. The conditions are simple: the copyright notice and licence text must travel with any copy or substantial portion you redistribute, and if you modify the files you should note that you changed them. It is provided as-is, without warranty of any kind, and it carries an explicit grant of patent rights that some shorter licences leave out.
+Write the explanation down. Read it back and check whether any sentence contains a word like "usually", "sometimes" or "depends". Each of those words hides a rule that still needs to be written.
 
-**What it does not do, stated plainly.** The indicator has to infer your symbol's digits and contract details from the terminal, and on gold those values differ between brokers, so a two-decimal feed behaves differently from a three-decimal one. It is a reminder service, not a decision: the level you type in is only as good as the plan that produced it. If your plan says nothing about where to act, an alert at a guessed level only tells you, promptly, that you guessed. Confirm each level on the chart before you rely on it with real money.
+## Where this setup fits, and where it does not
 
-**Is this really the right download for an "indicators for gold" page?** Yes, and we would rather say so than ship you an eleventh signal tool. You can already install ATR, two EMAs and RSI from MetaTrader 4's own navigator in under a minute, for free. What you cannot install from the navigator is the discipline layer — the thing that stops you acting on the first flicker of a forming candle and makes you wait for the price your rules named in advance. The three tools tell you what to do; this is what makes you wait for it, so the sizing arithmetic above is done before an order, not after a spike. If you want portfolio-level context too, the [best MT4 EAs](/best-mt4-ea/) and [best forex EAs](/best-forex-ea/) pages cover the automation side, and the [product catalogue](/product/onix-stratos-xauusd-ea-ai-smart-scalper-for-mt5/) shows how commercial gold tools are reviewed here.
+The three-indicator setup is a reasonable starting point for a trader who wants a simple, readable chart. It is not a complete trading system. It does not manage news risk, it does not decide how many trades to take in a week, and it does not tell you when to stop trading after a bad run.
 
-## How do you install it on MetaTrader 4?
+Those are rules you need to add yourself, or to find in a system whose record you can check. A setup that answers only the three questions in this guide is an honest tool for the job it was built for, and nothing more.
 
-Six steps, about four minutes, no installer needed. Because you compile the source yourself, you know exactly what is running on your terminal — which is more than can be said for a `.ex4` downloaded from a file-sharing site. The same source also compiles for MetaTrader 5, so the choice of terminal is yours.
+## A pre-session checklist for gold
 
-1. **Read the licence first.** Open the repository and read the LICENSE file. It is the standard Apache-2.0 licence, copyright EarnForex. Like almost every trading tool it is provided as-is, with no warranty and no promise of profit — capital is at risk every time you trade.
-2. **Download the source file.** Open the source in the repository and download it. You get readable MQL4 and MQL5 code, not a compiled binary.
-3. **Open your terminal's data folder.** In MetaTrader, go to File, then Open Data Folder. This is the folder the terminal actually reads. Files placed anywhere else simply never appear.
-4. **Copy it into the Indicators folder.** Inside the data folder, open `MQL4/Indicators` for MetaTrader 4 or `MQL5/Indicators` for MetaTrader 5, and drop the source file in.
-5. **Compile it in MetaEditor.** Right-click the file in the Navigator and choose Modify, or open it in MetaEditor and press Compile. If MetaEditor reports errors, they will be visible in the Errors tab rather than hidden inside a binary.
-6. **Attach it to a XAUUSD chart and set your levels.** Drag the indicator onto your gold chart and add the price levels your written plan already defines — the pullback zone, the invalidation point, the target. Confirm each level sits where you intended, then step away and let the alert do the waiting.
+Before each session in your test, run the same short checklist. A checklist takes two minutes and prevents most of the errors that spoil otherwise good logs. Keep it on the same page as your rules and tick it off in the log.
 
-One practical note for gold specifically: if your broker quotes XAUUSD to two decimals, a level you type in is an absolute price, not a pip count. Set your alerts at prices, not at a "distance", and check the marker on the chart before you trust the notification. It is the fastest way to stop confusing gold's digit count with a normal FX pip.
+Confirm the chart shows the symbol and timeframe in your rules. Confirm the three indicators are attached with the periods you wrote down, and that no other indicator has been added. Check the current spread and note it. Check whether any scheduled economic release falls inside the session. Check the ATR for the last few candles and note whether it sits inside the range your rules allow. Confirm your account balance and the maximum risk per trade you wrote down.
 
-## Your next step on gold
+If any item fails, record the failure and decide whether the session counts. The safest rule is to skip the session and log the reason, rather than trade and hope the record can be explained later.
 
-Do one thing now, and one thing for the next two weeks.
+## Why gold news days need their own rule
 
-The one thing now: download the open-source price alert, attach it to a XAUUSD chart, and set the levels your written plan defines by hand, so the terminal waits for your price instead of the other way round. Then set up your chart with three tools and nothing else — the 200 EMA with the 50 EMA for direction, ATR (14) for room, RSI (14) for timing — and write the six rules from this page on a note where you can see it.
+Economic releases move gold more than most ordinary sessions, and a three-indicator setup was not designed to handle that move. The moving averages lag, RSI can jump from one extreme to the other within a few candles, and ATR itself rises, which may push your stop into a range the rules did not anticipate.
 
-The one thing for the next two weeks: trade that stack on a demo account only, for at least 100 trades, journal every one, and set the same alerts you would use live on every planned entry even though the money is not real. The point of the exercise is not to prove the strategy works. It is to build the muscle memory that makes waiting for your level automatic, and doing the sizing arithmetic first, because that is the habit that decides whether you are still trading gold in a year.
+A news rule should be written before the test starts. One simple version is to skip trading for a set period before and after each scheduled release that you have chosen to respect. Another is to trade only when the ATR has returned to its normal range after the release. Either is a rule you can test. The one thing you should not do is decide during the release whether to trade.
 
-Be clear-eyed about what you are doing. Trading gold and other leveraged products carries a high risk of losing money, losses are possible on every trade, and no indicator, setting or system changes that. Nothing on this page is financial advice. The three indicators are free and the source of the fourth tool is open, so you risk nothing by testing all of it thoroughly before any real capital is involved. If you would rather start with automation than manual trading, the [free download library](/category/free-forex-ea/) carries free EAs and indicators with their licences stated, and every one of them deserves the same demo-first treatment.
+Record the news days separately in your log. When you review the test, compare the results on news days with the results on normal days, so you can see whether the setup handles the volatility at all.
+
+## Metrics that matter more than the win rate
+
+A win rate on its own can mislead badly. A setup that wins six trades in ten can still lose money if its losing trades are much larger than its winning ones. A setup that wins four in ten can make money if its winners are much larger. The win rate is only one of several numbers the log should show.
+
+The average win and the average loss, measured in ATR multiples or in currency, tell you the size of each outcome. The number of trades tells you how often the setup acts, which matters for how many days you have to watch the account. The maximum drawdown tells you the worst stretch you would have had to sit through. The expectancy, which combines win rate with average win and average loss, tells you the average result per trade over the test.
+
+You do not need a complicated spreadsheet to calculate these. A simple table with one row per trade and a few summary cells at the top is enough. The point is to read the summary before you read any single trade, so one dramatic result does not decide the whole test.
+
+## Common mistakes when reading the results
+
+The most common mistake is to read a good week as proof and a bad week as bad luck. Both readings ignore the rest of the log. Look at the whole test before you judge any part of it.
+
+The second mistake is to ignore the trades that did not happen. A setup that skipped most sessions can look disciplined while having traded very little. Count the sessions where the rules said wait, and check whether waiting was the right call on the days that moved the most.
+
+The third mistake is to stop the test early after a losing run. A losing run is part of almost any test, and stopping during one tells you only how you felt, not how the setup performs. Set the length of the test in advance and keep to it unless a stop rule you wrote in advance is triggered.
+
+## A week in the life of this setup
+
+Here is what a normal week of the test looks like, so you know what to expect. On Monday you set up the chart, check the spread and the ATR, and log the rules you are testing. You may skip several sessions because the trend filter is unclear, and that is a result to record, not a failure.
+
+On Tuesday and Wednesday you may see the trend filter agree with the RSI pullback rule, and the trades that follow are logged with their stops and sizes. On a news day you skip, and you record the skip with the release time.
+
+By Friday you have a table of trades, a list of skipped sessions and a short note on what the ATR did. You do not yet know whether the setup works. You know whether it behaved the way your rules said it would, and that is what the test is for in the first month.
+
+## Taking the setup into a longer test
+
+If the first four weeks show that the setup behaved as written, extend the test for another month before any live decision. Keep the rules unchanged. Add a second symbol only after you have a full record on XAUUSD, and treat that as a new test with its own log.
+
+If the setup did not behave as written, the honest response is to stop, write down the cause and decide whether the cause is a rule that needs rewriting. Rewriting a rule after a failed test starts a new test, and the new test needs its own log.
+
+## Frequently asked by traders testing gold setups
+
+Traders often ask how many indicators are too many. There is no fixed number, but the test is simple: if an indicator does not answer a question in your written rules, it is not part of the setup. Remove it, and the test gets clearer rather than weaker.
+
+Others ask whether they should use a different period for gold than for other pairs. The honest answer is that you should test the periods you are considering on gold and record the results, rather than assume that a period that works on one pair works on another. Changing periods mid-test is the mistake described above, so make the change in a new test.
+
+Some traders ask whether a paid gold indicator is worth buying instead. Price is not evidence. A paid tool still needs the same reading, the same demo log and the same written rules before it earns a place on your chart. A licence may bring support, which can help, but the decision should rest on the record.
+
+## The honest summary
+
+Gold does not need ten indicators. It needs a volatility measure to size its stops, a trend filter to choose a direction, and a timing rule to enter a pullback, and all three are already on your MT4 platform. Write the rules, test them on demo for at least four weeks, log every trade and read the drawdown before you trust the result.
+
+No indicator predicts gold, and no list of the best ones changes that. The traders who last are the ones whose position sizes stayed small enough to survive a bad month, and whose records they could show to a stranger.
