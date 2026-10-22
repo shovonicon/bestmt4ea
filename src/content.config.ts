@@ -54,8 +54,12 @@ const base = z.object({
 /** A downloadable file, either hosted by us or linked to its origin. */
 const download = z
   .object({
-    /** own = we made it. opensource = third-party, must be credited. */
-    origin: z.enum(['own', 'opensource']),
+    /**
+     * own = we made it. opensource = third-party under an open licence, must be credited.
+     * shared = a curated third-party file, linked or hosted as-is: not ours, licence not verified by us.
+     * The card says so, and links the DMCA policy for takedown requests.
+     */
+    origin: z.enum(['own', 'opensource', 'shared']),
     license: z.string().min(1),
     licenseUrl: z.string().url().optional(),
     /** Required when origin is opensource. */

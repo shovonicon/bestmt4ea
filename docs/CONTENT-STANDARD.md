@@ -144,7 +144,8 @@ preset, checklist, calculator, spreadsheet or template.
 ```yaml
 download:
   origin: own            # our build, hosted
-  # or: origin: opensource  # third-party, must be credited
+  # or: origin: opensource  # third-party, open licence, must be credited
+  # or: origin: shared      # curated third-party file, shared as-is
   license: "GPL-3.0"
   licenseUrl: "https://…"
   author: "…"            # opensource only
@@ -157,8 +158,19 @@ download:
 
 - `origin: opensource` **requires** `author` + `sourceUrl` — the schema rejects the
   build without them.
+- `origin: shared` (owner decision, 2026-10-22) is for a third-party file we pass on
+  as-is — a Google Drive link, a hosted copy, a community bundle. It needs a
+  `license` string (say what is known, e.g. "Unverified third-party file") and either
+  `externalUrl` or `fileKey`. The download card labels it **Shared file**, says we did
+  not make it and have not verified its licence, tells the reader to scan it and test
+  on a demo first, and links `/dmca-policy/` so a rights-holder can ask for removal.
 - Hosted files resolve through `src/lib/files.ts` to the R2 public domain.
-- Never redistribute a commercial EA. Link to it instead.
+- **Takedown duty.** If a rights-holder asks, remove the file or link the same day and
+  reply under the DMCA policy. Keep the `shared` notice visible; do not call a shared
+  file ours, "official", or "licensed". Prefer linking to the origin where one exists.
+- Risk the owner has accepted: distributing someone else's paid software can breach
+  copyright, and Google (Search, AdSense, Safe Browsing) can act on a site that does.
+  The takedown duty above is what limits that exposure.
 
 ---
 

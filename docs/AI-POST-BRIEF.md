@@ -63,7 +63,7 @@ installSteps:              # only if the post carries a download
     text: "…"
 
 download:
-  origin: own              # or opensource (+ author + sourceUrl)
+  origin: own              # or opensource (+ author + sourceUrl), or shared (third-party, as-is)
   license: "…"
   licenseUrl: "https://…"
   platform: "MT4/MT5"
@@ -105,7 +105,7 @@ section, or an Install-steps section.
 - [ ] 3,500–7,500 words.
 - [ ] `quickAnswer` is 40–75 words and answers the title directly.
 - [ ] 3–6 takeaways, 4–8 FAQs, ≥2 sources, ≥4 internal links.
-- [ ] `download:` present, with licence (+ author/source if `opensource`).
+- [ ] `download:` present, with licence (+ author/source if `opensource`; link or file if `shared`).
 - [ ] `installSteps` present (download posts) — in frontmatter, not the body.
 - [ ] No body H1 / FAQ / Sources / Install section anywhere in the Markdown.
 - [ ] No banned phrase anywhere.

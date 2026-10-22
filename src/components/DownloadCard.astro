@@ -1,5 +1,6 @@
 ---
 import { isHosted, publicUrl } from '../lib/files';
+import { url } from '../lib/urls';
 
 /**
  * Free-download card.
@@ -13,7 +14,7 @@ import { isHosted, publicUrl } from '../lib/files';
  */
 export interface Props {
   download: {
-    origin: 'own' | 'opensource';
+    origin: 'own' | 'opensource' | 'shared';
     license: string;
     licenseUrl?: string;
     author?: string;
@@ -39,7 +40,8 @@ const { download, title, kind } = Astro.props;
 const hosted = isHosted(download);
 const href = download.fileKey ? publicUrl(download.fileKey) : download.externalUrl!;
 const isOwn = download.origin === 'own';
-const isExternal = kind === 'external';
+const isShared = download.origin === 'shared';
+const isExternal = kind === 'external' || isShared;
 
 const fmt = (d?: Date) =>
   d
@@ -49,16 +51,18 @@ const fmt = (d?: Date) =>
 
 <section id="download" class="panel border-[var(--color-accent)]/30 p-6" data-download-card>
   <div class="flex flex-wrap items-center gap-2">
-    <span class="badge badge-accent">{isExternal ? 'Third-party' : isOwn ? 'Our own build' : 'Open source'}</span>
+    <span class="badge badge-accent">{isShared ? 'Shared file' : isExternal ? 'Third-party' : isOwn ? 'Our own build' : 'Open source'}</span>
     {download.platform && <span class="badge">{download.platform}</span>}
     {download.version && <span class="badge">v{download.version}</span>}
-    {!isExternal && <span class="badge">{download.license}</span>}
+    {(!isExternal || isShared) && <span class="badge">{download.license}</span>}
   </div>
 
   <h2 class="mt-4 text-xl">Download {title}</h2>
   <p class="mt-2 text-sm leading-7 text-[var(--color-ink-soft)]">
     {
-      isExternal
+      isShared
+        ? 'A third-party file shared as-is. We did not make it and have not verified its licence, so scan it, test it on a demo account first, and use it entirely at your own risk.'
+        : isExternal
         ? 'A third-party community EA bundle with no stated license; use for educational/demo testing only and entirely at your own risk.'
         : isOwn
           ? 'Built in-house and released free. Use it on a demo account first, then decide whether it earns a place on your live terminal.'
@@ -107,6 +111,18 @@ const fmt = (d?: Date) =>
       )
     }
   </div>
+
+  {
+    isShared && (
+      <p class="mt-4 text-xs leading-6 text-[var(--color-ink-dim)]">
+        Own the rights to this file?{' '}
+        <a href={url('/dmca-policy')} class="text-emerald-300 hover:text-emerald-200">
+          Request its removal under our DMCA policy
+        </a>
+        .
+      </p>
+    )
+  }
 
   {
     /*

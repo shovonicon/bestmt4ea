@@ -5,7 +5,7 @@
  * promise, so it is validated before release rather than discovered by a user:
  *
  *   - exactly one of fileKey (hosted on R2) or externalUrl (linked at source)
- *   - the origin is own|opensource, with a stated licence
+ *   - the origin is own|opensource|shared, with a stated licence
  *   - an opensource download credits its author and links to the source
  *   - the R2 public domain is configured when any hosted file is referenced
  *   - hosted keys are clean relative object keys with a real file extension
@@ -50,8 +50,8 @@ for (const file of readdirSync(POSTS_DIR).filter((f) => f.endsWith('.md'))) {
   const fail = (msg) => errors.push(`${file}: ${msg}`);
   const slug = data.slug ?? file.replace(/\.md$/, '');
 
-  if (!['own', 'opensource'].includes(download.origin)) {
-    fail(`origin must be own|opensource (got ${JSON.stringify(download.origin)})`);
+  if (!['own', 'opensource', 'shared'].includes(download.origin)) {
+    fail(`origin must be own|opensource|shared (got ${JSON.stringify(download.origin)})`);
   }
   if (!download.license) fail('missing licence');
 

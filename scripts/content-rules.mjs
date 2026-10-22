@@ -154,8 +154,8 @@ export function isInstallableDownload(download) {
 export function validateDownloadShape(download) {
   if (!download) return [ISSUE(CODES.MISSING_DOWNLOAD)];
   const issues = [];
-  if (!['own', 'opensource'].includes(download.origin)) {
-    issues.push(ISSUE(CODES.DOWNLOAD_INVALID, 'origin must be own|opensource'));
+  if (!['own', 'opensource', 'shared'].includes(download.origin)) {
+    issues.push(ISSUE(CODES.DOWNLOAD_INVALID, 'origin must be own|opensource|shared'));
   }
   if (!download.license) issues.push(ISSUE(CODES.DOWNLOAD_INVALID, 'missing license'));
   if (download.origin === 'opensource' && (!download.author || !download.sourceUrl)) {
