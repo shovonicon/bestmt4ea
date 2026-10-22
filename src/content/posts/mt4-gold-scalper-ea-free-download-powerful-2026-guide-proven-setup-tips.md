@@ -4,7 +4,7 @@ title: "MT4 Gold Scalper Setup: The Inputs That Decide the Outcome"
 slug: "mt4-gold-scalper-ea-free-download-powerful-2026-guide-proven-setup-tips"
 description: "How to install a gold scalper on MT4 and set its inputs in the right order: risk per trade, stop distance, spread cap, sessions and a free lot-size tool."
 publishedAt: "2026-02-13T20:17:56.000Z"
-updatedAt: "2026-09-29T00:00:00.000Z"
+updatedAt: "2026-10-22T00:00:00.000Z"
 seo:
   title: "MT4 Gold Scalper Setup: Inputs That Decide the Outcome"
   description: "How to install a gold scalper on MT4 and set its inputs in the right order: risk per trade, stop distance, spread cap, sessions and a free lot-size tool."
@@ -70,7 +70,7 @@ download:
   updatedAt: "2026-09-29"
 ---
 
-Two traders download the same MT4 gold scalper on the same Tuesday. Same file, same broker, same XAUUSD chart, the same $3,000 starting balance. Ninety days later one account is intact and the other has lost almost half of it. Nothing inside the robot was different. Everything inside the inputs was.
+Picture two traders who download the same MT4 gold scalper on the same Tuesday. Same file, same broker, same XAUUSD chart, the same $3,000 starting balance. In this illustrative example, ninety days later one account is intact and the other has shrunk badly. Nothing inside the robot was different. Everything inside the inputs was.
 
 That is the uncomfortable truth about automating gold. The Expert Advisor is the least important file you will download this year. MetaTrader 4 has no opinion about what you should risk, so it does exactly what the inputs tab tells it to do, on every tick, at 22:00 on a Friday, on the day you are not watching.
 
@@ -79,6 +79,8 @@ So say it plainly: the settings decide the outcome, not the robot. A gold scalpe
 Search for this topic and you will find pages describing the strategy instead: moving averages, breakouts, "smart algorithms", secret entries. You cannot change a single line of that. What you can change is the short list of inputs every MT4 expert exposes: risk per trade, stop distance, spread cap, session filter, magic number and maximum trades. That list is the entire job, and it is where most of the money is won or lost.
 
 ## One week, 61 trades, and a preset nobody read
+
+Marcus is a composite example written for this guide, not a named or verified trader. The figures in his week are illustrative arithmetic chosen to show the mechanism, not a measured result from any broker, robot or account. Treat them as a way to test your own settings, never as a benchmark you should expect.
 
 Marcus downloaded a free gold scalper in March. He is not careless. He checked the developer's name, scanned the file, and read the description twice. Then he dragged it onto an M5 XAUUSD chart on a live account, because his demo felt slow, and he left every default exactly where the author had left it.
 

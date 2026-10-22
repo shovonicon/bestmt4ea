@@ -4,7 +4,7 @@ title: "Best Gold Robot for MT4/MT5: How to Actually Pick One"
 slug: "best-gold-robot-for-mt4-mt5-ea-7-powerful-picks-for-consistent-trading-profits"
 description: "How to choose the best gold robot for MT4/MT5 by drawdown, exposure and licence instead of screenshots, plus a free MIT-licensed MT5 expert advisor to test."
 publishedAt: "2026-02-14T00:10:15.000Z"
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-22"
 seo:
   title: "Best Gold Robot for MT4/MT5: How to Actually Pick One"
   description: "The best gold robot for MT4/MT5 is one you can verify: stated licence, readable source, and published drawdown — plus a free MIT MT5 liquidity-sweep bot."
@@ -34,7 +34,7 @@ faqs:
   - question: "What is the best gold robot for MT4/MT5?"
     answer: "No single robot holds that title, because gold results depend on spread, latency, account size and risk inputs more than on the strategy itself. Judge any candidate on four numbers before its returns: maximum equity drawdown, exposure model, trade count, and whether the licence and source let you inspect it. A small, auditable robot you have tested yourself beats a famous one you cannot read."
   - question: "How much drawdown should I accept on a gold robot?"
-    answer: "Start from what your account can survive, not from the vendor's number. If a backtest shows a 15 percent maximum drawdown, plan for closer to 30 percent in live conditions, because spread, slippage and swap are rarely modelled fully. If a 30 percent drawdown would end your trading, the position size is too large before you install anything."
+    answer: "Start from what your account can survive, not from the vendor's number. If a backtest shows a 15 percent maximum drawdown, expect a worse result live, because spread, slippage and swap are rarely modelled fully. Size the account so that a drawdown larger than the backtest figure is one you could survive. If a drawdown of that size would end your trading, the position size is too large before you test anything."
   - question: "Is MT4 or MT5 better for gold robots?"
     answer: "MetaTrader 5 is the better research platform because its Strategy Tester can run on real ticks from your broker, which matters for choosing a stop distance on a fast instrument like gold. MetaTrader 4 is still perfectly usable for execution and has a larger library of legacy gold robots. The files are not interchangeable, so check whether a robot is MQL4 or MQL5 before you download."
   - question: "Can I run several gold robots on one account at the same time?"
@@ -182,7 +182,7 @@ The reason to offer a single, readable robot is that the skill this page teaches
 | Licence | MIT — use, modify and redistribute, keeping the copyright notice |
 | Author | carlosrod723 |
 | What it does | Gives you an auditable MT5 robot to backtest, inspect and score with the method on this page |
-| What it does not do | It is not pre-tuned for XAUUSD, it does not guarantee a result, and it is not a grid or averaging system |
+| What it does not do | It is not pre-tuned for XAUUSD, it does not promise a result, and it is not a grid or averaging system |
 
 **Check the exposure model in the source, because it is the point.** The strategy leans on liquidity sweeps, Fibonacci zones and order blocks, and it manages the trade with partial exits and a trailing stop. That is a very different exposure profile from a grid basket: there is no lot multiplier and no averaging into a loser. Read the trade-management block and confirm for yourself that a losing position is closed rather than enlarged, because the exposure model is the number that decides the worst case rather than the average one.
 
@@ -192,16 +192,19 @@ The reason to offer a single, readable robot is that the skill this page teaches
 
 **How to use it to choose.** Install the EA on demo, read the source until you can describe its entry and its exit in one sentence each, then score it on the four numbers. That exercise teaches the method faster than reading about it, and it costs nothing but demo time. If you would rather start from a curated shortlist, the [best MT4 EA](/best-mt4-ea/) and [best forex EA](/best-forex-ea/) hubs apply the same standard on the robot side of the catalogue.
 
-## How do you install and test a candidate robot?
+## How do you test a candidate before it earns a live account?
 
-Six steps, and the last three are the ones that actually decide anything.
+Test it on demo for long enough to see its worst period, then decide. A demo account costs nothing, and it is the only place where you can watch a robot's drawdown without paying for the lesson.
 
-1. **Pick the robot and read its documentation.** Open the repository, read the strategy description and the README, and make sure you understand how it enters and how it exits before you download anything.
-2. **Take the source, not just the build.** Download the `.mq5` from the Experts folder and open it. Check that a stop is set on every position, and search for any lot multiplier or grid step.
-3. **Install into MetaTrader 5.** Open File, then Open Data Folder, and place the file in `MQL5/Experts`. Compile it in MetaEditor with F7, and read any error line rather than hunting for a pre-built binary.
-4. **Backtest on real ticks.** Run the Strategy Tester on your broker's XAUUSD with real ticks enabled. Read the modelling quality note, and remember it describes how faithfully price was reconstructed, not whether the strategy has an edge.
-5. **Forward-test on demo for four weeks.** Attach it to a XAUUSD demo chart, set risk low (0.25 to 0.5 percent), and collect at least thirty closed trades, including one high-impact event.
-6. **Score it against your other candidates.** With the demo record in hand, apply the four numbers — drawdown, exposure, trade count, licence — and compare it fairly with anything else on your shortlist. Only the winner earns a live account, and only at reduced risk.
+Start with a backtest, but treat it as a rehearsal rather than a verdict. Run the Strategy Tester on your broker's XAUUSD data with real ticks enabled, and look at two things: the maximum drawdown on equity and the longest losing streak. The modelling quality note tells you how faithfully price was reconstructed. It does not tell you whether the strategy has an edge, so a high quality score is not a green light.
+
+Then move to a forward test. Attach the robot to a XAUUSD demo chart with risk set low, around 0.25 to 0.5 percent per trade, and leave it running for at least four weeks. Aim for at least thirty closed trades, and make sure some of them come from a high-impact news day, because that is when gold behaves least like its backtest. A robot that only traded quiet sessions has not been tested yet.
+
+Compare the demo record with the backtest as you go. Trade count, average trade duration and drawdown should look broadly similar. If the demo shows more slippage, stops hit more often than the backtest predicted, or a drawdown far larger than the backtest figure, stop and investigate before you change anything. Changing inputs after a bad week is curve-fitting, which means tuning the robot to past noise, and it makes the rest of the test meaningless.
+
+Write your pass and fail rules down before the test starts. For example: a demo drawdown you can accept, no averaging into losing positions, and a losing streak you could sit through without intervening. Decide in advance, because a rule written after a bad week tends to bend toward the result you wanted.
+
+Only a candidate that passes those rules earns the next step, and that step is a live account at reduced risk, not full size. Even a robot that passes the demo test can have a bad month. Start live with money you can afford to lose, and size each position so that the worst day you can imagine is one you could explain to yourself and survive.
 
 A note that saves time: gold is not always `XAUUSD`. Some brokers quote `XAUUSD.m`, `GOLD`, or a suffix of their own, and an expert that references the wrong symbol name will not trade. Check Market Watch for the exact spelling before you attach anything, and treat a missing initialisation line in the Experts log as a symbol or history problem rather than a broken robot.
 

@@ -2,9 +2,9 @@
 wpId: 127235
 title: "Gold Investor EA Free Download: Verify It, Then Test It"
 slug: "gold-investor-best-forex-gold-ea-free-download-powerful-proven-guide"
-description: "A buyer's guide to gold EA free downloads: how to verify a file, set it up on MT4 or MT5, and test it on XAUUSD, plus a free MIT-licensed gold expert advisor."
+description: "A buyer's guide to gold EA free downloads: verify the publisher, licence and drawdown, set up MT4 or MT5, and test on XAUUSD demo before risking live money."
 publishedAt: "2026-02-13T22:23:23.000Z"
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-22"
 seo:
   title: "Gold Investor EA Free Download: Verify It, Then Test It"
   description: "Before you install a gold EA free download, verify the publisher, licence and drawdown. Here is the setup and test routine, plus a free MIT-licensed gold tool."
@@ -25,7 +25,7 @@ tags:
   - "risk management"
 draft: false
 primaryKeyword: "gold EA free download"
-quickAnswer: "A gold EA free download is worth installing only when you can verify a named publisher, stated licence, readable source and published equity drawdown. Set it up on demo with 0.25 to 0.5 percent risk per trade, a stop wider than gold's noise and a spread cap, then forward-test for four weeks and thirty trades. This page gives you that routine plus a free MIT-licensed XAUUSD expert advisor with full MQL5 source."
+quickAnswer: "Install a gold EA free download only after you verify a named publisher, a stated licence, readable source and a published equity drawdown. Then test it on demo with 0.25 to 0.5 percent risk per trade, a stop wider than gold's normal noise and a spread cap, for at least four weeks and thirty trades. Free does not mean profitable; the demo result decides whether it earns a live account."
 keyTakeaways:
   - "Verify before you install: named publisher, stated licence, readable source, published equity drawdown. Missing any one is a reason to stop."
   - "Set risk per trade first, then the stop, then the lot size. Choosing the lot first is how a free gold EA produces an expensive account."
@@ -146,20 +146,11 @@ When you check the source, you do not need to read MQL. Search for the words tha
 
 The [best gold robot picks](/best-gold-robot-for-mt4-mt5-ea-7-powerful-picks-for-consistent-trading-profits/) page applies this same four-check method across a set of candidates, and the [low-risk MT4 gold EA](/the-7-best-mt4-ea-for-gold-trading-with-low-risk-proven-tools-for-consistent-results/) breakdown shows how to judge drawdown and exposure once a download passes.
 
-## How do you set up a gold EA on MT4 or MT5?
+## Does the platform change how a gold EA runs?
 
-Install it the same way for either platform, with one difference that trips up a lot of people: the files are not interchangeable. **MetaTrader 4** runs **MQL4** experts — `.mq4` source and `.ex4` compiled. **MetaTrader 5** runs **MQL5** experts — `.mq5` source and `.ex5` compiled. A gold robot written for one will not simply run on the other, and a download page that does not say which platform its file targets has failed its most basic job.
+It does, and the file format decides it. The routine for loading a file is similar on either platform, but the files themselves are not interchangeable. **MetaTrader 4** runs **MQL4** experts — `.mq4` source and `.ex4` compiled. **MetaTrader 5** runs **MQL5** experts — `.mq5` source and `.ex5` compiled. A gold robot written for one will not simply run on the other, and a download page that does not say which platform its file targets has failed its most basic job.
 
-| Step | MetaTrader 4 | MetaTrader 5 |
-|---|---|---|
-| Find the data folder | File, then Open Data Folder | File, then Open Data Folder |
-| Copy the expert into | `MQL4/Experts` | `MQL5/Experts` |
-| Compile | MetaEditor, F7, or right-click and Modify | MetaEditor, F7 |
-| Attach | Drag onto a XAUUSD chart | Drag onto a XAUUSD chart |
-| Enable | AutoTrading button in the toolbar | Algo Trading button in the toolbar |
-| Verify | Experts tab in the Terminal shows initialisation | Experts tab in the Toolbox shows initialisation |
-
-Once it is attached, set the four inputs that matter before you touch anything else: risk per trade, stop distance, maximum spread and session hours. On gold, a sensible starting shape is 0.25 to 0.5 percent risk per trade, a stop of 2.00 to 3.00 dollars of price on an M5 or higher timeframe, a maximum spread around 20 to 30 points, and trading only during the London to New York overlap. Confirm that every value saved after you press OK, because a setting that silently reverts is worse than one you never changed.
+The folder an expert must sit in, the compile step and the algorithmic trading switch all differ slightly between the two terminals. Whatever the platform, a file that compiles cleanly and shows an initialisation line in the Experts log has passed the first test. Once it is attached, set the four inputs that matter before you touch anything else: risk per trade, stop distance, maximum spread and session hours. On gold, a sensible starting shape is 0.25 to 0.5 percent risk per trade, a stop of 2.00 to 3.00 dollars of price on an M5 or higher timeframe, a maximum spread around 20 to 30 points, and trading only during the London to New York overlap. Confirm that every value saved after you press OK, because a setting that silently reverts is worse than one you never changed.
 
 One gold-specific practical point: the symbol name is not always `XAUUSD`. Some brokers quote `XAUUSD.m`, `GOLD`, or a suffix of their own, and an expert that references the wrong name will simply not trade. Check Market Watch for the exact spelling, and treat a missing initialisation line in the Experts tab as a symbol or history problem rather than a broken download.
 
@@ -181,9 +172,9 @@ A spread cap is worth calling out because it is the most commonly disabled input
 
 ## What exactly do you get on this page, and what does it not do?
 
-The download is the **CRT Turtle Soup EAs** by **n30dyn4m1c** (Neo Malesa), a set of **MIT-licensed** MetaTrader 5 expert files distributed with full **MQL5** source across the M15 to monthly timeframes. Each one detects a three-candle candle-range reversal — a range candle, a false breakout with a long wick, then the reversal — and alerts an entry, a stop loss and two take-profit levels for the setup it finds, scanning more than sixty instruments from a single chart.
+The download is the **CRT Turtle Soup EAs** by **n30dyn4m1c** (Neo Malesa), a set of **MIT-licensed** MetaTrader 5 expert files distributed with full **MQL5** source across the M15 to monthly timeframes. Each one detects a three-candle candle-range reversal — a range candle, a false breakout with a long wick, then the reversal — and alerts an entry, a stop loss and two take-profit levels for the setup it finds, and the repository describes scanning more than sixty instruments from a single chart.
 
-That last property is the point, and so is the one that follows from it. This page has spent its length arguing that you should verify before you install, and the useful way to prove that is to hand you a download with nothing hidden: every file is readable, and because the EAs are alert-only by default, the risk of an anonymous binary quietly opening positions on your account simply does not exist here. It is not a promise of returns. It is an auditable price-action tool, which makes it a fair reference point for every other free gold download you will find.
+That last property is the point, and so is the one that follows from it. This page has spent its length arguing that you should verify before you install, and the useful way to prove that is to hand you a download with nothing hidden: every file is readable, and the repository describes the EAs as alert-only, so they are not built to open positions on your account. It is not a promise of returns. It is an auditable price-action tool, which makes it a fair reference point for every other free gold download you will find.
 
 | What | Detail |
 |---|---|
@@ -198,7 +189,7 @@ That last property is the point, and so is the one that follows from it. This pa
 
 **What MIT means for you.** MIT is one of the most permissive open-source licences. You may use the software, modify it, embed it in your own tools and redistribute it, including commercially, as long as the copyright notice and licence text travel with copies you redistribute. It is provided as-is, without warranty. For a trader, the benefit is that the logic stays inspectable, so the four checks on this page can be applied to the code itself rather than to a summary.
 
-**What it does not do, stated plainly.** It will not run on MetaTrader 4, because MQL4 and MQL5 are not interchangeable. It will not arrive tuned for your broker, because the wick factor, the minimum range size and the session you scan all depend on the symbol and the spread, and the author's own notes warn that wide-spread names generate noisy signals. It will not protect you from your own position sizing, since it hands you a level to trade from and what you do with that level is still your account's risk. And because it never opens a position, the published equity drawdown that the four checks ask about is neither claimed nor applicable; there is no equity curve here to misread.
+**What it does not do, stated plainly.** It will not run on MetaTrader 4, because MQL4 and MQL5 are not interchangeable. It will not arrive tuned for your broker, because the wick factor, the minimum range size and the session you scan all depend on the symbol and the spread, so expect to tune them on demo before you trust any alert. It will not protect you from your own position sizing, since it hands you a level to trade from and what you do with that level is still your account's risk. And because it never opens a position, the published equity drawdown that the four checks ask about is neither claimed nor applicable; there is no equity curve here to misread.
 
 **How to use it as a reference.** Install the M15 file on demo, read the source to see how the wick test and the level calculation are wired, then run it through the test routine below on the instrument you actually intend to trade. That exercise teaches you what to look for in any free gold EA, and it turns "I think this looks safe" into "I can see why the alert fires where it does". If you would rather compare a shortlist first, the [best MT4 EA](/best-mt4-ea/) and [best forex EA](/best-forex-ea/) hubs apply the same standard to the robot catalogue.
 

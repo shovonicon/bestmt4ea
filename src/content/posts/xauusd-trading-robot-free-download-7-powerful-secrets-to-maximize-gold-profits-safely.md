@@ -2,9 +2,9 @@
 wpId: 126867
 title: "XAUUSD Trading Robot Free Download: Test It First"
 slug: "xauusd-trading-robot-free-download-7-powerful-secrets-to-maximize-gold-profits-safely"
-description: "How to download a free XAUUSD trading robot without getting burned: the licence, source and drawdown checks that separate a real gold EA from an anonymous file."
+description: "Download a free XAUUSD trading robot safely: check the publisher, licence, readable source and drawdown first, then test on demo before risking any live money."
 publishedAt: "2026-02-13T19:18:57.000Z"
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-22"
 seo:
   title: "XAUUSD Trading Robot Free Download: Test It First"
   description: "A free XAUUSD trading robot is only worth downloading when you can read its licence and code. Here is the four-check routine, plus an Apache-2.0 EA to audit."
@@ -40,7 +40,7 @@ faqs:
   - question: "Why are grid and martingale gold robots so dangerous on XAUUSD?"
     answer: "Both add positions as price moves against you instead of accepting a stop. The open losses stay unrealised, so the reported balance curve looks calm while real exposure grows, and gold's long, one-directional trends are exactly the condition that turns the basket into an account-ending loss. That is a structural problem, not a setting you can tune away."
   - question: "What drawdown should a free XAUUSD robot show before I trust it?"
-    answer: "Start from what your own account can survive rather than from the vendor's headline. If a backtest reports a 15 percent maximum drawdown, plan for something closer to 30 percent in live conditions, because spread, slippage and swap are rarely modelled fully. If a 30 percent drawdown would end your trading, the position size is too large before you install anything."
+    answer: "Start from what your own account can survive rather than from the vendor's headline. Treat any backtest drawdown as a floor, not a ceiling, because spread, slippage and swap are rarely modelled fully. Work out how much drawdown your account could absorb without a margin call. If the backtest's worst period would breach that, the position size is too large before you install anything."
   - question: "How long should I test a free gold robot on demo?"
     answer: "Aim for at least four weeks and thirty closed trades in live market conditions, including one high-impact event such as a US inflation print or a Federal Reserve decision. Compare that demo record against the backtest on the same dates. If the two do not resemble each other, the problem is not the demo account, and more backtesting will not fix it."
   - question: "Do I need a VPS to run a free XAUUSD robot?"
@@ -107,7 +107,7 @@ So before a gold robot's strategy is even worth discussing, three questions have
 
 ## A Friday evening that a free gold robot could have prevented
 
-Picture a trader — call him Daniel — who found a gold robot on a forum thread in late 2024. Free download, no sign-up, a screenshot of a broker statement that showed a four-figure month. He installed it on a $2,000 account on a Friday evening, set the lot size to something that "felt right", and left it running over the weekend.
+Picture a trader — call him Daniel; this is an illustrative composite, not a named real account — who found a gold robot on a forum thread in late 2024. Free download, no sign-up, a screenshot of a broker statement that showed a four-figure month. He installed it on a $2,000 account on a Friday evening, set the lot size to something that "felt right", and left it running over the weekend.
 
 Gold gapped against his position on the Sunday open. The robot had no stop, because the strategy was a grid: the whole design was built on the assumption that price always comes back. It added positions as the market moved against him, exactly as designed. By Tuesday he was holding a basket of losing trades worth more than the account's equity, and the margin call closed it out for him at the worst possible price. The statement screenshot from the forum had shown none of this, because a grid's floating losses never appear as a losing trace until the moment they become realised.
 
@@ -160,7 +160,7 @@ Four patterns should end your interest in a free XAUUSD robot regardless of how 
 
 **Red flag three: any form of uncapped martingale or grid recovery.** This is the single most reliable predictor of an account-ending loss on gold. These systems do not have a worst-case exit; they have a growing basket of open positions whose floating loss compounds. Gold's tendency to trend hard in one direction is precisely the condition that defeats them, and it is why the systems look calm for months and then lose everything in a week.
 
-**Red flag four: a results claim with no date, no broker and no account type.** "Consistent profits" printed above a chart with no context is not evidence. Asking which broker and which account type is not pedantry — spread, execution and swap differ between brokers, and a gold strategy that works on a raw-spread account can be unprofitable on a marked-up one. The absence of those details is itself the answer.
+**Red flag four: a results claim with no date, no broker and no account type.** A headline promising steady gains printed above a chart with no context is not evidence. Asking which broker and which account type is not pedantry — spread, execution and swap differ between brokers, and a gold strategy that works on a raw-spread account can be unprofitable on a marked-up one. The absence of those details is itself the answer.
 
 Stack those four against the checklist above and you have a five-minute filter that eliminates most of what a search engine will show you. What survives is worth testing, and testing is the next step.
 
@@ -170,7 +170,7 @@ Grid and martingale robots look safe because their danger is invisible until it 
 
 A grid robot, at its simplest, opens an additional position at every fixed interval against its first trade. A martingale robot multiplies the lot size after a loss rather than accepting it. Combine the two, which most "recovery" systems do, and the lot size and position count both climb together. That is an exponential exposure curve wearing the costume of a strategy.
 
-On a currency pair in a quiet range, that structure can survive for a long time, which is exactly what makes it seductive. On **XAUUSD** it cannot, because gold produces the one thing a grid cannot absorb: sustained, one-directional moves. The LBMA and CME drivers — inflation data, employment data, rate decisions, the dollar index — frequently push gold several percent in a single session. A grid built for 30-cent steps meets a 40-dollar day, and the arithmetic that looked fine in a range becomes the mechanism of the loss.
+On a currency pair in a quiet range, that structure can survive for a long time, which is exactly what makes it seductive. On **XAUUSD** it cannot, because gold produces the one thing a grid cannot absorb: sustained, one-directional moves. The LBMA and CME drivers — inflation data, employment data, rate decisions, the dollar index — frequently push gold sharply in a single session. A grid built for small fixed steps meets a day that moves far beyond them, and the arithmetic that looked fine in a range becomes the mechanism of the loss.
 
 The practical rule is blunt: any gold robot that adds to a losing position is not low risk, no matter how smooth its curve looks. If you want to understand how to judge risk properly on gold EAs, the [low-risk MT4 gold EA](/the-7-best-mt4-ea-for-gold-trading-with-low-risk-proven-tools-for-consistent-results/) breakdown covers drawdown, exposure and the difference between a calm curve and a safe system. The short version is that risk lives in the sizing rule and the exit rule, not in the shape of the equity line.
 
@@ -178,7 +178,7 @@ The practical rule is blunt: any gold robot that adds to a losing position is no
 
 Spread decides more on gold than on almost any other retail instrument, and a free robot that ignores it is telling you its author never tested on a real feed. A gold scalper taking a small target pays the round-trip spread every single trade, and the number of trades is what turns a small cost into a decisive one.
 
-Consider the arithmetic a scalping robot actually faces. On a typical raw account during a calm London hour, XAUUSD might quote a round-trip spread in the region of 15 to 30 points. Ten minutes into a US inflation release, the same symbol can quote a spread several times wider while price is still moving — not because the broker is being unfair, but because liquidity thins exactly when everyone wants the same side. A robot with a target large enough to absorb the calm-hour spread can survive that; a robot with a target smaller than the news-hour spread will be filled at prices that erase the edge on the trades that matter most.
+Consider the arithmetic a scalping robot actually faces. On a raw-spread account during a calm London hour, XAUUSD quotes a round-trip spread that you must read from your own broker's feed, never from a blog or a sales page. Ten minutes into a US inflation release, the same symbol can quote a spread several times wider while price is still moving — not because the broker is being unfair, but because liquidity thins exactly when everyone wants the same side. A robot with a target large enough to absorb the calm-hour spread can survive that; a robot with a target smaller than the news-hour spread will be filled at prices that erase the edge on the trades that matter most.
 
 This is why "I will just set the spread filter to zero and trade whenever" is not a solution. Setting the maximum spread to zero does not widen your tolerance; it disables the filter, so the robot trades through the exact windows it should avoid. The honest approach is to set a maximum spread to a value your broker genuinely quotes for most of your intended hours, and to accept that this blocks trades. A blocked trade you had no edge on costs nothing. A trade filled through a 100-point spread on a 150-point target is already lost when it opens.
 
@@ -192,7 +192,7 @@ You should test four things, in order: the code, the backtest, the demo forward 
 
 **Two: backtest on real ticks, and read the assumptions.** Run the Strategy Tester on your broker's own XAUUSD data with real ticks enabled where the platform supports it. Read the modelling quality figure and understand that it describes how faithfully the tester reconstructed price, not whether the strategy has an edge. A high modelling quality number on a bad strategy is still a bad strategy.
 
-**Three: forward-test on demo for at least four weeks and thirty trades.** This is where spread, slippage and swap stop being assumptions and start being facts. Include at least one high-impact news event so you can watch how the robot behaves when the book is thin. Compare the demo record against the backtest on the same calendar dates. If they do not resemble each other, the backtest was describing a market you do not have access to.
+**Three: forward-test on demo for at least four weeks and thirty trades.** This is where spread, slippage and swap stop being assumptions and start being facts. Include at least one high-impact news event so you can watch how the robot behaves when the book is thin. Compare the demo record against the backtest on the same calendar dates. If they do not resemble each other, the backtest was describing a market you do not have access to. Check the exact symbol name in Market Watch as well, because some brokers use `XAUUSD.m`, `GOLD` or a suffix of their own, and an expert that references the wrong name will simply fail to trade. A missing initialisation line in the Experts log usually points to a symbol or history problem rather than a broken download.
 
 **Four: size the position as if the worst backtest day will happen again.** Work from the stop distance and a fixed fraction of the account to the lot size, never from a lot size backwards to a stop. A commonly cited ceiling is 1 percent of equity per trade, and many experienced operators use half that while they are still learning how a robot behaves. ESMA's product intervention measures cap retail leverage on gold at 20:1 and require negative balance protection, but the regulator cannot size your positions for you. That part is arithmetic, and it is yours.
 
@@ -213,7 +213,7 @@ That framing is deliberate, and it is the most honest thing we can offer you her
 | Source | Full MQL source included, not a compiled binary |
 | Approach | Trades a scheduled news release from the time and price parameters you enter before it |
 | What it does | Lets you attach, inspect and test an open-source MetaTrader expert on a demo account |
-| What it does not do | It does not guarantee a result, does not trade fully on its own, and is not a gold strategy tuned for XAUUSD |
+| What it does not do | It does not promise a result, does not trade fully on its own, and is not a gold strategy tuned for XAUUSD |
 
 **What "does not do" means in practice.** News Trader will not hand you a profitable gold strategy out of the box, and anyone who tells you a free download will is selling something. The author's README states plainly that the EA does not trade fully automatically — it only acts on the time and price parameters you enter before a release — and that it is best used on zero-spread or fixed-spread accounts. That honesty is the feature. A download page that only ever tells you what a tool does for you is a sales page; a download page that tells you its limits is a reference.
 
@@ -221,20 +221,7 @@ That framing is deliberate, and it is the most honest thing we can offer you her
 
 **Why not a gold-specific robot?** Because you have not yet verified that any gold-specific robot is what it claims to be, and the point of this page is that verification comes first. Once you can apply the four checks above, you are equipped to evaluate the gold-specific downloads on the [free download library](/category/free-forex-ea/) page, and to tell which of them deserve a demo test. The [best gold robot picks](/best-gold-robot-for-mt4-mt5-ea-7-powerful-picks-for-consistent-trading-profits/) page applies the same standard to a shortlist, and the [gold investor EA](/gold-investor-best-forex-gold-ea-free-download-powerful-proven-guide/) review shows what the standard looks like applied to a single product.
 
-One more clarity point, because it matters for whether you get anything out of this download. News Trader is a semi-automatic news tool, not a signal generator that decides for you. It acts on the time and price parameters you set before a release and then manages the positions around it, and it gives you the source of that logic. What you do with it is read it, compile it, run it on a demo account, and watch how an open EA behaves around a real news print. If you came here only for a button that turns on gold profits, no free download anywhere will honestly give you that, and this page will not pretend otherwise.
-
-## How do you install EarnForex News Trader on MetaTrader?
-
-Six steps, and the first one is the one that matters most. Because you download from the original repository rather than a mirror, you always get the current version from the publisher.
-
-1. **Download the source from the repository.** Open the EarnForex News Trader repository and take the MQL4 or MQL5 file. Taking the file from the publisher avoids a copy that has drifted or been repackaged.
-2. **Open your MetaTrader data folder.** In MetaTrader, choose File, then Open Data Folder. This is the directory the terminal loads experts from, not your normal Documents folder.
-3. **Copy the files into the Experts folder.** Place them in `MQL4/Experts` for MetaTrader 4 or `MQL5/Experts` for MetaTrader 5.
-4. **Refresh the Navigator and compile.** Restart the terminal or right-click the Navigator and choose Refresh. If you compile the source yourself, open it in MetaEditor and press F7; a clean build writes a compiled expert beside the source.
-5. **Attach it to a XAUUSD demo chart.** Log in to a demo account, open an XAUUSD chart, drag the expert from the Navigator, and confirm the symbol matches Market Watch. Allow algorithmic trading and read the Experts log for the initialisation line.
-6. **Backtest, then forward-test.** Run at least a year in the Strategy Tester with real ticks where available, then leave it on demo for four weeks and compare the two records.
-
-A note specific to gold: the symbol name is not always `XAUUSD`. Some brokers use `XAUUSD.m`, `GOLD` or a suffix of their own, and an expert that references the wrong symbol name will simply fail to trade. Check Market Watch for the exact spelling before you attach anything, and treat a missing initialisation line in the Experts log as a symbol or history problem rather than a broken download.
+One more clarity point, because it matters for whether you get anything out of this download. News Trader is a semi-automatic news tool, not a signal generator that decides for you. It acts on the time and price parameters you set before a release and then manages the positions around it, and it gives you the source of that logic. What you do with it is read it, compile it, run it on a demo account, and watch how an open EA behaves around a real news print. If you came here only for a button that reliably produces gold returns, no free download will honestly give you that, and this page will not pretend otherwise.
 
 ## Your next step with free XAUUSD robots
 

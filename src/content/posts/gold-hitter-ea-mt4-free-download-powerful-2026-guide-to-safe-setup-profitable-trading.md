@@ -4,7 +4,7 @@ title: "Gold EA Risk Management: Survive the First Drawdown"
 slug: "gold-hitter-ea-mt4-free-download-powerful-2026-guide-to-safe-setup-profitable-trading"
 description: "Set the limits that keep a gold EA account alive: risk per trade, a drawdown cap, an equity stop, a daily loss rule and a written stop-trading trigger."
 publishedAt: "2026-02-13T23:48:37.000Z"
-updatedAt: "2026-09-29T00:00:00.000Z"
+updatedAt: "2026-10-22T00:00:00.000Z"
 seo:
   title: "Gold EA Risk Management: Survive the First Drawdown (2026)"
   description: "Set the limits that keep a gold EA account alive: risk per trade, a drawdown cap, an equity stop, a daily loss rule and a written stop-trading trigger."
@@ -95,9 +95,9 @@ Because on XAUUSD a realistic stop is worth a large slice of a small account, an
 
 Gold does not price like a currency pair. One standard lot of XAUUSD is 100 troy ounces, so a 1.00-dollar move in the gold price is 100 dollars of profit or loss on one lot. At 0.10 lots the same move is 10 dollars. At the 0.01 lot minimum most brokers allow, it is 1 dollar. Those three numbers come from the same chart. The chart never changes. Only your size does, and size is the one input you fully control.
 
-Now add volatility. Gold routinely travels 15 to 30 dollars in a day, and it does it in bursts around US data. A 5.00-dollar stop is a normal stop for gold, not a wide one. On a 0.10 lot position that stop is 50 dollars. On a 1,000-dollar account that single stop is 5 percent of everything you own. The robot did nothing wrong. The size turned an ordinary stop into a large event.
+Now add volatility. Gold can travel a long way in a single session, and it often does it in bursts around US data. A 5.00-dollar stop is a normal stop for gold, not a wide one. On a 0.10 lot position that stop is 50 dollars. On a 1,000-dollar account that single stop is 5 percent of everything you own. The robot did nothing wrong. The size turned an ordinary stop into a large event.
 
-Then add spread and slippage. XAUUSD carries one of the widest spreads of any liquid symbol. You might see 20 points round trip on a quiet London morning and 80 or 120 points the moment a US number prints. A stop that looks like 50 points on the chart can fill 30 points worse in a fast market. Scalpers feel this most, but every gold EA feels it eventually.
+Then add spread and slippage. XAUUSD carries one of the widest spreads of any liquid symbol. Spreads are usually wider in quiet hours and widen further when a US number prints. Measure the spread your own broker quotes on demo rather than trusting any figure from a vendor. A stop that looks clear on the chart can fill worse than planned in a fast market. Scalpers feel this most, but every gold EA feels it eventually.
 
 There is one more way gold EAs blow up accounts, and it hides inside the strategy rather than the size. Any robot that adds to a losing trade, whether it calls itself a grid, a recovery system, or a martingale, is converting an unknown risk into a known one later. The first orders look small and safe. Each layer after them is bigger, and the total exposure grows while the market moves against you. You will not see it in the lot size on the first ticket, because the danger is the sequence, not the entry. A robot with fixed stops and one position at a time has a worst case you can calculate tonight. A recovery robot has a worst case you find out at the moment it happens. For risk control, that difference is everything.
 
@@ -207,7 +207,7 @@ Three things, and none of them is watching the chart.
 
 First, pull the history and count, not guess. How many trades, what average loss, what average win, and what the worst run of losing trades actually was. Compare that with what the robot's own backtest suggested. If live behaviour is far outside the backtest, the settings or the market have changed, and no amount of patience will fix that.
 
-Second, check the cost side, because gold risk is not only price risk. Commission, swap on positions held overnight, and the average spread you paid all eat into every result. A strategy that looked positive on a zero-cost backtest can be negative once a realistic spread of 20 to 30 points and a round-turn commission are included. If you cannot show the strategy is profitable after costs on paper, the pause should become a full stop until you can.
+Second, check the cost side, because gold risk is not only price risk. Commission, swap on positions held overnight, and the average spread you paid all eat into every result. A strategy that looked positive on a zero-cost backtest can be negative once your broker's real spread and round-turn commission are included. If you cannot show the strategy is profitable after costs on paper, the pause should become a full stop until you can.
 
 Third, decide in advance what restarting looks like. The clearest version is a specified number of consecutive demo days that reproduce the strategy's expected behaviour at your chosen size. Until you see that, the robot stays off the chart. Deciding this now, while you are calm, is the whole point of a written rule. Deciding it mid-drawdown is how people talk themselves into a bigger position.
 
@@ -218,6 +218,8 @@ Run every number on a demo account first. Trade the limits on demo for two to fo
 ## What does the download on this page give you?
 
 It gives you the other half of the argument: a gold expert advisor whose risk inputs you can actually read. It is the MT5 SMC Trading Bot by KVignesh122, an open-source Smart Money Concepts expert for MetaTrader 5 released under the Apache-2.0 licence, with the full MQL5 source in EA_Script.mq5 on GitHub so you can inspect how it sizes positions and manages exposure instead of trusting a screenshot.
+
+The feature list below comes from the project's own description. We have not verified every input against the code, so read EA_Script.mq5 and test on demo before you rely on any of it.
 
 What is inside:
 

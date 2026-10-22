@@ -4,7 +4,7 @@ title: "Verify a Gold EA Before Installing It: 5-Minute Audit"
 slug: "pharaoh-gold-ea-mt4-free-download-7-powerful-facts-every-trader-must-know-before-installing"
 description: "A five-minute pre-install audit for any unknown gold EA: who published it, its licence, where the file came from, the hash, and what the Experts log shows."
 publishedAt: "2026-02-13T23:51:13.000Z"
-updatedAt: 2026-09-29
+updatedAt: 2026-10-22
 seo:
   title: "Verify a Gold EA Before Installing It: 5-Minute Audit"
   description: "A five-minute pre-install audit for any unknown gold EA: who published it, its licence, where the file came from, the hash, and what the Experts log shows."
@@ -86,7 +86,7 @@ Most free gold EAs are not malware. That is not the reassurance it sounds like. 
 
 **The five minutes before installation is the cheapest part of the whole exercise.** Everything you learn before the file runs costs you attention. Everything you learn after it runs costs you a demo account, a live account, or both.
 
-The fastest way to see what that costs is one story. Rashid had traded XAUUSD for nine months when a friend forwarded him a `.ex4` in a Telegram group. Gold scalper. Ninety-two percent win rate. Free. The file was 240 KB. The group admin vouched for it. The screenshot showed a line that only went up.
+The fastest way to see what that costs is one illustrative story. Picture a trader called Rashid who had traded XAUUSD for nine months when a friend forwarded him a `.ex4` in a Telegram group. Gold scalper. A win rate the seller claimed, with no account statement behind it. Free. The file was 240 KB. The group admin vouched for it. The screenshot showed a line that only went up.
 
 He skipped the five minutes, and honestly, why wouldn't he? The file was small, the group was friendly, and the person who sent it had nothing obvious to gain.
 
@@ -276,7 +276,7 @@ Re-run the checks when the version changes. A version bump is a new file with a 
 
 No, and this is the honest part of the page. The checks tell you what you are running; they say nothing about whether the idea behind it works. A file can pass all six and still lose money, because a market that behaved one way for two years can behave differently for the next two, and because spread, slippage and news gaps never appear in a marketing screenshot.
 
-Verification removes the unknown. It does not remove the risk. Trading XAUUSD with leverage carries a high risk of losing money, and most retail accounts that try it do lose money — that is the base rate, not a scare line. Gold can move forty dollars in a few minutes around inflation data, and a strategy sized for a quiet Asian session can meet that with a position far larger than its rules ever assumed.
+Verification removes the unknown. It does not remove the risk. Trading XAUUSD with leverage carries a high risk of losing money, and many retail accounts that trade it lose money. Treat that as a reason to test on demo first, not as a prediction about any one account. Gold can move forty dollars in a few minutes around inflation data, and a strategy sized for a quiet Asian session can meet that with a position far larger than its rules ever assumed.
 
 Demo-first is not a formality either. Run the EA on a demo at the same broker, with the same symbol and account type, for at least a month or roughly a hundred trades, and compare what it did against what the Strategy Tester said. If the two disagree, the difference is your broker's spread and execution, and it will not improve when real money is attached. Only then consider a live account, at the smallest size the broker allows, with a daily loss limit set before the first trade rather than after the first bad day. Never fund an account with money you would need back.
 
