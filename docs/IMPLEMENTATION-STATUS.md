@@ -104,7 +104,8 @@ Keep it short — about 12 lines. `/checkpoint` rewrites it.
 
 ## Model policy
 
-- Normal work + content rewrites: `meta/muse-spark-1.3-contributor`
+- Post / content rewrites (default): `gpt-6-luna`
+- Normal work: `meta/muse-spark-1.3-contributor`
   (alts: `deepseek/deepseek-v4.1-flash`, `Qwen/Qwen3.8-Max`)
 - Complex coding / review / content QA: `deepseek/deepseek-v4.1-flash`
 - Critical planning / architecture: `gpt-5.6-sol:low`

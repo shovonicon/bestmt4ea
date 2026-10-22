@@ -19,7 +19,7 @@
  *   node scripts/rewrite-batch.mjs --count 6
  *   node scripts/rewrite-batch.mjs --count 6 --gate
  *   node scripts/rewrite-batch.mjs --slugs a-slug,b-slug
- *   node scripts/rewrite-batch.mjs --count 2 --jobs 2 --model meta/muse-spark-1.3-contributor
+ *   node scripts/rewrite-batch.mjs --count 2 --jobs 2 --model gpt-6-luna
  */
 
 import { spawn } from 'node:child_process';
@@ -46,7 +46,7 @@ const has = (name) => args.includes(`--${name}`);
 const COUNT = Number(flag('count', '6'));
 const JOBS = Number(flag('jobs', String(COUNT)));
 /*
- * Default model: DeepSeek V4.1 Flash Fast, chosen for throughput over price.
+ * Default model: gpt-6-luna (owner decision, 2026-10-22), the default for post rewrites.
  * Ids are exact — a model id that is nearly right fails in a way that is painful
  * to diagnose — so check `reference/models.md` before changing one.
  *
@@ -66,7 +66,7 @@ const JOBS = Number(flag('jobs', String(COUNT)));
  * length — and cannot judge prose, so whatever model runs here, the reading
  * still has to be done by a person.
  */
-const MODEL = flag('model', 'deepseek/deepseek-v4.1-flash-fast');
+const MODEL = flag('model', 'gpt-6-luna');
 const MAX_TURNS = flag('max-turns', '120');
 const DRY = has('dry-run');
 const GATE = has('gate');

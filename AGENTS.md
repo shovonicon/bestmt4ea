@@ -91,7 +91,7 @@ project — or `cmd -r "<session name>"` / `/resume`. Do not `/clear`. Before
 stopping for the day, run `/checkpoint` to rewrite the anchor with what changed
 and the exact next action.
 
-Model policy: normal work + rewrites → `meta/muse-spark-1.3-contributor`
+Model policy: post rewrites (default) → `gpt-6-luna`; normal work → `meta/muse-spark-1.3-contributor`
 (alts: `deepseek/deepseek-v4.1-flash`, `Qwen/Qwen3.8-Max`); complex coding /
 review → `deepseek/deepseek-v4.1-flash`; critical planning → `gpt-5.6-sol:low`
 (alts: `deepseek/deepseek-v4.1-flash`, `zai-org/GLM-5.3`). Check `/usage` for limits; if a premium model is capped,
