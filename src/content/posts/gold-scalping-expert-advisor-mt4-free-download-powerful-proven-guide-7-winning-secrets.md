@@ -4,7 +4,7 @@ title: "Gold Scalping Expert Advisor: 7 Rules That Keep You Alive"
 slug: "gold-scalping-expert-advisor-mt4-free-download-powerful-proven-guide-7-winning-secrets"
 description: "Seven survival rules for a gold scalping expert advisor on MT4 and MT5: spread budget, session choice, stop placement, ATR position sizing and a daily loss cap."
 publishedAt: "2026-02-13T20:38:34.000Z"
-updatedAt: 2026-09-29
+updatedAt: 2026-10-22
 seo:
   title: "Gold Scalping Expert Advisor MT4 FREE Download – 7 Survival Rules"
   description: "Seven survival rules for a gold scalping expert advisor on MT4 and MT5: spread budget, session choice, stop placement, ATR position sizing and a daily loss cap."
@@ -93,7 +93,9 @@ Gold is not EURUSD with a different label. Its spreads move. Its volatility arri
 
 ## The story of a two-thousand-dollar account, in nine days
 
-Tomas emailed in March. He had a 2,000 USD account, an MT4 gold scalper he downloaded for free, and a plan he described as "small stops, quick exits".
+This is an illustrative composite, not a real trader's account. It shows a pattern that appears often.
+
+Tomas, a composite trader, started in March. He had a 2,000 USD account, an MT4 gold scalper he downloaded for free, and a plan he described as "small stops, quick exits".
 
 His stop was 15 points. That is 0.15 USD on gold. The London session was calm that first week, and he finished it up 180 USD. He felt good. He increased his lot size, because the account was clearly working.
 
@@ -127,7 +129,7 @@ Keep a spread column in your log. If your average paid spread creeps up, your ed
 
 Trade one window — the London–New York overlap — and leave the thin hours alone. That is where XAUUSD spreads are usually tightest and volume is deepest, which is the environment a scalper was designed for.
 
-The table below shows indicative spread behaviour by session. Treat it as a shape, not a promise: your own broker's numbers are the ones that count, so check them on a demo account first.
+The table below shows indicative spread behaviour by session. These are unverified rough ranges, not broker data. Treat them as a shape, not a promise: your own broker's numbers are the ones that count, so check them on a demo account first.
 
 | Session (UTC) | Typical XAUUSD spread | Character |
 |---|---|---|

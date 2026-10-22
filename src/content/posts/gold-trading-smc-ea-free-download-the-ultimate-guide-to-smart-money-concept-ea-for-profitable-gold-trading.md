@@ -4,7 +4,7 @@ title: "Gold Trading SMC EA: What Smart Money Concepts Do in Code"
 slug: "gold-trading-smc-ea-free-download-the-ultimate-guide-to-smart-money-concept-ea-for-profitable-gold-trading"
 description: "A free Apache-2.0 SMC expert advisor for MetaTrader 5, plus an honest look at what order blocks, fair value gaps and displacement become once code defines them."
 publishedAt: "2026-02-13T20:37:39.000Z"
-updatedAt: 2026-09-29
+updatedAt: 2026-10-22
 categories:
   - "Free Forex EA"
 categoryPaths:
@@ -95,17 +95,7 @@ Here is what that silence costs.
 
 ## The quiet haircut you take the moment you automate
 
-Picture a trader — call him Daniel, trading a 2,000 dollar account on a MetaTrader 5 broker with XAUUSD spreads near 25 points in London.
-
-He finds a free SMC expert advisor on a forum thread. The chart screenshots look right, the logic reads sensibly, and when he runs it himself in the Strategy Tester on XAUUSD H1, six months show a profit factor above 1.5. So he goes live without changing a single input.
-
-Week one is lovely. The EA buys a bullish order block during the London session, rides about 40 dollars of gold, closes into New York. Plus 180 dollars. Daniel stops watching.
-
-Week two brings a rate decision. Gold moves 60 dollars in a day. The EA keeps closing out: every time equity falls four percent below the balance it started from, it shuts everything and re-arms the floor against a slightly smaller number. On that account size at default sizing, four percent is a 20 dollar move in gold. It fires. It fires again. He finishes the week near 1,900 and cannot explain a single one of the closes.
-
-Week three he decides the EA is "too strict". He turns off the ATR filters, because the ATR filters sound like the problem. What he has actually done is delete the displacement test, the fair value gap minimum, and every volatility adaptation in one click. The EA now treats essentially every imbalance on a gold chart as a valid signal. Eleven trades. Eight losses. He is at 1,240.
-
-He never changed his strategy. He never even read it. He changed three numbers whose meaning he did not know, on a concept he was applying mechanically for the first time.
+This is an illustrative composite, not a real trader’s account. Daniel, a composite trader with a 2,000 dollar MetaTrader 5 account and XAUUSD spreads near 25 points in London, runs a free SMC expert advisor without changing a single input. Week one wins. A rate decision then moves gold 60 dollars, the four percent bagging rule fires repeatedly, and he finishes the week near 1,900 without knowing why. In week three he switches off the ATR filters because the EA feels “too strict”, which removes the displacement test and the gap minimum. Eleven trades and eight losses later he is at 1,240. He changed three numbers whose meaning he did not know.
 
 That is the haircut. You do not lose the edge because gold is hard. You lose it because the part of SMC you trusted was never in the code to begin with, and nobody told you which part went missing.
 
@@ -251,11 +241,11 @@ Read the right-hand column as a list of things you must now manage yourself. Tha
 
 It is one file of readable MQL5 source, released under Apache-2.0, that you can audit line by line before it ever touches an account. That last point is the whole reason it is worth your time.
 
-The repository is [MT5-SMC-trading-bot](https://github.com/KVignesh122/MT5-SMC-trading-bot) by Vignesh Kumaravel of SkyBlue Fintech, Singapore. The useful detail is not the feature list. It is that you get `EA_Script.mq5` — real source, not a compiled `.ex5` binary whose contents you have to take on faith. Most free gold EAs on forums are binaries. This one is not, and for a concept as interpretation-heavy as Smart Money Concepts, that is a meaningful difference.
+The repository is [MT5-SMC-trading-bot](https://github.com/KVignesh122/MT5-SMC-trading-bot) by Vignesh Kumaravel of SkyBlue Fintech, Singapore. The useful detail is not the feature list. It is that you get the expert's real source, not a compiled binary whose contents you have to take on faith. Most free gold EAs on forums are binaries. This one is not, and for a concept as interpretation-heavy as Smart Money Concepts, that is a meaningful difference.
 
 | Item | Detail |
 |---|---|
-| File | `EA_Script.mq5` — a single expert advisor with full source |
+| File | One expert advisor source file, with full source |
 | Platform | MetaTrader 5 |
 | Licence | Apache-2.0 — use, modify and redistribute, keeping the notices intact |
 | Author | Vignesh Kumaravel (SkyBlue Fintech, Singapore) |
@@ -300,7 +290,7 @@ Work through it in this order:
 3. **Backtest on XAUUSD with Every Tick, then ignore the headline number.** Open the worst month, count the losing streak, and look at the equity curve's shape rather than its final value.
 4. **Change one input at a time, and write down why.** If you cannot explain why the displacement minimum moved from auto to a fixed number, put it back to auto.
 5. **Run it on demo for at least a month, on the same broker, symbol and sizing.** Compare trade timestamps against the backtest. If your demo takes trades at hours the backtest skipped, your session filter and your clock disagree.
-6. **Go live with the smallest size your broker allows, and expect drawdown.** Gold at 4 ounces moves 4 dollars for every dollar of gold, and the bagging floor will fire.
+6. **Go live with the smallest size your broker allows, and expect drawdown.** On a 0.04 lot (4 ounces), every one-dollar move in gold is four dollars of profit or loss, and the bagging floor will fire.
 
 If your main concern is surviving the drawdown rather than optimising entries, the ideas in our guide to a [drawdown reduction EA](/drawdown-reduction-ea-free-download-7-powerful-benefits-every-trader-must-know/) map directly onto this problem, because portfolio-level rules are the ones that keep an account alive long enough to be judged.
 

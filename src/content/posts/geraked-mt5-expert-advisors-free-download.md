@@ -3,7 +3,7 @@ title: "Free Open-Source MT5 Expert Advisors You Can Read"
 slug: "geraked-mt5-expert-advisors-free-download"
 description: "A free MIT-licensed collection of MT5 expert advisors you can actually read. Here is how to use a shelf of small, open-source robots as a study corpus."
 publishedAt: 2026-09-28
-updatedAt: 2026-09-29
+updatedAt: 2026-10-22
 seo:
   title: "Free Open-Source MT5 Expert Advisors You Can Read"
   description: "A free MIT-licensed collection of MT5 expert advisors you can actually read. Here is how to use a shelf of small, open-source robots as a study corpus."
@@ -19,7 +19,7 @@ tags:
   - "backtesting"
 quickAnswer: "The geraked MetaTrader 5 repository is a free, MIT-licensed collection of eleven open-source expert advisors written in MQL5, each with readable source, a compiled build, a backtest report and a strategy video. It is a study corpus, not a product: you use it to compare entry and exit logic, then run the same tests yourself in the MetaTrader 5 Strategy Tester."
 keyTakeaways:
-  - "Licence: MIT, confirmed in the repository's own LICENSE file — commercial use, modification and redistribution are allowed, as long as the copyright notice and licence text travel with what you share."
+  - "Licence: MIT, as stated for the repository — check its LICENSE file. Commercial use, modification and redistribution are allowed, as long as the copyright notice and licence text travel with what you share."
   - "Eleven complete MQL5 expert advisors, each with readable source, a compiled build, a per-strategy backtest report and a short walkthrough video."
   - "The value is the shelf, not any single robot: reading eleven entry rules teaches you the vocabulary of decisions that a single closed product hides."
   - "Because the source is open, you can run the same tests on all of them — one symbol, one period, one set of costs — and get a comparison table instead of a story."
@@ -29,7 +29,7 @@ faqs:
   - question: "Is the geraked MetaTrader 5 collection free to use commercially?"
     answer: "Yes. The repository ships an MIT licence, which permits commercial use, modification and redistribution. The one obligation is that the original copyright notice and the licence text must travel with anything you redistribute. MIT is not copyleft, so you are not required to publish your own changes."
   - question: "Are these expert advisors ready to run on a live account?"
-    answer: "No. This is a research library, not a product. The author warns in the README that the optimal symbol, timeframe and parameters differ by broker and account, and asks readers to backtest thoroughly first. Treat every expert here as something to study and test on demo data, not as a finished system."
+    answer: "No. This is a research library, not a product. Parameters that work on one broker's data often behave differently on another, so backtest thoroughly on your own feed first. Treat every expert here as something to study and test on demo data, not as a finished system."
   - question: "What does the warning about the grid technique actually mean?"
     answer: "It means some of the expert advisors add to losing positions instead of closing them. That makes the equity curve look unusually smooth, because the losses stay floating rather than realised, and it makes the eventual drawdown larger when price trends without returning. It is the single most common way a backtest flatters a strategy."
   - question: "Do I get the source code, or only compiled files?"
@@ -83,23 +83,15 @@ You download an expert advisor, drop the file into your MetaTrader terminal, dra
 
 That gap — between what a robot did and why it did it — is the part of automated trading that never reaches a sales page. Your account balance shows the result. Nothing on your screen shows the reasoning.
 
-A compiled `.ex5` file is a black box on purpose. The author's logic is the product. Anyone selling that logic to a thousand buyers cannot hand it over in readable form, so you receive machine code, a picture of a rising equity curve, and an instruction to trust both.
+A compiled file is a black box on purpose. The author's logic is the product. Anyone selling that logic to a thousand buyers cannot hand it over in readable form, so you receive machine code, a picture of a rising equity curve, and an instruction to trust both.
 
 This is not a small annoyance. Every decision that matters in automated trading is made inside that box. How much of your account goes into a trade. Whether the stop sits at a fixed number of points or moves with volatility. Whether the robot adds to a losing position. Whether it stands aside before a news release. Whether it holds through the weekend. You can measure the consequences of those choices, but you cannot inspect them, question them, or change them.
 
 So most traders do the only thing available: they judge the box by its latest result. Three good months and it looks like a system. One bad week and it looks broken. Neither conclusion has anything to do with the code.
 
-Here is a concrete version, because it repeats constantly.
+Here is a composite of the pattern, because it repeats constantly. This is an illustrative composite, not a report about a real trader or account. A robot is sold with a polished page and one compiled file. It runs well for a few weeks on a small balance, the balance is increased, then gold moves hard in one direction. The robot keeps opening positions against the move, the floating loss grows past anything the buyer planned for, and the buyer closes everything by hand.
 
-A trader — call her Nia — bought a gold expert advisor earlier this year. The vendor's page carried a Myfxbook link with fourteen months of gains, a video of the robot banking profits on XAUUSD, and a description that promised nothing while implying everything. The download was a single compiled file, no source, no manual beyond "attach to M15".
-
-Nia tested it. The backtest looked acceptable. She ran it on a live account with a small balance for three weeks: small wins, a couple of losses, net positive. Then she added capital, because that is what a rising curve invites you to do.
-
-In week four, gold ran hard in one direction. The robot, which had been opening a position every time price moved against it, opened nine of them. All in the same direction. All losing. The floating drawdown passed sixty percent of her account before she closed everything by hand, at a loss she had not planned for and could not have sized for.
-
-The word "recovery" appeared twice on the vendor's page. In this corner of the market, recovery means grid: the robot adds positions as price moves against it, which defers losses instead of taking them, which is why the curve looked smooth for so long. Two lines of source code would have shown her the lot multiplier and the position counter. She never saw two lines of source code, because the business only works while she does not.
-
-The money is the small part. The larger cost is the conclusion she drew: that automated trading does not work. What failed was a business model in which the person running the robot is not allowed to read it.
+The word "recovery" on the vendor's page was the clue. In this corner of the market it usually means a grid, where losses are deferred instead of taken, which is why the curve looked smooth for so long. Two lines of source code would have shown the lot multiplier. The buyer never saw them, because the product only works while the code stays hidden. The money is the small part. The larger cost is the conclusion the buyer draws afterwards: that automated trading does not work. What failed was a business model in which the person running the robot is not allowed to read it.
 
 There is an alternative, and it costs nothing. Instead of one polished black box, you can work through a shelf of small, readable robots — source included, licence stated, logic inspectable — and learn what these programs actually decide. That is what a free collection of open-source MetaTrader 5 expert advisors is genuinely good for. A shelf of readable robots teaches you more than one polished black box ever will.
 
@@ -107,7 +99,7 @@ There is an alternative, and it costs nothing. Instead of one polished black box
 
 It is eleven complete expert advisors written in MQL5, published under the MIT licence with the full source code, a compiled build for each strategy, a folder of backtest material, and a short video per robot. Nothing is locked and nothing is hidden; it is a study library with a market-facing name.
 
-The repository (github.com/geraked/metatrader5) is maintained on GitHub by geraked and credited in the README to Rabist. Each strategy lives in the Experts folder as a readable `.mq5` file, the compiled builds sit in Build, and the backtest material is organised per strategy under Test.
+The repository (github.com/geraked/metatrader5) is maintained on GitHub by geraked. Each strategy lives in the Experts folder as readable MQL5 source, the compiled builds sit in Build, and the backtest material is organised per strategy under Test.
 
 | Expert advisor | The decision it is built around | Published build |
 |---|---|---|
@@ -125,7 +117,7 @@ The repository (github.com/geraked/metatrader5) is maintained on GitHub by gerak
 
 Two things about that table matter more than the names. First, every entry is a small, self-contained ruleset — an indicator cross, a band break, an envelope touch — which is exactly what makes it readable in an evening. Second, several are deliberate variations on a theme, which is the point: put 3MACD and 2MACDSTO side by side and you can see how a signal gets assembled from the same building blocks, and how much difference one extra condition makes.
 
-Around the eleven experts sits the supporting material: the custom indicators they depend on (Chandelier Exit, ZLSMA, Daily High/Low, Andean Oscillator, Average Force, Nadaraya-Watson Envelope, an ATR stop-loss finder, Linear Regression Candles, UT Bot and Super Trend), a shared `Cot.mqh` include that pulls Commitments of Traders data, and a companion repository porting the same strategies to TradingView if you work across both platforms.
+Around the eleven experts sits the supporting material: the custom indicators they depend on (Chandelier Exit, ZLSMA, Daily High/Low, Andean Oscillator, Average Force, Nadaraya-Watson Envelope, an ATR stop-loss finder, Linear Regression Candles, UT Bot and Super Trend), a shared include that pulls Commitments of Traders data, and a companion repository porting the same strategies to TradingView if you work across both platforms.
 
 Then there is the warning the author puts above the download table. Paraphrased from the README: some of these expert advisors have been combined with the Grid technique to enhance profitability, and that approach also introduces significant risk. It is an unusually honest sentence to find on a page of free trading robots, and it tells you what kind of library this is. The author is not selling you a result. He is handing you the material and telling you where the sharp edges are.
 
@@ -221,7 +213,7 @@ By rejecting, not by ranking. A robot that clears all five of these is worth dem
 4. Its drawdown stayed inside a loss you could hold without closing by hand.
 5. It still made sense after you doubled the spread and added commission.
 
-Five out of eleven will not survive that list. That is a good outcome — the shelf did its job, and it cost you an afternoon rather than an account.
+Expect most of the eleven to fail that list. That is a good outcome — the shelf did its job, and it cost you an afternoon rather than an account.
 
 ## What can you learn from the backtest reports that ship with the repository?
 
@@ -264,16 +256,16 @@ You get a complete, legally usable teaching set: eleven expert advisors with the
 | Item | Detail |
 |---|---|
 | Name | geraked/metatrader5 — Trading Strategies for MetaTrader 5 |
-| Author | geraked (credited in the README to Rabist) |
+| Author | geraked |
 | Licence | MIT |
 | Cost | Free — no licence fee, no paywall, no sign-up |
 | Platform | MetaTrader 5 only |
 | Contents | 11 expert advisors in MQL5 source, custom indicators, a Commitments of Traders include, compiled builds, per-strategy backtest material |
-| Format | Readable `.mq5` source plus prebuilt `.ex5` files |
+| Format | Readable MQL5 source plus prebuilt compiled files |
 | Where it comes from | The original GitHub repository, linked in the download card above and in the sources below |
 | Support | Community only — the README and the repository's issue tracker |
 
-The licence is MIT, and we confirmed it against the repository's own LICENSE file, which carries a copyright notice for Geraked dated 2023 to 2024. In plain terms, MIT is the most permissive of the common open-source licences. You may use these experts commercially, modify them however you like, and redistribute them, including inside something you sell. The single condition is that the original copyright notice and licence text go with whatever you share. Unlike GPL, MIT does not require you to publish your own modifications — so a strategy you build on top of one of these can stay private.
+The repository is published under the MIT licence, so open its LICENSE file and read the copyright line before you redistribute anything. In plain terms, MIT is the most permissive of the common open-source licences. You may use these experts commercially, modify them however you like, and redistribute them, including inside something you sell. The single condition is that the original copyright notice and licence text go with whatever you share. Unlike GPL, MIT does not require you to publish your own modifications — so a strategy you build on top of one of these can stay private.
 
 That combination is unusual in this market. Most free expert advisors arrive as compiled files with an unclear licence and a request to join a Telegram channel. Here, the licence is stated, the source is present, and the only thing the author asks for in return is that you keep the notice attached.
 

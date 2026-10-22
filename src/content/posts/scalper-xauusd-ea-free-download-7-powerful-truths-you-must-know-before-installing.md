@@ -2,9 +2,9 @@
 wpId: 126009
 title: "Scalper XAUUSD EA Free Download: 7 Truths to Check"
 slug: "scalper-xauusd-ea-free-download-7-powerful-truths-you-must-know-before-installing"
-description: "Seven things to verify before installing a Scalper XAUUSD EA free download: file source, stop logic, spread cost, drawdown and the settings that decide survival."
+description: "Seven things to verify before installing a Scalper XAUUSD EA free download: file source, stop logic, spread cost, drawdown and the settings that decide survival"
 publishedAt: "2026-02-13T06:02:05.000Z"
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-22"
 seo:
   title: "Scalper XAUUSD EA Free Download: 7 Truths to Check"
   description: "Seven checks to run on a Scalper XAUUSD EA free download: publisher, source, stop logic, spread cost, drawdown, timeframe and how the lot size is chosen."
@@ -28,7 +28,7 @@ keyTakeaways:
   - "A free scalper is judged by its costs, not its signals. On XAUUSD, spread and commission decide more than the entry rule."
   - "Check the file before the strategy: named publisher, stated licence, readable source, and a published equity drawdown."
   - "Reject any gold scalper that adds to losing positions. Grid and martingale logic hides drawdown rather than limiting it."
-  - "The download on this page is Gold Bakome EA, an MIT-licensed MT5 gold expert with no grid or martingale and readable MQL5 source — the opposite of the family truth two warns about."
+  - "The featured EA is Gold Bakome EA, an MIT-licensed MT5 gold expert with no grid or martingale and readable MQL5 source — the opposite of the family truth two warns about."
   - "M1 gold scalping is a latency game; if you cannot test on your broker's real spread, start on M5 and fewer trades."
 faqs:
   - question: "Is a Scalper XAUUSD EA free download worth using?"
@@ -36,7 +36,7 @@ faqs:
   - question: "What is the biggest risk with a free XAUUSD scalper?"
     answer: "Oversizing, and it is a risk you create rather than one the EA carries. A scalper can lose several trades in a row, and at 2 percent risk per trade that run is a large drawdown, while at 0.5 percent it is a normal week. The second-biggest risk is execution cost: a scalper taking small targets pays the spread and commission on every trade, and on gold that cost is a large share of the target."
   - question: "What spread does a gold scalper need to work?"
-    answer: "A raw-spread account is the baseline, with a typical XAUUSD round-trip spread in the region of 15 to 35 points during your trading hours. Around US CPI, Nonfarm Payrolls and FOMC decisions the spread widens several-fold while price is still moving, so a spread cap is a risk feature rather than an optional extra. If your broker quotes 40 to 90 points through the session, a small-target scalper is unlikely to clear its costs."
+    answer: "A raw-spread account is the baseline, and the XAUUSD round-trip spread varies by broker and session, so measure yours during your trading hours. Around US CPI, Nonfarm Payrolls and FOMC decisions the spread widens several-fold while price is still moving, so a spread cap is a risk feature rather than an optional extra. If your broker quotes 40 to 90 points through the session, a small-target scalper is unlikely to clear its costs."
   - question: "Which timeframe should a scalper XAUUSD EA use?"
     answer: "M5 or M15 is the honest starting point for most traders, even though M1 is what the marketing implies. Lower timeframes compress gold's spread and latency into every decision, so the same EA that is fine on M5 can be unprofitable a timeframe down. If you are new to automation, start higher, collect data, and only move to M1 if the numbers support it."
   - question: "How do I know a free gold scalper has a real stop loss?"
@@ -89,7 +89,7 @@ So this page is not a list of seven robots. It is the seven truths that decide w
 
 ## Truth one: the file's provenance matters more than its strategy
 
-Start with who made it, because everything else depends on being able to trust the description. A real download names a publisher, states a licence with a working link, and either ships source or lives in a public repository. An anonymous compiled `.ex4` or `.ex5` gives you none of that, and an expert advisor is a program that can open, modify and close positions on your live account.
+Start with who made it, because everything else depends on being able to trust the description. A real download names a publisher, states a licence with a working link, and either ships source or lives in a public repository. An anonymous compiled binary gives you none of that, and an expert advisor is a program that can open, modify and close positions on your live account.
 
 Run four checks and stop if any fails:
 
@@ -97,7 +97,7 @@ Run four checks and stop if any fails:
 |---|---|---|
 | Publisher | A named author or organisation | No name, or a throwaway handle |
 | Licence | MIT, GPL-3.0, Apache-2.0, or stated freeware terms, with a link | "Free" and nothing else |
-| Source | Readable `.mq4`/`.mq5` or a public repository | A compiled binary only |
+| Source | Readable MQL4 or MQL5 code, or a public repository | A compiled binary only |
 | Drawdown | A maximum **equity** drawdown over a stated trade count | A win rate and a rising curve |
 
 This takes five minutes and it eliminates most of what a search engine will show you for a "free XAUUSD scalper". The reason to check provenance first, rather than the strategy, is that you cannot evaluate a strategy you cannot read. A robot whose logic is hidden is not a candidate; it is an unknown.
@@ -108,7 +108,7 @@ On a gold scalper, how it loses is more important than how it wins, because losi
 
 You do not need to read MQL to screen for this. Search the source for the order function that opens positions, and for words like `LotMultiplier`, `GridStep`, `Martingale` or `Averaging`. A stop that is genuinely set will appear as a stop-loss level applied after the order opens. Recovery logic appears as a growing position count or a multiplying lot size, and both mean the EA is hiding losses in floating exposure rather than accepting them.
 
-Gold is the worst possible instrument for recovery logic, because it trends harder and further than a currency pair. The LBMA and CME price drivers — inflation data, employment data, rate decisions, the dollar index — frequently push gold several percent in a session. A grid built for small steps meets a large directional day, and the arithmetic that looked fine in a range becomes the mechanism of the loss. Our [best gold scalper EA](/best-gold-scalper-ea-for-mt4-mt5-the-only-guide-you-need/) review treats the absence of grid and martingale as the first test a scalper must pass.
+Gold is the worst possible instrument for recovery logic, because it trends harder and further than a currency pair. The LBMA and CME price drivers — inflation data, employment data, rate decisions, the dollar index — can push gold sharply within a single session. A grid built for small steps meets a large directional day, and the arithmetic that looked fine in a range becomes the mechanism of the loss. Our [best gold scalper EA](/best-gold-scalper-ea-for-mt4-mt5-the-only-guide-you-need/) review treats the absence of grid and martingale as the first test a scalper must pass.
 
 ## Truth three: the spread it needs decides whether it works
 
@@ -131,7 +131,9 @@ When you look at any drawdown claim, ask three questions: is it measured on equi
 | 20 to 30 percent | Outer limit for most traders | Only with low risk per trade |
 | Above 30 percent | Too deep to recommend | Reduce risk, or choose a different system |
 
-Plan for live drawdown to be deeper than the backtest, often by a substantial margin, because spread, slippage and swap are rarely modelled fully. The [best gold robot picks](/best-gold-robot-for-mt4-mt5-ea-7-powerful-picks-for-consistent-trading-profits/) page uses the same ranking — drawdown and exposure before returns — across a shortlist.
+Plan for live drawdown to be deeper than the backtest, often by a substantial margin, because spread, slippage and swap are rarely modelled fully.
+
+Here is a worked check you can run on any published figure. Suppose a sheet reports a 12 percent maximum equity drawdown over 40 trades. Forty trades is a short sample. At 1 percent risk per trade, a run of five consecutive losses alone costs about 5 percent, so the reported number has not yet met the kind of streak a scalper meets in a typical year. Ask for the trade count, the period and whether the figure is equity or balance, and treat the answer as the start of your own test rather than its conclusion. A figure built from one good month is an opinion, not a measurement. The [best gold robot picks](/best-gold-robot-for-mt4-mt5-ea-7-powerful-picks-for-consistent-trading-profits/) page uses the same ranking — drawdown and exposure before returns — across a shortlist.
 
 ## Truth five: the timeframe changes what the EA can be
 
@@ -147,7 +149,7 @@ This is the truth that saves accounts, and it is the one free-EA pages skip. A g
 
 Derive the lot from the stop and a fixed risk percentage, never the other way round. If gold needs a 2.50-dollar stop on your timeframe and you are willing to risk 0.5 percent of a $1,000 account, the lot size solves to roughly 0.02 on a 100-ounce contract. That is the number, and it does not change because a bigger lot would make the returns look better. Choosing the lot first inverts the relationship, so your risk quietly grows exactly when the market is more volatile and the stop is wider.
 
-The arithmetic of a losing streak is worth stating plainly. At 0.5 percent risk per trade, a run of five losses costs about 2.5 percent. At 2 percent, the same run costs about 10 percent. On a scalper, five losses in a row is an ordinary event, not a crisis. The strategy did not change between those two accounts; the size did, and the size decided the outcome. This is why the download on this page is an EA you can read rather than another black box: you can confirm its stop logic and its sizing before you trust a single number it produces.
+The arithmetic of a losing streak is worth stating plainly. At 0.5 percent risk per trade, a run of five losses costs about 2.5 percent. At 2 percent, the same run costs about 10 percent. On a scalper, five losses in a row is an ordinary event, not a crisis. The strategy did not change between those two accounts; the size did, and the size decided the outcome. A practical habit makes this concrete: before you accept any lot the EA proposes, write the dollar amount you would lose if the stop is hit, then ask whether you would still leave the robot running after three of those losses in a row. If the answer is no, the size is wrong, whatever the backtest says. This is why the featured EA is one you can read rather than another black box: you can confirm its stop logic and its sizing before you trust a single number it produces.
 
 ## Truth seven: what the EA does when the market gaps
 
@@ -157,15 +159,14 @@ Three practical responses, none of them optional on gold. First, cap the total d
 
 ## What exactly do you get, and what does it not do?
 
-The download is **Gold Bakome EA**, a free **MIT-licensed** expert advisor for **MetaTrader 5** with its source published by BAKOME-Hub. It is a gold EA you can read, and it is deliberately built as the opposite of the family truth two warns about: no grid, no martingale, no averaging, and a fixed stop loss as a safety net.
+The EA featured here is **Gold Bakome EA**, a free **MIT-licensed** expert advisor for **MetaTrader 5** with its source published by BAKOME-Hub. It is a gold EA you can read, and it is deliberately built as the opposite of the family truth two warns about: no grid, no martingale, no averaging, and a fixed stop loss as a safety net.
 
-Why this instead of a seventh robot recommendation? Because the seven truths above keep arriving at the same conclusion: the variables that decide your result are spread, stop, timeframe and size, not the entry rule. Here you get a named publisher, a stated licence, readable `.mq5` source and a stop you can point at — the checks from truth one, all of them answerable because the file is in the open. Run it on demo and the same truths apply; you are judging a known object rather than a screenshot.
+Why this instead of a seventh robot recommendation? Because the seven truths above keep arriving at the same conclusion: the variables that decide your result are spread, stop, timeframe and size, not the entry rule. Here you get a named publisher, a stated licence, readable MQL5 source and a stop you can point at — the checks from truth one, all of them answerable because the file is in the open. Run it on demo and the same truths apply; you are judging a known object rather than a screenshot.
 
 | What | Detail |
 |---|---|
 | Name | Gold Bakome EA (gold_bakome) |
 | Platform | MetaTrader 5 (MQL5 source) |
-| Platform files | `.mq5` |
 | Licence | MIT — use, modify and distribute, keeping the copyright notice |
 | Author | BAKOME-Hub |
 | What it does | Trades XAUUSD with ATR-based adaptive logic, a fixed stop loss and session filters |
@@ -185,16 +186,7 @@ Review the record after thirty trades, not after every loss. Calculate the avera
 
 Keep the test configuration fixed for the full sample. Changing a stop after five trades, a session after ten and a risk level after fifteen creates three tiny experiments rather than one useful one. If you discover a setting that must change, close the test, label the result, start a new version and collect a new sample. This feels slow, but it is much faster than funding a live account with evidence that cannot answer a basic question.
 
-## How do you install the gold EA?
-
-Six steps, and the fifth is the one that matters. Read the file before you let it trade.
-
-1. **Download the source.** Open the source link and download `gold_bakome.mq5` — one readable MQL5 file.
-2. **Copy the file into the right data folder.** In MT5 put the `.mq5` file in `MQL5/Experts`. Use File, then Open Data Folder.
-3. **Compile it in MetaEditor.** Press F4 for MetaEditor, open the file, press F7. A clean build writes a compiled expert beside the source.
-4. **Attach it to a XAUUSD demo chart.** Drag it from the Navigator, allow algorithmic trading, and confirm the symbol matches the one in Market Watch.
-5. **Read the inputs before you touch them.** Find the stop loss, confirm there is no lot multiplier, grid step or averaging routine, and note the session filter.
-6. **Apply the sizing rule.** Work out the lot your own risk rule allows for the stop the EA uses, and change the risk input until it agrees.
+## Why does a two-decimal quote change your stop?
 
 A gold-specific note that saves confusion: if your broker quotes XAUUSD to two decimals, set the stop in price terms rather than in "pips". A one-point move on gold is not the same dollar value as on a five-decimal currency pair, and mixing the two is how a risk calculation silently becomes wrong.
 
@@ -234,6 +226,6 @@ Do two things, in this order.
 
 First, run the seven checks on the Scalper XAUUSD EA free download you have in hand: publisher and licence, source, stop logic, spread need, drawdown, timeframe, and how its position size is chosen. Any one of them can be a reason to walk away, and together they take less time than reading a sales page.
 
-Second, download the MIT-licensed Gold Bakome EA from this page, read `gold_bakome.mq5`, and confirm for yourself that it carries a real stop and no averaging routine. Then run it on demo and size it by the rule from truth six. Doing that on a file you can inspect lowers your drawdown more than switching robots ever would.
+Second, get the MIT-licensed Gold Bakome EA from its source repository, read the single MQL5 file, and confirm for yourself that it carries a real stop and no averaging routine. Then run it on demo and size it by the rule from truth six. Doing that on a file you can inspect lowers your drawdown more than switching robots ever would.
 
 Be clear-eyed about what you are doing. Gold is volatile, leverage works against you as easily as for you, and losses happen on any system. Everything here is educational, none of it is financial advice, and no result is promised or implied. Test on demo, size every position as though the worst backtest day will happen again, and only risk money you can afford to lose. If you would rather start from a curated set of downloads with their platforms and licences stated, the [free download library](/category/free-forex-ea/) is the place to begin.

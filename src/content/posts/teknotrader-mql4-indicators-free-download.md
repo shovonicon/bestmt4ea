@@ -1,9 +1,9 @@
 ---
 title: "Free Open-Source MT4 Indicators with Full MQL4 Source"
 slug: "teknotrader-mql4-indicators-free-download"
-description: "Download a free, Apache-2.0 MetaTrader 4 and 5 indicator with complete source code, plus a step-by-step way to audit any MQL file before you compile it."
+description: "Get a free Apache-2.0 MetaTrader 4 and 5 indicator with full source code, plus a practical method to audit any MQL file before you compile and attach it."
 publishedAt: 2026-09-28
-updatedAt: 2026-09-28
+updatedAt: 2026-10-22
 categories:
   - "Free Indicator"
 categoryPaths:
@@ -133,7 +133,7 @@ None of these settings is a secret, and none of them is magic. They are inputs y
 
 ## Reading the source before you trust the output
 
-Once you have the file, the fastest useful pass is a targeted search rather than a line-by-line read. Open the `.mq4` or `.mq5` file in MetaEditor and look for four things.
+Once you have the file, the fastest useful pass is a targeted search rather than a line-by-line read. Open the source file in MetaEditor and look for four things.
 
 First, the buffer declarations. An indicator allocates buffers for the lines it draws, and the declarations tell you how many lines there are and what each one is for. If the file draws one average, you should see one buffer dedicated to it. Extra buffers that are never plotted are worth a second look, because they can be scratch space or leftovers.
 
@@ -190,17 +190,19 @@ It is just as important to be clear about the limits.
 
 Read the licence before you use anything, and treat the line for what it is: a measured summary of the past, drawn honestly enough that you can inspect how it was calculated.
 
-## Compiling and attaching the indicator
+## Who should use a source-available indicator like this?
 
-Because the file is source, the last step is not a double-click. It is a short, repeatable routine that leaves you with a binary you built yourself.
+Not every trader needs a multi-timeframe average, and not every trader should install a free file without a plan. This tool suits three kinds of reader. The first is the discretionary trader who already has an entry method and keeps losing because the trend on a higher timeframe was invisible. The second is the learner who wants to see how a moving average is built, since the logic is short enough to follow once you know what a buffer is. The third is the trader who has been burned by a free download before and wants a repeatable habit rather than a promise.
 
-Copy the `.mq4` file into `MQL4/Indicators` for MetaTrader 4, or the `.mq5` file into `MQL5/Indicators` for MetaTrader 5. Open it in MetaEditor and press F7. A clean compile reads "0 errors, 0 warnings"; a warning is usually harmless and an error is not, so read whatever the Errors tab says before you go further. Then right-click the indicator list in the Navigator, choose Refresh, and drag the indicator onto your chart.
+It suits you less well if you want a system that tells you when to buy and sell. It is a context tool. If you expect a signal on every bar, you will be disappointed, and that disappointment is what pushes most people toward a tool that repaints. Accept the trade-off on purpose before you start.
 
-Set the timeframe and period, confirm the line sits where your own arithmetic says it should — calculate one value by hand on a recent bar if you want certainty — and then watch it on demo for a day to confirm closed values stay fixed. Only move it to a live chart once nothing has shifted. That sequence turns "I downloaded a file" into "I verified a file", and it is the habit worth keeping from this page.
+It also suits you less well if you cannot read code at all. Source is only an advantage when you can use it. If that describes you, pair the indicator with a demo account, a written plan and a fixed limit on how many trades you take in a day, and treat the source inspection as a skill to build over time rather than a finished audit.
+
+The honest test is simple. Ask whether the line changes how you decide, not whether it looks impressive. If it only adds colour to a chart you already read well, leave it off. If it stops you trading against the higher-timeframe trend, it has earned its place, and you can prove that to yourself on demo before a single live order.
 
 ## Risk warning
 
-Indicators do not place trades and cannot lose money on their own, but the decisions they inform can. Trading forex and CFDs carries a high risk of losing money and is not suitable for everyone. Nothing here is financial advice, and the author's Apache-2.0 licence provides the work as-is, without warranty of any kind. Test on a demo account before applying anything to live capital, size your positions as though the worst historical day will recur, and never risk money you cannot afford to lose.
+Indicators do not place trades, but the decisions they inform can lose money. Trading forex and CFDs carries a high risk of losing money and is not suitable for everyone. Nothing here is financial advice, and the author's Apache-2.0 licence provides the work as-is, without warranty of any kind. Test on a demo account before applying anything to live capital, size your positions as though the worst historical day will recur, and never risk money you cannot afford to lose.
 
 ## Where to go next
 

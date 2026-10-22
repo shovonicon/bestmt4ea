@@ -4,7 +4,7 @@ title: "XAUUSD Scalping Robot Settings for MT4 and MT5"
 slug: "xauusd-scalping-robot-settings-and-tips-10-powerful-strategies-for-better-trading-results"
 description: "XAUUSD scalping robot settings for MT4 and MT5: stop distance, risk per trade, spread caps and session windows, plus an open-source MT5 bot to test them on."
 publishedAt: "2025-12-07T02:40:23.000Z"
-updatedAt: "2026-09-28T00:00:00.000Z"
+updatedAt: 2026-10-22
 seo:
   title: "XAUUSD Scalping Robot Settings for MT4 and MT5"
   description: "XAUUSD scalping robot settings for MT4 and MT5: stop distance, risk per trade, spread caps and session windows, plus an open-source MT5 bot to test them on."
@@ -95,9 +95,9 @@ That is what this page fixes. Not which robot to buy, but the inputs that decide
 
 ## Agitate: nine days on a preset someone posted
 
-Here is a sequence of events that happened this year, with the name changed and the numbers as they were.
+The sequence below is an illustrative composite, not a real trader's account. It shows a pattern that appears often.
 
-Nadia had 1,500 dollars in a live account she had funded slowly over a year. She picked up a free gold EA from a Telegram group, and the pinned message included a set file. The screenshots in that group were excellent. She loaded the preset on a cheap VPS and let it run.
+Nadia, a composite trader, had 1,500 dollars in a live account she had funded slowly over a year. She picked up a free gold EA from a Telegram group, and the pinned message included a set file. The screenshots in that group were excellent. She loaded the preset on a cheap VPS and let it run.
 
 Three properties of that file went unexamined, because nothing in the chat explained them:
 
@@ -325,39 +325,7 @@ It also shows you what to look for in robots that hide their risk. Plenty of fre
 - **It does not cover every gold broker cleanly.** Its session and spread logic assume the server time and symbol naming in the code; verify those against your own account before you trust its filter times.
 - **It is not a finished product to run live unmodified.** It is a reference you read and test, not a robot whose results you should take on faith.
 
-If you would rather start from a commercial robot that already carries tested preset ranges, our own gold pages document the specifications and the settings they ship with — [Zenith Matrix EA](/product/zenith-matrix-ea-ai-gold-scalper-for-mt5/), [Nexora Manus EA](/product/zenith-matrix-ea-ai-gold-scalper-for-mt5/) and [Onix Stratos XAUUSD EA](/product/onix-stratos-xauusd-ea-ai-smart-scalper-for-mt5/). The trade-off is symmetrical: you get preset ranges and support, and you give up the ability to read the code and set the numbers yourself. If readable code matters more, [EA31337 Libre](/ea31337-libre-free-download/) and the [geraked MT5 expert advisors](/geraked-mt5-expert-advisors-free-download/) are two more auditable codebases worth testing, and the free [download library](/category/free-forex-ea/) collects the tools we have licence-checked.
-
-## How do you install the Liquidity Sweep Bot and use it with a gold robot?
-
-Ten minutes, most of it spent finding the data folder. Do this on a demo account first.
-
-1. **Download the repository.** Follow the source link in the download panel above and use the green Code button on GitHub to download the ZIP. It contains the MQL5 expert, its indicators and the risk-management include file.
-2. **Copy the files into the terminal's data folder.** Put the expert in `MQL5/Experts`, the indicators in `MQL5/Indicators` and the include in `MQL5/Include`. Use **File → Open Data Folder** to find the path rather than guessing it.
-3. **Compile it.** Press F4 for MetaEditor, open each file, press F7. A clean build writes a compiled expert beside the source. If the compiler complains, the message names the line it objects to.
-4. **Attach it to a XAUUSD chart on a demo account** and allow algorithmic trading in the settings tab. Confirm that the symbol in Market Watch is spelled exactly like the chart: `XAUUSD`, `XAUUSD.m` and `GOLD` are three different symbols to the terminal.
-5. **Read the risk and session inputs:** risk percent per trade, daily drawdown limit, maximum spread and the kill-zone hours. Trace each one in the code so you know what it does when it fires.
-6. **Compare the bot's arithmetic against your robot's preset.** If the preset's fixed lot is more than double the size this bot's position sizing produces at 0.5 percent risk, the preset is oversized for your account and needs changing before the robot trades again.
-7. **Log the numbers and repeat monthly**, or whenever the balance changes materially. A lot size that was correct at a 1,000 dollar balance is not correct at 400.
-
-The short version of these steps appears in the install panel above, which generates the HowTo data on this page. The long version is worth doing at least once on demo, where a mistake costs nothing.
-
-## Questions traders ask about XAUUSD scalping robot settings
-
-**What are the most important settings on a gold scalping robot?** Stop distance, risk per trade, maximum spread, session window and the position cap. Those five decide the outcome far more than the entry rule does, because on gold they determine your cost per trade and the size of your worst run. Set the stop from the market's noise level, set risk from your account size, let position size follow from the two, and only then look at entries.
-
-**What stop distance should a gold robot use?** For M5 scalping, 2.00 to 3.00 dollars of price, which is 200 to 300 points on a two-decimal feed. Anything under 1.50 dollars sits inside normal noise, and anything over 5.00 dollars means you are trading a slower strategy with a smaller lot size. If the robot supports ATR stops, use 2 to 3 times ATR(14) on the chart's timeframe instead of a fixed number.
-
-**Is 1 percent risk per trade safe on gold?** It is the ceiling for an experienced operator, not a starting point. At 1 percent, five consecutive losses is a 5 percent drawdown, which is an ordinary event on gold rather than a crisis. Begin between 0.25 and 0.5 percent per position, cap the daily loss at 2 percent, and only raise risk after a month in which the demo results matched the backtest.
-
-**What should I set as the maximum spread?** A level your broker quotes during most of your intended trading hours, usually 20 to 35 points on raw gold pricing. Setting it to zero disables the filter. Setting it far tighter than the market means the robot never opens a trade. Expect the cap to block New York entries around data releases, which is exactly what you want it to do.
-
-**Which sessions should a XAUUSD scalping robot trade?** London from 09:00 and the London to New York overlap through 16:30 London time. Gold's spread is tightest and its ranges are widest in that window, so the cost-to-range ratio is at its best. The evening and Asian hours combine a thin book with spreads of 40 to 90 points, which is too much of a small target.
-
-**Can I trust a set file from a Telegram group or a vendor?** As a starting point, yes, and as an optimum, no. A set file is a list of numbers chosen on someone else's broker, balance and connection, and one line can silently cancel another — a maximum spread of zero switches off the protection that made a 2 percent risk input survivable. Open the file, read every line, compare the fixed lot against the position-sizing code of an open-source bot you can inspect, and change whatever does not fit your account.
-
-**Do these settings work the same on MT4 and MT5?** The rules transfer; the values sometimes do not. MetaTrader 5 can backtest on your broker's real ticks, which makes it the better place to choose a stop distance, while MetaTrader 4 remains fine for execution and has more legacy gold robots. On either platform, check the symbol's digits and point size, because a third decimal place changes what a point is worth.
-
-**Do I need a VPS for gold scalping?** For live trading, almost certainly yes, because latency matters when targets are small. For choosing settings, no. Do the demo phase on your own machine first, learn what the robot does at 14:30 on a data day, and only move to a VPS when you have a configuration worth running. The VPS removes a variable; it does not fix a bad preset.
+If you would rather start from a commercial robot that already carries tested preset ranges, our own gold pages document the specifications and the settings they ship with — [Zenith Matrix EA](/product/zenith-matrix-ea-ai-gold-scalper-for-mt5/) and [Onix Stratos XAUUSD EA](/product/onix-stratos-xauusd-ea-ai-smart-scalper-for-mt5/). The trade-off is symmetrical: you get preset ranges and support, and you give up the ability to read the code and set the numbers yourself. If readable code matters more, [EA31337 Libre](/ea31337-libre-free-download/) and the [geraked MT5 expert advisors](/geraked-mt5-expert-advisors-free-download/) are two more auditable codebases worth testing, and the free [download library](/category/free-forex-ea/) collects the tools we have licence-checked.
 
 ## Your next step, and what to check before a single live dollar
 
@@ -367,6 +335,6 @@ Then download the open-source bot, attach it to a XAUUSD demo chart and read how
 
 Keep the robot on demo for two weeks with the new inputs. Watch one data release and see whether your spread cap did its job. Log the worst day in cash while it is still hypothetical. When the demo behaviour matches your backtest on trade count and average duration, move to live with half the risk you eventually intend to use, and accept that a losing month is a normal part of running any system on a leveraged instrument.
 
-If you would rather study glyphs and grid mechanics before you change a single input, [safe grid settings for MT4](/10-powerful-grid-trading-ea-safe-settings-for-mt4-to-reduce-risk-and-boost-profitability/) and the [gold EA low-risk checklist](/the-7-best-mt4-ea-for-gold-trading-with-low-risk-proven-tools-for-consistent-results/) both start from the same premise as this page: the settings decide more than the sales page. When you are ready to test the idea on a chart, start with the open-source bot, then compare what its risk logic tells you with what your robot was about to do.
+If you would rather study grid mechanics before you change a single input, [safe grid settings for MT4](/10-powerful-grid-trading-ea-safe-settings-for-mt4-to-reduce-risk-and-boost-profitability/) and the [gold EA low-risk checklist](/the-7-best-mt4-ea-for-gold-trading-with-low-risk-proven-tools-for-consistent-results/) both start from the same premise as this page: the settings decide more than the sales page. When you are ready to test the idea on a chart, start with the open-source bot, then compare what its risk logic tells you with what your robot was about to do.
 
 Trading forex and CFDs on gold carries a high risk of loss and is not suitable for everyone. Leverage magnifies losses as readily as gains, gold can gap over weekends, and past performance — including every backtest and every preset discussed here — does not indicate future results. Test on a demo account first and only ever risk money you can afford to lose.

@@ -2,12 +2,12 @@
 wpId: 200034
 title: "Best Gold Scalper EA for MT4/MT5"
 slug: "best-gold-scalper-ea-for-mt4-mt5-the-only-guide-you-need"
-description: "There is no single best gold scalper EA. Here is a free, MIT-licensed XAUUSD scalper with full source code, plus the six checks that expose a bad one."
+description: "No single gold scalper EA is best. Here is a free, GPL-3.0 multi-strategy robot with full source code, plus six checks that expose a bad gold EA before you pay."
 publishedAt: "2026-05-20T12:01:42.000Z"
-updatedAt: "2026-09-28T00:00:00.000Z"
+updatedAt: 2026-10-22
 seo:
   title: "Best Gold Scalper EA for MT4/MT5 2026"
-  description: "There is no single best gold scalper EA. Here is a free, MIT-licensed XAUUSD scalper with full source code, plus the six checks that expose a bad one."
+  description: "No single gold scalper EA is best. Here is a free, GPL-3.0 multi-strategy robot with full source code, plus six checks that expose a bad gold EA before you pay."
   canonical: "https://bestmt4ea.com/best-gold-scalper-ea-for-mt4-mt5-the-only-guide-you-need/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2025/10/1-Gold-Scalping-EA.jpg"
 sourceUrl: "https://bestmt4ea.com/best-gold-scalper-ea-for-mt4-mt5-the-only-guide-you-need/"
@@ -109,9 +109,9 @@ None of those three show up in a screenshot.
 
 ## What a bad gold scalper cost him
 
-Here is a real pattern, told without the brand names.
+Here is an illustrative composite, built from a pattern this kind of product repeats. Daniel is not a real customer.
 
-A trader we will call Daniel saves $2,400 for a gold EA. Not a fortune. Enough that losing it hurts. The vendor charges $299, and before he pays, he does the demo run: two weeks on a demo account, 11% up, 74 trades, one small losing stretch. He feels good. He has done the test everyone recommends.
+Daniel saves $2,400 for a gold EA. Not a fortune. Enough that losing it hurts. The vendor charges $299, and before he pays, he does the demo run: two weeks on a demo account, 11% up, 74 trades, one small losing stretch. He feels good. He has done the test everyone recommends.
 
 He funds a live account with $2,000 and runs the default settings on a VPS he bought for $11 a month. Week one: +$61. Week two: -$34. Week three, a Wednesday with a Federal Reserve statement, gold moves hard for 90 minutes. His equity goes from $2,020 to $1,480 in the space of an hour and a half. Not because the EA had no stop — because it had no stop on the basket. Each leg had been opened as a fresh position with its own take-profit, and the losing leg was reopened at a bigger size each time.
 
@@ -141,7 +141,7 @@ It is an open-source Expert Advisor for MetaTrader 4 and MetaTrader 5, written i
 
 The risk layer is the reason it is on this page. The strategies sit on top of a shared money-management and order layer, so the same sizing and stop rules apply to every strategy you enable. Position size comes from a configurable risk setting rather than a fixed lot, and the order layer is where the stop is placed. Account-level guards are inputs you set, and the project documents them instead of hiding them inside a binary.
 
-None of those features are exotic. What matters is that you can verify them. The project ships as MQL source. Open it in any editor and search for how the lot size is calculated, how the stop is placed, and what happens after a loss. If you do not like any of it, change it and recompile. That is not possible with a compiled `.ex5`.
+None of those features are exotic. What matters is that you can verify them. The project ships as MQL source. Open it in any editor and search for how the lot size is calculated, how the stop is placed, and what happens after a loss. If you do not like any of it, change it and recompile. That is not possible with a compiled binary.
 
 The project publishes its own backtest and optimisation notes, and because it is popular it has been run on many brokers by other traders. Treat every published number as the authors' own claims, not as evidence for your account. They have not been audited on your feed, your spread or your commission, and a result on one broker does not transfer to another. The reason to download this file is not the headline return. It is that you get a complete, readable, risk-capped open-source robot to test against your own broker and your own spread.
 
@@ -149,15 +149,15 @@ Two other honest limits. It is a large framework with a real learning curve — 
 
 ### Why does a readable source file beat a compiled gold EA?
 
-Because a compiled Expert Advisor is a black box that you are handing your account to. The `.ex5` file contains no readable logic. You cannot see the lot sequence, you cannot see whether a losing position is ever left without a stop, and you cannot see whether the entries look ahead at future bars, which is the most common way a backtest gets flattered.
+Because a compiled Expert Advisor is a black box that you are handing your account to. A compiled file contains no readable logic. You cannot see the lot sequence, you cannot see whether a losing position is ever left without a stop, and you cannot see whether the entries look ahead at future bars, which is the most common way a backtest gets flattered.
 
-| What you are checking | Open-source `.mq5` (this download) | Compiled `.ex5` from a vendor |
+| What you are checking | Open-source source code (this download) | Compiled file from a vendor |
 |---|---|---|
 | Lot size calculation | Readable, verifiable, editable | Hidden |
 | Stop-loss on every position | Visible in the order request | Claims only |
 | Martingale or grid logic | Search for it in seconds | Undetectable |
 | Look-ahead in entry logic | Auditable bar by bar | Undetectable |
-| Cost | Free (GPL-3.0 licence) | Typically $99 to $499 |
+| Cost | Free (GPL-3.0 licence) | Usually a paid licence; prices vary |
 | Support | Community issues, no SLA | Usually included |
 | Who fixes a bug | You can | The vendor, if they still trade the account |
 
@@ -199,14 +199,14 @@ The shape is the tell. A real scalper's statement has clusters of losses. A mart
 
 More than most people calculate before they buy. Run the numbers on your own broker, because they change the verdict.
 
-Take a scalper that places 10 trades a day, 20 days a month, at a 25-point round-trip spread on XAUUSD with 0.01 lots. That is 200 trades and 5,000 points of spread paid in a month. At $0.10 per point on a 0.01 lot, the spread bill alone is around $500 — against a $2,000 account. The robot can be right 60% of the time and still finish the month behind.
+Take a scalper that places 10 trades a day, 20 days a month, at a 25-point round-trip spread on XAUUSD with 0.01 lots. That is 200 trades and 5,000 points of spread paid in a month. On XAUUSD quoted to two decimals, one point is one cent per ounce, and a 0.01 lot is one ounce. So each 25-point round trip costs about $0.25. Scale the same 200 trades to 0.10 lots and the spread bill is about $500, a quarter of a $2,000 account. Lot size sets the cost as much as the spread does.
 
-| Trades per month | Round-trip cost | Cost in points | Rough cost on 0.01 lots |
+| Trades per month | Round-trip spread | Spread cost on 0.01 lots | Spread cost on 0.10 lots |
 |---|---|---|---|
-| 50 | 25 points | 1,250 | ~$125 |
-| 100 | 25 points | 2,500 | ~$250 |
-| 200 | 25 points | 5,000 | ~$500 |
-| 200 | 15 points | 3,000 | ~$300 |
+| 50 | 25 points | ~$12.50 | ~$125 |
+| 100 | 25 points | ~$25 | ~$250 |
+| 200 | 25 points | ~$50 | ~$500 |
+| 200 | 15 points | ~$30 | ~$300 |
 
 Now the same logic on a demo account, where the spread is often tighter than your live account will be. This is why a demo that looks flat at best can look strong. The MetaTrader 5 documentation is explicit that during testing the spread is not modelled but taken from historical data, so the backtest inherits whatever spread values the history file carries — which is usually your broker's older, better spread. Before you trust any gold backtest, check what the spread assumptions were.
 
@@ -233,7 +233,7 @@ That arithmetic is unforgiving for a scalper running default settings:
 | Risk per trade | Three losses in one day | Against FTMO 1-Step daily limit (3%) |
 |---|---|---|
 | 0.5% | 1.5% | Survives |
-| 1.0% | 3.0% | Breaches |
+| 1.0% | 3.0% | Reaches the limit |
 | 2.0% | 6.0% | Breaches badly |
 
 This is why the number that matters on a funded account is not the profit factor. It is the daily loss limit, and the discipline to stop trading when it is hit. Our [gold prop firm robot guide](/gold-prop-firm-robot-free-download-7-powerful-secrets-to-maximize-funded-trading-success/) goes deeper on presets and programme rules, and the [top ranking](/top-ranking/) tables compare funded programmes directly.
@@ -262,7 +262,7 @@ The download is the complete repository: the MQL source tree, the licence, and t
 
 This is the section that most download pages skip, and it is the one worth reading.
 
-- **It does not include a compiled `.ex5`.** You compile it in MetaEditor. That takes thirty seconds and means you know exactly which code is running.
+- **It does not include a compiled binary.** You compile it in MetaEditor. That takes thirty seconds and means you know exactly which code is running.
 - **It is not a gold-only scalper.** It is a general multi-strategy robot. It will trade XAUUSD, but nothing in it is tuned to gold's spread and volatility, so expect to configure and test it rather than attach and forget it.
 - **It does not configure itself.** You choose which strategies run, on which symbols and timeframes. The default set is a starting point, not a finished strategy.
 - **It does not have a support desk.** It is a community project with a public repository. Bug reports go to the project or to your own editor.
@@ -271,21 +271,7 @@ This is the section that most download pages skip, and it is the one worth readi
 - **It does not detect your broker's symbol.** You have to check that `XAUUSD` is spelled the same way in Market Watch as the chart you attach it to. Brokers use `XAUUSD.m`, `GOLD` or `XAUUSD_raw`.
 - **It does not fix a bad account size.** Below a few hundred dollars, the minimum lot and the spread cost dominate everything the strategy does.
 
-If you want a licensed, supported alternative with presets and a developer behind it, the site's own gold scalpers are worth reading about on their product pages: [Zenith Matrix EA](/product/zenith-matrix-ea-ai-gold-scalper-for-mt5/), [Nexora Manus EA](/product/zenith-matrix-ea-ai-gold-scalper-for-mt5/), [Mythos Epic EA](/product/mythos-epic-ea-ai-gold-scalper-for-mt5/) and [Onix Stratos XAUUSD EA](/product/onix-stratos-xauusd-ea-ai-smart-scalper-for-mt5/). The trade-off is honest and symmetrical: you get support and tested presets, and you give up the ability to read the code. Read the specifications, check the refund terms, and apply the same six checks above to them as to anything else.
-
-## How do you install and set up a gold scalper EA?
-
-Installation is the easy part. Configuration and testing are where the outcome is decided, and they take longer than the download.
-
-1. **Save the source into the terminal.** Download the repository, then in MetaTrader go to **File → Open Data Folder** and copy the source tree into `MQL5/Experts` for MetaTrader 5, or `MQL4/Experts` for MetaTrader 4.
-2. **Compile it.** Press F4 for MetaEditor, open the main source file, press F7. You should get zero errors and a compiled file beside the source. If the compiler complains, read the messages — they point at line numbers, and this is a readable project.
-3. **Open a XAUUSD chart on demo.** Confirm the symbol against Market Watch. A chart on `GOLD` with an EA expecting `XAUUSD` will simply not trade, and the log will tell you so.
-4. **Choose strategies and set risk before anything else.** Enable only the strategies you intend to test, set the risk percentage to 1.0 or lower, and tighten the account guard if you are on a funded account.
-5. **Enable AutoTrading.** The button in the toolbar must be green and the chart corner should show a smiley face rather than a cross. Watch the Experts tab for the initialisation line and a magic number.
-6. **Test it in the Strategy Tester on real ticks.** One year minimum, real ticks enabled, and the same symbol and period you intend to run. Rough tick modes are for a first sanity check only.
-7. **Forward-test on demo for two to four weeks.** Then compare the demo behaviour to the backtest: number of trades, average duration, worst day. If they differ wildly, the backtest was describing a different market to the one your broker provides.
-
-The short version of these steps is in the install panel above, which generates the page's HowTo data. Do the long version anyway.
+If you want a licensed, supported alternative with presets and a developer behind it, the site's own gold scalpers are worth reading about on their product pages: [Zenith Matrix EA](/product/zenith-matrix-ea-ai-gold-scalper-for-mt5/), [Nexora Manus EA](/product/nexora-manus-ea-ai-gold-scalper-for-mt5/), [Mythos Epic EA](/product/mythos-epic-ea-ai-gold-scalper-for-mt5/) and [Onix Stratos XAUUSD EA](/product/onix-stratos-xauusd-ea-ai-smart-scalper-for-mt5/). The trade-off is honest and symmetrical: you get support and tested presets, and you give up the ability to read the code. Read the specifications, check the refund terms, and apply the same six checks above to them as to anything else.
 
 ## Questions traders ask before they put a gold EA on a chart
 
@@ -309,6 +295,6 @@ That fortnight tells you more about gold scalping than any review page can, incl
 
 Then, and only then, decide whether this robot or any other deserves real money.
 
-For more free, licence-verified tools to run alongside it, the [free download library](/category/free-forex-ea/) is the place to start, and [EA31337 Libre](/ea31337-libre-free-download/) is the strongest open-source multi-strategy EA available if you want a second codebase to study. If you would rather compare licensed options first, the [product pages](/shop/) carry the specifications and the pricing.
+For more free, licence-verified tools to run alongside it, the [free download library](/category/free-forex-ea/) is the place to start, and [EA31337 Libre](/ea31337-libre-free-download/) is a widely used open-source multi-strategy EA if you want a second codebase to study. If you would rather compare licensed options first, the [product pages](/shop/) carry the specifications and the pricing.
 
 Trading forex and CFDs on gold carries a high risk of loss and is not suitable for everyone. Leverage magnifies both directions. Past performance, including every backtest and every track record on this page, does not indicate future results. Test on a demo account first, and only ever risk money you can afford to lose.

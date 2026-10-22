@@ -4,7 +4,7 @@ title: "High Frequency Scalping EA: Latency Is Your Real Edge"
 slug: "gold-high-frequency-scalping-ea-free-download-7-powerful-truths-you-must-know-before-installing"
 description: "High frequency scalping EA claims are really infrastructure claims. See what broker round-trip time, XAUUSD slippage at news and tick volume cost you."
 publishedAt: "2026-02-13T23:06:24.000Z"
-updatedAt: 2026-09-29
+updatedAt: 2026-10-22
 seo:
   title: "High Frequency Scalping EA: Latency Is Your Real Edge"
   description: "High frequency scalping EA claims are really infrastructure claims. See what broker round-trip time, XAUUSD slippage at news and tick volume cost you."
@@ -81,7 +81,7 @@ You do not have that. You have a laptop, a home connection, a broker an ocean aw
 
 Those three questions decide whether a scalping robot helps you or quietly bleeds you. They are also the questions a sales page cannot answer, because answering them means admitting the robot was never the bottleneck.
 
-Meet Sam. Sam is careful. He read the description three times, scanned the file, set a stop loss, and ran the robot on a demo for eleven days. The demo looked fine. So on a Monday he moved the identical settings to a live account with $2,000 and let the "high frequency" gold scalper trade while he was at work.
+Meet Sam, an illustrative composite rather than a real trader, built to show a pattern that repeats often. Sam is careful. He read the description three times, scanned the file, set a stop loss, and ran the robot on a demo for eleven days. The demo looked fine. So on a Monday he moved the identical settings to a live account with $2,000 and let the "high frequency" gold scalper trade while he was at work.
 
 On Wednesday at 13:30 London, US inflation data printed. Gold moved roughly $14 in about ninety seconds. Sam's robot did exactly what it was built to do: it fired. It filled twelve times in about four minutes. Every fill arrived on a spread of 140 to 210 points, because that is what a retail gold feed looks like when everyone is trying to trade at once.
 
@@ -101,7 +101,7 @@ So "high frequency scalping EA" is a marketing phrase, not a technical descripti
 
 ## How long does an order really take to reach your broker?
 
-From the moment your robot decides to trade to the moment you hold a filled, confirmed position, a retail account typically takes 40 to 300 milliseconds round trip. Every hop in that chain is real, none of it is your Expert Advisor's fault, and no input in the settings tab can shorten it.
+From the moment your robot decides to trade to the moment you hold a filled, confirmed position, a retail account typically takes 40 to 300 milliseconds round trip. Every hop in that chain is real, none of it is your Expert Advisor's fault, and no input in the settings tab can shorten it. The millisecond ranges in this section are planning estimates for typical retail setups, not measurements from any broker, so replace them with your own numbers as soon as you can.
 
 Break the trip into its parts and the number stops being mysterious.
 
@@ -139,7 +139,7 @@ Here is the same journey as a budget: once for a home connection, once for a wel
 | Confirmation back to you | 20–60 ms | 1–5 ms | Under 1 ms |
 | **Round trip you design around** | **80–200 ms** | **8–40 ms** | **Under 2 ms** |
 
-Now turn milliseconds into money, because that is the only way the numbers mean anything. Gold can move $3 to $5 per second during a data spike. At $4 per second, 150 milliseconds is about $0.60 of movement, which is 60 points on a two-decimal XAUUSD feed, gone before your order even lands. If your robot targets 80 points, you have handed more than half your target to the trip. Add the spread on top and the trade must overcome the round trip, the spread and the commission just to reach break-even.
+Now turn milliseconds into money, because that is the only way the numbers mean anything. Gold can move several dollars per second during a data spike. At an illustrative $4 per second, 150 milliseconds is about $0.60 of movement, which is 60 points on a two-decimal XAUUSD feed, gone before your order even lands. If your robot targets 80 points, you have handed more than half your target to the trip. Add the spread on top and the trade must overcome the round trip, the spread and the commission just to reach break-even.
 
 That arithmetic does not say scalping is impossible. It says a robot whose profit target is smaller than the distance its own latency can move gold is fighting the clock, and the clock always wins on a home connection.
 
@@ -161,7 +161,7 @@ One test settles the question before you pay for anything. Measure the same roun
 
 Slippage is the gap between the price your order expected and the price it actually received, and on XAUUSD at a US data release it can reach tens of dollars per ounce in a few seconds. It is not a platform glitch. It is the market repricing faster than an order in flight can be filled.
 
-Three things happen at the same time when a major release prints. Liquidity providers widen their quotes or pull them entirely, because none of them wants to be the one holding a stale price. Your broker, which fills you from what those providers quote, passes that widening straight through as a spread of 100 to 250 points on gold. And any order that must execute right now — a market order, or a stop that has just become a market order — takes whatever price is next in line, which can be far from the one on your screen.
+Three things happen at the same time when a major release prints. Liquidity providers widen their quotes or pull them entirely, because none of them wants to be the one holding a stale price. Your broker, which fills you from what those providers quote, passes that widening straight through to you. The spread ranges below are planning figures from typical retail quotes, not broker-published data, so check your own broker's quotes before you size a target. And any order that must execute right now — a market order, or a stop that has just become a market order — takes whatever price is next in line, which can be far from the one on your screen.
 
 Gold is worse than the major currency pairs here for two reasons. It has fewer liquidity providers, so there is less competition to keep quotes tight, and it can gap, meaning price can jump clean across a level without trading in between. A stop your broker shows at $2,650 can fill at $2,644, and those six dollars of difference are the slippage. Multiply that across a robot that trades many times an hour and the cost becomes the strategy.
 
@@ -191,7 +191,7 @@ Why that matters to a scalper is straightforward. If your broker's feed sends fe
 
 One more warning sits inside this. The spread you see is the best price from one or more providers at that instant; the depth behind it — how much you could buy before the price moves — is invisible in MetaTrader. Tick volume gives you a rough sense of that depth. It does not give you the order book, and no retail platform does.
 
-Here is the practical test, and it takes one quiet session. Open the same gold chart on two broker demos side by side, leave both on the same minute, and compare the tick count and the spread you were quoted. You will rarely see identical numbers. One broker will have printed 1,800 ticks in that minute and the other 900, and the one with the denser feed is the one that showed you a stop being approached rather than a price that jumped past it. The difference is not cosmetic. It is the same reason two traders running identical robots can post different results: they were not trading the same feed, so they were not trading the same market.
+Here is the practical test, and it takes one quiet session. Open the same gold chart on two broker demos side by side, leave both on the same minute, and compare the tick count and the spread you were quoted. You will rarely see identical numbers. For example, one broker might print 1,800 ticks in that minute and the other 900, and the one with the denser feed is the one that showed you a stop being approached rather than a price that jumped past it. The difference is not cosmetic. It is the same reason two traders running identical robots can post different results: they were not trading the same feed, so they were not trading the same market.
 
 If you use tick volume to judge a strategy, use it the honest way. Compare brokers against each other rather than against a published figure. Treat a falling tick count as a warning that the feed is thinning out. And never let a backtest that ran on one feed convince you the result transfers to another, because that backtest simulated one broker's quotes, not gold itself.
 

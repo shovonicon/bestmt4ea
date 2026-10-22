@@ -3,7 +3,7 @@ title: "EA31337 Libre: Free, Readable MT4/MT5 EA Framework"
 slug: "ea31337-libre-free-download"
 description: "EA31337 Libre is a free, GPL-3.0, open-source multi-strategy MetaTrader 4 and 5 framework. See what 35+ readable strategies give you — and what they do not."
 publishedAt: 2026-09-28
-updatedAt: 2026-09-29
+updatedAt: 2026-10-22
 categories:
   - "Free EA"
 categoryPaths:
@@ -19,7 +19,7 @@ keyTakeaways:
   - "A framework, not a product: 35+ strategies you can switch on or off, each reading its own timeframe independently."
   - "Full MQL source for MetaTrader 4 and MetaTrader 5, so you can audit the risk logic instead of trusting a compiled file."
   - "The author states plainly that it is not suitable for real trading without relevant knowledge — no presets, no tuning, no commercial support."
-  - "Free to download from GitHub (about 257 stars and 110 forks), with community help through discussions, issues and a Telegram channel."
+  - "Free to download from GitHub, with community help through discussions, issues and a Telegram channel. Check the repository for current activity."
 faqs:
   - question: "Is EA31337 Libre really free to use?"
     answer: "Yes. It is released under GNU GPL-3.0, which lets you use, modify and redistribute it for any purpose. The single condition is that any modified version you distribute must also stay free under the same licence."
@@ -72,21 +72,13 @@ download:
 
 Most "free EA" downloads are a closed box.
 
-You get a compiled `.ex4` or `.ex5` file, a screenshot of someone else's equity curve, and a promise. You cannot read the code that decides when to buy. You cannot see how much it risks on a trade. You cannot tell whether it holds one position or quietly stacks twenty against you.
+You get a compiled binary, a screenshot of someone else's equity curve, and a promise. You cannot read the code that decides when to buy. You cannot see how much it risks on a trade. You cannot tell whether it holds one position or quietly stacks twenty against you.
 
 That is the problem this page is about. The free expert advisors most traders find are not tools you can inspect — they are black boxes with a sales page bolted on. And a black box inside your trading account is not a shortcut. It is a liability you cannot see.
 
-## The week a black-box EA turns against you
+## What does a black-box EA look like when it goes wrong?
 
-Picture a sequence that plays out somewhere every week.
-
-You find a robot in a Telegram group. It is free, the screenshots look strong, and a few people in the chat say it "prints". You put it on a $2,000 live account, because demo felt slow and you wanted to see real fills.
-
-For six days it behaves. Small wins, small losses, nothing dramatic. On day seven, gold (XAUUSD) makes a clean run in one direction and refuses to come back. The robot has been holding every losing position it opened, waiting for a pullback and adding to the pile. Your drawdown jumps from a mild 3% to a brutal 38% in an afternoon, and you close the worst of it by hand. The rest arrives on day ten, when the robot simply stops opening trades. It was a fourteen-day build that quietly expired.
-
-Here is what you cannot do at any point in that story. You cannot open the file and read the rule that says "keep adding to losing trades". You cannot confirm whether the time limit was in the code or in your head. You cannot check the position sizing, the stop logic, or the maximum number of open trades. There is nothing to read, so there is nothing to verify.
-
-The account size and the percentages are illustrative. The pattern is not. Position stacking and quiet expiry dates are two of the most common things hidden inside a compiled expert advisor, and the only reliable way to find them is to read the source. You cannot read source that was never shipped.
+This is an illustrative composite, built from the failure pattern common to closed robots, not a report about a specific trader. A free robot runs for a few quiet days, then a strong gold (XAUUSD) move arrives. The robot keeps adding to losing positions, the drawdown deepens, and the robot stops trading without warning. Nothing in the screenshots showed any of it. Because the file was compiled, the rule that caused the damage could not be read, so nothing could be checked before the loss.
 
 ## The cost that outlasts the deposit
 
@@ -112,7 +104,7 @@ Concrete numbers, because they matter more than adjectives:
 - The analysis is built on standard technical indicators you already recognise — moving averages, RSI, Bollinger Bands, MACD, Stochastic and others.
 - The code is **compatible with both MQL4 and MQL5**, so the same project runs on either terminal.
 - You are free to write your own custom strategies and add them to the set.
-- The repository sits at roughly **257 stars and 110 forks** on GitHub, published as a public template you can copy.
+- The repository is public on GitHub, so you can copy it as a template and check its current activity yourself.
 
 What you are holding, then, is not a single expert advisor. It is a framework with a stack of strategies wired in. That word — framework — is the whole point of this page, and it is the difference between a tool you own and a tool you rent.
 
@@ -174,16 +166,14 @@ None of this makes the strategies good. It makes them *modular*, which means you
 
 Answer first: it does not give you a tuned edge, ready-made presets, or commercial support. The author says so directly — the project is intended for education and research, and is not suitable for real trading without relevant knowledge.
 
-That warning is worth quoting rather than paraphrasing:
-
-> "You can freely use this project for education or research purposes. However, this project is not suitable for the real trading without relevant knowledge."
+The project's README states that it is for education and research and is not suitable for real trading without relevant knowledge.
 
 Read that as a feature, not a flaw. A vendor who told you the truth this plainly would sell fewer copies. Here is what each part of it costs you in practice.
 
 - **No tuned edge.** The strategies are raw building blocks. Nothing is optimised for your broker, your symbol, or your timeframe. The edge, if there is one, is whatever you create by testing and combining.
 - **No presets.** There is a `sets/optimize` folder for optimiser inputs, but you generate your own set files. There is no set-and-forget configuration, and no "install and profit" story.
 - **No commercial support.** Help comes from GitHub discussions, issues, and a Telegram channel. That community is genuinely useful, but there is no service-level promise and no guarantee anyone answers in your timezone.
-- **No plug-and-play for live accounts.** The author recommends MetaTrader 5 for backtesting and says plainly that backtesting cannot reliably simulate future outcomes.
+- **No plug-and-play for live accounts.** The project recommends MetaTrader 5 for backtesting, and backtesting cannot reliably simulate future outcomes.
 - **No warranty.** Like all GPL software, it is provided as-is. If it loses money, the licence and the author say the same thing: the outcome is yours.
 
 | What it gives you | What it does not give you |
@@ -228,7 +218,7 @@ The practical reading:
 - If you want to **sell a modified EA as a closed product**, GPL-3.0 is the wrong licence for you. Choose a permissive one, or open your fork.
 - If you want a **permanent, inspectable tool you can keep**, copyleft is a feature, because nobody can take the community's work, improve it, and close it off.
 
-If you want to compare licences in the wild, the [geraked MT5 collection](/geraked-mt5-expert-advisors-free-download/) is MIT, the [TeknoTrader MQL4 indicators](/teknotrader-mql4-indicators-free-download/) are Apache-2.0, and Libre is GPL-3.0. Three permissive-to-copyleft examples, all free, all readable.
+If you want to compare licence terms across free downloads, read each repository's licence file before you use it, and see how the [TeknoTrader MQL4 indicators](/teknotrader-mql4-indicators-free-download/) page handles its Apache-2.0 terms. Always check the licence on the specific project, not the category it sits in.
 
 One more clause matters to anyone trading money: GPL-3.0 disclaims warranty. The software comes as-is, and no one is liable for what it does on your account. Read that as the honest baseline, not a technicality.
 
@@ -283,7 +273,7 @@ Every one of these is avoidable with demo work and a little reading. None of the
 It is for people who want to build understanding, not buy it. Specifically:
 
 - **MQL developers** who want a working multi-strategy framework to study or extend.
-- **Traders learning automation** who would rather read real source than trust a black-box `.ex5`.
+- **Traders learning automation** who would rather read real source than trust a black-box binary.
 - **Researchers** combining strategies and wanting a free, licence-clear base to test against.
 
 It is not for you if:

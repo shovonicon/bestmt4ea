@@ -4,7 +4,7 @@ title: "Gold M1 Grid EA: Safest Right Before It Blows Up"
 slug: "gold-1-minute-grid-forex-ea-reviews-7-powerful-truths-you-must-know-before-investing"
 description: "Grid and martingale gold EAs on M1 look safest right before they are most dangerous. See what the win rate hides, plus a free tool to size the worst case."
 publishedAt: "2026-02-25T10:02:06.000Z"
-updatedAt: 2026-09-29
+updatedAt: 2026-10-22
 seo:
   title: "Gold 1 Minute Grid EA Reviews: The Risk Behind 92% Wins"
   description: "Grid and martingale gold EAs on M1 look safest right before they are most dangerous. See what the win rate hides, plus a free tool to size the worst case."
@@ -99,9 +99,9 @@ So here is the reframe this page is built on: with a grid, a calm statement is n
 
 ## What does that look like in one real account?
 
-Names and numbers keep changing, so use the shape rather than the digits.
+This is an illustrative composite, not a real trader's account. Use the shape rather than the digits.
 
-A trader we will call Marek saves $3,000. He finds a gold 1-minute grid EA with 640 demo trades, a 91% win rate, and a maximum floating drawdown of 6% on a demo account over 31 days. He pays $180 for the licence.
+Marek, a composite trader, saves $3,000. He finds a gold 1-minute grid EA with 640 demo trades, a 91% win rate, and a maximum floating drawdown of 6% on a demo account over 31 days. He pays $180 for the licence.
 
 He funds a live account with $2,500, rents a VPS for $12 a month, and runs the defaults: 0.01 lots to start, a 1.6 multiplier after each losing level, a grid step of 150 points, and a basket take-profit of $12 per cycle. No stop-loss on individual trades. Maximum open trades: unlimited.
 
@@ -186,6 +186,8 @@ Do this arithmetic with your own EA's numbers before you fund it. You need three
 ## Which settings actually reduce grid danger?
 
 Four settings do most of the work, and the rest are decoration. If you cannot change these four, you are not managing the system, you are renting it.
+
+The "typical" column is an unverified, illustrative description of common grid setups, not measured data from any product. Check your own EA's inputs.
 
 | Setting | Typical gold M1 grid default | Honest value | Why it changes the outcome |
 |---|---|---|---|

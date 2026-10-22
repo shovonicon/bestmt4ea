@@ -4,7 +4,7 @@ title: "Gold Recovery EA: Gold Buster MT4 Margin Math"
 slug: "gold-buster-mt4-expert-advisor-free-download-powerful-profitable-trading-guide"
 description: "A gold recovery EA examined honestly: how a recovery multiplier compounds lot size, what balance each ladder step demands, and where gold ladders break."
 publishedAt: "2026-02-13T21:35:31.000Z"
-updatedAt: 2026-09-29
+updatedAt: 2026-10-22
 seo:
   title: "Gold Buster MT4 EA: Free XAUUSD Robot Review & Setup 2026"
   description: "Gold Buster MT4 EA and other gold recovery systems, with the maths left in: lot multipliers, floating equity, margin levels and the balance each step needs."
@@ -172,7 +172,7 @@ Here is the whole thing worked through: a $2,000 account, base lot 0.01, multipl
 
 Read the last two rows again. Step 10 sits at a margin level of 103 per cent, which means almost the entire account is tied up as margin on open losing positions. Step 11 needs more margin than the account has equity, so the broker never gets to open it — the stop-out fires first and closes the basket at a loss of roughly a thousand dollars.
 
-Now notice how far gold had to move for that: $15.00. Not a crash, not a crisis, not a flash event. A $15 range in XAUUSD happens on an ordinary Tuesday, and gold regularly covers $40 or more around US inflation and rate decisions.
+Now notice how far gold had to move for that: $15.00. Not a crash, not a crisis, not a flash event. A $15 range in XAUUSD happens on an ordinary Tuesday, and wider swings around inflation and rate decisions are common enough that you should plan for them.
 
 The next table turns the same ladder into a funding requirement using the formula above. This is the number people never compute before installing the EA.
 
@@ -200,7 +200,7 @@ Gold's contract size, spread behaviour and gap risk all push a recovery ladder h
 
 Start with contract size. Because gold's notional per lot is large and its price is high, the same 0.01 base lot carries far more value than it does on a currency pair. Traders who are used to sizing 0.01 lots on EURUSD and then switching to XAUUSD without recalculating are effectively trading several times their intended risk.
 
-Then add spread. Gold spreads are quoted in cents, and a normal $0.20 spread per ounce is $20 per lot round trip. Around US data releases, that can widen to $1.00 or more per ounce, which is $100 per lot. On a basket holding five lots, a spread widening alone can turn a break-even exit into a four-figure loss, and it happens at exactly the moment your ladder is at its deepest. Choosing a broker with genuinely tight gold spreads is not a minor optimisation here — if you want to compare account types on that basis, our [broker comparison](/best-forex-brokers/) covers what to look for.
+Then add spread. Gold spreads are quoted in cents. As an illustration only, a spread of $0.20 per ounce is $20 per lot round trip. Around US data releases it can widen several times over, and the figure to use is your own broker's quoted spread, not this example. On a basket holding five lots, a spread widening alone can turn a break-even exit into a four-figure loss, and it happens at exactly the moment your ladder is at its deepest. Choosing a broker with genuinely tight gold spreads is not a minor optimisation here — if you want to compare account types on that basis, our [broker comparison](/best-forex-brokers/) covers what to look for.
 
 Swap is the third cost. Holding a gold basket overnight attracts financing, and on a large basket that charge is substantial. A recovery system's whole premise is holding positions open, so you are paying the overnight cost on the exact positions you are least able to afford it on.
 
@@ -226,9 +226,9 @@ Then check your broker's stop-out level and whether gold is on a separate margin
 
 ## How do you model all of this before you risk money?
 
-Use a risk percentage to convert the numbers in your settings file into dollars before you fund anything. That is the download on this page: an open-source MetaTrader 4 expert advisor that sizes each position from a risk percentage of your balance and a hard stop, and whose MQL4 source you can read before you run it.
+Use a risk percentage to convert the numbers in your settings file into dollars before you fund anything. A useful tool for that job is FreeExpertAdvisor, an open-source MetaTrader 4 expert advisor that sizes each position from a risk percentage of your balance and a hard stop, and whose MQL4 source you can read before you run it.
 
-The tool is FreeExpertAdvisor by ersingencturk, released under the BSD-3-Clause licence, with the source published on GitHub. It does place trades, and its design is the opposite of the ladder on this page: one position at a time, a real stop loss on every trade, and no martingale or averaging layer that grows the size after a loss. Its dynamic-lots input reads your risk percentage, its hard-stop input sets the distance, and the lot size follows from those two. That is the arithmetic a recovery ladder quietly skips.
+FreeExpertAdvisor is by ersingencturk, released under the BSD-3-Clause licence, with the source published on GitHub. The bundle linked in this page's download is a different, third-party collection with an unverified licence, so check each file in it before you use it. It does place trades, and its design is the opposite of the ladder on this page: one position at a time, a real stop loss on every trade, and no martingale or averaging layer that grows the size after a loss. Its dynamic-lots input reads your risk percentage, its hard-stop input sets the distance, and the lot size follows from those two. That is the arithmetic a recovery ladder quietly skips.
 
 | Component | Detail |
 | --- | --- |
@@ -268,10 +268,10 @@ That is the whole point of this page, and it is also the reason the download is 
 
 ## Download the file, then size your own limit
 
-Do the arithmetic before you fund anything. Download the open-source expert advisor, attach it to a demo chart on a low-spread account, and watch how it sizes one position from a risk percentage and a fixed stop — then take the ladder apart step by step with the numbers above until you find the step your balance cannot pay for.
+Do the arithmetic before you fund anything. Get the FreeExpertAdvisor source from its GitHub repository, or check the bundle on this page file by file, then attach the expert to a demo chart on a low-spread account, and watch how it sizes one position from a risk percentage and a fixed stop — then take the ladder apart step by step with the numbers above until you find the step your balance cannot pay for.
 
 If that step arrives before the move your account has to survive, the system is not for that account. Reduce the base lot, or walk away, or pick a design that does not stake the whole balance on the market coming back.
 
-The download is free, BSD-3-Clause licensed, published by its original author, and you can read the source before you compile it. It will not make anyone money on its own. What its inputs do is tie every position to a risk percentage chosen in advance, and that is the habit a recovery ladder skips.
+The FreeExpertAdvisor project is BSD-3-Clause licensed, and you can read its source before you compile it. Treat the bundle on this page as unverified until you have checked it. Neither one will make anyone money on its own. What its inputs do is tie every position to a risk percentage chosen in advance, and that is the habit a recovery ladder skips.
 
 Start on a demo account. Keep the risk per trade near 1 per cent. And remember the sentence this page opened with: a recovery system is a bet that the market returns before your margin does.

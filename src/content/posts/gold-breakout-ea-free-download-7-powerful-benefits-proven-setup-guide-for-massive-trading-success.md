@@ -4,7 +4,7 @@ title: "Gold Breakout EA Free Download: Filter False Breaks"
 slug: "gold-breakout-ea-free-download-7-powerful-benefits-proven-setup-guide-for-massive-trading-success"
 description: "A gold breakout EA is only as good as the filter around the break. Download an open-source XAUUSD EA and learn close confirmation, retests and displacement."
 publishedAt: "2026-02-13T20:03:48.000Z"
-updatedAt: 2026-09-29
+updatedAt: 2026-10-22
 seo:
   title: "Gold Breakout EA Free Download: Filter False Breaks"
   description: "A gold breakout EA is only as good as the filter around the break. Download an open-source XAUUSD EA and learn close confirmation, retests and displacement."
@@ -33,7 +33,7 @@ keyTakeaways:
   - "Risk 0.5–1% per trade, size the position from ATR, run it on a demo first, and expect losing streaks and drawdown as normal."
 faqs:
   - question: "Is a gold breakout EA really free to download here?"
-    answer: "Yes. The download linked on this page is Nyao Scalper MT5, an open-source EA released under the BSD-3-Clause licence by elrizwiraswara. You can read the full MQL5 source, compile it yourself and use it without paying. There is no paid tier and no hidden upsell; the licence asks only that the copyright and credit stay in place if you share it."
+    answer: "Yes. The Nyao Scalper MT5 source discussed in this article is an open-source EA released under the BSD-3-Clause licence by elrizwiraswara. You can read the full MQL5 source, compile it yourself and use it without paying. There is no paid tier and no hidden upsell; the licence asks only that the copyright and credit stay in place if you share it."
   - question: "Why does gold fake breakouts more often than EURUSD or GBPUSD?"
     answer: "Gold is a thinner, more news-driven market with clustered stop orders and a wider spread. Stops sit just beyond obvious highs and lows, so a brief push through a level can trigger them and then reverse with no follow-through. That stop-run behaviour is far more common on XAUUSD than on the deep, heavily traded FX majors."
   - question: "What is the difference between a wick break and a close break?"
@@ -95,17 +95,11 @@ If you have run any gold EA and watched it win in a backtest then lose live, thi
 
 ## The agitate: one Tuesday, one range, seven false breaks
 
-Picture a trader — we will call him Dan, because a real one told me this story on a forum and the details are his. Dan runs a breakout EA on XAUUSD. It is set to mark the Asian session range, wait for the London open, and take the first candle that closes outside it. Simple, logical, and it backtested beautifully.
+Consider an illustrative composite, not a real trader's account: a trader we will call Dan, whose breakout EA marks the Asian range and takes the first candle that closes outside it. On one Tuesday that range is 14 points wide, from 2,347 to 2,361. At the London open price pokes to 2,363, the EA goes long, and the candle closes back at 2,359: a full stop-out. The same shape repeats below the range, and by the New York open the level has broken and un-broken six times. The day ends down, on a strategy that had backtested well.
 
-Tuesday. The Asian range is 14 points wide, from 2,347 to 2,361. London opens. Price pokes to 2,363, then 2,364. Dan's EA sees the break and goes long. The candle closes back at 2,359. Stop hit for a full loss.
+What the composite trader never saw was the spread. The broker's XAUUSD spread, which sat around 20 points in Asia, was printing 90 to 150 points in the first minutes of the London open. The candle that "broke" 2,363 was partly asking price, not buyers. The level had not broken. The ask had jumped. The EA executed a trade that a human watching the bid would never have taken.
 
-Half an hour later the same shape repeats below the range. The EA shorts. Price reverses up. Another stop.
-
-By the New York open, Dan has taken four losses on a level that has broken and un-broken six times. Then, at 14:30 server time, gold finally breaks and runs 40 points — and the EA is in it, but it gives back most of the win on the next chop. Dan's account ends the day down, on a strategy that "worked" on ten years of data.
-
-What Dan never saw was the spread. His broker's XAUUSD spread, which sat around 20 points in Asia, was printing 90 to 150 points in the first minutes of the London open. The candle that "broke" 2,363 was partly asking price, not buyers. The level had not broken. The ask had jumped. The EA executed a trade that a human watching the bid would never have taken.
-
-Dan did not have a strategy problem. He had a measurement problem, and it cost him a week of losses before he understood it.
+The composite trader did not have a strategy problem. He had a measurement problem.
 
 ## The solution: filter the break, not the level
 
@@ -211,11 +205,11 @@ Now watch what that does to a breakout. Your level is drawn from price action, w
 - When the spread snaps back to normal, price "reverses" through the level — because it never left.
 - Your stop sits behind the level, and the reversal takes it out.
 
-That is Dan's Tuesday, and it happens on gold constantly.
+That is the composite Tuesday above, and it happens on gold constantly.
 
 There are two practical defences, and a filtered EA should use both.
 
-**A spread filter.** Refuse to trade when the live spread exceeds a sane cap for XAUUSD — a fixed ceiling in points, or better, a multiple of the current ATR. If the spread is 90 points and your average is 25, the market is not tradeable; stand aside. This one rule alone would have skipped every one of Dan's open-window entries.
+**A spread filter.** Refuse to trade when the live spread exceeds a sane cap for XAUUSD — a fixed ceiling in points, or better, a multiple of the current ATR. If the spread is 90 points and your average is 25, the market is not tradeable; stand aside. This one rule alone would have skipped every one of the composite trader's open-window entries.
 
 **Open-window exclusion.** Do not let the EA trade in the first minutes of a session. Give the quotes time to settle — commonly 5 to 15 minutes after the London and New York opens — and only then evaluate breakouts. You trade the settled market, not the transition.
 
@@ -262,9 +256,9 @@ Before any of this touches a live account, walk it forward on a demo. Run the fi
 
 ## So what is in the download, and what does it actually do?
 
-The download is **Nyao Scalper MT5**, an open-source MQL5 expert advisor released under the BSD-3-Clause licence by **elrizwiraswara**. It is not a black box — you get the full `.mq5` source, so every filter below is something you can read, check and change yourself.
+The EA this article examines is **Nyao Scalper MT5**, an open-source MQL5 expert advisor released under the BSD-3-Clause licence by **elrizwiraswara**. It is not a black box — its full MQL5 source is public, so every filter below is something you can read, check and change yourself.
 
-You can grab it from the [Nyao Scalper MT5 repository on GitHub](https://github.com/elrizwiraswara/nyao_scalper_mt5), or via the download card on this page. Worth knowing what you are getting before you install it.
+You can grab it from the [Nyao Scalper MT5 repository on GitHub](https://github.com/elrizwiraswara/nyao_scalper_mt5). Worth knowing what you are getting before you install it.
 
 ### What the EA actually is
 
@@ -283,7 +277,7 @@ Because the source is there, you can layer the two filters that matter most on g
 |---|---|
 | Author | elrizwiraswara |
 | Licence | BSD-3-Clause — free to use, modify and share with credit |
-| Source | MQL5 source (`.mq5`) |
+| Source | MQL5 source code |
 | Platform | MetaTrader 5 |
 | Symbol | Any symbol your broker lists, XAUUSD included |
 | Style | Short-term scalping |
@@ -293,14 +287,14 @@ Because the source is there, you can layer the two filters that matter most on g
 
 BSD-3-Clause means you can use it on a live account, change it, and pass it on, provided the copyright notice and licence stay with it. Attribute the work to elrizwiraswara. There is no paid version and no upsell.
 
-If you want to compare it against other gold bots before you commit, our round-up of [the best MT4 EAs for gold trading](/the-7-best-mt4-ea-for-gold-trading-with-low-risk-proven-tools-for-consistent-results/) and the broader [best MT4 EA library](/best-mt4-ea/) put it in context, and [gold_hitter](/gold-hitter-ea-mt4-free-download-powerful-2026-guide-to-safe-setup-profitable-trading/) is another free gold EA worth reading about.
+If you want to compare it against other gold bots before you commit, our round-up of [the best MT4 EAs for gold trading](/the-7-best-mt4-ea-for-gold-trading-with-low-risk-proven-tools-for-consistent-results/) and the broader [best MT4 EA library](/best-mt4-ea/) put it in context, and [Gold Hitter EA](/gold-hitter-ea-mt4-free-download-powerful-2026-guide-to-safe-setup-profitable-trading/) is another free gold EA worth reading about.
 
 ### What this EA does not do
 
 Honesty here saves you money, so read this part twice.
 
 - **It does not promise profit.** No EA can. Gold is volatile, losing streaks happen, and your capital is at risk on every trade. Test thoroughly on a demo before going live, and that is good advice.
-- **It does not run on MT4.** The source is MQL5 and compiles on MetaTrader 5. Porting an `.mq5` to MT4 is a rewrite, not a drag-and-drop.
+- **It does not run on MT4.** The source is MQL5 and compiles on MetaTrader 5. Porting the MQL5 code to MT4 is a rewrite, not a drag-and-drop.
 - **It is not a signal service or a managed account.** You install it, you own the decisions, you carry the risk.
 - **It is not tuned for your broker.** Spread, commission and server time differ between brokers and change how the filters behave. A session filter set to the wrong server time trades the wrong session.
 - **It is not a dedicated breakout EA.** It scalps short-term moves; it does not draw session ranges for you. Layer the close-confirmation and spread filters above on top of it, or read it as a working example of the same discipline.
