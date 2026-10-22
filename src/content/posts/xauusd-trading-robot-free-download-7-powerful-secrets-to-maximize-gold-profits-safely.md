@@ -72,14 +72,14 @@ installSteps:
   - name: "Backtest on real ticks, then forward-test on demo"
     text: "Run at least a year in the Strategy Tester, then leave it on demo for four weeks. Record every trade and compare the demo behaviour against the backtest before you consider a live account."
 download:
-  origin: "opensource"
-  license: "Apache-2.0"
-  licenseUrl: "https://www.apache.org/licenses/LICENSE-2.0"
+  origin: "shared"
+  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
   author: "EarnForex"
   sourceUrl: "https://github.com/EarnForex/News-Trader"
   version: "latest"
   platform: "MT4/MT5"
-  externalUrl: "https://github.com/EarnForex/News-Trader"
+  fileSize: "about 577 MB in three zip parts"
+  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
   updatedAt: "2026-09-29"
 ---
 

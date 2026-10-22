@@ -66,14 +66,14 @@ installSteps:
   - name: "Check the total against your own arithmetic on demo"
     text: "Open a couple of demo positions on your broker's XAUUSD symbol, then compare the combined risk figure the indicator prints against your own hand calculation. That number, not a vendor's drawdown claim, is the exposure you are really carrying."
 download:
-  origin: "opensource"
-  license: "Apache-2.0"
-  licenseUrl: "https://www.apache.org/licenses/LICENSE-2.0"
+  origin: "shared"
+  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
   author: "EarnForex"
   sourceUrl: "https://github.com/EarnForex/RiskCalculator"
   version: "latest"
   platform: "MT4/MT5"
-  externalUrl: "https://github.com/EarnForex/RiskCalculator"
+  fileSize: "about 577 MB in three zip parts"
+  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
   updatedAt: "2026-09-28"
 ---
 

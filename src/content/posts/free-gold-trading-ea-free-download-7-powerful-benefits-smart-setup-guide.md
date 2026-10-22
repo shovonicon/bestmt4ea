@@ -61,14 +61,14 @@ installSteps:
   - name: "Attach to a demo chart"
     text: "Drag the EA onto a chart for the symbol you want — XAUUSD included — on a demo account, enable AutoTrading, and run it through at least one major scheduled release before a live account is even a question."
 download:
-  origin: "opensource"
-  license: "Apache-2.0"
-  licenseUrl: "https://www.apache.org/licenses/LICENSE-2.0"
+  origin: "shared"
+  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
   author: "EarnForex"
   sourceUrl: "https://github.com/EarnForex/News-Trader"
   version: "latest"
   platform: "MT4/MT5"
-  externalUrl: "https://github.com/EarnForex/News-Trader"
+  fileSize: "about 577 MB in three zip parts"
+  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
   updatedAt: 2026-09-29
 ---
 

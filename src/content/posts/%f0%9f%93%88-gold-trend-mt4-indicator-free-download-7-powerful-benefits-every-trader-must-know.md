@@ -67,14 +67,14 @@ installSteps:
   - name: "Run the repainting test before you trust it"
     text: "Replay the chart bar by bar in the Strategy Tester visual mode and log where the channel lines sit, then compare against the lines on the closed history. Test on demo before any live use."
 download:
-  origin: "opensource"
-  license: "Apache-2.0"
-  licenseUrl: "https://www.apache.org/licenses/LICENSE-2.0"
+  origin: "shared"
+  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
   author: "EarnForex"
   sourceUrl: "https://github.com/EarnForex/Channel-Pattern-Detector"
   version: "latest"
   platform: "MT4/MT5"
-  externalUrl: "https://github.com/EarnForex/Channel-Pattern-Detector"
+  fileSize: "about 577 MB in three zip parts"
+  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
   updatedAt: "2026-09-29"
 ---
 

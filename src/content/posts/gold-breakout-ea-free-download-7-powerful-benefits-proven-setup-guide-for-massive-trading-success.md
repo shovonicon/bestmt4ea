@@ -66,14 +66,14 @@ installSteps:
   - name: "Attach to a XAUUSD chart and set risk"
     text: "Drag the EA onto a XAUUSD chart, allow AutoTrading, and set the risk and lot inputs to about 1% before you test it on a demo account, then layer the spread cap and open-window rules described above on top."
 download:
-  origin: "opensource"
-  license: "BSD-3-Clause"
-  licenseUrl: "https://opensource.org/license/bsd-3-clause"
+  origin: "shared"
+  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
   author: "elrizwiraswara"
   sourceUrl: "https://github.com/elrizwiraswara/nyao_scalper_mt5"
   version: "latest"
   platform: "MT5"
-  externalUrl: "https://github.com/elrizwiraswara/nyao_scalper_mt5"
+  fileSize: "about 577 MB in three zip parts"
+  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
   updatedAt: 2026-09-29
 ---
 

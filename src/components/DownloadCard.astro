@@ -113,6 +113,17 @@ const fmt = (d?: Date) =>
   </div>
 
   {
+    isShared && download.author && download.sourceUrl && (
+      <p class="mt-4 text-xs leading-6 text-[var(--color-ink-dim)]">
+        <span class="text-[var(--color-ink-soft)]">Related open-source project:</span>{' '}
+        <a href={download.sourceUrl} rel="noopener nofollow" class="text-emerald-300 hover:text-emerald-200">
+          {download.author} on GitHub
+        </a>
+      </p>
+    )
+  }
+
+  {
     isShared && (
       <p class="mt-4 text-xs leading-6 text-[var(--color-ink-dim)]">
         Own the rights to this file?{' '}

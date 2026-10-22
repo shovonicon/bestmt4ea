@@ -65,14 +65,14 @@ installSteps:
   - name: "Read the risk logic and demo-test it"
     text: "Because the source is open, read how it sizes and stops positions, then run it on a demo account for the first four weeks before it touches real money."
 download:
-  origin: opensource
-  license: "GPL-3.0"
-  licenseUrl: "https://www.gnu.org/licenses/gpl-3.0.html"
+  origin: "shared"
+  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
   author: "EA31337"
   sourceUrl: "https://github.com/EA31337/EA31337"
   version: "latest"
   platform: "MT4/MT5"
-  externalUrl: "https://github.com/EA31337/EA31337"
+  fileSize: "about 577 MB in three zip parts"
+  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
 ---
 
 You are one payment away from handing real money to software you cannot inspect. Before you click buy, you want one thing: something you can check. For **The Gold Reaper**, a commercial gold Expert Advisor sold for MetaTrader 4 and MetaTrader 5, we went looking for that something and could not find it. No third-party account. No named broker. No live-versus-demo answer. No date range. No trade count. No maximum equity drawdown tied to a real account.

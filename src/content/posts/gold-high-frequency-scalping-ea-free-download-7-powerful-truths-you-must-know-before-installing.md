@@ -62,14 +62,14 @@ installSteps:
   - name: "Compare the log against your broker"
     text: "Run the build for a week on a demo login and write down your round trip and slippage each day. That record is the measurement every sales page omits."
 download:
-  origin: "opensource"
-  license: "MIT"
-  licenseUrl: "https://opensource.org/license/mit"
+  origin: "shared"
+  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
   author: "geraked"
   sourceUrl: "https://github.com/geraked/metatrader5"
   version: "latest"
   platform: "MT5"
-  externalUrl: "https://github.com/geraked/metatrader5"
+  fileSize: "about 577 MB in three zip parts"
+  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
   updatedAt: "2026-09-29"
 ---
 

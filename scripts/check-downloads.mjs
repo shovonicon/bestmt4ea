@@ -86,7 +86,7 @@ for (const file of readdirSync(POSTS_DIR).filter((f) => f.endsWith('.md'))) {
     if (!/^https?:\/\/\S+$/i.test(String(download.externalUrl))) {
       fail(`externalUrl is not an absolute URL: ${download.externalUrl}`);
     }
-    uses.push({ slug, source: String(download.externalUrl), kind: 'external' });
+    uses.push({ slug, source: String(download.externalUrl), kind: 'external', shared: download.origin === 'shared' });
   } else if (hasKey) {
     uses.push({ slug, source: `r2://${String(download.fileKey)}`, kind: 'hosted' });
   }
@@ -105,7 +105,8 @@ for (const file of readdirSync(POSTS_DIR).filter((f) => f.endsWith('.md'))) {
 /* --------------------------------------------------------------- variety */
 
 const counts = new Map();
-for (const use of uses) counts.set(use.source, (counts.get(use.source) ?? 0) + 1);
+// A `shared` bundle is exempt: the owner chose one shared download for many posts (2026-10-22).
+for (const use of uses) if (!use.shared) counts.set(use.source, (counts.get(use.source) ?? 0) + 1);
 
 const overused = [...counts.entries()].filter(([, n]) => n > MAX_SOURCE_REUSE);
 const lopsided = [...counts.entries()].filter(([, n]) => n > WARN_SOURCE_REUSE && n <= MAX_SOURCE_REUSE);

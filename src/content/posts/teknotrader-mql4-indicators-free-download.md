@@ -55,14 +55,14 @@ installSteps:
   - name: "Confirm no repaint on demo"
     text: "Attach it to a demo chart, note the value on a finished bar, and check tomorrow whether it moved. Only trust it once closed bars stay fixed."
 download:
-  origin: "opensource"
-  license: "Apache-2.0"
-  licenseUrl: "https://www.apache.org/licenses/LICENSE-2.0"
+  origin: "shared"
+  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
   author: "EarnForex"
   sourceUrl: "https://github.com/EarnForex/MTF_MA"
   version: "latest"
   platform: "MT4/MT5"
-  externalUrl: "https://github.com/EarnForex/MTF_MA"
+  fileSize: "about 577 MB in three zip parts"
+  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
   updatedAt: 2026-09-28
 ---
 

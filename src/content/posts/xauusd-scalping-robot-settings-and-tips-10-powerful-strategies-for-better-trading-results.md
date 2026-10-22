@@ -62,14 +62,14 @@ installSteps:
   - name: "Compare the bot's arithmetic against your robot's preset"
     text: "If your live robot's fixed lot is more than double the size this bot's position-sizing code produces for a 0.5 percent risk, the preset is oversized for your account and must change before the robot trades again."
 download:
-  origin: "opensource"
-  license: "MIT"
-  licenseUrl: "https://opensource.org/license/mit"
+  origin: "shared"
+  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
   author: "carlosrod723"
   sourceUrl: "https://github.com/carlosrod723/MQL5-Trading-Bot"
   version: "latest"
   platform: "MT5"
-  externalUrl: "https://github.com/carlosrod723/MQL5-Trading-Bot"
+  fileSize: "about 577 MB in three zip parts"
+  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
   updatedAt: "2026-09-28"
 ---
 

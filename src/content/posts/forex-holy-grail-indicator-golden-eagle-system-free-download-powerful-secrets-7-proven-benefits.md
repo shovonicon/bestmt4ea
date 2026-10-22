@@ -59,14 +59,14 @@ installSteps:
   - name: "Attach one advisor to a demo chart and fix the lot"
     text: "Drag one of the ready-to-trade advisors onto a Renko chart, set a fixed stop and a fixed lot that makes a stop-out cost about 1% of the demo balance, and take ten trades at that size without changing it. Then journal every one of them."
 download:
-  origin: "opensource"
-  license: "GPL-3.0"
-  licenseUrl: "https://www.gnu.org/licenses/gpl-3.0.html"
+  origin: "shared"
+  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
   author: "9nix6"
   sourceUrl: "https://github.com/9nix6/Median-and-Turbo-Renko-indicator-bundle"
   version: "latest"
   platform: "MT5"
-  externalUrl: "https://github.com/9nix6/Median-and-Turbo-Renko-indicator-bundle"
+  fileSize: "about 577 MB in three zip parts"
+  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
   updatedAt: "2026-09-29"
 ---
 

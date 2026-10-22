@@ -65,14 +65,14 @@ installSteps:
   - name: "Write the audit note and let it run"
     text: "Record the hash, licence, publisher, log findings and default inputs in one dated page, then leave the defaults untouched for several weeks on demo before deciding anything. Never fund an account you would need back."
 download:
-  origin: "opensource"
-  license: "MIT"
-  licenseUrl: "https://opensource.org/license/mit"
+  origin: "shared"
+  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
   author: "BAKOME-Hub"
   sourceUrl: "https://github.com/BAKOME-Hub/BAKOMEGoldScalper"
-  version: "main"
+  version: "latest"
   platform: "MT5"
-  externalUrl: "https://github.com/BAKOME-Hub/BAKOMEGoldScalper"
+  fileSize: "about 577 MB in three zip parts"
+  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
   updatedAt: 2026-09-29
 ---
 

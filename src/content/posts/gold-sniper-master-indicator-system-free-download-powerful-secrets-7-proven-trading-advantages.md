@@ -64,14 +64,14 @@ installSteps:
   - name: "Forward-test 100 signals on a demo account"
     text: "Open a demo at the broker whose feed you will actually trade, then take every measurement the tool gives for at least 100 logged observations without changing the settings. Record the level prices, your entry, the spread, the stop and the outcome, then review the log before any live capital is involved."
 download:
-  origin: "opensource"
-  license: "Apache-2.0"
-  licenseUrl: "https://www.apache.org/licenses/LICENSE-2.0"
+  origin: "shared"
+  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
   author: "EarnForex"
   sourceUrl: "https://github.com/EarnForex/Float"
   version: "latest"
   platform: "MT4/MT5"
-  externalUrl: "https://github.com/EarnForex/Float"
+  fileSize: "about 577 MB in three zip parts"
+  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
   updatedAt: "2026-09-29"
 ---
 

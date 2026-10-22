@@ -62,14 +62,14 @@ installSteps:
   - name: "Set your risk inputs before you start"
     text: "Set the lot per $1,000 input, the equity bagging profit and loss percentages, the maximum spread and the session filter. Compare the size it will trade with the risk-per-trade limit on your sheet before you place anything."
 download:
-  origin: "opensource"
-  license: "Apache-2.0"
-  licenseUrl: "https://www.apache.org/licenses/LICENSE-2.0"
+  origin: "shared"
+  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
   author: "KVignesh122"
   sourceUrl: "https://github.com/KVignesh122/MT5-SMC-trading-bot"
   version: "latest"
   platform: "MT5"
-  externalUrl: "https://github.com/KVignesh122/MT5-SMC-trading-bot"
+  fileSize: "about 577 MB in three zip parts"
+  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
   updatedAt: 2026-09-29
 ---
 

@@ -72,14 +72,14 @@ installSteps:
   - name: "Test on real ticks, then forward-test on demo"
     text: "Run at least one full year in the Strategy Tester with real ticks enabled, then leave it running on demo for two to four weeks. Compare the live demo behaviour with the backtest before any real money is involved."
 download:
-  origin: "opensource"
-  license: "GPL-3.0"
-  licenseUrl: "https://www.gnu.org/licenses/gpl-3.0.html"
+  origin: "shared"
+  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
   author: "EA31337"
   sourceUrl: "https://github.com/EA31337/EA31337"
   version: "latest"
   platform: "MT4/MT5"
-  externalUrl: "https://github.com/EA31337/EA31337"
+  fileSize: "about 577 MB in three zip parts"
+  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
   updatedAt: 2026-09-28
 ---
 

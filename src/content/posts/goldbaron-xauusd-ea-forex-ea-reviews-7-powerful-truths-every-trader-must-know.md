@@ -64,14 +64,14 @@ installSteps:
   - name: "Watch it on demo, not live"
     text: "Run it on a demo account through a busy news week so you can watch how the grid behaves, and check the Experts log for order errors before you consider real money."
 download:
-  origin: "opensource"
-  license: "GPL-3.0"
-  licenseUrl: "https://www.gnu.org/licenses/gpl-3.0.html"
+  origin: "shared"
+  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
   author: "sonidelav"
   sourceUrl: "https://github.com/sonidelav/GridEA"
   version: "latest"
   platform: "MT4"
-  externalUrl: "https://github.com/sonidelav/GridEA"
+  fileSize: "about 577 MB in three zip parts"
+  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
   updatedAt: "2026-09-29"
 ---
 

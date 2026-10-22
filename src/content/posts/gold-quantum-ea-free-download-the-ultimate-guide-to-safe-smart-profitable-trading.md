@@ -70,14 +70,14 @@ installSteps:
   - name: "Move to demo, then keep a log"
     text: "Attach it to a demo account at the same broker you intend to trade, with the same account type, and record every trade's slippage, spread and result for at least eight weeks."
 download:
-  origin: "opensource"
-  license: "MIT"
-  licenseUrl: "https://opensource.org/license/mit"
+  origin: "shared"
+  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
   author: "NadirAliOfficial"
   sourceUrl: "https://github.com/NadirAliOfficial/trillex-10s-ea"
   version: "latest"
   platform: "MT5"
-  externalUrl: "https://github.com/NadirAliOfficial/trillex-10s-ea"
+  fileSize: "about 577 MB in three zip parts"
+  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
   updatedAt: 2026-09-29
 ---
 

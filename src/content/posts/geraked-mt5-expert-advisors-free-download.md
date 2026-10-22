@@ -68,14 +68,14 @@ installSteps:
   - name: "Move the shortlist to a demo account"
     text: "Attach only the strategies that survive the tester to a demo account at the broker you intend to use, and log every trade, fill and spread for at least six to eight weeks before any real money is involved."
 download:
-  origin: "opensource"
-  license: "MIT"
-  licenseUrl: "https://opensource.org/license/mit"
+  origin: "shared"
+  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
   author: "geraked"
   sourceUrl: "https://github.com/geraked/metatrader5"
   version: "latest"
   platform: "MT5"
-  externalUrl: "https://github.com/geraked/metatrader5"
+  fileSize: "about 577 MB in three zip parts"
+  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
   updatedAt: 2026-09-29
 ---
 

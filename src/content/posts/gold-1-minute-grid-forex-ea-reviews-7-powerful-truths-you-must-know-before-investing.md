@@ -67,14 +67,14 @@ installSteps:
   - name: "Forward-test for at least a month"
     text: "Run it through a full month, including a CPI or non-farm payrolls week, and compare the exits it produces with the floating drawdown you recorded for the grid."
 download:
-  origin: "opensource"
-  license: "Apache-2.0"
-  licenseUrl: "https://www.apache.org/licenses/LICENSE-2.0"
+  origin: "shared"
+  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
   author: "EarnForex"
   sourceUrl: "https://github.com/EarnForex/Trailing-Stop-on-Profit"
   version: "latest"
   platform: "MT4/MT5"
-  externalUrl: "https://github.com/EarnForex/Trailing-Stop-on-Profit"
+  fileSize: "about 577 MB in three zip parts"
+  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
 ---
 
 Every gold grid EA looks safest in the week before it is most dangerous.

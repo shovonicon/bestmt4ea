@@ -59,14 +59,14 @@ installSteps:
   - name: "Attach it to a demo chart"
     text: "Drag the expert onto a demo chart, allow algorithmic trading, and read the two inputs that matter: the dynamic-lots risk percentage and the hard stop in points. Test it on demo before you use those numbers on a live account."
 download:
-  origin: "opensource"
-  license: "BSD-3-Clause"
-  licenseUrl: "https://opensource.org/license/bsd-3-clause"
+  origin: "shared"
+  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
   author: "ersingencturk"
   sourceUrl: "https://github.com/ersingencturk/FreeExpertAdvisor"
   version: "latest"
   platform: "MT4"
-  externalUrl: "https://github.com/ersingencturk/FreeExpertAdvisor"
+  fileSize: "about 577 MB in three zip parts"
+  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
   updatedAt: 2026-09-29
 ---
 

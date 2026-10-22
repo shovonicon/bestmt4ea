@@ -59,14 +59,14 @@ installSteps:
   - name: "Load a slave on each follower terminal"
     text: "Attach TradeCopy Slave to a chart on every terminal that should follow, make sure all terminals share the same filesystem, and set the lot coefficient or fixed size the follower should use."
 download:
-  origin: "opensource"
-  license: "GPL-2.0"
-  licenseUrl: "https://www.gnu.org/licenses/gpl-2.0.html"
+  origin: "shared"
+  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
   author: "vobornik"
   sourceUrl: "https://github.com/vobornik/mt4-trade-copy"
   version: "latest"
   platform: "MT4"
-  externalUrl: "https://github.com/vobornik/mt4-trade-copy"
+  fileSize: "about 577 MB in three zip parts"
+  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
   updatedAt: "2026-09-29"
 ---
 

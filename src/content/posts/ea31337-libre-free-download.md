@@ -59,14 +59,14 @@ installSteps:
   - name: "Backtest in MT5, then forward-test on demo"
     text: "Refresh the Navigator, run the expert advisor in the MetaTrader 5 Strategy Tester on your own broker's data, then move it to a demo account. Do not put it on a live account."
 download:
-  origin: "opensource"
-  license: "GPL-3.0"
-  licenseUrl: "https://www.gnu.org/licenses/gpl-3.0.html"
+  origin: "shared"
+  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
   author: "EA31337"
   sourceUrl: "https://github.com/EA31337/EA31337-Libre"
   version: "latest"
   platform: "MT4/MT5"
-  externalUrl: "https://github.com/EA31337/EA31337-Libre"
+  fileSize: "about 577 MB in three zip parts"
+  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
   updatedAt: 2026-09-29
 ---
 

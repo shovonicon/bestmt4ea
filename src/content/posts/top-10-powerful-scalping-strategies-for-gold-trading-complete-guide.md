@@ -57,14 +57,14 @@ installSteps:
   - name: "Compile and attach on a demo chart"
     text: "Open the file in MetaEditor, press Compile, then restart the terminal or refresh the Navigator. Drag the EA onto a demo gold chart first and check how it moves the stop from the ATR reading."
 download:
-  origin: "opensource"
-  license: "Apache-2.0"
-  licenseUrl: "https://www.apache.org/licenses/LICENSE-2.0"
+  origin: "shared"
+  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
   author: "EarnForex"
   sourceUrl: "https://github.com/EarnForex/ATR-Trailing-Stop"
   version: "latest"
   platform: "MT4/MT5"
-  externalUrl: "https://github.com/EarnForex/ATR-Trailing-Stop"
+  fileSize: "about 577 MB in three zip parts"
+  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
   updatedAt: 2026-09-29
 ---
 
