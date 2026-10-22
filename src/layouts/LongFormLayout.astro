@@ -328,6 +328,19 @@ const trail = [
         )
       }
 
+      <div class="mt-12">
+        <PromoAd
+          label="Sponsored"
+          kicker="For MT4 & MT5"
+          title="Start on a regulated broker from $1"
+          copy={'FCA & CySEC regulated · free VPS on qualifying accounts'}
+          cta="Open an Exness account"
+          href={affiliates.exness.url}
+          rel={AFFILIATE_REL}
+          target="_blank"
+        />
+      </div>
+
       <ArticleSources sources={data.sources} />
 
       <section class="mt-12 rounded-xl border border-[var(--color-warn)]/30 bg-[var(--color-warn)]/5 p-5">
@@ -365,17 +378,6 @@ const trail = [
       -->
       <aside class="longform-aside" aria-label="Recommended">
         <div>
-          <PromoAd
-            label="Sponsored"
-            kicker="For MT4 & MT5"
-            title="Start on a regulated broker from $1"
-            copy={'FCA & CySEC regulated · free VPS on qualifying accounts'}
-            cta="Open an Exness account"
-            href={affiliates.exness.url}
-            rel={AFFILIATE_REL}
-            target="_blank"
-          />
-
           <PromoAd
             label="Our service"
             kicker="No time to watch the charts?"
