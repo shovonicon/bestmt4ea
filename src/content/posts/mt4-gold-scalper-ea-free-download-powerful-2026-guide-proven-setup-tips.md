@@ -4,7 +4,7 @@ title: "MT4 Gold Scalper Setup: The Inputs That Decide the Outcome"
 slug: "mt4-gold-scalper-ea-free-download-powerful-2026-guide-proven-setup-tips"
 description: "How to install a gold scalper on MT4 and set its inputs in the right order: risk per trade, stop distance, spread cap, sessions and a free lot-size tool."
 publishedAt: "2026-02-13T20:17:56.000Z"
-updatedAt: "2026-10-22T00:00:00.000Z"
+updatedAt: "2026-09-28T09:28:46Z"
 seo:
   title: "MT4 Gold Scalper Setup: Inputs That Decide the Outcome"
   description: "How to install a gold scalper on MT4 and set its inputs in the right order: risk per trade, stop distance, spread cap, sessions and a free lot-size tool."
@@ -59,15 +59,11 @@ installSteps:
   - name: "Load a slave on each follower terminal"
     text: "Attach TradeCopy Slave to a chart on every terminal that should follow, make sure all terminals share the same filesystem, and set the lot coefficient or fixed size the follower should use."
 download:
-  origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  author: "vobornik"
-  sourceUrl: "https://github.com/vobornik/mt4-trade-copy"
-  version: "latest"
-  platform: "MT4"
-  fileSize: "about 577 MB in three zip parts"
-  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: "2026-09-29"
+  name: "XAUUSD (Gold) EA Session & Settings Checklist"
+  origin: "own"
+  license: "Free to use, print and share with credit to bestmt4ea.com"
+  version: "1.0"
+  fileKey: "resources/xauusd-gold-ea-session-checklist.pdf"
 ---
 
 Picture two traders who download the same MT4 gold scalper on the same Tuesday. Same file, same broker, same XAUUSD chart, the same $3,000 starting balance. In this illustrative example, ninety days later one account is intact and the other has shrunk badly. Nothing inside the robot was different. Everything inside the inputs was.

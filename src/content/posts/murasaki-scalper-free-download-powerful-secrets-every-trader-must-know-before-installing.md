@@ -56,10 +56,11 @@ sources:
     url: "https://www.investopedia.com"
 primaryKeyword: "murasaki scalper"
 download:
+  name: "MQL4/MQL5 Compile Error Fix Guide"
   origin: "own"
   license: "Free to use, print and share with credit to bestmt4ea.com"
   version: "1.0"
-  fileKey: "resources/scalping-ea-demo-test-log.pdf"
+  fileKey: "resources/mql-compile-error-fix-guide.pdf"
 ---
 ## Why does a scalping indicator work for a week and then stop working?
 

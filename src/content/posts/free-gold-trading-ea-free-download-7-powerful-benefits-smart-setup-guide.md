@@ -4,7 +4,7 @@ title: "Free Gold Trading EA: The Real Price of Free"
 slug: "free-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide"
 description: "A free gold trading EA has no licence fee, but you pay through spreads, fills, support and testing time. Here is how to measure that real cost on demo."
 publishedAt: "2026-02-12T11:55:15.000Z"
-updatedAt: "2026-10-22"
+updatedAt: "2026-08-28T09:37:50Z"
 seo:
   title: "Free Gold Trading EA: The Real Price of Free (2026)"
   description: "A free gold trading EA has no licence fee, but you pay through spreads, fills, support and testing time. Here is how to measure that real cost on demo."
@@ -60,13 +60,12 @@ installSteps:
   - name: "Compare against a paid tool on the same demo"
     text: "Run a paid system on a second demo account over the same period and set the total cost of each side by side before you decide anything."
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
+  license: "No licence stated - third-party files shared as-is, unverified"
   platform: "MT4/MT5"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
 ---
 
 A free gold trading EA sounds like the obvious place to start. There is no licence fee, no card to enter and no sales page pushing an upgrade. You download a file, attach it to a chart and let it trade XAUUSD while you do something else. That picture is the reason so many traders test a free EA first and never look at what it actually costs.

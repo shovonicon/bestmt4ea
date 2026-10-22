@@ -47,10 +47,11 @@ sources:
     url: "https://www.investopedia.com/terms/s/straddle.asp"
 primaryKeyword: "news straddle expert advisor"
 download:
+  name: "News Event EA Protection Plan"
   origin: "own"
   license: "Free to use, print and share with credit to bestmt4ea.com"
   version: "1.0"
-  fileKey: "resources/ea-risk-position-size-calculator.pdf"
+  fileKey: "resources/news-event-ea-protection-plan.pdf"
 ---
 
 ## Why does a news straddle EA look so easy right up until it takes your account?

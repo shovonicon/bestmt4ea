@@ -4,7 +4,7 @@ title: "FVG EA MT5: Fair Value Gap Robot Guide and Test Plan"
 slug: "powerful-profitable-fair-value-gap-fvg-ea-mt5-free-download-ultimate-guide-for-smart-traders"
 description: "Learn how a fair value gap EA works on MT5, what it can and cannot do, the drawdown to expect, and the demo test plan to run before you risk any real capital."
 publishedAt: "2026-02-13T22:03:12.000Z"
-updatedAt: "2026-10-22T00:00:00.000Z"
+updatedAt: "2026-08-30T13:00:59Z"
 seo:
   title: "FVG EA MT5: Fair Value Gap Robot Guide and Test Plan 2026"
   description: "Learn how a fair value gap EA works on MT5, what it can and cannot do, the drawdown to expect, and the demo test plan to run before you risk any real capital."
@@ -46,12 +46,11 @@ sources:
   - label: "UK Financial Conduct Authority consumer guidance"
     url: "https://www.fca.org.uk/"
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
+  license: "No licence stated - third-party files shared as-is, unverified"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
 ---
 
 Every week, another trader asks the same question: is there an automated tool that can find fair value gaps for me and trade them on MetaTrader 5? You have probably seen the screenshots. A clean chart, a neat rectangle drawn across a candle gap, a set of green arrows, and an equity curve that climbs in a straight line. Then you install something, attach it to a chart, and watch it open a trade that moves against you within minutes.

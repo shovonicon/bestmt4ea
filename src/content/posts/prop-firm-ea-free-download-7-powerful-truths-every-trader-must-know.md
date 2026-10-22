@@ -4,7 +4,7 @@ title: "Prop Firm EA: 7 Truths to Know Before You Run One"
 slug: "prop-firm-ea-free-download-7-powerful-truths-every-trader-must-know"
 description: "Using an EA on a prop firm challenge? Learn the rule checks, free-file risks, drawdown limits and the demo tests to finish before any automated trade is placed."
 publishedAt: "2026-01-29T10:15:00.000Z"
-updatedAt: "2026-10-22T00:00:00.000Z"
+updatedAt: "2026-08-30T08:34:30Z"
 seo:
   title: "Prop Firm EA: 7 Truths to Know Before You Run One 2026"
   description: "Using an EA on a prop firm challenge? Learn the rule checks, free-file risks, drawdown limits and the demo tests to finish before any automated trade is placed."
@@ -44,12 +44,11 @@ sources:
   - label: "UK Financial Conduct Authority consumer guidance"
     url: "https://www.fca.org.uk/"
 download:
-  origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
-  fileSize: "about 577 MB in three zip parts"
-  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
+  name: "Prop Firm EA Risk Rules Worksheet"
+  origin: "own"
+  license: "Free to use, print and share with credit to bestmt4ea.com"
+  version: "1.0"
+  fileKey: "resources/prop-firm-ea-risk-rules-worksheet.pdf"
 ---
 
 Prop firm trading has changed how many people try to become full-time traders. Instead of risking their own savings, they pay a challenge fee, trade a demo-style account under strict rules, and hope to earn access to a larger funded account. The rules are the whole game. A firm will usually set a maximum daily loss, a maximum overall drawdown, a profit target and sometimes a minimum number of trading days. Break one, and the challenge ends.

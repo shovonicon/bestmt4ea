@@ -4,7 +4,7 @@ title: "Gold Signal Indicator Repaint Test: How to Audit Arrows"
 slug: "gold-sniper-master-indicator-system-free-download-powerful-secrets-7-proven-trading-advantages"
 description: "An arrow you cannot audit is a screenshot, not a tool. Run the repaint test, the bar-close test, then forward-test gold signals on demo before you risk money."
 publishedAt: "2026-02-21T12:57:10.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-08-31T08:18:33Z"
 seo:
   title: "Gold Signal Indicator Repaint Test: How to Audit Arrows"
   description: "An arrow you cannot audit is a screenshot, not a tool. Run the repaint test, the bar-close test, then forward-test gold signals on demo before you risk money."
@@ -64,15 +64,11 @@ installSteps:
   - name: "Forward-test 100 signals on a demo account"
     text: "Open a demo at the broker whose feed you will actually trade, then take every measurement the tool gives for at least 100 logged observations without changing the settings. Record the level prices, your entry, the spread, the stop and the outcome, then review the log before any live capital is involved."
 download:
-  origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  author: "EarnForex"
-  sourceUrl: "https://github.com/EarnForex/Float"
-  version: "latest"
-  platform: "MT4/MT5"
-  fileSize: "about 577 MB in three zip parts"
-  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: "2026-09-29"
+  name: "Trade Journal: Printable Template & Weekly Review"
+  origin: "own"
+  license: "Free to use, print and share with credit to bestmt4ea.com"
+  version: "1.0"
+  fileKey: "resources/trade-journal-printable-template.pdf"
 ---
 
 You downloaded a gold arrow indicator. You attached it to XAUUSD, watched it for a week, and it looked superb. Green arrows under the lows, red arrows over the highs, every one of them landing within a few cents of a turn. So you opened a live account and took the next five arrows. Three lost. You went back to the chart to work out what you misread, and two of those "losses" were not the trades you remembered taking. The arrows had moved.

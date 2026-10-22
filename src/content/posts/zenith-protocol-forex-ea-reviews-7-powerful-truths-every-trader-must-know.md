@@ -4,7 +4,7 @@ title: "Zenith Protocol Forex EA Review: What to Verify First"
 slug: "zenith-protocol-forex-ea-reviews-7-powerful-truths-every-trader-must-know"
 description: "Zenith Protocol Forex EA review: what its listing claims, what you can verify, the drawdown questions to ask and how to test it on demo before paying."
 publishedAt: "2026-02-26T10:08:57.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-08-31T08:29:58Z"
 seo:
   title: "Zenith Protocol Forex EA Review: What to Verify First 2026"
   description: "Zenith Protocol Forex EA review: what its listing claims, what you can verify, the drawdown questions to ask and how to test it on demo before paying."
@@ -44,12 +44,11 @@ sources:
     url: "https://www.cftc.gov/"
 primaryKeyword: "Zenith Protocol Forex EA review"
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
+  license: "No licence stated - third-party files shared as-is, unverified"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
 ---
 
 If you are reading a **Zenith Protocol Forex EA review**, you are probably deciding whether to pay for an automated trading robot. The listing you have seen likely promises smart entries, built-in risk control and a strong track record. Those words are easy to write and hard to check. This article shows you how to check them.

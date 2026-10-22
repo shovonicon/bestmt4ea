@@ -4,7 +4,7 @@ title: "Signalspro007 EA Review: Facts Before You Install"
 slug: "signalspro007-ea-free-download-7-powerful-facts-you-must-know-before-installing"
 description: "Signalspro007 EA review: what the forex robot claims, how to verify the file and its logs, what expectancy means, and a demo test plan before live trading."
 publishedAt: "2026-02-13T19:23:13.000Z"
-updatedAt: "2026-10-22T00:00:00.000Z"
+updatedAt: "2026-08-28T15:50:42Z"
 seo:
   title: "Signalspro007 EA Review: Facts Before You Install (2026)"
   description: "Signalspro007 EA review: what the forex robot claims, how to verify the file and its logs, what expectancy means, and a demo test plan before live trading."
@@ -44,12 +44,11 @@ sources:
     url: "https://www.cftc.gov/"
 primaryKeyword: "Signalspro007 EA review"
 download:
-  origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
-  fileSize: "about 577 MB in three zip parts"
-  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
+  name: "EA Verification Checklist: Prove Any Expert Advisor Before You Buy"
+  origin: "own"
+  license: "Free to use, print and share with credit to bestmt4ea.com"
+  version: "1.0"
+  fileKey: "resources/ea-verification-checklist.pdf"
 ---
 
 The name Signalspro007 suggests signals, a steady stream of trades, and a robot doing the work while you do something else. That is the feeling a download page is designed to create. You see a short description, a download button and a promise that the robot will trade for you. What you do not see is the file behind the button, the logic inside it, or the record of what it has actually done with real money.

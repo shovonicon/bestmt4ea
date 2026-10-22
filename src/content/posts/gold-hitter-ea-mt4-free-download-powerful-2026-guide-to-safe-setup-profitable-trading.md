@@ -4,7 +4,7 @@ title: "Gold EA Risk Management: Survive the First Drawdown"
 slug: "gold-hitter-ea-mt4-free-download-powerful-2026-guide-to-safe-setup-profitable-trading"
 description: "Set the limits that keep a gold EA account alive: risk per trade, a drawdown cap, an equity stop, a daily loss rule and a written stop-trading trigger."
 publishedAt: "2026-02-13T23:48:37.000Z"
-updatedAt: "2026-10-22T00:00:00.000Z"
+updatedAt: "2026-09-28T09:28:44Z"
 seo:
   title: "Gold EA Risk Management: Survive the First Drawdown (2026)"
   description: "Set the limits that keep a gold EA account alive: risk per trade, a drawdown cap, an equity stop, a daily loss rule and a written stop-trading trigger."
@@ -62,15 +62,11 @@ installSteps:
   - name: "Set your risk inputs before you start"
     text: "Set the lot per $1,000 input, the equity bagging profit and loss percentages, the maximum spread and the session filter. Compare the size it will trade with the risk-per-trade limit on your sheet before you place anything."
 download:
-  origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  author: "KVignesh122"
-  sourceUrl: "https://github.com/KVignesh122/MT5-SMC-trading-bot"
-  version: "latest"
-  platform: "MT5"
-  fileSize: "about 577 MB in three zip parts"
-  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-09-29
+  name: "XAUUSD (Gold) EA Session & Settings Checklist"
+  origin: "own"
+  license: "Free to use, print and share with credit to bestmt4ea.com"
+  version: "1.0"
+  fileKey: "resources/xauusd-gold-ea-session-checklist.pdf"
 ---
 
 You are about to hand a robot the password to your gold account. You have read the sales page, you have the file, and you know which button says AutoTrading. You think the decision in front of you is which expert advisor to run. It is not. The decision in front of you is how much of your money that robot is allowed to lose before you switch it off, and almost nobody writes that number down before they start.

@@ -41,10 +41,11 @@ sources:
     url: "https://www.investopedia.com/terms/r/riskmanagement.asp"
 primaryKeyword: "scalper ea mt4"
 download:
+  name: "EA Demo Testing Workbook: A Four-Week Test You Can Actually Judge"
   origin: "own"
   license: "Free to use, print and share with credit to bestmt4ea.com"
   version: "1.0"
-  fileKey: "resources/grid-ea-drawdown-stress-test.pdf"
+  fileKey: "resources/ea-demo-testing-workbook.pdf"
 ---
 
 ## Why does a scalper EA look unbeatable until it meets a real account?

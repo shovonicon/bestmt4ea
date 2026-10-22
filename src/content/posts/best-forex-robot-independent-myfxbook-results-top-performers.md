@@ -1,0 +1,154 @@
+---
+title: "Best Forex Robots by Myfxbook Results, Read Honestly"
+slug: "best-forex-robot-independent-myfxbook-results-top-performers"
+description: "Ranking forex robots by Myfxbook results only works if you read trackers properly: both verifications, equity drawdown, account age and survivorship bias."
+publishedAt: 2026-10-22
+updatedAt: 2026-10-22
+categories:
+  - "EA Reviews & Comparisons"
+categoryPaths:
+  - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
+tags: []
+draft: false
+quickAnswer: "The best forex robots by independent results are not the ones with the highest gain percentages. They are the ones with fully verified track records on real accounts, long histories that include losing months, equity drawdowns you could personally survive, and results earned at brokers whose costs resemble yours. This guide teaches the reading method and explains why our ranking is an evidence ranking, not a profit ranking."
+keyTakeaways:
+  - "A Myfxbook page is only evidence when both verifications pass: track record verified and trading privileges verified, on a real-money account."
+  - "Gain percentage without drawdown and account age is advertising. Sort by survival-adjusted evidence, not by the biggest number."
+  - "Leaderboards suffer survivorship bias: the accounts that blew up left the chart, so the visible field is pre-selected for luck."
+  - "Always read the equity curve, the monthly table and the open-trades exposure — the balance curve alone hides floating losses."
+  - "A robot ranked 'best' on one broker's costs can be mid-table on yours. Evidence narrows the field; your demo test picks the winner."
+faqs:
+  - question: "What does 'fully verified' mean on Myfxbook?"
+    answer: "Two separate checks. Track record verification confirms the results data genuinely comes from the broker's server for that account. Trading privileges verification confirms the account holder controls the account and it is the account being shown. Both green checks on a real (not demo) account is the minimum standard for calling a record evidence."
+  - question: "Why do the highest-gain robots disappear from rankings?"
+    answer: "Because extreme gain is usually extreme risk compounding luck, and time collects the debt. Accounts ranked by raw gain churn constantly as leaders blow up and new lucky accounts arrive. Rankings by longevity and drawdown-adjusted results change slowly, which is exactly what you want from a list you might trust with money."
+  - question: "Can vendors fake Myfxbook results?"
+    answer: "Full verification makes outright fabrication hard, but softer games exist: running many accounts and publicising the survivor, using custom start dates that crop bad months, keeping losing trades open so they never hit the balance record, and demo accounts presented in real-looking contexts. The defences are the ones in this guide: both verifications, real account, full history, equity not balance, open trades visible."
+  - question: "How much history is enough to rank an EA?"
+    answer: "A year is a floor, not a gold standard, and it must include the ugly seasons: at least one strong trend, one news-heavy month and one drawdown with a visible recovery. Six spectacular months in one regime tell you how the robot behaves in that regime, which the market will not consult before changing."
+  - question: "Should I copy the settings of the top-ranked account?"
+    answer: "Only as a hypothesis to test. The top account's broker, account type, balance and risk settings are part of its result, and the result will not survive being detached from them. Use leaderboards to build a shortlist and questions, then let your own workbook test make the final ranking on your setup."
+  - question: "Why doesn't this article name a number one robot?"
+    answer: "Because a single name would be a disservice dressed as decisiveness. The honest output of evidence ranking is a method and a shortlist profile: verified, long-lived, survivable drawdown, transparent behaviour. Products meeting that profile change slowly and we update our reviews as records develop; a crowned winner would mostly crown whoever marketed hardest that quarter."
+sources:
+  - label: "Myfxbook: independent account tracking and verification"
+    url: "https://www.myfxbook.com/"
+  - label: "FX Blue: account analysis and tracking"
+    url: "https://www.fxblue.com/"
+primaryKeyword: "best forex robot Myfxbook results"
+download:
+  name: "Backtest Honesty Checklist"
+  origin: "own"
+  license: "Free to use, print and share with credit to bestmt4ea.com"
+  version: "1.0"
+  fileKey: "resources/backtest-honesty-checklist.pdf"
+---
+
+Every "best forex robots" list on the internet ranks something. The dishonest ones rank by whoever pays, or by the biggest gain screenshot a vendor submitted about themselves. This article does the ranking the way we promised when we rebuilt this site: by independent evidence, with the method shown openly enough that you can reproduce it, dispute it, and apply it to any robot including ones we have never reviewed. The raw material is the public trackers — principally Myfxbook, with FX Blue as the other serious venue — and the skill is reading them the way an auditor reads accounts: trusting the verified columns, suspecting the flattering ones, and always asking what is missing from the page.
+
+Fair warning about what you will not find here: a coronation. The products that survive evidence ranking form a profile, not a podium, and profiles are less exciting than winners. They are also what stands between a reader and the standard fate of ranking-chasers, which is buying last quarter's luck at this quarter's prices.
+
+## Step one: the two green checks, or it is not evidence
+
+Myfxbook shows two verification states and they answer different questions. Track record verified means the platform has confirmed, against the broker's own data, that the trading history displayed is the history that occurred. Trading privileges verified means the person presenting the account has proven they control it, which rules out the classic fraud of displaying a stranger's good account, or a broker's marketing account, as your product's result. An account missing either check is a claim, not a record. Add two more gates of your own: the account must be real money, because demo execution flatters exactly the strategies leaderboards celebrate, and the broker must be identifiable, because results are partly a property of the feed they were earned on. An astonishing share of the robots sold with tracker links fail one of these four gates. Checking them takes ninety seconds and eliminates most of the market's noise in one pass.
+
+## Step two: read the equity curve, the monthly table and the open drawer
+
+Given a verified page, three views matter. The equity curve, not the balance curve, because balance ignores floating losses and a grid or hold-and-hope system can keep a serene balance line above a drowning equity line for months. Read the worst peak-to-trough distance in money and in percent, and the time spent under water recovering; those two numbers are the membership fee of the strategy, payable by whoever runs it, in advance, without a schedule. Then the monthly table, looking not at the average but at the texture: losing months should exist, because a record without them is either young, curated, or carrying its losses in open trades. And then the open trades and history settings: are open positions visible, is the full history shown, is there a custom analysis date range quietly cropping the account's first, worst season? Each hidden element is a choice somebody made about what you would see, and ranking by evidence means pricing those choices.
+
+## Step three: understand what the leaderboard cannot show you
+
+Even a perfectly read tracker sits inside a biased frame, and honest ranking has to name the biases. Survivorship is the largest: the population of accounts you can browse is the population that has not yet failed, so the visible average massively overstates the true average of everyone who ever ran these systems. Vendors running ten accounts and publishing one are not a myth; they are the predictable economics of a market that rewards records and cannot audit intentions. Custom start dates and reborn accounts perform the same trick across time rather than across accounts. And gain itself is a risk proxy in disguise: sorting by it selects for the largest risk taken among the lucky, which is a method for finding next season's cautionary tale with impressive reliability.
+
+The corrective is to rank by boring virtues. Longevity at meaningful size. Drawdown that a sane person could sit through, relative to the returns claimed. Consistency of behaviour across regimes, visible in the monthly texture. Transparency: open history, open trades, both verifications, real money, named broker. A robot scoring high on those is rarely the one at the top of a gain-sorted list, and that gap is the entire argument of this article in one observation.
+
+## Step four: translate the record to your account before admiring it
+
+Suppose a robot passes every gate with a record you admire. One translation remains. Its results were produced at a specific broker's spreads and execution, at a specific account size with specific risk settings, on specific pairs in specific years. Which of those transfer to you? The strategy logic transfers. The cost environment mostly does not, so shave the expectancy by your spread disadvantage if you can compute it. The risk settings transfer only if you copy them exactly, including the balance they were percentages of. And the regime does not transfer at all: the next two years will deal different cards than the record's two years, which is why you are buying behaviour-under-stress evidence, not a promise of repetition. This is also where our per-product reviews plug in: for the robots we have examined individually, we look for exactly these qualities — verified evidence or its admitted absence, a risk shape you can compute, and session and sizing terms you can reproduce — and we say plainly when a product's public record is too thin to rank at all.
+
+## The profile of a top performer, stated plainly
+
+A robot that belongs at the top of an honest ranking looks like this. Verified on both checks, real money, at a broker you have heard of. At least a year of history containing at least one drawdown that hurt and a recovery that was earned rather than cropped away. Equity drawdown proportionate to returns, with margin behaviour that never flirted with liquidation. Monthly results with texture: wins, losses, flats. Behaviour you can describe in a sentence and verify against its trade history. A vendor who links the tracker from their own sales page rather than hiding behind screenshots. Very few products meet the whole profile at any given moment. That scarcity is not a defect of the standard; it is the standard working, and it is why the correct output of this method, most quarters, is a shortlist of two or three names to test — or an empty shortlist and the discipline to wait.
+
+## Custom analysis: the date range that quietly rewrites history
+
+The most useful dishonesty on a tracker page is rarely a fabricated number. It is a cropped window. Myfxbook allows an account holder to present a custom analysis, meaning the headline gain, drawdown and monthly summary are calculated from a chosen start date rather than from the account's first trade. Used legitimately, the feature helps a trader separate an old manual experiment from the automated period that followed. Used as presentation, it allows the worst opening months to fall outside the frame while the link still looks like a complete record.
+
+Start with two dates and compare them. The first is the date the account itself began, which you can usually infer from the earliest history, the account information panel and any long equity view that shows the full lifespan. The second is the start date of the analysis you are actually being shown. If those dates differ by weeks, ask why. If they differ by a quarter or more, assume the excluded period matters until you have seen it. A system that needed a long, loss-making apprenticeship before it worked may still be worth testing, but you are entitled to see the apprenticeship priced into your judgement. Cropping it away changes the apparent drawdown, flatters the monthly average and can turn a mediocre recovery into what looks like a clean ascent.
+
+Look for the small signals that a custom view is in force. The page may label the view as custom, show an analysis period that does not reach back to the first deposit, or present a monthly table whose earliest month is oddly tidy compared with the account age implied elsewhere. None of those signals proves intent on its own. Together they tell you to stop reading the headline panel as the whole story and to reconstruct the full timeline yourself, month by month, from the earliest available data.
+
+A second filter deserves equal attention: selection by magic number, pair or comment. Expert Advisors tag their orders, and tracker analysis can be narrowed to a subset of that activity. A vendor running several strategies on one account, or an automated system alongside manual trades, can present only the slice belonging to the product being sold. That separation can be honest bookkeeping. It can also hide the fact that the account survived because a different strategy, or a manual intervention, rescued it during the weeks the advertised system was failing. When a record is filtered, you need to know what was excluded, how large it was relative to the whole, and whether the excluded trades shared margin with the trades you are being asked to admire. Shared margin means shared risk, even when the marketing separates the returns.
+
+There is a simple habit that defeats most cropping. Read the record backwards, from the most recent month towards the beginning, noting where the presentation stops and whether the account itself stops there too. If the history continues beyond the analysis window, treat the earlier period as part of the evidence. If it is set to private beyond a certain point, note the limit plainly: a partial record can support only a partial conclusion.
+
+## Demo dressed as real: tells that survive a screenshot
+
+A demo account is not a lesser form of practice. It is a different execution environment, and the difference matters most for precisely the systems that dominate gain-sorted lists. On demo, orders are commonly filled at the quoted price without the queue, rejection and partial-fill behaviour of a live book. Spreads may look similar on screen while the cost of actually crossing them at size, during news or in thin hours, never appears. A scalper that needs two pips of edge cannot be judged in a place where friction has been politely removed. A grid that adds into a falling market cannot be judged where margin pressure and widening spreads have been softened. Demo records therefore flatter strategies whose edge is smaller than real trading costs and whose risk appears only when execution deteriorates.
+
+The first tell remains the account type label, and you should read it on the tracker itself rather than trusting the sales page that linked to it. Vendors rarely lie outright about this label; they rely on readers not scrolling to it, or on a screenshot that crops it out. If the label says demo, the discussion ends for ranking purposes, however impressive the curve. Record it as a demonstration of logic under ideal conditions, not as evidence of live performance.
+
+Beyond the label, learn the secondary signs. Broker server names often contain a clue, with demo servers named as such or numbered differently from live servers, though naming conventions vary and this sign alone is not decisive. Balance behaviour can be instructive: demo accounts are frequently recapitalised after a heavy loss, topped up to a round figure, or started at a size that bears no relationship to the lot sizes later taken. Look at the deposit history alongside the equity line. A sudden restoration after a drawdown deserves an explanation.
+
+Lot patterns add texture. On demo, position sizes often remain implausibly uniform while the balance swings, or jump in a way that suggests the operator felt no consequence from the increase. What should give you pause is risk that expands after losses on an account claimed to be running fixed automated settings, with no strategy change announced. Finally, examine the trade record for the absence of friction. A long run of short-duration trades closed at or very near their intended prices, through volatile periods when live accounts were reporting slippage, is not proof of a demo feed, but it is a reason to lower your confidence. Real execution leaves marks.
+
+If doubt remains, weigh the record as demo until the vendor resolves it with a verifiable live account.
+
+## The other ledger: reading the same account on FX Blue
+
+Myfxbook is the venue most buyers encounter first, but it is not the only serious mirror. FX Blue publishes account analysis with a different emphasis, and comparing the two views of the same trading is one of the more productive checks an ordinary reader can perform without specialist software. Where one service leads with a summary curve and a leaderboard culture, the other tends to reward a slower, trade-level reading: distributions of outcomes, holding times, the relationship between winning and losing trades, and figures that try to express how close an account came to serious damage rather than merely how much it made in its best stretch.
+
+Used well, FX Blue adds three things. First, granularity. Its detailed breakdowns make it harder for a single fortunate month to dominate your impression, because you can see how many trades built the result, how concentrated the profit was among them, and whether the typical trade resembles the advertised trade. A system whose profit rests on a handful of outsized winners among hundreds of small losses behaves very differently in forward use from a system whose edge is spread evenly, even when their total returns look alike.
+
+Second, a more explicit treatment of risk. Depending on the account and the view presented, you may find risk-of-ruin style estimates, measures of the largest adverse excursions and other attempts to quantify the path rather than the destination. Treat any single such figure as a model with assumptions, not as a prophecy. Its value lies in comparison and in prompting the right question: what had to go right for this account to avoid the bad outcome its own trade distribution says was possible.
+
+Third, an independent presentation layer. The underlying trades should be the same, but totals, drawdown calculations and period groupings may not match Myfxbook exactly because each service defines and updates its statistics in its own way. Small differences are normal and are not, by themselves, a scandal. Large differences are information. If one tracker shows a materially milder drawdown than the other for the same period, find out why before you quote either figure. Methodology explains some gaps. Selective date ranges, different account connections and stale synchronisation explain others. The exercise teaches you to ask which definition sits behind any number before you let that number rank a product.
+
+The verification models also differ in presentation, and you should not assume that a badge on one service transfers its meaning to the other. Each platform has its own way of connecting to an account, confirming control and refreshing data. What matters is consistent: can you establish that the record comes from a real account, that the person presenting it controls that account, that the history is complete, and that the data is current? Answer those questions separately for each tracker. A vendor who maintains a transparent presence on both, with figures that reconcile once definitions are accounted for, has passed a harder test than a vendor with a single polished page.
+
+Make the cross-check part of your routine for any serious candidate. Open both records, align the periods, compare trade counts and the worst drawdown, and write down any discrepancy in plain words before you read the sales copy again. Often the second ledger does not overturn the first. It simply makes the shape of the risk harder to ignore.
+
+## A worked example, end to end: one fictional record
+
+The following walk-through uses a single fictional account, invented for illustration only. The figures are made up, do not describe any real product or trader, and are included so you can rehearse the order of checks without mistaking an exercise for evidence. Imagine you have been sent a tracker link for an automated system offered for sale, with a headline gain that looks attractive at first glance.
+
+Begin with verification, before you look at the return. In this fictional example, both checks pass and the account is labelled as real money at a broker you recognise. That earns the record a hearing and nothing more. Next, look at age. The account has been running for fourteen months in our invented example. That is long enough to be interesting and short enough that you must ask which market conditions it has not yet met. You note the start date, then immediately compare it with the analysis start date. Here the analysis begins three months after the account opened. You have found your first reservation: a quarter of the lifespan sits outside the headline view, and you will not proceed as if those months do not exist.
+
+Move to the equity curve, still ignoring the balance line. In the fictional record, the worst peak-to-trough fall in equity is roughly a third larger than the drawdown figure promoted in the sales material, because the promoted figure was taken from closed balance. You also see that the account spent a long autumn period below its previous high before recovering. Write both observations down in money terms relative to the balance you would actually use. A drawdown that was survivable on the vendor's larger account may not be survivable on yours, and a recovery that took months tests temperament as much as capital.
+
+Turn to the monthly table for texture. Our invented months include several modest gains, two losing months and one unusually strong month that contributes a disproportionate share of the total profit. That pattern does not disqualify the system, but it changes the claim you are entitled to repeat. You cannot honestly describe this as steady monthly income. You can describe it as a record in which progress arrived unevenly and depended, in part, on a period you cannot expect to recur on schedule. Check, too, whether the losing months coincide with the kind of market you most fear for this strategy, rather than treating them as random blemishes.
+
+Now open the drawer that many readers skip: the current exposure. The fictional account holds a small cluster of open positions, all in the same direction on correlated pairs, with a floating loss that would materially change the month if it were closed at the moment you are looking. That does not mean the positions are wrong. It means the closed record is incomplete as a description of present risk. You note the size of the floating loss, the margin it consumes and whether the system appears to be waiting for a reversal rather than following a visible exit rule.
+
+Compare lots with balance. In this invented case, the usual position size is modest for most of the history, then rises noticeably after a deposit. Decide whether the later, better-looking months were earned at the same risk as the earlier months or at a larger one. If risk changed, the record is really two records joined together.
+
+What can you conclude from this exercise? You can conclude that the fictional record deserved examination, that its risk was larger and less even than its headline suggested, that three months require an explanation, and that its profit depended more on a strong month and on open-position patience than the sales summary admitted. You cannot conclude that the system will repeat its gain, that it suits your broker, that its settings will behave the same way at your balance, or that fourteen months have measured its worst case. The record narrowed the questions. It did not answer the buying decision. That distinction is the whole discipline in miniature, and it applies unchanged when the account in front of you is real.
+
+## Questions to put to a vendor before you pay
+
+A tracker page gives you an interview agenda, and a vendor's handling of specific, checkable questions is itself evidence. Ask in writing, keep the replies, and weigh evasion in proportion to the money requested.
+
+First, why is custom analysis switched on, and will you provide the full record from the account's first trade? A legitimate reason exists for many cropped views, including a change from manual testing to automated running. The test is whether the vendor can state the reason plainly and show you the excluded period on request. A reply that discusses your lack of trust rather than the dates has answered a different question from the one you asked.
+
+Second, why is any part of the history private, and what would the complete history change? Partial history may protect an unrelated personal strategy on the same account, which is understandable, but then the vendor should be able to quantify the hidden portion and explain how it shared margin with the displayed trades. If nobody can tell you the size of what you cannot see, you cannot size the risk of what you can.
+
+Third, which account is the master record for this product? Vendors commonly run development, testing and live accounts in parallel. You need to know which single account they stand behind as representative, how long it has run with the current version, and whether customer accounts are expected to follow its settings. Drift between the showcase account and the shipped configuration is one of the quietest causes of buyer disappointment.
+
+Fourth, what changed at the point where the record visibly changes character? Most long histories contain a discontinuity: trade frequency shifts, holding times lengthen, lot sizing steps up, a drawdown style alters abruptly. Sometimes the cause is a version update, a new pair or a deliberate risk change, all of which can be legitimate. The question is whether the change was disclosed at the time and whether results before it should be counted as evidence for the product now being sold. A vendor who treats an obvious break in behaviour as if it were not there is asking you to average two different systems and call the average a track record.
+
+Fifth, explain the worst drawdown as if you were the customer who lived through it. Ask when it began, what caused it, how long recovery took, what the largest floating loss was, and whether any setting was changed in response. A competent vendor answers with dates and decisions. An evasive one answers with general remarks about markets being unpredictable, which is true and entirely beside the point. You are not asking for a guarantee. You are asking whether the person selling the system understands its worst observed behaviour well enough to describe it.
+
+Weigh the answers as a set. One imperfect reply may reflect a small operation with limited time. A pattern of deflection across all five questions, combined with a cropped or filtered record, should end the enquiry regardless of how attractive the curve appears. The opposite pattern matters too: a vendor who volunteers the weak months, identifies the discontinuity before you raise it and distinguishes clearly between the master account and experiments is demonstrating the temperament you want attached to a product that will trade unsupervised. In a market built on selective presentation, candour about a record is one of the few signals that is expensive to fake for long.
+
+## Your final ranking is local, and that is a feature
+
+Evidence ranking narrows the world to candidates. It cannot crown your winner, because the last variable is your account: your broker's costs on the robot's pairs, your balance against its sensible minimum size, your temperament against its drawdown duration. The workbook test settles it — four weeks, vendor configuration, written loss limit, expectancy after your costs, worst week examined by hand. Two candidates can both be legitimately "best by independent results" and rank in opposite orders on two readers' accounts, and both rankings can be right. Anyone who finds that unsatisfying is invited to notice that the alternative — one global winner, crowned by gain — is precisely the machine that has been separating EA buyers from their money for fifteen years.
+
+Use the trackers as auditors, not oracles. Demand both green checks. Read equity, months and open trades. Assume the leaderboard is survivorship in a suit. Translate every admired record into your costs before admiring it further. Rank by evidence, test by workbook, size by the drawdown you saw with your own eyes. That is the whole method, and it will still be working when this quarter's gain-champions have been quietly delisted.
+
+## Related reading
+
+- [Waka Waka EA review](/waka-waka-ea-review-long-term-performance/)
+- [Hamster Scalping EA review](/hamster-scalping-ea-review-can-this-robot-assist-your-short-term-trading/)
+- [Happy Frequency EA review](/happy-frequency-ea-review-is-it-still-profitable/)
+- [Hannah EA: the free-download truths](/hannah-ea-free-download-7-powerful-truths-you-must-know-before-installing/)

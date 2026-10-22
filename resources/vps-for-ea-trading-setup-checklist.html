@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" />
+<title>VPS for EA Trading: Setup & Latency Checklist — BestMT4EA</title><style>
+      :root { --ink:#101418; --muted:#5a6570; --line:#d7dde3; --accent:#0b7a5d; --warn:#a8410f; }
+      * { box-sizing: border-box; }
+      @page { size: A4; margin: 14mm 13mm; }
+      html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body { margin:0; color:var(--ink); background:#fff; font:10.5pt/1.45 "Helvetica Neue", Arial, sans-serif; }
+      h1 { font-size:19pt; line-height:1.15; margin:0 0 2mm; letter-spacing:-0.01em; }
+      h2 { font-size:11.5pt; margin:7mm 0 2.5mm; padding-bottom:1.2mm; border-bottom:1px solid var(--line); break-after:avoid; }
+      h3 { font-size:10pt; margin:4mm 0 1.5mm; break-after:avoid; }
+      p { margin:0 0 2.5mm; }
+      .lede { color:var(--muted); max-width:165mm; }
+      .brand { display:flex; justify-content:space-between; align-items:baseline; border-bottom:2px solid var(--accent); padding-bottom:2mm; margin-bottom:4mm; }
+      .brand strong { font-size:11pt; letter-spacing:0.02em; }
+      .brand span { color:var(--muted); font-size:8.5pt; }
+      ul { margin:0 0 2.5mm; padding-left:0; list-style:none; }
+      ul.check li { position:relative; padding-left:6.5mm; margin-bottom:1.4mm; break-inside:avoid; }
+      ul.check li::before { content:""; position:absolute; left:0; top:0.4mm; width:3.6mm; height:3.6mm; border:1px solid var(--muted); border-radius:0.6mm; }
+      ul.plain { padding-left:5mm; list-style:disc; }
+      ul.plain li { margin-bottom:1.2mm; }
+      table { width:100%; border-collapse:collapse; margin:0 0 3mm; font-size:9.5pt; break-inside:avoid; }
+      th, td { border:1px solid var(--line); padding:1.6mm 2mm; text-align:left; vertical-align:top; }
+      th { background:#f2f5f7; font-weight:600; }
+      .note { border-left:3px solid var(--warn); background:#fdf6f2; padding:2.5mm 3mm; margin:3mm 0; font-size:9.5pt; break-inside:avoid; }
+      .box { border:1px solid var(--line); border-radius:1.5mm; padding:3mm; margin:3mm 0; break-inside:avoid; }
+      .box h3 { margin-top:0; }
+      footer { margin-top:8mm; padding-top:2.5mm; border-top:1px solid var(--line); color:var(--muted); font-size:8.5pt; }
+      .formula { font-family:"Courier New", monospace; font-size:9.5pt; background:#f2f5f7; padding:2mm 2.5mm; border-radius:1mm; }
+    </style></head>
+<body>
+<div class="brand"><strong>BestMT4EA</strong><span>bestmt4ea.com — free trading resources</span></div>
+<h1>VPS for EA Trading: Setup & Latency Checklist</h1>
+<p class="lede">A VPS keeps your EAs running when your home internet or power does not — but a badly chosen VPS adds latency, restarts for updates at the worst moment, and silently logs you out of the terminal. Choose and configure it with this checklist.</p>
+
+ <h2>1. Choosing the server</h2>
+ <ul class="check">
+ <li>Location beats specification: pick the data centre closest to your broker's trade server, not closest to you. Ask the broker where their server is (often London, New York or Amsterdam).</li>
+ <li>Minimum practical spec for 1–3 terminals: 2 vCPU, 2–4 GB RAM, SSD storage, Windows Server.</li>
+ <li>Test latency before committing: ping the broker's server from the VPS; under 10 ms is excellent, under 50 ms is workable for most EAs, above 100 ms hurts scalpers.</li>
+ <li>Monthly price is the wrong place to save $5: a single missed stop during a home outage costs more.</li>
+ </ul>
+ <h2>2. First-hour configuration</h2>
+ <ul class="check">
+ <li>Change the default administrator password; create a separate login if the provider allows it.</li>
+ <li>Windows Update: set active hours outside your trading sessions and disable automatic restart while logged in. More EAs die from update restarts than from crashes.</li>
+ <li>Power plan: High performance; disable sleep and display timeouts.</li>
+ <li>Install only the terminals you use. Every extra program is memory your EA does not get.</li>
+ <li>Set the terminal to start with Windows (Startup folder), and enable "auto-login" so a restart recovers the session unattended.</li>
+ </ul>
+ <h2>3. Weekly health check (10 minutes)</h2>
+ <ul class="check">
+ <li>Terminal connected, AutoTrading on, EA icons uncrossed on every chart.</li>
+ <li>Free disk above 20%: log files grow quietly and a full disk stops the terminal mid-trade.</li>
+ <li>Journal tab scanned for "disconnected" clusters.</li>
+ <li>One test: close and reopen the terminal to prove it recovers cleanly.</li>
+ </ul>
+ <div class="note"><strong>The VPS rule:</strong> a VPS is not a backup. Keep your EA files, .set files and this checklist somewhere else as well — if the VPS dies on Sunday night, your Monday should be an inconvenience, not a rebuild.</div>
+ 
+<footer>BestMT4EA — free resource. Trading forex and CFDs carries a high risk of loss; most retail accounts lose money. Nothing here is financial advice. Test every system on a demo account with a written loss limit before risking real funds.</footer>
+</body></html>

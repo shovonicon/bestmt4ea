@@ -3,7 +3,7 @@ title: "Free Open-Source MT4 Indicators with Full MQL4 Source"
 slug: "teknotrader-mql4-indicators-free-download"
 description: "Get a free Apache-2.0 MetaTrader 4 and 5 indicator with full source code, plus a practical method to audit any MQL file before you compile and attach it."
 publishedAt: 2026-09-28
-updatedAt: 2026-10-22
+updatedAt: "2026-09-28"
 categories:
   - "Free Indicator"
 categoryPaths:
@@ -55,11 +55,11 @@ installSteps:
   - name: "Confirm no repaint on demo"
     text: "Attach it to a demo chart, note the value on a finished bar, and check tomorrow whether it moved. Only trust it once closed bars stay fixed."
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
+  license: "No licence stated - third-party files shared as-is, unverified"
   author: "EarnForex"
   sourceUrl: "https://github.com/EarnForex/MTF_MA"
-  version: "latest"
   platform: "MT4/MT5"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"

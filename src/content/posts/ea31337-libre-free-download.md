@@ -3,7 +3,7 @@ title: "EA31337 Libre: Free, Readable MT4/MT5 EA Framework"
 slug: "ea31337-libre-free-download"
 description: "EA31337 Libre is a free, GPL-3.0, open-source multi-strategy MetaTrader 4 and 5 framework. See what 35+ readable strategies give you — and what they do not."
 publishedAt: 2026-09-28
-updatedAt: 2026-10-22
+updatedAt: "2026-09-28"
 categories:
   - "Free EA"
 categoryPaths:
@@ -59,11 +59,11 @@ installSteps:
   - name: "Backtest in MT5, then forward-test on demo"
     text: "Refresh the Navigator, run the expert advisor in the MetaTrader 5 Strategy Tester on your own broker's data, then move it to a demo account. Do not put it on a live account."
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
+  license: "No licence stated - third-party files shared as-is, unverified"
   author: "EA31337"
   sourceUrl: "https://github.com/EA31337/EA31337-Libre"
-  version: "latest"
   platform: "MT4/MT5"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"

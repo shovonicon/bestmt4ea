@@ -70,7 +70,8 @@ const installSteps = data.installSteps ?? [];
  */
 const FALLBACK_DOWNLOAD = {
   origin: 'opensource' as const,
-  license: 'Third-party community bundle — the publisher states no licence',
+  name: '2000+ EA & Indicator Library (shared bundle, 3 ZIP parts, about 577 MB)',
+  license: 'No licence stated — third-party files shared as-is, unverified',
   author: 'Various (community bundle)',
   sourceUrl: 'https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing',
   externalUrl: 'https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing',
@@ -88,9 +89,11 @@ const updatedLabel = fmtDate(data.updatedAt ?? data.publishedAt);
 // has not opted out — AdSlot itself renders nothing without a client ID.
 const showRails = data.showAds !== false && Boolean(import.meta.env.PUBLIC_ADSENSE_CLIENT);
 
-const trail = isDownload
-  ? [{ name: 'Home', url: '/' }, { name: data.title, url: pageUrl }]
-  : [
+// Every post download on this site is a companion resource, never the
+// article's subject (corpus audit, 2026-10-23), so posts always use the
+// article breadcrumb — a download-style trail would present reviews and
+// guides as product download pages.
+const trail = [
       { name: 'Home', url: '/' },
       { name: 'Blog', url: '/blog/' },
       ...(data.categories?.[0]
@@ -168,7 +171,7 @@ const trail = isDownload
         <span class="mx-2">/</span>
         <a href="/blog/" class="hover:text-[var(--color-accent)]">Blog</a>
         {
-          !isDownload && data.categories?.[0] && (
+          data.categories?.[0] && (
             <>
               <span class="mx-2">/</span>
               <span class="text-[var(--color-ink-soft)]">{data.categories[0]}</span>
@@ -179,16 +182,13 @@ const trail = isDownload
 
       <header class="mt-6">
         {
-          isDownload ? (
-            <p class="eyebrow inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3.5 py-1.5">
-              <span class="live-dot" aria-hidden="true" />Free download · {download.platform ?? 'MT4 / MT5'}
+          /* Post downloads are companion resources, not the article's subject,
+             so the eyebrow always names the category — never "Free download",
+             which would present a review or guide as a product download page. */
+          data.categories?.[0] && (
+            <p class="eyebrow inline-flex items-center rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3.5 py-1.5">
+              {data.categories[0]}
             </p>
-          ) : (
-            data.categories?.[0] && (
-              <p class="eyebrow inline-flex items-center rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3.5 py-1.5">
-                {data.categories[0]}
-              </p>
-            )
           )
         }
         <h1 class="mt-5 text-balance text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">{data.title}</h1>
@@ -279,6 +279,7 @@ const trail = isDownload
               download={download ?? fallbackDownload!}
               title={data.title}
               kind={download ? undefined : 'external'}
+              companion
             />
           </div>
         )

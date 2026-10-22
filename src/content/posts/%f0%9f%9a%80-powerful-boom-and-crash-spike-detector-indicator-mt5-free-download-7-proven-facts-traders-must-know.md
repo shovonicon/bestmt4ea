@@ -4,7 +4,7 @@ title: "Boom and Crash Spike Detector MT5: Free Download Guide"
 slug: "%f0%9f%9a%80-powerful-boom-and-crash-spike-detector-indicator-mt5-free-download-7-proven-facts-traders-must-know"
 description: "A Boom and Crash spike detector for MT5, explained honestly: what synthetic indices are, what a detector can and cannot show, drawdown risk and a demo test."
 publishedAt: "2026-02-22T15:13:57.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-08-24T07:50:21Z"
 seo:
   title: "Boom and Crash Spike Detector MT5: Free Download Guide 2026"
   description: "How a Boom and Crash spike detector on MT5 works, why spikes cannot be forecast from past ticks, what drawdown to expect and how to test one on demo first."
@@ -44,12 +44,11 @@ sources:
     url: "https://www.mql5.com/en/docs"
 primaryKeyword: "Boom and Crash spike detector MT5"
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
+  license: "No licence stated - third-party files shared as-is, unverified"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
 ---
 
 ## The promise that draws traders to spike detectors

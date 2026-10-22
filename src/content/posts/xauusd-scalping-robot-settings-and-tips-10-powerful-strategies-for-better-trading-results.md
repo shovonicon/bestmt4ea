@@ -4,7 +4,7 @@ title: "XAUUSD Scalping Robot Settings for MT4 and MT5"
 slug: "xauusd-scalping-robot-settings-and-tips-10-powerful-strategies-for-better-trading-results"
 description: "XAUUSD scalping robot settings for MT4 and MT5: stop distance, risk per trade, spread caps and session windows, plus an open-source MT5 bot to test them on."
 publishedAt: "2025-12-07T02:40:23.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-08-31T07:59:43Z"
 seo:
   title: "XAUUSD Scalping Robot Settings for MT4 and MT5"
   description: "XAUUSD scalping robot settings for MT4 and MT5: stop distance, risk per trade, spread caps and session windows, plus an open-source MT5 bot to test them on."
@@ -62,15 +62,11 @@ installSteps:
   - name: "Compare the bot's arithmetic against your robot's preset"
     text: "If your live robot's fixed lot is more than double the size this bot's position-sizing code produces for a 0.5 percent risk, the preset is oversized for your account and must change before the robot trades again."
 download:
-  origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  author: "carlosrod723"
-  sourceUrl: "https://github.com/carlosrod723/MQL5-Trading-Bot"
-  version: "latest"
-  platform: "MT5"
-  fileSize: "about 577 MB in three zip parts"
-  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: "2026-09-28"
+  name: "XAUUSD (Gold) EA Session & Settings Checklist"
+  origin: "own"
+  license: "Free to use, print and share with credit to bestmt4ea.com"
+  version: "1.0"
+  fileKey: "resources/xauusd-gold-ea-session-checklist.pdf"
 ---
 
 You did not write the numbers your robot is trading on. Somebody you have never met did, on a broker you have never used, with an account size that is probably not yours. Those numbers are now running on your money.

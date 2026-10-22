@@ -4,7 +4,7 @@ title: "GoldBaron XAUUSD EA Review: What You Can Actually Verify"
 slug: "goldbaron-xauusd-ea-forex-ea-reviews-7-powerful-truths-every-trader-must-know"
 description: "An evidence-first GoldBaron XAUUSD EA review: what the vendor claims, what third-party data we could not verify, and the checks to demand before you install."
 publishedAt: "2026-02-25T10:23:15.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-08-28T15:54:22Z"
 seo:
   title: "GoldBaron XAUUSD EA Review: What You Can Actually Verify"
   description: "An evidence-first GoldBaron XAUUSD EA review: what the vendor claims, what third-party data we could not verify, and the checks to demand before you install."
@@ -64,11 +64,11 @@ installSteps:
   - name: "Watch it on demo, not live"
     text: "Run it on a demo account through a busy news week so you can watch how the grid behaves, and check the Experts log for order errors before you consider real money."
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
+  license: "No licence stated - third-party files shared as-is, unverified"
   author: "sonidelav"
   sourceUrl: "https://github.com/sonidelav/GridEA"
-  version: "latest"
   platform: "MT4"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"

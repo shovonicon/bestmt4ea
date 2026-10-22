@@ -4,7 +4,7 @@ title: "Gold M1 Grid EA: Safest Right Before It Blows Up"
 slug: "gold-1-minute-grid-forex-ea-reviews-7-powerful-truths-you-must-know-before-investing"
 description: "Grid and martingale gold EAs on M1 look safest right before they are most dangerous. See what the win rate hides, plus a free tool to size the worst case."
 publishedAt: "2026-02-25T10:02:06.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-09-01T06:18:56Z"
 seo:
   title: "Gold 1 Minute Grid EA Reviews: The Risk Behind 92% Wins"
   description: "Grid and martingale gold EAs on M1 look safest right before they are most dangerous. See what the win rate hides, plus a free tool to size the worst case."
@@ -67,11 +67,11 @@ installSteps:
   - name: "Forward-test for at least a month"
     text: "Run it through a full month, including a CPI or non-farm payrolls week, and compare the exits it produces with the floating drawdown you recorded for the grid."
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
+  license: "No licence stated - third-party files shared as-is, unverified"
   author: "EarnForex"
   sourceUrl: "https://github.com/EarnForex/Trailing-Stop-on-Profit"
-  version: "latest"
   platform: "MT4/MT5"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"

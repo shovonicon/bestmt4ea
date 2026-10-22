@@ -4,7 +4,7 @@ title: "Elliott Wave Fibonacci Indicator MT4: Free Download Guide"
 slug: "elliot-fibonacci-forex-indicator-free-download-7-powerful-secrets-to-maximize-profits"
 description: "An Elliott wave and Fibonacci indicator for MT4 counts waves and plots ratios. Learn why wave counts are subjective, where automation fails, and how to test it."
 publishedAt: "2026-02-20T19:53:16.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-08-27T14:46:48Z"
 seo: 
   title: "Elliott Wave Fibonacci Indicator MT4: Free Download Guide 2026"
   description: "An Elliott wave and Fibonacci indicator for MT4 counts waves and plots ratios. Learn why wave counts are subjective, where automation fails, and how to test it."
@@ -44,12 +44,11 @@ sources:
     url: "https://www.mql5.com/en/docs"
 primaryKeyword: "Elliott wave Fibonacci indicator MT4"
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
+  license: "No licence stated - third-party files shared as-is, unverified"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
 ---
 
 Traders who use Elliott wave theory often describe the same frustration. The theory explains how markets might move in repeating sequences of impulse and correction, but the chart rarely announces which wave you are looking at. An Elliott Fibonacci indicator for MT4 promises to do the counting for you. It labels the waves, draws the retracement and extension levels and sometimes sends an alert when price reaches a zone. That promise is attractive, and it is also where the risk sits.

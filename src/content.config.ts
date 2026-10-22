@@ -60,6 +60,13 @@ const download = z
      * The card says so, and links the DMCA policy for takedown requests.
      */
     origin: z.enum(['own', 'opensource', 'shared']),
+    /**
+     * The download's own name — what the file actually is ("EUR/USD EA
+     * Evaluation Checklist", "2000+ EA & Indicator Library (shared bundle)").
+     * The card shows it verbatim: a post title is not a file name, and a
+     * shared bundle must never borrow the article's tool name.
+     */
+    name: z.string().optional(),
     license: z.string().min(1),
     licenseUrl: z.string().url().optional(),
     /** Required when origin is opensource. */

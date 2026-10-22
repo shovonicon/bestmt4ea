@@ -4,7 +4,7 @@ title: "Deep Profit Lab V2 Indicator: Free Download & Setup Guide"
 slug: "forex-indicators-96-for-free-download-the-ultimate-powerful-guide-to-smart-trading-tools"
 description: "What the Deep Profit Lab V2 indicator claims, what to verify before any free MT4 and MT5 download, how to test its arrows on demo, and what it cannot do."
 publishedAt: "2026-02-22T15:14:32.000Z"
-updatedAt: "2026-10-22"
+updatedAt: "2026-08-31T08:14:35Z"
 seo:
   title: "Deep Profit Lab V2 Indicator: Free Download & Setup Guide 2026"
   description: "What the Deep Profit Lab V2 indicator claims, what to verify before any free MT4 and MT5 download, how to test its arrows on demo, and what it cannot do."
@@ -63,14 +63,11 @@ installSteps:
   - name: "Replay the arrows and log them"
     text: "Run the bar-replay test in the Strategy Tester and record every arrow for at least 30 signals. Compare the live arrows with the replayed arrows before you consider any live use."
 download:
-  origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  author: "EarnForex"
-  sourceUrl: "https://github.com/EarnForex/Channel-Pattern-Detector"
-  version: "latest"
-  platform: "MT4/MT5"
-  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: "2026-09-29"
+  name: "MT4/MT5 Expert Advisor Installation & Activation Checklist"
+  origin: "own"
+  license: "Free to use, print and share with credit to bestmt4ea.com"
+  version: "1.0"
+  fileKey: "resources/ea-installation-checklist.pdf"
 ---
 
 You searched for a free indicator that promises clearer entries, and you found a page with a name, a set of benefits and a download button. The benefits sound good. Fewer false signals, a clearer trend, arrows that show you where to act. You want to believe it, because the idea of a tool that removes the hard part of trading is appealing.

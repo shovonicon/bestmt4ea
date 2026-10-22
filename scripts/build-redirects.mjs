@@ -139,11 +139,15 @@ async function main() {
 
   const raw = await readFile(csvPath, 'utf8');
   const lines = raw.split(/\r?\n/).filter((l) => l.trim().length > 0);
-  const rows = lines.slice(1).map(parseCsvLine); // drop header
+  const csvRows = lines.slice(1).map(parseCsvLine); // drop header
 
   // Project-owned rules. The CSV is a generated artifact (wp-export --refresh
   // rewrites it), so hand-written redirects live in their own file and go
-  // through exactly the same validation below.
+  // through exactly the same validation below. Manual rules are processed
+  // FIRST (2026-10-22): they are deliberate editorial decisions and must win
+  // over generated rows for the same source; the builder still fails loudly
+  // on any genuine conflict that remains.
+  const rows = [];
   const MANUAL_JSON = 'src/data/redirects-manual.json';
   if (existsSync(MANUAL_JSON)) {
     try {
@@ -155,6 +159,8 @@ async function main() {
       fail(`Could not read ${MANUAL_JSON}: ${error.message}`);
     }
   }
+  rows.push(...csvRows);
+  const manualKeys = new Set(rows.slice(0, rows.length - csvRows.length).map((r) => cmpKey(canon(r[0] ?? ''))));
 
   const live = getLiveRoutes();
 
@@ -200,7 +206,13 @@ async function main() {
     if (map.has(k)) {
       const kept = map.get(k);
       if (kept.to !== to || kept.status !== status) {
-        fail(`Conflicting duplicate source ${from}: kept ${kept.to} ${kept.status}, dropped ${to} ${status}`);
+        if (manualKeys.has(k)) {
+          // A project-owned manual rule already claimed this source; the
+          // generated CSV row loses quietly (recorded in the manifest).
+          dropped.push({ from, to, status, reason: 'superseded by manual rule' });
+        } else {
+          fail(`Conflicting duplicate source ${from}: kept ${kept.to} ${kept.status}, dropped ${to} ${status}`);
+        }
       }
       continue;
     }
@@ -264,6 +276,45 @@ async function main() {
     fail(`Missing local target ${rule.to} (source ${rule.from}) — not a live route`);
   }
 
+  /* --- hub-funnel policy (SEO recovery, 2026-10-22) ------------------------
+   * A 301 is a claim of equivalence: "the content you wanted lives over
+   * there now." Funnelling hundreds of unrelated legacy URLs into generic
+   * hubs (/blog/, category archives, /top-ranking/, the shop, the homepage)
+   * breaks that claim at scale — it is the doorway pattern the August 2026
+   * spam classification punished, and Google treats the landings as soft
+   * 404s. Policy from here on:
+   *
+   *   - content -> a specific, equivalent page: keep the 301.
+   *   - taxonomy -> the same taxonomy family (/category/* -> /category/*,
+   *     /product-category/* -> /product-category/*): keep the 301 — a moved
+   *     archive is a genuine equivalent of itself.
+   *   - anything else -> a hub: the rule becomes 410 Gone. The URL is
+   *     retired honestly instead of laundering its history through a hub.
+   *
+   * Gone rules keep `to` pointing at their own `from` (the convention
+   * worker.test.mjs already uses); the matcher ignores `to` for 410/451.
+   * Converted rules are recorded in the manifest as `hubFunnelGone` so the
+   * decision stays auditable and reversible per-URL.
+   */
+  const HUB_KEYS = new Set(['/', '/blog/', '/shop/', '/top-ranking/', '/brand/mt4/', '/brand/mt5/'].map((p) => cmpKey(p)));
+  const taxonomyFamily = (path) => {
+    const k = cmpKey(path);
+    if (k.startsWith('/category')) return 'category';
+    if (k.startsWith('/product-category')) return 'product-category';
+    return null;
+  };
+  const isHubTarget = (to) => HUB_KEYS.has(cmpKey(to)) || taxonomyFamily(to) !== null;
+  const hubGone = [];
+  for (const rule of map.values()) {
+    if (isExternal(rule.to) || !REDIRECT_STATUSES.has(rule.status)) continue;
+    if (!isHubTarget(rule.to)) continue;
+    const fromFamily = taxonomyFamily(rule.from);
+    if (fromFamily && fromFamily === taxonomyFamily(rule.to)) continue;
+    hubGone.push({ from: rule.from, wasTo: rule.to });
+    rule.status = 410;
+    rule.to = rule.from;
+  }
+
   if (failures.length > 0) {
     console.error(`\nRedirect build FAILED with ${failures.length} error(s):`);
     for (const f of failures) console.error(`  - ${f}`);
@@ -285,6 +336,7 @@ async function main() {
       fallback: RETIRED_TARGETS.get(target),
       rules: count,
     })),
+    hubFunnelGone: hubGone,
     rules,
   };
 
@@ -305,6 +357,7 @@ async function main() {
   for (const r of manifest.retiredRemaps) {
     console.log(`  - ${r.retiredTarget} -> ${r.fallback} (${r.rules} rules)`);
   }
+  console.log(`Converted ${hubGone.length} hub-funnel rules to 410 Gone (hub-funnel policy)`);
   console.log(`Wrote ${OUT_JSON} with ${rules.length} rules — PASS`);
 }
 

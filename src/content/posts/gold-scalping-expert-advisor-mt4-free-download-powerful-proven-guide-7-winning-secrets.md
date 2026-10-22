@@ -4,7 +4,7 @@ title: "Gold Scalping Expert Advisor: 7 Rules That Keep You Alive"
 slug: "gold-scalping-expert-advisor-mt4-free-download-powerful-proven-guide-7-winning-secrets"
 description: "Seven survival rules for a gold scalping expert advisor on MT4 and MT5: spread budget, session choice, stop placement, ATR position sizing and a daily loss cap."
 publishedAt: "2026-02-13T20:38:34.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-08-28T15:50:51Z"
 seo:
   title: "Gold Scalping Expert Advisor MT4 FREE Download – 7 Survival Rules"
   description: "Seven survival rules for a gold scalping expert advisor on MT4 and MT5: spread budget, session choice, stop placement, ATR position sizing and a daily loss cap."
@@ -60,15 +60,11 @@ installSteps:
   - name: "Attach to a gold chart"
     text: "Drag the expert onto an XAUUSD chart, allow the Algo Trading button to turn green, and set GridMode, MaxOrders, the ATR multiplier and your drawdown threshold in the inputs."
 download:
-  origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  author: "sajidmahamud835"
-  sourceUrl: "https://github.com/sajidmahamud835/grid-master-pro-mt5-ea"
-  version: "latest"
-  platform: "MT5"
-  fileSize: "about 577 MB in three zip parts"
-  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-09-29
+  name: "XAUUSD (Gold) EA Session & Settings Checklist"
+  origin: "own"
+  license: "Free to use, print and share with credit to bestmt4ea.com"
+  version: "1.0"
+  fileKey: "resources/xauusd-gold-ea-session-checklist.pdf"
 ---
 
 Type "gold scalping expert advisor MT4 free download" into any search box and you get a wall of files. Most are free. A few even work. Almost none of them explain the part that actually decides whether you keep trading next month.

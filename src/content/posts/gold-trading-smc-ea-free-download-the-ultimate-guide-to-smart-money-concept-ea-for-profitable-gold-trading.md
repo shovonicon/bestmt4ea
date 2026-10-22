@@ -4,7 +4,7 @@ title: "Gold Trading SMC EA: What Smart Money Concepts Do in Code"
 slug: "gold-trading-smc-ea-free-download-the-ultimate-guide-to-smart-money-concept-ea-for-profitable-gold-trading"
 description: "A free Apache-2.0 SMC expert advisor for MetaTrader 5, plus an honest look at what order blocks, fair value gaps and displacement become once code defines them."
 publishedAt: "2026-02-13T20:37:39.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-09-01T07:47:54Z"
 categories:
   - "Free Forex EA"
 categoryPaths:
@@ -64,11 +64,11 @@ installSteps:
   - name: "Attach it and pick a copy mode"
     text: "Attach the expert to one chart on each terminal. Set COPY_MODE to PROVIDER on the account you trade and to RECEIVER, with the provider account number, on the ones that should follow, then enable Algo Trading."
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
+  license: "No licence stated - third-party files shared as-is, unverified"
   author: "wait4signal"
   sourceUrl: "https://github.com/wait4signal/sharing-is-caring"
-  version: "latest"
   platform: "MT5"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"

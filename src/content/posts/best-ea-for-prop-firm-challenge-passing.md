@@ -1,0 +1,167 @@
+---
+title: "Best EA for a Prop Firm Challenge: How to Choose & Run One"
+slug: "best-ea-for-prop-firm-challenge-passing"
+description: "Choose the best EA for a prop firm challenge safely: check daily drawdown, consistency and news rules, and run it without breaching the firm's limits."
+publishedAt: 2026-10-22
+updatedAt: 2026-10-22
+categories:
+  - "EA Reviews & Comparisons"
+categoryPaths:
+  - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
+tags: []
+draft: false
+quickAnswer: "There is no universally best EA for a prop firm challenge. The right choice is a low-risk, non-martingale system whose worst daily loss, open drawdown and trading hours sit comfortably inside your firm's specific rules, verified on a demo challenge first. Most failures come from rule breaches and oversized risk, not from a lack of profitable trades."
+keyTakeaways:
+  - "Read the firm's drawdown, news and consistency rules before you judge any EA's profitability."
+  - "Size positions so a normal losing streak stays well inside the daily loss limit, not just below it."
+  - "Avoid martingale, grid recovery and hold-and-hope logic unless the rules and your maths explicitly allow it."
+  - "Run a full demo challenge under identical rules before paying for a live evaluation."
+  - "A slower EA that respects the rules beats a fast EA that triggers a hard breach."
+faqs:
+  - question: "Can I use an EA in a prop firm challenge at all?"
+    answer: "Many firms allow Expert Advisors, but some restrict specific strategies, require source-code disclosure, or ban third-party EAs they cannot verify. Check the firm's terms and FAQ before you buy a challenge, and get written confirmation if the wording is ambiguous."
+  - question: "Which EA type fails prop firm challenges most often?"
+    answer: "Martingale and aggressive grid systems fail most visibly because a single extended move can breach the daily or overall drawdown limit in minutes. High-frequency news scalpers also fail where firms restrict trading around releases or impose minimum trade durations."
+  - question: "How much should I risk per trade in a challenge?"
+    answer: "Work backwards from the firm's daily loss limit. Many traders keep single-trade risk small enough that several consecutive losses still leave a buffer before the limit, rather than risking a large fraction of the daily allowance on one position."
+  - question: "Do I need a different EA for the funded stage than for the challenge?"
+    answer: "Not necessarily, but the funded stage punishes drawdown more severely because there is no second chance after a breach. Traders who pass often reduce risk further once funded instead of increasing it to chase larger payouts."
+  - question: "What is a consistency rule and why does it matter for EAs?"
+    answer: "A consistency rule limits how much of your total profit can come from a single day or a single trade. An EA that makes most of its profit in one lucky session can pass the profit target yet still fail the evaluation on consistency grounds."
+  - question: "Should I trade news during a prop firm challenge?"
+    answer: "Only if the firm explicitly allows it and your EA has been tested through similar releases. Many firms restrict opening or holding trades around high-impact news, and slippage during releases can turn a small planned loss into a rule breach."
+sources:
+  - label: "FTMO — trading rules and challenge terms"
+    url: "https://www.ftmo.com"
+  - label: "MetaTrader 5 documentation — automated trading and Expert Advisors"
+    url: "https://www.mql5.com/en/docs"
+primaryKeyword: "best EA for prop firm challenge"
+download:
+  name: "Prop Firm Challenge EA Playbook"
+  origin: "own"
+  license: "Free to use, print and share with credit to bestmt4ea.com"
+  version: "1.0"
+  fileKey: "resources/prop-firm-challenge-ea-playbook.pdf"
+---
+
+Passing a proprietary trading firm challenge with an Expert Advisor is less a search for the most profitable robot than a test of whether that robot can survive a narrow set of rules for long enough to reach a modest profit target. The marketing around this niche points in the opposite direction. Listings emphasise monthly returns, win rates and equity curves photographed at their peak. Firm rulebooks emphasise something duller and more consequential: how much you may lose in a day, how much you may lose in total, what you may do around news, and whether your profit arrived in a pattern the firm considers acceptable. An EA that ignores those constraints is not unsuitable in some abstract sense. It is unsuitable for the specific contract you have signed, and the contract is what decides whether you get funded.
+
+This guide works through the decision in the order that protects you. It starts with the rules, because no assessment of strategy quality makes sense until you know what counts as failure. It then covers the arithmetic of challenges, the strategy types that repeatedly cause breaches, how to evaluate a candidate EA with evidence rather than screenshots, how to size risk and configure safeguards, how the evaluation phases differ, and how to run the challenge day to day. It closes with the funded stage, because passing and keeping an account are different problems. Nothing here promises a pass. Any guide that does should be treated with suspicion, since the firm, the market conditions during your evaluation window and your own interventions all affect the outcome.
+
+## Start With the Rulebook, Not the Sales Page
+
+Every firm writes its own rules, and the differences between firms are large enough to change which EA is viable. Two challenges that look identical in advertising — a similar account size and a similar profit target — can impose completely different daily loss calculations, different rules on holding trades overnight or over weekends, and different definitions of prohibited trading. Reading the rulebook therefore means reading the actual terms, the frequently asked questions page and any strategy restrictions, and noting the points that interact with automated trading specifically.
+
+The first distinction to pin down is how the maximum loss is measured. Some firms use a static limit calculated from the starting balance. Others use a trailing limit that follows your highest closed or equity balance upward, which means a strong run followed by an ordinary pullback can breach a limit that appeared distant at the start. A related distinction is whether drawdown is measured on closed balance or on floating equity including open positions. An EA that holds trades with modest closed losses but large floating drawdowns can be safe under one definition and in immediate danger under the other. If the firm's documents do not state the basis clearly, ask support in writing and keep the reply.
+
+The second distinction is the daily loss limit and when the day resets. Firms reset on different clocks, commonly server midnight or a fixed time in a named timezone. An EA that trades the Asian session can straddle two firm days without the trader noticing, so a loss that feels like one bad session may be split across two limits, or, more dangerously, two sessions may fall inside a single firm day. You need the reset time in your own timezone written down next to the terminal, and your EA's trading hours checked against it.
+
+Third, look for rules that are not expressed as percentages. Minimum trading days force you to spread activity rather than finish in one session. Maximum lot or exposure rules cap position size directly. Restrictions on holding through major releases, on trading within a window before and after news, and on weekend holding can each invalidate a strategy that is otherwise conservative. Some firms also prohibit specific behaviours regardless of profitability: latency arbitrage, tick scalping below a minimum duration, exploiting price feed errors, hedging across accounts, or copying trades from another source. An EA whose edge depends on any of those will fail on conduct grounds even if its equity curve looks exemplary.
+
+Finally, check whether EAs are permitted at all, and on what conditions. Conditions seen in the market include requiring that you own the EA, prohibiting shared or rented signals, reserving the right to request parameters or source code, and banning EAs that place and cancel orders at rates the firm considers abusive to its infrastructure. If you bought a compiled file from a marketplace, confirm that the licence and the firm's conditions are compatible before the challenge clock starts. Discovering an incompatibility after paying the fee is a common and entirely avoidable cost.
+
+## The Arithmetic of a Challenge
+
+A challenge is an asymmetric bet. You pay a fixed fee. In return you receive a limited loss budget, a profit target, and sometimes a time limit. The loss budget is almost always smaller than the distance most retail strategies travel in normal operation, which is why challenge-specific risk management matters more than raw strategy quality.
+
+Consider the relationship between target and maximum loss in plain terms. If the overall loss limit is roughly the same size as the profit target, you need a strategy that can gain that amount without at any point giving back a similar amount in floating or closed losses. That is a demanding requirement. Many strategies that are profitable over a year routinely experience drawdowns comparable to their best months. Compressing that behaviour into a short evaluation window without the drawdown arriving first is the central difficulty, and it explains a pattern experienced traders recognise: the same EA, on the same settings, passes one challenge and fails the next. The strategy did not change. The order in which wins and losses arrived did.
+
+Daily limits tighten the problem further. A strategy can be comfortably inside its overall limit while breaching the daily limit in a single afternoon, particularly if it trades correlated instruments at the same time. EURUSD and GBPUSD positions opened together are not two independent risks on a day when the dollar moves sharply. Gold and silver, or several equity indices, behave similarly. Your arithmetic should therefore be done on simultaneous exposure, not on single-trade risk in isolation. Add the worst plausible simultaneous loss across everything the EA may hold at once, including slippage, and compare that figure with the daily limit. If the comparison leaves little room, the configuration is not conservative, whatever the per-trade percentage says.
+
+Time limits, where they exist, change behaviour in a subtler way. A deadline encourages increasing risk as the deadline approaches, which is precisely when the account can least afford it. Firms that removed time limits have reduced that pressure, but minimum trading days and consistency rules introduce their own pacing requirements. The practical response is to plan the challenge as a schedule before it starts: a target pace, a maximum daily risk, pre-agreed points at which you reduce size or stop, and a rule for what happens after a large winning day. Deciding these points mid-challenge, while watching a floating loss, produces worse decisions than deciding them in advance.
+
+Fees deserve the same unsentimental treatment. A challenge fee is a sunk cost the moment it is paid, and treating it as money that must be recovered inside the challenge leads to overtrading. The relevant question before purchase is whether you can afford to fail more than once without the fees affecting your ordinary finances. If a single fee is painful, the challenge will be traded under emotional pressure that no EA setting can remove, because the temptation to override the robot is strongest exactly when the robot is behaving as designed and losing within its expected range.
+
+## Why Most EAs Fail Challenges
+
+Failure reports tend to blame the market. The more useful explanation is usually a mismatch between what the EA does under stress and what the rules permit. Several mismatches recur often enough to check for explicitly.
+
+Martingale and grid recovery systems are the clearest case. Their defining behaviour is to increase exposure as price moves against the initial position, on the assumption that price will eventually retrace enough to close the basket profitably. Inside an ordinary retail account that behaviour produces long winning stretches punctuated by rare, severe losses. Inside a challenge, the severe loss does not need to empty the account to end the attempt. It only needs to cross the daily or overall limit once. A system that would have recovered by Thursday still fails if it breached on Tuesday, because the firm stops the evaluation at the breach. Recovery after the limit is irrelevant. This single point invalidates a large share of the EAs marketed with challenge language, and no adjustment of starting lot size changes the underlying shape of the risk. Smaller lots delay the breach; they do not remove the mechanism that causes it.
+
+A second mismatch is stop-loss design. Some EAs use no hard stop, relying on basket logic, hedging or eventual mean reversion. Others use stops so wide that a single stopped trade consumes most of the daily allowance. Others place stops that are routinely slipped through during fast markets, so the realised loss exceeds the planned loss on exactly the days when several positions are affected at once. For challenge use you want the opposite profile: a defined, hard stop on every position, sized so that the planned loss is a modest fraction of the daily limit, with an allowance for slippage on top.
+
+A third mismatch is trading frequency and session choice. EAs that trade the news spike, the market open or thin overnight spreads earn their edge in conditions where execution quality varies most. Firms may also measure and restrict exactly those conditions. Even where permitted, a strategy whose profit depends on tight spreads will perform differently on a firm's feed than on the broker feed used in its marketing backtests. Spread differences that look trivial in a brochure can be the entire edge of a scalper.
+
+A fourth mismatch is correlation disguised as diversification. Running three EAs looks safer than running one, but if all three are trend-following systems on dollar pairs, they will tend to lose together. Portfolio language does not create independence. If you combine systems, the combined worst day is what must fit inside the limit, and establishing that figure requires testing them together, not adding up their separate brochures.
+
+Finally, many failures are operational rather than strategic. A virtual private server that restarts for updates, a terminal that disconnects, a duplicated EA attached to two charts with the same magic number, a daylight-saving change that shifts trading hours into a restricted window: each has ended challenges that the strategy itself was surviving. Automation removes the need to watch charts. It does not remove the need to supervise the machine.
+
+
+## How to Evaluate a Candidate EA
+
+With the rules understood, you can assess an EA on evidence. The order of questions matters. Profitability comes last, not first, because an unprofitable month is recoverable in ordinary trading while a rule breach is not.
+
+Ask first how the EA loses. Request or locate its worst day, worst week and largest floating drawdown in testing, not its average day. Look at how losses cluster: a system that loses a little on many days is easier to fit inside a daily limit than one that is flat for weeks and then loses heavily in one session. Examine the trade distribution as well. If a small number of trades account for most of the profit, a consistency rule may become a problem, and the result may depend on conditions that do not repeat during your window.
+
+Ask second what the EA does mechanically. Does every trade carry a hard stop loss set at entry? Does it add to losing positions, and if so, how many times and by what multiplier? Does it hedge, hold baskets, or close all positions at a basket target? Does it trade during rollover, the open, or scheduled news? Can its trading hours, maximum spread, maximum slippage and maximum concurrent positions be limited by inputs, or are those behaviours fixed in code you cannot change? An EA with few controls forces you to accept its risk shape as sold. For challenge use, controllability is a feature in its own right.
+
+Ask third what the test evidence actually represents. A backtest on a different broker's feed, with modelled spreads and no commission, tells you little about a scalper's behaviour on the firm's feed. A forward test on a demo account at the same firm, or at least on the same platform and a comparable feed, is worth more than a longer backtest elsewhere. In MetaTrader, use the Strategy Tester with real ticks where available, check that modelling quality and spread assumptions are visible, and treat any result without a visible drawdown curve as incomplete. The platform documentation describes what the tester does and does not model, and reading it prevents a common error: treating an optimised curve as a forecast rather than as a description of one historical path under chosen assumptions.
+
+Ask fourth who is accountable for the product. A vendor who publishes version history, explains changes, states which instruments and timeframes were tested, and describes known failure conditions plainly is easier to trust than one who publishes only winning months. Absence of drawdown information is itself information. So is a refusal to say whether the system uses martingale logic. If a vendor will not answer mechanical questions before purchase, assume the answers are unfavourable and look elsewhere.
+
+Be equally careful with reviews and social proof. Screenshots of passed challenge certificates show that someone, on some settings, on some occasion, was not breached. They do not show the failed attempts by other buyers, the settings used, or whether the same EA passed under the current version of the firm's rules, which change over time. Treat such material as a prompt to investigate, never as verification.
+
+## Risk Sizing and Protective Settings
+
+Configuration is where challenge attempts are usually won or lost. The principle is to size for the bad day you cannot predict, using the firm's limits as the ceiling and your own stricter limits as the working target. If you trade up to the firm's limit, ordinary slippage or one extra correlated trade can push you through it. A buffer is not wasted capacity. It is the margin that absorbs execution imperfection.
+
+Begin with a hard equity guard independent of the EA's own logic. Many traders run a separate protective EA or script whose only job is to close all positions and disable autotrading when equity falls by a set amount in a day or in total. That guard must be tested, because a guard that fails silently is worse than none: it creates confidence without protection. Test it on demo by deliberately triggering it, and confirm that it closes positions, prevents new ones, and survives a terminal restart in the state you expect. Note that some firms scrutinise the use of additional software, so confirm the guard itself is permitted.
+
+Within the EA, set risk per trade so that a realistic losing cluster stays inside your working daily target. A losing cluster is not one loss. It is the number of consecutive or simultaneous losses the system has produced in testing, plus one more for the cluster you have not yet seen. If the system can hold several positions at once, multiply accordingly, then add a slippage allowance. If the resulting lot size looks disappointingly small, that is the arithmetic informing you that the system's natural risk is too large for this account size. Choosing a larger account size, where the same percentage limits give more absolute room for spreads and minimum lot granularity, is sometimes more effective than forcing a system onto the smallest challenge.
+
+Granularity deserves attention on small accounts. On some instruments the minimum lot size produces a minimum monetary risk for a given stop distance. If that minimum already exceeds your intended risk per trade, you cannot size the trade correctly, and the honest options are a wider choice of instrument, a larger account, or a different EA. Ignoring granularity and accepting whatever the minimum lot produces is how carefully written risk plans quietly become fiction.
+
+Set the remaining controls deliberately. Limit maximum spread so the EA stands aside in thin conditions rather than paying any price to enter. Limit concurrent positions and total exposure per symbol and per correlated group. Restrict trading hours to the sessions the system was tested in, and to hours that avoid the firm's news windows and the daily reset boundary. Disable trading on the final approach to a limit: several traders use a two-stage approach, reducing size after a drawdown threshold and stopping entirely after a second, lower threshold, so that a bad day ends early by design rather than by breach.
+
+One setting requires special honesty: the temptation to widen stops or disable the equity guard after a losing run, in the hope of recovering. That intervention converts a controlled loss into an uncontrolled one and is the point at which the EA stops being the strategy. Write your intervention rules before the challenge. Legitimate interventions are narrow: stopping for a documented technical fault, standing aside for a specific restricted news event, or ending the day after a pre-set loss. Recovering losses is not on the list.
+
+## The Evaluation Phases, Stage by Stage
+
+Most challenges run in one or two evaluation phases followed by a funded stage, though structures vary and some firms offer single-phase or instant-funding models with tighter limits in exchange for fewer steps. Read your chosen model as a whole, because an easy first phase paired with a severe consistency rule or a trailing funded drawdown may be harder overall than a conventional two-phase route.
+
+In the first phase, your task is to reach the target without a breach, at a pace the remaining rules allow. The most common strategic error is front-loading risk to finish quickly. A large early gain feels like safety, but under a trailing drawdown it raises the floor beneath you, and under a consistency rule it may create a single day that dominates your total profit and complicates the assessment. Steady progress in modest increments is less exciting and structurally safer. It also produces a trading record that resembles what the firm says it wants to fund: repeatable behaviour rather than one fortunate session.
+
+Between phases, resist changing the system. A phase passed on particular settings is evidence for those settings under those conditions. Swapping to a faster EA for the second phase discards that evidence at the moment the profit target, relative to the remaining loss budget, often becomes less forgiving. If anything, the second phase argues for the same configuration with equal or slightly lower risk, since the cost of failure now includes the work already done. Check whether the loss limits reset between phases, whether the daily limit changes, and whether any rule, such as a consistency requirement or a news restriction, applies in one phase but not the other.
+
+Minimum trading days also shape phase strategy. If you reach the target early, the remaining required days must still be traded, or at least satisfied, according to the firm's definition, which may require opening trades on separate days. Plan low-risk activity for those days in advance: reduced size, the most conservative instrument in your set, or standing aside if the firm counts calendar participation differently. Confirm the exact definition rather than assuming exposure is required, and never manufacture meaningless trades at full size simply to fill a day count.
+
+Throughout both phases, keep your own log separate from the firm's dashboard. Record the starting balance, the firm's reset time, your daily starting equity, every intervention you made and why, and any platform or connectivity incident with timestamps. If a dispute arises — a spike that appears on one feed and not another, a closure you did not request — a contemporaneous log is the difference between a specific, resolvable query and a general complaint. Firms do reverse errors, but they reverse documented errors.
+
+## News, Weekends and the Events Between Sessions
+
+Scheduled news is a recurring cause of breaches for automated systems, because the EA continues to execute its logic precisely when spreads widen, liquidity thins and stops are filled further from their levels. Firm rules compound the risk: many prohibit opening trades within a defined window around high-impact releases, some prohibit holding through them, and a few treat profits made in the window as removable even where trading was not forbidden. Build a calendar routine into the challenge rather than handling news by memory. At the start of each week, list the releases relevant to your instruments, mark the restricted windows, and set the EA's schedule or your manual stand-aside times accordingly.
+
+Unscheduled events cannot be listed, which is another argument for the independent equity guard and for modest size. A position that is small enough to survive a surprise is a position you do not need to predict surprises for. Weekend holding carries a related risk. Gaps over the weekend can open beyond stop levels, and some firms prohibit weekend holding outright or apply different conditions to it. If your EA's edge does not depend on holding over the weekend, closing before the close removes an entire category of uncontrollable loss at the cost of occasionally missing a Monday continuation. For most challenge configurations, that trade favours closing.
+
+Rollover and the daily close deserve the same treatment. Spreads widen predictably around rollover, and an EA that enters there pays the widest price of the day for no compensating advantage. Excluding that window in the trading hours costs little. Similarly, ending new entries well before the firm's daily reset avoids disputes about which day a loss belongs to and prevents a trade opened late in one firm day from being judged inside the next day's fresh limit while you are asleep.
+
+## Running the Challenge Day to Day
+
+Daily operation should be brief, scheduled and mostly boring. Check that the virtual private server is running, the terminal is connected, autotrading is in the intended state, the correct set file is loaded, and no duplicate instance of the EA is running on another chart or terminal. Confirm the account number shown in the terminal is the challenge account; running a well-configured EA on the wrong account is an error that has genuinely happened and is entirely preventable by a ten-second check. Review the day's news windows and confirm any stand-aside settings. Then leave it alone.
+
+Intervention discipline is the skill that separates supervision from interference. Every manual closure, size change or pause alters the system you tested, so the tested evidence applies less and less to what you are actually running. If you find yourself intervening daily, one of two things is true: the EA is not suited to the challenge, or your risk is set higher than you can psychologically tolerate. Both are useful findings, and both argue for stopping and reconfiguring on demo rather than improvising on a paid evaluation.
+
+Keep position size unchanged after wins as well as after losses. Increasing size after a winning day to finish sooner is the mirror image of chasing losses, and it carries the same structural flaw: it makes the largest bets occur at the point where a trailing limit is tightest or a consistency calculation is most exposed. The schedule you wrote before the challenge already contains your pacing decisions. Following it when it feels slow is the point of having written it.
+
+If you breach, stop and analyse before buying another attempt. Classify the failure precisely: strategy drawdown, daily-limit breach through correlated exposure, news or gap event, rule misunderstanding, technical failure, or manual intervention. Each class has a different remedy, and several have remedies that cost nothing. Buying the same challenge and running the same configuration again addresses none of them. Where the failure was a rule misunderstanding, re-read the terms and, if the wording is genuinely ambiguous, ask the firm to clarify before your next attempt rather than after it.
+
+## After Passing: Keeping a Funded Account
+
+Passing changes the problem. There is no longer a target to reach, only an account to keep and a payout schedule to reach intact. Firms commonly apply the drawdown rules with the same or greater strictness on funded accounts, and some introduce trailing limits that begin once you are in profit. The behaviour that endangers funded accounts most is a celebratory increase in risk, sometimes encouraged by the feeling that the firm's money, rather than your own, is at stake. Contractually, a breach ends the account and the income stream it might have produced, so the economic exposure is yours even when the capital is not.
+
+A sensible funded routine reduces risk relative to the challenge rather than raising it, banks payouts when they become available rather than compounding exposure inside the account, and keeps the same logging and news discipline that produced the pass. Treat the first payout as the objective of the funded stage, not as a milestone on the way to a larger size. Scaling plans offered by firms reward longevity. Longevity comes from the unglamorous controls already described: hard stops, a tested equity guard, modest simultaneous exposure, and a refusal to trade restricted or disorderly conditions for no structural reason.
+
+Tax, payout methods and the legal nature of the arrangement also deserve attention at this stage, and they vary by jurisdiction and by firm. Simulated or evaluation-based models differ from arrangements where a trader is contracted differently, and the documents you accepted describe which model you are in. Read the funded agreement with the same care as the challenge rules, particularly the sections on payout conditions, prohibited conduct that may be assessed retrospectively, and grounds for withholding or account closure. Understanding those sections after a dispute begins is too late.
+
+## A Pre-Purchase Checklist
+
+Before paying for any challenge, you should be able to answer the following from documents you have actually read. The firm's daily and overall loss limits, and whether each is based on balance or equity, static or trailing. The daily reset time in your timezone. The profit target, any time limit, and the minimum trading days. Any consistency rule and how it is calculated. The news and weekend rules, in minutes and in scope. Whether EAs are allowed, and any conditions on their use. Which strategies are prohibited. Whether your specific EA uses any prohibited mechanism. Your EA's worst tested day and largest floating drawdown, and how both compare with the limits after adding a buffer. Your simultaneous worst-case loss across everything the EA may hold at once. The equity guard you will run, and evidence that you have triggered it successfully on demo. Your intervention rules, your stopping rules, and your plan for the required trading days after reaching the target. If several answers are missing, the missing answers are your next task, not a detail to resolve during the evaluation.
+
+No EA removes the structural difficulty of a challenge, and the search for the best EA for a prop firm challenge is best understood as a search for the least unsuitable one: a system whose losing behaviour you understand, whose controls let you fit that behaviour inside a specific firm's limits, and whose operation you can supervise without improvising. Choose on that basis, verify on a demo challenge run under identical rules, and let the arithmetic, rather than the brochure, make the final decision.
+
+## Related reading
+
+- [Prop firm EA risk rules worksheet guide](/risk-management-settings-for-grid-ea-explained-7-powerful-ways-to-reduce-losses/)
+- [Gemini AI Smart Trader Pro settings guide](/gemini-ai-smart-trader-pro-ea-settings-guide/)
+- [Vortex Gold EA review](/vortex-gold-ea-forex-ea-reviews-7-powerful-truths-you-must-know-before-investing/)
+- [Best forex robots by Myfxbook results](/best-forex-robot-independent-myfxbook-results-top-performers/)

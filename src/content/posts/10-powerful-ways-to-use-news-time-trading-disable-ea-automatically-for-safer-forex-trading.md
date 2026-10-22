@@ -43,10 +43,11 @@ sources:
     url: "https://www.investopedia.com"
 primaryKeyword: "disable ea during news"
 download:
+  name: "News Event EA Protection Plan"
   origin: "own"
   license: "Free to use, print and share with credit to bestmt4ea.com"
   version: "1.0"
-  fileKey: "resources/eurusd-ea-evaluation-checklist.pdf"
+  fileKey: "resources/news-event-ea-protection-plan.pdf"
 ---
 ## Why does your expert advisor keep losing money in the minutes after a big release?
 

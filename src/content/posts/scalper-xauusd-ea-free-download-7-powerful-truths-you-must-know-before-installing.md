@@ -4,7 +4,7 @@ title: "Scalper XAUUSD EA Free Download: 7 Truths to Check"
 slug: "scalper-xauusd-ea-free-download-7-powerful-truths-you-must-know-before-installing"
 description: "Seven things to verify before installing a Scalper XAUUSD EA free download: file source, stop logic, spread cost, drawdown and the settings that decide survival"
 publishedAt: "2026-02-13T06:02:05.000Z"
-updatedAt: "2026-10-22"
+updatedAt: "2026-08-26T17:08:47Z"
 seo:
   title: "Scalper XAUUSD EA Free Download: 7 Truths to Check"
   description: "Seven checks to run on a Scalper XAUUSD EA free download: publisher, source, stop logic, spread cost, drawdown, timeframe and how the lot size is chosen."
@@ -70,15 +70,11 @@ installSteps:
   - name: "Set your risk and compare"
     text: "Set the risk percentage the author exposes, then compare the lot it implies against the sizing rule from truth six before the robot trades."
 download:
-  origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  author: "BAKOME-Hub"
-  sourceUrl: "https://github.com/BAKOME-Hub/gold_bakome"
-  version: "latest"
-  platform: "MT5"
-  fileSize: "about 577 MB in three zip parts"
-  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: "2026-09-29"
+  name: "Forex Session & Rollover Clock Cheat Sheet"
+  origin: "own"
+  license: "Free to use, print and share with credit to bestmt4ea.com"
+  version: "1.0"
+  fileKey: "resources/forex-session-and-rollover-clock-cheat-sheet.pdf"
 ---
 
 You are about to install a Scalper XAUUSD EA free download, and the first useful thing I can tell you is that the download itself is not the decision. The decision is whether seven specific things are true of the file and your account, and most of them can be checked in the time it takes to read this page. If they are true, you have a known object worth testing. If any of them is false, you have saved yourself a live account's worth of learning.

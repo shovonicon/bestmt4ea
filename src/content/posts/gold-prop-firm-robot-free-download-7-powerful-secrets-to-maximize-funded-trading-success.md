@@ -4,7 +4,7 @@ title: "Gold Prop Firm Rules: Why Your EA Fails a Challenge"
 slug: "gold-prop-firm-robot-free-download-7-powerful-secrets-to-maximize-funded-trading-success"
 description: "A gold EA fails a prop firm challenge on the rulebook, not the market. Daily loss limits, drawdown, consistency and news bans decide which XAUUSD EAs survive."
 publishedAt: "2026-02-13T22:22:43.000Z"
-updatedAt: "2026-10-22"
+updatedAt: "2026-08-30T08:34:35Z"
 seo:
   title: "Gold Prop Firm Rules: Why Your EA Fails a Challenge"
   description: "A gold EA fails a prop firm challenge on the rulebook, not the market. Daily loss limits, drawdown, consistency and news bans decide which XAUUSD EAs survive."
@@ -63,15 +63,11 @@ installSteps:
   - name: "Run the rulebook test on demo"
     text: "Trade it on a demo account with your firm's exact daily loss and maximum drawdown figures for at least 60 days before you spend money on a challenge."
 download:
-  origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  author: "EarnForex"
-  sourceUrl: "https://github.com/EarnForex/PositionSizer"
-  version: "latest"
-  platform: "MT4/MT5"
-  fileSize: "about 577 MB in three zip parts"
-  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: "2026-09-29"
+  name: "Prop Firm EA Risk Rules Worksheet"
+  origin: "own"
+  license: "Free to use, print and share with credit to bestmt4ea.com"
+  version: "1.0"
+  fileKey: "resources/prop-firm-ea-risk-rules-worksheet.pdf"
 ---
 
 Most traders who fail a prop firm challenge tell the same story. The market turned. The broker hunted the stop. The strategy stopped working.

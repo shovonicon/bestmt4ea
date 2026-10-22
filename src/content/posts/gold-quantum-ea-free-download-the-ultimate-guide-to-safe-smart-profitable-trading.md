@@ -4,7 +4,7 @@ title: "Gold EA Backtest vs Live: What the Tester Hides"
 slug: "gold-quantum-ea-free-download-the-ultimate-guide-to-safe-smart-profitable-trading"
 description: "Gold EA backtests and live results rarely match. Here is what the Strategy Tester hides, and how to run a walk-forward check that means something for XAUUSD."
 publishedAt: "2026-02-13T23:37:49.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-08-30T08:56:15Z"
 seo:
   title: "Gold Quantum EA Review: Free Download & Trading Guide 2026"
   description: "Gold EA backtest results look nothing like live results. See what the MetaTrader Strategy Tester hides on XAUUSD and how to run a real walk-forward test."
@@ -70,15 +70,11 @@ installSteps:
   - name: "Move to demo, then keep a log"
     text: "Attach it to a demo account at the same broker you intend to trade, with the same account type, and record every trade's slippage, spread and result for at least eight weeks."
 download:
-  origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  author: "NadirAliOfficial"
-  sourceUrl: "https://github.com/NadirAliOfficial/trillex-10s-ea"
-  version: "latest"
-  platform: "MT5"
-  fileSize: "about 577 MB in three zip parts"
-  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-09-29
+  name: "Trade Journal: Printable Template & Weekly Review"
+  origin: "own"
+  license: "Free to use, print and share with credit to bestmt4ea.com"
+  version: "1.0"
+  fileKey: "resources/trade-journal-printable-template.pdf"
 ---
 
 You download a gold EA, open the MetaTrader Strategy Tester, select XAUUSD, and press start. Two minutes later you are looking at an equity curve that climbs from left to right, a profit factor above 2, and a drawdown you would happily accept.

@@ -4,7 +4,7 @@ title: "MFT Trading Robot MT4 Free Download: Honest Review"
 slug: "mft-trading-robot-mt4-free-download-7-powerful-facts-you-must-know-before-installing"
 description: "MFT Trading Robot MT4 free download explained: what the robot automates, the risks of free MT4 robots, and a careful demo-first plan before any live trading."
 publishedAt: "2026-02-13T06:55:04.000Z"
-updatedAt: "2026-10-22T00:00:00.000Z"
+updatedAt: "2026-08-27T05:56:53Z"
 seo:
   title: "MFT Trading Robot MT4 FREE Download: 7 Powerful Facts You Must Know Before Installing 2026"
   description: "MFT Trading Robot MT4 free download explained: what the robot automates, the risks of free MT4 robots, and a careful demo-first plan before any live trading."
@@ -43,12 +43,11 @@ sources:
 primaryKeyword: "MFT Trading Robot MT4 free download"
 draft: false
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
+  license: "No licence stated - third-party files shared as-is, unverified"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
 ---
 
 You want a robot that trades while you work, sleeps or ignore the charts for a day. That goal is reasonable, and it is the reason the MFT Trading Robot MT4 free download keeps appearing in search results. It is promoted as a free automated solution for MetaTrader 4 users, with the promise of algorithmic logic that reads the market and acts without emotion. For a trader who is tired of watching every candle, that sounds like relief.

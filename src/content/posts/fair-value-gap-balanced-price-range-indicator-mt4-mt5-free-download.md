@@ -4,7 +4,7 @@ title: "FVG & BPR Indicator MT4/MT5: Free Download Guide"
 slug: "fair-value-gap-balanced-price-range-indicator-mt4-mt5-free-download"
 description: "A fair value gap and balanced price range indicator marks three-candle imbalances and overlap zones on MT4 or MT5. See what it shows and how to test it."
 publishedAt: "2026-02-20T05:04:28.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-08-24T08:05:18Z"
 seo: 
   title: "FVG & BPR Indicator MT4/MT5: Free Download Guide 2026"
   description: "A fair value gap and balanced price range indicator marks three-candle imbalances and overlap zones on MT4 or MT5. See what it shows and how to test it."
@@ -46,12 +46,11 @@ sources:
     url: "https://www.babypips.com/learn"
 primaryKeyword: "fair value gap indicator MT4"
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
+  license: "No licence stated - third-party files shared as-is, unverified"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
 ---
 
 If you have searched for a fair value gap and balanced price range indicator for MT4 or MT5, you have probably seen the same claims many times. Gaps are said to be footprints of large orders. Balanced ranges are said to be zones where the market rebalances before a breakout. Charts full of coloured rectangles are presented as a map of where price must return. Some of that language is theory, and some of it is marketing. This guide separates the two, so you can decide what a gap indicator is worth to you.

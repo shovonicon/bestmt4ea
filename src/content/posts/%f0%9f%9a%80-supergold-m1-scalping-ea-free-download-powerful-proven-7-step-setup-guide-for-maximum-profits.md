@@ -70,15 +70,11 @@ installSteps:
   - name: "Backtest on real ticks, then forward-test on demo"
     text: "Run at least a year in the Strategy Tester with real ticks, then leave it on demo for four weeks. Live money comes after the demo record resembles the backtest, not before."
 download:
-  origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  author: "BAKOME-Hub"
-  sourceUrl: "https://github.com/BAKOME-Hub/BAKOMEGoldScalper"
-  version: "latest"
-  platform: "MT5"
-  fileSize: "about 577 MB in three zip parts"
-  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: "2026-09-29"
+  name: "Forex Session & Rollover Clock Cheat Sheet"
+  origin: "own"
+  license: "Free to use, print and share with credit to bestmt4ea.com"
+  version: "1.0"
+  fileKey: "resources/forex-session-and-rollover-clock-cheat-sheet.pdf"
 ---
 
 You are looking for a SuperGold M1 scalping EA free download, which means you have already decided the timeframe. That is a bigger decision than the choice of EA, and most pages on this topic skip it entirely. On gold, the one-minute chart is not a faster version of the four-hour chart. It is a different game with different winners, and the entry signal is the least important part of it.

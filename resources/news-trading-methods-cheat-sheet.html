@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" />
+<title>News Trading Methods Cheat Sheet: 9 Ways to Protect an EA — BestMT4EA</title><style>
+      :root {
+        --ink: #101418;
+        --muted: #5a6570;
+        --line: #d7dde3;
+        --accent: #0b7a5d;
+        --warn: #a8410f;
+      }
+      * { box-sizing: border-box; }
+      @page { size: A4; margin: 14mm 13mm; }
+      html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: #fff;
+        font: 10.5pt/1.45 "Helvetica Neue", Arial, sans-serif;
+      }
+      h1 { font-size: 19pt; line-height: 1.15; margin: 0 0 2mm; letter-spacing: -0.01em; }
+      h2 {
+        font-size: 11.5pt;
+        margin: 7mm 0 2.5mm;
+        padding-bottom: 1.2mm;
+        border-bottom: 1px solid var(--line);
+        break-after: avoid;
+      }
+      h3 { font-size: 10pt; margin: 4mm 0 1.5mm; break-after: avoid; }
+      p { margin: 0 0 2.5mm; }
+      .lede { color: var(--muted); max-width: 165mm; }
+      .brand {
+        display: flex; justify-content: space-between; align-items: baseline;
+        border-bottom: 2px solid var(--accent); padding-bottom: 2mm; margin-bottom: 4mm;
+      }
+      .brand strong { font-size: 11pt; letter-spacing: 0.02em; }
+      .brand span { color: var(--muted); font-size: 8.5pt; }
+      ul { margin: 0 0 2.5mm; padding-left: 0; list-style: none; }
+      ul.check li { position: relative; padding-left: 6.5mm; margin-bottom: 1.4mm; break-inside: avoid; }
+      ul.check li::before {
+        content: ""; position: absolute; left: 0; top: 0.4mm;
+        width: 3.6mm; height: 3.6mm; border: 1px solid var(--muted); border-radius: 0.6mm;
+      }
+      ul.plain { padding-left: 5mm; list-style: disc; }
+      ul.plain li { margin-bottom: 1.2mm; }
+      table { width: 100%; border-collapse: collapse; margin: 0 0 3mm; font-size: 9.5pt; break-inside: avoid; }
+      th, td { border: 1px solid var(--line); padding: 1.6mm 2mm; text-align: left; vertical-align: top; }
+      th { background: #f2f5f7; font-weight: 600; }
+      .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 8mm; }
+      .note {
+        border-left: 3px solid var(--warn); background: #fdf6f2;
+        padding: 2.5mm 3mm; margin: 3mm 0; font-size: 9.5pt; break-inside: avoid;
+      }
+      .box { border: 1px solid var(--line); border-radius: 1.5mm; padding: 3mm; margin: 3mm 0; break-inside: avoid; }
+      .box h3 { margin-top: 0; }
+      .flag { color: var(--warn); font-weight: 600; }
+      footer {
+        margin-top: 8mm; padding-top: 2.5mm; border-top: 1px solid var(--line);
+        color: var(--muted); font-size: 8.5pt;
+      }
+      .page-break { break-before: page; }
+      .formula { font-family: "Courier New", monospace; font-size: 9.5pt; background: #f2f5f7; padding: 2mm 2.5mm; border-radius: 1mm; }
+    </style></head>
+<body>
+<div class="brand"><strong>BestMT4EA</strong><span>bestmt4ea.com — free trading resources</span></div>
+<h1>News Trading Methods Cheat Sheet: 9 Ways to Protect an EA</h1>
+<p class="lede">Every EA owner eventually asks the same question: how do I stop it trading through the news? There are nine honest methods, and they differ in cost, reliability and how much of the calendar they cover. This sheet compares them so you can pick deliberately.</p>
+
+ <h2>The nine methods, compared</h2>
+ <table><tr><th>#</th><th>Method</th><th>Cost</th><th>Strength</th><th>Weakness</th></tr>
+ <tr><td>1</td><td>Manual pause: you switch AutoTrading off before releases</td><td>Free</td><td>Total control</td><td>You must be awake, every time, forever</td></tr>
+ <tr><td>2</td><td>EA built-in news filter input (minutes before/after)</td><td>Free if present</td><td>Automatic, per-EA</td><td>Depends on the EA's calendar source being right</td></tr>
+ <tr><td>3</td><td>Third-party news filter indicator/EA add-on</td><td>Free–paid</td><td>Works with EAs that lack filters</td><td>Another moving part; server time offsets</td></tr>
+ <tr><td>4</td><td>Calendar via WebRequest (EA reads an online calendar)</td><td>Free</td><td>Live data</td><td>Needs URL whitelist + internet; breaks silently if the feed changes</td></tr>
+ <tr><td>5</td><td>Fixed time blocks: same release times weekly/monthly (e.g. US CPI day)</td><td>Free</td><td>Simple, robust</td><td>Misses unscheduled events and time changes</td></tr>
+ <tr><td>6</td><td>Spread gate: no entries when spread exceeds X</td><td>Free</td><td>Catches surprise events too</td><td>Doesn't close existing positions; spikes can precede the gate</td></tr>
+ <tr><td>7</td><td>Equity/drawdown guard: halt all trading at a daily loss cap</td><td>Free–paid</td><td>Limits damage from every cause, not just news</td><td>Reactive — damage up to the cap still happens</td></tr>
+ <tr><td>8</td><td>Close-all before the event (flatten, don't just pause)</td><td>Free</td><td>No open exposure through the spike</td><td>Pays spread to exit and re-enter; can crystallise losses</td></tr>
+ <tr><td>9</td><td>Broker-side: choose not to run the EA on data days (session rules in the EA)</td><td>Free</td><td>Removes whole risk days</td><td>Blunt: skips some perfectly good days</td></tr></table>
+ <h2>Picking your stack</h2>
+ <ul class="check">
+ <li>Minimum serious stack: method 2 or 3 (entries blocked) + method 7 (damage capped). One prevents, one limits.</li>
+ <li>If your EA holds positions for days, add method 8's decision explicitly: flatten or hold — but decide before the calendar does.</li>
+ <li>Whatever you pick, test it once on demo through a real red-folder release and read the log. An untested filter is a hope with a settings page.</li>
+ <li>Write your server-time offset on this sheet: most "the filter didn't work" stories are a two-hour offset wearing a disguise.</li>
+ </ul>
+ <div class="note"><strong>The cheat-sheet rule:</strong> news protection fails in layers or not at all. A method that blocks entries but lets a basket ride the spike has protected your future trades and abandoned your current ones.</div>
+ 
+<footer>BestMT4EA — free resource. Trading forex and CFDs carries a high risk of loss; most retail accounts lose money. Nothing here is financial advice. Test every system on a demo account with a written loss limit before risking real funds.</footer>
+</body></html>

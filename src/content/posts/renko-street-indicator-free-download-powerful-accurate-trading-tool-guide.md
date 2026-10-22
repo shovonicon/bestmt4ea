@@ -4,7 +4,7 @@ title: "Renko Street Indicator Free Download: Trading Guide"
 slug: "renko-street-indicator-free-download-powerful-accurate-trading-tool-guide"
 description: "Renko Street indicator for MT4 explained: how brick charts filter noise, how to set brick size, the limits of trend signals and a demo test before live use."
 publishedAt: "2026-02-22T14:53:47.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-09-01T06:18:21Z"
 seo:
   title: "Renko Street Indicator Free Download: Trading Guide 2026"
   description: "How a Renko Street style brick indicator works on MT4, how to choose brick size from volatility, where it lags and how to test it on demo before live use."
@@ -44,12 +44,11 @@ sources:
     url: "https://docs.mql4.com/"
 primaryKeyword: "Renko Street indicator"
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
+  license: "No licence stated - third-party files shared as-is, unverified"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
 ---
 
 ## Why a cleaner chart feels like a better edge

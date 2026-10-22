@@ -4,7 +4,7 @@ title: "Quantum Queen EA Review: Pros, Risks and Demo Test"
 slug: "quantum-queen-forex-ea-reviews-powerful-insights-honest-pros-7-shocking-truths"
 description: "Quantum Queen EA review: real pros and cons, the risks hidden in drawdown, what to verify before buying, and a demo test plan that protects your account."
 publishedAt: "2026-02-24T02:36:22.000Z"
-updatedAt: "2026-10-22T00:00:00.000Z"
+updatedAt: "2026-09-01T06:18:49Z"
 seo: 
   title: "Quantum Queen Forex EA Reviews: Powerful Insights, Honest Pros & 7 Shocking Truths 2026"
   description: "Quantum Queen EA review: real pros and cons, the risks hidden in drawdown, what to verify before buying, and a demo test plan that protects your account."
@@ -48,12 +48,11 @@ sources:
   - label: "Myfxbook, independent tracking of trading accounts"
     url: "https://www.myfxbook.com/"
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
+  license: "No licence stated - third-party files shared as-is, unverified"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
 ---
 
 If you have searched for a Quantum Queen review, you are probably past the stage of asking whether automated trading exists. You already know robots can place trades. What you want to know is whether this particular product deserves your money, your time and your trust. That is a fair question, and it has a more careful answer than most review pages give.

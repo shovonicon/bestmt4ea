@@ -4,7 +4,7 @@ title: "Gold Recovery EA: Gold Buster MT4 Margin Math"
 slug: "gold-buster-mt4-expert-advisor-free-download-powerful-profitable-trading-guide"
 description: "A gold recovery EA examined honestly: how a recovery multiplier compounds lot size, what balance each ladder step demands, and where gold ladders break."
 publishedAt: "2026-02-13T21:35:31.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-07-26T12:58:36Z"
 seo:
   title: "Gold Buster MT4 EA: Free XAUUSD Robot Review & Setup 2026"
   description: "Gold Buster MT4 EA and other gold recovery systems, with the maths left in: lot multipliers, floating equity, margin levels and the balance each step needs."
@@ -59,11 +59,11 @@ installSteps:
   - name: "Attach it to a demo chart"
     text: "Drag the expert onto a demo chart, allow algorithmic trading, and read the two inputs that matter: the dynamic-lots risk percentage and the hard stop in points. Test it on demo before you use those numbers on a live account."
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
+  license: "No licence stated - third-party files shared as-is, unverified"
   author: "ersingencturk"
   sourceUrl: "https://github.com/ersingencturk/FreeExpertAdvisor"
-  version: "latest"
   platform: "MT4"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"

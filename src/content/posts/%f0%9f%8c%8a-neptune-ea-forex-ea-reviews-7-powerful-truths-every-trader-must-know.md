@@ -4,7 +4,7 @@ title: "Neptune EA Review: Performance, Settings & Results"
 slug: "%f0%9f%8c%8a-neptune-ea-forex-ea-reviews-7-powerful-truths-every-trader-must-know"
 description: "Neptune EA review: how to read its performance claims, check martingale and drawdown settings, verify live results, and run a demo test before real money."
 publishedAt: "2026-02-25T09:51:04.000Z"
-updatedAt: "2026-10-22T00:00:00.000Z"
+updatedAt: "2026-09-01T06:11:30Z"
 seo: 
   title: "Neptune EA Review: Performance, Settings & Results 2026"
   description: "Neptune EA review: how to read its performance claims, check martingale and drawdown settings, verify live results, and run a demo test before real money."
@@ -50,12 +50,11 @@ sources:
   - label: "Myfxbook, independent tracking of trading accounts"
     url: "https://www.myfxbook.com/"
 download:
-  origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
-  fileSize: "about 577 MB in three zip parts"
-  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
+  name: "VPS for EA Trading: Setup & Latency Checklist"
+  origin: "own"
+  license: "Free to use, print and share with credit to bestmt4ea.com"
+  version: "1.0"
+  fileKey: "resources/vps-for-ea-trading-setup-checklist.pdf"
 ---
 
 Searches for Neptune EA usually come with a hope attached. The reader wants a robot that trades steadily, does not need supervision and fits into a busy life. That hope is understandable, but it is also the reason so many reviews end up sounding like advertisements. A review that is useful to you has to start from evidence, not from the feeling of wanting the product to work.

@@ -4,7 +4,7 @@ title: "Harmonic Pattern Indicator MT4: Free Download & Setup Guide"
 slug: "basic-harmonic-pattern-indicator-mt4-free-download-7-powerful-benefits-every-trader-must-know"
 description: "A harmonic pattern indicator for MT4 measures XABCD Fibonacci shapes for you. See what it detects, why repainting breaks signals, and how to test it first."
 publishedAt: "2026-02-20T05:34:12.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-08-31T08:14:37Z"
 seo: 
   title: "Harmonic Pattern Indicator MT4: Free Download & Setup Guide 2026"
   description: "A harmonic pattern indicator for MT4 measures XABCD Fibonacci shapes for you. See what it detects, why repainting breaks signals, and how to test it first."
@@ -44,12 +44,11 @@ sources:
     url: "https://www.mql5.com/en/docs"
 primaryKeyword: "harmonic pattern indicator MT4"
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
+  license: "No licence stated - third-party files shared as-is, unverified"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
 ---
 
 Harmonic trading promises a simple thing: a chart shape that shows where price may turn. The reality is slower. You need five swing points, four legs, and several Fibonacci ratios that all have to fall inside tight bands. Most traders do that with a drawing tool, a ruler and a lot of second-guessing. By the time the shape is finished, the candle that created it may already be gone, and the price has moved on without you.

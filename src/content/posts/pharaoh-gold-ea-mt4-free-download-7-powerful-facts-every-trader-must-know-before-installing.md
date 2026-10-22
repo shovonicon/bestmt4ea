@@ -4,7 +4,7 @@ title: "Verify a Gold EA Before Installing It: 5-Minute Audit"
 slug: "pharaoh-gold-ea-mt4-free-download-7-powerful-facts-every-trader-must-know-before-installing"
 description: "A five-minute pre-install audit for any unknown gold EA: who published it, its licence, where the file came from, the hash, and what the Experts log shows."
 publishedAt: "2026-02-13T23:51:13.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-08-30T08:09:23Z"
 seo:
   title: "Verify a Gold EA Before Installing It: 5-Minute Audit"
   description: "A five-minute pre-install audit for any unknown gold EA: who published it, its licence, where the file came from, the hash, and what the Experts log shows."
@@ -65,11 +65,11 @@ installSteps:
   - name: "Write the audit note and let it run"
     text: "Record the hash, licence, publisher, log findings and default inputs in one dated page, then leave the defaults untouched for several weeks on demo before deciding anything. Never fund an account you would need back."
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
+  license: "No licence stated - third-party files shared as-is, unverified"
   author: "BAKOME-Hub"
   sourceUrl: "https://github.com/BAKOME-Hub/BAKOMEGoldScalper"
-  version: "latest"
   platform: "MT5"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"

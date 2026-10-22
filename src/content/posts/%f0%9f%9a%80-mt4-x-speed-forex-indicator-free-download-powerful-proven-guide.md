@@ -4,7 +4,7 @@ title: "MT4 X SPEED Indicator: Free Download & Setup Guide"
 slug: "%f0%9f%9a%80-mt4-x-speed-forex-indicator-free-download-powerful-proven-guide"
 description: "MT4 X SPEED explained honestly: what a price-speed momentum indicator measures, where it misfires in ranges, and how to test repainting on demo first."
 publishedAt: "2026-02-22T14:35:46.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-08-30T08:24:03Z"
 seo: 
   title: "MT4 X SPEED Indicator: Free Download & Setup Guide 2026"
   description: "MT4 X SPEED explained honestly: what a price-speed momentum indicator measures, where it misfires in ranges, and how to test repainting on demo first."
@@ -46,12 +46,11 @@ sources:
     url: "https://www.mql5.com/en/docs"
 primaryKeyword: "MT4 X SPEED indicator"
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
+  license: "No licence stated - third-party files shared as-is, unverified"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
 ---
 
 You open MetaTrader 4, search for a free indicator and find MT4 X SPEED. The listing says it measures how fast price is moving, flags momentum shifts and draws buy and sell signals on the chart. That sounds like exactly what you need when the market stops giving a clear direction. So you wonder whether this is the missing piece, or just another arrow with a new name.

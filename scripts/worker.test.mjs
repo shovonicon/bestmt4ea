@@ -69,25 +69,27 @@ console.log(`Loaded ${manifest.rules.length} manifest rules.`);
   });
 }
 
-/* --- retired-archive remaps ---------------------------------------------- */
+/* --- retired-archive remaps + hub-funnel policy -----------------------------
+ * Retired archives used to act as funnels: every rule that landed on one was
+ * re-pointed at a generic fallback (/blog/, /top-ranking/). Since the
+ * hub-funnel policy (2026-10-22), a CONTENT url that reached a hub that way
+ * is 410 Gone — only taxonomy -> same-taxonomy moves still redirect. These
+ * checks pin the new behaviour: the converted rules are recorded in
+ * `hubFunnelGone`, and matching one answers 'gone', never a hub redirect. */
 {
-  const retired = manifest.retiredRemaps?.[0];
-  if (retired) {
-    const sample = manifest.rules.find((r) => r.to === retired.fallback && !map.get(cmpKey(r.to)));
-    void sample;
-    const viaRetired = manifest.rules.filter((r) =>
-      manifest.retiredRemaps.some((rr) => r.to === rr.fallback),
-    );
-    check('at least one rule lands on a retired-archive fallback', viaRetired.length > 0, true);
-    const one = viaRetired[0];
-    check('retired-archive rule redirects to live fallback', matchRedirect(map, one.from), {
-      kind: 'redirect',
-      status: one.status,
-      location: retired.fallback,
+  const gone = manifest.hubFunnelGone ?? [];
+  check('hub-funnel conversions recorded in manifest', gone.length > 0, true);
+  const one = gone[0];
+  if (one) {
+    check('hub-funnelled rule answers 410 gone', matchRedirect(map, one.from), {
+      kind: 'gone',
+      status: 410,
     });
-  } else {
-    check('retired remaps recorded in manifest', manifest.retiredRemaps, 'MISSING');
   }
+  const stillFunnelling = manifest.rules.filter(
+    (r) => r.status === 301 && manifest.retiredRemaps?.some((rr) => r.to === rr.fallback),
+  );
+  check('no content rule still redirects into a retired fallback', stillFunnelling.length, 0);
 }
 
 /* --- encoded / decoded emoji paths --------------------------------------- */

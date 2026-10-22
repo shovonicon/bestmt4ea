@@ -3,7 +3,7 @@ title: "Free Open-Source MT5 Expert Advisors You Can Read"
 slug: "geraked-mt5-expert-advisors-free-download"
 description: "A free MIT-licensed collection of MT5 expert advisors you can actually read. Here is how to use a shelf of small, open-source robots as a study corpus."
 publishedAt: 2026-09-28
-updatedAt: 2026-10-22
+updatedAt: "2026-09-28"
 seo:
   title: "Free Open-Source MT5 Expert Advisors You Can Read"
   description: "A free MIT-licensed collection of MT5 expert advisors you can actually read. Here is how to use a shelf of small, open-source robots as a study corpus."
@@ -68,11 +68,11 @@ installSteps:
   - name: "Move the shortlist to a demo account"
     text: "Attach only the strategies that survive the tester to a demo account at the broker you intend to use, and log every trade, fill and spread for at least six to eight weeks before any real money is involved."
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
+  license: "No licence stated - third-party files shared as-is, unverified"
   author: "geraked"
   sourceUrl: "https://github.com/geraked/metatrader5"
-  version: "latest"
   platform: "MT5"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"

@@ -4,7 +4,7 @@ title: "Gold Breakout EA Free Download: Filter False Breaks"
 slug: "gold-breakout-ea-free-download-7-powerful-benefits-proven-setup-guide-for-massive-trading-success"
 description: "A gold breakout EA is only as good as the filter around the break. Download an open-source XAUUSD EA and learn close confirmation, retests and displacement."
 publishedAt: "2026-02-13T20:03:48.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-08-28T15:54:12Z"
 seo:
   title: "Gold Breakout EA Free Download: Filter False Breaks"
   description: "A gold breakout EA is only as good as the filter around the break. Download an open-source XAUUSD EA and learn close confirmation, retests and displacement."
@@ -66,11 +66,11 @@ installSteps:
   - name: "Attach to a XAUUSD chart and set risk"
     text: "Drag the EA onto a XAUUSD chart, allow AutoTrading, and set the risk and lot inputs to about 1% before you test it on a demo account, then layer the spread cap and open-window rules described above on top."
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
+  license: "No licence stated - third-party files shared as-is, unverified"
   author: "elrizwiraswara"
   sourceUrl: "https://github.com/elrizwiraswara/nyao_scalper_mt5"
-  version: "latest"
   platform: "MT5"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"

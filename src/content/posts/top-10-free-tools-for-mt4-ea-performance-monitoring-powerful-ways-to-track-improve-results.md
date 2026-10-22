@@ -4,7 +4,7 @@ title: "Free MT4 EA Monitoring Tools: What to Track and Trust"
 slug: "top-10-free-tools-for-mt4-ea-performance-monitoring-powerful-ways-to-track-improve-results"
 description: "Compare free MT4 EA monitoring tools, from Myfxbook and FX Blue to built-in MetaTrader reports, and learn which metrics reveal drift before losses grow."
 publishedAt: "2025-12-07T03:28:49.000Z"
-updatedAt: "2026-10-22"
+updatedAt: "2026-07-26T15:14:56Z"
 seo:
   title: "Free MT4 EA Monitoring Tools: What to Track and Trust"
   description: "Compare free MT4 EA monitoring tools, from Myfxbook and FX Blue to built-in MetaTrader reports, and learn which metrics reveal drift before losses grow."
@@ -50,12 +50,11 @@ sources:
     url: "https://www.fxblue.com/"
 primaryKeyword: "free MT4 EA performance monitoring tools"
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
+  license: "No licence stated - third-party files shared as-is, unverified"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
 ---
 
 You put an expert advisor on a live MT4 account, check the balance each evening, and it looks fine. That is the trap. A balance chart only moves when a trade closes, so a robot can carry a deep floating loss for days while the number you check still looks calm. Free monitoring tools exist to close that gap, but only if you know what they should show and what they cannot show.

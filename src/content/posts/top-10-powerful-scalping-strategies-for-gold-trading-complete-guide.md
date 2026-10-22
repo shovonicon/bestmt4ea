@@ -4,7 +4,7 @@ title: "Gold Scalping Strategies: Which XAUUSD Style Wins?"
 slug: "top-10-powerful-scalping-strategies-for-gold-trading-complete-guide"
 description: "Gold scalping strategies compared: breakout, mean-reversion, news-spike, session-open and trend-pullback styles, judged on XAUUSD spread and volatility."
 publishedAt: "2025-12-09T07:11:18.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-08-30T08:17:59Z"
 seo:
   title: "Gold Scalping Strategies: Complete Guide for XAU/USD 2026"
   description: "Gold scalping strategies compared: breakout, mean-reversion, news-spike, session-open and trend-pullback styles, judged on XAUUSD spread and volatility."
@@ -57,15 +57,11 @@ installSteps:
   - name: "Compile and attach on a demo chart"
     text: "Open the file in MetaEditor, press Compile, then restart the terminal or refresh the Navigator. Drag the EA onto a demo gold chart first and check how it moves the stop from the ATR reading."
 download:
-  origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  author: "EarnForex"
-  sourceUrl: "https://github.com/EarnForex/ATR-Trailing-Stop"
-  version: "latest"
-  platform: "MT4/MT5"
-  fileSize: "about 577 MB in three zip parts"
-  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-09-29
+  name: "Trade Journal: Printable Template & Weekly Review"
+  origin: "own"
+  license: "Free to use, print and share with credit to bestmt4ea.com"
+  version: "1.0"
+  fileKey: "resources/trade-journal-printable-template.pdf"
 ---
 
 Gold scalping looks simple on a one-minute chart. Price moves, you click, and you book a few points. Then you switch to a live account and the exact setup that looked clean starts losing. Your stop gets clipped by fifty cents. Price then travels to the target you picked without you. Same chart, same rules, a different result.

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" />
+<title>Prop Firm Challenge EA Playbook — BestMT4EA</title><style>
+      :root {
+        --ink: #101418;
+        --muted: #5a6570;
+        --line: #d7dde3;
+        --accent: #0b7a5d;
+        --warn: #a8410f;
+      }
+      * { box-sizing: border-box; }
+      @page { size: A4; margin: 14mm 13mm; }
+      html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: #fff;
+        font: 10.5pt/1.45 "Helvetica Neue", Arial, sans-serif;
+      }
+      h1 { font-size: 19pt; line-height: 1.15; margin: 0 0 2mm; letter-spacing: -0.01em; }
+      h2 {
+        font-size: 11.5pt;
+        margin: 7mm 0 2.5mm;
+        padding-bottom: 1.2mm;
+        border-bottom: 1px solid var(--line);
+        break-after: avoid;
+      }
+      h3 { font-size: 10pt; margin: 4mm 0 1.5mm; break-after: avoid; }
+      p { margin: 0 0 2.5mm; }
+      .lede { color: var(--muted); max-width: 165mm; }
+      .brand {
+        display: flex; justify-content: space-between; align-items: baseline;
+        border-bottom: 2px solid var(--accent); padding-bottom: 2mm; margin-bottom: 4mm;
+      }
+      .brand strong { font-size: 11pt; letter-spacing: 0.02em; }
+      .brand span { color: var(--muted); font-size: 8.5pt; }
+      ul { margin: 0 0 2.5mm; padding-left: 0; list-style: none; }
+      ul.check li { position: relative; padding-left: 6.5mm; margin-bottom: 1.4mm; break-inside: avoid; }
+      ul.check li::before {
+        content: ""; position: absolute; left: 0; top: 0.4mm;
+        width: 3.6mm; height: 3.6mm; border: 1px solid var(--muted); border-radius: 0.6mm;
+      }
+      ul.plain { padding-left: 5mm; list-style: disc; }
+      ul.plain li { margin-bottom: 1.2mm; }
+      table { width: 100%; border-collapse: collapse; margin: 0 0 3mm; font-size: 9.5pt; break-inside: avoid; }
+      th, td { border: 1px solid var(--line); padding: 1.6mm 2mm; text-align: left; vertical-align: top; }
+      th { background: #f2f5f7; font-weight: 600; }
+      .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 8mm; }
+      .note {
+        border-left: 3px solid var(--warn); background: #fdf6f2;
+        padding: 2.5mm 3mm; margin: 3mm 0; font-size: 9.5pt; break-inside: avoid;
+      }
+      .box { border: 1px solid var(--line); border-radius: 1.5mm; padding: 3mm; margin: 3mm 0; break-inside: avoid; }
+      .box h3 { margin-top: 0; }
+      .flag { color: var(--warn); font-weight: 600; }
+      footer {
+        margin-top: 8mm; padding-top: 2.5mm; border-top: 1px solid var(--line);
+        color: var(--muted); font-size: 8.5pt;
+      }
+      .page-break { break-before: page; }
+      .formula { font-family: "Courier New", monospace; font-size: 9.5pt; background: #f2f5f7; padding: 2mm 2.5mm; border-radius: 1mm; }
+    </style></head>
+<body>
+<div class="brand"><strong>BestMT4EA</strong><span>bestmt4ea.com — free trading resources</span></div>
+<h1>Prop Firm Challenge EA Playbook</h1>
+<p class="lede">A prop firm challenge is not a profitability contest; it is a rules-compliance exam with a profit target attached. Most EAs fail it on rules, not on returns. This playbook maps the rules that end challenges and the configuration discipline that survives them.</p>
+
+ <h2>1. The rules that actually end challenges</h2>
+ <table><tr><th>Rule</th><th>Typical form</th><th>How EAs break it</th></tr>
+ <tr><td>Daily loss limit</td><td>4–5% of starting balance, often on equity incl. open trades</td><td>Grid/basket EAs whose floating loss crosses the line mid-day</td></tr>
+ <tr><td>Overall loss limit</td><td>8–12%, sometimes trailing</td><td>Martingale recovery that "always worked" on a private account</td></tr>
+ <tr><td>Consistency rule</td><td>No single day may exceed X% of total profit</td><td>One lucky news trade making most of the target</td></tr>
+ <tr><td>News restriction</td><td>No opening/closing within minutes of red-folder events (some firms)</td><td>EA with no news filter trading the release</td></tr>
+ <tr><td>Weekend holding</td><td>Some firms restrict or penalise</td><td>Swing EA carrying positions over the gap</td></tr>
+ <tr><td>Prohibited strategies</td><td>HFT, latency arbitrage, tick scalping, third-party EAs on some firms</td><td>Running any EA before reading the firm's own EA policy</td></tr></table>
+ <h2>2. Challenge maths before the EA runs</h2>
+ <ul class="check">
+ <li>Write the target, the daily limit and the overall limit in money on your account size. Percentages hide; money decides.</li>
+ <li>Size so one worst day of your EA's tested behaviour uses at most half the daily limit. The other half is for the day the test didn't show you.</li>
+ <li>If the EA's tested maximum drawdown is more than half the overall limit, the EA does not fit this challenge at this size — no setting changes that ratio honestly.</li>
+ <li>Plan the calendar: how many trading days remain, what daily profit the plan needs, and which days (payrolls, FOMC) the plan simply skips.</li>
+ </ul>
+ <h2>3. Configuration checklist</h2>
+ <ul class="check">
+ <li>Hard equity stop set inside the firm's daily limit, in the EA or as an external guard — tested once on demo to prove it fires.</li>
+ <li>News filter on, with the firm's restricted-event list loaded, not just the defaults.</li>
+ <li>Friday close rule matches the firm's weekend policy.</li>
+ <li>Maximum total exposure capped so a correlated basket cannot cross the daily limit in one move.</li>
+ <li>One EA, one account, one magic number set: challenge accounts are the worst place for robots to share an account.</li>
+ </ul>
+ <div class="note"><strong>The playbook rule:</strong> pass like an auditor, not a gambler. The firm is buying proof you can control loss; the profit target is just where they set the bar to watch you do it.</div>
+ 
+<footer>BestMT4EA — free resource. Trading forex and CFDs carries a high risk of loss; most retail accounts lose money. Nothing here is financial advice. Test every system on a demo account with a written loss limit before risking real funds.</footer>
+</body></html>

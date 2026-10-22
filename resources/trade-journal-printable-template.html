@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" />
+<title>Trade Journal: Printable Template & Weekly Review — BestMT4EA</title><style>
+      :root {
+        --ink: #101418;
+        --muted: #5a6570;
+        --line: #d7dde3;
+        --accent: #0b7a5d;
+        --warn: #a8410f;
+      }
+      * { box-sizing: border-box; }
+      @page { size: A4; margin: 14mm 13mm; }
+      html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: #fff;
+        font: 10.5pt/1.45 "Helvetica Neue", Arial, sans-serif;
+      }
+      h1 { font-size: 19pt; line-height: 1.15; margin: 0 0 2mm; letter-spacing: -0.01em; }
+      h2 {
+        font-size: 11.5pt;
+        margin: 7mm 0 2.5mm;
+        padding-bottom: 1.2mm;
+        border-bottom: 1px solid var(--line);
+        break-after: avoid;
+      }
+      h3 { font-size: 10pt; margin: 4mm 0 1.5mm; break-after: avoid; }
+      p { margin: 0 0 2.5mm; }
+      .lede { color: var(--muted); max-width: 165mm; }
+      .brand {
+        display: flex; justify-content: space-between; align-items: baseline;
+        border-bottom: 2px solid var(--accent); padding-bottom: 2mm; margin-bottom: 4mm;
+      }
+      .brand strong { font-size: 11pt; letter-spacing: 0.02em; }
+      .brand span { color: var(--muted); font-size: 8.5pt; }
+      ul { margin: 0 0 2.5mm; padding-left: 0; list-style: none; }
+      ul.check li { position: relative; padding-left: 6.5mm; margin-bottom: 1.4mm; break-inside: avoid; }
+      ul.check li::before {
+        content: ""; position: absolute; left: 0; top: 0.4mm;
+        width: 3.6mm; height: 3.6mm; border: 1px solid var(--muted); border-radius: 0.6mm;
+      }
+      ul.plain { padding-left: 5mm; list-style: disc; }
+      ul.plain li { margin-bottom: 1.2mm; }
+      table { width: 100%; border-collapse: collapse; margin: 0 0 3mm; font-size: 9.5pt; break-inside: avoid; }
+      th, td { border: 1px solid var(--line); padding: 1.6mm 2mm; text-align: left; vertical-align: top; }
+      th { background: #f2f5f7; font-weight: 600; }
+      .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 8mm; }
+      .note {
+        border-left: 3px solid var(--warn); background: #fdf6f2;
+        padding: 2.5mm 3mm; margin: 3mm 0; font-size: 9.5pt; break-inside: avoid;
+      }
+      .box { border: 1px solid var(--line); border-radius: 1.5mm; padding: 3mm; margin: 3mm 0; break-inside: avoid; }
+      .box h3 { margin-top: 0; }
+      .flag { color: var(--warn); font-weight: 600; }
+      footer {
+        margin-top: 8mm; padding-top: 2.5mm; border-top: 1px solid var(--line);
+        color: var(--muted); font-size: 8.5pt;
+      }
+      .page-break { break-before: page; }
+      .formula { font-family: "Courier New", monospace; font-size: 9.5pt; background: #f2f5f7; padding: 2mm 2.5mm; border-radius: 1mm; }
+    </style></head>
+<body>
+<div class="brand"><strong>BestMT4EA</strong><span>bestmt4ea.com — free trading resources</span></div>
+<h1>Trade Journal: Printable Template & Weekly Review</h1>
+<p class="lede">A journal is the cheapest performance upgrade in trading, and the one most often skipped because the template is never ready. Print this, keep it beside the terminal, and review weekly — the patterns you are paying to learn are already in your history, unread.</p>
+
+ <h2>1. Per-trade entry (30 seconds, no essays)</h2>
+ <table><tr><th>Field</th><th>Write</th></tr>
+ <tr><td>Date / time / session</td><td></td></tr>
+ <tr><td>Instrument / direction / size</td><td></td></tr>
+ <tr><td>Setup in five words</td><td></td></tr>
+ <tr><td>Planned stop / target (before entry)</td><td></td></tr>
+ <tr><td>Risk in money (not %)</td><td></td></tr>
+ <tr><td>Actual exit / result in R (multiples of planned risk)</td><td></td></tr>
+ <tr><td>Rule followed? (Y/N and which rule bent)</td><td></td></tr>
+ <tr><td>Emotion at entry, one word</td><td></td></tr></table>
+ <h2>2. The weekly review (20 minutes, same time each week)</h2>
+ <ul class="check">
+ <li>Total R, and R from rule-following trades versus rule-bending trades, in two separate columns. This single split has ended more bad habits than any indicator.</li>
+ <li>Largest loss: was it planned size? If not, why not — that answer is next week's first fix.</li>
+ <li>Best trade: was it skill or the market's generosity? Journals must record luck honestly or they teach arrogance.</li>
+ <li>One pattern that repeated (good or bad). One change for next week — only one.</li>
+ <li>For EA traders: did the robot's week match its tested behaviour? Note any trade you cannot explain from the log.</li>
+ </ul>
+ <h2>3. Monthly roll-up</h2>
+ <ul class="check">
+ <li>Expectancy per trade in R, by setup type if you trade more than one.</li>
+ <li>Costs paid (spread + commission + swap) as a share of gross result.</li>
+ <li>Drawdown: deepest, longest, and whether it stayed inside the plan's expectations.</li>
+ </ul>
+ <div class="note"><strong>The journal rule:</strong> record the plan before the result exists. A journal written after outcomes are known is a memoir, and memoirs do not improve trading.</div>
+ 
+<footer>BestMT4EA — free resource. Trading forex and CFDs carries a high risk of loss; most retail accounts lose money. Nothing here is financial advice. Test every system on a demo account with a written loss limit before risking real funds.</footer>
+</body></html>

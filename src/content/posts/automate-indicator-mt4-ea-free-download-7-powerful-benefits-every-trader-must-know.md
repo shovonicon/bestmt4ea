@@ -4,7 +4,7 @@ title: "Automate Indicator MT4 EA: Free Download Safety Guide"
 slug: "automate-indicator-mt4-ea-free-download-7-powerful-benefits-every-trader-must-know"
 description: "Automate Indicator MT4 EA explained: indicator or Expert Advisor, how to check a free file, what to test on demo, and which security risks to avoid first."
 publishedAt: "2026-02-20T05:24:04.000Z"
-updatedAt: "2026-10-22"
+updatedAt: "2026-08-28T15:47:20Z"
 seo: 
   title: "Automate Indicator MT4 EA Free Download: 7 Powerful Benefits Every Trader Must Know 2026"
   description: "Automate Indicator MT4 EA guide: indicator or Expert Advisor, how to check a free file, what to test on demo, and the security risks to avoid first, too."
@@ -44,12 +44,11 @@ sources:
     url: "https://www.mql5.com/en/docs"
 primaryKeyword: "Automate Indicator MT4 EA free download"
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
+  license: "No licence stated - third-party files shared as-is, unverified"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
 ---
 
 Plenty of traders type "Automate Indicator MT4 EA free download" into a search box for the same reason: they want the work of trading to run itself. Watching charts for hours is tiring, and the idea of a program that spots signals and acts on them while you are at work sounds like relief. The appeal is real. The problem is that the name covers two very different kinds of file, and the difference decides what the file can do to your account.

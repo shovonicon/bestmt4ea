@@ -4,7 +4,7 @@ title: "Golden Line V3 Indicator: Safe Install Guide"
 slug: "golden-line-v3-indicator-free-download-7-powerful-benefits-safe-installation-guide"
 description: "Golden Line V3 is a free MT4 indicator from a shared file, not one we wrote. Check its code, watch for repaint and test on demo before you trust any arrow."
 publishedAt: "2026-02-22T16:19:10.000Z"
-updatedAt: "2026-10-22"
+updatedAt: "2026-09-01T06:14:26Z"
 featuredImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_139488_featured.webp"
 seo:
   title: "Golden Line V3 Indicator: Safe Install Guide 2026"
@@ -55,13 +55,11 @@ installSteps:
   - name: "Confirm no repaint on demo"
     text: "Attach it to a demo chart, note where the arrows land, and check tomorrow whether the closed signals stayed put. Only move to a live chart once nothing has shifted."
 download:
-  origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
-  platform: "MT4/MT5"
-  fileSize: "about 577 MB in three zip parts"
-  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
+  name: "MT4/MT5 Expert Advisor Installation & Activation Checklist"
+  origin: "own"
+  license: "Free to use, print and share with credit to bestmt4ea.com"
+  version: "1.0"
+  fileKey: "resources/ea-installation-checklist.pdf"
 ---
 
 You found a free indicator. Maybe it is the one that brought you here: Golden Line V3, passed around a Telegram group, bundled with a video, or posted in a forum thread that promised clean gold signals. You downloaded the file. Now a folder on your computer holds code you did not write, and the pull is to drag it onto a chart and see what happens.

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" />
+<title>EA Settings Record Sheet: Change One Thing, Write It Down — BestMT4EA</title><style>
+      :root {
+        --ink: #101418;
+        --muted: #5a6570;
+        --line: #d7dde3;
+        --accent: #0b7a5d;
+        --warn: #a8410f;
+      }
+      * { box-sizing: border-box; }
+      @page { size: A4; margin: 14mm 13mm; }
+      html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: #fff;
+        font: 10.5pt/1.45 "Helvetica Neue", Arial, sans-serif;
+      }
+      h1 { font-size: 19pt; line-height: 1.15; margin: 0 0 2mm; letter-spacing: -0.01em; }
+      h2 {
+        font-size: 11.5pt;
+        margin: 7mm 0 2.5mm;
+        padding-bottom: 1.2mm;
+        border-bottom: 1px solid var(--line);
+        break-after: avoid;
+      }
+      h3 { font-size: 10pt; margin: 4mm 0 1.5mm; break-after: avoid; }
+      p { margin: 0 0 2.5mm; }
+      .lede { color: var(--muted); max-width: 165mm; }
+      .brand {
+        display: flex; justify-content: space-between; align-items: baseline;
+        border-bottom: 2px solid var(--accent); padding-bottom: 2mm; margin-bottom: 4mm;
+      }
+      .brand strong { font-size: 11pt; letter-spacing: 0.02em; }
+      .brand span { color: var(--muted); font-size: 8.5pt; }
+      ul { margin: 0 0 2.5mm; padding-left: 0; list-style: none; }
+      ul.check li { position: relative; padding-left: 6.5mm; margin-bottom: 1.4mm; break-inside: avoid; }
+      ul.check li::before {
+        content: ""; position: absolute; left: 0; top: 0.4mm;
+        width: 3.6mm; height: 3.6mm; border: 1px solid var(--muted); border-radius: 0.6mm;
+      }
+      ul.plain { padding-left: 5mm; list-style: disc; }
+      ul.plain li { margin-bottom: 1.2mm; }
+      table { width: 100%; border-collapse: collapse; margin: 0 0 3mm; font-size: 9.5pt; break-inside: avoid; }
+      th, td { border: 1px solid var(--line); padding: 1.6mm 2mm; text-align: left; vertical-align: top; }
+      th { background: #f2f5f7; font-weight: 600; }
+      .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 8mm; }
+      .note {
+        border-left: 3px solid var(--warn); background: #fdf6f2;
+        padding: 2.5mm 3mm; margin: 3mm 0; font-size: 9.5pt; break-inside: avoid;
+      }
+      .box { border: 1px solid var(--line); border-radius: 1.5mm; padding: 3mm; margin: 3mm 0; break-inside: avoid; }
+      .box h3 { margin-top: 0; }
+      .flag { color: var(--warn); font-weight: 600; }
+      footer {
+        margin-top: 8mm; padding-top: 2.5mm; border-top: 1px solid var(--line);
+        color: var(--muted); font-size: 8.5pt;
+      }
+      .page-break { break-before: page; }
+      .formula { font-family: "Courier New", monospace; font-size: 9.5pt; background: #f2f5f7; padding: 2mm 2.5mm; border-radius: 1mm; }
+    </style></head>
+<body>
+<div class="brand"><strong>BestMT4EA</strong><span>bestmt4ea.com — free trading resources</span></div>
+<h1>EA Settings Record Sheet: Change One Thing, Write It Down</h1>
+<p class="lede">An expert advisor has dozens of inputs, and every undocumented change makes the next result unreadable: you no longer know which settings produced which trades. This sheet is the record to keep for every EA — what ran, when it changed, and what happened next.</p>
+
+ <h2>1. Baseline record (fill in when the EA is installed)</h2>
+ <table><tr><th>Field</th><th>Your entry</th></tr>
+ <tr><td>EA name, version, source</td><td></td></tr>
+ <tr><td>Account (broker, number, demo/live)</td><td></td></tr>
+ <tr><td>Pairs / timeframe / chart template</td><td></td></tr>
+ <tr><td>Settings file name (.set) and where it is stored</td><td></td></tr>
+ <tr><td>Risk inputs: lot mode, risk %, max spread, magic number</td><td></td></tr>
+ <tr><td>Session inputs: trading hours, news filter, Friday rules</td><td></td></tr>
+ <tr><td>Exit inputs: stop, target, trailing, basket/equity stop</td><td></td></tr></table>
+ <h2>2. Change log</h2>
+ <table><tr><th>Date</th><th>Input changed</th><th>From → To</th><th>Why</th><th>Result after 2 weeks</th></tr>
+ <tr><td></td><td></td><td></td><td></td><td></td></tr>
+ <tr><td></td><td></td><td></td><td></td><td></td></tr>
+ <tr><td></td><td></td><td></td><td></td><td></td></tr>
+ <tr><td></td><td></td><td></td><td></td><td></td></tr>
+ <tr><td></td><td></td><td></td><td></td><td></td></tr></table>
+ <h2>3. Rules that keep the record honest</h2>
+ <ul class="check">
+ <li>One change at a time. Two changes share the credit and the blame, and you learn neither.</li>
+ <li>Export and save the .set file after every accepted change, named with the date. Your future self cannot reconstruct settings from memory.</li>
+ <li>Magic numbers: one unique number per EA per pair. Shared magics make two robots manage each other's trades.</li>
+ <li>Record the changes you rejected too, with the reason. A rejected change tried again in three months wastes the same three months.</li>
+ <li>Vendor update? Save the old .set, note the version change here, and re-run at least a short demo before the new build touches live money.</li>
+ </ul>
+ <div class="note"><strong>The settings rule:</strong> if it isn't written on this sheet, it didn't happen — and any result you cannot trace to a settings record is a result you cannot repeat.</div>
+ 
+<footer>BestMT4EA — free resource. Trading forex and CFDs carries a high risk of loss; most retail accounts lose money. Nothing here is financial advice. Test every system on a demo account with a written loss limit before risking real funds.</footer>
+</body></html>

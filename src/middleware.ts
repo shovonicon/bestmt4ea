@@ -38,6 +38,28 @@ const isPrivatePath = (pathname: string) =>
 export const onRequest = defineMiddleware(async (context, next) => {
   const url = new URL(context.request.url);
 
+  // One canonical host. The Worker route answers on www as well as the apex,
+  // which left www serving a full duplicate of the site (200, no redirect).
+  // Send every www request to the apex with a 301, preserving path and query.
+  // Defence in depth: a matching Cloudflare Single Redirect Rule on the zone
+  // covers any request the adapter serves before middleware runs.
+  if (url.hostname === 'www.bestmt4ea.com') {
+    url.hostname = 'bestmt4ea.com';
+    return new Response(null, {
+      status: 301,
+      headers: { location: url.toString(), 'cache-control': 'public, max-age=86400' },
+    });
+  }
+
+  // Tools and older bookmarks ask for `/sitemap.xml`; the generated index is
+  // `/sitemap-index.xml`. Redirect the conventional path instead of 404ing.
+  if (url.pathname === '/sitemap.xml') {
+    return new Response(null, {
+      status: 301,
+      headers: { location: '/sitemap-index.xml', 'cache-control': 'public, max-age=86400' },
+    });
+  }
+
   // The old WordPress site (Yoast) served its sitemap at `/sitemap_index.xml`,
   // and that is the URL most likely registered with search engines. Astro writes
   // the generated index to `/sitemap-index.xml`, so serve that same file under

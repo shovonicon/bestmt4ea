@@ -40,6 +40,10 @@ async function main() {
   const manifest = JSON.parse(readFileSync(MANIFEST, 'utf8'));
   const live = getLiveRoutes();
 
+  // Gone rules (410/451) have no target: by convention `to` repeats `from`
+  // and the matcher ignores it. They are exempt from the target checks below
+  // but never from the source checks (a gone rule must not shadow a page).
+  const GONE_STATUSES = new Set([410, 451]);
   const seen = new Set();
   for (const rule of manifest.rules) {
     const sk = cmpKey(rule.from);
@@ -48,6 +52,12 @@ async function main() {
 
     if (!VALID_STATUSES.has(rule.status)) {
       errors.push(`Unsupported status ${rule.status}: ${rule.from}`);
+    }
+    if (GONE_STATUSES.has(rule.status)) {
+      if (live.has(sk)) {
+        errors.push(`Source shadows a live route: ${rule.from} -> ${rule.to}`);
+      }
+      continue;
     }
     if (!isExternal(rule.to) && sk === cmpKey(rule.to)) {
       errors.push(`Self-redirect: ${rule.from}`);
@@ -62,6 +72,7 @@ async function main() {
 
   // No target may be a hop in another redirect (chains must be flattened).
   for (const rule of manifest.rules) {
+    if (GONE_STATUSES.has(rule.status)) continue;
     if (!isExternal(rule.to) && seen.has(cmpKey(rule.to)) && cmpKey(rule.to) !== cmpKey(rule.from)) {
       errors.push(`Unresolved chain hop: ${rule.from} -> ${rule.to} (target is itself a source)`);
     }

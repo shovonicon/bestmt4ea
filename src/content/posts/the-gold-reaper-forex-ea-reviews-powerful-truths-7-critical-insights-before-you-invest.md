@@ -4,7 +4,7 @@ title: "The Gold Reaper EA Review: No Verified Account"
 slug: "the-gold-reaper-forex-ea-reviews-powerful-truths-7-critical-insights-before-you-invest"
 description: "A Gold Reaper Forex EA review built on one finding: no third-party account we could verify. See exactly what we checked and the rule to apply before you pay."
 publishedAt: "2026-02-24T03:04:24.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-08-26T17:20:30Z"
 seo:
   title: "The Gold Reaper EA Review: No Verified Account"
   description: "A Gold Reaper Forex EA review built on one finding: no third-party account we could verify. See exactly what we checked and the rule to apply before you pay."
@@ -65,11 +65,11 @@ installSteps:
   - name: "Read the risk logic and demo-test it"
     text: "Because the source is open, read how it sizes and stops positions, then run it on a demo account for the first four weeks before it touches real money."
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
+  license: "No licence stated - third-party files shared as-is, unverified"
   author: "EA31337"
   sourceUrl: "https://github.com/EA31337/EA31337"
-  version: "latest"
   platform: "MT4/MT5"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" />
+<title>Prop Firm EA Risk Rules Worksheet — BestMT4EA</title><style>
+      :root { --ink:#101418; --muted:#5a6570; --line:#d7dde3; --accent:#0b7a5d; --warn:#a8410f; }
+      * { box-sizing: border-box; }
+      @page { size: A4; margin: 14mm 13mm; }
+      html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body { margin:0; color:var(--ink); background:#fff; font:10.5pt/1.45 "Helvetica Neue", Arial, sans-serif; }
+      h1 { font-size:19pt; line-height:1.15; margin:0 0 2mm; letter-spacing:-0.01em; }
+      h2 { font-size:11.5pt; margin:7mm 0 2.5mm; padding-bottom:1.2mm; border-bottom:1px solid var(--line); break-after:avoid; }
+      h3 { font-size:10pt; margin:4mm 0 1.5mm; break-after:avoid; }
+      p { margin:0 0 2.5mm; }
+      .lede { color:var(--muted); max-width:165mm; }
+      .brand { display:flex; justify-content:space-between; align-items:baseline; border-bottom:2px solid var(--accent); padding-bottom:2mm; margin-bottom:4mm; }
+      .brand strong { font-size:11pt; letter-spacing:0.02em; }
+      .brand span { color:var(--muted); font-size:8.5pt; }
+      ul { margin:0 0 2.5mm; padding-left:0; list-style:none; }
+      ul.check li { position:relative; padding-left:6.5mm; margin-bottom:1.4mm; break-inside:avoid; }
+      ul.check li::before { content:""; position:absolute; left:0; top:0.4mm; width:3.6mm; height:3.6mm; border:1px solid var(--muted); border-radius:0.6mm; }
+      ul.plain { padding-left:5mm; list-style:disc; }
+      ul.plain li { margin-bottom:1.2mm; }
+      table { width:100%; border-collapse:collapse; margin:0 0 3mm; font-size:9.5pt; break-inside:avoid; }
+      th, td { border:1px solid var(--line); padding:1.6mm 2mm; text-align:left; vertical-align:top; }
+      th { background:#f2f5f7; font-weight:600; }
+      .note { border-left:3px solid var(--warn); background:#fdf6f2; padding:2.5mm 3mm; margin:3mm 0; font-size:9.5pt; break-inside:avoid; }
+      .box { border:1px solid var(--line); border-radius:1.5mm; padding:3mm; margin:3mm 0; break-inside:avoid; }
+      .box h3 { margin-top:0; }
+      footer { margin-top:8mm; padding-top:2.5mm; border-top:1px solid var(--line); color:var(--muted); font-size:8.5pt; }
+      .formula { font-family:"Courier New", monospace; font-size:9.5pt; background:#f2f5f7; padding:2mm 2.5mm; border-radius:1mm; }
+    </style></head>
+<body>
+<div class="brand"><strong>BestMT4EA</strong><span>bestmt4ea.com — free trading resources</span></div>
+<h1>Prop Firm EA Risk Rules Worksheet</h1>
+<p class="lede">Prop firm challenges are not lost by bad entries. They are lost by breaking a written rule on a bad day: the daily loss limit, the overall drawdown limit, or a consistency requirement. Fill this worksheet in for your firm before the EA places a trade — the numbers differ per firm, and the EA must be set to the strictest one.</p>
+
+ <h2>1. Copy your firm's rules here</h2>
+ <table>
+ <tr><th>Rule</th><th>Your firm's number</th><th>What it means in money</th></tr>
+ <tr><td>Account size</td><td></td><td></td></tr>
+ <tr><td>Daily loss limit (% and basis: balance or equity)</td><td></td><td></td></tr>
+ <tr><td>Overall / max drawdown (% and static or trailing)</td><td></td><td></td></tr>
+ <tr><td>Profit target per phase</td><td></td><td></td></tr>
+ <tr><td>Minimum trading days</td><td></td><td></td></tr>
+ <tr><td>Consistency rule (best day % of total)</td><td></td><td></td></tr>
+ <tr><td>News trading allowed?</td><td></td><td></td></tr>
+ <tr><td>Weekend holding allowed?</td><td></td><td></td></tr>
+ <tr><td>EA / copy-trading restrictions</td><td></td><td></td></tr>
+ </table>
+ <h2>2. Set the EA inside the rules, not at them</h2>
+ <ul class="check">
+ <li>Daily stop in the EA = 60–70% of the firm's daily limit. The firm's limit includes floating losses and fees; the EA's stop must trigger first.</li>
+ <li>Overall equity protection = stop all trading at 70–80% of the max drawdown. A trailing limit moves with your balance — recalculate the money value weekly.</li>
+ <li>Risk per trade: divide the daily budget by the number of trades you allow per day. If that gives a lot size that feels boring, the maths is doing its job.</li>
+ <li>One strategy, one account: running two uncorrelated EAs doubles your worst day, not your safety.</li>
+ </ul>
+ <h2>3. Daily routine</h2>
+ <ul class="check">
+ <li>Before the session: write today's loss budget in money. When it is gone, the EA comes off — no override.</li>
+ <li>Check the calendar: if the firm restricts news trading, the EA's news filter must be on and tested.</li>
+ <li>After the session: record best/worst trade and floating drawdown. Consistency rules punish one giant winning day as much as a losing one.</li>
+ </ul>
+ <div class="note"><strong>Reality check:</strong> a martingale or grid EA with no hard equity stop cannot be made prop-firm safe by lowering the lot size. The first deep basket will find the daily limit. If the EA has no equity-stop input, it is the wrong tool for a challenge.</div>
+ 
+<footer>BestMT4EA — free resource. Trading forex and CFDs carries a high risk of loss; most retail accounts lose money. Nothing here is financial advice. Test every system on a demo account with a written loss limit before risking real funds.</footer>
+</body></html>

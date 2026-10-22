@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" />
+<title>Gold Scalping Risk-to-Reward Planner — BestMT4EA</title><style>
+      :root {
+        --ink: #101418;
+        --muted: #5a6570;
+        --line: #d7dde3;
+        --accent: #0b7a5d;
+        --warn: #a8410f;
+      }
+      * { box-sizing: border-box; }
+      @page { size: A4; margin: 14mm 13mm; }
+      html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: #fff;
+        font: 10.5pt/1.45 "Helvetica Neue", Arial, sans-serif;
+      }
+      h1 { font-size: 19pt; line-height: 1.15; margin: 0 0 2mm; letter-spacing: -0.01em; }
+      h2 {
+        font-size: 11.5pt;
+        margin: 7mm 0 2.5mm;
+        padding-bottom: 1.2mm;
+        border-bottom: 1px solid var(--line);
+        break-after: avoid;
+      }
+      h3 { font-size: 10pt; margin: 4mm 0 1.5mm; break-after: avoid; }
+      p { margin: 0 0 2.5mm; }
+      .lede { color: var(--muted); max-width: 165mm; }
+      .brand {
+        display: flex; justify-content: space-between; align-items: baseline;
+        border-bottom: 2px solid var(--accent); padding-bottom: 2mm; margin-bottom: 4mm;
+      }
+      .brand strong { font-size: 11pt; letter-spacing: 0.02em; }
+      .brand span { color: var(--muted); font-size: 8.5pt; }
+      ul { margin: 0 0 2.5mm; padding-left: 0; list-style: none; }
+      ul.check li { position: relative; padding-left: 6.5mm; margin-bottom: 1.4mm; break-inside: avoid; }
+      ul.check li::before {
+        content: ""; position: absolute; left: 0; top: 0.4mm;
+        width: 3.6mm; height: 3.6mm; border: 1px solid var(--muted); border-radius: 0.6mm;
+      }
+      ul.plain { padding-left: 5mm; list-style: disc; }
+      ul.plain li { margin-bottom: 1.2mm; }
+      table { width: 100%; border-collapse: collapse; margin: 0 0 3mm; font-size: 9.5pt; break-inside: avoid; }
+      th, td { border: 1px solid var(--line); padding: 1.6mm 2mm; text-align: left; vertical-align: top; }
+      th { background: #f2f5f7; font-weight: 600; }
+      .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 8mm; }
+      .note {
+        border-left: 3px solid var(--warn); background: #fdf6f2;
+        padding: 2.5mm 3mm; margin: 3mm 0; font-size: 9.5pt; break-inside: avoid;
+      }
+      .box { border: 1px solid var(--line); border-radius: 1.5mm; padding: 3mm; margin: 3mm 0; break-inside: avoid; }
+      .box h3 { margin-top: 0; }
+      .flag { color: var(--warn); font-weight: 600; }
+      footer {
+        margin-top: 8mm; padding-top: 2.5mm; border-top: 1px solid var(--line);
+        color: var(--muted); font-size: 8.5pt;
+      }
+      .page-break { break-before: page; }
+      .formula { font-family: "Courier New", monospace; font-size: 9.5pt; background: #f2f5f7; padding: 2mm 2.5mm; border-radius: 1mm; }
+    </style></head>
+<body>
+<div class="brand"><strong>BestMT4EA</strong><span>bestmt4ea.com — free trading resources</span></div>
+<h1>Gold Scalping Risk-to-Reward Planner</h1>
+<p class="lede">Gold scalping robots live or die on geometry: how far the stop is from entry versus how far the target is, in a market whose spread and speed change by the hour. This planner turns that geometry into numbers before you let any robot trade.</p>
+
+ <h2>1. The geometry worksheet (per configuration)</h2>
+ <table><tr><th>Quantity</th><th>Your number</th></tr>
+ <tr><td>Average target distance (in dollars of gold price)</td><td></td></tr>
+ <tr><td>Average stop distance (in dollars)</td><td></td></tr>
+ <tr><td>Stated reward-to-risk (target ÷ stop)</td><td></td></tr>
+ <tr><td>Win rate needed to break even before costs = stop ÷ (stop + target)</td><td></td></tr>
+ <tr><td>Your broker's typical spread in your session (in dollars)</td><td></td></tr>
+ <tr><td>Spread as % of target distance</td><td></td></tr>
+ <tr><td>Win rate needed after spread = (stop + spread) ÷ (stop + target)</td><td></td></tr>
+ <tr><td>Estimated slippage per round trip in your session</td><td></td></tr></table>
+ <h2>2. Reading the result</h2>
+ <ul class="check">
+ <li>If the after-cost break-even win rate is above ~65%, the configuration needs near-perfection to survive. Change geometry (wider targets, tighter honest stops) or change sessions — do not just hope.</li>
+ <li>A reward-to-risk below 1 is not automatically bad, but it purchases its wins with occasional full stops; size so three consecutive stops are an ordinary week, not an emergency.</li>
+ <li>Compute the same table for the US data-release hour and for the rollover. If the robot trades those windows, those are its real numbers.</li>
+ </ul>
+ <h2>3. Session plan</h2>
+ <ul class="check">
+ <li>Mark the sessions the robot may trade, in broker server time, on this sheet. Compare against gold's habits: Asian drift, London range-building, US data explosions.</li>
+ <li>Write the spread ceiling (in dollars) at which the robot must stand aside, and confirm the setting exists in the EA.</li>
+ <li>Decide the data-release rule before the month starts: off, reduced size, or normal — and never improvise it on the day.</li>
+ </ul>
+ <div class="note"><strong>The planner rule:</strong> on gold, reward-to-risk is not a property of the robot; it is a property of the robot in a session at a spread. Plan the combination, not the brochure.</div>
+ 
+<footer>BestMT4EA — free resource. Trading forex and CFDs carries a high risk of loss; most retail accounts lose money. Nothing here is financial advice. Test every system on a demo account with a written loss limit before risking real funds.</footer>
+</body></html>

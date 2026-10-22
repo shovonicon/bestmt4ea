@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" />
+<title>Divergence Trading Settings Worksheet — BestMT4EA</title><style>
+      :root {
+        --ink: #101418;
+        --muted: #5a6570;
+        --line: #d7dde3;
+        --accent: #0b7a5d;
+        --warn: #a8410f;
+      }
+      * { box-sizing: border-box; }
+      @page { size: A4; margin: 14mm 13mm; }
+      html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: #fff;
+        font: 10.5pt/1.45 "Helvetica Neue", Arial, sans-serif;
+      }
+      h1 { font-size: 19pt; line-height: 1.15; margin: 0 0 2mm; letter-spacing: -0.01em; }
+      h2 {
+        font-size: 11.5pt;
+        margin: 7mm 0 2.5mm;
+        padding-bottom: 1.2mm;
+        border-bottom: 1px solid var(--line);
+        break-after: avoid;
+      }
+      h3 { font-size: 10pt; margin: 4mm 0 1.5mm; break-after: avoid; }
+      p { margin: 0 0 2.5mm; }
+      .lede { color: var(--muted); max-width: 165mm; }
+      .brand {
+        display: flex; justify-content: space-between; align-items: baseline;
+        border-bottom: 2px solid var(--accent); padding-bottom: 2mm; margin-bottom: 4mm;
+      }
+      .brand strong { font-size: 11pt; letter-spacing: 0.02em; }
+      .brand span { color: var(--muted); font-size: 8.5pt; }
+      ul { margin: 0 0 2.5mm; padding-left: 0; list-style: none; }
+      ul.check li { position: relative; padding-left: 6.5mm; margin-bottom: 1.4mm; break-inside: avoid; }
+      ul.check li::before {
+        content: ""; position: absolute; left: 0; top: 0.4mm;
+        width: 3.6mm; height: 3.6mm; border: 1px solid var(--muted); border-radius: 0.6mm;
+      }
+      ul.plain { padding-left: 5mm; list-style: disc; }
+      ul.plain li { margin-bottom: 1.2mm; }
+      table { width: 100%; border-collapse: collapse; margin: 0 0 3mm; font-size: 9.5pt; break-inside: avoid; }
+      th, td { border: 1px solid var(--line); padding: 1.6mm 2mm; text-align: left; vertical-align: top; }
+      th { background: #f2f5f7; font-weight: 600; }
+      .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 8mm; }
+      .note {
+        border-left: 3px solid var(--warn); background: #fdf6f2;
+        padding: 2.5mm 3mm; margin: 3mm 0; font-size: 9.5pt; break-inside: avoid;
+      }
+      .box { border: 1px solid var(--line); border-radius: 1.5mm; padding: 3mm; margin: 3mm 0; break-inside: avoid; }
+      .box h3 { margin-top: 0; }
+      .flag { color: var(--warn); font-weight: 600; }
+      footer {
+        margin-top: 8mm; padding-top: 2.5mm; border-top: 1px solid var(--line);
+        color: var(--muted); font-size: 8.5pt;
+      }
+      .page-break { break-before: page; }
+      .formula { font-family: "Courier New", monospace; font-size: 9.5pt; background: #f2f5f7; padding: 2mm 2.5mm; border-radius: 1mm; }
+    </style></head>
+<body>
+<div class="brand"><strong>BestMT4EA</strong><span>bestmt4ea.com — free trading resources</span></div>
+<h1>Divergence Trading Settings Worksheet</h1>
+<p class="lede">Divergence — price making a new extreme while an oscillator does not — is a timing clue, not a signal by itself. This worksheet sets out honest settings by timeframe and the confirmation rules that separate tradable divergence from chart decoration.</p>
+
+ <h2>1. The honesty box (read first)</h2>
+ <ul class="check">
+ <li>Every divergence indicator needs confirmed swing points, and swings are only confirmed after the fact. A "non-repainting" divergence tool therefore signals late by construction — typically by the pivot confirmation bars — or it repaints. There is no third option.</li>
+ <li>Divergence against a strong trend can persist for a very long time ("the oscillator can diverge longer than your account can stay solvent"). Trade divergence with the trend (hidden divergence) for continuation, and against it only with a separate confirmation.</li>
+ </ul>
+ <h2>2. Settings by timeframe (starting points to test, not commandments)</h2>
+ <table><tr><th>Timeframe</th><th>Oscillator</th><th>Period</th><th>Pivot lookback (L/R bars)</th><th>Notes</th></tr>
+ <tr><td>M5–M15</td><td>RSI</td><td>14</td><td>5 / 5</td><td>Very noisy; only with a higher-timeframe bias filter</td></tr>
+ <tr><td>M30–H1</td><td>RSI or MACD</td><td>14 / 12-26-9</td><td>5 / 5</td><td>The working band for most divergence traders</td></tr>
+ <tr><td>H4–D1</td><td>MACD</td><td>12-26-9</td><td>7 / 7</td><td>Fewer, heavier signals; suit swing invalidation levels</td></tr></table>
+ <h2>3. Confirmation rules to choose (pick before testing)</h2>
+ <ul class="check">
+ <li>Structure confirmation: wait for a break of the local trendline or the most recent minor swing in your direction.</li>
+ <li>Candle confirmation: an engulfing or pin bar at the divergence extreme on the trading timeframe.</li>
+ <li>Momentum reset: oscillator returns toward mid-range before entry, proving the move is not simply continuing.</li>
+ <li>Invalidation: a close beyond the price extreme that created the divergence. If price makes a further extreme with the oscillator now agreeing, the idea is over.</li>
+ </ul>
+ <h2>4. The live test</h2>
+ <ul class="check">
+ <li>Screenshot every signal at the moment it appears and again 10 bars later. Compare: did the signal move or vanish? (If yes, it repaints, whatever the description said.)</li>
+ <li>Log 30 signals with your chosen confirmation rule applied and not applied. The difference in results is what the confirmation rule is worth.</li>
+ </ul>
+ <div class="note"><strong>The worksheet rule:</strong> divergence tells you momentum is tiring. It never tells you price must turn. Your confirmation rule and your invalidation are the trade; divergence is just the invitation to look.</div>
+ 
+<footer>BestMT4EA — free resource. Trading forex and CFDs carries a high risk of loss; most retail accounts lose money. Nothing here is financial advice. Test every system on a demo account with a written loss limit before risking real funds.</footer>
+</body></html>

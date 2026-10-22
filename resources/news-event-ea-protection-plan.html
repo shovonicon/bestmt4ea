@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" />
+<title>News Event EA Protection Plan — BestMT4EA</title><style>
+      :root { --ink:#101418; --muted:#5a6570; --line:#d7dde3; --accent:#0b7a5d; --warn:#a8410f; }
+      * { box-sizing: border-box; }
+      @page { size: A4; margin: 14mm 13mm; }
+      html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body { margin:0; color:var(--ink); background:#fff; font:10.5pt/1.45 "Helvetica Neue", Arial, sans-serif; }
+      h1 { font-size:19pt; line-height:1.15; margin:0 0 2mm; letter-spacing:-0.01em; }
+      h2 { font-size:11.5pt; margin:7mm 0 2.5mm; padding-bottom:1.2mm; border-bottom:1px solid var(--line); break-after:avoid; }
+      h3 { font-size:10pt; margin:4mm 0 1.5mm; break-after:avoid; }
+      p { margin:0 0 2.5mm; }
+      .lede { color:var(--muted); max-width:165mm; }
+      .brand { display:flex; justify-content:space-between; align-items:baseline; border-bottom:2px solid var(--accent); padding-bottom:2mm; margin-bottom:4mm; }
+      .brand strong { font-size:11pt; letter-spacing:0.02em; }
+      .brand span { color:var(--muted); font-size:8.5pt; }
+      ul { margin:0 0 2.5mm; padding-left:0; list-style:none; }
+      ul.check li { position:relative; padding-left:6.5mm; margin-bottom:1.4mm; break-inside:avoid; }
+      ul.check li::before { content:""; position:absolute; left:0; top:0.4mm; width:3.6mm; height:3.6mm; border:1px solid var(--muted); border-radius:0.6mm; }
+      ul.plain { padding-left:5mm; list-style:disc; }
+      ul.plain li { margin-bottom:1.2mm; }
+      table { width:100%; border-collapse:collapse; margin:0 0 3mm; font-size:9.5pt; break-inside:avoid; }
+      th, td { border:1px solid var(--line); padding:1.6mm 2mm; text-align:left; vertical-align:top; }
+      th { background:#f2f5f7; font-weight:600; }
+      .note { border-left:3px solid var(--warn); background:#fdf6f2; padding:2.5mm 3mm; margin:3mm 0; font-size:9.5pt; break-inside:avoid; }
+      .box { border:1px solid var(--line); border-radius:1.5mm; padding:3mm; margin:3mm 0; break-inside:avoid; }
+      .box h3 { margin-top:0; }
+      footer { margin-top:8mm; padding-top:2.5mm; border-top:1px solid var(--line); color:var(--muted); font-size:8.5pt; }
+      .formula { font-family:"Courier New", monospace; font-size:9.5pt; background:#f2f5f7; padding:2mm 2.5mm; border-radius:1mm; }
+    </style></head>
+<body>
+<div class="brand"><strong>BestMT4EA</strong><span>bestmt4ea.com — free trading resources</span></div>
+<h1>News Event EA Protection Plan</h1>
+<p class="lede">An EA that trades calmly for three weeks can give it all back in four minutes around a central bank decision. This plan turns 'avoid the news' from a slogan into settings: which events, how wide a window, and what the EA may and may not do inside it.</p>
+
+ <h2>1. Grade the events for your pairs</h2>
+ <table>
+ <tr><th>Tier</th><th>Events</th><th>Default EA behaviour</th></tr>
+ <tr><td>1 — stop</td><td>FOMC, ECB, BoE rate decisions &amp; press conferences; US CPI; Non-Farm Payrolls</td><td>No new trades 30 min before to 30 min after; manage or close open baskets per your written rule</td></tr>
+ <tr><td>2 — caution</td><td>Retail sales, GDP, PMI, unemployment claims, central bank speeches</td><td>No new trades 15 min either side, or trade at half risk if your backtest supports it</td></tr>
+ <tr><td>3 — note</td><td>Minor releases, holidays in one centre</td><td>Trade normally; expect thin liquidity and wider spreads</td></tr>
+ </table>
+ <h2>2. Choose your open-position rule now</h2>
+ <ul class="check">
+ <li>Close everything before Tier 1: simplest, safest, and the only rule a grid/martingale EA can honestly follow.</li>
+ <li>Or hold with stops: only acceptable for fixed-lot strategies with hard stop losses already in place — spreads can jump several times over, and stops execute at the available price, not the requested one.</li>
+ <li>Never "widen stops for the news". You are not reducing risk; you are renaming a bigger loss.</li>
+ <li>Write the rule per EA. Two EAs with opposite news behaviour on one account is an unwritten rule.</li>
+ </ul>
+ <h2>3. Filter settings checklist</h2>
+ <ul class="check">
+ <li>News source in the EA is enabled and the terminal allows WebRequests to the calendar URL (Tools → Options → Expert Advisors).</li>
+ <li>Buffer minutes match your tiers above — and you have watched the filter trigger once on a small event before trusting it on CPI day.</li>
+ <li>Currency filter includes USD and the currencies of both sides of every pair you trade (gold traders: USD events are XAUUSD events).</li>
+ <li>After the window: the EA resumes automatically. An EA left paused for a week after FOMC is a silent strategy change.</li>
+ </ul>
+ <div class="note"><strong>The news rule:</strong> the goal is not to predict the release. It is to make sure a number you cannot forecast cannot reach your account's loss limit in a single candle.</div>
+ 
+<footer>BestMT4EA — free resource. Trading forex and CFDs carries a high risk of loss; most retail accounts lose money. Nothing here is financial advice. Test every system on a demo account with a written loss limit before risking real funds.</footer>
+</body></html>

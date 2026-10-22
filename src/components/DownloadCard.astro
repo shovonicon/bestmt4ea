@@ -15,6 +15,8 @@ import { url } from '../lib/urls';
 export interface Props {
   download: {
     origin: 'own' | 'opensource' | 'shared';
+    /** What the file actually is. Shown verbatim; never the article's title. */
+    name?: string;
     license: string;
     licenseUrl?: string;
     author?: string;
@@ -33,9 +35,17 @@ export interface Props {
    * origin on purpose, so only a layout-level fallback passes it in.
    */
   kind?: 'own' | 'opensource' | 'external';
+  /**
+   * True when the file is a companion resource for the article (a worksheet,
+   * checklist or shared library) rather than the article's subject. Corpus
+   * audit, 2026-10-23: every post download on this site is a companion, so
+   * layouts pass this for all post downloads; the card must never read as
+   * "download the thing this article is about".
+   */
+  companion?: boolean;
 }
 
-const { download, title, kind } = Astro.props;
+const { download, title, kind, companion = false } = Astro.props;
 
 const hosted = isHosted(download);
 const href = download.fileKey ? publicUrl(download.fileKey) : download.externalUrl!;
@@ -51,22 +61,39 @@ const fmt = (d?: Date) =>
 
 <section id="download" class="panel border-[var(--color-accent)]/30 p-6" data-download-card>
   <div class="flex flex-wrap items-center gap-2">
-    <span class="badge badge-accent">{isShared ? 'Shared file' : isExternal ? 'Third-party' : isOwn ? 'Our own build' : 'Open source'}</span>
+    <span class="badge badge-accent">{companion && isOwn ? 'Free companion resource' : isShared ? 'Shared bundle' : isExternal ? 'Third-party' : isOwn ? 'Our own build' : 'Open source'}</span>
     {download.platform && <span class="badge">{download.platform}</span>}
     {download.version && <span class="badge">v{download.version}</span>}
     {(!isExternal || isShared) && <span class="badge">{download.license}</span>}
   </div>
 
-  <h2 class="mt-4 text-xl">Download {title}</h2>
+  <h2 class="mt-4 text-xl">{companion ? (download.name ?? 'Free companion resource') : `Download ${title}`}</h2>
+  {
+    !companion && download.name && (
+      <p class="mt-2 text-sm text-[var(--color-ink)]">
+        <span class="text-[var(--color-ink-soft)]">File:</span> {download.name}
+        {download.fileSize ? ` — ${download.fileSize}` : ''}
+      </p>
+    )
+  }
+  {
+    companion && download.fileSize && (
+      <p class="mt-2 text-sm text-[var(--color-ink)]">
+        <span class="text-[var(--color-ink-soft)]">Size:</span> {download.fileSize}
+      </p>
+    )
+  }
   <p class="mt-2 text-sm leading-7 text-[var(--color-ink-soft)]">
     {
       isShared
-        ? 'A third-party file shared as-is. We did not make it and have not verified its licence, so scan it, test it on a demo account first, and use it entirely at your own risk.'
+        ? 'This link does not download a single file for the tool in this article. It opens a shared Google Drive library of 2,000+ third-party EAs and indicators in three ZIP parts (about 577 MB in total); the tool is inside the bundle under its own file name, if it is there at all. We did not make these files and have not verified their licences, so scan everything, test on a demo account first, and use it entirely at your own risk.'
         : isExternal
         ? 'A third-party community EA bundle with no stated license; use for educational/demo testing only and entirely at your own risk.'
-        : isOwn
-          ? 'Built in-house and released free. Use it on a demo account first, then decide whether it earns a place on your live terminal.'
-          : 'Distributed here under its original licence, with full credit to the author. The licence terms below govern how you may use and share it.'
+        : isOwn && companion
+          ? 'A free companion resource for this article, built in-house: a practical worksheet or checklist to use alongside what you have just read. It is not the product, EA or indicator this article discusses, and nothing in it installs on your terminal.'
+          : isOwn
+            ? 'Built in-house and released free. Use it on a demo account first, then decide whether it earns a place on your live terminal.'
+            : 'Distributed here under its original licence, with full credit to the author. The licence terms below govern how you may use and share it.'
     }
   </p>
 
@@ -101,7 +128,7 @@ const fmt = (d?: Date) =>
       rel={hosted ? undefined : 'noopener nofollow'}
       data-download-link
     >
-      {hosted ? 'Download file' : isExternal ? 'Open the download link' : 'Download from source'}
+      {hosted ? 'Download file' : isShared ? 'Open the shared library (Google Drive)' : isExternal ? 'Open the download link' : 'Download from source'}
     </a>
     {
       download.licenseUrl && (

@@ -4,7 +4,7 @@ title: "High Frequency Scalping EA: Latency Is Your Real Edge"
 slug: "gold-high-frequency-scalping-ea-free-download-7-powerful-truths-you-must-know-before-installing"
 description: "High frequency scalping EA claims are really infrastructure claims. See what broker round-trip time, XAUUSD slippage at news and tick volume cost you."
 publishedAt: "2026-02-13T23:06:24.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-08-30T08:09:25Z"
 seo:
   title: "High Frequency Scalping EA: Latency Is Your Real Edge"
   description: "High frequency scalping EA claims are really infrastructure claims. See what broker round-trip time, XAUUSD slippage at news and tick volume cost you."
@@ -62,11 +62,11 @@ installSteps:
   - name: "Compare the log against your broker"
     text: "Run the build for a week on a demo login and write down your round trip and slippage each day. That record is the measurement every sales page omits."
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
+  license: "No licence stated - third-party files shared as-is, unverified"
   author: "geraked"
   sourceUrl: "https://github.com/geraked/metatrader5"
-  version: "latest"
   platform: "MT5"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"

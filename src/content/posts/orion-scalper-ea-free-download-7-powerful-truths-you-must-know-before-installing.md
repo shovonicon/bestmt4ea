@@ -4,7 +4,7 @@ title: "ORION SCALPER EA Review: Test It Before You Trust It"
 slug: "orion-scalper-ea-free-download-7-powerful-truths-you-must-know-before-installing"
 description: "ORION SCALPER EA review: what a scalper robot should prove, the settings that matter, why free copies are risky, and a demo test plan before live trading."
 publishedAt: "2026-02-12T03:29:59.000Z"
-updatedAt: "2026-10-22T00:00:00.000Z"
+updatedAt: "2026-08-27T15:07:14Z"
 seo:
   title: "ORION SCALPER EA Review: Test It Before You Trust It (2026)"
   description: "ORION SCALPER EA review: what a scalper robot should prove, the settings that matter, why free copies are risky, and a demo test plan before live trading."
@@ -44,12 +44,11 @@ sources:
     url: "https://www.esma.europa.eu/"
 primaryKeyword: "ORION SCALPER EA review"
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
+  license: "No licence stated - third-party files shared as-is, unverified"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
 ---
 
 Searching for an ORION SCALPER EA download usually means you want one thing: a fast, automated way to take small profits in the forex market without watching every candle. Scalping is attractive because it promises many short trades instead of one slow bet. A robot that runs that style all day sounds like a shortcut to activity, and possibly to results.

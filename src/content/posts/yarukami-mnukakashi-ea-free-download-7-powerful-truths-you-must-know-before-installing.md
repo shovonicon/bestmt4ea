@@ -4,7 +4,7 @@ title: "Yarukami Mnukakashi EA Free Download: Honest Review"
 slug: "yarukami-mnukakashi-ea-free-download-7-powerful-truths-you-must-know-before-installing"
 description: "Yarukami Mnukakashi EA free download: the claims, real risks of free EAs, and a demo-first test plan before you install it safely on MT4 or MT5 platforms."
 publishedAt: "2026-02-13T20:18:33.000Z"
-updatedAt: "2026-10-22T00:00:00.000Z"
+updatedAt: "2026-08-27T14:53:36Z"
 seo:
   title: "Yarukami Mnukakashi EA FREE Download: 7 Powerful Truths You Must Know Before Installing 2026"
   description: "Yarukami Mnukakashi EA FREE Download – Discover 7 powerful truths, features, risks, setup steps, and safe alternatives before installing this Expert Advisor."
@@ -43,12 +43,11 @@ sources:
 primaryKeyword: "Yarukami Mnukakashi EA free download"
 draft: false
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
+  license: "No licence stated - third-party files shared as-is, unverified"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
 ---
 
 You searched for a free Expert Advisor, and that search makes sense. You want a robot that watches the charts on MetaTrader 4 or MetaTrader 5, places trades on your behalf, and asks for nothing up front. The Yarukami Mnukakashi EA free download looks like exactly that deal. It is promoted as a forex trading robot that automates currency trades, reduces emotional mistakes and runs a specific strategy logic without you sitting at the screen.

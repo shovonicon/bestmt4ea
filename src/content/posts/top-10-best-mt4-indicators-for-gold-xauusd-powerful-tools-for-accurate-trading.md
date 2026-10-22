@@ -4,7 +4,7 @@ title: "Best MT4 Indicators for Gold XAUUSD: Pick Three, Not Ten"
 slug: "top-10-best-mt4-indicators-for-gold-xauusd-powerful-tools-for-accurate-trading"
 description: "Which MT4 indicators suit gold, and why three built-ins beat ten downloads. Covers ATR, moving averages and RSI, with demo-first tests and honest limits."
 publishedAt: "2025-12-07T08:45:20.000Z"
-updatedAt: "2026-10-22"
+updatedAt: "2026-08-05T19:34:11Z"
 seo:
   title: "Best MT4 Indicators for Gold XAUUSD: Pick Three, Not Ten"
   description: "Which MT4 indicators suit gold, and why three built-ins beat ten downloads. Covers ATR, moving averages and RSI, with demo-first tests and honest limits."
@@ -61,13 +61,12 @@ installSteps:
   - name: "Record every trade on demo"
     text: "Log the entry, the stop distance in ATR multiples, the size, the result and the drawdown. Review the log after at least four weeks."
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
+  license: "No licence stated - third-party files shared as-is, unverified"
   platform: "MT4/MT5"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
 ---
 
 Search for the best MT4 indicator for gold and you will find lists of ten, twenty, sometimes fifty tools, each one promising accurate entries on XAUUSD. Most of those lists were written to get you to download something. The honest answer is shorter. Gold needs three things from its indicators: a way to measure how far it moves, a way to read which direction it is heading, and a way to time a pullback. Three tools cover all three, and all three come with MetaTrader 4.

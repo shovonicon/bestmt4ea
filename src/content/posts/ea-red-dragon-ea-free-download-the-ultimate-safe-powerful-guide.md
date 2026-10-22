@@ -4,7 +4,7 @@ title: "Red Dragon EA Review: Safe Testing Guide for MT4"
 slug: "ea-red-dragon-ea-free-download-the-ultimate-safe-powerful-guide"
 description: "Red Dragon EA review for MT4 traders: what the robot claims, what you can verify, why cracked downloads are risky, and how to test it on a demo account first."
 publishedAt: "2026-02-12T04:05:44.000Z"
-updatedAt: "2026-10-22T00:00:00.000Z"
+updatedAt: "2026-08-28T15:54:30Z"
 seo:
   title: "Red Dragon EA Review: Safe Testing Guide for MT4 (2026)"
   description: "Red Dragon EA review for MT4 traders: what the robot claims, what you can verify, why cracked downloads are risky, and how to test it on a demo account first."
@@ -46,12 +46,11 @@ sources:
     url: "https://www.esma.europa.eu/"
 primaryKeyword: "Red Dragon EA review"
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
+  license: "No licence stated - third-party files shared as-is, unverified"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
 ---
 
 If you typed "Red Dragon EA free download" into a search bar, you probably want one thing: a robot that trades forex or gold for you while you sleep, so you stop staring at charts. That wish makes sense. Manual trading is hard, and most beginners lose money for the same reasons. They chase price after a big candle. They move stop-losses to avoid a loss. They trade when they are tired, bored or angry about the last trade.

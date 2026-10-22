@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" />
+<title>MT4/MT5 Expert Advisor Installation & Activation Checklist — BestMT4EA</title><style>
+      :root { --ink:#101418; --muted:#5a6570; --line:#d7dde3; --accent:#0b7a5d; --warn:#a8410f; }
+      * { box-sizing: border-box; }
+      @page { size: A4; margin: 14mm 13mm; }
+      html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body { margin:0; color:var(--ink); background:#fff; font:10.5pt/1.45 "Helvetica Neue", Arial, sans-serif; }
+      h1 { font-size:19pt; line-height:1.15; margin:0 0 2mm; letter-spacing:-0.01em; }
+      h2 { font-size:11.5pt; margin:7mm 0 2.5mm; padding-bottom:1.2mm; border-bottom:1px solid var(--line); break-after:avoid; }
+      h3 { font-size:10pt; margin:4mm 0 1.5mm; break-after:avoid; }
+      p { margin:0 0 2.5mm; }
+      .lede { color:var(--muted); max-width:165mm; }
+      .brand { display:flex; justify-content:space-between; align-items:baseline; border-bottom:2px solid var(--accent); padding-bottom:2mm; margin-bottom:4mm; }
+      .brand strong { font-size:11pt; letter-spacing:0.02em; }
+      .brand span { color:var(--muted); font-size:8.5pt; }
+      ul { margin:0 0 2.5mm; padding-left:0; list-style:none; }
+      ul.check li { position:relative; padding-left:6.5mm; margin-bottom:1.4mm; break-inside:avoid; }
+      ul.check li::before { content:""; position:absolute; left:0; top:0.4mm; width:3.6mm; height:3.6mm; border:1px solid var(--muted); border-radius:0.6mm; }
+      ul.plain { padding-left:5mm; list-style:disc; }
+      ul.plain li { margin-bottom:1.2mm; }
+      table { width:100%; border-collapse:collapse; margin:0 0 3mm; font-size:9.5pt; break-inside:avoid; }
+      th, td { border:1px solid var(--line); padding:1.6mm 2mm; text-align:left; vertical-align:top; }
+      th { background:#f2f5f7; font-weight:600; }
+      .note { border-left:3px solid var(--warn); background:#fdf6f2; padding:2.5mm 3mm; margin:3mm 0; font-size:9.5pt; break-inside:avoid; }
+      .box { border:1px solid var(--line); border-radius:1.5mm; padding:3mm; margin:3mm 0; break-inside:avoid; }
+      .box h3 { margin-top:0; }
+      footer { margin-top:8mm; padding-top:2.5mm; border-top:1px solid var(--line); color:var(--muted); font-size:8.5pt; }
+      .formula { font-family:"Courier New", monospace; font-size:9.5pt; background:#f2f5f7; padding:2mm 2.5mm; border-radius:1mm; }
+    </style></head>
+<body>
+<div class="brand"><strong>BestMT4EA</strong><span>bestmt4ea.com — free trading resources</span></div>
+<h1>MT4/MT5 Expert Advisor Installation & Activation Checklist</h1>
+<p class="lede">Most 'my EA does not work' reports are installation problems, not strategy problems: the file is in the wrong folder, AutoTrading is off, or the broker's symbol suffix was never matched. Work through this checklist in order and tick each box before you judge any robot.</p>
+
+ <h2>1. Before you install</h2>
+ <ul class="check">
+ <li>Download the EA file (.ex4 for MT4, .ex5 for MT5) and any .set preset files from the original source only. Scan the file before use.</li>
+ <li>Confirm the file matches your platform: an .ex4 will not run on MT5 and an .ex5 will not run on MT4.</li>
+ <li>Check the licence terms: how many accounts, which account numbers, and whether a demo account is allowed for testing.</li>
+ <li>Write down your maximum demo-test loss (money or %) before the EA places its first trade.</li>
+ </ul>
+ <h2>2. Put the file in the right place</h2>
+ <ul class="check">
+ <li>In the terminal: File → Open Data Folder.</li>
+ <li>MT4: copy the .ex4 into MQL4/Experts. MT5: copy the .ex5 into MQL5/Experts.</li>
+ <li>Indicators go in MQL4/Indicators (or MQL5/Indicators) — an indicator in the Experts folder will never attach.</li>
+ <li>Libraries (.dll) go in MQL4/Libraries only if the vendor instructs it; leave "Allow DLL imports" off otherwise.</li>
+ <li>Right-click Navigator → Experts and choose Refresh, or restart the terminal.</li>
+ </ul>
+ <h2>3. Terminal settings that silently block EAs</h2>
+ <ul class="check">
+ <li>Tools → Options → Expert Advisors: enable "Allow algorithmic trading" (MT5) / "Allow automated trading" (MT4).</li>
+ <li>The AutoTrading / Algo Trading button in the toolbar must be green.</li>
+ <li>On the chart: the smiley / hat icon next to the EA name must not show a cross. A crossed icon means trading is disabled for that chart.</li>
+ <li>Check the Experts and Journal tabs for the exact error line before changing any setting — the log names the real cause.</li>
+ </ul>
+ <h2>4. Attach and configure</h2>
+ <ul class="check">
+ <li>Open the exact symbol and timeframe the vendor specifies. Match broker suffixes (EURUSD vs EURUSD.m) — most "no trades" cases are a suffix mismatch.</li>
+ <li>Drag the EA onto the chart, load the vendor's .set file if one is provided, and change only the lot/risk inputs on the first run.</li>
+ <li>Confirm your account type is allowed (some EAs misbehave on cent or swap-free accounts) and that hedging vs netting mode matches (MT5).</li>
+ <li>Leave the EA running for a full session. An EA that trades twice a week cannot be judged in an afternoon.</li>
+ </ul>
+ <div class="note"><strong>Stop rule:</strong> if the Experts log shows errors you cannot identify, stop. Do not raise the lot size, do not switch to a live account, and do not disable your broker's protections to "make it trade". An EA you cannot explain is an EA you cannot risk-manage.</div>
+ <h2>5. First-week log</h2>
+ <table><tr><th>Day</th><th>Trades</th><th>Log errors?</th><th>Max floating loss</th><th>Notes</th></tr>
+ <tr><td>1</td><td></td><td></td><td></td><td></td></tr>
+ <tr><td>2</td><td></td><td></td><td></td><td></td></tr>
+ <tr><td>3</td><td></td><td></td><td></td><td></td></tr>
+ <tr><td>4</td><td></td><td></td><td></td><td></td></tr>
+ <tr><td>5</td><td></td><td></td><td></td><td></td></tr></table>
+ 
+<footer>BestMT4EA — free resource. Trading forex and CFDs carries a high risk of loss; most retail accounts lose money. Nothing here is financial advice. Test every system on a demo account with a written loss limit before risking real funds.</footer>
+</body></html>

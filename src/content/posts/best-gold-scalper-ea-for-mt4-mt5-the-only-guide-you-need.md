@@ -4,7 +4,7 @@ title: "Best Gold Scalper EA for MT4/MT5"
 slug: "best-gold-scalper-ea-for-mt4-mt5-the-only-guide-you-need"
 description: "No single gold scalper EA is best. Here is a free, GPL-3.0 multi-strategy robot with full source code, plus six checks that expose a bad gold EA before you pay."
 publishedAt: "2026-05-20T12:01:42.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-08-31T08:29:25Z"
 seo:
   title: "Best Gold Scalper EA for MT4/MT5 2026"
   description: "No single gold scalper EA is best. Here is a free, GPL-3.0 multi-strategy robot with full source code, plus six checks that expose a bad gold EA before you pay."
@@ -72,11 +72,11 @@ installSteps:
   - name: "Test on real ticks, then forward-test on demo"
     text: "Run at least one full year in the Strategy Tester with real ticks enabled, then leave it running on demo for two to four weeks. Compare the live demo behaviour with the backtest before any real money is involved."
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
+  license: "No licence stated - third-party files shared as-is, unverified"
   author: "EA31337"
   sourceUrl: "https://github.com/EA31337/EA31337"
-  version: "latest"
   platform: "MT4/MT5"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"

@@ -1,0 +1,149 @@
+---
+title: "Disable Your MT4 EA During News: 9 Methods Compared"
+slug: "how-to-disable-mt4-ea-during-news-events-9-powerful-methods-for-safer-trading"
+description: "Nine methods to stop an MT4 or MT5 EA trading through news, compared honestly: built-in filters, calendar feeds, session rules, spread gates and equity guards."
+publishedAt: 2026-10-22
+updatedAt: 2026-10-22
+categories:
+  - "Installation & Setup"
+categoryPaths:
+  - "/category/installation-setup/"
+tags: []
+draft: false
+quickAnswer: "No single method reliably disables an MT4 EA during news. Manual pauses fail when you are absent, built-in scheduling fails for unscheduled events, and calendar filters fail when their data source breaks. Most traders need two layers: a schedule or filter that prevents new entries, plus an independent equity or spread guard for events the first layer misses."
+keyTakeaways:
+  - "Decide whether you need to stop new entries, close open trades, or both — methods differ sharply on this point."
+  - "Every news-protection method has a characteristic failure mode; choose the failure you can tolerate and supervise."
+  - "Combine a preventive layer, such as a calendar filter, with a reactive layer, such as a spread or equity guard."
+  - "Test the full pause and resume cycle on demo, including what happens to open trades and pending orders."
+  - "Broker server time, daylight saving and calendar timezone mismatches cause more failures than the filters themselves."
+faqs:
+  - question: "Does turning off AutoTrading stop an EA from closing trades?"
+    answer: "Yes. Disabling AutoTrading in MetaTrader prevents Expert Advisors from opening and closing trades, so an EA that relies on its own exit logic will stop managing open positions as well as stop entering new ones. Plan the treatment of open trades before you use this switch."
+  - question: "Can an EA read an economic calendar by itself?"
+    answer: "An EA can fetch calendar data with WebRequest if the source URL is allow-listed in the terminal options and the source offers a usable feed. The terminal must be running, the request must succeed, and the feed's timezone and event naming must be handled correctly, or the filter will act on the wrong times."
+  - question: "What is the difference between a news filter and a spread filter?"
+    answer: "A news filter acts on scheduled time: it blocks trading in a window around a listed event. A spread filter acts on market conditions: it blocks trading whenever the spread exceeds a threshold, whatever the cause. The spread filter also catches unscheduled events, but it cannot act in advance of the widening."
+  - question: "Should I close open trades before news or just stop new entries?"
+    answer: "That depends on the strategy and on any external rules you trade under, such as prop firm restrictions. Closing removes gap and slippage exposure but may realise a loss the strategy would have recovered from. Stopping entries only leaves existing exposure fully subject to the release."
+  - question: "Why did my news filter work in the Strategy Tester but not live?"
+    answer: "WebRequest is restricted in the Strategy Tester, and testers commonly use supplied test data or no calendar data at all. A filter that appears to work in testing may never have fetched a live feed. Forward-test the filter on a demo account through real releases."
+  - question: "Do these methods work the same in MT5 as in MT4?"
+    answer: "The principles transfer, but the details differ. MT5 includes a built-in economic calendar accessible to programs, while MT4 has no equivalent built-in calendar, so MT4 filters depend on external feeds or manual schedules. Terminal settings and permissions also differ between platforms."
+sources:
+  - label: "MQL4 documentation — WebRequest and automated trading"
+    url: "https://www.mql5.com/en/docs"
+  - label: "MetaTrader 4 terminal help — Expert Advisors and AutoTrading"
+    url: "https://www.metatrader5.com/en/terminal/help"
+primaryKeyword: "disable MT4 EA during news"
+download:
+  name: "News Trading Methods Cheat Sheet: 9 Ways to Protect an EA"
+  origin: "own"
+  license: "Free to use, print and share with credit to bestmt4ea.com"
+  version: "1.0"
+  fileKey: "resources/news-trading-methods-cheat-sheet.pdf"
+---
+
+Every automated trader eventually watches an Expert Advisor do exactly what it was programmed to do at exactly the wrong moment: open a trade seconds before a central bank decision, hold a position through an employment report while the spread multiplies, or place its stop where a routine release can reach it with slippage to spare. The standard advice — disable the EA during news — is correct as far as it goes and useless as an instruction, because there are at least nine materially different ways to act on it. They differ in what they stop, when they act, what they depend on, and, most importantly, how they fail.
+
+That last point is the subject of this guide. News protection is usually sold and discussed as a feature: an EA has a news filter, or it does not. In practice, protection is a chain of assumptions about calendars, clocks, connections and your own availability, and the chain breaks at its weakest assumption rather than at its most sophisticated link. A trader who knows that a manual pause fails when they are asleep, that a calendar feed fails when its format changes, and that a spread filter acts only after the spread has already widened, can combine methods so that one method's failure is caught by another. A trader who knows only that a filter is switched on cannot.
+
+One distinction governs everything that follows, so settle it before choosing a method. Stopping new entries is not the same as closing open trades, and neither is the same as preventing an EA from managing the trades it already holds. Some methods do only the first. Some do all three whether you want them to or not. Prop firm rules, where they apply, may require a specific one of these behaviours, and your strategy's exit logic may depend on continuous management. Every method below is assessed on that basis, along with its setup burden, its dependence on external services, and its characteristic failure mode.
+
+## Method 1: Manual Discipline — Watching the Calendar Yourself
+
+The oldest method is a person, a calendar and a decision. You review the week's high-impact events for your instruments, note the times in your own timezone, and shortly before each window you intervene: disable AutoTrading, remove the EA from the chart, close open trades, or some combination you have decided in advance. Afterwards, once spreads and volatility have settled, you restore everything and confirm the EA is running again.
+
+Its strengths are judgement and simplicity. A human can see that a central bank press conference is running long, that a release was delayed, or that the market is disorderly for an unrelated reason, and extend the pause accordingly. No code is required, no feed can break, and the method works identically on any platform, any EA, including compiled products you cannot modify.
+
+Its failure mode is availability, and availability fails in predictable ways. You are asleep during the session that matters because the release is in another timezone. You are travelling, ill, in a meeting, or simply forget a midweek event that was not in Monday's plan. You remember the flagship monthly release and miss the speech, the revision or the smaller report that moves your particular pair. Manual discipline also fails at the point of return: traders who reliably pause before news regularly forget to resume afterwards, losing days of normal operation, or resume during the press conference rather than after it. The honest assessment is that manual control is an excellent method for a trader who is present at the terminal during the relevant sessions anyway, and an unreliable sole method for anyone running an EA precisely because they cannot be present. If you use it, reduce the memory burden with alarms set at the pause and resume times, and a written weekly routine, rather than relying on vigilance.
+
+A further limitation is precision about open trades. Manual intervention invites case-by-case decisions — close this one, keep that one, move a stop — which quietly converts a tested automated system into an improvised hybrid. If you intervene manually, decide the open-trade treatment as a standing rule, not as a judgement made while a release is approaching.
+
+## Method 2: The AutoTrading Switch and Terminal-Level Controls
+
+MetaTrader offers blunt, terminal-wide controls. The AutoTrading button toggles whether Expert Advisors may trade. The options dialog allows you to disable automated trading when the account, profile or chart changes, and to control whether EAs may trade at all. Individual EAs can also be removed from charts, and chart-level permissions govern whether an attached EA is allowed to trade live.
+
+These controls share one decisive characteristic: they stop management as well as entry. An EA whose exits, trailing stops, basket closures or break-even logic run inside the code stops performing all of them the moment automated trading is disabled. Server-side stops already placed continue to exist, but logic that has not yet placed or moved an order does nothing. Traders are repeatedly caught by this: they disable AutoTrading to prevent new entries, believing open trades remain managed, when in fact they have frozen the manager. If your strategy's risk control lives inside the EA, this method changes the risk profile of open positions at the very moment conditions become dangerous.
+
+The failure mode, beyond that misunderstanding, is scope. The switch is all-or-nothing across the terminal. Pausing one EA on one chart is not what it does; you stop everything, including any protective EA whose entire purpose is to close positions on abnormal conditions. Restoring is manual, so the method inherits Method 1's availability problem, with the addition that a terminal set to disable trading on a profile change or restart can leave you believing automation is running when it is not. Used knowingly, terminal controls are a sound emergency stop and a reasonable scheduled tool for a single-EA setup whose open trades carry hard server-side stops. Used as a news filter in a multi-system terminal, they create more confusion than protection.
+
+## Method 3: Built-In Trading Hours and Session Settings
+
+Most EAs expose time controls: a start hour and stop hour for new entries, sometimes per-day settings, a Friday closing time, or a pause around rollover. Used as news protection, the idea is to exclude the hours when your instruments' major releases habitually occur. United States data, for example, clusters at particular Eastern Time hours, and a London-based or New York-based release rhythm can be approximated with fixed windows.
+
+Approximation is both the virtue and the defect. Session settings need no external data, cannot be broken by a feed outage, and are trivial to test. They also block trading during a great deal of harmless time, because a fixed daily window excludes every ordinary day along with the handful of genuinely dangerous ones, and they miss every event that falls outside the habitual pattern: central bank decisions in the evening, unscheduled press conferences, elections, and releases for the other currency in your pair that occur in a different session. An EA trading a cross pair inherits the calendars of two economies, and a single fixed window rarely covers both.
+
+The dominant failure mode, however, is the clock. EA hour inputs are normally interpreted in broker server time, not in your local time, and server time shifts with daylight saving changes that may not align with your own country's changes — or with the changes in the country whose news you are avoiding. A window that correctly covered a release in winter can sit an hour adrift for weeks in spring and autumn, pausing the EA during quiet trading and leaving it active through the event. Any time-based method therefore needs its server offset checked after every daylight saving transition at either end. That maintenance task is small, unglamorous, and the point at which this method most often silently expires.
+
+## Method 4: News Inputs Built Into the EA
+
+Many commercial EAs include dedicated news settings: pause minutes before and after high-impact events, impact-level selection, currency selection, and sometimes a choice between blocking entries only or also closing trades. Where present, this is the most convenient integration point, because the filter shares the EA's own clock handling, magic numbers and trade management, and can be configured per chart — pausing the gold EA for United States data while leaving an unrelated system running.
+
+Convenience conceals two questions you should ask of any built-in filter. First, where does its calendar data come from? The EA must obtain event times from somewhere: an external feed it fetches, a file you supply, or data bundled at purchase that ages immediately. A filter with a dead or stale source still displays reassuring settings in its inputs while doing nothing at all. Second, what does it do when data is unavailable? The safe design, rarely advertised, is fail-closed behaviour: if the calendar cannot be fetched, the EA assumes danger and does not trade. The common design is the opposite, because an EA that refuses to trade generates support complaints, whereas an EA whose filter silently lapses generates none until an account is damaged.
+
+Failure modes follow from those answers: feed changes, expired bundled data, currency codes the filter does not recognise, events classified at a different impact level than expected, and the recurring server-time problem. There is also a subtler risk. Vendor testing of a news filter often demonstrates entries being blocked around one prominent release on one pair. That demonstrates the display logic, not the data pipeline under live conditions over months. Forward-test any built-in filter on demo across several releases, and log its decisions, before treating it as protection rather than as a settings panel.
+
+
+## Method 5: External Calendar Feeds via WebRequest
+
+The do-it-yourself version of a built-in filter is an EA, indicator or companion script that fetches an economic calendar over the web and shares the result with your trading code. In MT4 this typically means enabling WebRequest for the specific source address in the terminal options, requesting a feed or calendar page in a machine-readable or parseable form, extracting event times, currencies and impact, and writing the results to a file, global variable or indicator buffer that the EA checks before entering. MT5 programmers additionally have access to a built-in calendar through the platform's own functions, subject to the values the broker supplies, which removes some — not all — of the external dependency.
+
+This is the most capable approach and the most fragile, and both qualities come from the number of links in its chain. The terminal must be running and connected. The source site must be reachable and must not have changed its address, format, access rules or rate limits. Your address must be correctly allow-listed, since a mistyped entry produces a silent refusal rather than an obvious error. The fetched times must be converted correctly between the source timezone, server time and daylight saving regimes. Event names and impact labels must be matched consistently, including renamed reports and special cases such as speeches or unscheduled additions. A break at any link produces the same outward result — no blocking — while the inputs continue to suggest that protection is active.
+
+The Strategy Tester compounds the problem, because WebRequest behaviour in testing is restricted, so a feed-based filter cannot be meaningfully validated in backtest. It must be forward-tested live on demo, across real events, with logging that records what was fetched and what decision followed. That log is not optional decoration. Without it, you cannot distinguish a quiet week with no relevant events from a broken feed, and the two look identical from the chart: the EA simply trades.
+
+Choose this method if you can maintain it: check the feed after source changes, re-verify after terminal updates, and build the fail-closed behaviour in yourself — trade nothing on a day when the calendar fetch failed, rather than trading unprotected and hoping no event was scheduled. If that maintenance burden is unrealistic, a simpler method honestly applied will protect you better.
+
+## Method 6: Calendar-Based Rules and Manual Schedule Files
+
+Between fully manual discipline and a live automated feed sits a family of methods based on a schedule you prepare in advance. You export or type the week's important events into a file the EA reads, or you set date-specific pause rules — non-farm payroll Friday, central bank days for your currencies, national holidays — or you maintain a shared calendar routine in which specific known dates are blocked in the EA's inputs for the month ahead.
+
+The advantage over a live feed is inspectability. A file on disk can be opened, read and corrected by a person. It cannot change format overnight, and it does not depend on a website being reachable at the moment of the event. For traders whose instruments revolve around a small, predictable set of flagship releases, a weekly fifteen-minute preparation can cover the events that account for most of the danger, at higher reliability than an unmaintained feed.
+
+The failure mode is staleness at human speed. The schedule is only as current as its last edit. A postponed release, an added speaker, an emergency intervention or a simple week in which preparation was skipped leaves the EA trusting a document that no longer describes the world. Date-specific rules also drift: a rule written for a monthly Friday works until a holiday moves the release, and annual rule sets quietly expire each January. Mitigation is procedural — a fixed weekly preparation slot, the file's date checked as part of the routine, and date rules reviewed monthly — which returns this method partway towards manual discipline. That is not a criticism. It is an accurate description of where its reliability comes from: not from automation, but from a habit.
+
+## Method 7: Friday, Holiday and Low-Liquidity Rules
+
+Some danger is calendrical rather than event-specific. Weekend gaps can open beyond stop levels. Holiday sessions in one major centre thin the liquidity for every pair involving that currency, widening spreads and making fills less representative. End-of-month flows, half-day closes and the illiquid minutes around the daily rollover produce disorderly conditions without any headline event at all. A standing rule — no new entries after a set Friday time, positions closed before the weekend, no trading on specified holidays, no entries during rollover — removes these entire categories at negligible analytical cost.
+
+The protection is real but coarse. Most Fridays are uneventful, so a Friday rule sacrifices ordinary trading time and, for strategies that hold multi-day positions, may interfere with the holding pattern the system was tested on. Closing before every weekend changes a strategy's expected behaviour: the tested equity curve assumed weekend holding, and your rule has amended the system, not merely protected it. That amendment may be entirely justified on risk grounds — particularly where a firm prohibits weekend holding or where gap risk dominates — but it should be recognised and, where possible, tested as a variant rather than added untested on a live account.
+
+Failure here is mostly definitional. Holiday calendars differ between centres, so a rule covering your own country's holidays does not cover the centre that prices your pair. Broker-specific early closes may not match published exchange holidays. And a Friday cutoff set in server time drifts with daylight saving in the same way as every other clock-based rule. None of these flaws is difficult to manage, but all of them require the rule to be written against the broker's calendar and clock rather than your own assumptions.
+
+## Method 8: Spread, Volatility and Slippage Guards
+
+Reactive guards ignore the calendar entirely and watch the market instead. A maximum-spread input prevents new entries whenever the current spread exceeds a threshold you set per instrument. Volatility guards use an indicator such as average true range, tick activity or candle size relative to recent norms to stand aside when movement becomes abnormal. Slippage controls reject or reassess executions that arrive too far from the requested price. Together they answer a different question from the calendar methods: not "is an event scheduled?" but "are conditions tradeable right now?"
+
+That difference buys the single most valuable property in this entire comparison. Reactive guards catch the unscheduled: the emergency statement, the geopolitical shock, the surprise intervention, the flash move with no headline at all. No calendar method, however well maintained, sees those coming. For that reason a spread guard belongs in almost every configuration as a second layer, even where a calendar filter is the primary defence.
+
+Its limitation is timing. A spread guard acts when the spread widens, which is to say at the beginning of the event rather than before it. It prevents new entries into disorder, but it does nothing for the position already open, whose stop may be filled in the same widening. Thresholds are also instrument-specific and regime-specific: a cap sensible for a major pair in the London session is meaningless for an exotic pair overnight, and a cap set during a quiet month may block normal trading in a livelier one, tempting the trader to loosen it at exactly the wrong time. Volatility guards add false positives of their own, since strong movement includes the breakouts some strategies exist to trade. Set thresholds from your own recorded spread data per instrument and session, review them on a schedule rather than by impulse, and understand that this layer limits additional damage. It does not prevent the first loss.
+
+## Method 9: Equity Guards and Hard Circuit Breakers
+
+The final method abandons prevention and guarantees limitation instead. A separate protective EA, script or server-side arrangement monitors account equity continuously. At a defined daily loss, total drawdown or floating loss threshold, it closes all open positions, deletes pending orders and disables further trading until you deliberately reset it. News is relevant only as one of the causes that can carry equity to the threshold. The guard does not need to know why the loss happened.
+
+This is the only method whose failure conditions are largely within your control, and the only one that addresses the worst case rather than the expected case. Its role in prop firm trading is obvious, where crossing a fixed line ends the evaluation, but it serves any leveraged account: a stopped account can be analysed and restarted, while an account that traded unmanaged through a shock may not be recoverable. It also covers every failure described above. When the calendar feed broke, the trader was asleep, and the spread guard was set too loosely, the equity guard still acts.
+
+Its failure modes are mechanical and must be tested rather than assumed. The guard runs in a terminal that must stay connected; a closed terminal or lost connection disables it at exactly the moments of maximum disorder, which is one reason virtual private server reliability matters. Closing into a fast market realises slippage, so the realised loss will exceed the threshold by some amount that grows with the violence of the move — set the threshold with that overshoot in mind, well inside any external limit. The guard must also be scoped correctly: closing all positions on the account is correct for a single-strategy account and destructive if it closes an unrelated manual position you intended to keep. Test the guard deliberately on demo — trigger it, watch it close trades, delete orders and refuse new ones, restart the terminal, and confirm it resumes in the state you expect. An untested circuit breaker is a hope with a settings panel.
+
+## The Decision Matrix: Matching Method to Trader
+
+No method above is best in isolation, and the correct question is which combination fits your availability, your technical capacity, your strategy's dependence on continuous management, and any external rules you trade under. A discretionary-assisted trader who sits at the terminal through the London and New York sessions, running one EA whose exits are server-side stops, is well served by manual discipline reinforced with a spread guard; their presence supplies the judgement, and the guard covers the moments they look away. A trader running EAs unattended on a virtual private server, by contrast, should treat manual methods as decoration and build on a calendar layer plus an equity guard, accepting the maintenance burden as the price of absence.
+
+A prop firm candidate should work backwards from the firm's written rules. If the firm restricts opening trades in a window around releases, a calendar method that demonstrably blocks entries in that window is not optional, and an equity guard set inside the firm's daily limit is close to mandatory. If the firm also restricts holding through news, entry blocking alone is insufficient: the configuration must close or explicitly accept the holding risk, and the guard becomes the backstop for the gap between the two. A long-term position trader whose EA holds for days should weight Friday and holding rules and the equity guard most heavily, since entry timing around a single release matters less than exposure carried through it. A scalper should weight the spread guard first, because its edge lives and dies on execution cost, and add calendar blocking for the flagship events of its pairs.
+
+Technical capacity is a legitimate deciding factor, not an embarrassment. A WebRequest filter you cannot debug protects you less than a schedule file you update faithfully every Sunday. Choose the most capable method you will actually maintain, then add one reactive layer — spread or equity — whose operation does not depend on the first layer's data. Two layers with independent failure modes are the working definition of robustness in this area; three calendar-based layers that all read the same broken feed are one layer wearing three coats.
+
+Whatever you choose, verify the complete cycle before real money depends on it. Block an entry and confirm the EA reports why. Confirm whether open trades were left managed, unmanaged or closed, and that the result matches your intention and any external rules. Confirm pending orders are treated as you expect, since several methods silently leave them live to trigger inside the event. Confirm resumption happens when intended and not an hour early because of a timezone error. Then record the configuration — method, windows, thresholds, server offset, feed source — in writing, with the date. News protection fails quietly, over months, through drift and small changes. A written record is how you notice that the protection you remember configuring is no longer the protection you have.
+
+## A Worked Example of Layering
+
+Consider a concrete, ordinary setup: an MT4 trend EA on EURUSD and GBPUSD, running unattended on a virtual private server, holding trades for several hours at a time. A sensible layered configuration for that trader might use a maintained calendar file, prepared each weekend, to block new entries thirty minutes either side of high-impact events for the dollar, the euro and sterling; a per-instrument spread cap derived from recorded London and New York session data to refuse entries whenever execution costs turn abnormal for any reason, scheduled or not; and equity guard software that closes everything and stops trading for the day at a fixed loss threshold, with a lower warning threshold at which position size is halved. Open trades are deliberately left open through ordinary releases, because the strategy's tested behaviour assumes it, but they remain subject to their hard server-side stops and to the equity guard throughout. Friday new entries end in the late afternoon server time, while existing positions are managed to their normal exits rather than force-closed, a compromise this trader has tested as a variant. Nothing in that configuration is exotic. Its strength is that each layer fails differently — a stale calendar file, a mis-set spread cap and a disconnected terminal are unrelated events — so a single ordinary failure degrades the protection instead of removing it, and the written configuration record makes each layer auditable in a few minutes at the start of each month.
+
+## Related reading
+
+- [EA not working? The fix list](/mt4-ea-not-working-after-update-fix-best-proven-solutions/)
+- [Alfa Scalper EA review](/alfa-scalper-ea-review-does-this-mt4-expert-advisor-deliver-profits/)
+- [Hamster Scalping EA review](/hamster-scalping-ea-review-can-this-robot-assist-your-short-term-trading/)
+- [Gold scalping robot risk-to-reward strategies](/7-powerful-strategies-to-use-a-gold-xauusd-scalping-robot-best-risk-to-reward/)

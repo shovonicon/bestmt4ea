@@ -4,7 +4,7 @@ title: "Best MT4 EA for Gold Trading With Low Risk: 2026 Guide"
 slug: "the-7-best-mt4-ea-for-gold-trading-with-low-risk-proven-tools-for-consistent-results"
 description: "How to judge a low-risk MT4 gold EA by drawdown, exposure and licence, plus a free Apache-2.0 risk calculator with source you can test on a demo account first."
 publishedAt: "2025-12-07T02:39:57.000Z"
-updatedAt: "2026-10-22"
+updatedAt: "2026-07-27T23:01:23Z"
 seo:
   title: "Best MT4 EA for Gold Trading With Low Risk: 2026 Guide"
   description: "best mt4 ea for gold trading with low risk - judge drawdown, exposure and licence before you install anything, plus a free Apache-2.0 XAUUSD risk tool to test."
@@ -66,15 +66,11 @@ installSteps:
   - name: "Check the total against your own arithmetic on demo"
     text: "Open a couple of demo positions on your broker's XAUUSD symbol, then compare the combined risk figure the indicator prints against your own hand calculation. That number, not a vendor's drawdown claim, is the exposure you are really carrying."
 download:
-  origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  author: "EarnForex"
-  sourceUrl: "https://github.com/EarnForex/RiskCalculator"
-  version: "latest"
-  platform: "MT4/MT5"
-  fileSize: "about 577 MB in three zip parts"
-  externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: "2026-09-28"
+  name: "Trade Journal: Printable Template & Weekly Review"
+  origin: "own"
+  license: "Free to use, print and share with credit to bestmt4ea.com"
+  version: "1.0"
+  fileKey: "resources/trade-journal-printable-template.pdf"
 ---
 
 You are searching for the best MT4 EA for gold trading with low risk, so start by noticing what you are actually shopping for. You are not buying an entry signal. You are buying a risk system that happens to place trades.

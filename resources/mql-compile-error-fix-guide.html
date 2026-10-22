@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" />
+<title>MQL4/MQL5 Compile Error Fix Guide — BestMT4EA</title><style>
+      :root { --ink:#101418; --muted:#5a6570; --line:#d7dde3; --accent:#0b7a5d; --warn:#a8410f; }
+      * { box-sizing: border-box; }
+      @page { size: A4; margin: 14mm 13mm; }
+      html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body { margin:0; color:var(--ink); background:#fff; font:10.5pt/1.45 "Helvetica Neue", Arial, sans-serif; }
+      h1 { font-size:19pt; line-height:1.15; margin:0 0 2mm; letter-spacing:-0.01em; }
+      h2 { font-size:11.5pt; margin:7mm 0 2.5mm; padding-bottom:1.2mm; border-bottom:1px solid var(--line); break-after:avoid; }
+      h3 { font-size:10pt; margin:4mm 0 1.5mm; break-after:avoid; }
+      p { margin:0 0 2.5mm; }
+      .lede { color:var(--muted); max-width:165mm; }
+      .brand { display:flex; justify-content:space-between; align-items:baseline; border-bottom:2px solid var(--accent); padding-bottom:2mm; margin-bottom:4mm; }
+      .brand strong { font-size:11pt; letter-spacing:0.02em; }
+      .brand span { color:var(--muted); font-size:8.5pt; }
+      ul { margin:0 0 2.5mm; padding-left:0; list-style:none; }
+      ul.check li { position:relative; padding-left:6.5mm; margin-bottom:1.4mm; break-inside:avoid; }
+      ul.check li::before { content:""; position:absolute; left:0; top:0.4mm; width:3.6mm; height:3.6mm; border:1px solid var(--muted); border-radius:0.6mm; }
+      ul.plain { padding-left:5mm; list-style:disc; }
+      ul.plain li { margin-bottom:1.2mm; }
+      table { width:100%; border-collapse:collapse; margin:0 0 3mm; font-size:9.5pt; break-inside:avoid; }
+      th, td { border:1px solid var(--line); padding:1.6mm 2mm; text-align:left; vertical-align:top; }
+      th { background:#f2f5f7; font-weight:600; }
+      .note { border-left:3px solid var(--warn); background:#fdf6f2; padding:2.5mm 3mm; margin:3mm 0; font-size:9.5pt; break-inside:avoid; }
+      .box { border:1px solid var(--line); border-radius:1.5mm; padding:3mm; margin:3mm 0; break-inside:avoid; }
+      .box h3 { margin-top:0; }
+      footer { margin-top:8mm; padding-top:2.5mm; border-top:1px solid var(--line); color:var(--muted); font-size:8.5pt; }
+      .formula { font-family:"Courier New", monospace; font-size:9.5pt; background:#f2f5f7; padding:2mm 2.5mm; border-radius:1mm; }
+    </style></head>
+<body>
+<div class="brand"><strong>BestMT4EA</strong><span>bestmt4ea.com — free trading resources</span></div>
+<h1>MQL4/MQL5 Compile Error Fix Guide</h1>
+<p class="lede">A compile error is MetaEditor telling you the code cannot become a runnable program yet. The error list looks hostile, but almost every failed install traces back to the same small set of causes. Fix errors from the top of the list down — the first error is usually the real one, and the rest are its echoes.</p>
+
+ <h2>How to read the error list</h2>
+ <ul class="plain">
+ <li>Double-click the first error: MetaEditor jumps to the exact line.</li>
+ <li>Fix one error, recompile, and read the new list. Never fix five lines blind.</li>
+ <li>Warnings are not errors: a file with warnings still produces a working .ex4/.ex5.</li>
+ </ul>
+ <h2>The errors you will actually meet</h2>
+ <table>
+ <tr><th>Error</th><th>What it means</th><th>Fix</th></tr>
+ <tr><td>'X' - undeclared identifier</td><td>A variable or function name is used before it exists, or is misspelled.</td><td>Check spelling and capitalisation; declare the variable above its first use; confirm any #include file is present.</td></tr>
+ <tr><td>undeclared identifier 'OrderSend' (MQL5)</td><td>MQL4 trading code compiled as MQL5.</td><td>Use the MQL5 trade classes (CTrade) or compile the file in MT4. The languages are cousins, not twins.</td></tr>
+ <tr><td>'(' - unexpected token / unbalanced braces</td><td>A missing ) or } earlier in the file.</td><td>Use MetaEditor's brace matching: click a brace and find its partner. The reported line is often below the real gap.</td></tr>
+ <tr><td>cannot open file '...mqh'</td><td>An included library file is missing.</td><td>Place the .mqh in MQL4/Include (or MQL5/Include), keeping the vendor's folder structure.</td></tr>
+ <tr><td>wrong parameters count</td><td>A function is called with too many or too few arguments.</td><td>Compare the call with the function definition; vendor updates often change the argument list.</td></tr>
+ <tr><td>array out of range</td><td>Code reads an index the array does not have (runtime, appears in the log).</td><td>Check indicator buffer warm-up: wait for enough bars (Bars &gt; 100) before testing the EA live.</td></tr>
+ <tr><td>'string' - type mismatch</td><td>A value is used as the wrong type.</td><td>Convert explicitly (IntegerToString, StringToDouble) instead of letting the compiler guess.</td></tr>
+ <tr><td>file compiled for a different platform</td><td>An .ex4 opened in MT5 or an .ex5 in MT4.</td><td>No fix exists: get the build made for your platform from the vendor.</td></tr>
+ </table>
+ <h2>When the file compiles but the EA still fails</h2>
+ <ul class="check">
+ <li>Experts log shows "cannot load library" — the .dll is missing or DLL imports are disabled.</li>
+ <li>"Invalid stops" — your stop distance is below the broker's minimum; raise the buffer, not the lot size.</li>
+ <li>"Off quotes" / requotes (MT4) — the price moved during the request; widen the allowed slippage/deviation in the EA inputs.</li>
+ <li>"Trade is disabled" — the symbol is view-only on this account, or the market is closed.</li>
+ </ul>
+ <div class="note"><strong>Honesty rule:</strong> never edit a purchased EA's risk code (lot sizing, martingale steps, stop logic) to silence an error. If the vendor's file does not compile as delivered, that is the vendor's bug — send them the first error line and the build number.</div>
+ 
+<footer>BestMT4EA — free resource. Trading forex and CFDs carries a high risk of loss; most retail accounts lose money. Nothing here is financial advice. Test every system on a demo account with a written loss limit before risking real funds.</footer>
+</body></html>

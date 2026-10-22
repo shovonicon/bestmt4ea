@@ -4,7 +4,7 @@ title: "Apex Scalper MT4 EA: Free Download Guide and Risks"
 slug: "apex-scalper-metatrader-4-expert-advisor-free-download-7-powerful-benefits-every-trader-must-know"
 description: "Apex Scalper MT4 EA free download guide: what this scalping robot can and cannot do, drawdown to expect, how to verify a file, and why to test it on demo first."
 publishedAt: "2026-02-13T22:18:49.000Z"
-updatedAt: "2026-10-22T00:00:00.000Z"
+updatedAt: "2026-08-26T17:11:00Z"
 seo:
   title: "Apex Scalper MT4 EA: Free Download Guide and Risks (2026)"
   description: "Apex Scalper MT4 EA free download guide: what this scalping robot can and cannot do, drawdown to expect, how to verify a file, and why to test it on demo first."
@@ -48,12 +48,11 @@ sources:
   - label: "ESMA: Warnings on trading CFDs and leveraged products"
     url: "https://www.esma.europa.eu/"
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
+  license: "No licence stated - third-party files shared as-is, unverified"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
 ---
 
 Traders who search for a scalping Expert Advisor usually want the same thing: a system that finds small moves quickly, keeps emotion out of the way, and runs while they work or sleep. Apex Scalper is one name in that group, and the free-download search suggests many people are already looking at it. This article is written for that moment, when you have the link open and you are not yet sure whether to click.

@@ -38,6 +38,7 @@ Disallow: /login/
 Disallow: /auth/
 Disallow: /logout/
 
-# Both index paths resolve — /sitemap_index.xml is the old Yoast URL, kept working.
+# One canonical sitemap index. The old Yoast path /sitemap_index.xml still
+# resolves via middleware for anything that already knows it, but robots.txt
+# advertises a single sitemap so crawlers are not handed two names for it.
 Sitemap: https://bestmt4ea.com/sitemap-index.xml
-Sitemap: https://bestmt4ea.com/sitemap_index.xml

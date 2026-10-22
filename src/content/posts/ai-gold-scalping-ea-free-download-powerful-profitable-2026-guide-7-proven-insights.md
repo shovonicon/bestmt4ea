@@ -4,7 +4,7 @@ title: "AI Gold Scalping EA: What “AI” Really Means in Code"
 slug: "ai-gold-scalping-ea-free-download-powerful-profitable-2026-guide-7-proven-insights"
 description: "Most AI gold scalping EA claims hide a simple switching rule. This guide explains what AI really means in MQL code and what it can and cannot do on XAUUSD."
 publishedAt: "2026-02-13T21:28:14.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-09-01T07:40:18Z"
 seo:
   title: "AI Gold Scalping EA: What “AI” Really Means in Code"
   description: "AI gold scalping EA marketing hides what the code does. Learn the four levels of “AI” in retail EAs and how to test whether the model layer adds anything."
@@ -59,11 +59,11 @@ installSteps:
   - name: "Backtest, then forward-test on demo"
     text: "Run the Strategy Tester on real ticks, then leave it on a demo account for at least four weeks and thirty closed trades before any live order is considered."
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
+  license: "No licence stated - third-party files shared as-is, unverified"
   author: "BAKOME-Hub"
   sourceUrl: "https://github.com/BAKOME-Hub/gold_bakome"
-  version: "latest"
   platform: "MT5"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"

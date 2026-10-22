@@ -4,7 +4,7 @@ title: "Binary Options Signals Indicator MT4: Free Download Guide"
 slug: "binary-options-signals-indicator-mt4-free-download-powerful-proven-guide"
 description: "A free binary options signals indicator for MT4, explained honestly: how arrows are built, why many repaint, retail legal limits and how to test it on demo."
 publishedAt: "2026-02-21T13:04:36.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-08-24T17:13:32Z"
 seo:
   title: "Binary Options Signals Indicator MT4: Free Download Guide 2026"
   description: "How a binary options signals indicator works on MT4, why arrows can repaint, the legal limits on binary options, and how to test any signal tool on demo."
@@ -46,12 +46,11 @@ sources:
     url: "https://www.fca.org.uk/"
 primaryKeyword: "binary options signals indicator MT4"
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
+  license: "No licence stated - third-party files shared as-is, unverified"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
 ---
 
 ## Why a free binary options signals indicator looks so tempting

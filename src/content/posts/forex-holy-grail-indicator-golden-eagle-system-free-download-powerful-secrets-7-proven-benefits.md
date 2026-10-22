@@ -4,7 +4,7 @@ title: "Forex Holy Grail Indicator: Why the Phrase Is a Red Flag"
 slug: "forex-holy-grail-indicator-golden-eagle-system-free-download-powerful-secrets-7-proven-benefits"
 description: "The phrase “forex holy grail indicator” is a red flag. Here is what those systems really contain, and why the real grail is a position-sizing rule you follow."
 publishedAt: "2026-02-21T11:30:26.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-08-28T15:50:33Z"
 seo:
   title: "Forex Holy Grail Indicator: Why the Phrase Is a Red Flag"
   description: "The phrase “forex holy grail indicator” is a red flag. Here is what those systems really contain, and why the real grail is a position-sizing rule you follow."
@@ -59,11 +59,11 @@ installSteps:
   - name: "Attach one advisor to a demo chart and fix the lot"
     text: "Drag one of the ready-to-trade advisors onto a Renko chart, set a fixed stop and a fixed lot that makes a stop-out cost about 1% of the demo balance, and take ten trades at that size without changing it. Then journal every one of them."
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
+  license: "No licence stated - third-party files shared as-is, unverified"
   author: "9nix6"
   sourceUrl: "https://github.com/9nix6/Median-and-Turbo-Renko-indicator-bundle"
-  version: "latest"
   platform: "MT5"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"

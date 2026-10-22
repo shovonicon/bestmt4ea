@@ -4,7 +4,7 @@ title: "Best volume profile indicator for tradingview free"
 slug: "best-volume-profile-indicator-for-tradingview-free"
 description: "Free volume profile tools on TradingView explained honestly: what POC and value area show, why forex volume is a proxy, and how to test them on demo first."
 publishedAt: "2025-12-11T15:16:55.000Z"
-updatedAt: 2026-10-22
+updatedAt: "2026-08-14T01:14:35Z"
 seo: 
   title: "Best volume profile indicator for tradingview free 2026"
   description: "Free volume profile indicators on TradingView explained honestly: what POC and value area show, why forex volume is only a proxy, and how to test them first."
@@ -44,12 +44,11 @@ faqs:
   - question: "How long should I test a volume profile before using it?"
     answer: "Several weeks on demo is a practical minimum, with enough trades to see more than a few outcomes. Record the levels you used, the reaction at each level and the largest losing run before deciding whether to continue."
 download:
+  name: "2000+ EA & Indicator Library (shared bundle)"
   origin: "shared"
-  license: "Unverified third-party bundle (2,000+ EAs and indicators)"
-  version: "latest"
+  license: "No licence stated - third-party files shared as-is, unverified"
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
-  updatedAt: 2026-10-22
 ---
 
 You are looking for a way to see where the real trading happened. Price charts show where price went, but they hide how much business took place at each level along the way. A volume profile promises to fix that gap. It stacks volume against price, so you can see a cluster of activity at one level and a thin area at another. Searching for the best free volume profile indicator on TradingView looks like the fastest route to that information, and the number of options can make the choice feel urgent.
