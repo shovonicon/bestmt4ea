@@ -1,0 +1,5 @@
+Contact: mailto:admin@bestmt4ea.com
+Contact: mailto:bestmt4ea@gmail.com
+Expires: 2027-10-30T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://bestmt4ea.com/.well-known/security.txt
