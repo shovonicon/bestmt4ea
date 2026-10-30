@@ -3,6 +3,7 @@ title: "RoboForex Review 2026: The Broker We Build Our EAs On"
 slug: "roboforex-review"
 description: "An EA-focused RoboForex review: the FSC Belize licence, ProCent and Pro for automation, spreads, server time, and the terms to verify before you fund."
 publishedAt: "2026-10-30T09:00:00.000Z"
+updatedAt: "2026-10-30T09:00:00.000Z"
 categories:
   - "Brokers & Trading Platforms Reviews"
 categoryPaths:

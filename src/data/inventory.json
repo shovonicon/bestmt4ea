@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-30T17:52:26.238Z",
+  "generatedAt": "2026-10-30T19:31:39.520Z",
   "source": "https://bestmt4ea.com",
   "generatedBy": "scripts/build-inventory.mjs",
   "counts": {
     "products": 12,
-    "posts": 174,
+    "posts": 176,
     "pages": 22,
     "productCategories": 4,
     "brands": 2,
@@ -490,6 +490,12 @@
       "url": "/eur-usd-expert-advisor-ea-overview-free-download-guide/",
       "title": "EUR/USD expert advisor vetting guide: avoid funded blowups",
       "source": "https://bestmt4ea.com/eur-usd-expert-advisor-ea-overview-free-download-guide/"
+    },
+    {
+      "type": "post",
+      "url": "/exness-review/",
+      "title": "Exness Review 2026: Regulation, Entities and Running an EA",
+      "source": "https://bestmt4ea.com/exness-review/"
     },
     {
       "type": "post",
@@ -1036,6 +1042,12 @@
       "url": "/risk-management-settings-for-grid-ea-explained-7-powerful-ways-to-reduce-losses/",
       "title": "Grid EA Risk Settings Explained: Control Your Worst Day",
       "source": "https://bestmt4ea.com/risk-management-settings-for-grid-ea-explained-7-powerful-ways-to-reduce-losses/"
+    },
+    {
+      "type": "post",
+      "url": "/roboforex-review/",
+      "title": "RoboForex Review 2026: The Broker We Build Our EAs On",
+      "source": "https://bestmt4ea.com/roboforex-review/"
     },
     {
       "type": "post",

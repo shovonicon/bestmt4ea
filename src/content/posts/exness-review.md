@@ -3,6 +3,7 @@ title: "Exness Review 2026: Regulation, Entities and Running an EA"
 slug: "exness-review"
 description: "An EA-focused Exness review: which entity actually serves retail clients, what the FCA and CySEC licences do and do not cover, account types, and how to test execution before funding."
 publishedAt: "2026-10-30T09:30:00.000Z"
+updatedAt: "2026-10-30T09:30:00.000Z"
 categories:
   - "Brokers & Trading Platforms Reviews"
   - "Risk & Money Management"
