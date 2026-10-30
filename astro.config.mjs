@@ -7,6 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 import matter from 'gray-matter';
 import { loadEnv } from 'vite';
 import { rehypeTableAccessibility } from './src/lib/rehype-table-a11y.mjs';
+import { rehypeAffiliateLinks } from './src/lib/rehype-affiliate-links.mjs';
 import { rehypeInArticleAds } from './src/lib/rehype-in-article-ads.mjs';
 import { affiliates } from './src/lib/affiliates.ts';
 
@@ -189,6 +190,11 @@ export default defineConfig({
     processor: unified({
       rehypePlugins: [
         rehypeTableAccessibility,
+        /*
+         * `affiliate:<key>` links resolve against the registry, so content never
+         * carries a tracking URL and every sponsored link gets rel/target.
+         */
+        [rehypeAffiliateLinks, { affiliates }],
         [
           rehypeInArticleAds,
           {
