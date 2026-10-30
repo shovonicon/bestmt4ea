@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-30T10:03:52.731Z",
+  "generatedAt": "2026-10-30T10:16:31.717Z",
   "source": "https://bestmt4ea.com",
   "generatedBy": "scripts/build-inventory.mjs",
   "counts": {
     "products": 12,
     "posts": 174,
-    "pages": 23,
+    "pages": 22,
     "productCategories": 4,
     "brands": 2,
     "blogCategories": 35
@@ -790,12 +790,6 @@
       "url": "/life-changer-arthur-fx-ai-ea-powerful-7-step-breakdown-that-could-transform-your-forex-strategy/",
       "title": "Life Changer ARTHUR FX AI EA Review: Testing Guide",
       "source": "https://bestmt4ea.com/life-changer-arthur-fx-ai-ea-powerful-7-step-breakdown-that-could-transform-your-forex-strategy/"
-    },
-    {
-      "type": "page",
-      "url": "/live-chart/",
-      "title": "Live Forex Chart",
-      "source": "https://bestmt4ea.com/live-chart/"
     },
     {
       "type": "post",

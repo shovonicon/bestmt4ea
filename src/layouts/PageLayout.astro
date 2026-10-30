@@ -13,21 +13,12 @@ import AdSlot from '../components/AdSlot.astro';
 import Faq from '../components/Faq.astro';
 import { site } from '../lib/site';
 import { breadcrumbSchema, faqSchema } from '../lib/seo';
-import TradingViewWidget from '../components/tools/TradingViewWidget.astro';
 
 export interface Props {
   entry: any;
-  /**
-   * Migrated pages whose WordPress body carried a TradingView embed (`live-chart`)
-   * lost it in the import, leaving a heading and a text link. Rendering the widget
-   * here keeps the original permalink working instead of redirecting it.
-   */
-  widget?: 'chart' | 'rates' | 'calendar';
-  /** Symbol for the `chart` widget — lets a migrated page keep the pair its copy names. */
-  widgetSymbol?: string;
 }
 
-const { entry, widget, widgetSymbol } = Astro.props;
+const { entry } = Astro.props;
 const data = entry.data;
 const { Content } = await render(entry);
 
@@ -72,12 +63,6 @@ const hasFaqs = Boolean(data.faqs?.length);
           <div class="prose-article max-w-none">
             <Content />
           </div>
-
-          {widget && (
-            <div class="mt-8">
-              <TradingViewWidget widget={widget} symbol={widgetSymbol} />
-            </div>
-          )}
 
           <AdSlot slot={site.adSlots.belowContent} class="mt-12" />
 

@@ -8,11 +8,9 @@
  */
 export interface Props {
   widget: 'rates' | 'chart' | 'calendar';
-  /** Advanced-chart symbol override, e.g. `OANDA:XAUUSD`. Defaults to EURUSD. */
-  symbol?: string;
 }
 
-const { widget, symbol = 'FX:EURUSD' } = Astro.props;
+const { widget } = Astro.props;
 
 const WIDGETS = {
   rates: {
@@ -34,7 +32,7 @@ const WIDGETS = {
     height: 550,
     config: {
       autosize: true,
-      symbol,
+      symbol: 'FX:EURUSD',
       interval: '60',
       timezone: 'Etc/UTC',
       theme: 'dark',

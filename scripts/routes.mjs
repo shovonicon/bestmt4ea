@@ -13,6 +13,7 @@
  *   - product categories at `/product-category/<slug>/`
  *   - platform hubs `/brand/mt4/` + `/brand/mt5/`
  *   - static hubs `/blog/`, `/shop/`, `/top-ranking/`
+ *   - tool pages at `/tools/<slug>/` (`src/pages/tools/[slug].astro`)
  *
  * Comparison helpers normalise percent-encoding once (`canon`) and ignore a
  * trailing slash (`key`), so an emoji target written as `%F0%9F%9A%80-...`
@@ -106,6 +107,21 @@ function unpublishedProductSlugs() {
 }
 
 /**
+ * Tool slugs with a rendered page. The catalogue lives in TypeScript, and
+ * `tools/[slug].astro` only emits entries whose `available` flag is true, so the
+ * slugs are read from that file rather than listed a second time here — a tool
+ * added there becomes a redirect target without touching this list.
+ */
+function toolRoutes() {
+  const file = join(ROOT, 'src/data/tools.ts');
+  if (!existsSync(file)) return [];
+  const source = readFileSync(file, 'utf8');
+  return [...source.matchAll(/\{[^{}]*slug:\s*'([^']+)'[^{}]*available:\s*(true|false)[^{}]*\}/g)]
+    .filter((m) => m[2] === 'true')
+    .map((m) => m[1]);
+}
+
+/**
  * Every live route, canonicalised for comparison. Drafts are included —
  * Astro still emits them (no draft filter in `getStaticPaths`).
  */
@@ -115,6 +131,8 @@ export function getLiveRoutes() {
     live.add(cmpKey(route));
   };
   for (const s of STATIC_ROUTES) add(s);
+  add('/tools/');
+  for (const slug of toolRoutes()) add(`/tools/${slug}/`);
 
   const seen = new Set();
   for (const entry of [...contentEntries('posts'), ...contentEntries('pages')]) {

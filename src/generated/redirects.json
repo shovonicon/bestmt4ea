@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-30T10:03:52.452Z",
+  "generatedAt": "2026-10-30T10:16:31.462Z",
   "source": "wordpress-seo-redirects (2).csv",
-  "count": 2328,
+  "count": 2329,
   "dropped": [
     {
       "from": "/category/gold-xauusd-trading/",
@@ -32,6 +32,12 @@
       "to": "/",
       "status": 301,
       "reason": "source collides with a live route"
+    },
+    {
+      "from": "/market-sentiment",
+      "to": "/live-chart/",
+      "status": 301,
+      "reason": "superseded by manual rule"
     },
     {
       "from": "/alfa-scalper-ea-review-does-this-mt4-expert-advisor-deliver-profits",
@@ -13204,6 +13210,11 @@
       "status": 410
     },
     {
+      "from": "/live-chart/",
+      "to": "/tools/live-charts/",
+      "status": 301
+    },
+    {
       "from": "/live-forex-trading-ea-forex-ea-reviews-7-powerful-truths-every-trader-must-know",
       "to": "/live-forex-trading-ea-forex-ea-reviews-7-powerful-truths-every-trader-must-know",
       "status": 410
@@ -13375,7 +13386,7 @@
     },
     {
       "from": "/market-sentiment",
-      "to": "/live-chart/",
+      "to": "/tools/live-charts/",
       "status": 301
     },
     {
