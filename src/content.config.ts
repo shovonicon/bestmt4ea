@@ -1,4 +1,5 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 
 /**
@@ -68,17 +69,17 @@ const download = z
      */
     name: z.string().optional(),
     license: z.string().min(1),
-    licenseUrl: z.string().url().optional(),
+    licenseUrl: z.url().optional(),
     /** Required when origin is opensource. */
     author: z.string().optional(),
-    sourceUrl: z.string().url().optional(),
+    sourceUrl: z.url().optional(),
     version: z.string().optional(),
     platform: z.enum(['MT4', 'MT5', 'MT4/MT5']).optional(),
     fileSize: z.string().optional(),
     /** Hosted on our storage. */
     fileKey: z.string().optional(),
     /** Or link straight to the origin. */
-    externalUrl: z.string().url().optional(),
+    externalUrl: z.url().optional(),
     updatedAt: z.coerce.date().optional(),
   })
   .refine((d) => d.origin !== 'opensource' || Boolean(d.author && d.sourceUrl), {
@@ -89,7 +90,7 @@ const download = z
   });
 
 const faq = z.object({ question: z.string().min(5), answer: z.string().min(20) });
-const source = z.object({ label: z.string(), url: z.string().url() });
+const source = z.object({ label: z.string(), url: z.url() });
 
 const products = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/products' }),

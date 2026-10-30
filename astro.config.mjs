@@ -2,6 +2,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import cloudflare from '@astrojs/cloudflare';
+import { unified } from '@astrojs/markdown-remark';
 import tailwindcss from '@tailwindcss/vite';
 import matter from 'gray-matter';
 import { loadEnv } from 'vite';
@@ -181,41 +182,46 @@ export default defineConfig({
      * density scales with article length (see rehype-in-article-ads.mjs). The
      * client and slot are read from the same env vars AdSlot uses; with no
      * client set, nothing is injected and no ad code reaches the page.
+     *
+     * Plugins go through `unified()` from @astrojs/markdown-remark: Astro 7.4
+     * deprecates the bare `markdown.rehypePlugins` option.
      */
-    rehypePlugins: [
-      rehypeTableAccessibility,
-      [
-        rehypeInArticleAds,
-        {
-          client: env.PUBLIC_ADSENSE_CLIENT || process.env.PUBLIC_ADSENSE_CLIENT || '',
-          slot:
-            env.PUBLIC_ADSENSE_SLOT_IN_ARTICLE ||
-            process.env.PUBLIC_ADSENSE_SLOT_IN_ARTICLE ||
-            '6721931734',
-          /*
-           * Affiliate banner, injected into the body at 75%. It is the broker's
-           * own creative, so it stays current; the link comes from the registry.
-           */
-          banners: [
-            {
-              at: 0.3,
-              href: affiliates.exness.url,
-              image: 'https://d3dpet1g0ty5ed.cloudfront.net/EN_Take_Control_990x250px.png',
-              alt: 'Exness',
-              width: 990,
-              height: 250,
-            },
-            {
-              at: 0.75,
-              href: affiliates['roboforex-welcome'].url,
-              image:
-                'https://my.roboforex.com/files/banners/40_en_rbfx_728x90__45397b061c4e0ccff0770064b1bc81df.jpg',
-              alt: 'RoboForex',
-            },
-          ],
-        },
+    processor: unified({
+      rehypePlugins: [
+        rehypeTableAccessibility,
+        [
+          rehypeInArticleAds,
+          {
+            client: env.PUBLIC_ADSENSE_CLIENT || process.env.PUBLIC_ADSENSE_CLIENT || '',
+            slot:
+              env.PUBLIC_ADSENSE_SLOT_IN_ARTICLE ||
+              process.env.PUBLIC_ADSENSE_SLOT_IN_ARTICLE ||
+              '6721931734',
+            /*
+             * Affiliate banners injected into the body. They are the broker's
+             * own creatives, so they stay current; links come from the registry.
+             */
+            banners: [
+              {
+                at: 0.3,
+                href: affiliates.exness.url,
+                image: 'https://d3dpet1g0ty5ed.cloudfront.net/EN_Take_Control_990x250px.png',
+                alt: 'Exness',
+                width: 990,
+                height: 250,
+              },
+              {
+                at: 0.75,
+                href: affiliates['roboforex-welcome'].url,
+                image:
+                  'https://my.roboforex.com/files/banners/40_en_rbfx_728x90__45397b061c4e0ccff0770064b1bc81df.jpg',
+                alt: 'RoboForex',
+              },
+            ],
+          },
+        ],
       ],
-    ],
+    }),
   },
   vite: {
     plugins: [tailwindcss()],
