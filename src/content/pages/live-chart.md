@@ -16,6 +16,4 @@ systemPage: false
 draft: false
 ---
 
-## Live Forex Chart
-
-[XAUUSD chart](https://www.tradingview.com/symbols/XAUUSD/?exchange=OANDA) by TradingView
+[Open the full XAUUSD chart on TradingView](https://www.tradingview.com/symbols/XAUUSD/?exchange=OANDA) for drawing tools, indicators and saved layouts.

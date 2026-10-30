@@ -8,7 +8,7 @@ import ReviewsLayout from '../layouts/ReviewsLayout.astro';
 import { extractHeadings } from '../lib/reading';
 import { RESERVED_SLUGS, assertRootSlugIntegrity } from '../lib/content';
 
-/** EA review directories — they render the catalogue, not their markdown body. */
+/** EA review directories â€” they render the catalogue, not their markdown body. */
 const REVIEW_SLUGS = new Set(['best-mt4-ea', 'best-mt5-ea', 'best-forex-ea']);
 
 /**
@@ -18,7 +18,7 @@ const REVIEW_SLUGS = new Set(['best-mt4-ea', 'best-mt5-ea', 'best-forex-ea']);
  * permalinks exactly. Static routes (/shop, /blog, /product/...) take priority
  * over this dynamic segment, so there is no clash.
  *
- * Every post — article or free-download page — renders through
+ * Every post â€” article or free-download page â€” renders through
  * `LongFormLayout`, which switches its order on `entry.data.download`. Static
  * pages keep their own layout.
  */
@@ -27,7 +27,7 @@ export async function getStaticPaths() {
   const [posts, pages] = await Promise.all([getCollection('posts'), getCollection('pages')]);
 
   /**
-   * Stop the build on a slug that cannot be served — a duplicate root slug, or
+   * Stop the build on a slug that cannot be served â€” a duplicate root slug, or
    * one a dedicated route already owns. Previously those were skipped with
    * `continue`, which silently dropped the page.
    */
@@ -77,7 +77,11 @@ if (kind === 'post') {
     ) : REVIEW_SLUGS.has(entry.data.slug) ? (
       <ReviewsLayout entry={entry} />
     ) : (
-      <PageLayout entry={entry} />
+      <PageLayout
+        entry={entry}
+        widget={entry.data.slug === 'live-chart' ? 'chart' : undefined}
+        widgetSymbol={entry.data.slug === 'live-chart' ? 'OANDA:XAUUSD' : undefined}
+      />
     )
   ) : (
     <LongFormLayout entry={entry} headings={headings} body={body} related={related} />
