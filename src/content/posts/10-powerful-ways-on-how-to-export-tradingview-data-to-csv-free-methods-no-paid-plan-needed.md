@@ -13,7 +13,7 @@ seo:
 sourceUrl: "https://bestmt4ea.com/10-powerful-ways-on-how-to-export-tradingview-data-to-csv-free-methods-no-paid-plan-needed/"
 categories:
   - "AI-Powered Trading Tools"
-  - "Brokers & Trading Platforms"
+  - "Brokers & Trading Platforms Reviews"
 categoryPaths:
   - "/category/ai-powered-trading-tools/"
   - "/category/ai-powered-trading-tools/brokers-trading-platforms/"
