@@ -6,8 +6,13 @@ publishedAt: "2026-02-20T18:40:28.000Z"
 updatedAt: "2026-10-08T00:00:00.000Z"
 
 categories:
+  - "Free Forex Indicator"
   - "Forex Scalping"
   - "Forex Trading Strategies"
+categoryPaths:
+  - "/category/free-forex-indicator/"
+  - "/category/forex-trading-strategies/forex-scalping/"
+  - "/category/forex-trading-strategies/"
 
 tags: []
 

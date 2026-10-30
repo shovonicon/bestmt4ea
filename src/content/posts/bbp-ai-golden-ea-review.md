@@ -6,8 +6,10 @@ publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
   - "EA Reviews & Comparisons"
+  - "Gold (XAUUSD) Trading"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
+  - "/category/gold-xauusd-trading/"
 tags: []
 draft: false
 quickAnswer: "BBP AI Golden EA, short for Billionaire Big Players' AI Golden EA, is a third-party expert advisor for scalping gold (XAUUSD) on MT4, marketed around the idea of following institutional order flow. We find no independently verified live track record we can point you to, and gold scalping is one of the least forgiving styles there is, so the burden of proof sits with your own broker-specific demo test."

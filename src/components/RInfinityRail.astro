@@ -1,0 +1,508 @@
+---
+/**
+ * Sponsored broker creative for the tool pages.
+ *
+ * The tool pages carry one paid placement instead of the AdSense pair: a
+ * calculator is where a reader is deciding *how* to trade, so the space offers a
+ * broker's own programmes rather than a generic unit.
+ *
+ * This is deliberately information-first. Each line is a real, published term
+ * with the condition attached (equity, volume, deposit) and its own link to the
+ * programme page, so a reader can decide from the card alone and a click that
+ * follows it lands on the terms rather than a sales page. Nothing here is a
+ * projection, a guarantee or an income claim; the only figures are the provider's
+ * own, and the checked date says when they were read.
+ *
+ * Two layouts, one component: `rail` for the 320px column above the layout
+ * breakpoint, `inline` for the in-flow card on everything narrower.
+ */
+import { affiliates, AFFILIATE_REL } from '../lib/affiliates';
+
+export interface Props {
+  variant?: 'rail' | 'inline';
+}
+
+const { variant = 'rail' } = Astro.props;
+/* The audience already knows RoboForex, so the card leads with that mark even
+   though the programme pages behind the links are R Infinity's. */
+const brand = affiliates.roboforex;
+const accountHref = affiliates.rinfinity.url;
+
+/** Read from rinfinity.com/en on 2026-10-30. */
+const CHECKED = '30 Oct 2026';
+
+const OFFERS = [
+  {
+    stat: 'Free',
+    title: 'VPS server',
+    detail: '1 core · 1 GB RAM · 30 GB · Windows Server 2019. Free while equity is $300+ and you trade 3 lots a month — otherwise $5/mo.',
+    href: affiliates['rinfinity-free-vps'].url,
+  },
+  {
+    stat: '$30',
+    title: 'Welcome bonus',
+    detail: 'For verified new cent or standard accounts after a $10 card deposit. The bonus is not written off in drawdown.',
+    href: affiliates['rinfinity-welcome-bonus'].url,
+  },
+  {
+    stat: '10%',
+    title: 'Extra funds on balance',
+    detail: '2.5% on 1–10 lots a month, 5% on 10–1,000, 10% above 1,000. Paid monthly; withdrawable, not bonus-locked.',
+    href: affiliates['rinfinity-extra-funds'].url,
+  },
+  {
+    stat: '5–10%',
+    title: 'Cashback on commission',
+    detail: 'Rebate from 10 lots a month: 5% of commission, 7% past 1,000 lots, 10% past 3,000. Paid on the 1st.',
+    href: affiliates['rinfinity-rebate'].url,
+  },
+];
+---
+
+<aside class:list={['ad-card-ad', `ad-card-ad--${variant}`]} aria-label="Sponsored partner offer">
+  <div class="ad-card-ad__card">
+    <span class="ad-card-ad__sheen" aria-hidden="true"></span>
+
+    <div class="ad-card-ad__head">
+      <span class="ad-card-ad__tag">Advertisement</span>
+      <span class="brand-chip ad-card-ad__logo">
+        <img src={brand.logo} alt="RoboForex" loading="lazy" decoding="async" />
+      </span>
+    </div>
+
+    <div class="ad-card-ad__intro">
+      <span class="ad-card-ad__kicker">Running an EA on your own PC?</span>
+      <span class="ad-card-ad__title">Four ways RoboForex cuts the cost</span>
+      <span class="ad-card-ad__lede">
+        Published terms — tap a line for the full rules.
+      </span>
+    </div>
+
+    <ul class="ad-card-ad__offers">
+      {
+        OFFERS.map((offer) => (
+          <li>
+            <a href={offer.href} rel={AFFILIATE_REL} target="_blank" class="ad-card-ad__offer">
+              <span class="ad-card-ad__stat">{offer.stat}</span>
+              <span class="ad-card-ad__body">
+                <span class="ad-card-ad__name">
+                  {offer.title}
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="ad-card-ad__arrow"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </span>
+                <span class="ad-card-ad__detail">{offer.detail}</span>
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <a href={accountHref} rel={AFFILIATE_REL} target="_blank" class="ad-card-ad__cta">
+      Open a RoboForex account
+      <svg
+        viewBox="0 0 24 24"
+        class="ad-card-ad__cta-arrow"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M5 12h14" />
+        <path d="m12 5 7 7-7 7" />
+      </svg>
+    </a>
+  </div>
+
+  <p class="ad-card-ad__note">
+    Offers read {CHECKED} — terms can change; the linked pages prevail. Affiliate links: we may
+    earn a commission at no cost to you.
+  </p>
+</aside>
+
+<style>
+  .ad-card-ad {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    width: 100%;
+  }
+
+  .ad-card-ad--rail {
+    width: 320px;
+  }
+
+  .ad-card-ad__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1rem 1rem 1rem;
+    /* A lit edge rather than a hairline: the card should read as a placed unit,
+       not as another panel of the page. */
+    border: 1px solid rgba(0, 224, 168, 0.4);
+    border-radius: 1rem;
+    background-image:
+      radial-gradient(120% 60% at 50% -12%, rgba(0, 224, 168, 0.14), transparent 62%),
+      radial-gradient(90% 55% at 105% 108%, rgba(25, 71, 151, 0.16), transparent 68%),
+      linear-gradient(168deg, rgba(5, 13, 11, 0.99), rgba(0, 0, 0, 0.99) 72%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.09),
+      inset 0 0 40px rgba(0, 224, 168, 0.05),
+      0 0 0 1px rgba(0, 224, 168, 0.07),
+      0 0 56px -18px rgba(0, 224, 168, 0.55),
+      0 26px 60px rgba(0, 0, 0, 0.55);
+    overflow: hidden;
+  }
+
+  /* Specular line across the top edge, like light catching a glass rim. */
+  .ad-card-ad__card::after {
+    content: '';
+    position: absolute;
+    inset: 0 1px auto;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 224, 168, 0.6), transparent);
+    pointer-events: none;
+  }
+
+  /* A hairline of brand colour along the leading edge. */
+  .ad-card-ad__card::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--color-accent), transparent 80%);
+    opacity: 0.75;
+  }
+
+  .ad-card-ad--rail .ad-card-ad__card {
+    min-height: 640px;
+    justify-content: space-between;
+  }
+
+  .ad-card-ad__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .ad-card-ad__tag {
+    font-size: 0.5625rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-ink-dim);
+  }
+
+  /* The known brand is the strongest thing on the card, so the mark sits on a
+     lit white plate rather than the quiet chip used in listings. */
+  .ad-card-ad__logo {
+    position: relative;
+    padding: 0.5rem 0.9rem;
+    background: #fff;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(0, 193, 144, 0.5),
+      0 10px 26px rgba(0, 193, 144, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+
+  .ad-card-ad__logo img {
+    position: relative;
+    height: 1.35rem;
+    width: auto;
+  }
+
+  /* A glint that crosses the plate now and then — movement where the eye already
+     is, rather than a blinking element competing with the page. */
+  .ad-card-ad__logo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 40%, rgba(25, 71, 151, 0.18) 50%, transparent 60%);
+    transform: translateX(-120%);
+  }
+
+  .ad-card-ad__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .ad-card-ad__kicker {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--color-accent-soft);
+  }
+
+  .ad-card-ad__title {
+    font-family: var(--font-heading);
+    font-size: 1.3125rem;
+    font-weight: 700;
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+    color: var(--color-ink);
+  }
+
+  .ad-card-ad__lede {
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--color-ink-dim);
+  }
+
+  .ad-card-ad__offers {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ad-card-ad__offers li + li {
+    border-top: 1px solid var(--color-line-soft);
+  }
+
+  .ad-card-ad__offer {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    padding: 0.4rem 0.15rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: background 0.18s, box-shadow 0.18s;
+  }
+
+  .ad-card-ad__offer:hover,
+  .ad-card-ad__offer:focus-visible {
+    background: rgba(0, 193, 144, 0.07);
+    box-shadow: 0 0 0 1px rgba(0, 193, 144, 0.22);
+  }
+
+  /* The figure is the scannable anchor: it is what the reader decides on. */
+  .ad-card-ad__stat {
+    flex: none;
+    width: 3.1rem;
+    padding-top: 0.05rem;
+    font-family: var(--font-heading);
+    font-size: 0.9375rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--color-accent-soft);
+  }
+
+  .ad-card-ad__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+
+  .ad-card-ad__name {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--color-ink);
+  }
+
+  .ad-card-ad__arrow {
+    width: 0.75rem;
+    height: 0.75rem;
+    color: var(--color-ink-dim);
+    opacity: 0;
+    transform: translateX(-3px);
+    transition: opacity 0.18s, transform 0.18s;
+  }
+
+  .ad-card-ad__offer:hover .ad-card-ad__arrow,
+  .ad-card-ad__offer:focus-visible .ad-card-ad__arrow {
+    opacity: 1;
+    transform: none;
+  }
+
+  .ad-card-ad__detail {
+    font-size: 0.6875rem;
+    line-height: 1.4;
+    color: var(--color-ink-dim);
+  }
+
+  .ad-card-ad__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    width: 100%;
+    padding: 0.78rem 0.9rem;
+    border-radius: 0.7rem;
+    background-image: linear-gradient(135deg, var(--color-accent), var(--color-accent-soft));
+    color: #04140f;
+    font-size: 0.8125rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(0, 193, 144, 0.25);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .ad-card-ad__cta:hover {
+    box-shadow: 0 14px 30px rgba(0, 193, 144, 0.34);
+    transform: translateY(-1px);
+  }
+
+  .ad-card-ad__cta-arrow {
+    width: 0.95rem;
+    height: 0.95rem;
+    transition: transform 0.2s;
+  }
+
+  .ad-card-ad__cta:hover .ad-card-ad__cta-arrow {
+    transform: translateX(3px);
+  }
+
+  .ad-card-ad__note {
+    margin: 0;
+    font-size: 0.625rem;
+    line-height: 1.55;
+    color: var(--color-ink-dim);
+  }
+
+  /* ---------------------------------------------------------- in-flow card */
+
+  .ad-card-ad--inline .ad-card-ad__card {
+    gap: 0.85rem;
+    padding: 1.1rem 1.15rem;
+  }
+
+  .ad-card-ad--inline .ad-card-ad__title {
+    font-size: 1.1875rem;
+  }
+
+  /* Two columns of offers from tablet up, so the card stays short on a laptop. */
+  @media (min-width: 640px) {
+    .ad-card-ad--inline .ad-card-ad__offers {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 1.25rem;
+    }
+    .ad-card-ad--inline .ad-card-ad__offers li + li {
+      border-top: 0;
+    }
+    .ad-card-ad--inline .ad-card-ad__offers li:nth-child(n + 3) {
+      border-top: 1px solid var(--color-line-soft);
+    }
+    .ad-card-ad--inline .ad-card-ad__offers li:nth-child(2n) {
+      border-left: 1px solid var(--color-line-soft);
+      padding-left: 1.25rem;
+    }
+    .ad-card-ad--inline .ad-card-ad__cta {
+      width: auto;
+      align-self: flex-start;
+      padding-inline: 1.35rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ad-card-ad__offer,
+    .ad-card-ad__arrow,
+    .ad-card-ad__cta,
+    .ad-card-ad__cta-arrow {
+      transition: none;
+    }
+    .ad-card-ad__cta:hover {
+      transform: none;
+    }
+  }
+
+  /* ------------------------------------------------------------- motion */
+
+  .ad-card-ad__sheen {
+    position: absolute;
+    inset: -30% -50%;
+    background: linear-gradient(
+      115deg,
+      transparent 44%,
+      rgba(255, 255, 255, 0.05) 49%,
+      rgba(0, 224, 168, 0.13) 51%,
+      transparent 57%
+    );
+    transform: translateX(-70%);
+    pointer-events: none;
+  }
+
+  /*
+   * Motion is opt-in via the media query: a visitor who asked their system for
+   * reduced motion gets a static card. Everything below is transform/opacity
+   * only and runs on a slow cycle, so it catches the eye without competing with
+   * the calculator the reader came for.
+   */
+  @media (prefers-reduced-motion: no-preference) {
+    .ad-card-ad__sheen {
+      animation: ad-card-sheen 8s ease-in-out 1.5s infinite;
+    }
+
+    .ad-card-ad__logo::after {
+      animation: ad-card-glint 8s ease-in-out 1.5s infinite;
+    }
+
+    .ad-card-ad__cta {
+      animation: ad-card-pulse 3.6s ease-in-out infinite;
+    }
+  }
+
+  @keyframes ad-card-sheen {
+    0%,
+    55% {
+      transform: translateX(-70%);
+      opacity: 0;
+    }
+    62% {
+      opacity: 1;
+    }
+    88% {
+      transform: translateX(70%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(70%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes ad-card-glint {
+    0%,
+    58% {
+      transform: translateX(-120%);
+    }
+    82% {
+      transform: translateX(120%);
+    }
+    100% {
+      transform: translateX(120%);
+    }
+  }
+
+  @keyframes ad-card-pulse {
+    0%,
+    100% {
+      box-shadow: 0 10px 24px rgba(0, 193, 144, 0.22);
+    }
+    50% {
+      box-shadow: 0 14px 36px rgba(0, 193, 144, 0.5);
+    }
+  }
+</style>

@@ -12,9 +12,13 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_125898_featured.webp"
 sourceUrl: "https://bestmt4ea.com/prop-firm-ea-free-download-7-powerful-truths-every-trader-must-know/"
 categories:
-  - "Prop Firm Trading"
+  - "EA Reviews & Comparisons"
+  - "Free Forex EA"
+  - "Risk & Money Management"
 categoryPaths:
-  - "/category/prop-firm-trading/"
+  - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
+  - "/category/free-forex-ea/"
+  - "/category/risk-money-management/"
 tags: []
 draft: false
 primaryKeyword: "prop firm EA"

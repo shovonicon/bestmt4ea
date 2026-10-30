@@ -11,11 +11,13 @@ seo:
   canonical: "https://bestmt4ea.com/best-custom-mt4-indicators-for-scalping/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_4201_featured.webp"
 sourceUrl: "https://bestmt4ea.com/best-custom-mt4-indicators-for-scalping/"
-categories: 
+categories:
+  - "Technical Analysis"
   - "Forex Scalping"
   - "Forex Trading Strategies"
-categoryPaths: 
-  - "/category/forex-scalping/"
+categoryPaths:
+  - "/category/technical-analysis/"
+  - "/category/forex-trading-strategies/forex-scalping/"
   - "/category/forex-trading-strategies/"
 tags: []
 draft: false

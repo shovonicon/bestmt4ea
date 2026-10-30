@@ -6,7 +6,12 @@ publishedAt: 2026-02-12T01:01:58.000Z
 updatedAt: 2026-10-08T00:00:00.000Z
 categories:
   - "EA Reviews & Comparisons"
-  - "MT4/MT5 Expert Advisors"
+  - "Free Forex EA"
+  - "Forex Scalping"
+categoryPaths:
+  - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
+  - "/category/free-forex-ea/"
+  - "/category/forex-trading-strategies/forex-scalping/"
 tags: []
 quickAnswer: "A free scalping expert advisor like Forex Velocity EA trades fast, in minutes, so its result depends less on win rate than on spread, slippage and execution quality. Downloading it is easy; judging it is the work. This guide explains what a velocity scalper really does, what free versions hide, and how a 20-trade demo log turns speed claims into evidence before real money is at risk."
 keyTakeaways:

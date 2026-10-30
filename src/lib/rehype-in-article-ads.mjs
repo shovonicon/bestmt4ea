@@ -1,30 +1,70 @@
 /**
- * Inject AdSense units into a post body at fixed depths.
+ * Inject the in-article AdSense unit — and the affiliate banners — into a post
+ * body at fixed depths.
  *
- * Same placement model as the reference build (TBK): units land at fixed depths
- * through the body — 10%, 30%, 50% and 70% — so ad density scales with article
- * length instead of a fixed count. Only top-level block elements are counted, so
- * a unit never lands mid-list or mid-heading.
+ * The page carries exactly **one** AdSense unit, placed at 53% of the body:
+ * past the answer box, the takeaways and the download card, and clear of both
+ * banners (Exness at 30%, RoboForex at 75%). One unit keeps the page well inside
+ * AdSense's ad-to-content guidance.
+ *
+ * Banners are creatives, not ad units: no label, no disclosure line of their own.
+ *
+ * Only top-level block elements are counted, so nothing lands mid-list,
+ * mid-heading or inside a table.
  *
  * Notes for this site:
- *  - Emits the same `[data-ad-unit]` markup `AdSlot.astro` renders. It still
- *    claims `window.__adsenseRequested`, so the library loads exactly once per
- *    page whichever unit appears first.
+ *  - Emits the same `[data-ad-unit]` markup `AdSlot.astro` renders, and claims
+ *    `window.__adsenseRequested`, so the library loads exactly once per page.
  *  - The ask is width-guarded and sets `data-ad-requested`. Width only — never
  *    height. An empty `ins.adsbygoogle` has no intrinsic height; the box it gets
- *    is the one AdSense reserves, so requiring height before asking deadlocks it
- *    (no ask, no reserved box, no height, never asks). Measured: a height check
- *    collapsed these units from 640x280 to 640x0 and stopped them asking.
+ *    is the one AdSense reserves, so requiring height before asking deadlocks it.
  *  - Nothing is injected when `PUBLIC_ADSENSE_CLIENT` is unset, matching AdSlot.
- *  - Only posts use this. The layout's own in-article slot is removed so a post
- *    does not carry both.
+ *    Banners are independent of AdSense and render regardless.
+ *  - Only posts use this.
  */
 
 const BLOCK_TAGS = new Set(['h2', 'h3', 'h4', 'p', 'ul', 'ol', 'blockquote', 'pre', 'table']);
-const PERCENTAGES = [0.1, 0.3, 0.5, 0.7];
 
-/** Below this many blocks the units would crowd the body — inject nothing. */
+/** The single AdSense unit on a post. */
+const AD_AT = 0.53;
+
+/** Below this many blocks the unit would crowd the body — inject nothing. */
 const MIN_BLOCKS = 8;
+
+function bannerNode({ href, image, alt, width = 728, height = 90 }) {
+  return {
+    type: 'element',
+    tagName: 'div',
+    properties: { className: ['post-banner', 'not-prose'] },
+    children: [
+      {
+        type: 'element',
+        tagName: 'a',
+        properties: {
+          href,
+          rel: 'sponsored nofollow noopener',
+          target: '_blank',
+          className: ['post-banner__link'],
+        },
+        children: [
+          {
+            type: 'element',
+            tagName: 'img',
+            properties: {
+              src: image,
+              alt,
+              width: String(width),
+              height: String(height),
+              loading: 'lazy',
+              decoding: 'async',
+            },
+            children: [],
+          },
+        ],
+      },
+    ],
+  };
+}
 
 function adNode({ client, slot, index }) {
   const script =
@@ -83,10 +123,8 @@ function adNode({ client, slot, index }) {
   };
 }
 
-export function rehypeInArticleAds({ client, slot } = {}) {
+export function rehypeInArticleAds({ client, slot, banners = [] } = {}) {
   return (tree) => {
-    if (!client || !slot) return;
-
     const blockIndices = [];
     tree.children.forEach((node, i) => {
       if (node.type === 'element' && BLOCK_TAGS.has(node.tagName)) blockIndices.push(i);
@@ -95,15 +133,28 @@ export function rehypeInArticleAds({ client, slot } = {}) {
     const total = blockIndices.length;
     if (total < MIN_BLOCKS) return;
 
-    const insertAfter = new Set();
-    for (const pct of PERCENTAGES) {
-      insertAfter.add(blockIndices[Math.min(total - 1, Math.max(0, Math.round(total * pct)))]);
+    /** Block index at a fraction of the body. */
+    const at = (pct) =>
+      blockIndices[Math.min(total - 1, Math.max(0, Math.round(total * pct)))];
+
+    const inserts = [];
+
+    for (const banner of banners) {
+      if (!banner?.href || !banner?.image) continue;
+      const fraction = Number(banner.at);
+      if (!Number.isFinite(fraction)) continue;
+      inserts.push({ at: at(fraction), node: bannerNode(banner) });
     }
 
-    // Insert from the end so the earlier indices stay valid as we splice.
-    const sorted = Array.from(insertAfter).sort((a, b) => b - a);
-    sorted.forEach((treeIndex, i) => {
-      tree.children.splice(treeIndex + 1, 0, adNode({ client, slot, index: sorted.length - i }));
-    });
+    if (client && slot) {
+      inserts.push({ at: at(AD_AT), node: adNode({ client, slot, index: 1 }) });
+    }
+
+    /* Insert from the end so earlier indices stay valid as we splice. */
+    inserts
+      .sort((a, b) => b.at - a.at)
+      .forEach(({ at: treeIndex, node }) => {
+        tree.children.splice(treeIndex + 1, 0, node);
+      });
   };
 }

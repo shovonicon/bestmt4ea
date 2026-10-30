@@ -11,10 +11,10 @@ seo:
   canonical: "https://bestmt4ea.com/basic-harmonic-pattern-indicator-mt4-free-download-7-powerful-benefits-every-trader-must-know/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_135178_featured.webp"
 sourceUrl: "https://bestmt4ea.com/basic-harmonic-pattern-indicator-mt4-free-download-7-powerful-benefits-every-trader-must-know/"
-categories: 
-  - "MT4/MT5 Expert Advisors"
-categoryPaths: 
-  - "/category/mt4-mt5-expert-advisors/"
+categories:
+  - "Free Forex Indicator"
+categoryPaths:
+  - "/category/free-forex-indicator/"
 tags: []
 draft: false
 quickAnswer: "A harmonic pattern indicator for MT4 scans price charts for XABCD shapes built from Fibonacci ratios and draws the legs for you. It saves measuring time, but it does not predict reversals or confirm trades. Check for repainting, false signals and drawdown on a demo account before you rely on any version."

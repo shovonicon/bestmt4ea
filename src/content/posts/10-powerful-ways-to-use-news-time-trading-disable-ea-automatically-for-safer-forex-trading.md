@@ -5,8 +5,11 @@ description: "Learn how to disable an EA during news automatically on MT4 or MT5
 publishedAt: 2025-12-07T02:41:04.000Z
 updatedAt: 2026-10-11T00:00:00.000Z
 categories:
-  - "EA Settings & Optimization"
   - "MT4/MT5 Expert Advisors"
+  - "EA Settings & Optimization"
+categoryPaths:
+  - "/category/mt4-mt5-expert-advisors/"
+  - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
 tags: []
 quickAnswer: "To disable an EA during news automatically, you give it a blackout window around scheduled high-impact releases so it stops opening orders, and optionally stops managing them, while spreads widen and slippage spikes. You can do this with a built-in news filter, a calendar feed, or a manual time filter. It reduces one specific risk; it does not remove risk or predict any result."
 keyTakeaways:

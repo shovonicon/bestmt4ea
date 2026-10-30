@@ -13,9 +13,11 @@ seo:
 sourceUrl: "https://bestmt4ea.com/%f0%9f%9a%80-apex-day-trading-forex-bot-mt4-free-download-the-ultimate-powerful-guide/"
 categories:
   - "EA Reviews & Comparisons"
+  - "Free Forex EA"
   - "MT4/MT5 Expert Advisors"
 categoryPaths:
-  - "/category/ea-reviews-comparisons/"
+  - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
+  - "/category/free-forex-ea/"
   - "/category/mt4-mt5-expert-advisors/"
 tags: []
 draft: false

@@ -11,12 +11,12 @@ seo:
   canonical: "https://bestmt4ea.com/🌊-neptune-ea-forex-ea-reviews-7-powerful-truths-every-trader-must-know/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_142847_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/%f0%9f%8c%8a-neptune-ea-forex-ea-reviews-7-powerful-truths-every-trader-must-know/"
-categories: 
+categories:
   - "EA Reviews & Comparisons"
-  - "MT4/MT5 Expert Advisors"
-categoryPaths: 
-  - "/category/ea-reviews-comparisons/"
-  - "/category/mt4-mt5-expert-advisors/"
+  - "EA Settings & Optimization"
+categoryPaths:
+  - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
+  - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
 tags: []
 draft: false
 quickAnswer: "Neptune EA is an automated forex trading robot for MetaTrader that claims to trade using pre-programmed rules. Its performance can only be judged on verified live records, its maximum drawdown, and whether it uses martingale or grid logic. Confirm those points with the seller, run a demo test with a written loss limit, and treat any headline win rate as unverified until you can check it."

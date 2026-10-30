@@ -12,10 +12,12 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127381_featured.webp"
 sourceUrl: "https://bestmt4ea.com/eagle-scalper-best-forex-indicator-11-powerful-benefits-real-world-red-flags/"
 categories:
+  - "Forex Indicator Reviews"
   - "Forex Scalping"
   - "Forex Trading Strategies"
 categoryPaths:
-  - "/category/forex-scalping/"
+  - "/category/forex-indicator-reviews/"
+  - "/category/forex-trading-strategies/forex-scalping/"
   - "/category/forex-trading-strategies/"
 tags: []
 draft: false

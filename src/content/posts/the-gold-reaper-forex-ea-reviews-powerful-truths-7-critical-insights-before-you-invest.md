@@ -12,9 +12,11 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_140969_featured.webp"
 sourceUrl: "https://bestmt4ea.com/the-gold-reaper-forex-ea-reviews-powerful-truths-7-critical-insights-before-you-invest/"
 categories:
-  - "Forex EA Reviews"
+  - "EA Reviews & Comparisons"
+  - "Gold (XAUUSD) Trading"
 categoryPaths:
-  - "/category/forex-ea-reviews/"
+  - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
+  - "/category/gold-xauusd-trading/"
 tags: []
 draft: false
 quickAnswer: "The Gold Reaper is a commercial gold Expert Advisor sold for MetaTrader 4 and MetaTrader 5. As of September 2026 we could not find a single independent, third-party verified account for it: no named broker, no live account link, no date range, no trade count and no maximum equity drawdown. Without that evidence, treat the vendor's performance claims as unverified marketing and do not fund a live account."
@@ -230,7 +232,7 @@ Applied to The Gold Reaper today: step 1 failed, so the rule stops the process. 
 
 Two clarifications, because they matter for fairness. First, failing this test does not require bad intent. Many developers simply cannot be bothered to build a public record, and some are genuinely good coders. Second, passing the test does not make an EA safe. A verified account is evidence about the past, not a promise about the future. It raises the quality of your decision; it never removes the risk of loss.
 
-If you want to see how the gold niche in general handles drawdown claims, our [gold EA category page](/category/gold-xauusd-trading/gold-ea-robots/) and the wider [forex EA reviews section](/category/forex-ea-reviews/) are the two places we keep updated when evidence changes.
+If you want to see how the gold niche in general handles drawdown claims, our [gold EA category page](/category/gold-xauusd-trading/) and the wider [forex EA reviews section](/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/) are the two places we keep updated when evidence changes.
 
 ## What does the free open-source robot do, and what does it not do?
 

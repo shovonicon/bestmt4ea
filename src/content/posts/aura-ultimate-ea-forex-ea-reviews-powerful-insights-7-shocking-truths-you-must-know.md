@@ -51,7 +51,7 @@ categories:
   - "EA Reviews & Comparisons"
   - "MT4/MT5 Expert Advisors"
 categoryPaths:
-  - "/category/ea-reviews-comparisons/"
+  - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/mt4-mt5-expert-advisors/"
 tags: []
 download:

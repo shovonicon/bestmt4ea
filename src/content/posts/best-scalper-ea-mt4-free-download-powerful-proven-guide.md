@@ -5,7 +5,13 @@ description: "Vet a scalper EA on MT4 before it touches real money: read the log
 publishedAt: 2026-02-13T19:23:50.000Z
 updatedAt: 2026-10-08T00:00:00.000Z
 categories:
+  - "EA Reviews & Comparisons"
   - "Free Forex EA"
+  - "Forex Scalping"
+categoryPaths:
+  - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
+  - "/category/free-forex-ea/"
+  - "/category/forex-trading-strategies/forex-scalping/"
 tags: []
 quickAnswer: "A scalper EA on MT4 is only worth running after it passes a risk-first check: you can explain its logic, you have verified how it draws down, you know whether it hides grid or averaging exposure, and a structured demo test confirms it behaves as described. If any step fails, reject it. The free printable worksheet with this guide helps you stress-test that drawdown."
 keyTakeaways:

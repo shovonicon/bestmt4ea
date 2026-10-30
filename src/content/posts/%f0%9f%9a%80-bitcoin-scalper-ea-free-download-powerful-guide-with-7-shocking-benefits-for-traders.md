@@ -5,7 +5,13 @@ description: "A Bitcoin scalper EA free download guide: how automated BTC scalpi
 publishedAt: "2026-02-13T21:33:01.000Z"
 updatedAt: "2026-10-08T00:00:00.000Z"
 categories:
-  - "MT4/MT5 Expert Advisors"
+  - "Free Forex EA"
+  - "Forex Scalping"
+  - "Risk & Money Management"
+categoryPaths:
+  - "/category/free-forex-ea/"
+  - "/category/forex-trading-strategies/forex-scalping/"
+  - "/category/risk-money-management/"
 tags: []
 quickAnswer: "A Bitcoin scalper EA is a program that trades BTC on MetaTrader 4 or MetaTrader 5 on very short timeframes. It can look flawless in a backtest and still fail live: crypto spreads widen, slippage grows on fast candles, and a weekend gap can jump past a stop. Learn the strategy, demand honest evidence, size for volatility, and prove it on demo first. The free 20-trade log with this guide records what actually happened."
 keyTakeaways:

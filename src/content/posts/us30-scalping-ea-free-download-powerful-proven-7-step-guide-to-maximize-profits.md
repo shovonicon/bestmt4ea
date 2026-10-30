@@ -6,7 +6,13 @@ description: "Learn how a US30 scalping EA trades the Dow Jones index, where ind
 publishedAt: "2026-02-13T18:49:05.000Z"
 updatedAt: "2026-10-08T00:00:00.000Z"
 categories:
+  - "Free Forex EA"
+  - "Forex Scalping"
   - "MT4/MT5 Expert Advisors"
+categoryPaths:
+  - "/category/free-forex-ea/"
+  - "/category/forex-trading-strategies/forex-scalping/"
+  - "/category/mt4-mt5-expert-advisors/"
 tags: []
 quickAnswer: "A US30 scalping EA trades the Dow Jones index CFD on short timeframes. It can look flawless in a backtest and still fail live: index spreads widen at the cash open, slippage grows on fast candles, and an overnight gap can jump past a stop. Read the strategy, demand honest evidence, size for volatility, and prove it on demo first. The free demo-test log with this guide records what actually happened."
 keyTakeaways:

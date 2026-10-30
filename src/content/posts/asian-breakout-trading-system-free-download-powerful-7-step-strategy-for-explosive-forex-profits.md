@@ -44,9 +44,11 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_137534_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/asian-breakout-trading-system-free-download-powerful-7-step-strategy-for-explosive-forex-profits/"
 categories:
-  - "MT4/MT5 Expert Advisors"
+  - "Technical Analysis"
+  - "Forex Trading Strategies"
 categoryPaths:
-  - "/category/mt4-mt5-expert-advisors/"
+  - "/category/technical-analysis/"
+  - "/category/forex-trading-strategies/"
 tags: []
 draft: false
 download:

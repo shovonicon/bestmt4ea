@@ -5,7 +5,7 @@ description: "Get a free Apache-2.0 MetaTrader 4 and 5 indicator with full sourc
 publishedAt: 2026-09-28
 updatedAt: "2026-09-28"
 categories:
-  - "Free Indicator"
+  - "Free Forex Indicator"
 categoryPaths:
   - "/category/free-forex-indicator/"
 tags:
@@ -208,4 +208,4 @@ Indicators do not place trades, but the decisions they inform can lose money. Tr
 
 Take the download, compile it yourself, and put it on a demo gold chart with a higher timeframe selected. Read the four things from the source — the buffers, the higher-timeframe read, the file and DLL search, and the input list — and you will have audited a real indicator in the time it takes to make a coffee.
 
-Then carry the habit forward. The next free indicator you meet, wherever it comes from, deserves the same treatment, because the file you can read is always worth more than the file you can only trust. If you want more tools grouped by what they actually do, browse the [free download library](/category/free-forex-ea/), see how these sit next to automation on the [best MT4 EA page](/best-mt4-ea/), or work through the step-by-step guides under [Installation & Setup](/category/installation-setup/).
+Then carry the habit forward. The next free indicator you meet, wherever it comes from, deserves the same treatment, because the file you can read is always worth more than the file you can only trust. If you want more tools grouped by what they actually do, browse the [free download library](/category/free-forex-ea/), see how these sit next to automation on the [best MT4 EA page](/best-mt4-ea/), or work through the step-by-step guides under [Installation & Setup](/category/mt4-mt5-expert-advisors/ea-settings-optimization/).

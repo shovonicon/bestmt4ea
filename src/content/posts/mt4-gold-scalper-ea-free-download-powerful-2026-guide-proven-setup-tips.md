@@ -12,9 +12,13 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_126982_featured.webp"
 sourceUrl: "https://bestmt4ea.com/mt4-gold-scalper-ea-free-download-powerful-2026-guide-proven-setup-tips/"
 categories:
+  - "EA Settings & Optimization"
   - "Free Forex EA"
+  - "Gold (XAUUSD) Trading"
 categoryPaths:
+  - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
   - "/category/free-forex-ea/"
+  - "/category/gold-xauusd-trading/"
 tags: []
 draft: false
 primaryKeyword: "mt4 gold scalper setup"

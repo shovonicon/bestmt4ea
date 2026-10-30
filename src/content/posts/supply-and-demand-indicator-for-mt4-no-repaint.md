@@ -11,9 +11,11 @@ seo:
   canonical: "https://bestmt4ea.com/supply-and-demand-indicator-for-mt4-no-repaint/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_4206_featured.webp"
 sourceUrl: "https://bestmt4ea.com/supply-and-demand-indicator-for-mt4-no-repaint/"
-categories: 
+categories:
+  - "Technical Analysis"
   - "Forex Indicator Reviews"
-categoryPaths: 
+categoryPaths:
+  - "/category/technical-analysis/"
   - "/category/forex-indicator-reviews/"
 tags: []
 primaryKeyword: "supply and demand indicator mt4 no repaint"

@@ -13,8 +13,10 @@ seo:
 sourceUrl: "https://bestmt4ea.com/free-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide/"
 categories:
   - "Free Forex EA"
+  - "Gold (XAUUSD) Trading"
 categoryPaths:
   - "/category/free-forex-ea/"
+  - "/category/gold-xauusd-trading/"
 tags:
   - "open source"
   - "gold"

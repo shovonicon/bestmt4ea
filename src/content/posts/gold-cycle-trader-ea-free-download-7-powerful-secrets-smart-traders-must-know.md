@@ -13,8 +13,10 @@ seo:
 sourceUrl: "https://bestmt4ea.com/gold-cycle-trader-ea-free-download-7-powerful-secrets-smart-traders-must-know/"
 categories:
   - "Free Forex EA"
+  - "Gold (XAUUSD) Trading"
 categoryPaths:
   - "/category/free-forex-ea/"
+  - "/category/gold-xauusd-trading/"
 tags: []
 draft: false
 quickAnswer: "No, a gold cycle is not a reliable trading edge on its own. Seasonal returns are only averages inside a fixed calendar window, and on XAUUSD those averages are small next to the dollar, real yields and fear. Most cycle expert advisors are a date filter wrapped in a story. Test any such claim on a demo account and cap your risk first."
@@ -213,7 +215,7 @@ The rows above come from the author's published description, so check them in th
 
 The reason it fits this page is simple. Every honest answer about gold cycles ends in the same place. You are probably not going to out-forecast the dollar, the real yield and fear. What you can do is decide, in advance and in numbers, how much you are willing to lose when the calendar is wrong. That is what a daily loss limit and a one-position rule are, and it is the habit that separates traders who survive their bad ideas from traders who do not.
 
-If you want to see how this fits beside other gold tools, look through the [gold EA and robot category](/category/gold-xauusd-trading/gold-ea-robots/) and the wider [free-download library](/category/free-forex-ea/). You can also read how we grade [gold market tools](/category/gold-xauusd-trading/) and compare notes across the [best MT4 expert advisors](/best-mt4-ea/).
+If you want to see how this fits beside other gold tools, look through the [gold EA and robot category](/category/gold-xauusd-trading/) and the wider [free-download library](/category/free-forex-ea/). You can also read how we grade [gold market tools](/category/gold-xauusd-trading/) and compare notes across the [best MT4 expert advisors](/best-mt4-ea/).
 
 ## How should you put a calendar idea to the test without fooling yourself?
 

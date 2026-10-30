@@ -41,6 +41,41 @@ export const affiliates = {
     program: 'broker',
     note: "RoboForex's watch-the-banner link (affiliate id lwek)",
   },
+  /**
+   * R Infinity's client programmes. Same affiliate id as RoboForex above, but a
+   * different property with its own offers, so each programme is its own entry
+   * rather than being hard-coded into the creative.
+   */
+  rinfinity: {
+    label: 'R Infinity',
+    url: 'https://rinfinity.com/en/a?a=lwek',
+    program: 'broker',
+    note: 'Forex and CFD broker · Pro, Prime, ECN, ProCent accounts',
+  },
+  'rinfinity-free-vps': {
+    label: 'Free VPS',
+    url: 'https://rinfinity.com/en/free-vps-server?a=lwek',
+    program: 'broker',
+    note: '1 core, 1 GB RAM, Windows Server 2019 · free at $300 equity + 3 lots/month',
+  },
+  'rinfinity-welcome-bonus': {
+    label: 'Welcome Bonus',
+    url: 'https://rinfinity.com/en/welcome-bonus?a=lwek',
+    program: 'broker',
+    note: '$30 after verification and a $10 card deposit, cent or standard accounts',
+  },
+  'rinfinity-extra-funds': {
+    label: 'Up to 10% extra funds',
+    url: 'https://rinfinity.com/en/up-to-10-percents-of-extra-funds?a=lwek',
+    program: 'broker',
+    note: '2.5% from 1 lot/month, 5% from 10, 10% above 1,000',
+  },
+  'rinfinity-rebate': {
+    label: 'Cashback (rebates)',
+    url: 'https://rinfinity.com/en/rebate?a=lwek',
+    program: 'broker',
+    note: '5% of commission from 10 lots/month, rising to 10% above 3,000',
+  },
   exness: {
     label: 'Exness',
     url: 'https://one.exness.link/a/te38he38',

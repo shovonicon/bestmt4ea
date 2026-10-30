@@ -6,8 +6,10 @@ publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
   - "EA Reviews & Comparisons"
+  - "Gold (XAUUSD) Trading"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
+  - "/category/gold-xauusd-trading/"
 tags: []
 draft: false
 quickAnswer: "Vortex Gold EA is a third-party expert advisor for automated trading on gold (XAUUSD). Gold EAs demand more scrutiny than currency EAs because the instrument's contract size, spreads and session behaviour magnify both edges and errors. We cannot point to an independently verified live track record for this product, so it should be classed as unproven and forward-tested on your broker with gold-specific checks before any live money."

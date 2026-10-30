@@ -12,11 +12,13 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127233_featured.webp"
 sourceUrl: "https://bestmt4ea.com/gold-prop-firm-robot-free-download-7-powerful-secrets-to-maximize-funded-trading-success/"
 categories:
+  - "Risk & Money Management"
+  - "Free Forex EA"
   - "Gold (XAUUSD) Trading"
-  - "Gold EA & Robots"
 categoryPaths:
+  - "/category/risk-money-management/"
+  - "/category/free-forex-ea/"
   - "/category/gold-xauusd-trading/"
-  - "/category/gold-ea-robots/"
 tags: []
 draft: false
 quickAnswer: "A gold EA fails a prop firm challenge on the rulebook, not on the market. Daily loss limits cap what one bad session can cost, maximum drawdown caps the whole run, consistency rules forbid carrying the result on one big day, and news or weekend bans remove the trades gold EAs trade most. Match the rulebook to the system before you pay a fee."
@@ -97,7 +99,7 @@ Everything you sign belongs to one of six rule families.
 
 Two of those do most of the damage: the daily limit and the maximum drawdown. Gold moves violently enough to reach a 5% daily boundary inside a single economic release, and it can do it in minutes. That is the whole problem in one sentence — the instrument with the best intraday opportunity is also the instrument most likely to breach a daily cap before you can react.
 
-This is why you should read a firm's [prop firm rules before you install any EA](/prop-firm-ea-free-download-7-powerful-truths-every-trader-must-know/), and why the [gold EA category](/category/gold-xauusd-trading/gold-ea-robots/) is full of systems that were never built for a rulebook.
+This is why you should read a firm's [prop firm rules before you install any EA](/prop-firm-ea-free-download-7-powerful-truths-every-trader-must-know/), and why the [gold EA category](/category/gold-xauusd-trading/) is full of systems that were never built for a rulebook.
 
 ## What does the daily loss limit actually measure?
 

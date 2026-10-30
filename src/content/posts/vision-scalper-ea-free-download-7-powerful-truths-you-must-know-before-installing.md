@@ -50,9 +50,13 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_124519_featured.webp"
 sourceUrl: "https://bestmt4ea.com/vision-scalper-ea-free-download-7-powerful-truths-you-must-know-before-installing/"
 categories:
+  - "EA Reviews & Comparisons"
   - "Free Forex EA"
+  - "Forex Scalping"
 categoryPaths:
+  - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/free-forex-ea/"
+  - "/category/forex-trading-strategies/forex-scalping/"
 tags: []
 download:
   name: "EA Verification Checklist"

@@ -13,8 +13,10 @@ seo:
 sourceUrl: "https://bestmt4ea.com/breakout-and-retest-scanner-indicator-free-download-7-powerful-secrets-to-smarter-trading/"
 categories:
   - "Free Forex Indicator"
+  - "Technical Analysis"
 categoryPaths:
   - "/category/free-forex-indicator/"
+  - "/category/technical-analysis/"
 tags: []
 primaryKeyword: "breakout and retest scanner indicator free download"
 quickAnswer: "A breakout and retest scanner indicator watches charts for price closing beyond a key level, then returning to test that level before continuing. The shared Trading Tools Drive folder linked here is offered as-is by the site owner. bestmt4ea.com has not verified its licence or code, so confirm file names, test on a demo account, and log every alert before risking real money."

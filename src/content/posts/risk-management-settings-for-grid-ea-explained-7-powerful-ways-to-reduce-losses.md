@@ -5,9 +5,11 @@ description: "Grid EAs live or die by seven risk settings: spacing, lot progress
 publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
+  - "EA Settings & Optimization"
   - "Risk & Money Management"
 categoryPaths:
-  - "/category/risk-money-management-forex-trading-strategies/"
+  - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
+  - "/category/risk-money-management/"
 tags: []
 draft: false
 quickAnswer: "A grid EA's risk is decided by a handful of settings long before it trades: the grid spacing, the lot progression between levels, the maximum number of positions, the total exposure cap, and an equity-based stop that ends the basket. Set them from your written loss limit by computing the worst legal basket in money, not from the vendor's defaults or a good month's results."

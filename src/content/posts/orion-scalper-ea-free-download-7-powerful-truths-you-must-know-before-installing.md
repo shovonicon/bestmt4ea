@@ -12,9 +12,13 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_124358_featured.webp"
 sourceUrl: "https://bestmt4ea.com/orion-scalper-ea-free-download-7-powerful-truths-you-must-know-before-installing/"
 categories:
+  - "EA Reviews & Comparisons"
   - "Free Forex EA"
+  - "Forex Scalping"
 categoryPaths:
+  - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/free-forex-ea/"
+  - "/category/forex-trading-strategies/forex-scalping/"
 tags: []
 draft: false
 quickAnswer: "ORION SCALPER EA is presented as an automated scalping robot for MetaTrader. This page does not verify its results. A scalper depends on low spreads, fast fills and tight risk limits, and free copies from unofficial sites carry malware and copyright risks. Test it on a demo account with realistic costs and check its drawdown before any live funding."

@@ -12,11 +12,11 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/Best-MT4-EA-—-AI-Powered-Forex-Robots-for-MT4-MT5.webp"
 sourceUrl: "https://bestmt4ea.com/gold-buster-mt4-expert-advisor-free-download-powerful-profitable-trading-guide/"
 categories:
+  - "Free Forex EA"
   - "Gold (XAUUSD) Trading"
-  - "Gold EA & Robots"
 categoryPaths:
+  - "/category/free-forex-ea/"
   - "/category/gold-xauusd-trading/"
-  - "/category/gold-ea-robots/"
 tags: []
 draft: false
 quickAnswer: "A gold recovery EA multiplies its lot size after every losing step, so the balance curve looks smooth while the real risk hides in floating equity. Each step multiplies the lot and the capital you must hold, so the requirement grows by roughly the multiplier itself. At 1.7 with $1.50 steps, one ordinary $15 move in XAUUSD can stop out a $2,000 account."
@@ -84,7 +84,7 @@ A recovery system opens additional positions when the first one moves against it
 
 The bet is therefore about time and distance, not about prediction. You are saying: gold will come back within X dollars of adverse movement, before my equity falls below my broker's stop-out level. Those are the only two numbers that matter. The entry signal — moving averages, RSI, breakouts, whatever the EA advertises — only decides when the ladder starts. It has almost no influence on whether the ladder finishes.
 
-Recovery appears under several names. Averaging down and dollar-cost averaging describe the same mechanic without a multiplier. A grid opens positions at fixed intervals, usually with equal size. Martingale doubles. A "recovery multiplier" of 1.5 to 1.8 is a softened Martingale, and it is the version most gold EAs ship with, because doubling looks obviously reckless to a buyer. If you want the full-strength version explained, our breakdown of the [martingale recovery approach on MetaTrader 4](/best-martingale-ea-for-mt4-with-a-recovery-system/) covers the doubling case and why it fails faster. Most of the builds we catalogue under [Gold EA & Robots](/category/gold-xauusd-trading/gold-ea-robots/) use a multiplier somewhere in that range.
+Recovery appears under several names. Averaging down and dollar-cost averaging describe the same mechanic without a multiplier. A grid opens positions at fixed intervals, usually with equal size. Martingale doubles. A "recovery multiplier" of 1.5 to 1.8 is a softened Martingale, and it is the version most gold EAs ship with, because doubling looks obviously reckless to a buyer. If you want the full-strength version explained, our breakdown of the [martingale recovery approach on MetaTrader 4](/best-martingale-ea-for-mt4-with-a-recovery-system/) covers the doubling case and why it fails faster. Most of the builds we catalogue under [Gold EA & Robots](/category/gold-xauusd-trading/) use a multiplier somewhere in that range.
 
 There is one more thing worth naming before the maths. In a normal trading system, a losing trade is a loss and it is over. In a recovery system, a losing trade is converted into a liability that sits on the account's equity, invisible in the balance figure, until the basket closes or the account dies. The rest of this page is about the size of that liability.
 

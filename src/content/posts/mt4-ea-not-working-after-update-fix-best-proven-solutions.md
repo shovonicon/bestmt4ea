@@ -5,9 +5,11 @@ description: "Your expert advisor stopped trading, never started, or works on de
 publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
-  - "Installation & Setup"
+  - "MT4/MT5 Expert Advisors"
+  - "EA Settings & Optimization"
 categoryPaths:
-  - "/category/installation-setup/"
+  - "/category/mt4-mt5-expert-advisors/"
+  - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
 tags: []
 draft: false
 quickAnswer: "An expert advisor that is not trading is usually blocked by one of a handful of causes: AutoTrading is off, the chart shows a crossed EA icon, the symbol name has a broker suffix the EA does not recognise, the account mode changed, or a terminal or broker update altered something the EA depended on. Diagnose from the Experts log first, not from the settings panel."

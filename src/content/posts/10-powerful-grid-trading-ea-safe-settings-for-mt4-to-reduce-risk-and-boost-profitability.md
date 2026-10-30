@@ -6,7 +6,12 @@ publishedAt: 2025-12-07T02:25:17.000Z
 updatedAt: 2026-10-07T00:00:00.000Z
 categories:
   - "EA Settings & Optimization"
+  - "Risk & Money Management"
   - "MT4/MT5 Expert Advisors"
+categoryPaths:
+  - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
+  - "/category/risk-money-management/"
+  - "/category/mt4-mt5-expert-advisors/"
 tags: []
 quickAnswer: "Grid trading EA safe settings for MT4 are the controls that decide how much of your account one bad run can take: a wide grid step, a small base lot, no doubling after a loss, a hard cap on levels, a real stop, and a drawdown limit that closes everything. They reduce exposure. They do not remove risk, and the free stress-test worksheet proves the numbers before you trade."
 keyTakeaways:

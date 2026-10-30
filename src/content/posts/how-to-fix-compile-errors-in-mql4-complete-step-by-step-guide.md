@@ -5,9 +5,9 @@ description: "Your EA or indicator will not compile in MetaEditor. This guide de
 publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
-  - "Installation & Setup"
+  - "EA Settings & Optimization"
 categoryPaths:
-  - "/category/installation-setup/"
+  - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
 tags: []
 draft: false
 quickAnswer: "Most MQL4 and MQL5 compile errors come from a short list of causes: a misspelled or undeclared name, a missing include file, MQL4 code compiled as MQL5, unbalanced brackets, or a function called with the wrong number of arguments. Fix the first error in the list, recompile, and repeat, because later errors are usually echoes of the first one."

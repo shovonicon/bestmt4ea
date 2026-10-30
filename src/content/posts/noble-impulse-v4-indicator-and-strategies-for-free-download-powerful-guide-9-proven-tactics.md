@@ -55,11 +55,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_136661_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/noble-impulse-v4-indicator-and-strategies-for-free-download-powerful-guide-9-proven-tactics/"
 categories:
-  - "AI Trading Indicators"
-  - "MT4/MT5 Expert Advisors"
+  - "Free Forex Indicator"
 categoryPaths:
-  - "/category/ai-trading-indicators/"
-  - "/category/mt4-mt5-expert-advisors/"
+  - "/category/free-forex-indicator/"
 tags: []
 draft: false
 ---

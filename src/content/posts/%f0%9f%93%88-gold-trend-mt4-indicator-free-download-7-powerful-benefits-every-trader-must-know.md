@@ -13,8 +13,12 @@ seo:
 sourceUrl: "https://bestmt4ea.com/%f0%9f%93%88-gold-trend-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know/"
 categories:
   - "Free Forex Indicator"
+  - "Gold (XAUUSD) Trading"
+  - "Technical Analysis"
 categoryPaths:
   - "/category/free-forex-indicator/"
+  - "/category/gold-xauusd-trading/"
+  - "/category/technical-analysis/"
 tags:
   - "gold"
   - "MT4"

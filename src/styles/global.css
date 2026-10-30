@@ -798,39 +798,6 @@
     grid-template-columns: minmax(0, 1fr) min(40rem, 100%) minmax(0, 1fr);
   }
 
-  /*
-   * From 1280px a promo column takes the right track: the broker creatives and
-   * our own two products. The article is wrapped in `.longform-main` so the main
-   * content is a single grid item whose height the aside can stick against.
-   */
-  @media (min-width: 1280px) {
-    .longform {
-      /*
-       * The last track matches the card width in PromoAd exactly (325px), so the
-       * cards fill the column edge to edge rather than floating inside a wider box.
-       */
-      grid-template-columns: minmax(0, 1fr) min(40rem, 100%) 325px minmax(0, 1fr);
-    }
-    /* Two classes deep so it beats `.longform > * { grid-column: 2 }` below. */
-    .longform > .longform-aside {
-      display: block;
-      grid-column: 3;
-    }
-  }
-
-  .longform-aside {
-    display: none;
-    min-width: 0;
-  }
-
-  .longform-aside > div {
-    position: sticky;
-    top: 6rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
   /* Hidden by default; only very wide viewports have room for them. */
   .ad-rail {
     display: none;
@@ -852,6 +819,118 @@
       top: 6rem;
       /* Reserve the 300x600 unit's height so the page does not jump when it fills. */
       min-height: 600px;
+    }
+  }
+
+  /*
+   * Tool pages render the sponsored card twice: once in the flow and once in the
+   * rail. Exactly one is shown — the in-flow card for every viewport that has no
+   * room for a sidebar, the rail above the breakpoint below.
+   */
+  @media (min-width: 1740px) {
+    .rf-inline-slot {
+      display: none;
+    }
+  }
+
+  /*
+   * The sponsor rail on tool, blog and post pages: a 320px card pinned 96px from
+   * the top and from the content column, so it sits in a symmetric box. It is its
+   * own slot rather than `.ad-rail` because a 320px creative must not resize the
+   * 300px AdSense rails.
+   *
+   * Sticky, not fixed: the card is bounded by its section, so it never floats over
+   * content wider than the reading column (the promo band and the footer are both).
+   *
+   * The offset is viewport maths because the card hangs outside `.container-x`
+   * (max-width 1312px): centred against the 896px reading column it is
+   * (100vw - 896px) / 4 - 160px, which gives 96px each side at 1920 and 51px at
+   * the 1740px breakpoint.
+   */
+  .rf-rail-slot {
+    display: none;
+  }
+
+  @media (min-width: 1740px) {
+    .rf-rail-slot {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      display: block;
+      width: 320px;
+      /* Container-relative: 272px - 25vw cancels the 1312px container's own
+         offset, so the card lands 96px from the viewport edge at 1920. */
+      left: calc(272px - 25vw);
+    }
+    .rf-rail-sticky {
+      position: sticky;
+      top: 96px;
+    }
+  }
+
+  /*
+   * The "On this page" column on posts. The 896px content block is split
+   * 640 + 36 + 220, so the TOC sits inside the same measure as the article
+   * rather than in the gutter — which means the article shifts 128px left of
+   * centre above the breakpoint.
+   */
+  .toc-slot {
+    display: none;
+  }
+
+  @media (min-width: 1740px) {
+    /*
+     * 176px is the article's new left offset inside the container: the 896px
+     * block starts 208px in, less the container's own 32px padding.
+     */
+    .longform {
+      grid-template-columns: 176px min(40rem, 100%) minmax(0, 1fr);
+      column-gap: 0;
+    }
+
+    .toc-slot {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      display: block;
+      width: 220px;
+      left: calc(50% + 228px);
+    }
+
+    .toc-sticky {
+      position: sticky;
+      top: 96px;
+    }
+  }
+
+  /*
+   * The tool pages' right column: the same maths mirrored, so the two rails are
+   * symmetric around the 896px reading column (96px of page margin and 96px of
+   * gutter on each side at 1920).
+   */
+  .tool-rail-slot {
+    display: none;
+  }
+
+  @media (min-width: 1740px) {
+    .tool-rail-slot {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      display: block;
+      width: 320px;
+      right: calc(272px - 25vw);
+    }
+    .tool-rail-sticky {
+      position: sticky;
+      top: 96px;
+    }
+  }
+
+  /* Where the right rail cannot fit, the same three cards render after the copy. */
+  @media (min-width: 1740px) {
+    .tool-inline-slot {
+      display: none;
     }
   }
   .longform > * {
@@ -1249,6 +1328,26 @@
   100% { transform: translateX(100%); }
 }
 
+  /*
+   * Affiliate banner injected into the post body at 75%. It is a creative, not an
+   * ad unit, so it carries no label and no disclosure line of its own. Full width
+   * of the reading column; the 728x90 asset scales down on narrow screens.
+   */
+  .post-banner {
+    margin: 2rem 0;
+  }
+
+  .post-banner__link {
+    display: block;
+  }
+
+  .post-banner img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+  }
+
 @layer utilities {
   .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
   .animate-fade-in-up-delay-1 { animation: fadeInUp 0.8s ease-out 0.15s forwards; opacity: 0; }
@@ -1287,5 +1386,17 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/*
+ * Unlayered on purpose: the in-column outline carries Tailwind's `lg:block`
+ * utility, and a rule inside `@layer components` loses to `@layer utilities`
+ * regardless of specificity. Above the rail breakpoint the "On this page"
+ * column takes over, so the in-column copy is hidden.
+ */
+@media (min-width: 1740px) {
+  .toc-inline-slot {
+    display: none;
   }
 }

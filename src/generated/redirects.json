@@ -1,26 +1,8 @@
 {
-  "generatedAt": "2026-10-30T10:16:31.462Z",
+  "generatedAt": "2026-10-30T17:52:25.941Z",
   "source": "wordpress-seo-redirects (2).csv",
-  "count": 2329,
+  "count": 2339,
   "dropped": [
-    {
-      "from": "/category/gold-xauusd-trading/",
-      "to": "/blog/",
-      "status": 301,
-      "reason": "source collides with a live route"
-    },
-    {
-      "from": "/category/gold-xauusd-trading/gold-ea-robots/",
-      "to": "/blog/",
-      "status": 301,
-      "reason": "source collides with a live route"
-    },
-    {
-      "from": "/category/gold-xauusd-trading/xauusd-trading-strategies/",
-      "to": "/blog/",
-      "status": 301,
-      "reason": "source collides with a live route"
-    },
     {
       "from": "/product/bbp-ai-golden-ea",
       "to": "/product-category/gold-forex-ea/",
@@ -179,11 +161,6 @@
       "rules": 65
     },
     {
-      "retiredTarget": "/category/technical-analysis",
-      "fallback": "/blog/",
-      "rules": 23
-    },
-    {
       "retiredTarget": "/category/beginners-guides-forex-basics",
       "fallback": "/blog/",
       "rules": 43
@@ -197,11 +174,6 @@
       "retiredTarget": "/category/fundamental-analysis",
       "fallback": "/blog/",
       "rules": 44
-    },
-    {
-      "retiredTarget": "/category/mt4-mt5-expert-advisors/ea-development-mql4-mql5",
-      "fallback": "/blog/",
-      "rules": 8
     },
     {
       "retiredTarget": "/category/forex-trading-strategies/forex-swing-trading",
@@ -967,7 +939,7 @@
     },
     {
       "from": "/adaptive-renko-cld-mt5-forex-indicator-free-download-powerful-safe-simple-guide-7-must-know-steps",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/%F0%9F%93%88-trend-breakout-lines-indicator-free-download-powerful-proven-guide-for-smart-traders",
@@ -975,7 +947,7 @@
     },
     {
       "from": "/ea-game-changer-forex-ea-reviews-7-powerful-truths-every-trader-must-know",
-      "wasTo": "/category/forex-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/hft-robot-free-download-7-powerful-truths-you-must-know-before-installing",
@@ -991,11 +963,11 @@
     },
     {
       "from": "/orb-revolution-forex-ea-reviews-7-powerful-truths-every-trader-must-know",
-      "wasTo": "/category/forex-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/7-powerful-ways-a-free-qqe-indicator-with-alerts-for-trend-confirmation-can-transform-your-trading",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/forex-hacked-ea-free-download-the-shocking-truth-7-hidden-risks-safer-alternatives",
@@ -1011,7 +983,7 @@
     },
     {
       "from": "/%F0%9F%94%A5-liquidity-zone-pattern-scanner-indicator-free-download-powerful-trading-tool",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/three-bar-reversal-pattern-forex-indicator-free-download-powerful-proven-strategy-with-7-expert-tips",
@@ -1019,7 +991,7 @@
     },
     {
       "from": "/vortex-turbo-ea-forex-ea-reviews-7-powerful-insights-every-trader-must-know",
-      "wasTo": "/category/forex-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/vold-fast-scalping-ea-free-download-powerful-7-step-guide-to-safe-smart-installation",
@@ -1043,7 +1015,7 @@
     },
     {
       "from": "/%F0%9F%A4%96-bitcoin-wizard-scalping-bitcoin-robot-free-download-guide",
-      "wasTo": "/category/ai-powered-trading-tools/ai-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/swing-point-highs-and-lows-forex-indicator-free-download-7-powerful-trading-secrets-for-explosive-results",
@@ -1203,15 +1175,15 @@
     },
     {
       "from": "/%F0%9F%A4%96-bitcoin-trading-crypto-robot-free-download-the-ultimate-guide-to-safe-smart-automation",
-      "wasTo": "/category/ai-powered-trading-tools/ai-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/10-best-adx-indicator-strategy-settings-for-mt4-powerful-secrets-for-winning-trades",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-identify-absorption-zones-with-volume-indicators-on-metatrader-5",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/assar-phoenix-infinity-ea-free-download-7-powerful-facts-you-must-know-before-installing",
@@ -1239,7 +1211,7 @@
     },
     {
       "from": "/ai-price-action-robot-free-download-the-ultimate-guide-to-safe-smart-trading",
-      "wasTo": "/category/ai-powered-trading-tools/ai-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/%F0%9F%9A%80-northwest-metatrader-4-ea-free-download-powerful-proven-trading-robot",
@@ -1255,35 +1227,35 @@
     },
     {
       "from": "/the-orb-master-forex-ea-reviews-7-powerful-truths-every-trader-must-know",
-      "wasTo": "/category/forex-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/free-mt4-ea-download-and-install-tutorial-ultimate-step-by-step-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/13-powerful-tradingview-screener-settings-for-breakout-stocks-daily",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/11-powerful-ways-to-avoid-slippage-in-forex-scalping-trades-essential-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/keltner-channel-pro-trading-system-review",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-ways-to-integrate-luxalgo-indicators-with-metatrader-for-forex-successfully",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/fibonacci-cluster-confluence-trading-the-ultimate-guide-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/forex-fury-ea-overview-latest-version",
-      "wasTo": "/category/forex-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/usd-jpy-4-hour-trading-strategy-that-actually-works",
@@ -1295,7 +1267,7 @@
     },
     {
       "from": "/r2-arrow-binary-trading-system-free-download-shocking-truth-11-safe-steps-to-get-the-real-deal",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/top-10-hidden-gem-indicators-in-the-tradingview-community",
@@ -1379,23 +1351,23 @@
     },
     {
       "from": "/mt4-ea-setup-for-low-balance-accounts-proven-tips-for-safe-profitable-automation",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/understanding-partial-close-logic-in-ea-coding-explained",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/the-15-best-technical-analysis-tools-for-mt4-platform-powerful-guide-for-traders",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/combine-hma-and-supertrend-indicators-for-precise-entry-signals",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/ultimate-guide-to-effortless-grid-trading-bot-setup-for-binance-futures",
-      "wasTo": "/category/forex-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/best-rsi-settings-for-5-minute-chart",
@@ -1451,7 +1423,7 @@
     },
     {
       "from": "/aurum-ai-ea-free-download-risks-facts-safe-alternatives",
-      "wasTo": "/category/ai-powered-trading-tools/ai-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/golden-jet-fighter-gtx-ai-ea-free-download-ultimate-guide-to-powerful-trading-automation",
@@ -1463,11 +1435,11 @@
     },
     {
       "from": "/%F0%9F%9A%80-powerful-guide-nimbus-algo-free-indicator-download-7-proven-insights-you-must-know",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/ai-forex-robot-forex-ea-reviews-9-powerful-truths-every-trader-must-know-before-buying",
-      "wasTo": "/category/ai-powered-trading-tools/ai-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/black-diamond-special-ea-free-download-the-truth-you-must-know-before-installing",
@@ -1499,7 +1471,7 @@
     },
     {
       "from": "/stability-killer-ai-forex-ea-reviews-the-shocking-truth-behind-this-powerful-trading-robot",
-      "wasTo": "/category/forex-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/pivot-killer-forex-ea-reviews-7-powerful-truths-every-trader-must-know",
@@ -1507,7 +1479,7 @@
     },
     {
       "from": "/xau-sniper-forex-ea-reviews-powerful-truth-revealed-must-read-before-you-buy",
-      "wasTo": "/category/forex-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/zen-flow-ea-free-download-7-powerful-truths-you-must-know-before-installing",
@@ -1519,7 +1491,7 @@
     },
     {
       "from": "/ea-new-player-forex-ea-reviews-7-powerful-insights-every-trader-must-know",
-      "wasTo": "/category/forex-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/10-best-free-paper-trading-platforms-for-beginners",
@@ -1543,7 +1515,7 @@
     },
     {
       "from": "/7-best-one-click-trading-panel-for-mt4-tools-for-faster-smarter-trading",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/donchian-channel-breakout-system-ultimate-guide-to-profitable-trading-strategies",
@@ -1619,7 +1591,7 @@
     },
     {
       "from": "/prn-hub-macd-forex-indicator-free-download-powerful-guide-with-7-proven-trading-advantages",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/%F0%9F%93%88-trend-action-binary-option-strategy-free-download-powerful-proven-guide",
@@ -1679,15 +1651,15 @@
     },
     {
       "from": "/ai-gold-sniper-forex-ea-reviews-7-powerful-insights-you-must-know-before-investing",
-      "wasTo": "/category/ai-powered-trading-tools/ai-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/%F0%9F%9A%80-the-bitcoin-core-forex-ea-reviews-7-powerful-insights-you-must-know-before-investing",
-      "wasTo": "/category/ai-powered-trading-tools/ai-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/live-forex-trading-ea-forex-ea-reviews-7-powerful-truths-every-trader-must-know",
-      "wasTo": "/category/forex-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/candle-body-percent-by-adityakharade-forex-indicator-reviews-brutally-honest-powerful-insights-7-pro-tips",
@@ -1719,19 +1691,19 @@
     },
     {
       "from": "/how-to-calculate-sharpe-ratio-for-forex-eas-11-powerful-steps-for-better-trading-performance",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/multi-timeframe-confirmation-in-mql4-indicator-logic-complete-power-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/bollinger-bands-scalping-system-for-mt4-rules-proven-strategy-for-fast-accurate-trades",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/top-10-powerful-free-quizzes-to-test-forex-knowledge-for-beginners",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/best-demo-accounts-for-practicing-forex-trading-10-powerful-options",
@@ -1743,7 +1715,7 @@
     },
     {
       "from": "/adx-indicator-above-40-meaning",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/top-5-high-impact-news-every-trader-must-know-powerful-insights-for-market-success",
@@ -1759,7 +1731,7 @@
     },
     {
       "from": "/10-powerful-breakout-scalper-ea-settings-for-mt4-that-dramatically-boost-profits",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-steps-to-install-gann-hilo-activator-arrow-indicator-on-mt4-beginner-friendly-guide",
@@ -1767,7 +1739,7 @@
     },
     {
       "from": "/top-7-powerful-ways-to-master-the-eod-binary-options-strategy-using-mt4-proven-method",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-ways-to-master-free-mt4-rsi-divergence-indicator-setup-and-signals-step-by-step-guide",
@@ -1775,7 +1747,7 @@
     },
     {
       "from": "/powerful-guide-to-free-cci-channel-breakout-indicator-for-mt5",
-      "wasTo": "/blog/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/free-vertical-horizontal-filter-vhf-trend-strength-test-9-powerful-insights-for-better-trading",
@@ -1831,23 +1803,23 @@
     },
     {
       "from": "/10-powerful-secrets-for-step-by-step-mt4-ea-setup-for-beginners-guaranteed-success",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-find-broker-server-address-in-mt4-the-ultimate-step-by-step-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/best-gann-scalping-strategy-for-forex-beginners-7-powerful-techniques-you-must-know",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/emperor-trading-system-rules-and-indicators-best-guide-for-traders",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/12-best-forex-trading-strategies-for-5-minute-charts-proven-fast-effective",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/free-templates-for-forex-risk-management-plans-12-powerful-tools-to-protect-your-trading",
@@ -1895,7 +1867,7 @@
     },
     {
       "from": "/konjiki-ai-forex-ea-reviews-7-powerful-insights-every-trader-must-know",
-      "wasTo": "/category/ai-powered-trading-tools/ai-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/lowest-cost-windows-vps-for-forex-trading-in-2026-cheap-mt4-mt5-hosting-that-actually-works",
@@ -1919,7 +1891,7 @@
     },
     {
       "from": "/nasdaq-ghost-free-download-7-shocking-truths-you-must-know-before-installing",
-      "wasTo": "/category/ai-powered-trading-tools/ai-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/forex-winner-ea-free-download-7-powerful-truths-you-must-know-before-installing",
@@ -1927,11 +1899,11 @@
     },
     {
       "from": "/vigorous-fx-review-free-download-7-powerful-reasons-traders-love-this-dynamic-indicator",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/auto-breakouts-and-retests-indicator-free-download-powerful-proven-trading-tool",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/the-ultimate-forex-reversal-strategy-free-download-7-powerful-secrets-for-maximum-profit",
@@ -1939,7 +1911,7 @@
     },
     {
       "from": "/%F0%9F%94%A5-th100-elite-indicator-free-download-the-ultimate-powerful-guide",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/top-5-trading-tools-to-improve-your-trading-free-download-powerful-picks-for-smarter-profits",
@@ -1959,7 +1931,7 @@
     },
     {
       "from": "/fxcore100-indicator-free-download-complete-guide-visual-overview",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/akali-forex-ea-reviews-7-powerful-insights-every-trader-must-know-before-investing",
@@ -1967,15 +1939,15 @@
     },
     {
       "from": "/infinite-wave-forex-ea-reviews-7-shocking-facts-smart-traders-must-know",
-      "wasTo": "/category/forex-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/quantix-core-g33-ea-forex-ea-reviews-the-brutal-truth-behind-this-powerful-trading-bot",
-      "wasTo": "/category/forex-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/arbitrage-scanner-pro-multi-asset-dashboard-by-zakalgo_trade-forex-indicator-reviews-powerful-insights-7-shocking-truths",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/htf-candles-dashboard-by-asviews-forex-indicator-reviews-7-powerful-insights-every-trader-must-know",
@@ -1999,7 +1971,7 @@
     },
     {
       "from": "/xg-gold-robot-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-buying",
-      "wasTo": "/category/forex-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/7-powerful-ways-to-attract-angel-investors-for-trading-bots",
@@ -2015,7 +1987,7 @@
     },
     {
       "from": "/10-powerful-ways-to-understand-how-to-read-journal-and-experts-tab-errors-quickly",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/what-is-the-wyckoff-method-for-forex-analysis-powerful-guide-for-traders",
@@ -2027,7 +1999,7 @@
     },
     {
       "from": "/mt4-mobile-add-custom-indicator-workaround-the-ultimate-guide-to-bypassing-limitations",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/equity-based-lot-sizing-in-expert-advisors-7-powerful-advantages-for-safer-automated-trading",
@@ -2035,19 +2007,19 @@
     },
     {
       "from": "/monte-carlo-simulation-for-ea-robustness-a-complete-practical-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-pause-all-eas-in-mt4-quickly-the-ultimate-step-by-step-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-tips-for-installing-multiple-eas-on-single-mt4-terminal-successfully",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/top-10-powerful-fifo-compliant-expert-advisor-settings-for-us-traders",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/top-10-techniques-for-powerful-fibonacci-pullback-strategy-entries-and-targets",
@@ -2059,15 +2031,15 @@
     },
     {
       "from": "/top-10-powerful-daily-timeframe-pullback-setups-for-usd-pairs",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/11-powerful-reasons-the-extreme-spike-mtf-indicator-volatility-trading-strategy-can-transform-your-results",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-use-bollinger-bands-ea-for-trend-reversal-trades-7-powerful-techniques",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-ways-a-free-pivot-point-indicator-with-support-resistance-levels-can-transform-your-trading",
@@ -2127,15 +2099,15 @@
     },
     {
       "from": "/beginner-guide-to-loading-ea-on-mt4-platform-the-ultimate-step-by-step-tutorial",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-backtest-mt4-ea-with-tick-data-9-powerful-steps-for-accurate-results",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/achieving-mt4-strategy-tester-modeling-quality-99-percent",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/mt4-expert-advisor-not-taking-trades-solution-complete-fixing-guide-for-traders",
@@ -2143,23 +2115,23 @@
     },
     {
       "from": "/mt4-ea-works-only-on-tester-fix-complete-troubleshooting-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-reset-mt4-robot-settings-to-default-powerful-guide-for-beginners",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-back-up-mt4-ea-configurations-safely-proven-strategies-for",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/mql4-object-oriented-programming-basics-complete-beginners-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/martingale-strategy-in-forex-pros-and-cons-powerful-insights-for-traders",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/m1-countertrend-scalpling-technique-explained-9-proven-insights-for-mastering-fast-reversals",
@@ -2171,11 +2143,11 @@
     },
     {
       "from": "/true-strength-index-tsi-divergence-ea-free-version-powerful-insights-for-smarter-trading",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-use-fibonacci-retracement-in-forex-charts-11-powerful-strategies-for-traders",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/simple-parabolicsar-strategy-for-forex-beginners-powerful-easy-guide",
@@ -2215,7 +2187,7 @@
     },
     {
       "from": "/fibonacci-time-zones-trading-strategy-7-powerful-techniques-for-consistent-market-success",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/how-to-combine-rsi-and-moving-averages-for-accurate-trading-signals-7-proven-strategies",
@@ -2263,7 +2235,7 @@
     },
     {
       "from": "/ai-forex-robot-forex-ea-reviews-9-powerful-insights-every-trader-must-know",
-      "wasTo": "/category/ai-powered-trading-tools/ai-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/12-powerful-ways-to-adjust-mt4-ea-for-market-volatility-boost-performance-reduce-risk",
@@ -2275,7 +2247,7 @@
     },
     {
       "from": "/keltner-channel-vs-bollinger-bands-comparison",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/best-economic-calendar-for-forex-traders-top-picks-and-insights",
@@ -2347,7 +2319,7 @@
     },
     {
       "from": "/adx-vma-trend-mt5-forex-indicator-free-download-the-safe-powerful-7-step-guide",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/hikkake-pattern-forex-indicator-mt4-free-download-powerful-7-step-guide-to-trade-fakeouts-safely",
@@ -2355,7 +2327,7 @@
     },
     {
       "from": "/%F0%9F%9A%80-bitcoin-quantum-edge-algo-forex-ea-reviews-7-shocking-truths-you-must-know-before-investing",
-      "wasTo": "/category/forex-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/ea-gold-stuff-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing",
@@ -2363,7 +2335,7 @@
     },
     {
       "from": "/liquidation-cascade-detector-by-cascade_indicators-forex-indicator-reviews-7-powerful-insights-every-trader-must-know",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/bestgrid-ea-free-download-powerful-7-step-guide-to-smart-grid-trading-success",
@@ -2403,11 +2375,11 @@
     },
     {
       "from": "/%F0%9F%93%8A-market-structure-oscillator-free-download-powerful-proven-trading-guide",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/btc-mvrv-mvrv-z-score-by-arisaiquant-forex-indicator-reviews-the-powerful-honest-guide-13-key-insights",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/tjr-bos-choch-real-time-swings-by-marcelimac6-forex-indicator-reviews-7-powerful-insights-traders-must-know",
@@ -2427,7 +2399,7 @@
     },
     {
       "from": "/%F0%9F%94%8B-smartchoise-battery-forex-ea-reviews-7-powerful-truths-every-trader-must-know",
-      "wasTo": "/category/forex-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/%F0%9F%93%8A-adx-supertrend-by-rakoquant-forex-indicator-reviews-powerful-7-proven-insights-for-smarter-trading",
@@ -2435,7 +2407,7 @@
     },
     {
       "from": "/top-12-powerful-requirements-for-trading-forex-full-time",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-draw-trend-lines-in-forex-powerful-techniques-for-accurate-market-analysis",
@@ -2447,7 +2419,7 @@
     },
     {
       "from": "/10-powerful-ways-to-use-the-free-trix-triple-exponential-average-triple-crossover-for-better-trading-decisions",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-critical-risks-of-what-is-a-martingale-strategy-in-forex-risks-and-how-traders-can-avoid-them",
@@ -2471,11 +2443,11 @@
     },
     {
       "from": "/top-12-powerful-requirements-for-trading-forex-full-time-2",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-ways-to-use-the-free-trix-triple-exponential-average-triple-crossover-for-better-trading-decisions-2",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-critical-risks-of-what-is-a-martingale-strategy-in-forex-risks-and-how-traders-can-avoid-them-2",
@@ -2499,11 +2471,11 @@
     },
     {
       "from": "/top-10-common-errors-when-installing-forex-ea-on-mt4-essential-guide-for-traders",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/installing-multiple-eas-on-single-mt4-terminal-a-powerful-step-by-step-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-set-maximum-consecutive-loss-limits-ea-ultimate-guide-to-safer-trading",
@@ -2523,23 +2495,23 @@
     },
     {
       "from": "/9-shocking-mistakes-traders-make-how-to-fix-them-using-a-risk-of-ruin-calculator-for-forex-robots-tutorial",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/11-best-ways-to-choose-a-safe-forex-ea-for-beginners-avoid-costly-mistakes",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/12-best-ways-to-understand-how-to-read-forex-quotes-bid-ask-made-simple-beginner-friendly-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/12-proven-ways-to-avoid-common-forex-trading-mistakes-and-how-to-fix-them-fast",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/ultimate-guide-17-powerful-steps-on-tradingview-how-to-create-custom-alerts-for-200-ema-crossover",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/9-best-ways-to-use-a-weekly-review-template-for-swing-traders-boost-results-fast",
@@ -2551,11 +2523,11 @@
     },
     {
       "from": "/10-powerful-ways-to-improve-daily-drawdown-protection-for-prop-firms-via-ea-including-pro-tips",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-evaluate-a-new-ea-vendor-due-diligence-list-the-complete-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/9-powerful-insights-into-absorption-detection-strategies-using-internal-sweep-indicators",
@@ -2563,19 +2535,19 @@
     },
     {
       "from": "/10-powerful-ways-to-learn-how-to-backtest-strategies-on-trendspider-without-coding-beginner-friendly-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-reasons-koyfin-vs-tradingview-for-fundamental-analysis-tools-matters-for-smart-investors",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-strategies-to-master-how-to-trade-eur-usd-pairs-effectively",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/top-10-powerful-gbp-usd-intraday-analysis-tips-for-consistent-trading-success",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/elliott-wave-secrets-for-forex-beginners-12-powerful-strategies-to-boost-accuracy",
@@ -2583,11 +2555,11 @@
     },
     {
       "from": "/7-powerful-insights-to-master-support-and-resistance-levels-in-eur-usd",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/voice-search-optimization-for-forex-keywords-7-proven-strategies-for-faster-ranking",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-build-a-forex-trading-plan-step-by-step-proven-guide-for-beginners",
@@ -2611,7 +2583,7 @@
     },
     {
       "from": "/top-10-reasons-sentiment-ai-for-market-mood-is-transforming-trading",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/top-10-powerful-benefits-of-n-ft-tokens-for-trading-rewards",
@@ -2707,7 +2679,7 @@
     },
     {
       "from": "/troubleshooting-mt4-ea-not-working-issues-15-powerful-fixes-you-must-know",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-update-mt4-ea-to-latest-version-11-powerful-steps-for-a-smooth-upgrade",
@@ -2719,7 +2691,7 @@
     },
     {
       "from": "/10-powerful-steps-for-setting-up-mt4-robot-for-demo-account-beginner-friendly-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/the-best-way-to-configure-free-mt4-robot-complete-beginner-friendly-guide",
@@ -2739,11 +2711,11 @@
     },
     {
       "from": "/10-powerful-ways-to-master-how-to-set-equity-stops-in-mt4-expert-advisors-ultimate-safety-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-smart-reasons-why-equity-curve-control-stop-trading-after-drawdown-is-essential",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-strategies-to-create-money-management-rules-for-mt4-ea-full-guide",
@@ -2751,23 +2723,23 @@
     },
     {
       "from": "/top-10-powerful-ways-to-improve-mt4-expert-advisor-backtesting-99-percent-modeling-quality",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-create-custom-symbols-for-backtest-in-mt4-powerful-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/9-powerful-mt4-ea-optimization-settings-for-eurusd-m5-to-boost-performance-fast",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-avoid-overoptimization-in-mt4-eas-proven-strategies-for-reliable-trading",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-detect-curve-fitting-in-mt4-backtests-pro-guide-10-warning-signs",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-tips-for-backtesting-mt4-eas-on-tick-data-full-guide",
@@ -2775,23 +2747,23 @@
     },
     {
       "from": "/troubleshooting-mt4-ea-not-working-issues-ultimate-guide-to-fix-expert-advisor-problems",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-troubleshoot-mt4-ea-not-trading-today-ultimate-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/understanding-and-applying-mt4-invalid-stops-error-fix-step-by-step",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/mt4-experts-tab-shows-initialization-failed-fix-the-ultimate-step-by-step-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-ways-to-fix-mt4-authorization-failed-check-settings-fast",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-tips-for-the-safe-way-to-remove-mt4-expert-advisor-without-errors",
@@ -2803,7 +2775,7 @@
     },
     {
       "from": "/how-to-migrate-mt4-ea-to-new-computer-the-ultimate-step-by-step-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-migrate-ea-to-different-vps-without-errors-powerful-step-by-step-guide",
@@ -2811,23 +2783,23 @@
     },
     {
       "from": "/mt4-magic-number-explained-for-multiple-eas-ultimate-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/understanding-magic-number-mapping-and-trade-comments-naming-best-practices-professional-methods",
-      "wasTo": "/blog/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/vps-setup-for-mt4-ea-step-by-step-for-beginners-the-ultimate-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-ways-to-improve-vps-latency-test-for-mt4-ea-performance",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/auto-recovery-of-mt4-after-vps-crash-guide-7-powerful-steps-for-traders",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-clone-mt4-setup-from-one-vps-to-another",
@@ -2839,7 +2811,7 @@
     },
     {
       "from": "/maintenance-guide-for-vps-hosted-mt4-bots-15-powerful-ways-to-improve-reliability-and-performance",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/ultimate-guide-to-mean-reversion-ea-settings-for-mt4-powerful-tips-best-practices",
@@ -2855,11 +2827,11 @@
     },
     {
       "from": "/top-10-powerful-insights-for-broker-regulation-and-ea-compatibility-checklist",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-reasons-to-know-whether-is-hedging-allowed-by-your-broker-for-ea",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-insights-into-the-swap-and-rollover-impact-on-grid-eas",
@@ -2871,7 +2843,7 @@
     },
     {
       "from": "/how-to-connect-mt4-ea-to-exness-broker-ultimate-step-by-step-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/9-powerful-reasons-the-best-low-spread-brokers-for-scalping-mt4-bots-improve-your-results",
@@ -2891,11 +2863,11 @@
     },
     {
       "from": "/9-powerful-ways-to-master-how-to-calculate-sharpe-ratio-for-forex-eas-guaranteed-performance-boost",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-calculate-sortino-ratio-for-forex-eas-7-powerful-steps-to-improve-trading-performance",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/understanding-the-expected-payoff-and-expectancy-for-robots-a-powerful-guide",
@@ -2903,11 +2875,11 @@
     },
     {
       "from": "/tips-for-identifying-underperforming-mt4-eas-early-13-proven-ways-to-spot-weak-expert-advisors-fast",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-tips-for-monthly-mt4-expert-advisor-audits-to-boost-trading-performance",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-ways-to-analyze-consecutive-losses-in-mt4-trading-systems-for-better-results",
@@ -2915,19 +2887,19 @@
     },
     {
       "from": "/top-10-powerful-tips-for-a-beginner-guide-to-mql4-programming-for-eas",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-proven-tips-for-using-print-for-debugging-mql4-experts-powerful-developer-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/introduction-to-automated-trade-management-in-mql4",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/top-10-powerful-order-send-errors-130-131-133-solutions-for-fast-trading-fixes",
-      "wasTo": "/blog/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/what-is-forex-trading-for-absolute-beginners",
@@ -2935,11 +2907,11 @@
     },
     {
       "from": "/forex-terminology-glossary-for-beginners-essential-powerful-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/major-vs-minor-currency-pairs-list-with-examples-complete-powerful-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/what-is-a-lot-in-forex-micro-mini-standard-explained-the-ultimate-guide",
@@ -2951,7 +2923,7 @@
     },
     {
       "from": "/15-powerful-ways-to-avoid-blowing-a-forex-account-practical-tips-for-safe-trading",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-use-tradingview-for-forex-beginners-15-powerful-steps-to-get-started",
@@ -2959,19 +2931,19 @@
     },
     {
       "from": "/how-to-set-alerts-in-tradingview-step-by-step-complete-beginners-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-ways-to-use-pine-script-add-multiple-conditions-without-repainting-example-full-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-insights-to-understand-the-pine-script-strategy-performance-report-explained-simply",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-ways-to-master-how-to-backtest-forex-strategy-on-tradingview-free-account",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/ultimate-guide-to-using-myfxbook-for-ea-verification",
@@ -2979,11 +2951,11 @@
     },
     {
       "from": "/top-10-powerful-tips-for-fxblue-analytics-setup-for-expert-advisor-tracking-the-ultimate-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-create-trading-rules-checklist-for-consistency-the-ultimate-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/common-trading-scams-to-avoid-and-warning-signs",
@@ -2999,11 +2971,11 @@
     },
     {
       "from": "/prop-firm-rules-for-using-expert-advisors-explained-12-powerful-insights-every-trader-must-know",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-reasons-you-need-a-checklist-before-buying-any-forex-robot",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/ultimate-guide-to-bollinger-bands-squeeze-trading-setup",
@@ -3011,7 +2983,7 @@
     },
     {
       "from": "/powerful-macd-histogram-signals-for-day-trading",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/top-10-powerful-tips-to-master-the-stochastic-oscillator-overbought-oversold-strategy",
@@ -3023,7 +2995,7 @@
     },
     {
       "from": "/7-powerful-reasons-free-mt4-expert-advisors-for-automated-trading-can-transform-your-results",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-best-risk-management-techniques-in-forex-for-safer-trading",
@@ -3035,7 +3007,7 @@
     },
     {
       "from": "/27-powerful-insights-about-the-candlestick-patterns-recognition-indicator-complete-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-secrets-to-master-support-and-resistance-levels-drawing-tool-mt4-best-trading-guide",
@@ -3043,7 +3015,7 @@
     },
     {
       "from": "/the-ultimate-guide-to-pivot-points-calculation-for-daily-trading",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/building-a-forex-trading-plan-step-by-step-11-powerful-strategies-for-success",
@@ -3051,43 +3023,43 @@
     },
     {
       "from": "/10-powerful-insights-revealing-common-mistakes-to-avoid-in-forex-scalping",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/12-powerful-transitioning-from-demo-to-live-trading-tips-for-guaranteed-success",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-reasons-you-must-master-understanding-pips-and-lot-sizes-in-mt4",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/15-must-know-fundamental-analysis-basics-for-forex-powerful-beginner-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/best-volume-pressure-analysis-tools-for-spotting-reversal-patterns-in-stocks",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-read-hidden-divergence-signals-on-tradingview-charts",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/poc-migration-maps-for-trend-confirmation-in-equity-markets",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/rsi-with-volume-delta-analysis-techniques-for-real-time-trading",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/detecting-stop-hunts-using-volume-anomaly-indicators-in-futures-7-proven-strategies",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/project-historical-patterns-using-correlation-based-tools-in-options",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/identifying-exhaustion-patterns-with-rsi-and-volume-confluence",
@@ -3095,15 +3067,15 @@
     },
     {
       "from": "/multi-timeframe-volume-zones-setup-guide-for-tradingview-users",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/grinder-trend-detection-using-rsi-and-relative-volume-filters",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/linear-trajectory-volume-structure-strategies-for-swing-trading",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/buy-low-sell-high-strategy-with-buffett-valuation-meter-for-long-term-investors",
@@ -3111,15 +3083,15 @@
     },
     {
       "from": "/advanced-icc-multi-timeframe-entries-for-scalping-forex-pairs",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/helix-protocol-trend-logic-with-kama-for-adaptive-trading-the-ultimate-guide-to-smarter-market-decisions",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/titan-ai-smart-mfi-oscillator-for-institutional-flow-detection-the-ultimate-guide",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/7-powerful-insights-into-option-vs-index-change-ratio-analysis-for-volatility-trading",
@@ -3127,11 +3099,11 @@
     },
     {
       "from": "/understanding-trend-adaptive-thresholds-in-volatility-meters-for-crypto",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/top-10-powerful-benefits-of-non-repainting-pivots-with-break-of-structure-signals-every-trader-should-know",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/change-of-character-detection-in-smart-money-concepts-the-ultimate-guide",
@@ -3139,47 +3111,47 @@
     },
     {
       "from": "/10-powerful-steps-in-a-step-by-step-guide-to-using-thinkorswim-paper-money-for-stock-practice",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-strategies-for-mastering-advanced-techniques-for-analyzing-order-flow-in-trading-sims",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-start-day-trading-with-low-capital-under-1000-5-proven-strategies-for-beginners",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/risk-management-tips-for-day-traders-using-stop-loss-orders",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/day-trading-profitability-secrets-and-common-mistakes-to-avoid-10-powerful-insights-for-success",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/9-powerful-tips-to-master-forex-trading-basics-for-complete-beginners-with-no-experience",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-best-day-trading-simulators-for-futures-and-crypto",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/ultimate-mt4-platform-tutorial-for-global-financial-markets-beginners",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/17-powerful-ways-the-volatility-index-vix-explained-for-day-trading-strategies-can-boost-your-trading",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/the-ultimate-guide-to-live-eur-usd-trading-signals-for-today",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/mt4-vs-mt5-pros-and-cons-for-scalpers-top-benefits-drawbacks-key-differences",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/top-7-expert-strategies-for-calculating-pip-value-in-gbp-jpy-trades",
@@ -3187,15 +3159,15 @@
     },
     {
       "from": "/12-powerful-strategies-for-trading-eur-usd-during-ecb-announcements-expert-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/top-7-best-forex-brokers-for-beginners-in-uae-2025-safe-powerful-trading-choices",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-forex-trading-strategies-for-small-accounts-that-actually-work",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-best-tips-for-a-powerful-live-forex-trading-room-for-beginners",
@@ -3207,11 +3179,11 @@
     },
     {
       "from": "/top-10-best-forex-strategies-for-day-traders-powerful-proven-and-effective-methods",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-insights-ultimate-guide-to-small-business-forex-marketing-boost-results-fast",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-insights-about-what-is-compound-interest-in-trading-for-massive-growth",
@@ -3231,27 +3203,27 @@
     },
     {
       "from": "/geo-targeted-forex-strategies-for-asia-12-powerful-insights-to-boost-regional-trading-success",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-tips-for-low-risk-scalping-on-1-minute-charts",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/top-10-powerful-tips-for-ichimoku-cloud-ea-strategy-for-eur-usd-pair",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/top-10-reasons-you-need-this-free-stochastics-oscillator-crossover-ea-mt4-guide-powerful-trading-insights",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-steps-to-backtest-envelope-indicator-ea-on-historical-data",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-benefits-of-the-cyber-cycle-indicator-smoothing-ema-crossover-strategy-powerful-proven-and-practical",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-install-massi-displacement-index-on-mt5-powerful-step-by-step-guide",
@@ -3263,15 +3235,15 @@
     },
     {
       "from": "/top-10-powerful-tips-to-master-free-percentage-price-oscillator-ppo-histogram-divergence-today",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-reasons-the-free-detwitt-pivot-point-indicator-daily-weekly-levels-can-transform-your",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/how-to-start-forex-trading-with-100-for-beginners-7-proven-steps-expert-tips",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/what-is-a-pip-in-forex-trading-explained-simply-7-powerful-insights-every-beginner-must-know",
@@ -3279,19 +3251,19 @@
     },
     {
       "from": "/9-powerful-ways-to-master-how-to-calculate-position-size-in-forex-trading-beginner-friendly-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/understanding-bid-and-ask-prices-in-forex-trading-10-powerful-insights-for-better-market-decisions",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/simple-moving-average-strategy-for-forex-beginners-powerful-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-insights-to-understand-what-is-swap-fee-in-forex-and-how-it-affects-trades",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/12-powerful-reasons-what-causes-forex-market-volatility-for-starters-explained-simply",
@@ -3299,19 +3271,19 @@
     },
     {
       "from": "/10-powerful-tips-for-a-safer-beginner-guide-to-forex-broker-selection-criteria",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/what-is-a-forex-trading-signal-and-how-to-use-one-a-powerful-guide-for-traders",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/simple-trend-following-strategy-for-forex-starters-10-powerful-steps-for-success",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/9-powerful-steps-on-how-to-calculate-risk-reward-ratio-in-forex-trades-complete-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-use-macd-indicator-for-forex-entry-signals-powerful-guide",
@@ -3319,11 +3291,11 @@
     },
     {
       "from": "/how-to-trade-usd-jpy-pair-during-news-events-proven-powerful-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-beginner-psychology-tips-for-consistent-forex-wins-must-read-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/what-is-slippage-in-forex-and-how-to-minimize-it-powerful-strategies-explained",
@@ -3331,7 +3303,7 @@
     },
     {
       "from": "/beginner-guide-to-elliott-wave-theory-basics-powerful-insights-for-new-traders",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/12-powerful-ways-to-master-how-to-analyze-forex-news-impact-on-pairs",
@@ -3415,11 +3387,11 @@
     },
     {
       "from": "/how-to-use-support-and-resistance-levels",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/trendline-drawing-techniques-for-forex",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/flags-and-pennants-continuation-patterns-7-proven-strategies-to-master-chart-patterns",
@@ -3643,7 +3615,7 @@
     },
     {
       "from": "/how-to-draw-trendlines-correctly-step-by-step",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/trendline-breakout-vs-false-breakout-how-to-identify-and-trade-them-effectively",
@@ -3823,7 +3795,7 @@
     },
     {
       "from": "/10-powerful-strategies-for-mastering-advanced-techniques-for-analyzing-order-flow-in-trading-sims-2",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-calculate-pips-in-forex-for-beginners-7-powerful-steps-to-master-pip-value-today-2",
@@ -3859,7 +3831,7 @@
     },
     {
       "from": "/ultimate-metatrader-4-expert-advisor-basic-setup-guide-10-powerful-steps-for-smooth-ea-deployment",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/mt4-ea-installation-step-by-step-windows-11-ultimate-guide-for-traders",
@@ -3867,7 +3839,7 @@
     },
     {
       "from": "/how-to-install-mt4-on-windows-step-by-step-the-ultimate-beginner-friendly-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/mt4-ea-money-management-percent-risk-per-trade-7-powerful-ways-to-control-risk-and-grow-your",
@@ -3883,7 +3855,7 @@
     },
     {
       "from": "/backtesting-walk-forward-method-explained-for-beginners-7-powerful-insights-every-new-trader-needs",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/monte-carlo-test-for-mt4-backtesting-the-complete-robustness-guide-for-traders",
@@ -3891,23 +3863,23 @@
     },
     {
       "from": "/10-powerful-ways-to-fix-the-cannot-load-library-error-in-mt4-solutions-guaranteed-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/11-best-ways-to-fix-mt4-trade-is-disabled-error-powerful-troubleshooting-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/ultimate-guide-to-fixing-order-send-error-130-invalid-stops-solutions",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-use-magic-numbers-to-track-trades-powerful-guide-for-traders",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/portfolio-of-multiple-eas-risk-diversification-7-powerful-strategies-for-safer-automated-trading",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/vps-requirements-for-broker-mt4-links-ultimate-guide-for-traders",
@@ -3915,7 +3887,7 @@
     },
     {
       "from": "/7-critical-facts-about-vps-latency-and-ping-requirements-for-scalping-ea",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-best-strategies-for-asian-session-mt4-robots-proven-safe-effective",
@@ -3931,7 +3903,7 @@
     },
     {
       "from": "/monte-carlo-simulations-for-mt4-robots-complete-beginner-to-pro-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/profit-factor-vs-win-rate-which-matters-for-ea-the-ultimate-guide-for-traders",
@@ -3939,7 +3911,7 @@
     },
     {
       "from": "/7-powerful-reasons-this-guide-to-risk-adjusted-returns-for-forex-robots-will-transform-your-trading",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-does-the-forex-market-work-explained-simply-the-ultimate-beginner-friendly-guide",
@@ -3955,27 +3927,27 @@
     },
     {
       "from": "/10-powerful-forex-risk-management-rules-for-small-accounts-complete-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-calculate-position-size-step-by-step-complete-beginner-friendly-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/forex-drawdown-explained-and-how-to-recover-11-powerful-steps-for-traders",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-set-realistic-forex-trading-goals-11-proven-steps-for-success",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-ways-the-atr-stop-loss-method-explained-with-examples-can-improve-your-trading",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/ichimoku-cloud-strategy-for-mt4-step-by-step-complete-beginners-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/rsi-divergence-strategy-step-by-step-guide",
@@ -3983,11 +3955,11 @@
     },
     {
       "from": "/complete-keltner-channel-breakout-ea-rules-tutorial-step-by-step-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/step-by-step-pine-script-v5-tutorial-for-day-trading-complete-beginners-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-best-ultimate-ways-to-master-tradingview-webhook-alerts-to-discord-step-by-step",
@@ -3995,19 +3967,19 @@
     },
     {
       "from": "/ultimate-guide-to-tradingview-paper-trading-setup-for-complete-beginners",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-use-myfxbook-to-verify-trading-results-7-powerful-steps-for-accurate-account-tracking",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/powerful-top-15-trading-psychology-tips-for-beginners-in-forex",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-avoid-overtrading-in-forex-practical-tips-21-powerful-ways-to-trade-smarter",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-discipline-and-patience-in-forex-trading-habits-lead-to-powerful-long-term-success",
@@ -4015,27 +3987,27 @@
     },
     {
       "from": "/10-powerful-ways-to-build-the-best-morning-routine-for-day-traders-forex",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-rules-to-control-fomo-in-fast-moving-markets-backed-by-proven-trading-psychology",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/15-best-ways-to-stop-revenge-trading-practical-tips-proven-powerful",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/ultimate-guide-myfxbook-verification-for-ea-performance-tutorial",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/rsi-divergence-strategy-for-forex-trading-9-powerful-tips-to-boost-your-accuracy",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/ichimoku-cloud-trading-system-for-mt4-the-ultimate-guide-to-smarter-faster-trades",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/heiken-ashi-candles-for-trend-identification-11-powerful-ways-to-improve-your-trading-strategy",
@@ -4047,11 +4019,11 @@
     },
     {
       "from": "/top-10-powerful-tips-for-a-winning-news-trading-strategy-during-economic-releases",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-demo-account-practice-strategies-for-beginners",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/multi-timeframe-volume-spike-detection-strategies-for-day-traders",
@@ -4059,27 +4031,27 @@
     },
     {
       "from": "/filter-false-signals-with-volatility-channel-indicators-in-forex",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/volumetric-inverse-fair-value-gap-detection-in-cryptocurrency-trading",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/multi-tool-vwap-and-emas-for-key-level-analysis-in-stock-charts",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/ym-ultimate-sniper-indicator-confluence-scoring-for-intraday-trades",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/intrabar-delta-momentum-tools-for-order-flow-in-futures-markets-11-powerful-insights-for-traders",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/ai-driven-k-means-clustering-for-whale-activity-in-stocks-11-powerful-insights-for-smarter-trading-decisions",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/gocharting-exotic-charts-setup-for-multi-asset-trading-10-powerful-tips-for-smarter-market-execution",
@@ -4087,19 +4059,19 @@
     },
     {
       "from": "/options-trading-strategies-for-volatile-markets-without-losing-money",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-insights-on-how-the-stock-market-auction-process-works-for-first-time-traders",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-strategies-for-making-money-with-options-in-beginner-friendly-ways",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/best-online-brokers-for-beginners-in-stock-and-forex-trading",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/15-powerful-technical-analysis-tools-every-day-trader-needs-to-learn-for-consistent-profits",
@@ -4107,15 +4079,15 @@
     },
     {
       "from": "/beginner-guide-to-cfd-trading-with-zero-commission-brokers",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/simple-nasdaq-intraday-trading-strategy-7-powerful-steps-for-guaranteed-improvement",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-use-rsi-in-forex-trading-powerful-strategies-expert-guidance",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-use-stop-loss-in-forex-trading-10-powerful-strategies-for-safer-trades",
@@ -4123,15 +4095,15 @@
     },
     {
       "from": "/what-is-forex-trading-and-how-does-it-work-full-beginner-breakdown",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-reasons-a-forex-trading-app-for-mobile-devices-can-transform-your-trading-success",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/the-ultimate-guide-to-compound-interest-in-forex-account-growth",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-get-fit-for-consistent-forex-trading-10-powerful-strategies-for-long-term-success",
@@ -4139,15 +4111,15 @@
     },
     {
       "from": "/10-powerful-ways-to-understand-forex-calendar-events-for-beginners-complete-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/17-powerful-risk-management-techniques-for-swing-trading-you-must-know-ultimate-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-ways-the-economic-news-impact-on-gold-prices-shapes-global-markets",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/common-mistakes-in-countertrend-scalping-12-powerful-insights-to-avoid-costly-errors",
@@ -4159,7 +4131,7 @@
     },
     {
       "from": "/top-10-powerful-fibonacci-retracement-ea-automated-trading-rules-for-successful-forex-strategies",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-ways-the-parabolic-sar-dots-indicator-with-alert-free-download-can-boost-your-trading",
@@ -4167,7 +4139,7 @@
     },
     {
       "from": "/9-powerful-insights-to-use-williams-percent-r-overbought-oversold-forex-signals-effectively",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/top-10-powerful-benefits-of-the-keltner-channel-squeeze-strategy-with-free-ea-download-ultimate-guide",
@@ -4179,27 +4151,27 @@
     },
     {
       "from": "/how-to-set-up-one-more-candle-ea-for-price-action-ultimate-step-by-step-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-reasons-to-use-free-laguerre-rsi-indicator-for-mean-reversion-trades",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-ways-to-master-how-to-use-detrended-price-oscillator-dpo-in-ea-for-smarter-algorithmic-trading",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-steps-to-master-how-to-backtest-absolute-price-oscillator-apo-strategy",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/top-10-powerful-free-money-flow-index-mfi-volume-confirmation-signals",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-ways-to-use-negative-volume-index-nvi-in-trend-ea",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/ease-of-movement-emv-oscillator-breakout-ea-download-best-expert-advisor-guide",
@@ -4211,7 +4183,7 @@
     },
     {
       "from": "/how-to-read-candlestick-charts-for-forex-newbies-10-powerful-tips-for-fast-learning",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-simple-risk-management-rules-for-forex-beginners-must-read-guide",
@@ -4219,35 +4191,35 @@
     },
     {
       "from": "/what-is-leverage-in-forex-and-how-to-use-it-safely-essential-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-tips-for-the-best-time-to-trade-forex-for-part-time-beginners-improve-results-fast",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-steps-on-how-to-trade-eur-usd-pair-for-absolute-beginners",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/what-is-margin-in-forex-trading-explained-easy-the-ultimate-beginner-friendly-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/beginner-guide-to-forex-lot-sizes-and-trading-9-powerful-tips-for-success",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-facts-about-what-are-forex-trading-sessions-and-overlaps-you-must-know",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/top-10-insights-about-what-is-scalping-in-forex-and-is-it-good-for-newbies-must-read-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-identify-support-and-resistance-in-forex-proven-strategies-for-traders",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-manage-emotions-in-forex-trading-psychology-15-powerful-strategies-for-success",
@@ -4255,7 +4227,7 @@
     },
     {
       "from": "/top-10-reasons-this-simple-bollinger-bands-strategy-for-forex-newbies-works-amazingly-well",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/what-is-the-economic-calendar-and-how-to-use-it-powerful-guide-for-traders",
@@ -4263,23 +4235,23 @@
     },
     {
       "from": "/how-to-trade-during-asian-forex-session-as-beginner-10-powerful-tips-for-success",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/free-forex-glossary-terms-every-newbie-should-know-10-powerful-concepts-to-fast-track-your-trading-success",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-spot-fake-forex-brokers-for-safe-trading-10-powerful-ways-to-protect-your-money",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/what-is-carry-trade-in-forex-explained-for-beginners-powerful-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/what-are-pending-orders-in-forex-and-types-7-powerful-insights-every-trader-must-know",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-trade-gbp-usd-volatility-as-a-newbie-10-powerful-tips-for-success",
@@ -4291,7 +4263,7 @@
     },
     {
       "from": "/10-powerful-simple-price-action-patterns-for-forex-beginners-that-actually-work",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-start-paper-trading-forex-without-money-the-ultimate-beginners-guide",
@@ -4299,11 +4271,11 @@
     },
     {
       "from": "/what-is-fundamental-analysis-in-forex-basics-10-powerful-insights-for-beginners",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/beginner-guide-to-forex-chart-timeframes-choice-7-powerful-tips-for-better-trading-decisions",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/what-are-pivot-points-in-forex-and-how-to-trade-them-11-proven-strategies-for-success",
@@ -4311,15 +4283,15 @@
     },
     {
       "from": "/top-10-powerful-free-video-tutorials-for-forex-candlestick-patterns-beginners-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/top-10-powerful-insights-on-what-is-a-demo-contest-in-forex-and-how-to-join-must-read-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-ways-to-use-trailing-stop-in-forex-for-profits-pro-level-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-choose-forex-trading-hours-by-timezone-the-ultimate-guide-for-smart-traders",
@@ -4431,11 +4403,11 @@
     },
     {
       "from": "/how-to-use-macd-indicator-effectively-10-proven-strategies-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/mastering-stochastic-oscillator-settings-for-forex-top-strategies",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/parabolic-sar-for-trailing-stops-in-forex",
@@ -4443,11 +4415,11 @@
     },
     {
       "from": "/elliott-wave-theory-basics-for-forex-a-beginners-complete-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/pivot-points-calculation-for-daily-trading",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/understanding-williams-percent-r-overbought-oversold",
@@ -4663,11 +4635,11 @@
     },
     {
       "from": "/fibonacci-retracement-61-8-golden-ratio-trades-mastering-the-art-of-precision-trading",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/ascending-channel-trading-strategy",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/descending-channel-pullback-trades-7-proven-strategies-for-profitable-entries",
@@ -4679,15 +4651,15 @@
     },
     {
       "from": "/ema-8-and-21-crossover-strategy-a-complete-guide-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/macd-histogram-divergence-trading-a-complete-guide-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/rsi-divergence-with-price-action-confirmation-7-proven-strategies-for-accurate-trading-signals",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/ichimoku-cloud-baseline-crossover-rules-a-complete-guide",
@@ -4699,7 +4671,7 @@
     },
     {
       "from": "/vwap-intraday-trading-strategy-proven-techniques-real-examples-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/top-12-best-candlestick-patterns-for-swing-trading-to-maximize-profits",
@@ -4715,7 +4687,7 @@
     },
     {
       "from": "/trading-pullbacks-to-moving-averages-7-powerful-strategies-for-consistent-profits",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/non-farm-payroll-nfp-why-this-key-economic-indicator-moves-markets-dramatically",
@@ -4879,7 +4851,7 @@
     },
     {
       "from": "/non-martingale-expert-advisor-ea-for-metatrader-5-mt5-with-low-drawdown",
-      "wasTo": "/category/forex-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/macd-histogram-settings-for-day-trading",
@@ -5059,7 +5031,7 @@
     },
     {
       "from": "/profitunity-bars-forex-indicator-free-download-powerful-guide-to-boosting-trading-success",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/grab-candles-short-forex-indicator-free-download-powerful-trading-edge-for-smart-traders",
@@ -5103,11 +5075,11 @@
     },
     {
       "from": "/10-powerful-ways-to-manage-multiple-eas-on-one-account-tips-effectively",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/mt4-vps-setup-for-24-7-automated-trading-best-step-guide-for-reliable-non-stop-performance",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/17-point-powerful-vps-security-checklist-for-running-forex-robots-essential-protection-guide",
@@ -5119,27 +5091,27 @@
     },
     {
       "from": "/powerful-ways-to-how-to-debug-mql4-code-in-mt4-expert-advisors-step-by-step-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/understanding-event-driven-programming-on-tick-in-expert-advisor",
-      "wasTo": "/blog/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/what-is-a-pip-in-forex-with-simple-examples-the-ultimate-beginners-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/fibonacci-retracement-levels-for-forex-entries-11-powerful-strategies-for-better-trading-decisions",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-reasons-to-use-a-position-sizing-calculator-for-forex-traders",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/12-powerful-insights-to-understand-leverage-risks-in-forex-trading-explained",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/long-term-forex-investment-strategies",
@@ -5147,7 +5119,7 @@
     },
     {
       "from": "/low-cost-fixed-spreads-explained-for-forex-trading-newbies-7-powerful-things-you-must-know",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/gold-trading-without-emotional-drama-11-proven-strategies-for-calm-profitable-decisions",
@@ -5155,7 +5127,7 @@
     },
     {
       "from": "/9-proven-techniques-for-the-best-stop-loss-placement-in-volatile-markets-powerful-guide",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/beginners-guide-to-forex-prop-firms-11-proven-insights-for-smart-trading-success",
@@ -5163,15 +5135,15 @@
     },
     {
       "from": "/top-10-powerful-insights-about-elder-impulse-system-ea-green-red-bar-signals-for-smarter-trading",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/7-powerful-ways-the-free-twiggs-money-flow-indicator-choppy-market-filter-can-improve-trading-results",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-tips-to-avoid-the-most-common-mistakes-to-avoid-in-beginner-forex-trading",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-facts-about-what-are-major-currency-pairs-in-forex-for-starters-beginners-guide",
@@ -5179,7 +5151,7 @@
     },
     {
       "from": "/10-powerful-ways-to-avoid-overtrading-in-forex-as-a-newbie",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/beginner-tips-for-trading-news-events-in-forex-10-powerful-strategies-for-success",
@@ -5191,23 +5163,23 @@
     },
     {
       "from": "/what-are-exotic-currency-pairs-in-forex-trading-11-powerful-insights-for-traders",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-backtest-a-forex-strategy-manually-for-free-proven-methods-simple-steps",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/free-forex-ebooks-for-learning-basics-quickly-powerful-guide-for-beginners",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/beginner-tips-for-avoiding-revenge-trading-in-forex-15-powerful-strategies-for-safer-trading",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/what-is-a-hedging-strategy-in-forex-trading-7-powerful-insights-to-reduce-risk-now",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-avoid-common-forex-scam-signals-powerful-guide-to-stay-safe",
@@ -5215,7 +5187,7 @@
     },
     {
       "from": "/top-10-powerful-insights-for-a-simple-stochastic-oscillator-strategy-for-forex",
-      "wasTo": "/category/installation-setup/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/how-to-use-volume-indicators-in-forex-charts-powerful-guide-for-traders",
@@ -5247,15 +5219,15 @@
     },
     {
       "from": "/volume-analysis-for-forex-confirmation",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/ichimoku-cloud-strategy-for-trend-trading",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/gann-angles-for-forex-price-prediction",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/how-to-review-trades-for-improvement-the-ultimate-guide",
@@ -5327,11 +5299,11 @@
     },
     {
       "from": "/psychological-support-and-resistance-levels",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/pivot-point-support-resistance-trading-strategy-mastering-key-market-levels",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/bollinger-bands-squeeze-breakout-strategy-ultimate-guide",
@@ -5415,7 +5387,7 @@
     },
     {
       "from": "/smart-money-concepts-indicator-pack-review",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/kelly-criterion-position-sizing-explained",
@@ -5635,7 +5607,7 @@
     },
     {
       "from": "/woodies-cci-arrows-oscillator-forex-indicator-free-download-7-powerful-benefits-every-trader-must-know",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/5-best-indicators-for-your-trading-free-download-powerful-tools-to-boost-profits-fast",
@@ -5727,7 +5699,7 @@
     },
     {
       "from": "/trendrsi-momentum-structure-with-flip-signals-by-cony1979-forex-indicator-reviews",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/thermal-momentum-gauge-by-officialjackofalltrades-forex-indicator-reviews-powerful-truth-7-key-insights-for-smart-traders",
@@ -5739,7 +5711,7 @@
     },
     {
       "from": "/alberto-r-a-fx-motor-institucional-htf-ltf-by-aran150491xam-forex-indicator-reviews-honest-powerful-and-practical-guide-7-key-insights",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/brick-wall-reversal-zones-by-latonyusx-forex-indicator-reviews-powerful-insights-7-honest-truths",
@@ -5791,11 +5763,11 @@
     },
     {
       "from": "/when-the-world-burns-your-money-doesnt-have-to",
-      "wasTo": "/category/ai-powered-trading-tools/ai-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/the-money-race-nobody-told-you-about",
-      "wasTo": "/category/ai-powered-trading-tools/ai-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/the-8th-wonder-of-the-world-nobody-taught-you-in-school",
@@ -5839,7 +5811,7 @@
     },
     {
       "from": "/traide-ringer-free-download-the-ultimate-safe-smart-guide",
-      "wasTo": "/category/ai-powered-trading-tools/ai-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/force-titanium-ea-free-download-7-powerful-truths-you-must-know-before-installing",
@@ -5855,7 +5827,7 @@
     },
     {
       "from": "/silicon-falcon-free-download-7-powerful-facts-you-must-know-before-you-install",
-      "wasTo": "/category/ai-powered-trading-tools/ai-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/evil-twin-scalper-ea-free-download-7-powerful-truths-every-trader-must-know",
@@ -6023,7 +5995,7 @@
     },
     {
       "from": "/mtf-macd-bars-indicator-free-download-powerful-7-step-guide-for-smarter-trading",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/free-scalping-and-100-pips-mt4-forex-trading-strategy-free-download-powerful-7-step-blueprint-for-consistent-gains",
@@ -6051,7 +6023,7 @@
     },
     {
       "from": "/auto-candlestick-patterns-detector-tradingview-script-for-free-powerful-simple-and-9-must-know-tricks",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/the-assar-phoenix-elite-robot-free-download-7-powerful-facts-you-must-know-before-getting-it",
@@ -6071,15 +6043,15 @@
     },
     {
       "from": "/karat-killer-forex-ea-reviews-7-powerful-truths-every-trader-must-know",
-      "wasTo": "/category/forex-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/royal-quant-ea-forex-ea-reviews-7-powerful-insights-every-trader-must-know",
-      "wasTo": "/category/forex-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/bitcoin-quantum-edge-algo-forex-ea-reviews-7-powerful-truths-you-must-know-before-investing",
-      "wasTo": "/category/ai-powered-trading-tools/ai-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/xau-sniper-pro-forex-ea-reviews-7-powerful-truths-every-trader-must-know",
@@ -6087,11 +6059,11 @@
     },
     {
       "from": "/argos-rage-forex-ea-reviews-7-powerful-insights-every-trader-must-know",
-      "wasTo": "/category/forex-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/xauusd-quantum-scalping-ea-forex-ea-reviews-7-powerful-truths-every-trader-must-know",
-      "wasTo": "/category/forex-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/l2-main-force-trend-by-blackcat-powerful-insights-honest-forex-indicator-reviews",
@@ -6107,7 +6079,7 @@
     },
     {
       "from": "/smart-trend-by-zofesu-forex-indicator-reviews-powerful-honest-insights-7-must-know-facts",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/%F0%9F%9A%80-powerful-auto-s-r-channels-by-willyalgotrader-forex-indicator-reviews-7-shocking-truths-you-must-know",
@@ -6127,15 +6099,15 @@
     },
     {
       "from": "/bottom-finder-2-green-candles-momentum-by-kerrency",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/quantum-relative-performance-oscillator-by-pineify-forex-indicator-reviews",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/cow-stochastic-momentum-index-by-tradercow913-forex-indicator-reviews-7-powerful-insights-every-trader-must-know",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/zct-momentum-s-r-rules-by-ahanaf_adil-forex-indicator-reviews-7-powerful-truths-every-trader-must-know",
@@ -6151,7 +6123,7 @@
     },
     {
       "from": "/cme-dxy-volume-final-by-huiliu18-forex-indicator-reviews-17-powerful-pros-cons-and-real-world-use-cases",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/orange-blue-trends-by-kkilbourne-forex-indicator-reviews-7-powerful-insights-traders-must-know",
@@ -6163,7 +6135,7 @@
     },
     {
       "from": "/7-essential-honest-structure-mapping-pro-by-rabgoada9-forex-indicator-reviews-that-traders-shouldnt-ignore",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/exness-review-trade-from-1-with-free-vps-why-it-beats-every-other-broker",
@@ -6235,15 +6207,15 @@
     },
     {
       "from": "/range-breakout-ea-forex-ea-reviews-7-powerful-truths-every-trader-must-know",
-      "wasTo": "/category/forex-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/ntron-2ooo-forex-ea-reviews-powerful-truth-7-critical-facts-you-must-know",
-      "wasTo": "/category/forex-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/dark-gold-forex-ea-reviews-7-powerful-truths-you-must-know-before-investing",
-      "wasTo": "/category/forex-ea-reviews/"
+      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/zonex-vynex-by-primeverse_app-forex-indicator-reviews-the-ultimate-honest-breakdown-for-smart-traders",
@@ -6275,7 +6247,7 @@
     },
     {
       "from": "/nas100-alerts-limitless-by-blissfulaccoun8911-forex-indicator-reviews-powerful-truth-7-game-changing-insights",
-      "wasTo": "/category/ai-powered-trading-tools/ai-trading-indicators/"
+      "wasTo": "/category/free-forex-indicator/"
     }
   ],
   "rules": [
@@ -9515,6 +9487,16 @@
       "status": 410
     },
     {
+      "from": "/category/ai-powered-trading-tools/ai-ea-reviews/",
+      "to": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/",
+      "status": 301
+    },
+    {
+      "from": "/category/ai-powered-trading-tools/ai-trading-indicators/",
+      "to": "/category/free-forex-indicator/",
+      "status": 301
+    },
+    {
       "from": "/category/become-a-billionaire",
       "to": "/category/become-a-billionaire",
       "status": 410
@@ -9535,6 +9517,11 @@
       "status": 301
     },
     {
+      "from": "/category/forex-ea-reviews/",
+      "to": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/",
+      "status": 301
+    },
+    {
       "from": "/category/forex-education",
       "to": "/category/forex-education",
       "status": 410
@@ -9543,6 +9530,16 @@
       "from": "/category/forex-trading",
       "to": "/category/forex-trading",
       "status": 410
+    },
+    {
+      "from": "/category/forex-trading-strategies/risk-money-management-forex-trading-strategies/",
+      "to": "/category/risk-money-management/",
+      "status": 301
+    },
+    {
+      "from": "/category/forex-trading-strategies/trend-following/",
+      "to": "/category/technical-analysis/",
+      "status": 301
     },
     {
       "from": "/category/forex-trading-strategy",
@@ -9555,8 +9552,28 @@
       "status": 410
     },
     {
+      "from": "/category/free-ea/",
+      "to": "/category/free-forex-ea/",
+      "status": 301
+    },
+    {
+      "from": "/category/gold-xauusd-trading/gold-ea-robots/",
+      "to": "/category/gold-xauusd-trading/",
+      "status": 301
+    },
+    {
+      "from": "/category/gold-xauusd-trading/xauusd-trading-strategies/",
+      "to": "/category/gold-xauusd-trading/",
+      "status": 301
+    },
+    {
       "from": "/category/indicators",
       "to": "/product/zenith-matrix-ea-ai-gold-scalper-for-mt5/",
+      "status": 301
+    },
+    {
+      "from": "/category/installation-setup/",
+      "to": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/",
       "status": 301
     },
     {
@@ -9565,8 +9582,13 @@
       "status": 410
     },
     {
+      "from": "/category/mt4-mt5-expert-advisors/ea-development-mql4-mql5/",
+      "to": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/",
+      "status": 301
+    },
+    {
       "from": "/category/mt4-mt5-expert-advisors/ea-installation-setup",
-      "to": "/category/installation-setup/",
+      "to": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/",
       "status": 301
     },
     {

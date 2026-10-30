@@ -13,8 +13,10 @@ seo:
 sourceUrl: "https://bestmt4ea.com/usdjpy-safe-expert-advisor-free-download-7-powerful-benefits-smart-setup-guide/"
 categories:
   - "Free Forex EA"
+  - "Risk & Money Management"
 categoryPaths:
   - "/category/free-forex-ea/"
+  - "/category/risk-money-management/"
 tags: []
 draft: false
 quickAnswer: "A USDJPY expert advisor is only as safe as its risk rules, its source and its test record. A free EA can be useful for learning, but a file's name never makes it safe. Check the code, cap risk at 1 to 2 percent per trade, respect the broker's spread and stop level, then run it on a demo account before any live money."

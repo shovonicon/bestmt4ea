@@ -12,10 +12,10 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_135009_featured.webp"
 sourceUrl: "https://bestmt4ea.com/%f0%9f%8f%86-best-currency-strength-meter-indicator-free-download-powerful-proven-picks/"
 categories:
-  - "AI Trading Indicators"
+  - "Free Forex Indicator"
   - "Forex Trading Strategies"
 categoryPaths:
-  - "/category/ai-trading-indicators/"
+  - "/category/free-forex-indicator/"
   - "/category/forex-trading-strategies/"
 tags: []
 primaryKeyword: "currency strength meter indicator"

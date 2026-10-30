@@ -13,8 +13,12 @@ seo:
 sourceUrl: "https://bestmt4ea.com/gold-scalping-expert-advisor-mt4-free-download-powerful-proven-guide-7-winning-secrets/"
 categories:
   - "Free Forex EA"
+  - "Gold (XAUUSD) Trading"
+  - "Forex Scalping"
 categoryPaths:
   - "/category/free-forex-ea/"
+  - "/category/gold-xauusd-trading/"
+  - "/category/forex-trading-strategies/forex-scalping/"
 tags: []
 draft: false
 quickAnswer: "A gold scalping expert advisor survives on seven habits, not seven secrets: a spread budget you refuse to trade outside, one session you actually trade, stops placed beyond gold's normal noise, position size derived from ATR, one position at a time, a hard daily loss limit, and a written re-test date. Ignore any one of them and the account, not the robot, pays first."
@@ -197,7 +201,7 @@ A daily loss limit is the one rule that has to be decided in advance, because th
 
 The figure is personal, but 2–3 percent of equity per day is a common, defensible choice. On a 5,000 USD account that is 100 to 150 USD. The exact number matters less than three properties: it is written down, it is enforced automatically, and it is not editable at 16:00 when you are down and frustrated.
 
-Why daily, and not just per trade? Because scalpers lose in clusters. One bad hour produces two losses, then a decision to size up, then two more. A per-trade limit cannot stop a spiral; a daily limit ends it by removing you from the screen. This is also where gold's volatility punishes the person who keeps going for "one more trade". Understanding that cluster behaviour is part of [risk and money management](/category/forex-trading-strategies/risk-money-management-forex-trading-strategies/), and it belongs in your settings, not in your willpower.
+Why daily, and not just per trade? Because scalpers lose in clusters. One bad hour produces two losses, then a decision to size up, then two more. A per-trade limit cannot stop a spiral; a daily limit ends it by removing you from the screen. This is also where gold's volatility punishes the person who keeps going for "one more trade". Understanding that cluster behaviour is part of [risk and money management](/category/risk-money-management/), and it belongs in your settings, not in your willpower.
 
 Implement the limit where you cannot override it easily. If your EA supports a daily loss input, use it. If it does not, set an account-level stop with your broker, or run the robot through a manager that enforces it. The point is to make the limit a property of the system rather than a decision you make while you are losing, because that is precisely when your judgement is worst.
 

@@ -1,0 +1,274 @@
+---
+/**
+ * Right-hand partner column for the tool pages: three separate 320px cards in a
+ * 2:1:1 stack, so the column still totals 640px once the gaps are counted.
+ *
+ * The lead card is a sponsored broker (Exness) at double height, because a broker
+ * choice is the decision that costs the reader most to get wrong. The two single
+ * cards below it are our own VPS and account-management services, so the column
+ * answers "where do I run this, and who watches it" in one place.
+ *
+ * Figures come from the existing cards on the post pages (FCA/CySEC, free VPS on
+ * qualifying accounts, Windows Server 2022, from $44.99/mo) — nothing here is a
+ * new claim. The broker link goes through the affiliate registry and carries the
+ * sponsored rel; the disclosure sits once, under the column.
+ */
+import { affiliates, AFFILIATE_REL } from '../lib/affiliates';
+import { url } from '../lib/urls';
+
+export interface Props {
+  /** `rail` for the 320px column, `inline` for the in-flow stack after the page copy. */
+  variant?: 'rail' | 'inline';
+}
+
+const { variant = 'rail' } = Astro.props;
+const exness = affiliates.exness;
+---
+
+<aside class:list={['tool-rail', `tool-rail--${variant}`]} aria-label="Partner offers">
+  <div class="tool-rail__stack">
+    <a
+      href={exness.url}
+      rel={AFFILIATE_REL}
+      target="_blank"
+      class="tool-rail__card tool-rail__card--lead"
+    >
+      <span class="tool-rail__head">
+        <span class="tool-rail__tag">Sponsored</span>
+        <span class="brand-chip tool-rail__logo">
+          <img src={exness.logo} alt="Exness" loading="lazy" decoding="async" />
+        </span>
+      </span>
+
+      <span class="tool-rail__body">
+        <span class="tool-rail__kicker">For MT4 &amp; MT5</span>
+        <span class="tool-rail__title tool-rail__title--lead">Start on a regulated broker from $1</span>
+        <span class="tool-rail__meta">FCA &amp; CySEC regulated · free VPS on qualifying accounts</span>
+      </span>
+
+      <span class="tool-rail__cta">
+        Open an Exness account
+        <svg viewBox="0 0 24 24" class="tool-rail__arrow" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14" />
+          <path d="m12 5 7 7-7 7" />
+        </svg>
+      </span>
+    </a>
+
+    <a href={url('/product/vps')} class="tool-rail__card">
+      <span class="tool-rail__tag">Our product</span>
+      <span class="tool-rail__title">Keep the terminal running 24/7</span>
+      <span class="tool-rail__meta">Windows Server 2022 · from $44.99/mo</span>
+      <span class="tool-rail__link">
+        See the VPS plans
+        <svg viewBox="0 0 24 24" class="tool-rail__arrow" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14" />
+          <path d="m12 5 7 7-7 7" />
+        </svg>
+      </span>
+    </a>
+
+    <a href={url('/copy-trading')} class="tool-rail__card">
+      <span class="tool-rail__tag">Our service</span>
+      <span class="tool-rail__title">Let a desk manage the trading</span>
+      <span class="tool-rail__meta">You keep the account · every position stays visible</span>
+      <span class="tool-rail__link">
+        See how it works
+        <svg viewBox="0 0 24 24" class="tool-rail__arrow" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14" />
+          <path d="m12 5 7 7-7 7" />
+        </svg>
+      </span>
+    </a>
+  </div>
+
+  <p class="tool-rail__note">
+    Advertisement. Affiliate link: we may earn a commission at no cost to you.
+  </p>
+</aside>
+
+<style>
+  .tool-rail {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    width: 100%;
+  }
+
+  .tool-rail--rail {
+    width: 320px;
+  }
+
+  /*
+   * The rail: three cards, 2:1:1 of a 640px column. The gap lives inside the 640
+   * so the whole rail matches the left one and both sticky columns align at the top.
+   */
+  .tool-rail--rail .tool-rail__stack {
+    display: grid;
+    grid-template-rows: 2fr 1fr 1fr;
+    gap: 0.55rem;
+    height: 640px;
+  }
+
+  /* In the flow the cards size to their content — no fixed column height. */
+  .tool-rail--inline .tool-rail__stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  /* From tablet up the two house cards sit side by side under the lead card. */
+  @media (min-width: 640px) {
+    .tool-rail--inline .tool-rail__stack {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+    }
+    .tool-rail--inline .tool-rail__card--lead {
+      grid-column: 1 / -1;
+    }
+  }
+
+  /*
+   * These three are deliberately flat and dark: the lit treatment belongs to the
+   * paid card on the left, so the eye is not split between two glowing units.
+   */
+  .tool-rail__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 0.9rem;
+    background-image: linear-gradient(168deg, rgba(5, 13, 11, 0.99), rgba(0, 0, 0, 0.99) 72%);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    overflow: hidden;
+    transition: border-color 0.18s, background-color 0.18s;
+  }
+
+  .tool-rail__card--lead {
+    justify-content: space-between;
+    gap: 0.6rem;
+  }
+
+  .tool-rail__card:hover,
+  .tool-rail__card:focus-visible {
+    border-color: rgba(0, 193, 144, 0.4);
+    background-color: rgba(0, 193, 144, 0.04);
+  }
+
+  .tool-rail__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .tool-rail__tag {
+    font-size: 0.5625rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-ink-dim);
+  }
+
+  /* Exness' mark is dark on its own white plate. */
+  .tool-rail__logo {
+    padding: 0.4rem 0.8rem;
+    box-shadow:
+      0 0 0 1px rgba(0, 193, 144, 0.45),
+      0 8px 22px rgba(0, 193, 144, 0.22);
+  }
+
+  .tool-rail__logo img {
+    height: 1.1rem;
+    width: auto;
+  }
+
+  .tool-rail__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .tool-rail__kicker {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--color-accent-soft);
+  }
+
+  .tool-rail__title {
+    font-family: var(--font-heading);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+  }
+
+  .tool-rail__title--lead {
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+
+  .tool-rail__meta {
+    font-size: 0.6875rem;
+    line-height: 1.45;
+    color: var(--color-ink-dim);
+  }
+
+  .tool-rail__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border-radius: 0.7rem;
+    background-image: linear-gradient(135deg, var(--color-accent), var(--color-accent-soft));
+    color: #04140f;
+    font-size: 0.8125rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    box-shadow: 0 10px 24px rgba(0, 193, 144, 0.25);
+  }
+
+  .tool-rail__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: auto;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-accent-soft);
+  }
+
+  .tool-rail__arrow {
+    width: 0.8rem;
+    height: 0.8rem;
+    transition: transform 0.2s;
+  }
+
+  .tool-rail__card:hover .tool-rail__arrow {
+    transform: translateX(3px);
+  }
+
+  .tool-rail__note {
+    margin: 0;
+    font-size: 0.625rem;
+    line-height: 1.55;
+    color: var(--color-ink-dim);
+  }
+
+  /* ------------------------------------------------------------- motion */
+
+  /* No sheen or pulse here on purpose: the left card is the highlighted unit. */
+  @media (prefers-reduced-motion: reduce) {
+    .tool-rail__arrow,
+    .tool-rail__card {
+      transition: none;
+    }
+  }
+</style>

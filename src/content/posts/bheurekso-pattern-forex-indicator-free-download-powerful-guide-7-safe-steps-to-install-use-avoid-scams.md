@@ -31,9 +31,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_135056_featured.webp"
 sourceUrl: "https://bestmt4ea.com/bheurekso-pattern-forex-indicator-free-download-powerful-guide-7-safe-steps-to-install-use-avoid-scams/"
 categories:
-  - "MT4/MT5 Expert Advisors"
+  - "Free Forex Indicator"
 categoryPaths:
-  - "/category/mt4-mt5-expert-advisors/"
+  - "/category/free-forex-indicator/"
 tags: []
 sources:
   - label: "MetaTrader 5 Help: Strategy Tester and testing"

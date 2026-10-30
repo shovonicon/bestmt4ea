@@ -6,8 +6,10 @@ publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
   - "EA Reviews & Comparisons"
+  - "Risk & Money Management"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
+  - "/category/risk-money-management/"
 tags: []
 draft: false
 quickAnswer: "Waka Waka EA is a long-running grid-style expert advisor for MT4 and MT5, best known for trading AUD and NZD cross pairs and for a public track record that includes both years of steady gains and a severe, well-documented drawdown. Its long-term lesson is bigger than the product: grid systems convert many small wins into occasional deep drawdowns, so judge it on equity drawdown and recovery time, not on win rate."

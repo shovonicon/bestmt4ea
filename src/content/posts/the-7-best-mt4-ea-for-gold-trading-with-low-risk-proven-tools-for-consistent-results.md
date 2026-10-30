@@ -12,9 +12,11 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_1727_featured.webp"
 sourceUrl: "https://bestmt4ea.com/the-7-best-mt4-ea-for-gold-trading-with-low-risk-proven-tools-for-consistent-results/"
 categories:
-  - "Installation & Setup"
+  - "Free Forex EA"
+  - "Gold (XAUUSD) Trading"
 categoryPaths:
-  - "/category/installation-setup/"
+  - "/category/free-forex-ea/"
+  - "/category/gold-xauusd-trading/"
 tags:
   - "gold"
   - "XAUUSD"

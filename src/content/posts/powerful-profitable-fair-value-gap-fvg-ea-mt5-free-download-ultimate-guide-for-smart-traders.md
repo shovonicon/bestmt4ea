@@ -12,10 +12,12 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127190_featured.webp"
 sourceUrl: "https://bestmt4ea.com/powerful-profitable-fair-value-gap-fvg-ea-mt5-free-download-ultimate-guide-for-smart-traders/"
 categories:
+  - "Free Forex EA"
   - "EA Reviews & Comparisons"
   - "MT4/MT5 Expert Advisors"
 categoryPaths:
-  - "/category/ea-reviews-comparisons/"
+  - "/category/free-forex-ea/"
+  - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/mt4-mt5-expert-advisors/"
 tags: []
 draft: false

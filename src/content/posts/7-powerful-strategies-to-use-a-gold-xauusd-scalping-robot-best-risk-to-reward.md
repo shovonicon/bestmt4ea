@@ -6,8 +6,12 @@ publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
   - "Gold (XAUUSD) Trading"
+  - "Forex Scalping"
+  - "Risk & Money Management"
 categoryPaths:
   - "/category/gold-xauusd-trading/"
+  - "/category/forex-trading-strategies/forex-scalping/"
+  - "/category/risk-money-management/"
 tags: []
 draft: false
 quickAnswer: "A gold scalping robot only deserves live capital when its risk-to-reward is built before the entry, not hoped for after it. That means session filters, a spread gate, stops set from current volatility, targets that survive spread and slippage, and position size calculated from stop distance. If any one of those is missing, the robot is gambling with faster execution, not trading with an edge."

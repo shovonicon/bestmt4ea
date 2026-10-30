@@ -47,10 +47,12 @@ seo:
 sourceUrl: "https://bestmt4ea.com/skynet-ea-free-download-7-shocking-truths-you-must-know-before-installing/"
 categories:
   - "EA Reviews & Comparisons"
-  - "MT4/MT5 Expert Advisors"
+  - "Free Forex EA"
+  - "EA Settings & Optimization"
 categoryPaths:
-  - "/category/ea-reviews-comparisons/"
-  - "/category/mt4-mt5-expert-advisors/"
+  - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
+  - "/category/free-forex-ea/"
+  - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
 tags: []
 draft: false
 download:

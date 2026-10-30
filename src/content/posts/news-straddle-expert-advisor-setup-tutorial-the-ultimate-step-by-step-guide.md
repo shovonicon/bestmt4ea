@@ -7,6 +7,8 @@ publishedAt: 2025-12-07T02:40:44.000Z
 updatedAt: 2026-10-08T00:00:00.000Z
 categories:
   - "MT4/MT5 Expert Advisors"
+categoryPaths:
+  - "/category/mt4-mt5-expert-advisors/"
 tags: []
 quickAnswer: "A news straddle expert advisor places a buy stop above price and a sell stop below it before a high-impact release, so one order can catch the first move while the other is cancelled. It is a fast execution tool, not a prediction. Spread, slippage, distance and lot size decide whether the straddle survives the spike or damages your account."
 keyTakeaways:

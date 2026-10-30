@@ -8,6 +8,7 @@ import TelegramFab from '../components/TelegramFab.astro';
 import ParticleField from '../components/ParticleField.astro';
 import ObsidianPromo from '../components/ObsidianPromo.astro';
 import GoogleAnalytics from '../components/GoogleAnalytics.astro';
+import AdUnitCollapse from '../components/AdUnitCollapse.astro';
 import { site } from '../lib/site';
 import { canonicalFor, resolveImage } from '../lib/urls';
 
@@ -121,5 +122,6 @@ const jsonLdBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     <Footer />
     <BackToTop />
     <TelegramFab />
+    <AdUnitCollapse />
   </body>
 </html>

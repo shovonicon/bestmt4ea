@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_139067_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/%f0%9f%93%8a-strength-candles-buy-sell-forex-mt4-indicator-free-download-powerful-guide-smart-trading-tips/"
 categories:
-  - "MT4/MT5 Expert Advisors"
+  - "Free Forex Indicator"
 categoryPaths:
-  - "/category/mt4-mt5-expert-advisors/"
+  - "/category/free-forex-indicator/"
 tags: []
 draft: false
 primaryKeyword: "Strength candles buy sell forex MT4 indicator"

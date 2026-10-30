@@ -55,9 +55,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_137222_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/%f0%9f%9a%80-moving-average-crossover-arrows-indicator-mt5-free-download-powerful-profitable-guide/"
 categories:
-  - "MT4/MT5 Expert Advisors"
+  - "Free Forex Indicator"
 categoryPaths:
-  - "/category/mt4-mt5-expert-advisors/"
+  - "/category/free-forex-indicator/"
 tags: []
 draft: false
 ---

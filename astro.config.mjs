@@ -7,6 +7,7 @@ import matter from 'gray-matter';
 import { loadEnv } from 'vite';
 import { rehypeTableAccessibility } from './src/lib/rehype-table-a11y.mjs';
 import { rehypeInArticleAds } from './src/lib/rehype-in-article-ads.mjs';
+import { affiliates } from './src/lib/affiliates.ts';
 
 /*
  * Vite loads `.env` *after* this config file has already been evaluated, so
@@ -191,6 +192,27 @@ export default defineConfig({
             env.PUBLIC_ADSENSE_SLOT_IN_ARTICLE ||
             process.env.PUBLIC_ADSENSE_SLOT_IN_ARTICLE ||
             '6721931734',
+          /*
+           * Affiliate banner, injected into the body at 75%. It is the broker's
+           * own creative, so it stays current; the link comes from the registry.
+           */
+          banners: [
+            {
+              at: 0.3,
+              href: affiliates.exness.url,
+              image: 'https://d3dpet1g0ty5ed.cloudfront.net/EN_Take_Control_990x250px.png',
+              alt: 'Exness',
+              width: 990,
+              height: 250,
+            },
+            {
+              at: 0.75,
+              href: affiliates['roboforex-welcome'].url,
+              image:
+                'https://my.roboforex.com/files/banners/40_en_rbfx_728x90__45397b061c4e0ccff0770064b1bc81df.jpg',
+              alt: 'RoboForex',
+            },
+          ],
         },
       ],
     ],

@@ -1,0 +1,91 @@
+---
+/**
+ * Collapses an ad unit that AdSense leaves empty.
+ *
+ * A unit is only rendered at all when `PUBLIC_ADSENSE_CLIENT` is set, so the
+ * markup is correct — but AdSense reserves a 640x280 box for an `auto` unit
+ * before it knows whether it has a creative to put in it. When the request
+ * comes back unfilled (a new account still in review, an unfilled placement, or
+ * a local origin AdSense will never serve) the box stays, and the reader is left
+ * looking at a labelled rectangle of nothing.
+ *
+ * The signal used here is Google's own: `data-ad-status="unfilled"`. Units that
+ * never report a status at all (blocked script, or a request that never
+ * resolves) fall back to a timeout. A late fill flips it back — the observer
+ * keeps watching after the unit has been hidden.
+ */
+---
+
+<script is:inline>
+  (() => {
+    if (window.__adCollapseInit) return;
+    window.__adCollapseInit = true;
+
+    /* Long enough for a normal fill, short enough that nobody reads a blank box. */
+    const GRACE_MS = 8000;
+    const started = Date.now();
+
+    const insOf = (unit) => unit.querySelector('ins.adsbygoogle');
+
+    const sync = (unit) => {
+      /* A unit with its own fallback manages itself — hiding it would hide the fallback. */
+      if (unit.querySelector('[data-ad-fallback]')) return;
+
+      const ins = insOf(unit);
+      if (!ins) return;
+
+      /*
+       * A unit that never asked is not unfilled: the side rails are display:none
+       * below the rail breakpoint, so their guard never fires. Leaving those
+       * alone keeps this from "hiding" something that was never shown.
+       */
+      if (ins.dataset.adRequested !== '1') return;
+
+      const status = ins.getAttribute('data-ad-status');
+      const iframe = ins.querySelector('iframe');
+      const filled = status === 'filled' || Boolean(iframe && iframe.offsetHeight > 40);
+
+      if (filled) {
+        unit.hidden = false;
+        unit.style.display = '';
+        return;
+      }
+
+      if (status === 'unfilled' || Date.now() - started > GRACE_MS) {
+        unit.hidden = true;
+        unit.style.display = 'none';
+      }
+    };
+
+    const units = () => Array.from(document.querySelectorAll('[data-ad-unit]'));
+
+    const watch = () => {
+      for (const unit of units()) {
+        if (unit.dataset.adWatched === '1') continue;
+        unit.dataset.adWatched = '1';
+        const ins = insOf(unit);
+        if (ins) {
+          new MutationObserver(() => sync(unit)).observe(ins, {
+            attributes: true,
+            attributeFilter: ['data-ad-status'],
+          });
+        }
+        sync(unit);
+      }
+    };
+
+    /* Re-check at a few points: units ask on their own schedule, not ours. */
+    watch();
+    [1500, 4000, 8000, 12000, 20000].forEach((ms) =>
+      window.setTimeout(() => {
+        watch();
+        units().forEach(sync);
+      }, ms),
+    );
+
+    window.addEventListener('load', () => {
+      watch();
+      units().forEach(sync);
+    });
+  })();
+</script>

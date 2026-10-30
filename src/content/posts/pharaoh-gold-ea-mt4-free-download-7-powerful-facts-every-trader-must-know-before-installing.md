@@ -12,11 +12,13 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127404_featured.webp"
 sourceUrl: "https://bestmt4ea.com/pharaoh-gold-ea-mt4-free-download-7-powerful-facts-every-trader-must-know-before-installing/"
 categories:
+  - "EA Reviews & Comparisons"
+  - "Free Forex EA"
   - "Gold (XAUUSD) Trading"
-  - "Gold EA & Robots"
 categoryPaths:
+  - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
+  - "/category/free-forex-ea/"
   - "/category/gold-xauusd-trading/"
-  - "/category/gold-ea-robots/"
 tags: []
 draft: false
 quickAnswer: "You can verify a gold expert advisor before installing it in about five minutes: check who published the file, read its licence, trace where the download came from, see whether source code ships with it, hash the file, then attach it to a demo chart and read the Experts and Journal logs. None of that proves the strategy works. It tells you what you are about to run."

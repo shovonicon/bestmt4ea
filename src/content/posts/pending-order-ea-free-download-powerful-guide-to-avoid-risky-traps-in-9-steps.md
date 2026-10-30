@@ -13,8 +13,10 @@ seo:
 sourceUrl: "https://bestmt4ea.com/pending-order-ea-free-download-powerful-guide-to-avoid-risky-traps-in-9-steps/"
 categories:
   - "Free Forex EA"
+  - "Risk & Money Management"
 categoryPaths:
   - "/category/free-forex-ea/"
+  - "/category/risk-money-management/"
 tags: []
 draft: false
 quickAnswer: "A pending order EA places buy stop, sell stop or limit orders at set price levels and manages them automatically. Free versions exist, but a free file is safe only when its source is traceable, its stop loss and spread filter are visible, and it passes a demo test. Never run an unknown file on a live account, and never disable your antivirus to install one."

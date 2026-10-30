@@ -13,8 +13,10 @@ seo:
 sourceUrl: "https://bestmt4ea.com/gold-sniper-master-indicator-system-free-download-powerful-secrets-7-proven-trading-advantages/"
 categories:
   - "Free Forex Indicator"
+  - "Gold (XAUUSD) Trading"
 categoryPaths:
   - "/category/free-forex-indicator/"
+  - "/category/gold-xauusd-trading/"
 tags: []
 draft: false
 primaryKeyword: "gold signal indicator repaint test"

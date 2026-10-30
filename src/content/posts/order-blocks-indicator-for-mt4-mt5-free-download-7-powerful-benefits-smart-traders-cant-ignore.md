@@ -12,11 +12,13 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_135105_featured.webp"
 sourceUrl: "https://bestmt4ea.com/order-blocks-indicator-for-mt4-mt5-free-download-7-powerful-benefits-smart-traders-cant-ignore/"
 categories:
+  - "Free Forex Indicator"
+  - "Technical Analysis"
   - "Forex Trading Strategies"
-  - "Trend Following"
 categoryPaths:
+  - "/category/free-forex-indicator/"
+  - "/category/technical-analysis/"
   - "/category/forex-trading-strategies/"
-  - "/category/trend-following/"
 tags: []
 primaryKeyword: "order blocks indicator MT4/MT5"
 quickAnswer: "An order block is a price zone where large orders may have been placed before a strong move. No standard definition exists, so two indicators can mark different zones. This free Order Block Identification Worksheet helps you write your own rules, audit historical charts on a demo account, and set invalidation before you trade. It does not find order blocks for you or prove that they hold."

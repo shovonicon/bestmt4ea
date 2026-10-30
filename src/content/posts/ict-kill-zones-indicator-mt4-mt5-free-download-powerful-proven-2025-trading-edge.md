@@ -12,10 +12,12 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_135176_featured.webp"
 sourceUrl: "https://bestmt4ea.com/ict-kill-zones-indicator-mt4-mt5-free-download-powerful-proven-2025-trading-edge/"
 categories:
+  - "Free Forex Indicator"
   - "Forex Scalping"
   - "Forex Trading Strategies"
 categoryPaths:
-  - "/category/forex-scalping/"
+  - "/category/free-forex-indicator/"
+  - "/category/forex-trading-strategies/forex-scalping/"
   - "/category/forex-trading-strategies/"
 tags: []
 quickAnswer: "ICT kill zones are time windows, such as the London and New York sessions, that many Inner Circle Trader followers watch for liquidity moves. A session tool marks those windows on an MT4 or MT5 chart and handles the broker time zone for you. The windows are a timing filter, not a signal, so test whether a rule works inside them before you trust it."

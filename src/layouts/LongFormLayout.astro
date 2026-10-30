@@ -24,17 +24,15 @@ import AuthorBox from '../components/AuthorBox.astro';
 import AnswerBox from '../components/AnswerBox.astro';
 import KeyTakeaways from '../components/KeyTakeaways.astro';
 import TableOfContents from '../components/TableOfContents.astro';
-import AdSlot from '../components/AdSlot.astro';
-import BottomBannerAd from '../components/BottomBannerAd.astro';
-import PromoAd from '../components/PromoAd.astro';
-import BannerAd from '../components/BannerAd.astro';
+import RInfinityRail from '../components/RInfinityRail.astro';
+import ToolRailAds from '../components/ToolRailAds.astro';
 import Faq from '../components/Faq.astro';
 import DownloadCard from '../components/DownloadCard.astro';
 import InstallSteps from '../components/InstallSteps.astro';
 import ArticleSources from '../components/ArticleSources.astro';
 import { countWords, readingMinutes } from '../lib/reading';
-import { site, RISK_DISCLAIMER } from '../lib/site';
-import { AFFILIATE_DISCLOSURE, AFFILIATE_REL, affiliates } from '../lib/affiliates';
+import { RISK_DISCLAIMER } from '../lib/site';
+import { affiliates } from '../lib/affiliates';
 import { articleSchema, breadcrumbSchema, faqSchema, howToSchema } from '../lib/seo';
 import { url } from '../lib/urls';
 
@@ -87,7 +85,6 @@ const updatedLabel = fmtDate(data.updatedAt ?? data.publishedAt);
 
 // Sticky left/right rails. They only exist when ads are configured and the post
 // has not opted out — AdSlot itself renders nothing without a client ID.
-const showRails = data.showAds !== false && Boolean(import.meta.env.PUBLIC_ADSENSE_CLIENT);
 
 // Every post download on this site is a companion resource, never the
 // article's subject (corpus audit, 2026-10-23), so posts always use the
@@ -131,38 +128,17 @@ const trail = [
   ]}
 >
   <div class="container-x relative pt-8 pb-16">
-    {
-      /*
-       * The rails are siblings of `.longform`, not children: inside the grid
-       * `.longform > *` gives them `grid-column: 2`, which makes the READING
-       * column their containing block (so `left: 0` started inside the article).
-       * Out here they position against the container, exactly like the tools page.
-       */
-      showRails && (
-        <>
-          <div class="ad-rail ad-rail-left">
-            <div class="ad-rail-inner">
-              <AdSlot
-                slot={site.adSlots.railLeft}
-                fixedSize={{ width: 300, height: 600 }}
-                showLabel={false}
-                class="!my-0"
-              />
-            </div>
-          </div>
-          <div class="ad-rail ad-rail-right">
-            <div class="ad-rail-inner">
-              <AdSlot
-                slot={site.adSlots.railRight}
-                fixedSize={{ width: 300, height: 600 }}
-                showLabel={false}
-                class="!my-0"
-              />
-            </div>
-          </div>
-        </>
-      )
-    }
+    <div class="rf-rail-slot">
+      <div class="rf-rail-sticky">
+        <RInfinityRail />
+      </div>
+    </div>
+
+    <div class="tool-rail-slot">
+      <div class="tool-rail-sticky">
+        <ToolRailAds />
+      </div>
+    </div>
 
     <div class="longform">
       <div class="longform-main">
@@ -247,22 +223,17 @@ const trail = [
         </div>
       </header>
 
-      <!-- Affiliate leaderboard, under the heading as asked. -->
-      <BannerAd
-        href={affiliates['roboforex-welcome'].url}
-        image="https://my.roboforex.com/files/banners/40_en_rbfx_728x90__45397b061c4e0ccff0770064b1bc81df.jpg"
-        alt="RoboForex"
-      />
+      <!--
+        In-flow sponsor card: the rail is hidden below 1740px, so the same card
+        renders here — above the article, as on the tools pages. It is a styled
+        affiliate card, not an AdSense unit, so it does not trip the rule about
+        ad units above the download action.
+      -->
+      <div class="rf-inline-slot mt-8">
+        <RInfinityRail variant="inline" />
+      </div>
 
       {data.quickAnswer && <div class="mt-7"><AnswerBox answer={data.quickAnswer} /></div>}
-
-      <!--
-        First ad, directly under the answer box — the most viewable spot on the
-        page, and where §6 allows a unit. The download card is deliberately kept
-        BELOW the key takeaways so this unit never sits against a download
-        button; `check-rendered-html` fails the build on an ad above the card.
-      -->
-      <AdSlot slot={site.adSlots.afterAnswer} class="mt-8" />
 
       {
         data.keyTakeaways?.length > 0 && (
@@ -307,16 +278,13 @@ const trail = [
         <TableOfContents headings={headings} variant="collapsible" />
       </div>
 
-      <div class="mt-8 hidden lg:block">
+      <div class="toc-inline-slot mt-8 hidden lg:block">
         <TableOfContents headings={headings} />
       </div>
 
       <div class="prose-article mt-10">
         <Content />
       </div>
-
-      <!-- Second ad: after the body, clear of every download and purchase action. -->
-      <AdSlot slot={site.adSlots.belowContent} class="mt-12" />
 
       {
         data.faqs?.length > 0 && (
@@ -325,8 +293,6 @@ const trail = [
           </div>
         )
       }
-
-      <BottomBannerAd />
 
       <ArticleSources sources={data.sources} />
 
@@ -358,59 +324,16 @@ const trail = [
 
       </div>
 
-      <!--
-        Promo column: four text-only cards at a fixed 325x180, so the column
-        reads as one block. The broker links are affiliates (registry URL +
-        AFFILIATE_REL + the disclosure below); the other two are our own.
-      -->
-      <aside class="longform-aside" aria-label="Recommended">
-        <div>
-          <div class="brand-card">
-            <PromoAd
-              label="Sponsored"
-              kicker="For MT4 & MT5"
-              title="Start on a regulated broker from $1"
-              copy={'FCA & CySEC regulated · free VPS on qualifying accounts'}
-              cta="Open an Exness account"
-              href={affiliates.exness.url}
-              rel={AFFILIATE_REL}
-              target="_blank"
-            />
-          </div>
+      <div class="tool-inline-slot mt-12">
+        <ToolRailAds variant="inline" />
+      </div>
 
-          <PromoAd
-            label="Our service"
-            kicker="No time to watch the charts?"
-            title="Let a desk manage the trading"
-            copy="You keep the account; every position stays visible"
-            cta="See how it works"
-            href={url('/copy-trading')}
-          />
+    </div>
 
-          <PromoAd
-            label="Sponsored"
-            kicker="Testing an EA on a live account?"
-            title="Run it for cents, not thousands"
-            copy="FSC Belize regulated · MT4, MT5 and RTrader"
-            cta="Open a RoboForex account"
-            href={affiliates.roboforex.url}
-            rel={AFFILIATE_REL}
-            target="_blank"
-          />
-
-          <PromoAd
-            label="Our product"
-            kicker="Your PC sleeps, the EA stops"
-            title="Keep the terminal running 24/7"
-            copy="Windows Server 2022 · 4 GB RAM · from $44.99/mo"
-            cta="See the VPS plans"
-            href={url('/product/vps')}
-          />
-
-          <p class="text-[10px] leading-4 text-[var(--color-ink-dim)]">{AFFILIATE_DISCLOSURE}</p>
-        </div>
-      </aside>
-
+    <div class="toc-slot">
+      <div class="toc-sticky">
+        <TableOfContents headings={headings} variant="rail" minutes={minutes} />
+      </div>
     </div>
   </div>
 </BaseLayout>

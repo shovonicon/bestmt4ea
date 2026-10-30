@@ -5,7 +5,9 @@ description: "A forex order manager trade panel speeds up MT4 execution, but it 
 publishedAt: 2026-02-20T03:28:39.000Z
 updatedAt: 2026-10-07T00:00:00.000Z
 categories:
-  - "MT4/MT5 Expert Advisors"
+  - "AI-Powered Trading Tools"
+categoryPaths:
+  - "/category/ai-powered-trading-tools/"
 tags: []
 quickAnswer: "A forex order manager is an MT4 trade panel that speeds up execution and enforces your risk rules: it calculates lot size from your stop distance, places stops and targets, moves break-even, trails your stop and closes part of a position. It is a management tool, not a strategy. It does not predict direction, and it cannot remove the risk of loss."
 keyTakeaways:

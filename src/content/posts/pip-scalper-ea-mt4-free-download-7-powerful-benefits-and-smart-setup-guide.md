@@ -13,8 +13,10 @@ seo:
 sourceUrl: "https://bestmt4ea.com/pip-scalper-ea-mt4-free-download-7-powerful-benefits-and-smart-setup-guide/"
 categories:
   - "Free Forex EA"
+  - "Forex Scalping"
 categoryPaths:
   - "/category/free-forex-ea/"
+  - "/category/forex-trading-strategies/forex-scalping/"
 tags: []
 quickAnswer: "A pip scalper EA trades short-term moves for a few pips, but many builds recover losses with hidden grid or averaging logic, which is where accounts break. Judge one by its worst exposure, not its win rate: run the trade list, measure spread and slippage, cap open positions, and prove it on demo first. The free worksheet stress-tests grid and averaging drawdown before live money."
 keyTakeaways:

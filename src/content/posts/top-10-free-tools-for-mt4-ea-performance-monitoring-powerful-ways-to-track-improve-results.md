@@ -12,10 +12,12 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/Best-MT4-EA-—-AI-Powered-Forex-Robots-for-MT4-MT5.webp"
 sourceUrl: "https://bestmt4ea.com/top-10-free-tools-for-mt4-ea-performance-monitoring-powerful-ways-to-track-improve-results/"
 categories:
+  - "Free Forex EA"
   - "EA Settings & Optimization"
   - "MT4/MT5 Expert Advisors"
 categoryPaths:
-  - "/category/ea-settings-optimization/"
+  - "/category/free-forex-ea/"
+  - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
   - "/category/mt4-mt5-expert-advisors/"
 tags: []
 draft: false

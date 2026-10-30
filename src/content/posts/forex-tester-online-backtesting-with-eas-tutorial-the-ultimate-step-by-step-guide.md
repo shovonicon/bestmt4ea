@@ -6,6 +6,8 @@ publishedAt: 2025-12-09T01:50:26.000Z
 updatedAt: 2026-10-07T00:00:00.000Z
 categories:
   - "MT4/MT5 Expert Advisors"
+categoryPaths:
+  - "/category/mt4-mt5-expert-advisors/"
 tags: []
 quickAnswer: "A backtest of an expert advisor is only useful when it is honest. Load the EA in Forex Tester Online or the MetaTrader Strategy Tester, use tick data and a realistic spread, split the results by year, and stress the settings. You are looking for reasons to reject the EA, not a curve to believe in."
 keyTakeaways:

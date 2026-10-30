@@ -7,9 +7,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getAvailableTools, getToolBySlug } from '../../data/tools';
 import { url } from '../../lib/urls';
-import { site } from '../../lib/site';
-import AdSlot from '../../components/AdSlot.astro';
-import PartnerFallback from '../../components/PartnerFallback.astro';
+import RInfinityRail from '../../components/RInfinityRail.astro';
+import ToolRailAds from '../../components/ToolRailAds.astro';
 import TradingViewWidget from '../../components/tools/TradingViewWidget.astro';
 import PipCalculator from '../../components/tools/PipCalculator.astro';
 import PositionSizeCalculator from '../../components/tools/PositionSizeCalculator.astro';
@@ -33,34 +32,29 @@ const others = getAvailableTools()
 
 const BACK_ARROW = '<path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>';
 
-// Sticky vertical rails either side of the tool column, as on post pages.
-const showRails = Boolean(import.meta.env.PUBLIC_ADSENSE_CLIENT);
+// One sponsored rail on the left. A calculator is where a reader is deciding how
+// to trade, so the space carries the broker offer instead of an AdSense unit.
 ---
 
 <BaseLayout title={`${tool.name} — Free Forex Tool`} description={tool.description}>
   <section class="container-x relative py-16 lg:py-20">
-    {
-      showRails && (
-        <>
-          <div class="ad-rail ad-rail-left">
-            <div class="ad-rail-inner">
-              <AdSlot slot={site.adSlots.railLeft} fixedSize={{ width: 300, height: 600 }} showLabel={false} class="!my-0">
-                <PartnerFallback slot="fallback" variant="rail" />
-              </AdSlot>
-            </div>
-          </div>
-          <div class="ad-rail ad-rail-right">
-            <div class="ad-rail-inner">
-              <AdSlot slot={site.adSlots.railRight} fixedSize={{ width: 300, height: 600 }} showLabel={false} class="!my-0">
-                <PartnerFallback slot="fallback" variant="rail" />
-              </AdSlot>
-            </div>
-          </div>
-        </>
-      )
-    }
+    <div class="rf-rail-slot">
+      <div class="rf-rail-sticky">
+        <RInfinityRail />
+      </div>
+    </div>
+
+    <div class="tool-rail-slot">
+      <div class="tool-rail-sticky">
+        <ToolRailAds />
+      </div>
+    </div>
 
     <div class="mx-auto max-w-4xl">
+      <div class="rf-inline-slot mb-8">
+        <RInfinityRail variant="inline" />
+      </div>
+
       <a
         href={url('/tools')}
         class="group inline-flex items-center gap-2 text-sm text-[var(--color-ink-dim)] transition-colors hover:text-[var(--color-ink)]"
@@ -118,6 +112,10 @@ const showRails = Boolean(import.meta.env.PUBLIC_ADSENSE_CLIENT);
           }
         </div>
       </div>
+      <div class="tool-inline-slot mt-12">
+        <ToolRailAds variant="inline" />
+      </div>
     </div>
   </section>
+
 </BaseLayout>

@@ -12,11 +12,11 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_126867_featured.webp"
 sourceUrl: "https://bestmt4ea.com/xauusd-trading-robot-free-download-7-powerful-secrets-to-maximize-gold-profits-safely/"
 categories:
+  - "Free Forex EA"
   - "Gold (XAUUSD) Trading"
-  - "Gold EA & Robots"
 categoryPaths:
+  - "/category/free-forex-ea/"
   - "/category/gold-xauusd-trading/"
-  - "/category/gold-ea-robots/"
 tags:
   - "XAUUSD"
   - "free EA"

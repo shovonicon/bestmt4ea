@@ -6,8 +6,10 @@ publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
   - "EA Reviews & Comparisons"
+  - "EA Settings & Optimization"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
+  - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
 tags: []
 draft: false
 quickAnswer: "The Gemini AI Smart Trader Pro EA is a third-party automated trading product sold with AI in its name and a long settings list. The settings that decide your outcome are the unglamorous ones: lot sizing and risk, stop and basket behaviour, session and spread filters, and the magic number. Change them one at a time, record every change, and judge the EA on a four-week demo at the settings you actually intend to run."

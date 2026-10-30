@@ -13,8 +13,12 @@ seo:
 sourceUrl: "https://bestmt4ea.com/ai-gold-scalping-ea-free-download-powerful-profitable-2026-guide-7-proven-insights/"
 categories:
   - "Free Forex EA"
+  - "Gold (XAUUSD) Trading"
+  - "Forex Scalping"
 categoryPaths:
   - "/category/free-forex-ea/"
+  - "/category/gold-xauusd-trading/"
+  - "/category/forex-trading-strategies/forex-scalping/"
 tags: []
 draft: false
 quickAnswer: "Inside a retail gold EA, “AI” usually means one of four things: a rule that switches between pre-set behaviours, parameters recalculated from recent bars, a small regression or classification model trained offline, or a model exported to ONNX and loaded by MetaTrader 5. On XAUUSD, spread, latency and short samples limit all four. Most “AI” EAs are a switching rule, and that is fine where it is described honestly."

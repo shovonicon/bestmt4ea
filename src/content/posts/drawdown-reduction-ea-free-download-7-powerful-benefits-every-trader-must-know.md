@@ -13,8 +13,10 @@ seo:
 sourceUrl: "https://bestmt4ea.com/drawdown-reduction-ea-free-download-7-powerful-benefits-every-trader-must-know/"
 categories:
   - "Free Forex EA"
+  - "Risk & Money Management"
 categoryPaths:
   - "/category/free-forex-ea/"
+  - "/category/risk-money-management/"
 tags: []
 draft: false
 primaryKeyword: "drawdown reduction EA free download"

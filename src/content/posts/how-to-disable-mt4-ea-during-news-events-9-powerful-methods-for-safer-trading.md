@@ -5,9 +5,11 @@ description: "Nine methods to stop an MT4 or MT5 EA trading through news, compar
 publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
-  - "Installation & Setup"
+  - "MT4/MT5 Expert Advisors"
+  - "EA Settings & Optimization"
 categoryPaths:
-  - "/category/installation-setup/"
+  - "/category/mt4-mt5-expert-advisors/"
+  - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
 tags: []
 draft: false
 quickAnswer: "No single method reliably disables an MT4 EA during news. Manual pauses fail when you are absent, built-in scheduling fails for unscheduled events, and calendar filters fail when their data source breaks. Most traders need two layers: a schedule or filter that prevents new entries, plus an independent equity or spread guard for events the first layer misses."

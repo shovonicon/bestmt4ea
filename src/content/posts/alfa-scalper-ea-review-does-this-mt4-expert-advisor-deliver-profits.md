@@ -6,8 +6,10 @@ publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
   - "EA Reviews & Comparisons"
+  - "Forex Scalping"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
+  - "/category/forex-trading-strategies/forex-scalping/"
 tags: []
 draft: false
 quickAnswer: "Alfa Scalper EA is a third-party scalping expert advisor for MT4. Like every scalper, its results will be decided less by its entry logic than by your broker's spread, execution speed and slippage during the hours it trades. We cannot point to an independently verified live track record for it, so it should be treated as unproven and tested forward on your own broker before any live use."

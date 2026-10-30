@@ -13,8 +13,10 @@ seo:
 sourceUrl: "https://bestmt4ea.com/fair-value-gaps-fvg-indicator-free-download-powerful-trading-edge-with-7-proven-benefits/"
 categories:
   - "Free Forex Indicator"
+  - "Technical Analysis"
 categoryPaths:
   - "/category/free-forex-indicator/"
+  - "/category/technical-analysis/"
 tags: []
 primaryKeyword: "FVG indicator free download"
 quickAnswer: "An FVG indicator marks fair value gaps, which are three-candle price imbalances left behind by fast moves. The download in this post is a shared Google Drive folder that bestmt4ea.com has not verified. Confirm the file name, read any licence text, and test the tool on a demo account before you trade with it."

@@ -13,9 +13,11 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_139488_featured.webp"
 sourceUrl: "https://bestmt4ea.com/golden-line-v3-indicator-free-download-7-powerful-benefits-safe-installation-guide/"
 categories:
-  - "MT4/MT5 Expert Advisors"
+  - "Free Forex Indicator"
+  - "Gold (XAUUSD) Trading"
 categoryPaths:
-  - "/category/mt4-mt5-expert-advisors/"
+  - "/category/free-forex-indicator/"
+  - "/category/gold-xauusd-trading/"
 tags: []
 draft: false
 quickAnswer: "Golden Line V3 is a free MetaTrader 4 indicator that we did not write and have not verified. Before you attach it to a chart, read the source if you have it, compile it yourself in MetaEditor, check what it writes to disk, and confirm on a demo account that its past arrows do not move. Treat every signal as a hypothesis to test, not a result to trade."

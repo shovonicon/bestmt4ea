@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import RInfinityRail from '../../components/RInfinityRail.astro';
+import ToolRailAds from '../../components/ToolRailAds.astro';
 import { getPublicPosts } from '../../lib/content';
 import { url } from '../../lib/urls';
 import taxonomies from '../../data/taxonomies.json';
@@ -57,7 +59,20 @@ const fmt = (d: Date) =>
   title={`${catName} — Guides and Reviews`}
   description={`Every article filed under ${catName}: practical guides and reviews on automated forex trading, written to solve specific problems rather than to sell.`}
 >
-  <div class="container-x py-14">
+  <div class="category-layout relative">
+    <div class="rf-rail-slot">
+      <div class="rf-rail-sticky">
+        <RInfinityRail />
+      </div>
+    </div>
+
+    <div class="tool-rail-slot">
+      <div class="tool-rail-sticky">
+        <ToolRailAds />
+      </div>
+    </div>
+
+    <div class="container-x py-14">
     <nav aria-label="Breadcrumb" class="text-center text-xs text-[var(--color-ink-dim)]">
       <a href="/" class="hover:text-[var(--color-accent)]">Home</a>
       <span class="mx-2">/</span>
@@ -71,7 +86,11 @@ const fmt = (d: Date) =>
       {sorted.length} article{sorted.length === 1 ? '' : 's'} in this category.
     </p>
 
-    <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+    <div class="rf-inline-slot mt-10">
+      <RInfinityRail variant="inline" />
+    </div>
+
+    <div class="category-grid mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
       {
         sorted.map((post: any) => (
           <article class="panel p-5">
@@ -86,5 +105,34 @@ const fmt = (d: Date) =>
         ))
       }
     </div>
+    </div>
+
+    <div class="tool-inline-slot">
+      <ToolRailAds variant="inline" />
+    </div>
   </div>
 </BaseLayout>
+
+<style>
+  /*
+   * Above the rail breakpoint this archive uses the blog/tools layout: the
+   * wrapper takes the container geometry so the shared rail offsets land in the
+   * same place, the reading column is padded in to 896px, and the cards drop to
+   * two per row to make room.
+   */
+  @media (min-width: 1740px) {
+    .category-layout {
+      max-width: 82rem;
+      margin-inline: auto;
+    }
+
+    .category-layout > .container-x {
+      max-width: none;
+      padding-inline: 208px;
+    }
+
+    .category-layout .category-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

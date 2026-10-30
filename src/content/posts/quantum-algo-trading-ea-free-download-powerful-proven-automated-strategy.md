@@ -5,8 +5,13 @@ description: "Quantum Algo Trading EA free download explained: what an algorithm
 publishedAt: 2026-02-13T21:31:59.000Z
 updatedAt: 2026-10-08T00:00:00.000Z
 categories:
+  - "Free Forex EA"
   - "EA Reviews & Comparisons"
   - "MT4/MT5 Expert Advisors"
+categoryPaths:
+  - "/category/free-forex-ea/"
+  - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
+  - "/category/mt4-mt5-expert-advisors/"
 tags: []
 quickAnswer: "A Quantum Algo Trading EA is an algorithm-based expert advisor for MetaTrader 4 or 5. It follows coded rules, so its quality depends on the logic, the risk controls and the execution cost, not on the name. This guide explains what such a robot does, how to size positions with a free calculator, and how to test it on demo before any real capital is exposed."
 keyTakeaways:

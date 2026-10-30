@@ -5,9 +5,13 @@ description: "The free Supertrend indicator for MT5 explained plainly: ATR bands
 publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
+  - "Forex Indicator Reviews"
   - "Free Forex Indicator"
+  - "Technical Analysis"
 categoryPaths:
+  - "/category/forex-indicator-reviews/"
   - "/category/free-forex-indicator/"
+  - "/category/technical-analysis/"
 tags: []
 draft: false
 quickAnswer: "The Supertrend indicator for MT5 draws ATR-based bands around price to show trend direction and a trailing stop level. On closed candles it does not repaint, but the live candle can move until it closes. Used well, it defines trend regime and invalidation. Used alone in a ranging market, it whipsaws. Verify any free version, test settings on your timeframe, and never treat the line as a guaranteed entry signal."

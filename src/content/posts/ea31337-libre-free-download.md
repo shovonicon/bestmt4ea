@@ -5,7 +5,7 @@ description: "EA31337 Libre is a free, GPL-3.0, open-source multi-strategy MetaT
 publishedAt: 2026-09-28
 updatedAt: "2026-09-28"
 categories:
-  - "Free EA"
+  - "Free Forex EA"
 categoryPaths:
   - "/category/free-forex-ea/"
 tags:

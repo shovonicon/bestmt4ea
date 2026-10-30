@@ -7,7 +7,7 @@ updatedAt: 2026-10-22
 categories:
   - "Risk & Money Management"
 categoryPaths:
-  - "/category/risk-money-management-forex-trading-strategies/"
+  - "/category/risk-money-management/"
 tags: []
 draft: false
 quickAnswer: "For most swing and intraday systems, an ATR multiplier between 1.5 and 3 times the 14-period ATR is the workable band: near 1.5 for tight, fast systems that accept being stopped by noise, near 3 for slower systems that need room to breathe. The right choice for you comes from measuring how far price normally travels against your entries, not from copying a number."

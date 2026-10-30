@@ -6,8 +6,12 @@ publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
   - "EA Reviews & Comparisons"
+  - "Free Forex EA"
+  - "EA Settings & Optimization"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
+  - "/category/free-forex-ea/"
+  - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
 tags: []
 draft: false
 quickAnswer: "There is no legitimate free download of the Hannah EA if it is a commercial product: copies offered free are pirated, frequently outdated, and a known malware channel. The safe route is the vendor or the official market, evaluated on a demo first. This article explains the seven facts that matter before installing any version of it from anywhere."

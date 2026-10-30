@@ -12,10 +12,10 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_139378_featured.webp"
 sourceUrl: "https://bestmt4ea.com/forex-indicators-96-for-free-download-the-ultimate-powerful-guide-to-smart-trading-tools/"
 categories:
-  - "AI Trading Indicators"
+  - "Free Forex Indicator"
   - "AI-Powered Trading Tools"
 categoryPaths:
-  - "/category/ai-trading-indicators/"
+  - "/category/free-forex-indicator/"
   - "/category/ai-powered-trading-tools/"
 tags:
   - "MT4"

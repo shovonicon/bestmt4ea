@@ -12,11 +12,11 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_126961_featured.webp"
 sourceUrl: "https://bestmt4ea.com/gold-breakout-ea-free-download-7-powerful-benefits-proven-setup-guide-for-massive-trading-success/"
 categories:
+  - "Free Forex EA"
   - "Gold (XAUUSD) Trading"
-  - "Gold EA & Robots"
 categoryPaths:
+  - "/category/free-forex-ea/"
   - "/category/gold-xauusd-trading/"
-  - "/category/gold-xauusd-trading/gold-ea-robots/"
 tags:
   - "gold breakout"
   - "XAUUSD"
@@ -310,4 +310,4 @@ Gold breaks further and fakes more often than the majors, and its spread widens 
 
 Here is the concrete step. [Download Nyao Scalper MT5](https://github.com/elrizwiraswara/nyao_scalper_mt5) — the free, BSD-3-Clause, open-source MT5 scalper you can read line by line. Set the risk and lot inputs to around 1% per trade. Add a spread cap and a short open-window delay from the inputs, because those two filters matter more on gold than anywhere else. Then run it on a demo for a full month before a single dollar of real money is exposed.
 
-Trading gold carries a high risk of loss, and no system removes that. What a well-filtered system can do is trade the breaks that are real and stand aside from the ones that are not. Start on the demo, watch how the spread filter behaves at the open, and only go live when the sizing maths and the drawdown both sit inside what you can genuinely tolerate. If you want to weigh it against other tools first, browse the [Gold EA & Robots category](/category/gold-xauusd-trading/gold-ea-robots/) and compare before you commit.
+Trading gold carries a high risk of loss, and no system removes that. What a well-filtered system can do is trade the breaks that are real and stand aside from the ones that are not. Start on the demo, watch how the spread filter behaves at the open, and only go live when the sizing maths and the drawdown both sit inside what you can genuinely tolerate. If you want to weigh it against other tools first, browse the [Gold EA & Robots category](/category/gold-xauusd-trading/) and compare before you commit.

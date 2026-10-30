@@ -11,10 +11,12 @@ seo:
   canonical: "https://bestmt4ea.com/best-free-alternatives-to-tradingview-for-custom-indicators/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_2351_featured.webp"
 sourceUrl: "https://bestmt4ea.com/best-free-alternatives-to-tradingview-for-custom-indicators/"
-categories: 
-  - "Installation & Setup"
-categoryPaths: 
-  - "/category/installation-setup/"
+categories:
+  - "Free Forex Indicator"
+  - "EA Settings & Optimization"
+categoryPaths:
+  - "/category/free-forex-indicator/"
+  - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
 tags: []
 primaryKeyword: "free TradingView alternatives for custom indicators"
 quickAnswer: "Free charting plans often limit custom indicator work, so many traders look for other options. The right alternative depends on the market you trade and whether you can read and test code. For forex traders, MetaTrader 4 and MetaTrader 5 run custom indicators written in MQL4 or MQL5, and you can test them on a demo account at no extra cost. Test any shared file before you trust it."

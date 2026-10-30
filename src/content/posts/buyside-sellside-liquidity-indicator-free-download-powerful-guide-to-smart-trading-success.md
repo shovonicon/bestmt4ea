@@ -13,8 +13,10 @@ seo:
 sourceUrl: "https://bestmt4ea.com/buyside-sellside-liquidity-indicator-free-download-powerful-guide-to-smart-trading-success/"
 categories:
   - "Free Forex Indicator"
+  - "Technical Analysis"
 categoryPaths:
   - "/category/free-forex-indicator/"
+  - "/category/technical-analysis/"
 tags: []
 primaryKeyword: "buyside sellside liquidity indicator"
 quickAnswer: "A buyside and sellside liquidity indicator marks areas where stop orders often sit: buyside above equal highs, sellside below equal lows. It helps you watch for sweeps, where price briefly moves through those levels and rejects them. This guide explains the idea, shows how to test any such indicator on a demo account, and covers installing a shared MT4 or MT5 file. The shared file has not been verified by bestmt4ea.com, so test it first."

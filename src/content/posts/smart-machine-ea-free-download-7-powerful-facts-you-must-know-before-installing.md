@@ -11,10 +11,12 @@ seo:
   canonical: "https://bestmt4ea.com/smart-machine-ea-free-download-7-powerful-facts-you-must-know-before-installing/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127434_featured.webp"
 sourceUrl: "https://bestmt4ea.com/smart-machine-ea-free-download-7-powerful-facts-you-must-know-before-installing/"
-categories: 
+categories:
   - "Free Forex EA"
-categoryPaths: 
+  - "EA Settings & Optimization"
+categoryPaths:
   - "/category/free-forex-ea/"
+  - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
 tags: []
 quickAnswer: "Smart Machine EA is an automated trading program for MetaTrader that places and manages trades according to coded rules. Its listed features are claims to verify, and free copies can be unofficial, altered or unsafe. Before running it, confirm the source and platform, scan the file, test it on a demo account for several weeks, and set a position size and loss limit. No automated program can promise profits."
 keyTakeaways:

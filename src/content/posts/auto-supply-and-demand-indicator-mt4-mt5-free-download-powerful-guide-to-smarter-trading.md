@@ -13,8 +13,10 @@ seo:
 sourceUrl: "https://bestmt4ea.com/auto-supply-and-demand-indicator-mt4-mt5-free-download-powerful-guide-to-smarter-trading/"
 categories:
   - "Free Forex Indicator"
+  - "Technical Analysis"
 categoryPaths:
   - "/category/free-forex-indicator/"
+  - "/category/technical-analysis/"
 tags: []
 draft: false
 primaryKeyword: "auto supply and demand indicator MT4/MT5"

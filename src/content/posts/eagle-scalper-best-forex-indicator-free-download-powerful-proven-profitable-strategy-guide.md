@@ -13,8 +13,10 @@ seo:
 sourceUrl: "https://bestmt4ea.com/eagle-scalper-best-forex-indicator-free-download-powerful-proven-profitable-strategy-guide/"
 categories:
   - "Free Forex Indicator"
+  - "Forex Scalping"
 categoryPaths:
   - "/category/free-forex-indicator/"
+  - "/category/forex-trading-strategies/forex-scalping/"
 tags: []
 draft: false
 primaryKeyword: "Eagle Scalper indicator"

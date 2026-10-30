@@ -46,11 +46,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_139257_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/non-repainting-mt4-trading-system-free-download-powerful-proven-strategy-in-2026/"
 categories:
-  - "EA Reviews & Comparisons"
-  - "MT4/MT5 Expert Advisors"
+  - "Free Forex Indicator"
 categoryPaths:
-  - "/category/ea-reviews-comparisons/"
-  - "/category/mt4-mt5-expert-advisors/"
+  - "/category/free-forex-indicator/"
 tags: []
 download:
   name: "Indicator Repaint Test Checklist"

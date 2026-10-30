@@ -12,9 +12,13 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_126074_featured.webp"
 sourceUrl: "https://bestmt4ea.com/mft-trading-robot-mt4-free-download-7-powerful-facts-you-must-know-before-installing/"
 categories:
+  - "EA Reviews & Comparisons"
   - "Free Forex EA"
+  - "EA Settings & Optimization"
 categoryPaths:
+  - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/free-forex-ea/"
+  - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
 tags: []
 quickAnswer: "MFT Trading Robot MT4 is a free automated trading program promoted for MetaTrader 4 users. Free robots can place and manage orders, but none can promise profits, and many hide drawdown or tampering risks. Scan the file, test it on a demo account for several weeks, and risk only money you can afford to lose."
 keyTakeaways:

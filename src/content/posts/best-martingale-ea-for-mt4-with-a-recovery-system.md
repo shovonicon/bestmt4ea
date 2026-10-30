@@ -12,11 +12,13 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/Best-MT4-EA-—-AI-Powered-Forex-Robots-for-MT4-MT5.webp"
 sourceUrl: "https://bestmt4ea.com/best-martingale-ea-for-mt4-with-a-recovery-system/"
 categories:
-  - "EA Reviews & Comparisons"
   - "MT4/MT5 Expert Advisors"
+  - "Risk & Money Management"
+  - "EA Reviews & Comparisons"
 categoryPaths:
-  - "/category/ea-reviews-comparisons/"
   - "/category/mt4-mt5-expert-advisors/"
+  - "/category/risk-money-management/"
+  - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
 tags: []
 quickAnswer: "A martingale EA with a recovery system doubles or scales up position size after losses, hoping one win clears the earlier losses. The recovery rules can slow that growth but cannot remove it. In a long losing streak the exposure can exceed the account, so test the worst case on a demo account before any live use."
 keyTakeaways:

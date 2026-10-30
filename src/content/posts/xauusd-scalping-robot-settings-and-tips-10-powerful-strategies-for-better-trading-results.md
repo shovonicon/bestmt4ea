@@ -12,9 +12,13 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_1729_featured.webp"
 sourceUrl: "https://bestmt4ea.com/xauusd-scalping-robot-settings-and-tips-10-powerful-strategies-for-better-trading-results/"
 categories:
-  - "Installation & Setup"
+  - "EA Settings & Optimization"
+  - "Free Forex EA"
+  - "Gold (XAUUSD) Trading"
 categoryPaths:
-  - "/category/installation-setup/"
+  - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
+  - "/category/free-forex-ea/"
+  - "/category/gold-xauusd-trading/"
 tags: []
 draft: false
 primaryKeyword: "xauusd scalping robot settings"

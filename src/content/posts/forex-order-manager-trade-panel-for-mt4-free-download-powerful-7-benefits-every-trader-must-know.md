@@ -5,7 +5,9 @@ description: "An MT4 trade panel speeds up order entry and sizes each position f
 publishedAt: 2026-02-13T23:36:22.000Z
 updatedAt: 2026-10-11T00:00:00.000Z
 categories:
-  - "MT4/MT5 Expert Advisors"
+  - "AI-Powered Trading Tools"
+categoryPaths:
+  - "/category/ai-powered-trading-tools/"
 tags: []
 quickAnswer: "An MT4 trade panel is a chart tool that speeds up order entry and sizes each position from the risk and stop distance you choose. It attaches stops and targets, manages open trades and enforces limits. It is not a strategy: it cannot pick direction, it cannot make a poor idea profitable, and it does not remove the risk of loss."
 keyTakeaways:

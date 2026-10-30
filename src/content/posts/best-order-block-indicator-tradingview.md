@@ -5,8 +5,12 @@ description: "Order block indicators draw zones differently on TradingView and M
 publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
+  - "Forex Indicator Reviews"
+  - "Technical Analysis"
   - "Forex Trading Strategies"
 categoryPaths:
+  - "/category/forex-indicator-reviews/"
+  - "/category/technical-analysis/"
   - "/category/forex-trading-strategies/"
 tags: []
 draft: false

@@ -12,11 +12,13 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127235_featured.webp"
 sourceUrl: "https://bestmt4ea.com/gold-investor-best-forex-gold-ea-free-download-powerful-proven-guide/"
 categories:
+  - "EA Reviews & Comparisons"
+  - "Free Forex EA"
   - "Gold (XAUUSD) Trading"
-  - "Gold EA & Robots"
 categoryPaths:
+  - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
+  - "/category/free-forex-ea/"
   - "/category/gold-xauusd-trading/"
-  - "/category/gold-ea-robots/"
 tags:
   - "XAUUSD"
   - "gold EA"

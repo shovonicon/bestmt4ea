@@ -13,10 +13,12 @@ seo:
 sourceUrl: "https://bestmt4ea.com/hft-ea-free-download-7-powerful-truths-before-you-install-any-trading-robot/"
 categories:
   - "EA Reviews & Comparisons"
-  - "MT4/MT5 Expert Advisors"
+  - "Free Forex EA"
+  - "Forex Scalping"
 categoryPaths:
-  - "/category/ea-reviews-comparisons/"
-  - "/category/mt4-mt5-expert-advisors/"
+  - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
+  - "/category/free-forex-ea/"
+  - "/category/forex-trading-strategies/forex-scalping/"
 tags: []
 draft: false
 quickAnswer: "An HFT EA is an automated scalping robot that places many short trades, so its results depend on spread, slippage and execution speed. Free versions often hide lot-scaling risk behind high win rates. Test any HFT EA on a demo account with realistic tick data, read the maximum drawdown, and never fund a live account from a claim alone."

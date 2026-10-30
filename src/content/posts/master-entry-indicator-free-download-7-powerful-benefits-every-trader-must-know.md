@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_139431_featured.webp"
 sourceUrl: "https://bestmt4ea.com/master-entry-indicator-free-download-7-powerful-benefits-every-trader-must-know/"
 categories:
-  - "MT4/MT5 Expert Advisors"
+  - "Free Forex Indicator"
 categoryPaths:
-  - "/category/mt4-mt5-expert-advisors/"
+  - "/category/free-forex-indicator/"
 tags: []
 primaryKeyword: "MASTER ENTRY indicator free download"
 quickAnswer: "The MASTER ENTRY indicator is a shared chart tool that marks possible buy and sell entries. This guide explains how entry indicators work, how to test any entry file on a demo account, and how to check the shared Drive download safely. bestmt4ea.com has not verified its licence or code, so confirm the file name and test on demo before any live use."

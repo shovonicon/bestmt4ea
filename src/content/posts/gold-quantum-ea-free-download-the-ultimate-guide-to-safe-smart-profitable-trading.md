@@ -12,11 +12,11 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127379_featured.webp"
 sourceUrl: "https://bestmt4ea.com/gold-quantum-ea-free-download-the-ultimate-guide-to-safe-smart-profitable-trading/"
 categories:
+  - "Free Forex EA"
   - "Gold (XAUUSD) Trading"
-  - "Gold EA & Robots"
 categoryPaths:
+  - "/category/free-forex-ea/"
   - "/category/gold-xauusd-trading/"
-  - "/category/gold-ea-robots/"
 tags:
   - "gold EA"
   - "backtesting"
@@ -268,7 +268,7 @@ What it does not do, stated plainly:
 - **It does not come with support, updates or settings tuned to your broker.** It is a small open-source project maintained by one author in his own time.
 - **It is not a rehosted commercial EA.** It is an independent build with its own assumptions and its own failure modes.
 
-If you want a second reference point on what a gold EA can realistically be, our [round-up of MT4 gold expert advisors](/the-7-best-mt4-ea-for-gold-trading-with-low-risk-proven-tools-for-consistent-results/) covers the trade-offs between scalping, breakout and mean-reversion designs. The free indicator library is also worth a look if you would rather test your own entries with a [free MT4 and MT5 indicator](/category/free-forex-ea/) before automating anything. And if you are still choosing a build, start from the [gold EA category](/category/gold-xauusd-trading/gold-ea-robots/) rather than from a forum thread.
+If you want a second reference point on what a gold EA can realistically be, our [round-up of MT4 gold expert advisors](/the-7-best-mt4-ea-for-gold-trading-with-low-risk-proven-tools-for-consistent-results/) covers the trade-offs between scalping, breakout and mean-reversion designs. The free indicator library is also worth a look if you would rather test your own entries with a [free MT4 and MT5 indicator](/category/free-forex-ea/) before automating anything. And if you are still choosing a build, start from the [gold EA category](/category/gold-xauusd-trading/) rather than from a forum thread.
 
 ## What should you do next?
 

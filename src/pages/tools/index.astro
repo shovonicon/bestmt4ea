@@ -8,6 +8,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getAvailableTools, PLATFORM_DOWNLOADS } from '../../data/tools';
 import { publicUrl } from '../../lib/files';
 import { url } from '../../lib/urls';
+import RInfinityRail from '../../components/RInfinityRail.astro';
+import ToolRailAds from '../../components/ToolRailAds.astro';
 
 const tools = getAvailableTools();
 
@@ -40,6 +42,8 @@ const ARROW_RIGHT = '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>';
   title="Free Forex Trading Tools & Calculators"
   description="Free forex trading calculators, live charts, real-time rates, and an economic calendar. Pip value, position size, margin, risk/reward and compounding calculators — no sign-up required."
 >
+
+  <div class="tools-layout relative">
   <section class="relative overflow-hidden">
     <div class="glow-orb animate-aurora left-1/2 top-[-14rem] h-[24rem] w-[36rem] -translate-x-1/2 bg-emerald-500/25"
     ></div>
@@ -61,8 +65,24 @@ const ARROW_RIGHT = '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>';
     </div>
   </section>
 
-  <section class="container-x pb-24" aria-label="Trading tools">
-    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="rf-rail-slot">
+      <div class="rf-rail-sticky">
+        <RInfinityRail />
+      </div>
+    </div>
+
+    <div class="tool-rail-slot">
+      <div class="tool-rail-sticky">
+        <ToolRailAds />
+      </div>
+    </div>
+
+    <div class="rf-inline-slot">
+      <RInfinityRail variant="inline" />
+    </div>
+
+    <section class="container-x pb-24" aria-label="Trading tools">
+      <div class="tools-grid grid gap-5 sm:grid-cols-2">
       {
         tools.map((tool) => (
           <a
@@ -168,4 +188,77 @@ const ARROW_RIGHT = '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>';
       </div>
     </div>
   </section>
+    <div class="tool-inline-slot mt-12">
+      <ToolRailAds variant="inline" />
+    </div>
+  </div>
 </BaseLayout>
+
+<style>
+  /* In the flow, both ad slots take the page gutter instead of running edge to edge. */
+  .tools-layout > .rf-inline-slot,
+  .tools-layout > .tool-inline-slot {
+    width: 100%;
+    max-width: 82rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+    margin-block: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    .tools-layout > .rf-inline-slot,
+    .tools-layout > .tool-inline-slot {
+      padding-inline: 2rem;
+    }
+  }
+
+  /*
+   * Above the rail breakpoint this page uses the same pattern as the tool pages:
+   * the wrapper takes the container geometry (max 82rem, centred) so the rail
+   * offsets are the same arithmetic, the rails are absolutely positioned and
+   * stretched to the wrapper's full height, and the sections are padded to clear
+   * them. That is what lets the sticky cards pin at 96px from the first pixel.
+   */
+  @media (min-width: 1740px) {
+    .tools-layout {
+      max-width: 82rem;
+      margin-inline: auto;
+    }
+
+    .tools-layout > .rf-rail-slot {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      display: block;
+      width: 320px;
+      left: calc(272px - 25vw);
+    }
+
+    .tools-layout > .tool-rail-slot {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      display: block;
+      width: 320px;
+      right: calc(272px - 25vw);
+    }
+
+    .tools-layout > .rf-rail-slot > .rf-rail-sticky,
+    .tools-layout > .tool-rail-slot > .tool-rail-sticky {
+      position: sticky;
+      top: 96px;
+    }
+
+    /* 208px each side leaves the same 896px content column the tool pages use, so
+       the two page types line up exactly. */
+    .tools-layout > section {
+      padding-inline: 208px;
+    }
+
+    /* The hero keeps its full-bleed background. */
+    .tools-layout > section:first-of-type {
+      margin-inline: calc(50% - 50vw);
+      padding-inline: 0;
+    }
+  }
+</style>

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T10:16:31.717Z",
+  "generatedAt": "2026-10-30T17:52:26.238Z",
   "source": "https://bestmt4ea.com",
   "generatedBy": "scripts/build-inventory.mjs",
   "counts": {
@@ -8,7 +8,7 @@
     "pages": 22,
     "productCategories": 4,
     "brands": 2,
-    "blogCategories": 35
+    "blogCategories": 34
   },
   "urls": [
     {

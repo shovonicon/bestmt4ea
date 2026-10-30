@@ -7,21 +7,58 @@ import type { Heading } from '../lib/reading';
  * `variant="inline"` renders the open list used in the desktop reading column.
  * `variant="collapsible"` wraps the same links in a `<details>` for mobile, so
  * a long outline never pushes the narrative below the fold on a small screen.
+ * `variant="rail"` is the sticky "On this page" column beside the article.
  */
 export interface Props {
   headings: Heading[];
   title?: string;
   class?: string;
-  variant?: 'inline' | 'collapsible';
+  variant?: 'inline' | 'collapsible' | 'rail';
+  /** Whole-article reading time, used by the rail to show minutes left. */
+  minutes?: number;
 }
 
-const { headings, title = 'On this page', class: className = '', variant = 'inline' } = Astro.props;
+const { headings, title = 'On this page', class: className = '', variant = 'inline', minutes } = Astro.props;
 const items = headings.filter((h) => h.depth === 2);
 ---
 
 {
   items.length >= 3 &&
-    (variant === 'collapsible' ? (
+    (variant === 'rail' ? (
+      <nav class="toc-rail" aria-label="On this page" data-toc="rail">
+        <div class="toc-rail__head">
+          <p class="toc-rail__label">On this page</p>
+          <span class="toc-rail__count" aria-hidden="true" data-toc-pct>0%</span>
+        </div>
+
+        <div class="toc-rail__track" aria-hidden="true">
+          <span class="toc-rail__progress" data-toc-progress />
+        </div>
+
+        <ol class="toc-rail__list">
+          {items.map((item) => (
+            <li>
+              <a href={`#${item.id}`} data-toc-link={item.id}>
+                {item.text}
+              </a>
+            </li>
+          ))}
+        </ol>
+
+        <div class="toc-rail__foot">
+          <span class="toc-rail__time" data-toc-left data-minutes={minutes ?? ''}>
+            {minutes ? `${minutes} min read` : `${items.length} sections`}
+          </span>
+          <button type="button" class="toc-rail__top" data-toc-top>
+            Top
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="12" y1="19" x2="12" y2="5" />
+              <polyline points="5 12 12 5 19 12" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    ) : variant === 'collapsible' ? (
       <details class:list={['panel-flat p-5', className]} data-toc="collapsible">
         <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
           <span class="metric-label">{title}</span>
@@ -52,3 +89,204 @@ const items = headings.filter((h) => h.depth === 2);
       </nav>
     ))
 }
+
+<style>
+  /*
+   * 160px column: a quiet card rather than a panel. Numbered, with a live
+   * reading-progress hairline under the label and a lit left rule on the
+   * section you are in.
+   */
+  .toc-rail {
+    padding: 1rem 1rem 0.875rem;
+    border-radius: 0.875rem;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background:
+      radial-gradient(120% 60% at 0% 0%, rgba(0, 224, 168, 0.07), transparent 62%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 18px 40px rgba(0, 0, 0, 0.45);
+  }
+
+  .toc-rail__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .toc-rail__label {
+    font-size: 0.5625rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-dim);
+  }
+
+  .toc-rail__count {
+    font-family: var(--font-mono);
+    font-size: 0.5625rem;
+    color: var(--color-accent);
+  }
+
+  .toc-rail__track {
+    margin-top: 0.6rem;
+    height: 2px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+  }
+
+  .toc-rail__progress {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-soft));
+    transition: width 0.12s linear;
+  }
+
+  .toc-rail__list {
+    margin-top: 0.875rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    counter-reset: toc;
+  }
+
+  .toc-rail__list li {
+    counter-increment: toc;
+  }
+
+  .toc-rail a {
+    display: grid;
+    grid-template-columns: 1.15rem minmax(0, 1fr);
+    gap: 0.4rem;
+    padding: 0.375rem 0.5rem;
+    border-radius: 0.4375rem;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: var(--color-ink-dim);
+    transition:
+      color 0.15s ease,
+      background-color 0.15s ease;
+  }
+
+  .toc-rail a::before {
+    content: counter(toc, decimal-leading-zero);
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.3);
+    transition: color 0.15s ease;
+  }
+
+  .toc-rail a:hover {
+    color: var(--color-ink);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .toc-rail a[aria-current='true'] {
+    color: var(--color-accent);
+    background: linear-gradient(90deg, rgba(0, 193, 144, 0.14), rgba(0, 193, 144, 0.04));
+    box-shadow: inset 2px 0 0 var(--color-accent);
+  }
+
+  .toc-rail a[aria-current='true']::before {
+    color: var(--color-accent);
+  }
+
+  .toc-rail__foot {
+    margin-top: 0.6875rem;
+    padding-top: 0.625rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.625rem;
+    color: var(--color-ink-dim);
+  }
+
+  .toc-rail__time {
+    font-family: var(--font-mono);
+    letter-spacing: 0.02em;
+  }
+
+  .toc-rail__top {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--color-ink-dim);
+    transition: color 0.15s ease;
+  }
+
+  .toc-rail__top:hover {
+    color: var(--color-accent);
+  }
+</style>
+
+<script>
+  const rail = document.querySelector<HTMLElement>('[data-toc="rail"]');
+  if (rail) {
+    const links = [...rail.querySelectorAll<HTMLAnchorElement>('a[data-toc-link]')];
+    const byId = new Map(links.map((a) => [a.dataset.tocLink, a]));
+    const targets = [...document.querySelectorAll<HTMLElement>('.prose-article h2[id]')].filter((h) =>
+      byId.has(h.id),
+    );
+    const progress = rail.querySelector<HTMLElement>('[data-toc-progress]');
+    const pctLabel = rail.querySelector<HTMLElement>('[data-toc-pct]');
+    const leftLabel = rail.querySelector<HTMLElement>('[data-toc-left]');
+    const minutes = Number(leftLabel?.dataset.minutes || 0);
+    const article = document.querySelector<HTMLElement>('.longform-main');
+
+    const setActive = (id: string) => {
+      for (const a of links) if (a.getAttribute('aria-current') === 'true') a.removeAttribute('aria-current');
+      byId.get(id)?.setAttribute('aria-current', 'true');
+    };
+
+    /* The active section is the last heading whose top has passed under the
+       sticky chrome. Cheaper and more predictable than an observer band, which
+       goes silent in the long stretches between headings. */
+    let tops: { id: string; top: number }[] = [];
+    const measure = () => {
+      const y = window.scrollY;
+      tops = targets.map((h) => ({ id: h.id, top: h.getBoundingClientRect().top + y }));
+    };
+
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const y = window.scrollY + 140;
+      let current = tops[0]?.id;
+      for (const item of tops) if (item.top <= y) current = item.id;
+      if (current) setActive(current);
+
+      if (progress && article) {
+        const box = article.getBoundingClientRect();
+        const scrollable = box.height - window.innerHeight;
+        const pct = scrollable > 0 ? Math.min(Math.max(-box.top / scrollable, 0), 1) : 0;
+        progress.style.width = `${(pct * 100).toFixed(1)}%`;
+        if (pctLabel) pctLabel.textContent = `${Math.round(pct * 100)}%`;
+        if (leftLabel && minutes) {
+          const left = Math.max(1, Math.ceil(minutes * (1 - pct)));
+          leftLabel.textContent = pct >= 0.995 ? 'Finished' : `${left} min left`;
+        }
+      }
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    rail.querySelector('[data-toc-top]')?.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    measure();
+    update();
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', () => {
+      measure();
+      onScroll();
+    });
+  }
+</script>

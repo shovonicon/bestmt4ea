@@ -52,10 +52,12 @@ seo:
 sourceUrl: "https://bestmt4ea.com/top-7-best-free-forex-scalper-ea-for-mt4-download/"
 categories:
   - "EA Reviews & Comparisons"
-  - "MT4/MT5 Expert Advisors"
+  - "Free Forex EA"
+  - "Forex Scalping"
 categoryPaths:
-  - "/category/ea-reviews-comparisons/"
-  - "/category/mt4-mt5-expert-advisors/"
+  - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
+  - "/category/free-forex-ea/"
+  - "/category/forex-trading-strategies/forex-scalping/"
 tags: []
 draft: false
 ---

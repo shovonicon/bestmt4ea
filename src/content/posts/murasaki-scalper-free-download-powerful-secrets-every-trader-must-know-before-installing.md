@@ -12,11 +12,13 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_134168_featured.webp"
 sourceUrl: "https://bestmt4ea.com/murasaki-scalper-free-download-powerful-secrets-every-trader-must-know-before-installing/"
 categories:
+  - "Free Forex EA"
   - "Forex Scalping"
-  - "Forex Trading Strategies"
+  - "EA Settings & Optimization"
 categoryPaths:
-  - "/category/forex-scalping/"
-  - "/category/forex-trading-strategies/"
+  - "/category/free-forex-ea/"
+  - "/category/forex-trading-strategies/forex-scalping/"
+  - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
 tags: []
 quickAnswer: "A scalping indicator tells you when its rule fired, not whether the trade survives the cost of taking it. Before installing one, measure three things on demo: the spread paid at entry, the slippage between signal and fill, and the average loss against the average win. If two pips of cost turns a profitable sample into a losing one, the edge is smaller than the spread. The free test log records all three."
 keyTakeaways:

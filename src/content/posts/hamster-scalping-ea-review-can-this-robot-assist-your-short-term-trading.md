@@ -6,8 +6,10 @@ publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
   - "EA Reviews & Comparisons"
+  - "Forex Scalping"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
+  - "/category/forex-trading-strategies/forex-scalping/"
 tags: []
 draft: false
 quickAnswer: "Hamster Scalping is a well-known MetaTrader night scalping expert advisor that trades short moves during the quiet hours, mainly on EURUSD, using RSI and ATR-based logic with virtual stop levels. It has a long public history and many users, but night scalping lives or dies on your broker's overnight spreads and execution, so its results vary far more between brokers than its sales page suggests."

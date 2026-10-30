@@ -36,9 +36,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_4248_featured.webp"
 sourceUrl: "https://bestmt4ea.com/night-hunter-pro-ea-an-honest-review/"
 categories:
-  - "Forex EA Reviews"
+  - "EA Reviews & Comparisons"
 categoryPaths:
-  - "/category/forex-ea-reviews/"
+  - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
 tags: []
 installSteps:
   - name: "Open the guide"

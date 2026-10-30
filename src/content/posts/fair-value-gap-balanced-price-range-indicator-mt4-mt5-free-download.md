@@ -11,10 +11,12 @@ seo:
   canonical: "https://bestmt4ea.com/fair-value-gap-balanced-price-range-indicator-mt4-mt5-free-download/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_135110_featured.webp"
 sourceUrl: "https://bestmt4ea.com/fair-value-gap-balanced-price-range-indicator-mt4-mt5-free-download/"
-categories: 
+categories:
   - "Free Forex Indicator"
-categoryPaths: 
+  - "Technical Analysis"
+categoryPaths:
   - "/category/free-forex-indicator/"
+  - "/category/technical-analysis/"
 tags: []
 draft: false
 quickAnswer: "A fair value gap (FVG) indicator marks three-candle price imbalances, and a balanced price range (BPR) marks the area where opposing gaps overlap. Both are drawn from past candles, so they show where price moved fast, not where it will turn. Test how often zones are respected and how often they fail on a demo account first."

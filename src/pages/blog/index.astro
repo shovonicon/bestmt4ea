@@ -4,6 +4,8 @@ import { monthYear } from '../../lib/dates';
 import { getPublicPosts } from '../../lib/content';
 import { url } from '../../lib/urls';
 import taxonomies from '../../data/taxonomies.json';
+import RInfinityRail from '../../components/RInfinityRail.astro';
+import ToolRailAds from '../../components/ToolRailAds.astro';
 
 const posts = await getPublicPosts();
 
@@ -25,35 +27,130 @@ const fmt = (d: Date) =>
   title={`Forex Trading Blog ${monthYear} — Guides, Reviews and MT4/MT5 Tutorials`}
   description="Practical guides on automated forex trading: how expert advisors work, how to test them on demo, how to read a drawdown, and how to avoid the traps that cost retail traders money."
 >
-  <div class="container-x py-14">
-    <p class="eyebrow tone-violet text-center">Learn</p>
-    <h1 class="mt-2 text-center text-3xl md:text-5xl">Forex trading <span class="text-gradient-violet">blog</span></h1>
-    <p class="mx-auto mt-4 max-w-2xl text-center text-sm leading-7 text-[var(--color-ink-dim)]">
-      Everything here is written to solve a specific problem — testing a robot properly, reading a drawdown, sizing a
-      position, or spotting a system that will not survive a real account.
-    </p>
-
-    <div class="mt-8 flex flex-wrap justify-center gap-2">
-      {categories.slice(0, 12).map((cat) => (
-        <a href={categoryHref.get(cat) ?? url('/blog/')} class="badge transition-colors hover:border-[var(--color-accent)] hover:text-white">{cat}</a>
-      ))}
+  <div class="blog-layout relative">
+    <div class="rf-rail-slot">
+      <div class="rf-rail-sticky">
+        <RInfinityRail />
+      </div>
     </div>
 
-    <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-      {
-        posts.map((post) => (
-          <article class="panel p-5">
-            {post.data.categories?.[0] && <p class="eyebrow">{post.data.categories[0]}</p>}
-            <h2 class="mt-2 text-base leading-snug">
-              <a href={url(`/${post.data.slug}/`)} class="hover:text-[var(--color-accent)]">
-                {post.data.title}
-              </a>
-            </h2>
-            <p class="mt-2 line-clamp-3 text-sm leading-6 text-[var(--color-ink-dim)]">{post.data.description}</p>
-            <p class="mt-4 text-xs text-[var(--color-ink-dim)]">{fmt(post.data.updatedAt ?? post.data.publishedAt)}</p>
-          </article>
-        ))
-      }
+    <div class="tool-rail-slot">
+      <div class="tool-rail-sticky">
+        <ToolRailAds />
+      </div>
+    </div>
+
+    <div class="container-x py-14">
+      <p class="eyebrow tone-violet text-center">Learn</p>
+      <h1 class="mt-2 text-center text-3xl md:text-5xl">Forex trading <span class="text-gradient-violet">blog</span></h1>
+      <p class="mx-auto mt-4 max-w-2xl text-center text-sm leading-7 text-[var(--color-ink-dim)]">
+        Everything here is written to solve a specific problem — testing a robot properly, reading a drawdown, sizing a
+        position, or spotting a system that will not survive a real account.
+      </p>
+
+      <div class="mt-8 flex flex-wrap justify-center gap-2">
+        {categories.slice(0, 12).map((cat) => (
+          <a href={categoryHref.get(cat) ?? url('/blog/')} class="badge transition-colors hover:border-[var(--color-accent)] hover:text-white">{cat}</a>
+        ))}
+      </div>
+
+      <div class="mt-4 text-center">
+        <a
+          href={url('/category/')}
+          class="text-xs text-[var(--color-ink-dim)] underline-offset-4 transition-colors hover:text-[var(--color-accent)] hover:underline"
+        >
+          Browse all {categories.length} categories &rarr;
+        </a>
+      </div>
+
+      <div class="rf-inline-slot mt-10">
+        <RInfinityRail variant="inline" />
+      </div>
+
+      <div class="blog-grid mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {
+          posts.map((post) => (
+            <article class="panel p-5">
+              {post.data.categories?.[0] && <p class="eyebrow">{post.data.categories[0]}</p>}
+              <h2 class="mt-2 text-base leading-snug">
+                <a href={url(`/${post.data.slug}/`)} class="hover:text-[var(--color-accent)]">
+                  {post.data.title}
+                </a>
+              </h2>
+              <p class="mt-2 line-clamp-3 text-sm leading-6 text-[var(--color-ink-dim)]">{post.data.description}</p>
+              <p class="mt-4 text-xs text-[var(--color-ink-dim)]">{fmt(post.data.updatedAt ?? post.data.publishedAt)}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="tool-inline-slot">
+      <ToolRailAds variant="inline" />
     </div>
   </div>
 </BaseLayout>
+
+<style>
+  /* In the flow, both ad slots keep the page gutter instead of running edge to edge. */
+  .blog-layout > .tool-inline-slot {
+    width: 100%;
+    max-width: 82rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    .blog-layout > .tool-inline-slot {
+      padding-inline: 2rem;
+    }
+  }
+
+  /*
+   * Above the rail breakpoint this page uses the tool-page pattern: wrapper at the
+   * container geometry so the rail offsets are the same arithmetic, absolute rails
+   * stretched to the wrapper height, and 208px of section padding either side so
+   * the column is the same 896px the tool pages use.
+   */
+  @media (min-width: 1740px) {
+    .blog-layout {
+      max-width: 82rem;
+      margin-inline: auto;
+    }
+
+    .blog-layout > .rf-rail-slot {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      display: block;
+      width: 320px;
+      left: calc(272px - 25vw);
+    }
+
+    .blog-layout > .tool-rail-slot {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      display: block;
+      width: 320px;
+      right: calc(272px - 25vw);
+    }
+
+    .blog-layout > .rf-rail-slot > .rf-rail-sticky,
+    .blog-layout > .tool-rail-slot > .tool-rail-sticky {
+      position: sticky;
+      top: 96px;
+    }
+
+    .blog-layout > .container-x {
+      max-width: none;
+      padding-inline: 208px;
+    }
+
+    /* Two posts per row once the rails take their space. */
+    .blog-layout .blog-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

@@ -11,11 +11,9 @@ seo:
   canonical: "https://bestmt4ea.com/ultimate-trade-assistant-free-download-7-powerful-benefits-every-trader-will-love/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_126965_featured.webp"
 sourceUrl: "https://bestmt4ea.com/ultimate-trade-assistant-free-download-7-powerful-benefits-every-trader-will-love/"
-categories: 
-  - "AI EA Reviews"
+categories:
   - "AI-Powered Trading Tools"
-categoryPaths: 
-  - "/category/ai-ea-reviews/"
+categoryPaths:
   - "/category/ai-powered-trading-tools/"
 tags: []
 draft: false

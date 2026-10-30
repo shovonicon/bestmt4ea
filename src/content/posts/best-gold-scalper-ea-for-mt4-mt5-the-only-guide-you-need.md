@@ -13,10 +13,10 @@ seo:
 sourceUrl: "https://bestmt4ea.com/best-gold-scalper-ea-for-mt4-mt5-the-only-guide-you-need/"
 categories:
   - "Gold (XAUUSD) Trading"
-  - "Gold EA & Robots"
+  - "Forex Scalping"
 categoryPaths:
   - "/category/gold-xauusd-trading/"
-  - "/category/gold-ea-robots/"
+  - "/category/forex-trading-strategies/forex-scalping/"
 tags: []
 draft: false
 primaryKeyword: "best gold scalper EA"

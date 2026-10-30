@@ -13,8 +13,12 @@ seo:
 sourceUrl: "https://bestmt4ea.com/%f0%9f%9a%80-supergold-m1-scalping-ea-free-download-powerful-proven-7-step-setup-guide-for-maximum-profits/"
 categories:
   - "Free Forex EA"
+  - "Gold (XAUUSD) Trading"
+  - "Forex Scalping"
 categoryPaths:
   - "/category/free-forex-ea/"
+  - "/category/gold-xauusd-trading/"
+  - "/category/forex-trading-strategies/forex-scalping/"
 tags:
   - "XAUUSD"
   - "scalping"

@@ -12,9 +12,11 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_1915_featured.webp"
 sourceUrl: "https://bestmt4ea.com/the-best-forex-trading-journal-template-excel-download-complete-guide-free-resources/"
 categories:
-  - "Installation & Setup"
+  - "AI-Powered Trading Tools"
+  - "EA Settings & Optimization"
 categoryPaths:
-  - "/category/installation-setup/"
+  - "/category/ai-powered-trading-tools/"
+  - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
 tags: []
 draft: false
 primaryKeyword: "forex trading journal template"
