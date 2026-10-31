@@ -8,6 +8,7 @@
  *   every minute  -> POST /api/internal/usdt-poll/     (settle incoming USDT)
  *   daily 03:00   -> POST /api/internal/license-expiry/ (expire licences)
  *                 -> POST /api/internal/cleanup/        (housekeeping)
+ *                 -> POST /api/internal/payment-reminders/ (unpaid order reminders)
  */
 
 interface Env {
@@ -39,7 +40,11 @@ export default {
   async scheduled(event: ScheduledEvent, env: Env): Promise<void> {
     const jobs = [call(env, '/api/internal/usdt-poll/')];
     if (event.cron !== USDT_CRON) {
-      jobs.push(call(env, '/api/internal/license-expiry/'), call(env, '/api/internal/cleanup/'));
+      jobs.push(
+        call(env, '/api/internal/license-expiry/'),
+        call(env, '/api/internal/cleanup/'),
+        call(env, '/api/internal/payment-reminders/'),
+      );
     }
     await Promise.allSettled(jobs);
   },

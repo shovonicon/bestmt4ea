@@ -263,6 +263,9 @@ export const orders = sqliteTable(
     couponId: text('coupon_id').references(() => coupons.id),
     createdAt: createdAt(),
     paidAt: integer('paid_at', { mode: 'timestamp_ms' }),
+    /** Automatic payment reminders sent so far (0-3). See server/payment-reminders.ts. */
+    reminderCount: integer('reminder_count').notNull().default(0),
+    lastReminderAt: integer('last_reminder_at', { mode: 'timestamp_ms' }),
   },
   (t) => [
     uniqueIndex('orders_order_number_unique').on(t.orderNumber),

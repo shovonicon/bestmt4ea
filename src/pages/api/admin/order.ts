@@ -4,6 +4,7 @@ import { getDb } from '../../../db/client';
 import { entitlements, orders } from '../../../db/schema';
 import { audit, requireAdminMfa } from '../../../server/admin-auth';
 import { getOrder, settleOrder } from '../../../server/orders';
+import { sendPaymentReminder } from '../../../server/payment-reminders';
 import { json, jsonError, readBody, redirect, wantsHtml } from '../../../lib/http';
 
 export const prerender = false;
@@ -64,6 +65,22 @@ export const POST: APIRoute = async ({ request, locals }) => {
       meta: { orderNumber: order.orderNumber },
     });
     return wantsHtml(request) ? back('done=approved') : json({ ok: true });
+  }
+
+  if (action === 'remind') {
+    const result = await sendPaymentReminder(db, order.id, { manual: true });
+    if (!result.sent) {
+      return wantsHtml(request) ? back(`error=reminder_${result.reason}`) : jsonError(400, result.reason);
+    }
+
+    await audit(db, {
+      adminUserId: session.subjectId,
+      action: 'order.remind',
+      entity: 'order',
+      entityId: order.id,
+      meta: { orderNumber: order.orderNumber },
+    });
+    return wantsHtml(request) ? back('done=reminded') : json({ ok: true });
   }
 
   if (action === 'delete') {

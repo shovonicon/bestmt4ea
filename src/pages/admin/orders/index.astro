@@ -47,6 +47,14 @@ const flash =
     ? { tone: 'ok', text: 'Order approved — marked paid, and the licence is queued.' }
     : done === 'deleted'
       ? { tone: 'ok', text: 'Order deleted.' }
+      : done === 'reminded'
+        ? { tone: 'ok', text: 'Reminder sent to the customer.' }
+        : error === 'reminder_no_email'
+          ? { tone: 'warn', text: 'This customer has no email address, so no reminder was sent.' }
+          : error === 'reminder_not_pending'
+            ? { tone: 'warn', text: 'Only unpaid orders can be reminded.' }
+            : error === 'reminder_send_failed'
+              ? { tone: 'warn', text: 'The reminder could not be sent. Check the email log, then try again.' }
       : error === 'has_entitlements'
         ? {
             tone: 'warn',
@@ -127,6 +135,15 @@ const badgeTone = (status: string) => {
                           <input type="hidden" name="action" value="approve" />
                           <button class="admin-btn admin-btn-primary" type="submit">
                             Approve
+                          </button>
+                        </form>
+                      )}
+                      {row.status === 'pending' && (
+                        <form method="post" action="/api/admin/order/">
+                          <input type="hidden" name="orderId" value={row.id} />
+                          <input type="hidden" name="action" value="remind" />
+                          <button class="admin-btn" type="submit">
+                            Send reminder
                           </button>
                         </form>
                       )}
