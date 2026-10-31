@@ -16,8 +16,3 @@ export function formatUsd(cents: number): string {
     maximumFractionDigits: 2,
   })}`;
 }
-
-/** `49.99` — a plain decimal, for feeding an order total into a quote. */
-export function centsToUsdtBase(cents: number): string {
-  return (cents / 100).toFixed(2);
-}

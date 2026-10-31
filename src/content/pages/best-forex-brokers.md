@@ -11,7 +11,6 @@ seo:
   canonical: "https://bestmt4ea.com/best-forex-brokers/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2025/10/best-forex-brokers-scaled.jpg"
 sourceUrl: "https://bestmt4ea.com/best-forex-brokers/"
-menuOrder: 0
 systemPage: false
 showAds: false
 draft: false

@@ -54,13 +54,3 @@ export async function linkWallet(db: Db, customerId: string, address: string): P
   const updated = await db.select().from(customers).where(eq(customers.id, customerId)).get();
   return updated ? { ok: true, customer: updated } : { ok: false, reason: 'not_found' };
 }
-
-/** The wallet an account sends USDT from, when one is linked. */
-export async function getWalletForCustomer(db: Db, customerId: string): Promise<string | null> {
-  const row = await db
-    .select({ address: customers.usdtWalletAddress })
-    .from(customers)
-    .where(eq(customers.id, customerId))
-    .get();
-  return row?.address ?? null;
-}

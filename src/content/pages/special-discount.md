@@ -11,7 +11,6 @@ seo:
   canonical: "https://bestmt4ea.com/special-discount/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2025/10/1-Verified-Forex-EA-scaled.jpg"
 sourceUrl: "https://bestmt4ea.com/special-discount/"
-menuOrder: 0
 systemPage: false
 draft: false
 ---

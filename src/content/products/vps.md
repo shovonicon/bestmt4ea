@@ -19,7 +19,6 @@ productCategories:
 brands: 
   - "MT4"
   - "MT5"
-tags: []
 price: "44.99"
 regularPrice: "49.99"
 salePrice: "44.99"
@@ -27,9 +26,6 @@ currency: "USD"
 priceMin: 44.99
 priceMax: 359.99
 stockStatus: "instock"
-ratingAverage: 5
-ratingCount: 11
-productType: "variable"
 variants: 
   - 
     id: 73441
@@ -43,10 +39,6 @@ variants:
   - 
     id: 73444
     name: "Validity: Annually"
-gallery: 
-  - "/media/products/mt4.png"
-  - "/media/products/metatrader-5-mt5-trading-platform-interface-for-bestmt4ea-forex-expert-advisors.png"
-systemPage: false
 draft: false
 ---
 

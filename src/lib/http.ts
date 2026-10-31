@@ -54,12 +54,3 @@ export async function readBody(request: Request): Promise<Record<string, string>
 export function wantsHtml(request: Request): boolean {
   return (request.headers.get('accept') ?? '').includes('text/html');
 }
-
-// Post-login destinations are same-site paths only. Anything else is dropped, so
-// a crafted value cannot turn the login flow into an open redirect.
-export function safeRedirectPath(value: string | null | undefined): string | null {
-  if (!value) return null;
-  if (/[\r\n\\]/.test(value)) return null;
-  if (!value.startsWith('/') || value.startsWith('//')) return null;
-  return value;
-}

@@ -17,7 +17,6 @@ productCategories:
   - "Most Popular"
 brands: 
   - "MT5"
-tags: []
 price: "0"
 regularPrice: "0"
 salePrice: "0"
@@ -25,9 +24,6 @@ currency: "USD"
 priceMin: 0
 priceMax: 159.99
 stockStatus: "instock"
-ratingAverage: 5
-ratingCount: 1
-productType: "variable"
 variants: 
   - 
     id: 189030
@@ -38,11 +34,6 @@ variants:
   - 
     id: 189032
     name: "License: Personal Lifetime"
-gallery: 
-  - "/media/products/apex-quant-ea-ai-bitcoin-scalper-for-mt5-backtest-overview-scaled.webp"
-  - "/media/products/metatrader-5-mt5-trading-platform-interface-for-bestmt4ea-forex-expert-advisors.png"
-  - "/media/products/btcusd-bestmt4ea.webp"
-systemPage: false
 draft: false
 ---
 

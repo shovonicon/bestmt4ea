@@ -41,11 +41,6 @@ export async function getLicense(db: Db, id: string): Promise<License | null> {
   return row ?? null;
 }
 
-export async function getLicenseByKey(db: Db, key: string): Promise<License | null> {
-  const row = await db.select().from(licenses).where(eq(licenses.licenseKey, key)).get();
-  return row ?? null;
-}
-
 export async function listLicensesForCustomer(db: Db, customerId: string): Promise<License[]> {
   return db.select().from(licenses).where(eq(licenses.customerId, customerId)).all();
 }
@@ -77,16 +72,6 @@ export async function getActiveLicense(
     )
     .get();
   return row ?? null;
-}
-
-/** True when this customer has any licence for the product (so it is per-account gated). */
-export async function hasAnyLicense(db: Db, customerId: string, productId: string): Promise<boolean> {
-  const row = await db
-    .select({ id: licenses.id })
-    .from(licenses)
-    .where(and(eq(licenses.customerId, customerId), eq(licenses.productId, productId)))
-    .get();
-  return Boolean(row);
 }
 
 async function logEvent(

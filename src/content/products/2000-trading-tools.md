@@ -19,21 +19,12 @@ productCategories:
 brands: 
   - "MT4"
   - "MT5"
-tags: []
 price: "0"
 regularPrice: "0"
 salePrice: "0"
 currency: "USD"
 stockStatus: "instock"
-ratingAverage: 5
-ratingCount: 3
-productType: "simple"
 variants: []
-gallery: 
-  - "/media/products/xauusd-bestmt4ea.webp"
-  - "/media/products/mt4.png"
-  - "/media/products/metatrader-5-mt5-trading-platform-interface-for-bestmt4ea-forex-expert-advisors.png"
-systemPage: false
 draft: false
 ---
 

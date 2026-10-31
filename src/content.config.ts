@@ -98,7 +98,6 @@ const products = defineCollection({
     platform: z.enum(['MT4', 'MT5', 'MT4/MT5', 'none']).default('none'),
     productCategories: z.array(z.string()).default([]),
     brands: z.array(z.string()).default([]),
-    tags: z.array(z.string()).default([]),
     price: z.string().optional(),
     regularPrice: z.string().optional(),
     salePrice: z.string().optional(),
@@ -107,7 +106,6 @@ const products = defineCollection({
     priceMax: z.number().optional(),
     sku: z.string().optional(),
     stockStatus: z.string().optional(),
-    productType: z.enum(['simple', 'variable', 'grouped', 'external', 'unknown']).default('unknown'),
     variants: z
       .array(
         z.object({
@@ -120,8 +118,6 @@ const products = defineCollection({
         }),
       )
       .default([]),
-    gallery: z.array(z.string()).default([]),
-    systemPage: z.boolean().default(false),
 
     /** Editorial extras. */
     quickAnswer: z.string().optional(),
@@ -129,7 +125,6 @@ const products = defineCollection({
     faqs: z.array(faq).default([]),
     sources: z.array(source).default([]),
     primaryKeyword: z.string().optional(),
-    related: z.array(z.string()).default([]),
   }),
 });
 
@@ -147,7 +142,6 @@ const posts = defineCollection({
     faqs: z.array(faq).default([]),
     sources: z.array(source).default([]),
     primaryKeyword: z.string().optional(),
-    updatedNote: z.string().optional(),
     /** Turns a post into a free-download page. */
     download: download.optional(),
     /**
@@ -163,7 +157,6 @@ const pages = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
   schema: base.extend({
     systemPage: z.boolean().default(false),
-    menuOrder: z.number().int().default(0),
     faqs: z.array(faq).default([]),
     showAds: z.boolean().default(true),
   }),

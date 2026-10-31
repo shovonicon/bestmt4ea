@@ -21,10 +21,6 @@ export function formatPriceRange(
   return `${formatMoney(min, currency)} – ${formatMoney(max, currency)}`;
 }
 
-export function formatPercent(value: number, digits = 2): string {
-  return `${value.toFixed(digits).replace(/\.?0+$/, '')}%`;
-}
-
 export function formatSignedPercent(value: number, digits = 2): string {
   return `${value >= 0 ? '+' : ''}${value.toFixed(digits)}%`;
 }
@@ -36,17 +32,4 @@ export function formatDate(date: Date): string {
     year: 'numeric',
     timeZone: 'UTC',
   }).format(date);
-}
-
-export function slugify(value: string): string {
-  return value
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
-
-/** Strip HTML tags for meta descriptions. */
-export function stripHtml(value: string): string {
-  return value.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
 }

@@ -51,9 +51,3 @@ export function reviewsForProduct(product: { slug: string; title: string }): Pro
     }))
     .sort((a, b) => b.createdAt - a.createdAt);
 }
-
-/** Count and mean for a set of reviews, or null when there is nothing to rate. */
-export function summariseReviews(reviews: Array<{ rating: number }>): { count: number; average: number } | null {
-  if (!reviews.length) return null;
-  return { count: reviews.length, average: reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length };
-}

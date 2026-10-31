@@ -18,7 +18,6 @@ productCategories:
   - "Most Popular"
 brands: 
   - "MT5"
-tags: []
 price: "0"
 regularPrice: "0"
 salePrice: "0"
@@ -26,9 +25,6 @@ currency: "USD"
 priceMin: 0
 priceMax: 999.99
 stockStatus: "instock"
-ratingAverage: 5
-ratingCount: 1
-productType: "variable"
 variants: 
   - 
     id: 235738
@@ -39,11 +35,6 @@ variants:
   - 
     id: 235363
     name: "License: Personal Lifetime"
-gallery: 
-  - "/media/products/mythos-epic-ea-ai-gold-scalper-for-mt5-profit-scaled.webp"
-  - "/media/products/metatrader-5-mt5-trading-platform-interface-for-bestmt4ea-forex-expert-advisors.png"
-  - "/media/products/xauusd-bestmt4ea.webp"
-systemPage: false
 draft: false
 keyTakeaways:
   - "Fully automated execution — no manual entries, no screen time required"

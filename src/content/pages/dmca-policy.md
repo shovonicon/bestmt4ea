@@ -5,7 +5,6 @@ slug: "dmca-policy"
 description: "How BESTMT4EA handles copyright: what we host, what we only link to, and the notice-and-takedown process for rights holders under the DMCA."
 publishedAt: 2026-09-28
 updatedAt: 2026-09-29
-menuOrder: 0
 systemPage: true
 showAds: false
 draft: false

@@ -18,7 +18,6 @@ productCategories:
   - "Most Popular"
 brands: 
   - "MT4"
-tags: []
 price: "0"
 regularPrice: "0"
 salePrice: "0"
@@ -26,9 +25,6 @@ currency: "USD"
 priceMin: 0
 priceMax: 679.99
 stockStatus: "instock"
-ratingAverage: 5
-ratingCount: 2
-productType: "variable"
 variants: 
   - 
     id: 77514
@@ -39,11 +35,6 @@ variants:
   - 
     id: 77516
     name: "License: Personal Lifetime"
-gallery: 
-  - "/media/products/xauusd-ava-aigpt5-ea-backtest-xm.webp"
-  - "/media/products/xauusd-bestmt4ea.webp"
-  - "/media/products/mt4.png"
-systemPage: false
 draft: false
 ---
 

@@ -5,7 +5,6 @@ slug: "disclaimer"
 description: "Trading forex and CFDs carries a high risk of loss. Read how BESTMT4EA presents performance data, what our software does and does not do, and why nothing here is financial advice."
 publishedAt: 2026-09-28
 updatedAt: 2026-09-29
-menuOrder: 0
 systemPage: true
 showAds: false
 draft: false

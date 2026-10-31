@@ -65,15 +65,3 @@ export function deliverySteps(channel: DeliveryChannel): DeliveryStep[] {
       ];
   }
 }
-
-/** One line for a product page or a summary row. */
-export function deliveryPromise(channel: DeliveryChannel): string {
-  switch (channel) {
-    case 'licence':
-      return 'Delivered to your dashboard — a 30-day trial runs straight away, a paid licence is bound to the account you activate.';
-    case 'download':
-      return 'Delivered to your dashboard — the download unlocks the moment your payment settles.';
-    case 'telegram':
-      return `Delivered over Telegram — message ${TELEGRAM_FULFILMENT_HANDLE} after payment and we will send your credentials.`;
-  }
-}

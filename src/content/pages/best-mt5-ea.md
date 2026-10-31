@@ -9,7 +9,6 @@ seo:
   description: "Compare Myfxbook-verified MT5 expert advisors. AI-driven scalping systems for XAUUSD, BTCUSD and major pairs, live-traded and verified before release."
   canonical: "https://bestmt4ea.com/best-mt5-ea/"
 sourceUrl: "https://bestmt4ea.com/best-mt5-ea/"
-menuOrder: 0
 systemPage: false
 showAds: false
 draft: false

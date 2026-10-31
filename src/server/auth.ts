@@ -42,17 +42,6 @@ export function pendingLoginEmailCookie(email: string): string {
   ].join('; ');
 }
 
-export function clearPendingLoginEmailCookie(): string {
-  return [
-    `${PENDING_LOGIN_EMAIL_COOKIE}=`,
-    'Path=/',
-    'HttpOnly',
-    'Secure',
-    'SameSite=Lax',
-    'Max-Age=0',
-  ].join('; ');
-}
-
 export function normalizeEmail(email: string): string {
   return email.trim().toLowerCase();
 }

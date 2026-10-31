@@ -236,7 +236,6 @@ function mapStoreProduct(p) {
     platform: /mt4/i.test(p.name) && /mt5/i.test(p.name) ? 'MT4/MT5' : /mt4/i.test(p.name) ? 'MT4' : /mt5/i.test(p.name) ? 'MT5' : 'none',
     productCategories: catNames,
     brands: brandNames,
-    tags: (p.tags || []).map((t) => decodeEntities(t.name)),
     currency: prices.currency_code || 'EUR',
     price: prices.price != null ? String(toMajor(prices.price)) : undefined,
     regularPrice: prices.regular_price != null ? String(toMajor(prices.regular_price)) : undefined,
@@ -245,9 +244,6 @@ function mapStoreProduct(p) {
     priceMax: toMajor(prices.price_range?.max_amount),
     sku: p.sku || undefined,
     stockStatus: p.is_in_stock ? 'instock' : 'outofstock',
-    ratingAverage: p.average_rating ? Number(p.average_rating) : undefined,
-    ratingCount: typeof p.review_count === 'number' ? p.review_count : undefined,
-    productType: p.type || 'unknown',
     variants: (p.variations || []).map((v) => ({
       id: v.id,
       sku: v.sku || undefined,
@@ -319,7 +315,6 @@ async function main() {
       platform: store.platform,
       productCategories: store.productCategories,
       brands: store.brands,
-      tags: store.tags,
       price: store.price,
       regularPrice: store.regularPrice,
       salePrice: store.salePrice,
@@ -328,12 +323,7 @@ async function main() {
       priceMax: store.priceMax,
       sku: store.sku,
       stockStatus: store.stockStatus,
-      ratingAverage: store.ratingAverage,
-      ratingCount: store.ratingCount,
-      productType: store.productType,
       variants: store.variants,
-      gallery: store.gallery.slice(1),
-      systemPage: false,
       draft: false,
     };
 
@@ -383,7 +373,6 @@ async function main() {
       updatedAt: toIso(page.modified),
       seo: yoastFrom(page),
       sourceUrl: page.link,
-      menuOrder: page.menu_order ?? 0,
       systemPage: false,
       draft: false,
     };

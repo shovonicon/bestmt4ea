@@ -17,20 +17,12 @@ productCategories:
   - "Most Popular"
 brands: 
   - "MT4"
-tags: []
 price: "7.99"
 regularPrice: "10.99"
 salePrice: "7.99"
 currency: "USD"
 stockStatus: "instock"
-ratingAverage: 5
-ratingCount: 3
-productType: "simple"
 variants: []
-gallery: 
-  - "/media/products/mt4.png"
-  - "/media/products/eurusd-bestmt4ea.webp"
-systemPage: false
 draft: false
 ---
 

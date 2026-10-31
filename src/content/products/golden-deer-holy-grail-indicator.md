@@ -18,21 +18,12 @@ productCategories:
   - "Most Popular"
 brands: 
   - "MT4"
-tags: []
 price: "87.99"
 regularPrice: "109.99"
 salePrice: "87.99"
 currency: "USD"
 stockStatus: "instock"
-ratingAverage: 0
-ratingCount: 0
-productType: "simple"
 variants: []
-gallery: 
-  - "/media/products/golden-deer-holy-grail-indicator-1.png"
-  - "/media/products/mt4.png"
-  - "/media/products/xauusd-bestmt4ea.webp"
-systemPage: false
 draft: false
 ---
 

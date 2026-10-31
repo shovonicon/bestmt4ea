@@ -149,17 +149,3 @@ export function assertRootSlugIntegrity(
     throw new Error(`Slug integrity failed:\n  - ${problems.join('\n  - ')}`);
   }
 }
-
-/** Products live under `/product/<slug>/`; only duplicates are a problem. */
-export function assertUniqueProductSlugs(products: CollectionEntry<'products'>[]): void {
-  const seen = new Map<string, string>();
-  const problems: string[] = [];
-  for (const product of products) {
-    const slug = String(product.data.slug).toLowerCase();
-    if (seen.has(slug)) problems.push(`duplicate product slug "${slug}" (${seen.get(slug)}, ${product.id})`);
-    else seen.set(slug, product.id);
-  }
-  if (problems.length) {
-    throw new Error(`Product slug integrity failed:\n  - ${problems.join('\n  - ')}`);
-  }
-}

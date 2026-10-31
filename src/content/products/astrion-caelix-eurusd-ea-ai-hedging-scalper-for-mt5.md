@@ -17,7 +17,6 @@ productCategories:
   - "Most Popular"
 brands: 
   - "MT5"
-tags: []
 price: "0"
 regularPrice: "0"
 salePrice: "0"
@@ -25,9 +24,6 @@ currency: "USD"
 priceMin: 0
 priceMax: 497
 stockStatus: "instock"
-ratingAverage: 0
-ratingCount: 0
-productType: "variable"
 variants: 
   - 
     id: 910002
@@ -59,9 +55,6 @@ sources:
     url: "https://www.myfxbook.com/portfolio/astrion-caelix-hedging-ea-ai/12257183"
   - label: "MetaTrader 5 platform"
     url: "https://www.metatrader5.com/en"
-gallery: 
-  - "/media/products/astrion-caelix-eurusd-ea-ai-hedging-scalper-for-mt5.webp"
-systemPage: false
 draft: false
 ---
 

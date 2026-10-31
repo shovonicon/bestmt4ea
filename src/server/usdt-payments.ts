@@ -54,11 +54,6 @@ export async function getUsdtPayment(db: Db, id: string): Promise<CryptoPayment 
   return row ?? null;
 }
 
-export async function getUsdtPaymentForOrder(db: Db, orderId: string): Promise<CryptoPayment | null> {
-  const row = await db.select().from(cryptoPayments).where(eq(cryptoPayments.orderId, orderId)).get();
-  return row ?? null;
-}
-
 export interface PollResult {
   matched: number;
   expired: number;

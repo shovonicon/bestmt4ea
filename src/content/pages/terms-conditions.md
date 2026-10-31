@@ -9,7 +9,6 @@ seo:
   title: "Terms & Conditions — Licences, Downloads and Acceptable Use"
   description: "The terms for using BESTMT4EA: what a licence covers, hosted versus linked files, refunds, acceptable use, and how copyright notices are handled."
   canonical: "https://bestmt4ea.com/terms-conditions/"
-menuOrder: 0
 systemPage: true
 showAds: false
 draft: false
