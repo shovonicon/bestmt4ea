@@ -13,10 +13,10 @@ seo:
 sourceUrl: "https://bestmt4ea.com/10-powerful-ways-on-how-to-export-tradingview-data-to-csv-free-methods-no-paid-plan-needed/"
 categories:
   - "AI-Powered Trading Tools"
-  - "Brokers & Trading Platforms Reviews"
+  - "Technical Analysis"
 categoryPaths:
   - "/category/ai-powered-trading-tools/"
-  - "/category/ai-powered-trading-tools/brokers-trading-platforms/"
+  - "/category/technical-analysis/"
 tags: []
 quickAnswer: "To export TradingView data to CSV on a free account, you have four realistic routes: copy the values from the Data Window into a spreadsheet, export from a paid chart-data feature if your plan includes it, plot your indicator values with a Pine Script and read them out, or pull candles from a broker or public data feed. Each route captures different fields, and a free copy-paste export only covers what is on screen."
 primaryKeyword: "export TradingView data to CSV free"

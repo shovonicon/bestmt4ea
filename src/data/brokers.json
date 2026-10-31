@@ -12,7 +12,7 @@
     },
     {
       "key": "exness",
-      "regulation": "FCA, CySEC",
+      "regulation": "Multiple entities (FSA SD025, FSC BVI, CBCS, FSC Belize, FSCA, CMA; FCA and CySEC entities are non-retail)",
       "minDeposit": "$1",
       "platforms": "MT4, MT5",
       "accountTypes": "Standard, Cent, Zero Spread",
@@ -28,7 +28,7 @@
     },
     {
       "key": "xm",
-      "regulation": "ASIC, CySEC, FCA",
+      "regulation": "FSC Belize (XM Global Limited, 8557558)",
       "minDeposit": "$5",
       "platforms": "MT4, MT5",
       "accountTypes": "Standard, Micro, Zero Spread",

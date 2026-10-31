@@ -10,7 +10,7 @@ categoryPaths:
   - "/category/ai-powered-trading-tools/brokers-trading-platforms/"
 tags: []
 seo:
-  title: "RoboForex Review 2026: Regulation, Accounts and Running an EA"
+  title: "RoboForex Review 2026: Regulation, Accounts and EA Use"
   description: "RoboForex reviewed for EA traders: FSC Belize licence 9759600, ProCent and Pro accounts, spreads, server time, execution and the terms to check before funding."
 quickAnswer: "RoboForex is a Belize-registered broker (FSC licence 9759600) that we build and test our own expert advisors on. It suits EA traders because MT4 and MT5 are supported natively, the ProCent account is explicitly designed for testing EAs and algo strategies, and leverage runs to 1:2000 on Pro and ProCent. The trade-off is regulatory: there is no statutory compensation scheme, only the Financial Commission's compensation fund and the broker's own insurance."
 primaryKeyword: "RoboForex review"
