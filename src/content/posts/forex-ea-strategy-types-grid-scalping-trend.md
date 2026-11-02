@@ -266,7 +266,7 @@ download:
 <li><strong>Strategy:</strong> AI Grid Scalping</li>
 <li><strong>Characteristics:</strong> This EA combines the high win-rate nature of grid trading with the quick-exit logic of scalping. It uses AI to identify short-term ranging boundaries and places grid orders to capture micro-retracements. It is ideal for the baseline cash-flow portion of a diversified portfolio.</li>
 <li><strong>Risk Consideration:</strong> As a grid-based system, it requires strict risk management settings to prevent catastrophic drawdown during unexpected EURUSD breakouts.</li>
-<li><strong>Action:</strong> <a href="https://strivealgo.com/product/obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5">Learn More About Obsidian Aether EURUSD EA</a></li>
+<li><strong>Action:</strong> <a href="https://bestmt4ea.com/product/obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5/">Learn More About Obsidian Aether EURUSD EA</a></li>
 </ul>
 
 <h4>2. FXCore100 EA (Grid Scalping)</h4>

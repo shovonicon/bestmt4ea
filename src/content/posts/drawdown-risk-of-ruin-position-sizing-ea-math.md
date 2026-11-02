@@ -114,7 +114,7 @@ download:
 </tbody>
 </table>
 
-<p>When evaluating a product like the <a href="https://bestmt4ea.com/product/onix-stratos-xauusd-ea-ai-smart-scalper-for-mt5/">Onix Stratos XAUUSD EA</a>, you will see a max drawdown of 12.9%. This means that historically, the worst peak-to-trough decline was 12.9%. This is a highly controlled risk profile. Conversely, a strategy with a 45% max drawdown requires a much larger account buffer to survive its worst historical day.</p>
+<p>When evaluating a product like the <a href="https://bestmt4ea.com/product/onix-stratos-xauusd-ea-ai-smart-scalper-for-mt5/">Onix Stratos XAUUSD EA</a>, you will see a max drawdown of 12.44% (Myfxbook sync, 30 October 2026). This means that historically, the worst peak-to-trough decline was 12.44%. That is a moderate risk profile next to the 35% to 95% drawdowns shown by other tracked systems. Conversely, a strategy with a 45% max drawdown requires a much larger account buffer to survive its worst historical day.</p>
 
 <h2>The Math of Recovery: Why Big Losses Punish Your Account</h2>
 
@@ -282,7 +282,7 @@ Since 1 standard lot equals $10 per pip, and you need $5 per pip, your lot size 
 
 <h3>How EAs Handle Position Sizing</h3>
 
-<p>Many advanced Expert Advisors, such as the <a href="https://strivealgo.com/product/obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5">Obsidian Aether EURUSD EA</a>, include built-in risk management parameters. Instead of using fixed lot sizes, they use dynamic lot sizing based on the current account balance and the distance to the stop loss. When configuring your EA, always look for settings labeled "Risk Percentage," "Auto Lot Size," or "Dynamic Lot Calculation." This ensures your position sizing adapts to your account's current state.</p>
+<p>Many advanced Expert Advisors, such as the <a href="https://bestmt4ea.com/product/obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5/">Obsidian Aether EURUSD EA</a>, include built-in risk management parameters. Instead of using fixed lot sizes, they use dynamic lot sizing based on the current account balance and the distance to the stop loss. When configuring your EA, always look for settings labeled "Risk Percentage," "Auto Lot Size," or "Dynamic Lot Calculation." This ensures your position sizing adapts to your account's current state.</p>
 
 <h2>EA Risk Management Guide MT5: Setting Personal Risk Limits</h2>
 
@@ -363,19 +363,19 @@ Since 1 standard lot equals $10 per pip, and you need $5 per pip, your lot size 
 </thead>
 <tbody>
 <tr>
-<td><a href="https://strivealgo.com/product/obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5">Obsidian Aether EURUSD EA</a></td>
+<td><a href="https://bestmt4ea.com/product/obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5/">Obsidian Aether EURUSD EA</a></td>
 <td>EURUSD</td>
 <td>MT5</td>
 <td>AI Grid Scalping</td>
-<td>10.27%</td>
-<td><strong>Conservative.</strong> Low drawdown, high win rate (89%). Ideal for traders prioritizing capital preservation.</td>
+<td>95.21%</td>
+<td><strong>Very aggressive.</strong> The grid recovery logic has produced the deepest drawdown of the tracked systems. Only suitable for money you can afford to lose.</td>
 </tr>
 <tr>
 <td><a href="https://bestmt4ea.com/product/onix-stratos-xauusd-ea-ai-smart-scalper-for-mt5/">Onix Stratos XAUUSD EA</a></td>
 <td>XAUUSD (Gold)</td>
 <td>MT5</td>
 <td>AI Smart Scalping</td>
-<td>12.9%</td>
+<td>12.44%</td>
 <td><strong>Moderate.</strong> Gold is highly volatile, but the AI scalping keeps drawdown tightly controlled.</td>
 </tr>
 <tr>
@@ -383,13 +383,13 @@ Since 1 standard lot equals $10 per pip, and you need $5 per pip, your lot size 
 <td>XAUUSD (Gold)</td>
 <td>MT5</td>
 <td>AI Gold Scalping</td>
-<td>41.41%</td>
+<td>46.39%</td>
 <td><strong>Aggressive.</strong> Higher drawdown tolerance required. Suitable for traders seeking higher returns who can stomach deep equity fluctuations.</td>
 </tr>
 </tbody>
 </table>
 
-<p>Notice the difference between Obsidian Aether and Mythos Epic. Both trade highly liquid markets, but their internal risk parameters result in vastly different drawdown profiles. The conservative trader should look at Obsidian Aether, while the aggressive trader might allocate a smaller portion of their portfolio to Mythos Epic. Never choose an EA based solely on its monthly ROI; always choose based on its risk-adjusted return.</p>
+<p>Notice the spread between Onix Stratos, Mythos Epic and Obsidian Aether. Each trades a highly liquid market, but their internal risk parameters result in vastly different drawdown profiles. A cautious trader should prefer the lower-drawdown end of the table, and anyone considering Mythos Epic or Obsidian Aether should size the position so that a drawdown of that depth cannot end the account. Never choose an EA based solely on its monthly ROI; always choose based on its risk-adjusted return.</p>
 
 <h2>Alternative Solution: Professional Account Management</h2>
 

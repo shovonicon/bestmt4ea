@@ -231,7 +231,7 @@ download:
 <em>Asset:</em> XAUUSD (Gold) | <em>Strategy:</em> AI Smart Scalping<br>
 Utilizes MT5's processing power to analyze micro-movements in Gold. Features advanced risk management and session filtering. <a href="https://www.myfxbook.com/members/Bestmt4ea/onix-stratos-xauusd-ea-ai/12106628">View Live MyFxBook</a>.</li>
 
-<li><strong><a href="https://strivealgo.com/product/obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5">Obsidian Aether EURUSD EA</a></strong><br>
+<li><strong><a href="https://bestmt4ea.com/product/obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5/">Obsidian Aether EURUSD EA</a></strong><br>
 <em>Asset:</em> EURUSD | <em>Strategy:</em> AI Grid Scalping<br>
 A sophisticated grid system optimized for the tight spreads of the EURUSD pair on MT5. <a href="https://www.myfxbook.com/members/Bestmt4ea/obsidian-aether-eurusd-ea-ai/12080504">View Live MyFxBook</a>.</li>
 

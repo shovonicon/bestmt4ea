@@ -438,7 +438,7 @@ download:
 <li><strong>Platform:</strong> MT5</li>
 <li><strong>Strategy:</strong> AI Grid Scalping</li>
 <li><strong>Characteristics:</strong> Focused on the EURUSD pair using grid-based scalping logic. MyFxBook live performance available.</li>
-<li><strong>Learn More:</strong> <a href="https://strivealgo.com/product/obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5">Obsidian Aether EURUSD EA</a></li>
+<li><strong>Learn More:</strong> <a href="https://bestmt4ea.com/product/obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5/">Obsidian Aether EURUSD EA</a></li>
 <li><strong>Risk Note:</strong> Grid strategies can carry elevated risk during strong trending moves. Understand the grid mechanics before deploying.</li>
 </ul>
 

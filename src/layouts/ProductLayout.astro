@@ -191,6 +191,17 @@ type ProductDetail = {
 
 const plans = ((planData as unknown as Record<string, Plan[]>)[product.data.slug]) ?? [];
 const spec = ((detailData as unknown as Record<string, ProductDetail>)[product.data.slug]) ?? {};
+
+/* The forward-test rows in product-detail.json are a hand-typed snapshot. Gain and
+ * drawdown are overridden from the same value the page header shows (live feed, else
+ * editorial), so one product page can never carry two different track records. */
+const liveVerificationRows: Array<[string, string]> = (spec.verification?.live?.rows ?? []).map(
+  ([label, value]: string[]): [string, string] => {
+    if (label === 'Total gain' && gain != null) return [label, formatSignedPercent(gain)];
+    if (label === 'Max drawdown' && drawdown != null) return [label, `${drawdown.toFixed(2)}%`];
+    return [label, value];
+  },
+);
 const parameters = spec.parameters ?? [];
 // The feature grid reads the content frontmatter first, then the detail entry, so
 // a product without keyTakeaways still renders the section.
@@ -655,7 +666,7 @@ const faqs = [
                   hidden={firstVerifyTab !== 'live'}
                 >
                   <dl class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                    {spec.verification.live?.rows?.map(([label, value]) => (
+                    {liveVerificationRows.map(([label, value]) => (
                       <div class="panel px-4 py-3">
                         <dt class="metric-label">{label}</dt>
                         <dd class="metric-value mt-1 text-base">{value}</dd>

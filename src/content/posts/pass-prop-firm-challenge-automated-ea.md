@@ -238,7 +238,7 @@ download:
 <h4>2. Obsidian Aether EURUSD EA (MT5)</h4>
 <p><strong>Strategy:</strong> AI Grid Scalping (Requires Strict Configuration)</p>
 <p><strong>Why it fits prop firms:</strong> EURUSD is the most liquid pair, offering tight spreads and predictable behavior during the London and New York sessions. While grid systems can be risky, the Obsidian Aether EA includes advanced AI-driven risk management settings. To use this safely on a prop firm account, you must disable aggressive recovery modes and rely solely on the fixed fractional risk and hard stop loss parameters to ensure compliance with daily drawdown limits.</p>
-<p><a href="https://strivealgo.com/product/obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5">Review Obsidian Aether EURUSD EA</a></p>
+<p><a href="https://bestmt4ea.com/product/obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5/">Review Obsidian Aether EURUSD EA</a></p>
 
 <h4>3. FXCore100 EA (MT4)</h4>
 <p><strong>Strategy:</strong> Grid Scalping</p>

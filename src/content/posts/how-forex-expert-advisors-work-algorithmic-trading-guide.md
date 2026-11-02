@@ -283,7 +283,7 @@ download:
 <td>Utilizes AI to navigate Gold's high volatility. Historical live data shows high win rates, but Gold scalping requires a low-spread ECN broker and strict risk management due to sudden liquidity spikes.</td>
 </tr>
 <tr>
-<td><a href="https://strivealgo.com/product/obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5">Obsidian Aether EURUSD EA</a></td>
+<td><a href="https://bestmt4ea.com/product/obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5/">Obsidian Aether EURUSD EA</a></td>
 <td>EURUSD</td>
 <td>MT5</td>
 <td>AI Grid Scalping</td>

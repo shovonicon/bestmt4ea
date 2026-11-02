@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import RInfinityRail from '../../components/RInfinityRail.astro';
 import ToolRailAds from '../../components/ToolRailAds.astro';
+import PostCard from '../../components/PostCard.astro';
 import { getPublicPosts } from '../../lib/content';
 import { url } from '../../lib/urls';
 import taxonomies from '../../data/taxonomies.json';
@@ -123,17 +124,7 @@ const fmt = (d: Date) =>
 
     <div class="category-grid mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
       {
-        sorted.map((post: any) => (
-          <article class="panel p-5">
-            <h2 class="text-base leading-snug">
-              <a href={url(`/${post.data.slug}/`)} class="hover:text-[var(--color-accent)]">
-                {post.data.title}
-              </a>
-            </h2>
-            <p class="mt-2 line-clamp-3 text-sm leading-6 text-[var(--color-ink-dim)]">{post.data.description}</p>
-            <p class="mt-4 text-xs text-[var(--color-ink-dim)]">{fmt(post.data.updatedAt ?? post.data.publishedAt)}</p>
-          </article>
-        ))
+        sorted.map((post: any) => <PostCard post={post} />)
       }
     </div>
 
