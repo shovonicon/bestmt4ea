@@ -936,3 +936,13 @@ mythos 73.65%/41.41%, equinox 32.66%/63.90%). All six product pages then rendere
 **"Synchronized … from Myfxbook"** with **zero** transcribed fallbacks and the
 "Myfxbook live feed" label. Note the live read corrected real drift: Obsidian's published
 account now shows 46.99% / 86.30% against the 147.21% / 80.14% the transcription had held.
+
+## Progress save: 2026-11-02 (session close)
+
+- **Content:** 23 new educational posts live; IQ Option post dropped. Stale month labels, long titles and descriptions fixed. Product guides corrected to the 2 Nov Myfxbook sync.
+- **Myfxbook:** collector ingested 9/11 accounts. Nexora Manus (parse failure) and Elysium Vortex (HTTP 403) keep previous data by owner decision. `performanceVerifiedAt` = 2026-11-02.
+- **Performance:** hero animation no longer hides LCP; analytics deferred; particle field off on phones; shop images served at 480/640/720 px via `src/data/product-thumbs.json`. Mobile: home ~95, blog ~91, shop 76–89 (shop LCP still 3–4 s).
+- **UI:** no text under 11 px; phone gutter 20 px; shared `PostCard` on blog and category pages; "Keep learning" block on posts.
+- **SEO/GEO:** IndexNow key `public/26b75b348fa22eb87ddfe453a59b4822.txt`, submit with `node scripts/indexnow.mjs --since <rev>`; `llms.txt` lists 23 guides; blog and tools pages carry CollectionPage/ItemList/Breadcrumb schema.
+- **Merchant feed:** `public/merchant/google-products.xml` (24 items, brand BESTMT4EA), built by `scripts/build-merchant-feed.mjs`. Approval for forex software is untested.
+- **Open:** shop LCP above 2.5 s; strivealgo.com still a coming-soon page (7 posts now point to bestmt4ea.com); Google index shows an old "TBK News" listing, fix by requesting homepage indexing in Search Console; Nexora product page redirects.
