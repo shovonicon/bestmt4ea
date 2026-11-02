@@ -27,7 +27,12 @@
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Phones, touch screens and low-core devices get a still field: a fixed
+    // full-screen canvas repainted every frame was the biggest idle cost on mobile.
+    const reduced =
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+      window.matchMedia('(max-width: 767px), (pointer: coarse)').matches ||
+      (navigator.hardwareConcurrency || 8) <= 4;
     const ACCENT = '0, 193, 144';
 
     let width = 0;
@@ -83,15 +88,29 @@
         ctx.fillStyle = `rgba(${ACCENT}, ${p.a * (0.7 + 0.3 * Math.sin(p.pulse))})`;
         ctx.fill();
       }
-      requestAnimationFrame(tick);
+      if (document.hidden) running = false;
+      else requestAnimationFrame(tick);
     };
+    let running = false;
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden && !reduced && !running) {
+        running = true;
+        requestAnimationFrame(tick);
+      }
+    });
 
     resize();
     window.addEventListener('resize', resize);
 
     if (reduced) return;
 
-    requestAnimationFrame(tick);
+    // Start after the page has settled so the animation never competes with first paint.
+    const start = () => {
+      running = true;
+      requestAnimationFrame(tick);
+    };
+    if ('requestIdleCallback' in window) requestIdleCallback(start, { timeout: 2500 });
+    else setTimeout(start, 1200);
 
     if (glow) {
       let targetX = width / 2;
@@ -112,12 +131,25 @@
         glow.style.opacity = '0';
       });
 
+      // Only animate while the glow is still catching up with the pointer.
+      let following = false;
       const follow = () => {
         x += (targetX - x) * 0.12;
         y += (targetY - y) * 0.12;
         glow.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
-        requestAnimationFrame(follow);
+        if (Math.abs(targetX - x) > 0.5 || Math.abs(targetY - y) > 0.5) requestAnimationFrame(follow);
+        else following = false;
       };
+      window.addEventListener(
+        'pointermove',
+        () => {
+          if (!following) {
+            following = true;
+            requestAnimationFrame(follow);
+          }
+        },
+        { passive: true },
+      );
       follow();
     }
   })();
