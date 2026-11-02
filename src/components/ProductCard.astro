@@ -7,7 +7,7 @@
  * to action. The description, licence tiers and specs live on the product page,
  * which is where the buying decision is meant to happen.
  */
-import { existsSync } from 'node:fs';
+import thumbs from '../data/product-thumbs.json';
 import type { CollectionEntry } from 'astro:content';
 import { getPerformance } from '../lib/performance';
 import { priceFrom, compareAtFrom } from '../lib/pricing';
@@ -22,14 +22,11 @@ export interface Props {
 
 const { product, priority = false } = Astro.props;
 
-/* Responsive variants written by scripts/build-product-thumbs.mjs: phones get ~40KB, not ~80KB. */
+/* Responsive variants listed in product-thumbs.json (scripts/build-product-thumbs.mjs):
+ * phones get ~40KB, not ~80KB. */
 const image = product.data.featuredImage as string | undefined;
-const variants =
-  image && image.endsWith('.webp')
-    ? [480, 640]
-        .map((w) => ({ w, src: image.replace(/\.webp$/, `-${w}.webp`) }))
-        .filter((v) => existsSync(`public${v.src}`))
-    : [];
+const widths = (image && (thumbs as Record<string, number[]>)[image]) || [];
+const variants = widths.map((w) => ({ w, src: (image as string).replace(/\.webp$/, `-${w}.webp`) }));
 const srcset = variants.length ? [...variants.map((v) => `${v.src} ${v.w}w`), `${image} 800w`].join(', ') : undefined;
 const perf = getPerformance(product.data.slug);
 

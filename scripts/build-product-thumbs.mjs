@@ -39,3 +39,14 @@ for (const src of images) {
   }
 }
 console.log(`${images.size} product images, ${written} variants written`);
+
+// Manifest read by ProductCard. The prerender may run outside plain Node (no real
+// filesystem), so the card cannot probe public/ itself; it trusts this file instead.
+import { writeFileSync } from 'node:fs';
+const manifest = {};
+for (const src of images) {
+  const have = WIDTHS.filter((w) => existsSync(`${PUBLIC}${src.replace(/\.webp$/, `-${w}.webp`)}`));
+  if (have.length) manifest[src] = have;
+}
+writeFileSync('src/data/product-thumbs.json', JSON.stringify(manifest, null, 2) + '\n');
+console.log(`manifest: ${Object.keys(manifest).length} images`);
