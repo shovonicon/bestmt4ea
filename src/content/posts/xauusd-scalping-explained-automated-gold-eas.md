@@ -203,9 +203,9 @@ download:
 <li><strong>Platform:</strong> MT5</li>
 <li><strong>Strategy:</strong> AI Smart Scalping</li>
 <li><strong>Historical Win Rate:</strong> 85%</li>
-<li><strong>Monthly ROI:</strong> 8.03%</li>
+<li><strong>Monthly ROI:</strong> 7.92%</li>
 <li><strong>Max Drawdown:</strong> 12.44%</li>
-<li><strong>Overview:</strong> The Onix Stratos is designed for high-frequency smart scalping on Gold. It utilizes AI to detect micro-trends and liquidity sweeps, with a maximum drawdown of 12.44% at the last sync (30 October 2026), lower than most of the tracked gold systems.</li>
+<li><strong>Overview:</strong> The Onix Stratos is designed for high-frequency smart scalping on Gold. It utilizes AI to detect micro-trends and liquidity sweeps, with a maximum drawdown of 12.44% at the last sync (2 November 2026), lower than most of the tracked gold systems.</li>
 <li><strong>Action:</strong> <a href="https://bestmt4ea.com/product/onix-stratos-xauusd-ea-ai-smart-scalper-for-mt5/">Learn More About Onix Stratos</a></li>
 </ul>
 
@@ -215,7 +215,7 @@ download:
 <li><strong>Strategy:</strong> AI Gold Scalping</li>
 <li><strong>Historical Win Rate:</strong> 83%</li>
 <li><strong>Monthly ROI:</strong> 12.87%</li>
-<li><strong>Max Drawdown:</strong> 46.39%</li>
+<li><strong>Max Drawdown:</strong> 77.31%</li>
 <li><strong>Overview:</strong> The Mythos Epic EA targets the high-volatility windows of the Gold market. While it offers strong monthly returns, the higher max drawdown indicates it utilizes a more aggressive position sizing or recovery logic. It is suited for traders with a higher risk tolerance.</li>
 <li><strong>Action:</strong> <a href="https://bestmt4ea.com/product/mythos-epic-ea-ai-gold-scalper-for-mt5/">Learn More About Mythos Epic</a></li>
 </ul>

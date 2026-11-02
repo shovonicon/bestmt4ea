@@ -260,7 +260,7 @@ download:
 <ul>
 <li><strong>Position Sizing:</strong> Do not simply copy the lot sizes from the track record. If the track record was built on a $100,000 account and you are trading a $5,000 account, you must scale the lot sizes down proportionally to maintain the same risk percentage.</li>
 <li><strong>Hard Stop Loss:</strong> If the EA does not have a hard stop loss per trade, implement a maximum daily or weekly drawdown limit using a third-party risk management panel or your broker's tools.</li>
-<li><strong>VPS Hosting:</strong> A verified track record assumes 100% uptime. If you run the EA on your home PC, power outages and internet disconnects will ruin the execution. Use a reliable <a href="https://strivealgo.com/">Forex VPS</a> to ensure the MT4/MT5 terminal remains online 24/5.</li>
+<li><strong>VPS Hosting:</strong> A verified track record assumes 100% uptime. If you run the EA on your home PC, power outages and internet disconnects will ruin the execution. Use a reliable <a href="https://bestmt4ea.com/product/vps/">Forex VPS</a> to ensure the MT4/MT5 terminal remains online 24/5.</li>
 </ul>
 
 <h2>Who This Is For</h2>

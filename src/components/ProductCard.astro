@@ -7,6 +7,7 @@
  * to action. The description, licence tiers and specs live on the product page,
  * which is where the buying decision is meant to happen.
  */
+import { existsSync } from 'node:fs';
 import type { CollectionEntry } from 'astro:content';
 import { getPerformance } from '../lib/performance';
 import { priceFrom, compareAtFrom } from '../lib/pricing';
@@ -20,6 +21,16 @@ export interface Props {
 }
 
 const { product, priority = false } = Astro.props;
+
+/* Responsive variants written by scripts/build-product-thumbs.mjs: phones get ~40KB, not ~80KB. */
+const image = product.data.featuredImage as string | undefined;
+const variants =
+  image && image.endsWith('.webp')
+    ? [480, 640]
+        .map((w) => ({ w, src: image.replace(/\.webp$/, `-${w}.webp`) }))
+        .filter((v) => existsSync(`public${v.src}`))
+    : [];
+const srcset = variants.length ? [...variants.map((v) => `${v.src} ${v.w}w`), `${image} 800w`].join(', ') : undefined;
 const perf = getPerformance(product.data.slug);
 
 const href = url(`/product/${product.data.slug}`);
@@ -46,6 +57,10 @@ const hasRecord = gain != null || drawdown != null;
         product.data.featuredImage ? (
           <img
             src={product.data.featuredImage}
+            srcset={srcset}
+            sizes={srcset ? '(min-width: 1024px) 360px, (min-width: 640px) 46vw, 92vw' : undefined}
+            width="800"
+            height="800"
             alt={product.data.title}
             loading={priority ? 'eager' : 'lazy'}
             fetchpriority={priority ? 'high' : undefined}

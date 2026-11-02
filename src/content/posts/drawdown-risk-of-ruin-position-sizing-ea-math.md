@@ -114,7 +114,7 @@ download:
 </tbody>
 </table>
 
-<p>When evaluating a product like the <a href="https://bestmt4ea.com/product/onix-stratos-xauusd-ea-ai-smart-scalper-for-mt5/">Onix Stratos XAUUSD EA</a>, you will see a max drawdown of 12.44% (Myfxbook sync, 30 October 2026). This means that historically, the worst peak-to-trough decline was 12.44%. That is a moderate risk profile next to the 35% to 95% drawdowns shown by other tracked systems. Conversely, a strategy with a 45% max drawdown requires a much larger account buffer to survive its worst historical day.</p>
+<p>When evaluating a product like the <a href="https://bestmt4ea.com/product/onix-stratos-xauusd-ea-ai-smart-scalper-for-mt5/">Onix Stratos XAUUSD EA</a>, you will see a max drawdown of 12.44% (Myfxbook sync, 2 November 2026). This means that historically, the worst peak-to-trough decline was 12.44%. That is a moderate risk profile next to the 35% to 95% drawdowns shown by other tracked systems. Conversely, a strategy with a 45% max drawdown requires a much larger account buffer to survive its worst historical day.</p>
 
 <h2>The Math of Recovery: Why Big Losses Punish Your Account</h2>
 
@@ -383,7 +383,7 @@ Since 1 standard lot equals $10 per pip, and you need $5 per pip, your lot size 
 <td>XAUUSD (Gold)</td>
 <td>MT5</td>
 <td>AI Gold Scalping</td>
-<td>46.39%</td>
+<td>77.31%</td>
 <td><strong>Aggressive.</strong> Higher drawdown tolerance required. Suitable for traders seeking higher returns who can stomach deep equity fluctuations.</td>
 </tr>
 </tbody>
@@ -395,7 +395,7 @@ Since 1 standard lot equals $10 per pip, and you need $5 per pip, your lot size 
 
 <p>If the mathematics of position sizing, drawdown management, and VPS maintenance feel overwhelming, there is an alternative. You do not have to manage the EA yourself.</p>
 
-<p><a href="https://strivealgo.com/">Barakah FX Management</a> offers a professional, performance-based forex account management service. Instead of buying an EA and running it yourself, their AI-driven system trades Gold (XAUUSD) and EURUSD directly in your personal broker account.</p>
+<p><a href="https://bestmt4ea.com/copy-trading/">Barakah FX Management</a> offers a professional, performance-based forex account management service. Instead of buying an EA and running it yourself, their AI-driven system trades Gold (XAUUSD) and EURUSD directly in your personal broker account.</p>
 
 <h3>Why Traders Choose Barakah FX Management</h3>
 
@@ -461,7 +461,7 @@ Since 1 standard lot equals $10 per pip, and you need $5 per pip, your lot size 
 
 <p>If you are ready to explore automated Forex trading with a focus on transparent risk management, review the available MT4 and MT5 Expert Advisors on <a href="https://bestmt4ea.com/">BestMT4EA.com</a>. Compare the strategy, supported market, risk parameters, and available MyFxBook performance information. Choose only a system that fits your own risk tolerance and mathematical requirements.</p>
 
-<p>Alternatively, if you prefer professional oversight with strict institutional risk limits, explore <a href="https://strivealgo.com/">Barakah FX Management</a> for performance-based account management.</p>
+<p>Alternatively, if you prefer professional oversight with strict institutional risk limits, explore <a href="https://bestmt4ea.com/copy-trading/">Barakah FX Management</a> for performance-based account management.</p>
 
 <hr>
 
