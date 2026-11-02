@@ -21,7 +21,7 @@ const offer = getAffiliate(id);
 {
   offer && (
     <div class="hover-brand-card p-6">
-      <p class="font-mono text-[10px] font-bold uppercase tracking-wider text-emerald-400">
+      <p class="font-mono text-[11px] font-bold uppercase tracking-wider text-emerald-400">
         {offer.program === 'broker' ? 'Recommended broker' : 'Recommended platform'}
       </p>
       <h3 class="mt-3 text-lg font-bold text-white">{offer.label}</h3>
@@ -39,7 +39,7 @@ const offer = getAffiliate(id);
       >
         {label ?? `Open a ${offer.label} account`}
       </a>
-      <p class="mt-3 text-center text-[10px] leading-4 text-[var(--color-ink-dim)]">
+      <p class="mt-3 text-center text-[11px] leading-4 text-[var(--color-ink-dim)]">
         Affiliate link · no extra cost to you
       </p>
     </div>

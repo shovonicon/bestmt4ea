@@ -25,13 +25,13 @@ const author = post.data.author ?? 'BestMT4EA';
   <div>
     <div class="mb-4 flex items-center justify-between gap-4">
       {post.data.categories?.[0] ? (
-        <span class="rounded-full border border-[var(--color-accent)]/20 bg-[var(--color-accent)]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-[var(--color-accent)]">
+        <span class="rounded-full border border-[var(--color-accent)]/20 bg-[var(--color-accent)]/10 px-2.5 py-1 text-[11px] font-bold uppercase tracking-widest text-[var(--color-accent)]">
           {post.data.categories[0]}
         </span>
       ) : (
         <span />
       )}
-      <span class="flex items-center gap-1 text-[11px] font-medium text-[var(--color-ink-dim)]">
+      <span class="flex items-center gap-1 text-[12px] font-medium text-[var(--color-ink-dim)]">
         <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <circle cx="12" cy="12" r="9" />
           <path d="M12 7v5l3 2" />
@@ -46,7 +46,7 @@ const author = post.data.author ?? 'BestMT4EA';
   </div>
   <div class="mt-auto flex items-center justify-between border-t border-white/5 pt-4">
     <div class="flex items-center gap-2">
-      <div class="flex h-6 w-6 items-center justify-center rounded-full border border-[var(--color-accent)]/20 bg-[var(--color-accent)]/10 text-[10px] font-bold uppercase text-[var(--color-accent)]">
+      <div class="flex h-6 w-6 items-center justify-center rounded-full border border-[var(--color-accent)]/20 bg-[var(--color-accent)]/10 text-[11px] font-bold uppercase text-[var(--color-accent)]">
         {author.charAt(0)}
       </div>
       <span class="text-xs font-medium text-[var(--color-ink-dim)]">{author}</span>

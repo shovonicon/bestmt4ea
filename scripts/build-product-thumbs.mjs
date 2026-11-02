@@ -15,7 +15,7 @@ import sharp from 'sharp';
 
 const PRODUCTS = 'src/content/products';
 const PUBLIC = 'public';
-const WIDTHS = [480, 640];
+const WIDTHS = [480, 640, 720];
 
 const images = new Set();
 for (const f of readdirSync(PRODUCTS)) {
@@ -33,7 +33,7 @@ for (const src of images) {
     if ((meta.width ?? 0) <= w) continue;
     const out = file.replace(/\.webp$/, `-${w}.webp`);
     if (existsSync(out) && statSync(out).mtimeMs >= statSync(file).mtimeMs) continue;
-    await sharp(file).resize({ width: w }).webp({ quality: 72 }).toFile(out);
+    await sharp(file).resize({ width: w }).webp({ quality: 68 }).toFile(out);
     written++;
     console.log(`${out.replace(PUBLIC, '')}  ${Math.round(statSync(out).size / 1024)}KB`);
   }

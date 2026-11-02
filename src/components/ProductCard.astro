@@ -55,7 +55,7 @@ const hasRecord = gain != null || drawdown != null;
           <img
             src={product.data.featuredImage}
             srcset={srcset}
-            sizes={srcset ? '(min-width: 1024px) 360px, (min-width: 640px) 46vw, 92vw' : undefined}
+            sizes={srcset ? '(min-width: 1024px) 360px, (min-width: 640px) 46vw, calc(100vw - 2.5rem)' : undefined}
             width="800"
             height="800"
             alt={product.data.title}

@@ -292,7 +292,7 @@ const faqs = [
                   {'★'.repeat(review.rating)}
                   {'☆'.repeat(Math.max(0, 5 - review.rating))}
                 </span>
-                <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2 py-0.5 text-[11px] font-medium text-emerald-400">
+                <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2 py-0.5 text-[12px] font-medium text-emerald-400">
                   <span class="live-dot !h-1.5 !w-1.5" />Verified
                 </span>
               </div>
@@ -314,7 +314,7 @@ const faqs = [
                   <span class="min-w-0 truncate text-[var(--color-accent)] font-medium" title={review.product ?? ''}>
                     {cleanReviewProduct(review.product) ?? 'Customer order'}
                   </span>
-                  {review.month && <span class="shrink-0 text-[11px]">{review.month}</span>}
+                  {review.month && <span class="shrink-0 text-[12px]">{review.month}</span>}
                 </div>
               </figcaption>
             </figure>

@@ -283,7 +283,7 @@ const signedIn = Astro.locals.session?.subjectType === 'customer';
                 {
                   menu.columns.map((col) => (
                     <div class="flex min-w-[13rem] flex-col gap-2">
-                      <h4 class="mb-1 flex items-center gap-2 border-b border-white/5 pb-2 font-mono text-[11px] font-bold uppercase tracking-wider text-emerald-400">
+                      <h4 class="mb-1 flex items-center gap-2 border-b border-white/5 pb-2 font-mono text-[12px] font-bold uppercase tracking-wider text-emerald-400">
                         {col.icon && (
                           <span class="grid h-6 w-6 shrink-0 place-items-center rounded-md border border-emerald-400/25 bg-emerald-400/10 text-emerald-300">
                             <svg
@@ -432,7 +432,7 @@ const signedIn = Astro.locals.session?.subjectType === 'customer';
             <div class="pb-2">
               {menu.columns.map((col) => (
                 <div class="mt-2">
-                  <p class="flex items-center gap-2 px-3 font-mono text-[10px] font-bold uppercase tracking-wider text-emerald-400">
+                  <p class="flex items-center gap-2 px-3 font-mono text-[11px] font-bold uppercase tracking-wider text-emerald-400">
                     {col.icon && (
                       <svg
                         viewBox="0 0 24 24"
