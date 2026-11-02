@@ -30,6 +30,7 @@ if (sinceIdx >= 0) {
   const rev = args[sinceIdx + 1];
   const out = execSync(`git diff --name-only --diff-filter=AM ${rev} HEAD -- src/content/posts src/content/pages`, { encoding: 'utf8' });
   for (const f of out.split(/\r?\n/).filter(Boolean)) {
+    if (/^draft:\s*true/m.test(readFileSync(f, 'utf8'))) continue; // drafts are not public
     const slug = decodeURIComponent(f.replace(/^src\/content\/(posts|pages)\//, '').replace(/\.md$/, ''));
     urls.add(`${ORIGIN}/${encodeURI(slug)}/`);
   }
