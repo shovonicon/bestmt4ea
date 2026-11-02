@@ -15,9 +15,11 @@ import { url } from '../lib/urls';
 
 export interface Props {
   product: CollectionEntry<'products'>;
+  /** Above-the-fold cards: load the image eagerly with high priority (LCP). */
+  priority?: boolean;
 }
 
-const { product } = Astro.props;
+const { product, priority = false } = Astro.props;
 const perf = getPerformance(product.data.slug);
 
 const href = url(`/product/${product.data.slug}`);
@@ -45,7 +47,9 @@ const hasRecord = gain != null || drawdown != null;
           <img
             src={product.data.featuredImage}
             alt={product.data.title}
-            loading="lazy"
+            loading={priority ? 'eager' : 'lazy'}
+            fetchpriority={priority ? 'high' : undefined}
+            decoding={priority ? 'sync' : 'async'}
             class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
           />
         ) : (

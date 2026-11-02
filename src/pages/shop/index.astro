@@ -42,7 +42,7 @@ const catalogue = sorted.map(({ product }) => ({
     </div>
 
     <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {sorted.map(({ product }) => <ProductCard product={product} />)}
+      {sorted.map(({ product }, i) => <ProductCard product={product} priority={i < 2} />)}
     </div>
 
     <p class="mt-12 text-xs text-[var(--color-ink-dim)]">{RISK_DISCLAIMER}</p>
