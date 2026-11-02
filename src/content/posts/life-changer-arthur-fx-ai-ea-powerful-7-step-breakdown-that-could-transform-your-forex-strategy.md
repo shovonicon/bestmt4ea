@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_124308_featured.webp"
 sourceUrl: "https://bestmt4ea.com/life-changer-arthur-fx-ai-ea-powerful-7-step-breakdown-that-could-transform-your-forex-strategy/"
 categories:
-  - "EA Reviews & Comparisons"
-  - "Free Forex EA"
+  - "Forex EA Reviews & Comparisons"
+  - "Free Forex EAs for MT4 & MT5"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/free-forex-ea/"

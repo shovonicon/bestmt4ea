@@ -5,8 +5,8 @@ description: "Dark Mimas is marketed as a highly customizable MT4/MT5 EA. Learn 
 publishedAt: 2026-02-13T07:28:58.000Z
 updatedAt: 2026-10-07T00:00:00.000Z
 categories:
-  - "EA Settings & Optimization"
-  - "Free Forex EA"
+  - "EA Settings & Optimization Guides"
+  - "Free Forex EAs for MT4 & MT5"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
   - "/category/free-forex-ea/"

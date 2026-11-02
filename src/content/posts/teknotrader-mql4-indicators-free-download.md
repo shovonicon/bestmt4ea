@@ -5,7 +5,7 @@ description: "Get a free Apache-2.0 MetaTrader 4 and 5 indicator with full sourc
 publishedAt: 2026-09-28
 updatedAt: "2026-09-28"
 categories:
-  - "Free Forex Indicator"
+  - "Free Forex Indicators for MT4 & MT5"
 categoryPaths:
   - "/category/free-forex-indicator/"
 tags:

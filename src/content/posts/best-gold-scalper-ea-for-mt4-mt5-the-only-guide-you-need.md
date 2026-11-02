@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2025/10/1-Gold-Scalping-EA.jpg"
 sourceUrl: "https://bestmt4ea.com/best-gold-scalper-ea-for-mt4-mt5-the-only-guide-you-need/"
 categories:
-  - "Gold (XAUUSD) Trading"
-  - "Forex Scalping"
+  - "Gold (XAUUSD) Trading Guides & EAs"
+  - "Forex Scalping Strategies & EAs"
 categoryPaths:
   - "/category/gold-xauusd-trading/"
   - "/category/forex-trading-strategies/forex-scalping/"

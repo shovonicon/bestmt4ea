@@ -33,6 +33,8 @@ const SITE = process.env.PUBLIC_SITE_URL || env.PUBLIC_SITE_URL || 'https://best
  * <image:image> block, which feeds Google Images and gives answer engines a
  * little more context per URL.
  */
+const PRIORITY_PAGES = new Set(["/best-forex-ea/", "/best-mt4-ea/", "/best-mt5-ea/", "/top-ranking/"]);
+
 function scanContent() {
   const dates = new Map();
   const images = new Map();
@@ -137,6 +139,13 @@ export default defineConfig({
           pathname = new URL(item.url).pathname;
         } catch {
           /* leave as-is */
+        }
+        // The ranking pages are the commercial centre of the site: ask crawlers to treat them as such.
+        if (PRIORITY_PAGES.has(pathname)) {
+          item.priority = 0.9;
+          item.changefreq = "weekly";
+        } else if (pathname === "/") {
+          item.priority = 1.0;
         }
         const date = dates.get(pathname);
         if (date) item.lastmod = date.toISOString();

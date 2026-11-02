@@ -12,7 +12,7 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_139105_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/%f0%9f%9a%80-master-scalping-trading-system-mt4-free-download-ultimate-proven-guide-7-powerful-benefits/"
 categories:
-  - "Forex Scalping"
+  - "Forex Scalping Strategies & EAs"
   - "Forex Trading Strategies"
 categoryPaths:
   - "/category/forex-trading-strategies/forex-scalping/"

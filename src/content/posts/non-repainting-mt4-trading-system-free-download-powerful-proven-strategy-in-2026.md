@@ -46,7 +46,7 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_139257_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/non-repainting-mt4-trading-system-free-download-powerful-proven-strategy-in-2026/"
 categories:
-  - "Free Forex Indicator"
+  - "Free Forex Indicators for MT4 & MT5"
 categoryPaths:
   - "/category/free-forex-indicator/"
 tags: []

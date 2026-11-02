@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_126933_featured.webp"
 sourceUrl: "https://bestmt4ea.com/pending-order-ea-free-download-powerful-guide-to-avoid-risky-traps-in-9-steps/"
 categories:
-  - "Free Forex EA"
-  - "Risk & Money Management"
+  - "Free Forex EAs for MT4 & MT5"
+  - "Forex Risk & Money Management"
 categoryPaths:
   - "/category/free-forex-ea/"
   - "/category/risk-money-management/"

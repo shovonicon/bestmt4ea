@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_136836_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/forex-smc-indicator-for-mt4-free-download-powerful-7-step-guide-to-install-trade-smarter/"
 categories:
-  - "Forex Indicator Reviews"
-  - "Free Forex Indicator"
+  - "MT4/MT5 Indicator Reviews"
+  - "Free Forex Indicators for MT4 & MT5"
 categoryPaths:
   - "/category/forex-indicator-reviews/"
   - "/category/free-forex-indicator/"

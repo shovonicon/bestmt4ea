@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_2427_featured.webp"
 sourceUrl: "https://bestmt4ea.com/top-10-powerful-scalping-strategies-for-gold-trading-complete-guide/"
 categories:
-  - "Gold (XAUUSD) Trading"
-  - "Forex Scalping"
+  - "Gold (XAUUSD) Trading Guides & EAs"
+  - "Forex Scalping Strategies & EAs"
 categoryPaths:
   - "/category/gold-xauusd-trading/"
   - "/category/forex-trading-strategies/forex-scalping/"

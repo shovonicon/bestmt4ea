@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_142847_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/%f0%9f%8c%8a-neptune-ea-forex-ea-reviews-7-powerful-truths-every-trader-must-know/"
 categories:
-  - "EA Reviews & Comparisons"
-  - "EA Settings & Optimization"
+  - "Forex EA Reviews & Comparisons"
+  - "EA Settings & Optimization Guides"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"

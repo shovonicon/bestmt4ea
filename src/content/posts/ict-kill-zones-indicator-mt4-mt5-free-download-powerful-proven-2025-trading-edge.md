@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_135176_featured.webp"
 sourceUrl: "https://bestmt4ea.com/ict-kill-zones-indicator-mt4-mt5-free-download-powerful-proven-2025-trading-edge/"
 categories:
-  - "Free Forex Indicator"
-  - "Forex Scalping"
+  - "Free Forex Indicators for MT4 & MT5"
+  - "Forex Scalping Strategies & EAs"
   - "Forex Trading Strategies"
 categoryPaths:
   - "/category/free-forex-indicator/"

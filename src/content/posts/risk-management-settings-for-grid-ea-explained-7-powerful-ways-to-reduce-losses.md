@@ -5,8 +5,8 @@ description: "Grid EAs live or die by seven risk settings: spacing, lot progress
 publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
-  - "EA Settings & Optimization"
-  - "Risk & Money Management"
+  - "EA Settings & Optimization Guides"
+  - "Forex Risk & Money Management"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
   - "/category/risk-money-management/"

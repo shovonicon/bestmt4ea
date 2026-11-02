@@ -5,9 +5,9 @@ description: "Quantum Algo Trading EA free download explained: what an algorithm
 publishedAt: 2026-02-13T21:31:59.000Z
 updatedAt: 2026-10-08T00:00:00.000Z
 categories:
-  - "Free Forex EA"
-  - "EA Reviews & Comparisons"
-  - "MT4/MT5 Expert Advisors"
+  - "Free Forex EAs for MT4 & MT5"
+  - "Forex EA Reviews & Comparisons"
+  - "MT4 & MT5 Expert Advisors"
 categoryPaths:
   - "/category/free-forex-ea/"
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"

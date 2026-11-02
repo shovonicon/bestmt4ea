@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_137363_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/oracle-scalper-best-trading-indicator-free-download-powerful-secrets-7-proven-benefits-for-smart-traders/"
 categories:
-  - "Forex Indicator Reviews"
-  - "Free Forex Indicator"
-  - "Forex Scalping"
+  - "MT4/MT5 Indicator Reviews"
+  - "Free Forex Indicators for MT4 & MT5"
+  - "Forex Scalping Strategies & EAs"
 categoryPaths:
   - "/category/forex-indicator-reviews/"
   - "/category/free-forex-indicator/"

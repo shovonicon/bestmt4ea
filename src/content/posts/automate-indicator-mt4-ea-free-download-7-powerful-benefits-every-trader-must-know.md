@@ -11,9 +11,9 @@ seo:
   canonical: "https://bestmt4ea.com/automate-indicator-mt4-ea-free-download-7-powerful-benefits-every-trader-must-know/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_135153_featured.webp"
 sourceUrl: "https://bestmt4ea.com/automate-indicator-mt4-ea-free-download-7-powerful-benefits-every-trader-must-know/"
-categories: 
-  - "Free Forex Indicator"
-categoryPaths: 
+categories:
+  - "Free Forex Indicators for MT4 & MT5"
+categoryPaths:
   - "/category/free-forex-indicator/"
 tags: []
 draft: false

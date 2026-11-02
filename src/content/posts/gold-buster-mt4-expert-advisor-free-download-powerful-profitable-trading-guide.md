@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/Best-MT4-EA-—-AI-Powered-Forex-Robots-for-MT4-MT5.webp"
 sourceUrl: "https://bestmt4ea.com/gold-buster-mt4-expert-advisor-free-download-powerful-profitable-trading-guide/"
 categories:
-  - "Free Forex EA"
-  - "Gold (XAUUSD) Trading"
+  - "Free Forex EAs for MT4 & MT5"
+  - "Gold (XAUUSD) Trading Guides & EAs"
 categoryPaths:
   - "/category/free-forex-ea/"
   - "/category/gold-xauusd-trading/"

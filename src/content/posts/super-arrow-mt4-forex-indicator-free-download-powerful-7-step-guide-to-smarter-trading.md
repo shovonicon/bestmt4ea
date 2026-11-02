@@ -11,9 +11,9 @@ seo:
   canonical: "https://bestmt4ea.com/super-arrow-mt4-forex-indicator-free-download-powerful-7-step-guide-to-smarter-trading/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_137568_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/super-arrow-mt4-forex-indicator-free-download-powerful-7-step-guide-to-smarter-trading/"
-categories: 
-  - "Free Forex Indicator"
-categoryPaths: 
+categories:
+  - "Free Forex Indicators for MT4 & MT5"
+categoryPaths:
   - "/category/free-forex-indicator/"
 tags: []
 primaryKeyword: "Super Arrow MT4 indicator free download"

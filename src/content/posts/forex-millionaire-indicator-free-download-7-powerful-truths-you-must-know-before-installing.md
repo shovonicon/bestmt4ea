@@ -49,8 +49,8 @@ installSteps:
     text: "Fill in the five-day log for the first week, recording trades, log errors, maximum floating loss and notes for each day."
 sourceUrl: "https://bestmt4ea.com/forex-millionaire-indicator-free-download-7-powerful-truths-you-must-know-before-installing/"
 categories:
-  - "Forex Indicator Reviews"
-  - "Free Forex Indicator"
+  - "MT4/MT5 Indicator Reviews"
+  - "Free Forex Indicators for MT4 & MT5"
 categoryPaths:
   - "/category/forex-indicator-reviews/"
   - "/category/free-forex-indicator/"

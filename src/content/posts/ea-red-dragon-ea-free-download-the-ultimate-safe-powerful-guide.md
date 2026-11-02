@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_124459_featured.webp"
 sourceUrl: "https://bestmt4ea.com/ea-red-dragon-ea-free-download-the-ultimate-safe-powerful-guide/"
 categories:
-  - "EA Reviews & Comparisons"
-  - "Free Forex EA"
-  - "MT4/MT5 Expert Advisors"
+  - "Forex EA Reviews & Comparisons"
+  - "Free Forex EAs for MT4 & MT5"
+  - "MT4 & MT5 Expert Advisors"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/free-forex-ea/"

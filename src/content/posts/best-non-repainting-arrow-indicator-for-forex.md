@@ -12,7 +12,7 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_4218_featured.webp"
 sourceUrl: "https://bestmt4ea.com/best-non-repainting-arrow-indicator-for-forex/"
 categories:
-  - "Forex Indicator Reviews"
+  - "MT4/MT5 Indicator Reviews"
 categoryPaths:
   - "/category/forex-indicator-reviews/"
 tags: []

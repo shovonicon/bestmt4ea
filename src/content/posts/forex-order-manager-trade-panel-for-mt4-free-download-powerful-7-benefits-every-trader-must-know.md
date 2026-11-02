@@ -5,7 +5,7 @@ description: "An MT4 trade panel speeds up order entry and sizes each position f
 publishedAt: 2026-02-13T23:36:22.000Z
 updatedAt: 2026-10-11T00:00:00.000Z
 categories:
-  - "AI-Powered Trading Tools"
+  - "AI Forex Trading Tools"
 categoryPaths:
   - "/category/ai-powered-trading-tools/"
 tags: []

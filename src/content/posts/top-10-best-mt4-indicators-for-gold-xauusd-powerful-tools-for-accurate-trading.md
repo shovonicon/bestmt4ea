@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_1933_featured.webp"
 sourceUrl: "https://bestmt4ea.com/top-10-best-mt4-indicators-for-gold-xauusd-powerful-tools-for-accurate-trading/"
 categories:
-  - "Technical Analysis"
-  - "Gold (XAUUSD) Trading"
-  - "EA Settings & Optimization"
+  - "Forex Technical Analysis"
+  - "Gold (XAUUSD) Trading Guides & EAs"
+  - "EA Settings & Optimization Guides"
 categoryPaths:
   - "/category/technical-analysis/"
   - "/category/gold-xauusd-trading/"

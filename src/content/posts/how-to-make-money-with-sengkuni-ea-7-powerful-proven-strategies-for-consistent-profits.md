@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_126120_featured.webp"
 sourceUrl: "https://bestmt4ea.com/how-to-make-money-with-sengkuni-ea-7-powerful-proven-strategies-for-consistent-profits/"
 categories:
-  - "EA Reviews & Comparisons"
-  - "Risk & Money Management"
-  - "MT4/MT5 Expert Advisors"
+  - "Forex EA Reviews & Comparisons"
+  - "Forex Risk & Money Management"
+  - "MT4 & MT5 Expert Advisors"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/risk-money-management/"

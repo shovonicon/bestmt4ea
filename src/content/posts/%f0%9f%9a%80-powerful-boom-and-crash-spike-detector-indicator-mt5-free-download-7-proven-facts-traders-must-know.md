@@ -12,7 +12,7 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_139380_featured.webp"
 sourceUrl: "https://bestmt4ea.com/%f0%9f%9a%80-powerful-boom-and-crash-spike-detector-indicator-mt5-free-download-7-proven-facts-traders-must-know/"
 categories:
-  - "Free Forex Indicator"
+  - "Free Forex Indicators for MT4 & MT5"
 categoryPaths:
   - "/category/free-forex-indicator/"
 tags: []

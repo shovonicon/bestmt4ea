@@ -5,9 +5,9 @@ description: "Gold scalping robots live or fail on risk-to-reward. Learn session
 publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
-  - "Gold (XAUUSD) Trading"
-  - "Forex Scalping"
-  - "Risk & Money Management"
+  - "Gold (XAUUSD) Trading Guides & EAs"
+  - "Forex Scalping Strategies & EAs"
+  - "Forex Risk & Money Management"
 categoryPaths:
   - "/category/gold-xauusd-trading/"
   - "/category/forex-trading-strategies/forex-scalping/"

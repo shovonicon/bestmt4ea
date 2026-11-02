@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_144153_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/sigma-bot-forex-ea-reviews-powerful-insights-honest-analysis-7-must-know-facts/"
 categories:
-  - "EA Reviews & Comparisons"
-  - "Risk & Money Management"
+  - "Forex EA Reviews & Comparisons"
+  - "Forex Risk & Money Management"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/risk-money-management/"

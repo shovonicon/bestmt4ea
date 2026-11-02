@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_134224_featured.webp"
 sourceUrl: "https://bestmt4ea.com/%f0%9f%93%88-pro-trend-line-indicator-free-download-7-powerful-benefits-every-trader-must-know/"
 categories:
-  - "Free Forex Indicator"
-  - "Technical Analysis"
+  - "Free Forex Indicators for MT4 & MT5"
+  - "Forex Technical Analysis"
 categoryPaths:
   - "/category/free-forex-indicator/"
   - "/category/technical-analysis/"

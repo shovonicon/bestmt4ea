@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127237_featured.webp"
 sourceUrl: "https://bestmt4ea.com/ai-trend-booster-ea-free-download-powerful-proven-trading-advantage-guide/"
 categories:
-  - "EA Reviews & Comparisons"
-  - "Free Forex EA"
+  - "Forex EA Reviews & Comparisons"
+  - "Free Forex EAs for MT4 & MT5"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/free-forex-ea/"

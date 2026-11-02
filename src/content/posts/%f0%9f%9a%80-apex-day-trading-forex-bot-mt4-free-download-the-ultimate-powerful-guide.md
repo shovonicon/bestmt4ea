@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127128_featured.webp"
 sourceUrl: "https://bestmt4ea.com/%f0%9f%9a%80-apex-day-trading-forex-bot-mt4-free-download-the-ultimate-powerful-guide/"
 categories:
-  - "EA Reviews & Comparisons"
-  - "Free Forex EA"
-  - "MT4/MT5 Expert Advisors"
+  - "Forex EA Reviews & Comparisons"
+  - "Free Forex EAs for MT4 & MT5"
+  - "MT4 & MT5 Expert Advisors"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/free-forex-ea/"

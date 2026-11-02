@@ -9,8 +9,8 @@ seo:
   description: "A free MIT-licensed collection of MT5 expert advisors you can actually read. Here is how to use a shelf of small, open-source robots as a study corpus."
   canonical: "https://bestmt4ea.com/geraked-mt5-expert-advisors-free-download/"
 categories:
-  - "Free Forex EA"
-  - "Forex Scalping"
+  - "Free Forex EAs for MT4 & MT5"
+  - "Forex Scalping Strategies & EAs"
 categoryPaths:
   - "/category/free-forex-ea/"
   - "/category/forex-trading-strategies/forex-scalping/"

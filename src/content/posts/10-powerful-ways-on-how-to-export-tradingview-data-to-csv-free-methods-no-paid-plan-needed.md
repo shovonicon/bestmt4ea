@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_2029_featured.webp"
 sourceUrl: "https://bestmt4ea.com/10-powerful-ways-on-how-to-export-tradingview-data-to-csv-free-methods-no-paid-plan-needed/"
 categories:
-  - "AI-Powered Trading Tools"
-  - "Technical Analysis"
+  - "AI Forex Trading Tools"
+  - "Forex Technical Analysis"
 categoryPaths:
   - "/category/ai-powered-trading-tools/"
   - "/category/technical-analysis/"

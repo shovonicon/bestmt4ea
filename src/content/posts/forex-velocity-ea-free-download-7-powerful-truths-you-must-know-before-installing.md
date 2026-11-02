@@ -5,9 +5,9 @@ description: "Forex Velocity EA free download explained honestly: what a fast sc
 publishedAt: 2026-02-12T01:01:58.000Z
 updatedAt: 2026-10-08T00:00:00.000Z
 categories:
-  - "EA Reviews & Comparisons"
-  - "Free Forex EA"
-  - "Forex Scalping"
+  - "Forex EA Reviews & Comparisons"
+  - "Free Forex EAs for MT4 & MT5"
+  - "Forex Scalping Strategies & EAs"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/free-forex-ea/"

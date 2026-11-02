@@ -6,9 +6,9 @@ description: "Learn how a US30 scalping EA trades the Dow Jones index, where ind
 publishedAt: "2026-02-13T18:49:05.000Z"
 updatedAt: "2026-10-08T00:00:00.000Z"
 categories:
-  - "Free Forex EA"
-  - "Forex Scalping"
-  - "MT4/MT5 Expert Advisors"
+  - "Free Forex EAs for MT4 & MT5"
+  - "Forex Scalping Strategies & EAs"
+  - "MT4 & MT5 Expert Advisors"
 categoryPaths:
   - "/category/free-forex-ea/"
   - "/category/forex-trading-strategies/forex-scalping/"

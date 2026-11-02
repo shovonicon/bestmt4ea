@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127404_featured.webp"
 sourceUrl: "https://bestmt4ea.com/pharaoh-gold-ea-mt4-free-download-7-powerful-facts-every-trader-must-know-before-installing/"
 categories:
-  - "EA Reviews & Comparisons"
-  - "Free Forex EA"
-  - "Gold (XAUUSD) Trading"
+  - "Forex EA Reviews & Comparisons"
+  - "Free Forex EAs for MT4 & MT5"
+  - "Gold (XAUUSD) Trading Guides & EAs"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/free-forex-ea/"

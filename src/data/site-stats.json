@@ -1,9 +1,12 @@
 {
-  "_note": "Counted from the WooCommerce order export (bestmt4ea2026ai-poweredforexrobotsformt4ampmt5.WordPress.2026-10-05.xml — 6,303 orders, generated 2026-10-05). Every figure is a count of order records, never an estimate. A \"customer\" is one unique billing email with a completed order, so the 2,840 includes free-download orders; payingCustomers is the subset that actually paid. Re-derive these figures with scripts/order-stats.mjs whenever the export is refreshed.",
+  "_note": "Counted from the WooCommerce order export (bestmt4ea2026ai-poweredforexrobotsformt4ampmt5.WordPress.2026-10-05.xml — 6,303 orders, generated 2026-10-05). Every figure is a count of order records, never an estimate. A \"customer\" is one unique billing email with a completed order, so the 2,840 includes free-download orders; payingCustomers is the subset that actually paid. Re-derive these figures with scripts/order-stats.mjs whenever the export is refreshed. customers = registered customers (incl. free-download orders); payingCustomers = premium customers who paid. domainRegistered is the bestmt4ea.com registration date as given by the owner; \"since\" is 2019, the operating start confirmed by the owner (domain registered 2019-09-11); firstOrder is the first order in the WooCommerce export.",
   "customers": "2,840",
   "payingCustomers": "640",
   "ordersCompleted": "6,031",
-  "since": 2021,
+  "since": 2019,
   "firstOrder": "2021-01-22",
-  "sources": ["WooCommerce order export, 6,303 orders, generated 2026-10-05"]
+  "sources": [
+    "WooCommerce order export, 6,303 orders, generated 2026-10-05"
+  ],
+  "domainRegistered": "2019-09-11"
 }

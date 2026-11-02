@@ -38,6 +38,8 @@ export async function getStaticPaths() {
   for (const entry of posts) {
     const slug = entry.data.slug;
     if (RESERVED_SLUGS.has(slug)) continue;
+    // Drafts get no page at all, so an unreviewed post is not reachable by URL.
+    if (entry.data.draft) continue;
     paths.push({ params: { slug }, props: { kind: 'post' as const, entry } });
   }
 
@@ -62,7 +64,7 @@ if (kind === 'post') {
   if (category) {
     const all = await getCollection('posts');
     related = all
-      .filter((p: any) => p.data.slug !== entry.data.slug && p.data.categories?.includes(category))
+      .filter((p: any) => !p.data.draft && p.data.slug !== entry.data.slug && p.data.categories?.includes(category))
       .slice(0, 6);
   }
 }

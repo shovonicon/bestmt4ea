@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127229_featured.webp"
 sourceUrl: "https://bestmt4ea.com/monopolist-scalping-expert-advisor-free-download-powerful-7-step-guide-to-smart-forex-profits/"
 categories:
-  - "Free Forex EA"
-  - "Forex Scalping"
-  - "Risk & Money Management"
+  - "Free Forex EAs for MT4 & MT5"
+  - "Forex Scalping Strategies & EAs"
+  - "Forex Risk & Money Management"
 categoryPaths:
   - "/category/free-forex-ea/"
   - "/category/forex-trading-strategies/forex-scalping/"

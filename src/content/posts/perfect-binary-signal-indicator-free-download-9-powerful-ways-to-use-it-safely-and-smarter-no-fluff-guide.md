@@ -12,7 +12,7 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_139231_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/perfect-binary-signal-indicator-free-download-9-powerful-ways-to-use-it-safely-and-smarter-no-fluff-guide/"
 categories:
-  - "Free Forex Indicator"
+  - "Free Forex Indicators for MT4 & MT5"
 categoryPaths:
   - "/category/free-forex-indicator/"
 tags: []

@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127233_featured.webp"
 sourceUrl: "https://bestmt4ea.com/gold-prop-firm-robot-free-download-7-powerful-secrets-to-maximize-funded-trading-success/"
 categories:
-  - "Risk & Money Management"
-  - "Free Forex EA"
-  - "Gold (XAUUSD) Trading"
+  - "Forex Risk & Money Management"
+  - "Free Forex EAs for MT4 & MT5"
+  - "Gold (XAUUSD) Trading Guides & EAs"
 categoryPaths:
   - "/category/risk-money-management/"
   - "/category/free-forex-ea/"

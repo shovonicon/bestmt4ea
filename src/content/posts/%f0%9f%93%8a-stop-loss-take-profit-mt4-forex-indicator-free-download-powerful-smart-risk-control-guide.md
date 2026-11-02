@@ -44,9 +44,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_137527_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/%f0%9f%93%8a-stop-loss-take-profit-mt4-forex-indicator-free-download-powerful-smart-risk-control-guide/"
 categories:
-  - "Free Forex Indicator"
+  - "Free Forex Indicators for MT4 & MT5"
   - "Forex Trading Strategies"
-  - "Risk & Money Management"
+  - "Forex Risk & Money Management"
 categoryPaths:
   - "/category/free-forex-indicator/"
   - "/category/forex-trading-strategies/"

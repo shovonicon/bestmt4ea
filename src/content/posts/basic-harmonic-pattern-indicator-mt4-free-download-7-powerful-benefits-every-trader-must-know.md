@@ -12,7 +12,7 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_135178_featured.webp"
 sourceUrl: "https://bestmt4ea.com/basic-harmonic-pattern-indicator-mt4-free-download-7-powerful-benefits-every-trader-must-know/"
 categories:
-  - "Free Forex Indicator"
+  - "Free Forex Indicators for MT4 & MT5"
 categoryPaths:
   - "/category/free-forex-indicator/"
 tags: []

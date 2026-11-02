@@ -11,9 +11,9 @@ seo:
   canonical: "https://bestmt4ea.com/cpr-forex-indicator-for-mt4-free-download-7-powerful-benefits-proven-trading-secrets/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_137836_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/cpr-forex-indicator-for-mt4-free-download-7-powerful-benefits-proven-trading-secrets/"
-categories: 
-  - "Free Forex Indicator"
-categoryPaths: 
+categories:
+  - "Free Forex Indicators for MT4 & MT5"
+categoryPaths:
   - "/category/free-forex-indicator/"
 tags: []
 draft: false

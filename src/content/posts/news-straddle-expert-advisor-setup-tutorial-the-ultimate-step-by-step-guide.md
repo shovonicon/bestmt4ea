@@ -6,7 +6,7 @@ description: "Learn how a news straddle expert advisor places buy and sell stops
 publishedAt: 2025-12-07T02:40:44.000Z
 updatedAt: 2026-10-08T00:00:00.000Z
 categories:
-  - "MT4/MT5 Expert Advisors"
+  - "MT4 & MT5 Expert Advisors"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/"
 tags: []

@@ -11,9 +11,9 @@ seo:
   canonical: "https://bestmt4ea.com/best-volume-profile-indicator-for-mt4-free-download-7-powerful-tools-that-actually-work/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_136078_featured.webp"
 sourceUrl: "https://bestmt4ea.com/best-volume-profile-indicator-for-mt4-free-download-7-powerful-tools-that-actually-work/"
-categories: 
-  - "Free Forex Indicator"
-categoryPaths: 
+categories:
+  - "Free Forex Indicators for MT4 & MT5"
+categoryPaths:
   - "/category/free-forex-indicator/"
 tags: []
 draft: false

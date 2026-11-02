@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_4206_featured.webp"
 sourceUrl: "https://bestmt4ea.com/supply-and-demand-indicator-for-mt4-no-repaint/"
 categories:
-  - "Technical Analysis"
-  - "Forex Indicator Reviews"
+  - "Forex Technical Analysis"
+  - "MT4/MT5 Indicator Reviews"
 categoryPaths:
   - "/category/technical-analysis/"
   - "/category/forex-indicator-reviews/"

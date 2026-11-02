@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_137378_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/gold-sniper-master-indicator-system-free-download-powerful-secrets-7-proven-trading-advantages/"
 categories:
-  - "Free Forex Indicator"
-  - "Gold (XAUUSD) Trading"
+  - "Free Forex Indicators for MT4 & MT5"
+  - "Gold (XAUUSD) Trading Guides & EAs"
 categoryPaths:
   - "/category/free-forex-indicator/"
   - "/category/gold-xauusd-trading/"

@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127434_featured.webp"
 sourceUrl: "https://bestmt4ea.com/smart-machine-ea-free-download-7-powerful-facts-you-must-know-before-installing/"
 categories:
-  - "Free Forex EA"
-  - "EA Settings & Optimization"
+  - "Free Forex EAs for MT4 & MT5"
+  - "EA Settings & Optimization Guides"
 categoryPaths:
   - "/category/free-forex-ea/"
   - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"

@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-31T15:42:29.733Z",
+  "generatedAt": "2026-11-02T01:49:24.942Z",
   "source": "wordpress-seo-redirects (2).csv",
-  "count": 2339,
+  "count": 2346,
   "dropped": [
     {
       "from": "/product/bbp-ai-golden-ea",
@@ -152,50 +152,39 @@
       "to": "/category/forex-indicator-reviews/",
       "status": 301,
       "reason": "source collides with a live route"
+    },
+    {
+      "from": "/best-forex-vps-for-mt4-mt5-in-2026-low-latency-24-7-uptime-expert-advisor-hosting",
+      "to": "/%F0%9F%9A%80-powerful-proven-crypto-trading-indicator-system-mt5-free-download/",
+      "status": 301,
+      "reason": "source collides with a live route"
+    },
+    {
+      "from": "/when-the-world-burns-your-money-doesnt-have-to",
+      "to": "/category/ai-powered-trading-tools/ai-ea-reviews/",
+      "status": 301,
+      "reason": "source collides with a live route"
+    },
+    {
+      "from": "/the-money-race-nobody-told-you-about",
+      "to": "/category/ai-powered-trading-tools/ai-ea-reviews/",
+      "status": 301,
+      "reason": "source collides with a live route"
+    },
+    {
+      "from": "/the-8th-wonder-of-the-world-nobody-taught-you-in-school",
+      "to": "/category/ai-powered-trading-tools/",
+      "status": 301,
+      "reason": "source collides with a live route"
+    },
+    {
+      "from": "/your-job-is-being-stolen-and-the-thief-is-smarter-than-you-think",
+      "to": "/category/ai-powered-trading-tools/",
+      "status": 301,
+      "reason": "source collides with a live route"
     }
   ],
-  "retiredRemaps": [
-    {
-      "retiredTarget": "/category/strategies-best-practices",
-      "fallback": "/blog/",
-      "rules": 65
-    },
-    {
-      "retiredTarget": "/category/beginners-guides-forex-basics",
-      "fallback": "/blog/",
-      "rules": 43
-    },
-    {
-      "retiredTarget": "/category/prop-firm-reviews",
-      "fallback": "/blog/",
-      "rules": 19
-    },
-    {
-      "retiredTarget": "/category/fundamental-analysis",
-      "fallback": "/blog/",
-      "rules": 44
-    },
-    {
-      "retiredTarget": "/category/forex-trading-strategies/forex-swing-trading",
-      "fallback": "/blog/",
-      "rules": 27
-    },
-    {
-      "retiredTarget": "/category/chart-patterns",
-      "fallback": "/blog/",
-      "rules": 24
-    },
-    {
-      "retiredTarget": "/category/forex-broker-reviews",
-      "fallback": "/blog/",
-      "rules": 13
-    },
-    {
-      "retiredTarget": "/category/trading-psychology",
-      "fallback": "/blog/",
-      "rules": 17
-    }
-  ],
+  "retiredRemaps": [],
   "hubFunnelGone": [
     {
       "from": "/product/2000-trading-tools/",
@@ -1023,7 +1012,7 @@
     },
     {
       "from": "/top-10-powerful-machine-learning-models-for-trading",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/luxalgo-indicators-review-honest-pros-and-cons",
@@ -1127,7 +1116,7 @@
     },
     {
       "from": "/top-10-most-powerful-ai-powered-forex-prediction-tools-for-unbeatable-accuracy",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/precision-breakout-bot-free-download-7-powerful-benefits-smart-setup-guide",
@@ -1259,7 +1248,7 @@
     },
     {
       "from": "/usd-jpy-4-hour-trading-strategy-that-actually-works",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/dark-venus-scalping-free-download-7-powerful-truths-every-trader-must-know",
@@ -1379,7 +1368,7 @@
     },
     {
       "from": "/anti-martingale-approach-for-safe-trading",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/auto-millions-ea-free-download-7-powerful-truths-you-must-know-before-installing",
@@ -1507,7 +1496,7 @@
     },
     {
       "from": "/best-trading-journal-apps-a-guide-to-tracking-your-trades",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/waddah-attar-explosion-forex-indicator-mt5-free-download-powerful-guide-9-smart-steps",
@@ -1523,7 +1512,7 @@
     },
     {
       "from": "/ftmo-challenge-passing-strategy-a-complete-guide-to-success",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/ai-forex-trading-chatgpt-ea-free-download-ultimate-smart-automation-guide",
@@ -1679,7 +1668,7 @@
     },
     {
       "from": "/top-10-powerful-confluence-factors-for-better-entries",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/mt4-journal-common-ea-error-messages-and-fixes-17-powerful-ways-to-solve-expert-advisor-issues",
@@ -1707,11 +1696,11 @@
     },
     {
       "from": "/best-demo-accounts-for-practicing-forex-trading-10-powerful-options",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/top-10-things-to-know-about-payout-frequency-in-prop-programs",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/adx-indicator-above-40-meaning",
@@ -1719,7 +1708,7 @@
     },
     {
       "from": "/top-5-high-impact-news-every-trader-must-know-powerful-insights-for-market-success",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/volume-profile-analysis-for-day-trading-a-comprehensive-guide",
@@ -1759,7 +1748,7 @@
     },
     {
       "from": "/the-10-best-equity-curve-smoothing-techniques-for-powerful-trading-optimization",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/ichimoku-wave-theory-an-advanced-trading-guide",
@@ -1771,15 +1760,15 @@
     },
     {
       "from": "/forex-correlation-trading-strategy-explained",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/eur-usd-and-gbp-usd-correlation-trading-strategy",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/best-months-to-trade-usd-jpy",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/alpinist-ea-free-download-7-crucial-facts-you-must-know-before-installing",
@@ -1823,7 +1812,7 @@
     },
     {
       "from": "/free-templates-for-forex-risk-management-plans-12-powerful-tools-to-protect-your-trading",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/slk-fintech-ea-free-download-7-powerful-facts-every-trader-must-know",
@@ -1979,7 +1968,7 @@
     },
     {
       "from": "/ultimate-crowd-trading-platforms-review-top-insights-pros-cons-ratings",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/equity-guardian-ea-to-pause-trading-after-loss-powerful-guide-to-stop-drawdown-fast",
@@ -2003,7 +1992,7 @@
     },
     {
       "from": "/equity-based-lot-sizing-in-expert-advisors-7-powerful-advantages-for-safer-automated-trading",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/monte-carlo-simulation-for-ea-robustness-a-complete-practical-guide",
@@ -2023,7 +2012,7 @@
     },
     {
       "from": "/top-10-techniques-for-powerful-fibonacci-pullback-strategy-entries-and-targets",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/using-vwap-rsi-hybrid-oscillator-for-momentum-confirmation-in-stocks",
@@ -2055,11 +2044,11 @@
     },
     {
       "from": "/binary-options-vs-spot-forex-key-differences-explained",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/7-powerful-steps-for-stop-hunting-avoidance-in-forex",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/7-powerful-drawdown-recovery-methods-for-traders-boost-performance-fast",
@@ -2067,11 +2056,11 @@
     },
     {
       "from": "/12-powerful-ways-to-recover-from-prop-firm-loss-rebuild-your-trading-confidence-how-to-recover-from-prop-firm-loss",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/mean-reversion-strategy-in-options-trading-powerful-guide-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/bollinger-bands-squeeze-breakout-system-a-powerful-strategy-for-traders",
@@ -2155,23 +2144,23 @@
     },
     {
       "from": "/best-currency-pairs-for-carry-trading-top-picks-for-profitable-forex-strategies",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/head-and-shoulders-pattern-in-forex-ultimate-guide-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/mastering-how-to-trade-breakouts-in-forex-markets-7-proven-strategies-for-maximum-profit",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/harmonic-patterns-in-forex-trading-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/pyramiding-positions-in-winning-trades-a-comprehensive-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/how-to-trade-during-asian-session-a-complete-guide",
@@ -2179,7 +2168,7 @@
     },
     {
       "from": "/top-prop-firms-for-beginners-7-best-choices",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/bullish-engulfing-pattern-reliability-statistics",
@@ -2195,7 +2184,7 @@
     },
     {
       "from": "/the-psychology-of-successful-swing-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/best-macd-settings-for-15-minute-chart-crypto",
@@ -2387,7 +2376,7 @@
     },
     {
       "from": "/roboforex-review-10-deposit-30-welcome-bonus-mt4-mt5-is-it-still-1",
-      "wasTo": "/blog/"
+      "wasTo": "/category/ai-powered-trading-tools/brokers-trading-platforms/"
     },
     {
       "from": "/anti-overfitting-ea-free-download-powerful-proven-strategy-to-boost-forex-profits",
@@ -2411,7 +2400,7 @@
     },
     {
       "from": "/how-to-draw-trend-lines-in-forex-powerful-techniques-for-accurate-market-analysis",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/10-powerful-paper-trading-strategies-to-test-before-real-money-investment",
@@ -2423,7 +2412,7 @@
     },
     {
       "from": "/7-critical-risks-of-what-is-a-martingale-strategy-in-forex-risks-and-how-traders-can-avoid-them",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/10-powerful-tips-what-is-a-forex-broker-and-how-to-choose-one-beginner-friendly-guide",
@@ -2435,7 +2424,7 @@
     },
     {
       "from": "/how-to-trade-federal-reserve-fomc-meeting-live-7-powerful-strategies-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/10-powerful-paper-trading-strategies-to-test-before-real-money-investment-2",
@@ -2451,7 +2440,7 @@
     },
     {
       "from": "/7-critical-risks-of-what-is-a-martingale-strategy-in-forex-risks-and-how-traders-can-avoid-them-2",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/7-powerful-ways-to-attract-angel-investors-for-trading-bots-2",
@@ -2463,7 +2452,7 @@
     },
     {
       "from": "/how-to-draw-trend-lines-in-forex-powerful-techniques-for-accurate-market-analysis-2",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/10-powerful-tips-for-the-best-way-to-configure-free-mt4-robot-successfully",
@@ -2515,7 +2504,7 @@
     },
     {
       "from": "/9-best-ways-to-use-a-weekly-review-template-for-swing-traders-boost-results-fast",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/how-to-build-discipline-with-if-then-rules-11-powerful-strategies-for-consistent-success",
@@ -2551,7 +2540,7 @@
     },
     {
       "from": "/elliott-wave-secrets-for-forex-beginners-12-powerful-strategies-to-boost-accuracy",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/7-powerful-insights-to-master-support-and-resistance-levels-in-eur-usd",
@@ -2579,7 +2568,7 @@
     },
     {
       "from": "/10-powerful-steps-to-build-a-forex-trading-plan-step-by-step-beginner-friendly-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/top-10-reasons-sentiment-ai-for-market-mood-is-transforming-trading",
@@ -2587,7 +2576,7 @@
     },
     {
       "from": "/top-10-powerful-benefits-of-n-ft-tokens-for-trading-rewards",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/15-essential-insights-daily-drawdown-limits-explained-for-smarter-trading",
@@ -2595,15 +2584,15 @@
     },
     {
       "from": "/how-to-build-trading-record-for-prop-proven-powerful-effective-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/17-powerful-steps-to-master-forex-trading-basics-step-by-step-for-beginners",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/how-to-calculate-pips-in-forex-for-beginners-7-powerful-steps-to-master-pip-value-today",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/10-powerful-facts-about-what-is-bid-ask-price-in-forex-beginners-guide",
@@ -2619,15 +2608,15 @@
     },
     {
       "from": "/top-10-powerful-insights-into-the-inverse-head-and-shoulders-pattern-real-examples",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/10-powerful-ways-to-master-double-bottom-pattern-entry-and-exit-for-consistent-trading-success",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/7-best-techniques-for-precise-bullish-flag-pattern-target-calculation",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/how-geopolitical-events-affect-stock-market-crashes-a-complete-guide",
@@ -2643,7 +2632,7 @@
     },
     {
       "from": "/10-powerful-ways-to-safely-front-run-central-bank-announcements-how-to-front-run-central-bank",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/trend-following-system-with-moving-averages-powerful-strategy-guide",
@@ -2651,7 +2640,7 @@
     },
     {
       "from": "/elliott-wave-secrets-for-forex-beginners-12-powerful-strategies-to-boost-accuracy-2",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/top-10-critical-beginner-mistakes-in-forex-order-execution-avoid-these-costly-errors-2",
@@ -2663,7 +2652,7 @@
     },
     {
       "from": "/ultimate-crowd-trading-platforms-review-top-insights-pros-cons-ratings-2",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/head-and-shoulders-pattern-explained-with-examples-powerful-trading-guide-2",
@@ -2671,11 +2660,11 @@
     },
     {
       "from": "/top-10-powerful-insights-into-the-inverse-head-and-shoulders-pattern-real-examples-2",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/how-to-trade-federal-reserve-fomc-meeting-live-7-powerful-strategies-for-traders-2",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/troubleshooting-mt4-ea-not-working-issues-15-powerful-fixes-you-must-know",
@@ -2687,7 +2676,7 @@
     },
     {
       "from": "/how-to-test-mt4-ea-before-live-trading-15-powerful-steps-to-improve-results",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/10-powerful-steps-for-setting-up-mt4-robot-for-demo-account-beginner-friendly-guide",
@@ -2695,7 +2684,7 @@
     },
     {
       "from": "/the-best-way-to-configure-free-mt4-robot-complete-beginner-friendly-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/10-powerful-tips-for-setting-lot-sizes-in-mt4-expert-advisor-avoid-costly-mistakes",
@@ -2979,7 +2968,7 @@
     },
     {
       "from": "/ultimate-guide-to-bollinger-bands-squeeze-trading-setup",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/powerful-macd-histogram-signals-for-day-trading",
@@ -3063,7 +3052,7 @@
     },
     {
       "from": "/identifying-exhaustion-patterns-with-rsi-and-volume-confluence",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/multi-timeframe-volume-zones-setup-guide-for-tradingview-users",
@@ -3107,7 +3096,7 @@
     },
     {
       "from": "/change-of-character-detection-in-smart-money-concepts-the-ultimate-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/10-powerful-steps-in-a-step-by-step-guide-to-using-thinkorswim-paper-money-for-stock-practice",
@@ -3311,15 +3300,15 @@
     },
     {
       "from": "/7-powerful-ways-a-beginner-guide-to-social-trading-in-forex-platforms-can-boost-your-success",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/12-powerful-ways-to-set-daily-trading-goals-for-forex-success-beginner-friendly-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/what-is-nfp-report-and-forex-trading-strategy-around-it-powerful-guide-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/7-powerful-insights-to-understanding-pips-and-lots-in-forex-basics-full-beginner-guide",
@@ -3327,7 +3316,7 @@
     },
     {
       "from": "/10-powerful-risk-management-techniques-in-forex-for-small-accounts",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/13-powerful-ways-to-avoid-common-forex-trading-mistakes-for-better-results",
@@ -3335,55 +3324,55 @@
     },
     {
       "from": "/top-6-best-forex-pairs-for-beginners-to-trade-powerful-guide-for-safe-smart-trading",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/position-trading-vs-day-trading-in-forex-7-brilliant-ways-to-choose-the-right-style",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/how-to-use-fibonacci-retracement-in-forex-9-powerful-strategies-for-better-trades",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/bollinger-bands-squeeze-for-forex-breakouts-11-powerful-strategies-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/common-forex-scams-and-how-to-spot-them",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/top-10-low-spread-forex-brokers-for-scalping-powerful-guide-to-save-money-fast",
-      "wasTo": "/blog/"
+      "wasTo": "/category/ai-powered-trading-tools/brokers-trading-platforms/"
     },
     {
       "from": "/ultimate-forex-broker-comparison-for-mobile-trading-top-rated-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/ai-powered-trading-tools/brokers-trading-platforms/"
     },
     {
       "from": "/how-to-fund-a-forex-account-safely-10-powerful-steps-every-trader-must-follow",
-      "wasTo": "/blog/"
+      "wasTo": "/category/ai-powered-trading-tools/brokers-trading-platforms/"
     },
     {
       "from": "/withdrawal-fees-in-forex-brokers-explained-essential-guide-expert-insights",
-      "wasTo": "/blog/"
+      "wasTo": "/category/ai-powered-trading-tools/brokers-trading-platforms/"
     },
     {
       "from": "/best-ios-forex-trading-platforms-with-alerts-10-powerful-options-for-smarter-trading",
-      "wasTo": "/blog/"
+      "wasTo": "/category/ai-powered-trading-tools/brokers-trading-platforms/"
     },
     {
       "from": "/how-to-use-economic-indicators-for-forex-10-powerful-strategies-to-boost-your-trading",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/fed-rate-decision-impact-on-usd-pairs",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/boj-policy-effects-on-yen-forex-pairs",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/how-to-use-support-and-resistance-levels",
@@ -3395,7 +3384,7 @@
     },
     {
       "from": "/flags-and-pennants-continuation-patterns-7-proven-strategies-to-master-chart-patterns",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/false-breakout-avoidance-in-forex-trading",
@@ -3407,11 +3396,11 @@
     },
     {
       "from": "/scaling-out-of-trades-profitably",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/breakeven-stop-loss-adjustment-tips",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/holiday-trading-impact-on-forex-markets-understanding-market-dynamics-during-holidays",
@@ -3435,19 +3424,19 @@
     },
     {
       "from": "/profit-targets-based-on-atr-7-powerful-ways-to-maximize-your-trading-results",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/7-powerful-warning-signals-broker-manipulation-signs-to-watch",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/demo-vs-live-trading-differences-10-powerful-insights-you-must-know",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/how-to-transition-from-demo-to-live-proven-steps-for-a-smooth-successful-shift",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/compounding-profits-in-forex-explained-7-powerful-insights-for-faster-growth",
@@ -3455,11 +3444,11 @@
     },
     {
       "from": "/7-powerful-ways-monte-carlo-simulation-for-strategy-testing-can-dramatically-improve-your-decisions",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/neural-networks-in-forex-forecasting-10-powerful-insights-for-smarter-trading-decisions",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/blockchain-in-forex-transparency-10-powerful-ways-its-transforming-global-trading",
@@ -3467,27 +3456,27 @@
     },
     {
       "from": "/17-powerful-insights-into-the-metaverse-trading-platforms-future-must-read-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/10-powerful-strategies-to-improve-work-life-balance-for-day-traders-ultimate-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/islamic-forex-accounts-halal-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/ai-powered-trading-tools/brokers-trading-platforms/"
     },
     {
       "from": "/swap-free-trading-explained-13-powerful-insights-for-beginners",
-      "wasTo": "/blog/"
+      "wasTo": "/category/ai-powered-trading-tools/brokers-trading-platforms/"
     },
     {
       "from": "/top-15-sharia-compliant-strategies-forex-traders-must-use-for-powerful-ethical-results",
-      "wasTo": "/blog/"
+      "wasTo": "/category/ai-powered-trading-tools/brokers-trading-platforms/"
     },
     {
       "from": "/top-10-powerful-insights-into-payout-policies-in-prop-trading",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/10-powerful-insights-into-risk-rules-in-funded-challenges-essential-guide",
@@ -3495,11 +3484,11 @@
     },
     {
       "from": "/top-10-powerful-insights-to-improve-your-consistency-score-in-prop-firms",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/how-to-trade-news-in-prop-accounts-10-powerful-strategies-for-funding-success",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/top-10-powerful-ways-to-master-e-a-use-in-prop-firm-challenges",
@@ -3511,15 +3500,15 @@
     },
     {
       "from": "/top-10-powerful-alternative-funding-sources-forex-traders-can-use-today",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/peer-to-peer-lending-for-traders-10-powerful-benefits-you-must-know",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/the-ultimate-guide-to-venture-capital-in-trading-startups-proven-strategies-for-funding-success",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/how-does-the-forex-market-work-explained-simply-the-ultimate-beginners-guide",
@@ -3527,7 +3516,7 @@
     },
     {
       "from": "/7-powerful-insights-into-the-difference-between-mini-micro-and-standard-lots-forex",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/what-is-leverage-in-forex-with-examples-powerful-guide-for-beginners",
@@ -3539,7 +3528,7 @@
     },
     {
       "from": "/what-are-major-currency-pairs-in-forex-7-powerful-insights-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/7-powerful-insights-into-the-difference-between-market-execution-and-instant-execution-must-read-guide",
@@ -3547,27 +3536,27 @@
     },
     {
       "from": "/how-long-should-beginners-use-demo-account-the-ultimate-guide-for-new-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/10-powerful-insights-to-understand-what-is-ecn-broker-vs-market-maker-full-beginners-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/ai-powered-trading-tools/brokers-trading-platforms/"
     },
     {
       "from": "/7-powerful-factors-that-explain-what-moves-currency-prices-in-forex",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/7-powerful-ways-the-role-of-central-banks-in-forex-market-shapes-global-currency-stability",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/what-is-carry-trade-in-forex-powerful-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/fundamental-analysis-vs-technical-analysis-for-beginners-the-ultimate",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/how-much-do-beginner-forex-traders-make-shocking-truth-expert-insights-realistic-numbers",
@@ -3583,27 +3572,27 @@
     },
     {
       "from": "/double-top-pattern-reversal-strategy-powerful-trading-guide-for-consistent-results",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/top-9-facts-about-ascending-triangle-pattern-success-rate-powerful-trading-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/10-proven-descending-triangle-pattern-trading-rules-for-reliable-breakout-strategies",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/symmetrical-triangle-breakout-strategy-powerful-trading-guide-for-consistent-results",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/hammer-candlestick-in-downtrend-rules",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/understanding-the-dragonfly-doji-at-support-level",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/major-support-and-resistance-levels-identification",
@@ -3611,7 +3600,7 @@
     },
     {
       "from": "/fibonacci-extension-161-8-profit-target-ultimate-guide-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/how-to-draw-trendlines-correctly-step-by-step",
@@ -3631,7 +3620,7 @@
     },
     {
       "from": "/federal-reserve-interest-rate-decision-explained",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/nfp-report-explained-for-beginner-forex-traders-ultimate-guide-to-boost-your-trading-success",
@@ -3639,27 +3628,27 @@
     },
     {
       "from": "/how-to-read-the-us-non-farm-payroll-report",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/top-10-powerful-insights-israel-iran-conflict-effect-on-gold-and-oil-prices",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/powell-speech-today-powerful-market-reaction-live-analysis-explained",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/7-surprising-reasons-why-nfp-beats-expectations-but-dollar-falls-powerful-market-breakdown",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/7-powerful-differences-between-nominal-gdp-and-real-gdp-trading-every-investor-must-know",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/bank-of-canada-rate-decision-impact-on-usd-cad-powerful-insights-trends",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/how-to-read-fomc-dot-plot-for-future-rate-cuts-9-powerful-insights-for-investors",
@@ -3671,15 +3660,15 @@
     },
     {
       "from": "/what-is-quantitative-easing-vs-tightening-cycle-the-ultimate",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/how-to-combine-economic-calendar-with-price-action-proven-strategies-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/top-10-powerful-price-action-trading-patterns-for-day-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/10-powerful-momentum-trading-techniques-for-stocks-to-boost-your-returns",
@@ -3687,15 +3676,15 @@
     },
     {
       "from": "/top-10-powerful-tips-for-a-news-trading-strategy-during-earnings-season",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/top-10-powerful-ways-to-profit-from-arbitrage-opportunities-in-cryptocurrency-exchanges-complete-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/10-powerful-insights-into-the-pair-trading-method-for-correlated-stocks-beginner-friendly-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/candlestick-patterns-for-reversal-trades-a-comprehensive-guide",
@@ -3703,11 +3692,11 @@
     },
     {
       "from": "/gann-angles-for-swing-trading-a-deep-dive",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/journaling-your-trades-for-continuous-improvement-a-traders-secret-weapon",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/macd-and-rsi-combined-strategy-for-swing-trading",
@@ -3743,23 +3732,23 @@
     },
     {
       "from": "/what-to-write-in-a-trading-journal-daily",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/how-to-develop-discipline-in-trading",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/how-to-handle-drawdowns-without-tilting",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/why-traders-move-stop-loss-to-breakeven-too-early",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/risk-per-trade-calculator-online-free",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/how-to-avoid-overtrading-due-to-boredom-a-guide-for-traders",
@@ -3767,7 +3756,7 @@
     },
     {
       "from": "/greed-after-a-winning-streak-in-trading-a-double-edged-sword",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/how-to-backtest-your-risk-management-rules",
@@ -3775,7 +3764,7 @@
     },
     {
       "from": "/trading-psychology-meditation-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/12-powerful-mt4-robot-portfolio-building-best-practices-for-smarter-automated-trading",
@@ -3799,7 +3788,7 @@
     },
     {
       "from": "/how-to-calculate-pips-in-forex-for-beginners-7-powerful-steps-to-master-pip-value-today-2",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/is-forex-trading-halal-or-haram-top-facts-expert-insights-clear-answer-2",
@@ -3807,7 +3796,7 @@
     },
     {
       "from": "/trading-psychology-meditation-for-traders-2",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/mission-profit-ea-free-download-7-powerful-facts-every-trader-must-know-before-installing-2",
@@ -3823,7 +3812,7 @@
     },
     {
       "from": "/quick-start-guide-for-mt4-ea-on-vps-server-the-ultimate-step-by-step-tutorial",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/mt4-expert-advisor-installation-step-by-step-windows-ultimate-guide",
@@ -3847,7 +3836,7 @@
     },
     {
       "from": "/how-to-set-dynamic-position-sizing-in-mt4-robots-powerful-strategies-for-smarter-trading",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/optimize-mt4-ea-inputs-using-genetic-algorithm-complete-practical-guide",
@@ -4295,19 +4284,19 @@
     },
     {
       "from": "/how-to-choose-forex-trading-hours-by-timezone-the-ultimate-guide-for-smart-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/what-are-sentiment-indicators-in-forex-trading-powerful-guide-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/7-powerful-ways-to-recover-from-a-losing-forex-trading-streak-and-come-back-stronger",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/10-powerful-insights-what-is-cfd-trading-vs-spot-forex-for-newbies",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/10-powerful-ways-to-master-how-to-trade-aud-usd-based-on-commodity-prices",
@@ -4319,11 +4308,11 @@
     },
     {
       "from": "/10-powerful-reasons-why-what-are-harmonic-patterns-in-forex-trading-can-improve-your-market-results",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/best-forex-strategies-for-beginners-10-proven-methods-for-fast-safe-trading-success",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/10-powerful-insights-to-understand-what-is-leverage-in-forex-trading-explained-must-read-guide",
@@ -4331,7 +4320,7 @@
     },
     {
       "from": "/10-best-ways-to-choose-a-reliable-forex-broker-for-us-traders-powerful-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/top-5-forex-trading-tips-for-new-investors-7-powerful-secrets-to-improve-your-success",
@@ -4343,47 +4332,47 @@
     },
     {
       "from": "/12-powerful-tips-for-swing-trading-forex-guide-for-part-time-traders-best-beginner-strategy",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/rsi-divergence-trading-signals-in-forex-powerful-strategies-for-consistent-wins",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/how-to-trade-news-events-in-forex-safely-12-proven-strategies-for-smart-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/how-to-calculate-risk-reward-ratio-in-forex-powerful-guide-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/best-forex-books-for-beginners-to-read-10-powerful-picks-every-new-trader-should-know",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/top-10-powerful-online-forex-courses-worth-taking-for-free-you-shouldnt-miss",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/best-regulated-forex-brokers-list-for-europe",
-      "wasTo": "/blog/"
+      "wasTo": "/category/ai-powered-trading-tools/brokers-trading-platforms/"
     },
     {
       "from": "/impact-of-interest-rates-on-forex-markets-how-changes-shape-currency-movements",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/non-farm-payroll-trading-strategy-forex-a-complete-guide-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/how-to-trade-carry-trades-in-forex",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/rollover-fees-in-forex-explained-simply",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/forex-options-trading-for-beginners-guide",
@@ -4395,11 +4384,11 @@
     },
     {
       "from": "/chart-patterns-every-trader-should-know",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/double-top-and-bottom-reversal-signals-powerful-guide-to-spotting-market-turning-points",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/how-to-use-macd-indicator-effectively-10-proven-strategies-for-traders",
@@ -4431,7 +4420,7 @@
     },
     {
       "from": "/overtrading-prevention-strategies-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/position-sizing-calculator-for-forex-the-ultimate-guide",
@@ -4455,11 +4444,11 @@
     },
     {
       "from": "/how-to-trade-exotic-currency-pairs-complete-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/how-to-diversify-forex-portfolio-11-powerful-strategies-for-safer-trading-success",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/how-to-spot-high-probability-trades-11-powerful-strategies-for-traders",
@@ -4467,7 +4456,7 @@
     },
     {
       "from": "/7-powerful-ways-to-master-how-to-exit-trades-without-emotion",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/12-powerful-ways-to-master-small-account-growth-strategies-forex",
@@ -4475,31 +4464,31 @@
     },
     {
       "from": "/11-powerful-benefits-of-walk-forward-optimization-in-backtesting",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/7-powerful-reasons-behind-the-decentralized-forex-exchanges-rise",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/7-powerful-strategies-for-sustainable-trading-ethical-forex-success",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/the-carbon-footprint-of-forex-brokers-powerful-insights-for-a-greener-trading-future",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/12-powerful-ways-diversity-in-trading-communities-strengthens-market-success",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/retail-vs-institutional-trading-differences-15-shocking-insights-you-must-know",
-      "wasTo": "/blog/"
+      "wasTo": "/category/ai-powered-trading-tools/brokers-trading-platforms/"
     },
     {
       "from": "/top-10-funded-trader-programs-review-powerful-insights-expert-ratings",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/10-powerful-my-forex-funds-alternatives-for-safer-smarter-trading",
@@ -4511,19 +4500,19 @@
     },
     {
       "from": "/7-powerful-reasons-to-understand-overall-drawdown-vs-trailing-before-you-trade",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/10-powerful-insights-about-scalping-allowed-in-funded-programs-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/news-trading-bans-explained-essential-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/powerful-breakeven-rules-after-first-trade-15-proven-strategies-for-smart-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/17-powerful-reasons-advanced-prop-firms-for-pros-are-transforming-professional-trading",
@@ -4531,15 +4520,15 @@
     },
     {
       "from": "/what-is-forex-trading-for-beginners-17-powerful-insights-to-start-safely",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/what-is-a-pip-in-forex-simple-explanation-the-ultimate-beginner-friendly-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/what-are-lots-in-forex-trading-10-powerful-insights-beginners-must-know",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/what-is-a-currency-pair-in-forex-explained-the-ultimate-guide",
@@ -4551,15 +4540,15 @@
     },
     {
       "from": "/how-forex-market-hours-work-powerful-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/best-time-to-trade-forex-for-beginners-complete-guide-to-smart-timing-higher-profits",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/top-10-facts-about-what-is-margin-in-forex-trading-powerful-guide-for-safe-smart-trading",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/how-to-place-a-buy-and-sell-order-in-forex",
@@ -4567,23 +4556,23 @@
     },
     {
       "from": "/trailing-stop-in-forex-explained-powerful-strategies-for-safer-trading",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/7-powerful-reasons-why-can-you-trade-forex-without-leverage-is-a-smart-trading-strategy",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/ultimate-guide-to-forex-trading-session-times-gmt-powerful-insights-for-winning-trades",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/why-forex-market-is-closed-on-weekends-powerful-insights-you-need-to-know",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/what-is-a-demo-account-in-forex-the-ultimate-guide-for-beginners",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/what-is-a-candlestick-chart-in-forex-powerful-guide-for-traders",
@@ -4591,15 +4580,15 @@
     },
     {
       "from": "/how-to-read-japanese-candlesticks-for-beginners-11-powerful-tips-for-easy-chart-mastery",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/what-is-a-forex-trading-plan",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/10-powerful-insights-to-avoid-common-mistakes-beginners-make-in-forex",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/7-powerful-reasons-to-use-what-is-the-1-risk-rule-in-forex",
@@ -4607,15 +4596,15 @@
     },
     {
       "from": "/mastering-forex-trading-psychology-for-beginners-10-powerful-strategies-for-success",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/bearish-pennant-pattern-in-downtrend-powerful-trading-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/top-10-reasons-the-cup-and-handle-pattern-on-weekly-chart-is-a-powerful-trading-signal-pro-analysis",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/three-white-soldiers-candlestick-meaning-the-complete-guide",
@@ -4623,15 +4612,15 @@
     },
     {
       "from": "/bearish-engulfing-at-resistance-level-a-complete-guide-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/evening-doji-star-reversal-accuracy-how-reliable-is-this-candlestick-pattern",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/hanging-man-candlestick-at-all-time-high-ultimate-guide-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/fibonacci-retracement-61-8-golden-ratio-trades-mastering-the-art-of-precision-trading",
@@ -4643,7 +4632,7 @@
     },
     {
       "from": "/descending-channel-pullback-trades-7-proven-strategies-for-profitable-entries",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/200-day-moving-average-death-cross-meaning",
@@ -4675,11 +4664,11 @@
     },
     {
       "from": "/top-12-best-candlestick-patterns-for-swing-trading-to-maximize-profits",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/most-reliable-chart-patterns-12-proven-patterns-every-trader-should-know",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/how-to-identify-market-structure-shifts",
@@ -4691,15 +4680,15 @@
     },
     {
       "from": "/non-farm-payroll-nfp-why-this-key-economic-indicator-moves-markets-dramatically",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/gdp-report-explained-how-it-impacts-stocks-and-forex",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/understanding-a-good-gdp-growth-rate-for-the-stock-market",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/cpi-report-explained-consumer-price-index-for-beginners",
@@ -4719,7 +4708,7 @@
     },
     {
       "from": "/how-lagarde-ecb-speech-moves-the-euro-7-powerful-ways-her-words-shake-fx-markets",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/10-must-know-facts-about-pce-inflation-explained-fed-favorite-gauge",
@@ -4727,27 +4716,27 @@
     },
     {
       "from": "/7-powerful-reasons-why-core-pce-matters-more-than-cpi-for-rate-cuts",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/how-to-trade-boj-interest-rate-decision-yen-pairs-7-powerful-strategies-for-success",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/opec-meeting-effect-on-brent-and-wti-oil-prices-11-powerful-insights",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/how-to-use-economic-calendar-like-a-pro-trader-12-powerful-strategies-for-smarter-market-decisions",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/us-debt-ceiling-crisis-impact-on-treasury-yields-powerful-insights",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/7-powerful-ways-how-government-shutdown-affects-the-us-dollar-and-what-investors-should-know",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/7-powerful-ways-the-trade-war-tariffs-effect-on-sp-500-companies-shapes-market-performance",
@@ -4759,11 +4748,11 @@
     },
     {
       "from": "/top-10-best-fundamental-analysis-strategy-for-swing-trading-powerful-proven-methods-for-reliable-gains",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/7-powerful-reasons-why-inflation-is-good-for-stocks-in-moderation-invest-smarter-today",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/how-to-day-trade-stocks-with-small-account-7-powerful-strategies-for-success",
@@ -4771,11 +4760,11 @@
     },
     {
       "from": "/swing-trading-indicators-for-crypto-markets-12-powerful-tools-to-boost-your-win-rate",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/carry-trade-explained-with-real-examples-powerful-strategy-revealed",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/breakout-strategy-using-volume-confirmation-the-ultimate-guide-for-traders",
@@ -4783,7 +4772,7 @@
     },
     {
       "from": "/grid-trading-in-volatile-forex-pairs-a-comprehensive-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/turtle-trading-rules-modern-adaptation",
@@ -4803,7 +4792,7 @@
     },
     {
       "from": "/harmonic-patterns-trading-guide-understanding-and-applying-key-patterns-for-success",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/understanding-the-stochastic-oscillator-overbought-and-oversold-conditions",
@@ -4831,7 +4820,7 @@
     },
     {
       "from": "/forward-testing-new-trading-systems-a-comprehensive-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/automated-trading-with-pine-script-a-comprehensive-guide",
@@ -4875,11 +4864,11 @@
     },
     {
       "from": "/how-to-avoid-revenge-trading-after-a-loss",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/the-psychology-of-revenge-trading-why-traders-revenge-trade",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/how-to-stop-revenge-trading-forever-a-comprehensive-guide",
@@ -4887,7 +4876,7 @@
     },
     {
       "from": "/greed-and-fear-in-trading-how-to-control-emotions-for-better-decision-making",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/how-to-set-stop-loss-based-on-atr",
@@ -4911,7 +4900,7 @@
     },
     {
       "from": "/why-most-traders-lose-money-the-role-of-psychology",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/top-trading-psychology-books-for-beginners-mastering-the-mindset-for-success",
@@ -4919,15 +4908,15 @@
     },
     {
       "from": "/the-psychology-of-cutting-losses-short-understanding-why-we-struggle-and-how-to-overcome-it",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/mental-stops-vs-hard-stop-loss-pros-and-cons",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/how-to-stick-to-your-stop-loss-psychologically",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/how-to-journal-trades-for-maximum-improvement",
@@ -4939,11 +4928,11 @@
     },
     {
       "from": "/how-to-accept-losses-in-trading-emotionally-a-guide-to-resilience-and-growth",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/overcoming-the-fear-of-missing-out-fomo-in-trading-a-psychological-fix",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/how-to-use-volatility-for-stop-loss-placement",
@@ -4951,7 +4940,7 @@
     },
     {
       "from": "/trading-mindset-shift-from-gambler-to-professional",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/the-daily-trading-routine-for-better-psychology",
@@ -4959,15 +4948,15 @@
     },
     {
       "from": "/how-to-set-profit-targets-based-on-risk-reward",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/how-to-trade-the-fomc-interest-rate-decision-live-a-step-by-step-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/ecb-interest-rate-decision-trading-strategy",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/how-retail-traders-can-use-order-flow-to-improve-trading",
@@ -4975,7 +4964,7 @@
     },
     {
       "from": "/seasonal-tendencies-in-forex-trading-a-key-to-unlocking-market-patterns",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/bollinger-band-width-indicator-trading-strategy",
@@ -5063,7 +5052,7 @@
     },
     {
       "from": "/the-ultimate-guide-to-the-best-forex-brokers-for-expert-advisors",
-      "wasTo": "/blog/"
+      "wasTo": "/category/ai-powered-trading-tools/brokers-trading-platforms/"
     },
     {
       "from": "/walk-forward-analysis-for-mt4-expert-advisors-10-powerful-insights-for-better-trading-performance",
@@ -5199,7 +5188,7 @@
     },
     {
       "from": "/10-powerful-economic-calendar-tips-for-forex-traders-boost-results-fast",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/10-best-forex-trading-apps-for-android-beginners-ultimate-guide-expert-picks",
@@ -5207,7 +5196,7 @@
     },
     {
       "from": "/how-gdp-affects-currency-pairs-in-trading",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/top-10-ecb-announcements-and-euro-trading-tips-to-boost-your-forex-strategy",
@@ -5231,31 +5220,31 @@
     },
     {
       "from": "/how-to-review-trades-for-improvement-the-ultimate-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/emotional-control-techniques-in-forex",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/trailing-stop-methods-for-forex-a-complete-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/major-pairs-vs-minor-pairs-differences",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/cross-currency-pairs-trading-guide-expert-strategies-and-insights",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/how-to-predict-forex-trends-accurately-17-powerful-strategies-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/15-powerful-ways-to-use-vix-for-forex-volatility-proven-strategies-included",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/bottom-up-approach-in-trading-setups-powerful-insights-for-better-market-decisions",
@@ -5267,19 +5256,19 @@
     },
     {
       "from": "/complete-guide-on-how-to-scale-prop-firm-accounts-without-blowing-your-funding",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/list-of-major-minor-and-exotic-currency-pairs-the-ultimate-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/margin-call-in-forex-explained-simply-the-ultimate-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/what-is-slippage-in-forex-trading-powerful-guide-to-understanding-avoiding-managing-it",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/what-is-hedging-in-forex-powerful-guide-with-benefits-strategies-examples",
@@ -5287,15 +5276,15 @@
     },
     {
       "from": "/what-is-support-and-resistance-in-forex-powerful-guide-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/morning-star-candlestick-pattern-confirmation-a-complete-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/gravestone-doji-after-strong-uptrend-a-complete-guide-for-traders",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/psychological-support-and-resistance-levels",
@@ -5311,7 +5300,7 @@
     },
     {
       "from": "/how-do-interest-rates-affect-stock-market-beginners",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/how-does-inflation-affect-stock-market-returns-long-term",
@@ -5319,7 +5308,7 @@
     },
     {
       "from": "/how-to-trade-cpi-report-forex-and-stocks",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/how-central-bank-interest-rate-hikes-affect-gold-prices",
@@ -5331,11 +5320,11 @@
     },
     {
       "from": "/bank-of-england-interest-rate-decision-impact-on-gbp",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/most-important-economic-news-to-trade-every-month",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/7-best-powerful-ways-to-how-to-predict-gdp-revisions-before-the-report",
@@ -5343,15 +5332,15 @@
     },
     {
       "from": "/rba-interest-rate-decision-explained-for-aud-traders-powerful-insights-for-smarter-market-moves",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/how-china-gdp-affects-australian-dollar-and-commodities-7-powerful-insights-positive-negative",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/7-powerful-insights-fomc-minutes-explained-word-by-word-analysis-for-everyday-readers",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/avoiding-false-signals-in-breakout-trading",
@@ -5359,7 +5348,7 @@
     },
     {
       "from": "/understanding-macd-crossover-signals-for-swing-trades",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/fibonacci-retracement-levels-for-entries-a-comprehensive-guide",
@@ -5407,7 +5396,7 @@
     },
     {
       "from": "/position-sizing-for-options-trading-a-beginners-guide",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/how-to-recover-psychologically-after-blowing-account",
@@ -5415,11 +5404,11 @@
     },
     {
       "from": "/why-traders-remove-stop-losses-at-the-worst-time",
-      "wasTo": "/blog/"
+      "wasTo": "/category/risk-money-management/"
     },
     {
       "from": "/how-to-trade-nfp-without-getting-stopped-out",
-      "wasTo": "/blog/"
+      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/how-to-pass-fundednext-challenge-in-one-week",
@@ -5762,28 +5751,12 @@
       "wasTo": "/category/ai-powered-trading-tools/"
     },
     {
-      "from": "/when-the-world-burns-your-money-doesnt-have-to",
-      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
-    },
-    {
-      "from": "/the-money-race-nobody-told-you-about",
-      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
-    },
-    {
-      "from": "/the-8th-wonder-of-the-world-nobody-taught-you-in-school",
-      "wasTo": "/category/ai-powered-trading-tools/"
-    },
-    {
-      "from": "/your-job-is-being-stolen-and-the-thief-is-smarter-than-you-think",
-      "wasTo": "/category/ai-powered-trading-tools/"
-    },
-    {
       "from": "/the-ultimate-guide-to-the-best-mt5-expert-advisors-for-automated-trading",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/the-complete-guide-to-ai-forex-trading-automate-your-wealth-eliminate-emotion-and-scale-with-expert-advisors",
-      "wasTo": "/blog/"
+      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/the-forex-risk-management-masterclass-the-exact-system-to-protect-capital-eliminate-emotional-trading-and-compound-wealth",
@@ -9017,11 +8990,6 @@
       "status": 301
     },
     {
-      "from": "/best-forex-vps-for-mt4-mt5-in-2026-low-latency-24-7-uptime-expert-advisor-hosting",
-      "to": "/%F0%9F%9A%80-powerful-proven-crypto-trading-indicator-system-mt5-free-download/",
-      "status": 301
-    },
-    {
       "from": "/best-ftmo-free-download-7-powerful-truths-you-must-know-before-you-start",
       "to": "/best-ftmo-free-download-7-powerful-truths-you-must-know-before-you-start",
       "status": 410
@@ -9497,9 +9465,19 @@
       "status": 301
     },
     {
+      "from": "/category/ai-powered-trading-tools/trading-algorithms-systems/",
+      "to": "/category/ai-powered-trading-tools/",
+      "status": 301
+    },
+    {
       "from": "/category/become-a-billionaire",
       "to": "/category/become-a-billionaire",
       "status": 410
+    },
+    {
+      "from": "/category/beginners-guides-forex-basics/",
+      "to": "/category/forex-trading-strategies/",
+      "status": 301
     },
     {
       "from": "/category/bitcoin",
@@ -9507,9 +9485,19 @@
       "status": 410
     },
     {
+      "from": "/category/chart-patterns/",
+      "to": "/category/technical-analysis/",
+      "status": 301
+    },
+    {
       "from": "/category/expert-advisors",
       "to": "/category/expert-advisors",
       "status": 410
+    },
+    {
+      "from": "/category/forex-broker-reviews/",
+      "to": "/category/ai-powered-trading-tools/brokers-trading-platforms/",
+      "status": 301
     },
     {
       "from": "/category/forex-ea-review",
@@ -9530,6 +9518,16 @@
       "from": "/category/forex-trading",
       "to": "/category/forex-trading",
       "status": 410
+    },
+    {
+      "from": "/category/forex-trading-strategies/forex-swing-trading/",
+      "to": "/category/forex-trading-strategies/",
+      "status": 301
+    },
+    {
+      "from": "/category/forex-trading-strategies/mean-reversion-trading/",
+      "to": "/category/forex-trading-strategies/",
+      "status": 301
     },
     {
       "from": "/category/forex-trading-strategies/risk-money-management-forex-trading-strategies/",
@@ -9557,7 +9555,22 @@
       "status": 301
     },
     {
+      "from": "/category/fundamental-analysis/",
+      "to": "/category/technical-analysis/",
+      "status": 301
+    },
+    {
       "from": "/category/gold-xauusd-trading/gold-ea-robots/",
+      "to": "/category/gold-xauusd-trading/",
+      "status": 301
+    },
+    {
+      "from": "/category/gold-xauusd-trading/gold-market-analysis/",
+      "to": "/category/gold-xauusd-trading/",
+      "status": 301
+    },
+    {
+      "from": "/category/gold-xauusd-trading/gold-risk-management/",
       "to": "/category/gold-xauusd-trading/",
       "status": 301
     },
@@ -9599,6 +9612,21 @@
     {
       "from": "/category/mt4/indicators",
       "to": "/product/golden-deer-holy-grail-indicator/",
+      "status": 301
+    },
+    {
+      "from": "/category/prop-firm-reviews/",
+      "to": "/category/risk-money-management/",
+      "status": 301
+    },
+    {
+      "from": "/category/strategies-best-practices/",
+      "to": "/category/forex-trading-strategies/",
+      "status": 301
+    },
+    {
+      "from": "/category/trading-psychology/",
+      "to": "/category/risk-money-management/",
       "status": 301
     },
     {
@@ -15872,11 +15900,6 @@
       "status": 410
     },
     {
-      "from": "/the-8th-wonder-of-the-world-nobody-taught-you-in-school",
-      "to": "/the-8th-wonder-of-the-world-nobody-taught-you-in-school",
-      "status": 410
-    },
-    {
       "from": "/the-assar-phoenix-elite-robot-free-download-7-powerful-facts-you-must-know-before-getting-it",
       "to": "/the-assar-phoenix-elite-robot-free-download-7-powerful-facts-you-must-know-before-getting-it",
       "status": 410
@@ -15984,11 +16007,6 @@
     {
       "from": "/the-monetree-ea-free-download-7-powerful-facts-before-you-install-it",
       "to": "/the-monetree-ea-free-download-7-powerful-facts-before-you-install-it",
-      "status": 410
-    },
-    {
-      "from": "/the-money-race-nobody-told-you-about",
-      "to": "/the-money-race-nobody-told-you-about",
       "status": 410
     },
     {
@@ -17627,11 +17645,6 @@
       "status": 410
     },
     {
-      "from": "/when-the-world-burns-your-money-doesnt-have-to",
-      "to": "/when-the-world-burns-your-money-doesnt-have-to",
-      "status": 410
-    },
-    {
       "from": "/where-to-get-the-best-free-forex-trading-signals-and-setups",
       "to": "/where-to-get-the-best-free-forex-trading-signals-and-setups",
       "status": 410
@@ -17905,11 +17918,6 @@
       "from": "/yoforex-free-ea-download-7-powerful-benefits-honest-insights-you-must-know",
       "to": "/free-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide/",
       "status": 301
-    },
-    {
-      "from": "/your-job-is-being-stolen-and-the-thief-is-smarter-than-you-think",
-      "to": "/your-job-is-being-stolen-and-the-thief-is-smarter-than-you-think",
-      "status": 410
     },
     {
       "from": "/zct-momentum-s-r-rules-by-ahanaf_adil-forex-indicator-reviews-7-powerful-truths-every-trader-must-know",

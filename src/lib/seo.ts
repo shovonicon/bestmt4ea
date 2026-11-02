@@ -9,11 +9,10 @@ export function organizationSchema(): Json {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: site.name,
-    legalName: site.legalName,
     url: site.url,
     description: site.description,
     logo: { '@type': 'ImageObject', url: absoluteUrl('/logo.png') },
-    sameAs: [site.reviewSiteUrl, site.telegram.community, site.myfxbook],
+    sameAs: [site.telegram.community, site.myfxbook],
   };
 }
 

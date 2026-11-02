@@ -5,8 +5,8 @@ description: "US30 gaps at the open and respects volatility more than forex habi
 publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
-  - "Technical Analysis"
-  - "Free Forex Indicator"
+  - "Forex Technical Analysis"
+  - "Free Forex Indicators for MT4 & MT5"
 categoryPaths:
   - "/category/technical-analysis/"
   - "/category/free-forex-indicator/"

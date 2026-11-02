@@ -5,9 +5,9 @@ description: "A Bitcoin scalper EA free download guide: how automated BTC scalpi
 publishedAt: "2026-02-13T21:33:01.000Z"
 updatedAt: "2026-10-08T00:00:00.000Z"
 categories:
-  - "Free Forex EA"
-  - "Forex Scalping"
-  - "Risk & Money Management"
+  - "Free Forex EAs for MT4 & MT5"
+  - "Forex Scalping Strategies & EAs"
+  - "Forex Risk & Money Management"
 categoryPaths:
   - "/category/free-forex-ea/"
   - "/category/forex-trading-strategies/forex-scalping/"

@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_134168_featured.webp"
 sourceUrl: "https://bestmt4ea.com/murasaki-scalper-free-download-powerful-secrets-every-trader-must-know-before-installing/"
 categories:
-  - "Free Forex EA"
-  - "Forex Scalping"
-  - "EA Settings & Optimization"
+  - "Free Forex EAs for MT4 & MT5"
+  - "Forex Scalping Strategies & EAs"
+  - "EA Settings & Optimization Guides"
 categoryPaths:
   - "/category/free-forex-ea/"
   - "/category/forex-trading-strategies/forex-scalping/"

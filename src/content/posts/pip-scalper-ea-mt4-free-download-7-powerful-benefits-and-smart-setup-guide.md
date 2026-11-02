@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_126282_featured.webp"
 sourceUrl: "https://bestmt4ea.com/pip-scalper-ea-mt4-free-download-7-powerful-benefits-and-smart-setup-guide/"
 categories:
-  - "Free Forex EA"
-  - "Forex Scalping"
+  - "Free Forex EAs for MT4 & MT5"
+  - "Forex Scalping Strategies & EAs"
 categoryPaths:
   - "/category/free-forex-ea/"
   - "/category/forex-trading-strategies/forex-scalping/"

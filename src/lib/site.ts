@@ -1,22 +1,19 @@
 /**
  * Site configuration for the BESTMT4EA rebuild.
  *
- * bestmt4ea.com  = main store / licensing site (10 years live)
- * strivealgo.com = secondary marketing + review directory
+ * bestmt4ea.com  = main store / licensing site (operating since 2019, per the owner)
  */
 
 const url = (import.meta.env.PUBLIC_SITE_URL || 'https://bestmt4ea.com').replace(/\/$/, '');
 
 export const site = {
   name: 'BESTMT4EA',
-  legalName: 'Strive Algo',
   tagline: 'AI-Powered Forex Expert Advisors for MT4 & MT5',
   description:
-    'Myfxbook-verified MT4 and MT5 expert advisors for XAUUSD, EURUSD and major pairs. Live-traded on real accounts before release.',
+    'Myfxbook-verified MT4 and MT5 expert advisors for XAUUSD, EURUSD and major pairs. Performance tracked on Myfxbook.',
   /** Default social-share card (Open Graph / Twitter); a page can override it. */
   ogImage: '/media/og-banner.png',
   url,
-  reviewSiteUrl: 'https://strivealgo.com',
   contactEmail: import.meta.env.PUBLIC_CONTACT_EMAIL || 'bestmt4ea@gmail.com',
   telegram: {
     support: 'https://t.me/pizion',

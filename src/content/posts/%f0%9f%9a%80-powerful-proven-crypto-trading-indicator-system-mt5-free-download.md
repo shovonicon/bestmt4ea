@@ -12,7 +12,7 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_137612_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/%f0%9f%9a%80-powerful-proven-crypto-trading-indicator-system-mt5-free-download/"
 categories:
-  - "Free Forex Indicator"
+  - "Free Forex Indicators for MT4 & MT5"
 categoryPaths:
   - "/category/free-forex-indicator/"
 tags: []

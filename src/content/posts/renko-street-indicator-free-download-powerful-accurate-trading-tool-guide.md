@@ -12,7 +12,7 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_139322_featured.webp"
 sourceUrl: "https://bestmt4ea.com/renko-street-indicator-free-download-powerful-accurate-trading-tool-guide/"
 categories:
-  - "Free Forex Indicator"
+  - "Free Forex Indicators for MT4 & MT5"
 categoryPaths:
   - "/category/free-forex-indicator/"
 tags: []

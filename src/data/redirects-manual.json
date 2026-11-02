@@ -120,8 +120,69 @@
       "from": "/category/forex-trading-strategies/risk-money-management-forex-trading-strategies/",
       "to": "/category/risk-money-management/",
       "status": 301
+    },
+    {
+      "from": "/category/beginners-guides-forex-basics/",
+      "to": "/category/forex-trading-strategies/",
+      "status": 301
+    },
+    {
+      "from": "/category/chart-patterns/",
+      "to": "/category/technical-analysis/",
+      "status": 301
+    },
+    {
+      "from": "/category/forex-broker-reviews/",
+      "to": "/category/ai-powered-trading-tools/brokers-trading-platforms/",
+      "status": 301
+    },
+    {
+      "from": "/category/forex-trading-strategies/forex-swing-trading/",
+      "to": "/category/forex-trading-strategies/",
+      "status": 301
+    },
+    {
+      "from": "/category/fundamental-analysis/",
+      "to": "/category/technical-analysis/",
+      "status": 301
+    },
+    {
+      "from": "/category/gold-xauusd-trading/gold-market-analysis/",
+      "to": "/category/gold-xauusd-trading/",
+      "status": 301
+    },
+    {
+      "from": "/category/gold-xauusd-trading/gold-risk-management/",
+      "to": "/category/gold-xauusd-trading/",
+      "status": 301
+    },
+    {
+      "from": "/category/forex-trading-strategies/mean-reversion-trading/",
+      "to": "/category/forex-trading-strategies/",
+      "status": 301
+    },
+    {
+      "from": "/category/prop-firm-reviews/",
+      "to": "/category/risk-money-management/",
+      "status": 301
+    },
+    {
+      "from": "/category/strategies-best-practices/",
+      "to": "/category/forex-trading-strategies/",
+      "status": 301
+    },
+    {
+      "from": "/category/ai-powered-trading-tools/trading-algorithms-systems/",
+      "to": "/category/ai-powered-trading-tools/",
+      "status": 301
+    },
+    {
+      "from": "/category/trading-psychology/",
+      "to": "/category/risk-money-management/",
+      "status": 301
     }
   ],
   "_revivalNote": "2026-10-22 revival: absorbed troubleshooting posts 301 to the two merged guides; BBP product URL to its review; Gemini settings URL to the settings guide post.",
-  "_categoryMergeNote": "The 2026-10-30 taxonomy consolidation folded eleven near-synonym category archives into broader ones (nine here; Brokers & Trading Platforms was kept). Each retired archive 301s at its single best surviving match. The Gold (XAUUSD) Trading archive and its two children are live again, so their old redirects were removed in the same change."
+  "_categoryMergeNote": "The 2026-10-30 taxonomy consolidation folded eleven near-synonym category archives into broader ones (nine here; Brokers & Trading Platforms was kept). Each retired archive 301s at its single best surviving match. The Gold (XAUUSD) Trading archive and its two children are live again, so their old redirects were removed in the same change.",
+  "_emptiedCategoriesNote": "2026-11-02: archives of old WordPress categories that hold no posts redirect to the nearest live category, so those legacy URLs do not 404."
 }

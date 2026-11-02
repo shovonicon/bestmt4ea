@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_135105_featured.webp"
 sourceUrl: "https://bestmt4ea.com/order-blocks-indicator-for-mt4-mt5-free-download-7-powerful-benefits-smart-traders-cant-ignore/"
 categories:
-  - "Free Forex Indicator"
-  - "Technical Analysis"
+  - "Free Forex Indicators for MT4 & MT5"
+  - "Forex Technical Analysis"
   - "Forex Trading Strategies"
 categoryPaths:
   - "/category/free-forex-indicator/"

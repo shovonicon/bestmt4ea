@@ -5,8 +5,8 @@ description: "Your expert advisor stopped trading, never started, or works on de
 publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
-  - "MT4/MT5 Expert Advisors"
-  - "EA Settings & Optimization"
+  - "MT4 & MT5 Expert Advisors"
+  - "EA Settings & Optimization Guides"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/"
   - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"

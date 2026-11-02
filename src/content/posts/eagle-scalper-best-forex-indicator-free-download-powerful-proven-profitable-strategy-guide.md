@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_134968_featured.webp"
 sourceUrl: "https://bestmt4ea.com/eagle-scalper-best-forex-indicator-free-download-powerful-proven-profitable-strategy-guide/"
 categories:
-  - "Free Forex Indicator"
-  - "Forex Scalping"
+  - "Free Forex Indicators for MT4 & MT5"
+  - "Forex Scalping Strategies & EAs"
 categoryPaths:
   - "/category/free-forex-indicator/"
   - "/category/forex-trading-strategies/forex-scalping/"

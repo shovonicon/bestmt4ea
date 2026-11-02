@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_136077_featured.webp"
 sourceUrl: "https://bestmt4ea.com/ultimate-pro-scalper-forex-indicator-free-download-7-powerful-secrets-every-trader-must-know/"
 categories:
-  - "Free Forex Indicator"
-  - "Forex Scalping"
+  - "Free Forex Indicators for MT4 & MT5"
+  - "Forex Scalping Strategies & EAs"
 categoryPaths:
   - "/category/free-forex-indicator/"
   - "/category/forex-trading-strategies/forex-scalping/"

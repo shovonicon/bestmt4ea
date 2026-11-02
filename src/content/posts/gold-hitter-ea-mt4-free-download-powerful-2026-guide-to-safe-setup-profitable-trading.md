@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127393_featured.webp"
 sourceUrl: "https://bestmt4ea.com/gold-hitter-ea-mt4-free-download-powerful-2026-guide-to-safe-setup-profitable-trading/"
 categories:
-  - "Free Forex EA"
-  - "Gold (XAUUSD) Trading"
-  - "Risk & Money Management"
+  - "Free Forex EAs for MT4 & MT5"
+  - "Gold (XAUUSD) Trading Guides & EAs"
+  - "Forex Risk & Money Management"
 categoryPaths:
   - "/category/free-forex-ea/"
   - "/category/gold-xauusd-trading/"

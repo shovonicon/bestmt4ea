@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_126074_featured.webp"
 sourceUrl: "https://bestmt4ea.com/mft-trading-robot-mt4-free-download-7-powerful-facts-you-must-know-before-installing/"
 categories:
-  - "EA Reviews & Comparisons"
-  - "Free Forex EA"
-  - "EA Settings & Optimization"
+  - "Forex EA Reviews & Comparisons"
+  - "Free Forex EAs for MT4 & MT5"
+  - "EA Settings & Optimization Guides"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/free-forex-ea/"

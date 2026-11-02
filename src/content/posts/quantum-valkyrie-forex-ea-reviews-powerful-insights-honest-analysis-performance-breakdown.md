@@ -12,7 +12,7 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_140929_featured.webp"
 sourceUrl: "https://bestmt4ea.com/quantum-valkyrie-forex-ea-reviews-powerful-insights-honest-analysis-performance-breakdown/"
 categories:
-  - "EA Reviews & Comparisons"
+  - "Forex EA Reviews & Comparisons"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
 tags: []

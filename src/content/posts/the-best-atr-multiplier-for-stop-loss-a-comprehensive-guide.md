@@ -5,7 +5,7 @@ description: "No single ATR multiplier is best, but a best method exists: match 
 publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
-  - "Risk & Money Management"
+  - "Forex Risk & Money Management"
 categoryPaths:
   - "/category/risk-money-management/"
 tags: []

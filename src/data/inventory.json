@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-31T15:42:29.969Z",
+  "generatedAt": "2026-11-02T01:49:25.391Z",
   "source": "https://bestmt4ea.com",
   "generatedBy": "scripts/build-inventory.mjs",
   "counts": {
     "products": 12,
-    "posts": 184,
+    "posts": 202,
     "pages": 22,
     "productCategories": 4,
     "brands": 2,
@@ -205,6 +205,12 @@
     },
     {
       "type": "post",
+      "url": "/backtesting-vs-forward-testing-verify-ea/",
+      "title": "Backtesting vs Forward Testing an EA",
+      "source": "https://bestmt4ea.com/backtesting-vs-forward-testing-verify-ea/"
+    },
+    {
+      "type": "post",
       "url": "/basic-harmonic-pattern-indicator-mt4-free-download-7-powerful-benefits-every-trader-must-know/",
       "title": "Harmonic Pattern Indicator MT4: Free Download & Setup Guide",
       "source": "https://bestmt4ea.com/basic-harmonic-pattern-indicator-mt4-free-download-7-powerful-benefits-every-trader-must-know/"
@@ -256,6 +262,12 @@
       "url": "/best-forex-robot-independent-myfxbook-results-top-performers/",
       "title": "Best Forex Robots by Myfxbook Results, Read Honestly",
       "source": "https://bestmt4ea.com/best-forex-robot-independent-myfxbook-results-top-performers/"
+    },
+    {
+      "type": "post",
+      "url": "/best-forex-vps-for-mt4-mt5-in-2026-low-latency-24-7-uptime-expert-advisor-hosting/",
+      "title": "Forex VPS for MT4 and MT5: Latency and Uptime",
+      "source": "https://bestmt4ea.com/best-forex-vps-for-mt4-mt5-in-2026-low-latency-24-7-uptime-expert-advisor-hosting/"
     },
     {
       "type": "post",
@@ -354,6 +366,12 @@
       "source": "https://bestmt4ea.com/binary-options-signals-indicator-mt4-free-download-powerful-proven-guide/"
     },
     {
+      "type": "post",
+      "url": "/bitcoin-bot-volatility-windows/",
+      "title": "Bitcoin Bot Volatility: Windows and Risk Controls",
+      "source": "https://bestmt4ea.com/bitcoin-bot-volatility-windows/"
+    },
+    {
       "type": "page",
       "url": "/blog/",
       "title": "Forex Trading Blog",
@@ -400,6 +418,12 @@
       "url": "/choppa-ea-free-download-7-powerful-truths-you-must-know-before-installing/",
       "title": "Choppa EA Review: 7 Key Truths Before Download",
       "source": "https://bestmt4ea.com/choppa-ea-free-download-7-powerful-truths-you-must-know-before-installing/"
+    },
+    {
+      "type": "post",
+      "url": "/circuit-breakers-and-capital-preservation/",
+      "title": "Circuit Breakers: Capital Preservation for EAs",
+      "source": "https://bestmt4ea.com/circuit-breakers-and-capital-preservation/"
     },
     {
       "type": "post",
@@ -487,6 +511,12 @@
     },
     {
       "type": "post",
+      "url": "/drawdown-risk-of-ruin-position-sizing-ea-math/",
+      "title": "Drawdown, Risk of Ruin and Position Sizing for EAs",
+      "source": "https://bestmt4ea.com/drawdown-risk-of-ruin-position-sizing-ea-math/"
+    },
+    {
+      "type": "post",
       "url": "/ea-red-dragon-ea-free-download-the-ultimate-safe-powerful-guide/",
       "title": "Red Dragon EA Review: Safe Testing Guide for MT4",
       "source": "https://bestmt4ea.com/ea-red-dragon-ea-free-download-the-ultimate-safe-powerful-guide/"
@@ -562,6 +592,12 @@
       "url": "/forex-calendar/",
       "title": "FOREX CALENDAR",
       "source": "https://bestmt4ea.com/forex-calendar/"
+    },
+    {
+      "type": "post",
+      "url": "/forex-ea-strategy-types-grid-scalping-trend/",
+      "title": "Forex EA Strategy Types: Grid, Scalping and Trend",
+      "source": "https://bestmt4ea.com/forex-ea-strategy-types-grid-scalping-trend/"
     },
     {
       "type": "post",
@@ -751,6 +787,12 @@
     },
     {
       "type": "post",
+      "url": "/gold-session-volatility-traps/",
+      "title": "Gold Session Traps: Time-Boxed Trading for XAUUSD",
+      "source": "https://bestmt4ea.com/gold-session-volatility-traps/"
+    },
+    {
+      "type": "post",
       "url": "/gold-sniper-master-indicator-system-free-download-powerful-secrets-7-proven-trading-advantages/",
       "title": "Gold Signal Indicator Repaint Test: How to Audit Arrows",
       "source": "https://bestmt4ea.com/gold-sniper-master-indicator-system-free-download-powerful-secrets-7-proven-trading-advantages/"
@@ -802,6 +844,12 @@
       "url": "/hft-ea-free-download-7-powerful-truths-before-you-install-any-trading-robot/",
       "title": "HFT EA Review: Honest Test Guide Before You Install",
       "source": "https://bestmt4ea.com/hft-ea-free-download-7-powerful-truths-before-you-install-any-trading-robot/"
+    },
+    {
+      "type": "post",
+      "url": "/how-forex-expert-advisors-work-algorithmic-trading-guide/",
+      "title": "How Forex Expert Advisors Work: A Practical Guide",
+      "source": "https://bestmt4ea.com/how-forex-expert-advisors-work-algorithmic-trading-guide/"
     },
     {
       "type": "post",
@@ -871,9 +919,27 @@
     },
     {
       "type": "post",
+      "url": "/mt4-vs-mt5-expert-advisors-platform-comparison/",
+      "title": "MT4 vs MT5 for Expert Advisors Compared",
+      "source": "https://bestmt4ea.com/mt4-vs-mt5-expert-advisors-platform-comparison/"
+    },
+    {
+      "type": "post",
+      "url": "/mt5-vps-latency-checklist/",
+      "title": "MT5 VPS and Latency: A Practical Checklist",
+      "source": "https://bestmt4ea.com/mt5-vps-latency-checklist/"
+    },
+    {
+      "type": "post",
       "url": "/murasaki-scalper-free-download-powerful-secrets-every-trader-must-know-before-installing/",
       "title": "Murasaki Scalper EA: test it on demo before you install",
       "source": "https://bestmt4ea.com/murasaki-scalper-free-download-powerful-secrets-every-trader-must-know-before-installing/"
+    },
+    {
+      "type": "post",
+      "url": "/myfxbook-fxblue-verified-forex-track-record/",
+      "title": "Verified Track Records: What Myfxbook Does Not Show",
+      "source": "https://bestmt4ea.com/myfxbook-fxblue-verified-forex-track-record/"
     },
     {
       "type": "post",
@@ -928,6 +994,12 @@
       "url": "/orion-scalper-ea-free-download-7-powerful-truths-you-must-know-before-installing/",
       "title": "ORION SCALPER EA Review: Test It Before You Trust It",
       "source": "https://bestmt4ea.com/orion-scalper-ea-free-download-7-powerful-truths-you-must-know-before-installing/"
+    },
+    {
+      "type": "post",
+      "url": "/pass-prop-firm-challenge-automated-ea/",
+      "title": "Passing a Prop Firm Challenge With an EA",
+      "source": "https://bestmt4ea.com/pass-prop-firm-challenge-automated-ea/"
     },
     {
       "type": "post",
@@ -1177,6 +1249,12 @@
     },
     {
       "type": "post",
+      "url": "/the-8th-wonder-of-the-world-nobody-taught-you-in-school/",
+      "title": "Compounding: Protect the Base Before You Grow It",
+      "source": "https://bestmt4ea.com/the-8th-wonder-of-the-world-nobody-taught-you-in-school/"
+    },
+    {
+      "type": "post",
       "url": "/the-best-atr-multiplier-for-stop-loss-a-comprehensive-guide/",
       "title": "The Best ATR Multiplier for Your Stop Loss: A Working Guide",
       "source": "https://bestmt4ea.com/the-best-atr-multiplier-for-stop-loss-a-comprehensive-guide/"
@@ -1192,6 +1270,12 @@
       "url": "/the-gold-reaper-forex-ea-reviews-powerful-truths-7-critical-insights-before-you-invest/",
       "title": "The Gold Reaper EA Review: No Verified Account",
       "source": "https://bestmt4ea.com/the-gold-reaper-forex-ea-reviews-powerful-truths-7-critical-insights-before-you-invest/"
+    },
+    {
+      "type": "post",
+      "url": "/the-money-race-nobody-told-you-about/",
+      "title": "The Money Race: Define Your Finish Line First",
+      "source": "https://bestmt4ea.com/the-money-race-nobody-told-you-about/"
     },
     {
       "type": "post",
@@ -1228,6 +1312,12 @@
       "url": "/top-7-best-free-forex-scalper-ea-for-mt4-download/",
       "title": "Forex Scalper EA Verification Checklist for MT4",
       "source": "https://bestmt4ea.com/top-7-best-free-forex-scalper-ea-for-mt4-download/"
+    },
+    {
+      "type": "post",
+      "url": "/trading-psychology-vs-automation-forex-ea/",
+      "title": "Trading Psychology vs Automation for Forex EAs",
+      "source": "https://bestmt4ea.com/trading-psychology-vs-automation-forex-ea/"
     },
     {
       "type": "post",
@@ -1291,6 +1381,18 @@
     },
     {
       "type": "post",
+      "url": "/when-the-world-burns-your-money-doesnt-have-to/",
+      "title": "Market Crises: Keep Capital Working Through a Fall",
+      "source": "https://bestmt4ea.com/when-the-world-burns-your-money-doesnt-have-to/"
+    },
+    {
+      "type": "post",
+      "url": "/xauusd-scalping-explained-automated-gold-eas/",
+      "title": "XAUUSD Scalping With Automated Gold EAs",
+      "source": "https://bestmt4ea.com/xauusd-scalping-explained-automated-gold-eas/"
+    },
+    {
+      "type": "post",
       "url": "/xauusd-scalping-robot-settings-and-tips-10-powerful-strategies-for-better-trading-results/",
       "title": "XAUUSD Scalping Robot Settings for MT4 and MT5",
       "source": "https://bestmt4ea.com/xauusd-scalping-robot-settings-and-tips-10-powerful-strategies-for-better-trading-results/"
@@ -1312,6 +1414,12 @@
       "url": "/yarukami-mnukakashi-ea-free-download-7-powerful-truths-you-must-know-before-installing/",
       "title": "Yarukami Mnukakashi EA Free Download: Honest Review",
       "source": "https://bestmt4ea.com/yarukami-mnukakashi-ea-free-download-7-powerful-truths-you-must-know-before-installing/"
+    },
+    {
+      "type": "post",
+      "url": "/your-job-is-being-stolen-and-the-thief-is-smarter-than-you-think/",
+      "title": "AI and Your Job: Build Skills That Travel",
+      "source": "https://bestmt4ea.com/your-job-is-being-stolen-and-the-thief-is-smarter-than-you-think/"
     },
     {
       "type": "post",

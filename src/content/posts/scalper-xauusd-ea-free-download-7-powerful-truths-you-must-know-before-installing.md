@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_126009_featured.webp"
 sourceUrl: "https://bestmt4ea.com/scalper-xauusd-ea-free-download-7-powerful-truths-you-must-know-before-installing/"
 categories:
-  - "EA Reviews & Comparisons"
-  - "Free Forex EA"
-  - "Gold (XAUUSD) Trading"
+  - "Forex EA Reviews & Comparisons"
+  - "Free Forex EAs for MT4 & MT5"
+  - "Gold (XAUUSD) Trading Guides & EAs"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/free-forex-ea/"

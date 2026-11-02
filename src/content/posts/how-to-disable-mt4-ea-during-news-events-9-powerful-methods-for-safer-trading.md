@@ -5,8 +5,8 @@ description: "Nine methods to stop an MT4 or MT5 EA trading through news, compar
 publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
-  - "MT4/MT5 Expert Advisors"
-  - "EA Settings & Optimization"
+  - "MT4 & MT5 Expert Advisors"
+  - "EA Settings & Optimization Guides"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/"
   - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"

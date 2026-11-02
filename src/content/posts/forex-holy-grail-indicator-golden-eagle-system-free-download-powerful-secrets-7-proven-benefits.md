@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_137231_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/forex-holy-grail-indicator-golden-eagle-system-free-download-powerful-secrets-7-proven-benefits/"
 categories:
-  - "Forex Indicator Reviews"
-  - "Free Forex Indicator"
-  - "Gold (XAUUSD) Trading"
+  - "MT4/MT5 Indicator Reviews"
+  - "Free Forex Indicators for MT4 & MT5"
+  - "Gold (XAUUSD) Trading Guides & EAs"
 categoryPaths:
   - "/category/forex-indicator-reviews/"
   - "/category/free-forex-indicator/"

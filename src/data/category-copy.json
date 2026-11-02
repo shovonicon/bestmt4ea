@@ -1,0 +1,54 @@
+{
+  "ai-powered-trading-tools": {
+    "description": "Guides on AI forex trading tools: what automated systems really do, how to test them, and how to judge an AI expert advisor before you trust it. Start here.",
+    "intro": "This hub covers the AI and automation side of forex trading: expert advisors, indicators, broker platforms and the algorithms behind them. Each guide explains what a tool does, what it costs to run and how to test it on a demo account before real money is involved."
+  },
+  "brokers-trading-platforms": {
+    "description": "Broker and platform reviews for EA traders: licences, account types, costs, EA and scalping terms, and the checks to run before you fund an account. Start here.",
+    "intro": "These reviews look at brokers and platforms from the point of view of someone running an expert advisor. They check the licence and the entity, the account types and costs, what the contract says about automated trading, and how to verify each claim yourself."
+  },
+  "ea-reviews-comparisons": {
+    "description": "Independent forex EA reviews and comparisons: strategy, drawdown, costs and the evidence behind each claim, so you can judge a robot before you buy. Start here.",
+    "intro": "Here we review and compare forex expert advisors. Each article states what the system claims, what can be verified, how its drawdown and costs look, and the tests to run on a demo account before you decide."
+  },
+  "ea-settings-optimization": {
+    "description": "EA settings and optimization guides for MT4 and MT5: lot sizing, stops, filters, backtesting and forward testing, with the mistakes that overfit a system.",
+    "intro": "Settings decide how an expert advisor behaves. These guides explain lot sizing, stop and filter settings, honest backtesting and forward testing, and how to avoid optimising a system until it only works on past data."
+  },
+  "forex-indicator-reviews": {
+    "description": "MT4 and MT5 indicator reviews: what each indicator draws, whether it repaints, how to test it and which settings and limits to know before you rely on it.",
+    "intro": "Each review explains what an indicator actually calculates, whether it repaints, how to test it on closed candles and what it cannot tell you. The aim is to help you decide whether an indicator earns a place on your chart."
+  },
+  "forex-scalping": {
+    "description": "Forex scalping strategies and EAs: how costs, spread and execution decide the result, which broker terms matter and how to test a scalper honestly. Start here.",
+    "intro": "Scalping lives or dies on costs and execution. These articles cover spread and slippage, broker terms on scalping, session timing and how to test a scalping expert advisor before it trades a live account."
+  },
+  "forex-trading-strategies": {
+    "description": "Forex trading strategies explained: trend, swing, grid, scalping and mean reversion, with their risks, costs and the way to test each on demo first. Start here.",
+    "intro": "A strategy is a set of rules with a cost and a risk profile. These guides explain the main forex approaches, where each one tends to fail and how to test it before it meets real money."
+  },
+  "free-forex-ea": {
+    "description": "Free forex EAs for MT4 and MT5: what each robot does, how to verify the file, the risks of free downloads and a demo test plan before live trading. Start here.",
+    "intro": "Free expert advisors can be useful and can be risky. Each guide explains what the robot does, how to check a file before installing it, what the licence allows and how to test it on a demo account first."
+  },
+  "free-forex-indicator": {
+    "description": "Free forex indicators for MT4 and MT5: what each one shows, how to install it safely, whether it repaints and how to test it before relying on it. Start here.",
+    "intro": "These guides cover free indicators for MetaTrader: what each one draws, how to verify and install the file safely, how to check for repainting and how to judge whether it helps your process."
+  },
+  "gold-xauusd-trading": {
+    "description": "Gold (XAUUSD) trading guides and EAs: session volatility, spreads, risk control and how to test a gold scalper or trend system before live trading. Start here.",
+    "intro": "Gold moves differently from currency pairs and punishes loose risk control. These articles cover its sessions, spreads and gaps, gold expert advisors and the sizing rules that keep one bad session from becoming a bad month."
+  },
+  "mt4-mt5-expert-advisors": {
+    "description": "MT4 and MT5 expert advisors explained: how EAs work, how the platforms differ, what servers they need and the checks to run before going live. Read the limits.",
+    "intro": "This section explains how expert advisors work on MetaTrader 4 and 5, how the two platforms differ and what an EA needs to run reliably, including servers, brokers and testing."
+  },
+  "risk-money-management": {
+    "description": "Forex risk and money management: position sizing, drawdown, risk of ruin, prop firm rules, compounding and the habits that keep an account alive. Start here.",
+    "intro": "Risk control decides how long a trading account survives. These guides cover position sizing, drawdown and risk of ruin, circuit breakers, prop firm rules, compounding and the planning behind them."
+  },
+  "technical-analysis": {
+    "description": "Forex technical analysis guides: chart patterns, indicators and price action explained with their limits, so you can test an idea before you trade it.",
+    "intro": "Technical analysis describes the past price; it does not predict the next candle. These guides explain patterns, indicators and price action, how to test an idea objectively and where each method stops being useful."
+  }
+}

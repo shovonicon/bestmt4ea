@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127195_featured.webp"
 sourceUrl: "https://bestmt4ea.com/advanced-hedge-ea-free-download-powerful-2026-guide-to-safe-smart-access/"
 categories:
-  - "Free Forex EA"
-  - "Risk & Money Management"
+  - "Free Forex EAs for MT4 & MT5"
+  - "Forex Risk & Money Management"
 categoryPaths:
   - "/category/free-forex-ea/"
   - "/category/risk-money-management/"

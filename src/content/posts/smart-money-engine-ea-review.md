@@ -5,7 +5,7 @@ description: "Smart Money Engine EA automates liquidity, order blocks and struct
 publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
-  - "EA Reviews & Comparisons"
+  - "Forex EA Reviews & Comparisons"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
 tags: []

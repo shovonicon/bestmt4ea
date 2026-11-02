@@ -11,9 +11,9 @@ seo:
   canonical: "https://bestmt4ea.com/vertex-alerts-arrows-indicator-free-download-powerful-proven-trading-boost-step-by-step-guide/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_134932_featured.webp"
 sourceUrl: "https://bestmt4ea.com/vertex-alerts-arrows-indicator-free-download-powerful-proven-trading-boost-step-by-step-guide/"
-categories: 
-  - "Free Forex Indicator"
-categoryPaths: 
+categories:
+  - "Free Forex Indicators for MT4 & MT5"
+categoryPaths:
   - "/category/free-forex-indicator/"
 tags: []
 primaryKeyword: "Vertex Alerts Arrows Indicator free download"

@@ -9,15 +9,22 @@
  * label only — never as a claim about data freshness.
  *
  * The markdown body is not rendered: the listing comes from the catalogue.
+ * The answer-first summary, the ranking schema and the FAQ below are built from
+ * that same catalogue and `getPerformance`, so the text, the table and the
+ * structured data can never disagree with each other or with /top-ranking/.
  */
 import BaseLayout from './BaseLayout.astro';
 import SectionHead from '../components/SectionHead.astro';
 import ComparisonRegistry from '../components/ComparisonRegistry.astro';
+import AnswerBox from '../components/AnswerBox.astro';
+import Faq from '../components/Faq.astro';
 import { getPublicProducts } from '../lib/content';
+import { getPerformance } from '../lib/performance';
 import { RISK_DISCLAIMER } from '../lib/site';
 import { monthYear, performanceVerifiedAt } from '../lib/dates';
 import { formatDate } from '../lib/format';
 import { url } from '../lib/urls';
+import { breadcrumbSchema, faqSchema, itemListSchema } from '../lib/seo';
 
 export interface Props {
   entry: any;
@@ -48,6 +55,85 @@ const platformOf = (product: any): string =>
 
 const all = await getPublicProducts();
 const products = all.filter((product) => product.data.slug !== 'vps' && page.test(platformOf(product)));
+
+/* ── Ranking data, the same ordering ComparisonRegistry uses ─────────────── */
+const shortName = (value: string) => String(value).split(':')[0].trim();
+const ranked = products
+  .map((product) => ({ product, perf: getPerformance(product.data.slug) }))
+  .sort((a, b) => (b.perf?.totalGainPct ?? -Infinity) - (a.perf?.totalGainPct ?? -Infinity));
+const tracked = ranked.filter((row) => row.perf?.totalGainPct != null);
+const realCount = tracked.filter((row) => row.perf?.accountType === 'real').length;
+const demoCount = tracked.filter((row) => row.perf?.accountType === 'demo').length;
+const checkedOn = formatDate(performanceVerifiedAt);
+const kind = page.label === 'Forex' ? 'forex' : page.label;
+
+const accountWord = (row: (typeof ranked)[number]) =>
+  row.perf?.accountType === 'real' ? 'real account' : row.perf?.accountType === 'demo' ? 'demo account' : 'tracked account';
+const describe = (row: (typeof ranked)[number]) => {
+  const drawdown = row.perf?.maxDrawdownPct != null ? `, maximum drawdown ${row.perf.maxDrawdownPct}%` : '';
+  return `${shortName(row.product.data.title)} (${row.perf?.totalGainPct}% gain on a ${accountWord(row)}${drawdown})`;
+};
+
+const [first, second, third] = tracked;
+const answer = first
+  ? `${describe(first)} ranks first of ${products.length} ${kind} expert advisors in our catalogue on third-party tracked gain` +
+    `${second ? `, followed by ${shortName(second.product.data.title)}${third ? ` and ${shortName(third.product.data.title)}` : ''}` : ''}. ` +
+    `Figures come from Myfxbook and were checked ${checkedOn}; a demo account is labelled as one. Past results do not predict future returns, and trading carries a risk of loss.`
+  : `We list ${products.length} ${kind} expert advisors in our catalogue. Where a third-party tracked record exists it is shown with its account type and maximum drawdown, and a system without one says so. Past results do not predict future returns, and trading carries a risk of loss.`;
+
+const faqs = [
+  {
+    question: `Which is the best ${kind} EA?`,
+    answer: first
+      ? `On third-party tracked gain, ${describe(first)} ranks first in our catalogue as of ${checkedOn}. Gain is only one measure, so compare drawdown, the account type and the strategy as well, and test any system on a demo account before you buy.`
+      : `No single system is best for every trader. Compare each system's tracked record, drawdown and account type, and test on a demo account before you buy.`,
+  },
+  {
+    question: 'How is this ranking calculated?',
+    answer:
+      'Systems are ordered by total gain on their third-party tracked account. Maximum drawdown, the account type and the strategy are shown next to each gain, because a high gain with a deep drawdown is a different thing from a steady one. A system with no tracked record is listed without a number instead of borrowing one.',
+  },
+  {
+    question: 'Are these results from real accounts or demo accounts?',
+    answer: `${realCount} of the ${tracked.length} systems with a tracked record run on a real account and ${demoCount} run on a demo account. Each row labels its account type, and a demo result is never presented as a live one.`,
+  },
+  {
+    question: 'Can an expert advisor guarantee profits?',
+    answer:
+      'No. Every automated system can lose money, and a tracked record describes the past only. Size positions for the drawdown you can tolerate, and trade only money you can afford to lose.',
+  },
+  {
+    question: 'How should I test an EA before paying for it?',
+    answer:
+      'Run it on a demo account for long enough to see several market conditions, record the spread and fills, and compare the result with the tracked figures. Our demo-to-live guide lists the differences to check before the same system trades real money.',
+    link: { href: url('/demo-to-live-ea-migration/'), label: 'Read the demo-to-live guide' },
+  },
+  {
+    question: 'How often is the ranking updated?',
+    answer: `The third-party figures were last checked on ${checkedOn}. The table is generated from the same catalogue and performance data as our top-ranking page, so the two always agree.`,
+  },
+];
+
+const jsonLd = [
+  breadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: `Best ${page.label} expert advisors`, url: `/${meta.slug}/` },
+  ]),
+  itemListSchema(
+    `Best ${page.label} expert advisors`,
+    ranked.map((row) => ({ name: shortName(row.product.data.title), url: `/product/${row.product.data.slug}/` })),
+  ),
+  faqSchema(faqs.map(({ question, answer }) => ({ question, answer }))),
+];
+
+const related = [
+  { href: '/top-ranking/', label: 'Top ranking', note: 'Every system ranked by verified gain against drawdown.' },
+  { href: '/demo-to-live-ea-migration/', label: 'Demo to live', note: 'The fourteen things that change when an EA goes live.' },
+  { href: '/ea-running-costs-spread-commission-swap/', label: 'Running costs', note: 'What an EA really costs to run for a year.' },
+  { href: '/vps-for-ea-trading-latency/', label: 'VPS for EAs', note: 'Latency, uptime and what actually matters.' },
+  { href: '/best-brokers-for-ea-trading/', label: 'Brokers for EAs', note: 'Three brokers we have checked for EA trading.' },
+  { href: '/do-brokers-allow-eas-and-scalping/', label: 'Broker terms', note: 'Which contract clauses decide whether an EA is allowed.' },
+];
 ---
 
 <BaseLayout
@@ -55,6 +141,8 @@ const products = all.filter((product) => product.data.slug !== 'vps' && page.tes
   description={meta.seo?.description || meta.description}
   canonical={meta.seo?.canonical}
   ogImage={meta.seo?.ogImage || meta.featuredImage}
+  jsonLd={jsonLd}
+  updated={performanceVerifiedAt}
 >
   <!-- Hero -->
   <section class="relative overflow-hidden">
@@ -81,8 +169,15 @@ const products = all.filter((product) => product.data.slug !== 'vps' && page.tes
     </div>
   </section>
 
+  <!-- Answer-first summary: the self-contained answer an answer engine can lift -->
+  <section class="container-x pb-10">
+    <div class="mx-auto max-w-4xl">
+      <AnswerBox answer={answer} label="Quick answer" />
+    </div>
+  </section>
+
   <!-- The board -->
-  <section class="container-x pb-20" aria-labelledby="review-heading">
+  <section class="container-x pb-16" aria-labelledby="review-heading">
     <SectionHead
       align="center"
       kicker="The full list"
@@ -96,13 +191,61 @@ const products = all.filter((product) => product.data.slug !== 'vps' && page.tes
     </div>
 
     <p class="mt-4 text-center text-xs text-[var(--color-ink-dim)]">
-      Third-party figures checked {formatDate(performanceVerifiedAt)}.
+      Third-party figures checked {checkedOn}.
     </p>
     <p class="mx-auto mt-6 max-w-3xl text-center text-xs leading-6 text-[var(--color-ink-dim)]">{RISK_DISCLAIMER}</p>
 
     <div class="mt-10 flex flex-wrap justify-center gap-3">
       <a href={url('/top-ranking')} class="btn btn-primary !px-7 !py-3.5 !text-base">Compare every system</a>
       <a href={url('/shop')} class="btn btn-ghost !px-6 !py-3.5 !text-base">Browse the EA library</a>
+    </div>
+  </section>
+
+  <!-- How the ranking works -->
+  <section class="container-x pb-16" aria-labelledby="method-heading">
+    <div class="panel mx-auto max-w-4xl p-6 md:p-8">
+      <h2 id="method-heading" class="text-xl">How this ranking works</h2>
+      <p class="mt-3 text-sm leading-7 text-[var(--color-ink-soft)]">
+        The order is total gain on each system's third-party tracked account, highest first. The same data drives the
+        table above, our top-ranking page and the summary at the top of this page, so they always agree.
+      </p>
+      <ul class="mt-4 list-disc space-y-2 pl-5 text-sm leading-7 text-[var(--color-ink-soft)]">
+        <li>Gain is shown next to maximum drawdown, because a high gain with a deep drawdown is not the same as a steady one.</li>
+        <li>
+          Every figure states its account type. {realCount} of the {tracked.length} tracked systems run on a real
+          account and {demoCount} on a demo account, and a demo result is never presented as a live one.
+        </li>
+        <li>A system with no tracked record is listed without a number. We do not borrow a figure from another account.</li>
+        <li>Third-party figures were last checked on {checkedOn}. A tracked record describes the past, not what comes next.</li>
+      </ul>
+      <p class="mt-4 text-sm leading-7 text-[var(--color-ink-soft)]">
+        This ranking is not investment advice. Test any system on a demo account first, and trade only money you can
+        afford to lose.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="container-x pb-16">
+    <div class="mx-auto max-w-4xl">
+      <Faq items={faqs} heading={`Best ${page.label} EA — frequently asked questions`} />
+    </div>
+  </section>
+
+  <!-- Related reading: internal links for readers and crawlers -->
+  <section class="container-x pb-24" aria-labelledby="related-heading">
+    <div class="mx-auto max-w-4xl">
+      <h2 id="related-heading" class="text-xl">Before you buy, read these</h2>
+      <div class="mt-5 grid gap-4 sm:grid-cols-2">
+        {
+          related.map((item) => (
+            <a href={url(item.href)} class="panel block p-5 transition-colors hover:border-[var(--color-accent)]">
+              <p class="text-sm font-semibold text-[var(--color-ink)]">{item.label}</p>
+              <p class="mt-1 text-xs leading-6 text-[var(--color-ink-dim)]">{item.note}</p>
+            </a>
+          ))
+        }
+      </div>
     </div>
   </section>
 </BaseLayout>

@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127235_featured.webp"
 sourceUrl: "https://bestmt4ea.com/gold-investor-best-forex-gold-ea-free-download-powerful-proven-guide/"
 categories:
-  - "EA Reviews & Comparisons"
-  - "Free Forex EA"
-  - "Gold (XAUUSD) Trading"
+  - "Forex EA Reviews & Comparisons"
+  - "Free Forex EAs for MT4 & MT5"
+  - "Gold (XAUUSD) Trading Guides & EAs"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/free-forex-ea/"

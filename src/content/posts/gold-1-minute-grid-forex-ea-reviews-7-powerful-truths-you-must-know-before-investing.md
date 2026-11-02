@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_142856_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/gold-1-minute-grid-forex-ea-reviews-7-powerful-truths-you-must-know-before-investing/"
 categories:
-  - "EA Reviews & Comparisons"
-  - "Gold (XAUUSD) Trading"
-  - "Forex Scalping"
+  - "Forex EA Reviews & Comparisons"
+  - "Gold (XAUUSD) Trading Guides & EAs"
+  - "Forex Scalping Strategies & EAs"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/gold-xauusd-trading/"

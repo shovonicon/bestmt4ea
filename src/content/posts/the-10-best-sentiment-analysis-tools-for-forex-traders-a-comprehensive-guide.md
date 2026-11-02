@@ -12,7 +12,7 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_3290_featured.webp"
 sourceUrl: "https://bestmt4ea.com/the-10-best-sentiment-analysis-tools-for-forex-traders-a-comprehensive-guide/"
 categories:
-  - "AI-Powered Trading Tools"
+  - "AI Forex Trading Tools"
 categoryPaths:
   - "/category/ai-powered-trading-tools/"
 tags: []

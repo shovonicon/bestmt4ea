@@ -12,7 +12,7 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_139067_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/%f0%9f%93%8a-strength-candles-buy-sell-forex-mt4-indicator-free-download-powerful-guide-smart-trading-tips/"
 categories:
-  - "Free Forex Indicator"
+  - "Free Forex Indicators for MT4 & MT5"
 categoryPaths:
   - "/category/free-forex-indicator/"
 tags: []

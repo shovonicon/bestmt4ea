@@ -12,7 +12,7 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_137414_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/binary-options-signals-indicator-mt4-free-download-powerful-proven-guide/"
 categories:
-  - "Free Forex Indicator"
+  - "Free Forex Indicators for MT4 & MT5"
 categoryPaths:
   - "/category/free-forex-indicator/"
 tags: []

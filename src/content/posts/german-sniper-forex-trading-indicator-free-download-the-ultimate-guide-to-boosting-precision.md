@@ -12,7 +12,7 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_139160_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/german-sniper-forex-trading-indicator-free-download-the-ultimate-guide-to-boosting-precision/"
 categories:
-  - "Free Forex Indicator"
+  - "Free Forex Indicators for MT4 & MT5"
 categoryPaths:
   - "/category/free-forex-indicator/"
 tags: []

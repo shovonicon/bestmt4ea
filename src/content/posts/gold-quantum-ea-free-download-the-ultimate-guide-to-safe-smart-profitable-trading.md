@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127379_featured.webp"
 sourceUrl: "https://bestmt4ea.com/gold-quantum-ea-free-download-the-ultimate-guide-to-safe-smart-profitable-trading/"
 categories:
-  - "Free Forex EA"
-  - "Gold (XAUUSD) Trading"
+  - "Free Forex EAs for MT4 & MT5"
+  - "Gold (XAUUSD) Trading Guides & EAs"
 categoryPaths:
   - "/category/free-forex-ea/"
   - "/category/gold-xauusd-trading/"

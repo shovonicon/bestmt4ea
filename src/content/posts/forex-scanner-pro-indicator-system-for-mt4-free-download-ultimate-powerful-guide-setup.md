@@ -12,7 +12,7 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_139013_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/forex-scanner-pro-indicator-system-for-mt4-free-download-ultimate-powerful-guide-setup/"
 categories:
-  - "Free Forex Indicator"
+  - "Free Forex Indicators for MT4 & MT5"
 categoryPaths:
   - "/category/free-forex-indicator/"
 tags:

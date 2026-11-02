@@ -6,8 +6,8 @@ publishedAt: "2026-02-20T18:40:28.000Z"
 updatedAt: "2026-10-08T00:00:00.000Z"
 
 categories:
-  - "Free Forex Indicator"
-  - "Forex Scalping"
+  - "Free Forex Indicators for MT4 & MT5"
+  - "Forex Scalping Strategies & EAs"
   - "Forex Trading Strategies"
 categoryPaths:
   - "/category/free-forex-indicator/"

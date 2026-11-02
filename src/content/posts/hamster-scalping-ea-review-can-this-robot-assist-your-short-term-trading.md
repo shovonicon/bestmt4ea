@@ -5,8 +5,8 @@ description: "Hamster Scalping is a famous night scalper for EURUSD. This review
 publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
-  - "EA Reviews & Comparisons"
-  - "Forex Scalping"
+  - "Forex EA Reviews & Comparisons"
+  - "Forex Scalping Strategies & EAs"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/forex-trading-strategies/forex-scalping/"

@@ -5,7 +5,7 @@ description: "A forex order manager trade panel speeds up MT4 execution, but it 
 publishedAt: 2026-02-20T03:28:39.000Z
 updatedAt: 2026-10-07T00:00:00.000Z
 categories:
-  - "AI-Powered Trading Tools"
+  - "AI Forex Trading Tools"
 categoryPaths:
   - "/category/ai-powered-trading-tools/"
 tags: []

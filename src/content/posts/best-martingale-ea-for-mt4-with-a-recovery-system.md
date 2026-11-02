@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/Best-MT4-EA-—-AI-Powered-Forex-Robots-for-MT4-MT5.webp"
 sourceUrl: "https://bestmt4ea.com/best-martingale-ea-for-mt4-with-a-recovery-system/"
 categories:
-  - "MT4/MT5 Expert Advisors"
-  - "Risk & Money Management"
-  - "EA Reviews & Comparisons"
+  - "MT4 & MT5 Expert Advisors"
+  - "Forex Risk & Money Management"
+  - "Forex EA Reviews & Comparisons"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/"
   - "/category/risk-money-management/"

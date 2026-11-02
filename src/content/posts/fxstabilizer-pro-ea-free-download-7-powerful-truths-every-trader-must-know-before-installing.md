@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127426_featured.webp"
 sourceUrl: "https://bestmt4ea.com/fxstabilizer-pro-ea-free-download-7-powerful-truths-every-trader-must-know-before-installing/"
 categories:
-  - "EA Reviews & Comparisons"
-  - "Free Forex EA"
-  - "EA Settings & Optimization"
+  - "Forex EA Reviews & Comparisons"
+  - "Free Forex EAs for MT4 & MT5"
+  - "EA Settings & Optimization Guides"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/free-forex-ea/"

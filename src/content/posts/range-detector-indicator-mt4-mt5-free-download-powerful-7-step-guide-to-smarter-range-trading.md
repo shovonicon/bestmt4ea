@@ -12,7 +12,7 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_135151_featured.webp"
 sourceUrl: "https://bestmt4ea.com/range-detector-indicator-mt4-mt5-free-download-powerful-7-step-guide-to-smarter-range-trading/"
 categories:
-  - "Free Forex Indicator"
+  - "Free Forex Indicators for MT4 & MT5"
 categoryPaths:
   - "/category/free-forex-indicator/"
 tags:

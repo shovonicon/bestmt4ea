@@ -1,9 +1,8 @@
 # BESTMT4EA
 
 > Myfxbook-verified MT4 and MT5 expert advisors (EAs), indicators and free
-> trading tools. Every system is traded on a real account before release, and
-> each page states the broker, the account type and the maximum drawdown behind
-> any figure shown. Products are sold with a per-account licence and delivered
+> trading tools. Each page states the broker, the account type (real or demo) and the maximum
+> drawdown behind any figure shown. Products are sold with a per-account licence and delivered
 > from the BestMT4EA dashboard.
 
 This file is a map for AI assistants and answer engines. Every link is a public
@@ -18,7 +17,7 @@ live or demo.
 - [Top ranking](https://bestmt4ea.com/top-ranking/): Every system ranked by verified total gain against maximum drawdown.
 - [Best MT4 EAs](https://bestmt4ea.com/best-mt4-ea/): Expert advisors built for MetaTrader 4.
 - [Best MT5 EAs](https://bestmt4ea.com/best-mt5-ea/): Expert advisors built for MetaTrader 5.
-- [Best forex EAs](https://bestmt4ea.com/best-forex-ea/): The whole EA catalogue on one board.
+- [Best forex EAs](https://bestmt4ea.com/best-forex-ea/): The whole EA catalogue ranked on one board by third-party tracked gain, with maximum drawdown and account type (real or demo) for each system, plus a methodology section and FAQ.
 - [Best forex brokers](https://bestmt4ea.com/best-forex-brokers/): The brokers used to verify tracked performance.
 
 ## Tools

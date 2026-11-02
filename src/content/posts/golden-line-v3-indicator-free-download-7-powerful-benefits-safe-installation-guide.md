@@ -13,8 +13,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_139488_featured.webp"
 sourceUrl: "https://bestmt4ea.com/golden-line-v3-indicator-free-download-7-powerful-benefits-safe-installation-guide/"
 categories:
-  - "Free Forex Indicator"
-  - "Gold (XAUUSD) Trading"
+  - "Free Forex Indicators for MT4 & MT5"
+  - "Gold (XAUUSD) Trading Guides & EAs"
 categoryPaths:
   - "/category/free-forex-indicator/"
   - "/category/gold-xauusd-trading/"

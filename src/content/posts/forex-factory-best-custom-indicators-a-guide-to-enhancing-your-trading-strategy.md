@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_4220_featured.webp"
 sourceUrl: "https://bestmt4ea.com/forex-factory-best-custom-indicators-a-guide-to-enhancing-your-trading-strategy/"
 categories:
-  - "Forex Indicator Reviews"
-  - "Free Forex Indicator"
+  - "MT4/MT5 Indicator Reviews"
+  - "Free Forex Indicators for MT4 & MT5"
   - "Forex Trading Strategies"
 categoryPaths:
   - "/category/forex-indicator-reviews/"

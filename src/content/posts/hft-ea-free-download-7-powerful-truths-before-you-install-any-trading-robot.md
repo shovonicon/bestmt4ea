@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_126928_featured.webp"
 sourceUrl: "https://bestmt4ea.com/hft-ea-free-download-7-powerful-truths-before-you-install-any-trading-robot/"
 categories:
-  - "EA Reviews & Comparisons"
-  - "Free Forex EA"
-  - "Forex Scalping"
+  - "Forex EA Reviews & Comparisons"
+  - "Free Forex EAs for MT4 & MT5"
+  - "Forex Scalping Strategies & EAs"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/free-forex-ea/"

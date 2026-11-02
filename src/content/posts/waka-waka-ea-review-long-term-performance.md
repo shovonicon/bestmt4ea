@@ -5,8 +5,8 @@ description: "Waka Waka EA has a long public record, deep drawdown included. Our
 publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
-  - "EA Reviews & Comparisons"
-  - "Risk & Money Management"
+  - "Forex EA Reviews & Comparisons"
+  - "Forex Risk & Money Management"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/risk-money-management/"

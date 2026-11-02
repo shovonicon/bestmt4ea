@@ -6,8 +6,8 @@ description: "A free Apache-2.0 SMC expert advisor for MetaTrader 5, plus an hon
 publishedAt: "2026-02-13T20:37:39.000Z"
 updatedAt: "2026-09-01T07:47:54Z"
 categories:
-  - "Free Forex EA"
-  - "Gold (XAUUSD) Trading"
+  - "Free Forex EAs for MT4 & MT5"
+  - "Gold (XAUUSD) Trading Guides & EAs"
 categoryPaths:
   - "/category/free-forex-ea/"
   - "/category/gold-xauusd-trading/"

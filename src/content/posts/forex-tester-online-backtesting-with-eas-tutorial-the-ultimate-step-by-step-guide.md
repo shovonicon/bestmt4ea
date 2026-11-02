@@ -5,7 +5,7 @@ description: "Learn how to backtest an expert advisor in Forex Tester Online and
 publishedAt: 2025-12-09T01:50:26.000Z
 updatedAt: 2026-10-07T00:00:00.000Z
 categories:
-  - "MT4/MT5 Expert Advisors"
+  - "MT4 & MT5 Expert Advisors"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/"
 tags: []

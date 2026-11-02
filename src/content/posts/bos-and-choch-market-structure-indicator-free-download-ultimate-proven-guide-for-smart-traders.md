@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_135913_featured.webp"
 sourceUrl: "https://bestmt4ea.com/bos-and-choch-market-structure-indicator-free-download-ultimate-proven-guide-for-smart-traders/"
 categories:
-  - "Free Forex Indicator"
-  - "Technical Analysis"
+  - "Free Forex Indicators for MT4 & MT5"
+  - "Forex Technical Analysis"
 categoryPaths:
   - "/category/free-forex-indicator/"
   - "/category/technical-analysis/"

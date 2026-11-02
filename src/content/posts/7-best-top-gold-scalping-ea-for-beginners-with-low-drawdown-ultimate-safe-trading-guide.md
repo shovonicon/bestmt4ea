@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_2593_featured.webp"
 sourceUrl: "https://bestmt4ea.com/7-best-top-gold-scalping-ea-for-beginners-with-low-drawdown-ultimate-safe-trading-guide/"
 categories:
-  - "Gold (XAUUSD) Trading"
-  - "Forex Scalping"
-  - "Risk & Money Management"
+  - "Gold (XAUUSD) Trading Guides & EAs"
+  - "Forex Scalping Strategies & EAs"
+  - "Forex Risk & Money Management"
 categoryPaths:
   - "/category/gold-xauusd-trading/"
   - "/category/forex-trading-strategies/forex-scalping/"

@@ -5,6 +5,9 @@ import ToolRailAds from '../../components/ToolRailAds.astro';
 import { getPublicPosts } from '../../lib/content';
 import { url } from '../../lib/urls';
 import taxonomies from '../../data/taxonomies.json';
+import categoryCopy from '../../data/category-copy.json';
+import { breadcrumbSchema, itemListSchema } from '../../lib/seo';
+import { absoluteUrl } from '../../lib/urls';
 
 /**
  * Blog category archives.
@@ -33,18 +36,25 @@ export async function getStaticPaths() {
   const posts = await getPublicPosts();
   const used = new Set(posts.flatMap((p) => p.data.categories ?? []));
 
-  return cats
-    .filter((cat) => used.has(cat.name))
+  const usedCats = cats.filter((cat) => used.has(cat.name));
+
+  return usedCats
     .map((cat) => ({
       params: { path: relPath(cat.path) || cat.slug },
       props: {
         catName: cat.name,
+        catSlug: cat.slug,
+        catPath: `/category/${relPath(cat.path) || cat.slug}/`,
+        siblings: usedCats
+          .filter((other) => other.slug !== cat.slug)
+          .map((other) => ({ name: other.name, href: `/category/${relPath(other.path) || other.slug}/` })),
         posts: posts.filter((p) => (p.data.categories ?? []).includes(cat.name)),
       },
     }));
 }
 
-const { catName, posts } = Astro.props;
+const { catName, catSlug, catPath, siblings, posts } = Astro.props;
+const copy = (categoryCopy as Record<string, { description: string; intro: string }>)[catSlug];
 
 const sorted = [...posts].sort(
   (a: any, b: any) =>
@@ -56,8 +66,26 @@ const fmt = (d: Date) =>
 ---
 
 <BaseLayout
-  title={`${catName} — Guides and Reviews`}
-  description={`Every article filed under ${catName}: practical guides and reviews on automated forex trading, written to solve specific problems rather than to sell.`}
+  title={`${catName} — ${sorted.length} Guides`}
+  description={copy?.description ?? `Every article filed under ${catName}: practical guides and reviews on automated forex trading.`}
+  jsonLd={[
+    breadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Blog", url: "/blog/" },
+      { name: catName, url: catPath },
+    ]),
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: catName,
+      description: copy?.description,
+      url: absoluteUrl(catPath),
+    },
+    itemListSchema(
+      catName,
+      sorted.slice(0, 50).map((post: any) => ({ name: post.data.title, url: `/${post.data.slug}/` })),
+    ),
+  ]}
 >
   <div class="category-layout relative">
     <div class="rf-rail-slot">
@@ -83,6 +111,9 @@ const fmt = (d: Date) =>
 
     <h1 class="mt-6 text-center text-3xl md:text-5xl"><span class="text-gradient-violet">{catName}</span></h1>
     <p class="mx-auto mt-4 max-w-2xl text-center text-sm leading-7 text-[var(--color-ink-dim)]">
+      {copy?.intro ?? `${sorted.length} article${sorted.length === 1 ? '' : 's'} in this category.`}
+    </p>
+    <p class="mt-2 text-center text-xs text-[var(--color-ink-dim)]">
       {sorted.length} article{sorted.length === 1 ? '' : 's'} in this category.
     </p>
 
@@ -105,6 +136,15 @@ const fmt = (d: Date) =>
         ))
       }
     </div>
+
+    <nav aria-label="Other categories" class="mt-14">
+      <h2 class="text-center text-lg">More categories</h2>
+      <div class="mt-4 flex flex-wrap justify-center gap-2">
+        {siblings.map((other: any) => (
+          <a href={url(other.href)} class="badge transition-colors hover:border-[var(--color-accent)] hover:text-white">{other.name}</a>
+        ))}
+      </div>
+    </nav>
     </div>
 
     <div class="tool-inline-slot">

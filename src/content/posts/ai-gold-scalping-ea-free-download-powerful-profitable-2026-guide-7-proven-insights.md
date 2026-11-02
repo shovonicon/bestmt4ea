@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127111_featured.webp"
 sourceUrl: "https://bestmt4ea.com/ai-gold-scalping-ea-free-download-powerful-profitable-2026-guide-7-proven-insights/"
 categories:
-  - "Free Forex EA"
-  - "Gold (XAUUSD) Trading"
-  - "Forex Scalping"
+  - "Free Forex EAs for MT4 & MT5"
+  - "Gold (XAUUSD) Trading Guides & EAs"
+  - "Forex Scalping Strategies & EAs"
 categoryPaths:
   - "/category/free-forex-ea/"
   - "/category/gold-xauusd-trading/"

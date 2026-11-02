@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_2351_featured.webp"
 sourceUrl: "https://bestmt4ea.com/best-free-alternatives-to-tradingview-for-custom-indicators/"
 categories:
-  - "Free Forex Indicator"
-  - "EA Settings & Optimization"
+  - "Free Forex Indicators for MT4 & MT5"
+  - "EA Settings & Optimization Guides"
 categoryPaths:
   - "/category/free-forex-indicator/"
   - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"

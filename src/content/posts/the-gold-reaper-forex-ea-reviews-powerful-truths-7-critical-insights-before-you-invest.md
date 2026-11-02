@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_140969_featured.webp"
 sourceUrl: "https://bestmt4ea.com/the-gold-reaper-forex-ea-reviews-powerful-truths-7-critical-insights-before-you-invest/"
 categories:
-  - "EA Reviews & Comparisons"
-  - "Gold (XAUUSD) Trading"
+  - "Forex EA Reviews & Comparisons"
+  - "Gold (XAUUSD) Trading Guides & EAs"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/gold-xauusd-trading/"

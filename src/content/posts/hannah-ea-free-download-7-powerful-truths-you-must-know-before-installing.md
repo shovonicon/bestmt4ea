@@ -5,9 +5,9 @@ description: "Thousands search for a free Hannah EA download. The honest answer 
 publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
-  - "EA Reviews & Comparisons"
-  - "Free Forex EA"
-  - "EA Settings & Optimization"
+  - "Forex EA Reviews & Comparisons"
+  - "Free Forex EAs for MT4 & MT5"
+  - "EA Settings & Optimization Guides"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/free-forex-ea/"

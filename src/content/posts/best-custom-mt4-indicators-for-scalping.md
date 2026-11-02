@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_4201_featured.webp"
 sourceUrl: "https://bestmt4ea.com/best-custom-mt4-indicators-for-scalping/"
 categories:
-  - "Technical Analysis"
-  - "Forex Scalping"
+  - "Forex Technical Analysis"
+  - "Forex Scalping Strategies & EAs"
   - "Forex Trading Strategies"
 categoryPaths:
   - "/category/technical-analysis/"

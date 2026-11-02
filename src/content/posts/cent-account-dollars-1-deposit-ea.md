@@ -6,7 +6,7 @@ publishedAt: "2026-10-31T12:00:00.000Z"
 updatedAt: "2026-10-31T12:00:00.000Z"
 categories:
   - "Brokers & Trading Platforms Reviews"
-  - "Risk & Money Management"
+  - "Forex Risk & Money Management"
 categoryPaths:
   - "/category/ai-powered-trading-tools/brokers-trading-platforms/"
   - "/category/risk-money-management/"

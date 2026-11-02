@@ -12,7 +12,7 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_135149_featured.webp"
 sourceUrl: "https://bestmt4ea.com/forex-viking-most-profitable-indicator-free-download-7-powerful-reasons-traders-love-it/"
 categories:
-  - "Free Forex Indicator"
+  - "Free Forex Indicators for MT4 & MT5"
 categoryPaths:
   - "/category/free-forex-indicator/"
 tags: []

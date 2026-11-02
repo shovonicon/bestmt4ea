@@ -5,8 +5,8 @@ description: "Vortex Gold EA trades XAUUSD automatically. Before investing, read
 publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
-  - "EA Reviews & Comparisons"
-  - "Gold (XAUUSD) Trading"
+  - "Forex EA Reviews & Comparisons"
+  - "Gold (XAUUSD) Trading Guides & EAs"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/gold-xauusd-trading/"

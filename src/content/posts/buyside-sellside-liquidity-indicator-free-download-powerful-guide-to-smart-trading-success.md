@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_135154_featured.webp"
 sourceUrl: "https://bestmt4ea.com/buyside-sellside-liquidity-indicator-free-download-powerful-guide-to-smart-trading-success/"
 categories:
-  - "Free Forex Indicator"
-  - "Technical Analysis"
+  - "Free Forex Indicators for MT4 & MT5"
+  - "Forex Technical Analysis"
 categoryPaths:
   - "/category/free-forex-indicator/"
   - "/category/technical-analysis/"

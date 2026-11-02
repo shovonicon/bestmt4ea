@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_136010_featured.webp"
 sourceUrl: "https://bestmt4ea.com/best-scalping-indicator-scalper-inside-v7-9-free-download-7-powerful-reasons-traders-love-it/"
 categories:
-  - "Forex Indicator Reviews"
-  - "Free Forex Indicator"
-  - "Forex Scalping"
+  - "MT4/MT5 Indicator Reviews"
+  - "Free Forex Indicators for MT4 & MT5"
+  - "Forex Scalping Strategies & EAs"
 categoryPaths:
   - "/category/forex-indicator-reviews/"
   - "/category/free-forex-indicator/"

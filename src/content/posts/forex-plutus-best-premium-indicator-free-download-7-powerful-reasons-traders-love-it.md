@@ -11,9 +11,9 @@ seo:
   canonical: "https://bestmt4ea.com/forex-plutus-best-premium-indicator-free-download-7-powerful-reasons-traders-love-it/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_136117_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/forex-plutus-best-premium-indicator-free-download-7-powerful-reasons-traders-love-it/"
-categories: 
-  - "Free Forex Indicator"
-categoryPaths: 
+categories:
+  - "Free Forex Indicators for MT4 & MT5"
+categoryPaths:
   - "/category/free-forex-indicator/"
 tags: []
 draft: false

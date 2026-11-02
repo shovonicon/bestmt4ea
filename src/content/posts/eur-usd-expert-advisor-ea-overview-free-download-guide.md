@@ -5,9 +5,9 @@ description: "Vet any EUR/USD expert advisor before live risk: decode strategy, 
 publishedAt: 2026-02-13T20:23:02.000Z
 updatedAt: 2026-10-07T00:00:00.000Z
 categories:
-  - "EA Reviews & Comparisons"
-  - "Free Forex EA"
-  - "Risk & Money Management"
+  - "Forex EA Reviews & Comparisons"
+  - "Free Forex EAs for MT4 & MT5"
+  - "Forex Risk & Money Management"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/free-forex-ea/"

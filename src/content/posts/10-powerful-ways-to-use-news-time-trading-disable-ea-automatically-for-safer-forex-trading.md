@@ -5,8 +5,8 @@ description: "Learn how to disable an EA during news automatically on MT4 or MT5
 publishedAt: 2025-12-07T02:41:04.000Z
 updatedAt: 2026-10-11T00:00:00.000Z
 categories:
-  - "MT4/MT5 Expert Advisors"
-  - "EA Settings & Optimization"
+  - "MT4 & MT5 Expert Advisors"
+  - "EA Settings & Optimization Guides"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/"
   - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"

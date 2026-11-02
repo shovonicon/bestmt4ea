@@ -61,7 +61,7 @@ const liveCount = withPerf.filter((r) => r.perf?.accountType === 'real').length;
 const stats = [
   { label: 'Expert advisors', value: String(products.length), count: true },
   { label: 'Third-party tracked', value: String(trackedCount), count: true },
-  { label: 'Live-traded', value: String(liveCount), count: true },
+  { label: 'Real accounts tracked', value: String(liveCount), count: true },
   { label: 'Operating since', value: String(siteStats.since), count: false },
 ];
 
@@ -164,7 +164,7 @@ const faqs = [
         class="animate-fade-in-up-delay-3 mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-[var(--color-ink-dim)]"
       >
         <span class="inline-flex items-center gap-2">
-          <span>{siteStats.customers} customers</span>
+          <span>{siteStats.customers} registered · {siteStats.payingCustomers}+ premium customers</span>
         </span>
         <span>{products.length} systems</span>
         <span>{trackedCount} third-party tracked</span>

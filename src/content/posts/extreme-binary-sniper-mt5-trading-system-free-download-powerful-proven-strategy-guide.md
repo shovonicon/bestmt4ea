@@ -13,7 +13,7 @@ seo:
 sourceUrl: "https://bestmt4ea.com/extreme-binary-sniper-mt5-trading-system-free-download-powerful-proven-strategy-guide/"
 categories:
   - "Forex Trading Strategies"
-  - "Forex Scalping"
+  - "Forex Scalping Strategies & EAs"
 categoryPaths:
   - "/category/forex-trading-strategies/"
   - "/category/forex-trading-strategies/forex-scalping/"

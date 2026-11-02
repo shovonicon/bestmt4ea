@@ -5,9 +5,9 @@ description: "Grid trading EA safe settings for MT4, explained honestly: control
 publishedAt: 2025-12-07T02:25:17.000Z
 updatedAt: 2026-10-07T00:00:00.000Z
 categories:
-  - "EA Settings & Optimization"
-  - "Risk & Money Management"
-  - "MT4/MT5 Expert Advisors"
+  - "EA Settings & Optimization Guides"
+  - "Forex Risk & Money Management"
+  - "MT4 & MT5 Expert Advisors"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
   - "/category/risk-money-management/"

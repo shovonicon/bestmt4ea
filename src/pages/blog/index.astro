@@ -19,6 +19,10 @@ const categoryHref = new Map<string, string>(
   ]),
 );
 
+/* Estimated reading time from the post body, at roughly 230 words a minute. */
+const readTime = (body: string) =>
+  `${Math.max(1, Math.round(body.split(/\s+/).filter(Boolean).length / 230))} min read`;
+
 const fmt = (d: Date) =>
   new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(d);
 ---
@@ -70,15 +74,43 @@ const fmt = (d: Date) =>
       <div class="blog-grid mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {
           posts.map((post) => (
-            <article class="panel p-5">
-              {post.data.categories?.[0] && <p class="eyebrow">{post.data.categories[0]}</p>}
-              <h2 class="mt-2 text-base leading-snug">
-                <a href={url(`/${post.data.slug}/`)} class="hover:text-[var(--color-accent)]">
-                  {post.data.title}
+            <article class="group flex flex-col justify-between rounded-2xl border border-white/10 bg-zinc-950/40 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-accent)]/30 hover:bg-zinc-950/70">
+              <div>
+                <div class="mb-4 flex items-center justify-between gap-4">
+                  {post.data.categories?.[0] ? (
+                    <span class="rounded-full border border-[var(--color-accent)]/20 bg-[var(--color-accent)]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-[var(--color-accent)]">
+                      {post.data.categories[0]}
+                    </span>
+                  ) : (
+                    <span />
+                  )}
+                  <span class="flex items-center gap-1 text-[11px] font-medium text-[var(--color-ink-dim)]">
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <circle cx="12" cy="12" r="9" />
+                      <path d="M12 7v5l3 2" />
+                    </svg>
+                    {readTime(post.body ?? '')}
+                  </span>
+                </div>
+                <h2 class="mb-3 text-xl font-bold leading-6 text-white transition-colors group-hover:text-[var(--color-accent)]">
+                  <a href={url(`/${post.data.slug}/`)}>{post.data.title}</a>
+                </h2>
+                <p class="mb-6 line-clamp-3 text-sm leading-6 text-[var(--color-ink-dim)]">{post.data.description}</p>
+              </div>
+              <div class="mt-auto flex items-center justify-between border-t border-white/5 pt-4">
+                <div class="flex items-center gap-2">
+                  <div class="flex h-6 w-6 items-center justify-center rounded-full border border-[var(--color-accent)]/20 bg-[var(--color-accent)]/10 text-[10px] font-bold uppercase text-[var(--color-accent)]">
+                    {(post.data.author ?? 'BestMT4EA').charAt(0)}
+                  </div>
+                  <span class="text-xs font-medium text-[var(--color-ink-dim)]">{post.data.author ?? 'BestMT4EA'}</span>
+                </div>
+                <a href={url(`/${post.data.slug}/`)} class="flex items-center gap-1.5 text-xs font-bold text-white transition-colors group-hover:text-[var(--color-accent)]">
+                  Read Post
+                  <svg class="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
                 </a>
-              </h2>
-              <p class="mt-2 line-clamp-3 text-sm leading-6 text-[var(--color-ink-dim)]">{post.data.description}</p>
-              <p class="mt-4 text-xs text-[var(--color-ink-dim)]">{fmt(post.data.updatedAt ?? post.data.publishedAt)}</p>
+              </div>
             </article>
           ))
         }

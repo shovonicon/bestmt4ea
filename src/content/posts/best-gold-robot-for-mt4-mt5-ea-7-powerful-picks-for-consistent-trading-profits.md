@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127431_featured.webp"
 sourceUrl: "https://bestmt4ea.com/best-gold-robot-for-mt4-mt5-ea-7-powerful-picks-for-consistent-trading-profits/"
 categories:
-  - "Gold (XAUUSD) Trading"
-  - "Free Forex EA"
+  - "Gold (XAUUSD) Trading Guides & EAs"
+  - "Free Forex EAs for MT4 & MT5"
 categoryPaths:
   - "/category/gold-xauusd-trading/"
   - "/category/free-forex-ea/"

@@ -12,7 +12,7 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_144146_featured-1.webp"
 sourceUrl: "https://bestmt4ea.com/bb-return-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing/"
 categories:
-  - "EA Reviews & Comparisons"
+  - "Forex EA Reviews & Comparisons"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
 tags: []

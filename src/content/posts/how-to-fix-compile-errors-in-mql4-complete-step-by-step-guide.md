@@ -5,7 +5,7 @@ description: "Your EA or indicator will not compile in MetaEditor. This guide de
 publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
-  - "EA Settings & Optimization"
+  - "EA Settings & Optimization Guides"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
 tags: []

@@ -48,8 +48,8 @@ installSteps:
     text: "Run the EA on a demo account for several weeks. Log every trade and compare the results with the figures the vendor claimed."
 sourceUrl: "https://bestmt4ea.com/aura-ultimate-ea-forex-ea-reviews-powerful-insights-7-shocking-truths-you-must-know/"
 categories:
-  - "EA Reviews & Comparisons"
-  - "MT4/MT5 Expert Advisors"
+  - "Forex EA Reviews & Comparisons"
+  - "MT4 & MT5 Expert Advisors"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/mt4-mt5-expert-advisors/"

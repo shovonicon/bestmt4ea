@@ -5,7 +5,7 @@ description: "Ranking forex robots by Myfxbook results only works if you read tr
 publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
-  - "EA Reviews & Comparisons"
+  - "Forex EA Reviews & Comparisons"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
 tags: []

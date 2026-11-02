@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_140931_featured.webp"
 sourceUrl: "https://bestmt4ea.com/quantum-queen-forex-ea-reviews-powerful-insights-honest-pros-7-shocking-truths/"
 categories:
-  - "EA Reviews & Comparisons"
-  - "Risk & Money Management"
+  - "Forex EA Reviews & Comparisons"
+  - "Forex Risk & Money Management"
 categoryPaths:
   - "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
   - "/category/risk-money-management/"

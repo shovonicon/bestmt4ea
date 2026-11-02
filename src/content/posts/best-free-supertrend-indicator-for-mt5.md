@@ -5,9 +5,9 @@ description: "The free Supertrend indicator for MT5 explained plainly: ATR bands
 publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
-  - "Forex Indicator Reviews"
-  - "Free Forex Indicator"
-  - "Technical Analysis"
+  - "MT4/MT5 Indicator Reviews"
+  - "Free Forex Indicators for MT4 & MT5"
+  - "Forex Technical Analysis"
 categoryPaths:
   - "/category/forex-indicator-reviews/"
   - "/category/free-forex-indicator/"

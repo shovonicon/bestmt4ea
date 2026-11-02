@@ -12,8 +12,8 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_4195_featured.webp"
 sourceUrl: "https://bestmt4ea.com/best-volume-profile-indicator-for-tradingview-free/"
 categories:
-  - "Free Forex Indicator"
-  - "Forex Indicator Reviews"
+  - "Free Forex Indicators for MT4 & MT5"
+  - "MT4/MT5 Indicator Reviews"
 categoryPaths:
   - "/category/free-forex-indicator/"
   - "/category/forex-indicator-reviews/"

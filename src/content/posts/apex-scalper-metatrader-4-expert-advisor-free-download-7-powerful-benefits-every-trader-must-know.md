@@ -12,9 +12,9 @@ seo:
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127222_featured.webp"
 sourceUrl: "https://bestmt4ea.com/apex-scalper-metatrader-4-expert-advisor-free-download-7-powerful-benefits-every-trader-must-know/"
 categories:
-  - "Free Forex EA"
-  - "Forex Scalping"
-  - "Risk & Money Management"
+  - "Free Forex EAs for MT4 & MT5"
+  - "Forex Scalping Strategies & EAs"
+  - "Forex Risk & Money Management"
 categoryPaths:
   - "/category/free-forex-ea/"
   - "/category/forex-trading-strategies/forex-scalping/"

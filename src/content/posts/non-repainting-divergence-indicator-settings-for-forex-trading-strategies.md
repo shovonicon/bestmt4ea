@@ -5,8 +5,8 @@ description: "Non-repainting divergence settings for RSI and MACD explained hone
 publishedAt: 2026-10-22
 updatedAt: 2026-10-22
 categories:
-  - "Forex Indicator Reviews"
-  - "Free Forex Indicator"
+  - "MT4/MT5 Indicator Reviews"
+  - "Free Forex Indicators for MT4 & MT5"
 categoryPaths:
   - "/category/forex-indicator-reviews/"
   - "/category/free-forex-indicator/"
