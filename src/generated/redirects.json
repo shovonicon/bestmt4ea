@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-02T01:49:24.942Z",
+  "generatedAt": "2026-11-02T02:39:26.830Z",
   "source": "wordpress-seo-redirects (2).csv",
-  "count": 2346,
+  "count": 2417,
   "dropped": [
     {
       "from": "/product/bbp-ai-golden-ea",
@@ -18,6 +18,12 @@
     {
       "from": "/market-sentiment",
       "to": "/live-chart/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/forex-cyborg-review-half-bot-half-human-all-profit",
+      "to": "/shop/",
       "status": 301,
       "reason": "superseded by manual rule"
     },
@@ -40,6 +46,12 @@
       "reason": "source collides with a live route"
     },
     {
+      "from": "/best-forex-broker-in-usa",
+      "to": "/best-forex-brokers/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
       "from": "/best-mt4-indicators-for-us30-trading-top-10-powerful-tools-for-precision-profitability",
       "to": "/top-10-best-mt4-indicators-for-gold-xauusd-powerful-tools-for-accurate-trading/",
       "status": 301,
@@ -50,6 +62,12 @@
       "to": "/prop-firm-ea-free-download-7-powerful-truths-every-trader-must-know/",
       "status": 301,
       "reason": "source collides with a live route"
+    },
+    {
+      "from": "/%F0%9F%9A%80-smart-money-engine-by-willyalgotrader-forex-indicator-reviews-powerful-truth-7-shocking-insights",
+      "to": "/category/forex-indicator-reviews/",
+      "status": 301,
+      "reason": "superseded by manual rule"
     },
     {
       "from": "/happy-frequency-ea-review-is-it-still-profitable",
@@ -94,10 +112,46 @@
       "reason": "source collides with a live route"
     },
     {
+      "from": "/boom-and-crash-indicator-system-mt5-free-download-7-powerful-secrets-to-maximize-profits-safely",
+      "to": "/%F0%9F%9A%80-boom-and-crash-mt5-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/mpx-scalper-free-forex-indicator-download-shocking-truth-11-safe-steps",
+      "to": "/cryo-scalper-indicator-free-download-powerful-guide-to-boost-your-trading-profits-fast/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/scalper-inside-pro-c7-forex-indicator-free-download-7-powerful-benefits-every-trader-must-know",
+      "to": "/best-scalping-indicator-scalper-inside-v7-9-free-download-7-powerful-reasons-traders-love-it/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
       "from": "/best-free-supertrend-indicator-for-mt5",
       "to": "/%F0%9F%9A%80-boom-and-crash-mt5-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
       "status": 301,
       "reason": "source collides with a live route"
+    },
+    {
+      "from": "/ea-gold-algo-forex-ea-reviews-7-powerful-truths-every-trader-must-know",
+      "to": "/the-gold-reaper-forex-ea-reviews-powerful-truths-7-critical-insights-before-you-invest/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/wave-trend-oscillator-free-download-powerful-proven-guide-with-5-smart-trading-secrets",
+      "to": "/ai-trend-booster-ea-free-download-powerful-proven-trading-advantage-guide/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/auto-pivot-points-indicator-mt4-mt5-free-download-powerful-accurate-trading-tool",
+      "to": "/renko-street-indicator-free-download-powerful-accurate-trading-tool-guide/",
+      "status": 301,
+      "reason": "superseded by manual rule"
     },
     {
       "from": "/non-repainting-divergence-indicator-settings-for-forex-trading-strategies",
@@ -106,10 +160,82 @@
       "reason": "source collides with a live route"
     },
     {
+      "from": "/%F0%9F%A4%96-bitcoin-wizard-scalping-bitcoin-robot-free-download-guide",
+      "to": "/category/ai-powered-trading-tools/ai-ea-reviews/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/advanced-scalper-forex-ea-mt4-free-download-7-powerful-secrets-every-trader-must-know",
+      "to": "/top-7-best-free-forex-scalper-ea-for-mt4-download/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/best-forex-scalping-ea-free-download-7-powerful-truths-you-must-know-before-using-one",
+      "to": "/category/free-forex-ea/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
       "from": "/hannah-ea-free-download-7-powerful-truths-you-must-know-before-installing",
       "to": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/",
       "status": 301,
       "reason": "source collides with a live route"
+    },
+    {
+      "from": "/titan-scalper-ea-free-download-7-powerful-truths-every-trader-must-know-before-installing",
+      "to": "/%F0%9F%9A%80-bitcoin-scalper-ea-free-download-powerful-guide-with-7-shocking-benefits-for-traders/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/gt-scalper-indicator-free-download-7-powerful-benefits-every-trader-must-know",
+      "to": "/apex-scalper-metatrader-4-expert-advisor-free-download-7-powerful-benefits-every-trader-must-know/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/instantaneous-trend-line-levels-mt5-forex-indicator-free-download-powerful-proven-guide-7-must-know-benefits",
+      "to": "/category/free-forex-indicator/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/support-resistance-breakout-arrows-forex-indicator-mt4-free-download-negative-traps-powerful-9-step-safe-setup",
+      "to": "/category/free-forex-indicator/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/%E2%9A%A1-zeus-forex-scalping-indicator-free-download-powerful-strategy-guide-7-proven-benefits",
+      "to": "/murasaki-scalper-free-download-powerful-secrets-every-trader-must-know-before-installing/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/prizmal-lux-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing",
+      "to": "/bb-return-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/nova-gold-x-forex-ea-reviews-7-powerful-truths-you-must-know-before-investing",
+      "to": "/bb-return-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/forex-robotron-ea-free-download-7-powerful-facts-you-must-know-before-installing",
+      "to": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/budak-ubat-ea-free-download-7-powerful-facts-you-must-know-before-installing",
+      "to": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/",
+      "status": 301,
+      "reason": "superseded by manual rule"
     },
     {
       "from": "/waka-waka-ea-review-long-term-performance",
@@ -118,8 +244,68 @@
       "reason": "source collides with a live route"
     },
     {
+      "from": "/fundedea-prop-firm-ea-free-download-powerful-7-step-guide-to-smarter-funded-trading",
+      "to": "/prop-firm-ea-free-download-7-powerful-truths-every-trader-must-know/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/ai-gen-xii-chatgpt-ea-free-download-7-powerful-facts-you-must-know-before-installing",
+      "to": "/category/free-forex-ea/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
       "from": "/understanding-common-mt4-ea-errors-and-how-to-fix-them",
       "to": "/category/installation-setup/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/marketmaker-pro-ea-free-download-the-ultimate-guide-to-smart-automated-trading-success",
+      "to": "/best-gold-scalper-ea-for-mt4-mt5-the-only-guide-you-need/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/forex-millionaire-rsi-indicator-and-strategy-free-download-7-powerful-secrets-to-maximize-profits-fast",
+      "to": "/category/forex-trading-strategies/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/ai-price-action-robot-free-download-the-ultimate-guide-to-safe-smart-trading",
+      "to": "/category/ai-powered-trading-tools/ai-ea-reviews/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/raff-channel-forex-indicator-for-mt4-free-download-powerful-proven-tool-for-traders",
+      "to": "/%F0%9F%9A%80-mt4-x-speed-forex-indicator-free-download-powerful-proven-guide/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/ea-gold-stuff-forex-ea-reviews-powerful-insights-honest-pros-performance-breakdown",
+      "to": "/quantum-valkyrie-forex-ea-reviews-powerful-insights-honest-analysis-performance-breakdown/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/%F0%9F%93%88-buy-sell-forex-indicator-free-download-powerful-proven-7-step-guide-for-smart-trading",
+      "to": "/cpr-forex-indicator-for-mt4-free-download-7-powerful-benefits-proven-trading-secrets/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/north-east-way-ea-free-download-the-ultimate-safe-smart-2025-guide",
+      "to": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/algotradesoft-innovative-ea-7-powerful-reasons-its-a-game-changer-for-smart-traders",
+      "to": "/category/free-forex-ea/",
       "status": 301,
       "reason": "superseded by manual rule"
     },
@@ -128,6 +314,84 @@
       "to": "/category/forex-ea-reviews/",
       "status": 301,
       "reason": "source collides with a live route"
+    },
+    {
+      "from": "/algotradesoft-innovative-ea-free-download-7-powerful-benefits-honest-insights-you-must-know",
+      "to": "/category/free-forex-ea/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/dtosc-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know",
+      "to": "/%F0%9F%9A%80-mt4-x-speed-forex-indicator-free-download-powerful-proven-guide/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/ai-forex-robot-forex-ea-reviews-9-powerful-truths-every-trader-must-know-before-buying",
+      "to": "/category/ai-powered-trading-tools/ai-ea-reviews/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/zeno-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing",
+      "to": "/bb-return-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/%F0%9F%9A%80-powerful-guide-daily-dynamic-trend-multi-currency-v4-forex-indicator-free-download-explained",
+      "to": "/category/free-forex-indicator/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/ea-new-player-forex-ea-reviews-7-powerful-insights-every-trader-must-know",
+      "to": "/category/forex-ea-reviews/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/firestorm-odin-ea-v3-free-download-7-powerful-truths-you-must-know-before-you-try-it",
+      "to": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/precision-trend-scalping-indicator-free-download-9-proven-tips-for-safer-smarter-scalps",
+      "to": "/category/free-forex-indicator/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/central-pivot-range-forex-indicator-mt4-free-download-powerful-trading-edge-with-7-proven-benefits",
+      "to": "/cpr-forex-indicator-for-mt4-free-download-7-powerful-benefits-proven-trading-secrets/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/inception-metatrader-trading-system-free-download-risky-truth-9-smart-ways-to-get-it-safely",
+      "to": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/another-good-forex-zigzag-indicator-free-download-7-powerful-reasons-traders-love-it",
+      "to": "/forex-plutus-best-premium-indicator-free-download-7-powerful-reasons-traders-love-it/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/the-gold-phantom-forex-ea-reviews-7-shocking-truths-every-trader-must-know-before-investing",
+      "to": "/aura-ultimate-ea-forex-ea-reviews-powerful-insights-7-shocking-truths-you-must-know/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/xau-master-ea-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing",
+      "to": "/bb-return-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing/",
+      "status": 301,
+      "reason": "superseded by manual rule"
     },
     {
       "from": "/7-powerful-strategies-for-fixing-common-ea-compilation-errors",
@@ -142,6 +406,42 @@
       "reason": "source collides with a live route"
     },
     {
+      "from": "/rsi-trend-catcher-signal-forex-indicator-free-download-powerful-proven-7-step-trading-advantage",
+      "to": "/ai-trend-booster-ea-free-download-powerful-proven-trading-advantage-guide/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/gold-trade-forex-ea-reviews-7-powerful-insights-you-must-know-before-investing",
+      "to": "/bb-return-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/force-investor-ea-free-download-7-powerful-facts-honest-insights-smart-tips",
+      "to": "/category/free-forex-ea/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/infinite-wave-forex-ea-reviews-7-shocking-facts-smart-traders-must-know",
+      "to": "/category/forex-ea-reviews/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/konstatine-robot-ea-free-download-7-powerful-facts-every-trader-must-know-before-installing",
+      "to": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/alphaflow-ea-free-download-powerful-guide-to-safe-smart-access",
+      "to": "/category/mt4-mt5-expert-advisors/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
       "from": "/risk-management-settings-for-grid-ea-explained-7-powerful-ways-to-reduce-losses",
       "to": "/category/risk-money-management/",
       "status": 301,
@@ -152,6 +452,96 @@
       "to": "/category/forex-indicator-reviews/",
       "status": 301,
       "reason": "source collides with a live route"
+    },
+    {
+      "from": "/true-strength-index-tsi-divergence-ea-free-version-powerful-insights-for-smarter-trading",
+      "to": "/category/installation-setup/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/renko-star-indicator-free-download-7-powerful-reasons-traders-love-it",
+      "to": "/category/free-forex-indicator/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/%F0%9F%9A%80-bitcoin-quantum-edge-algo-forex-ea-reviews-7-shocking-truths-you-must-know-before-investing",
+      "to": "/category/forex-ea-reviews/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/4x-wave-indicator-system-free-download-7-powerful-benefits-every-trader-must-know",
+      "to": "/nexus-6-0-binary-indicator-free-download-powerful-proven-trading-tool-guide/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/sane-fx-binary-trading-indicator-mt4-free-download-powerful-proven-strategy-guide",
+      "to": "/binary-options-signals-indicator-mt4-free-download-powerful-proven-guide/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/%F0%9F%93%8A-adx-supertrend-by-rakoquant-forex-indicator-reviews-powerful-7-proven-insights-for-smarter-trading",
+      "to": "/category/forex-trading-strategies/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/us-debt-ceiling-crisis-impact-on-treasury-yields-powerful-insights",
+      "to": "/category/fundamental-analysis/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/crownprincefx-ea-free-download-the-ultimate-beginner-to-pro-guide",
+      "to": "/category/mt4-mt5-expert-advisors/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/orbit-rage-final-ea-free-download-7-powerful-facts-you-must-know-before-installing",
+      "to": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/gold-sand-free-download-7-powerful-safe-ways-to-access-it-today",
+      "to": "/category/ai-powered-trading-tools/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/forex-range-trading-strategy-free-download-powerful-7-step-blueprint-for-consistent-profits",
+      "to": "/category/forex-trading-strategies/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/%F0%9F%93%8A-market-profile-trendlines-mt4-forex-indicator-free-download-powerful-proven-tool-for-precision-trading",
+      "to": "/cpr-forex-indicator-for-mt4-free-download-7-powerful-benefits-proven-trading-secrets/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/forex-rebellion-trading-system-for-mt4-free-download-7-powerful-truths-you-must-know-before-installing",
+      "to": "/category/forex-trading-strategies/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/%F0%9F%9A%80-gcm-alpha-structure-framework-by-unigram-forex-indicator-reviews-powerful-insights-7-critical-truths",
+      "to": "/category/forex-indicator-reviews/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/btc-volatility-weighted-trend-matrix-by-mentor_michael03-forex-indicator-reviews-powerful-truths-smart-warnings-7-key-insights",
+      "to": "/category/forex-indicator-reviews/",
+      "status": 301,
+      "reason": "superseded by manual rule"
     },
     {
       "from": "/best-forex-vps-for-mt4-mt5-in-2026-low-latency-24-7-uptime-expert-advisor-hosting",
@@ -182,6 +572,126 @@
       "to": "/category/ai-powered-trading-tools/",
       "status": 301,
       "reason": "source collides with a live route"
+    },
+    {
+      "from": "/gps-forex-robot-ea-free-download-7-powerful-truths-you-must-know-before-installing",
+      "to": "/category/free-forex-ea/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/egcx-gold-bot-pro-ea-7-powerful-reasons-traders-are-switching-to-this-advanced-gold-trading-system",
+      "to": "/category/gold-xauusd-trading/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/the-monetree-ea-free-download-7-powerful-facts-before-you-install-it",
+      "to": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/free-scalping-and-100-pips-mt4-forex-trading-strategy-free-download-powerful-7-step-blueprint-for-consistent-gains",
+      "to": "/category/free-forex-indicator/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/professional-swing-intraday-channel-breakout-mt4-forex-strategy-free-download-powerful-7-step-winning-blueprint",
+      "to": "/category/free-forex-indicator/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/secret-profit-levels-forex-indicator-free-download-7-powerful-truths-every-trader-must-know",
+      "to": "/forex-millionaire-indicator-free-download-7-powerful-truths-you-must-know-before-installing/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/forex-profit-boost-mt4-indicator-free-download-7-powerful-secrets-to-maximize-your-trading-profits",
+      "to": "/forex-scanner-pro-indicator-system-for-mt4-free-download-ultimate-powerful-guide-setup/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/forex-viking-pro-indicator-free-download-powerful-proven-trading-tool-guide",
+      "to": "/nexus-6-0-binary-indicator-free-download-powerful-proven-trading-tool-guide/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/keltner-sd-supertrend-by-rakoquant-forex-indicator-reviews",
+      "to": "/forex-millionaire-indicator-free-download-7-powerful-truths-you-must-know-before-installing/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/adaptive-pivot-structure-by-willyalgotrader-forex-indicator-reviews",
+      "to": "/category/forex-indicator-reviews/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/quantum-relative-performance-oscillator-by-pineify-forex-indicator-reviews",
+      "to": "/category/ai-powered-trading-tools/ai-trading-indicators/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/supply-demand-zones-by-joksen-forex-indicator-reviews-powerful-insights-7-honest-pros-cons",
+      "to": "/quantum-queen-forex-ea-reviews-powerful-insights-honest-pros-7-shocking-truths/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/ag-pro-swap-engine-by-agprolabs-forex-indicator-reviews-7-powerful-truths-every-trader-must-know",
+      "to": "/forex-scanner-pro-indicator-system-for-mt4-free-download-ultimate-powerful-guide-setup/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/orange-blue-trends-by-kkilbourne-forex-indicator-reviews-7-powerful-insights-traders-must-know",
+      "to": "/category/forex-indicator-reviews/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/7-essential-honest-structure-mapping-pro-by-rabgoada9-forex-indicator-reviews-that-traders-shouldnt-ignore",
+      "to": "/category/ai-powered-trading-tools/ai-trading-indicators/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/%F0%9F%9A%80-kx4-pro-trading-system-free-download-powerful-proven-strategy-guide",
+      "to": "/gold-sniper-master-indicator-system-free-download-powerful-secrets-7-proven-trading-advantages/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/kama-sd-bands-by-rakoquant-forex-indicator-reviews-7-powerful-insights-every-trader-must-know",
+      "to": "/super-arrow-mt4-forex-indicator-free-download-powerful-7-step-guide-to-smarter-trading/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/adaptive-volatility-trend-by-willyalgotrader-forex-indicator-reviews-powerful-insights-7-proven-benefits",
+      "to": "/%F0%9F%93%88-gold-trend-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/flux-pulse-orb-by-inkadinka_ka-forex-indicator-reviews-the-powerful-truth-behind-this-game-changing-tool",
+      "to": "/category/forex-indicator-reviews/",
+      "status": 301,
+      "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/%F0%9F%93%88-supertrend-slope-only-by-sudhakar_kb-forex-indicator-reviews-7-powerful-truths-every-trader-must-know",
+      "to": "/forex-millionaire-indicator-free-download-7-powerful-truths-you-must-know-before-installing/",
+      "status": 301,
+      "reason": "superseded by manual rule"
     }
   ],
   "retiredRemaps": [],
@@ -205,6 +715,450 @@
     {
       "from": "/communication-preferences/",
       "wasTo": "/shop/"
+    },
+    {
+      "from": "/egcx-gold-bot-pro-ea-7-powerful-reasons-traders-are-switching-to-this-advanced-gold-trading-system/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/infinite-wave-forex-ea-reviews-7-shocking-facts-smart-traders-must-know/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/ea-new-player-forex-ea-reviews-7-powerful-insights-every-trader-must-know/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/ai-forex-robot-forex-ea-reviews-9-powerful-truths-every-trader-must-know-before-buying/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/ea-gold-stuff-forex-ea-reviews-powerful-insights-honest-pros-performance-breakdown/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/ea-gold-algo-forex-ea-reviews-7-powerful-truths-every-trader-must-know/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/algotradesoft-innovative-ea-7-powerful-reasons-its-a-game-changer-for-smart-traders/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/zeno-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/true-strength-index-tsi-divergence-ea-free-version-powerful-insights-for-smarter-trading/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/gold-trade-forex-ea-reviews-7-powerful-insights-you-must-know-before-investing/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/nova-gold-x-forex-ea-reviews-7-powerful-truths-you-must-know-before-investing/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/prizmal-lux-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/the-gold-phantom-forex-ea-reviews-7-shocking-truths-every-trader-must-know-before-investing/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/xau-master-ea-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/secret-profit-levels-forex-indicator-free-download-7-powerful-truths-every-trader-must-know/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/forex-profit-boost-mt4-indicator-free-download-7-powerful-secrets-to-maximize-your-trading-profits/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/forex-millionaire-rsi-indicator-and-strategy-free-download-7-powerful-secrets-to-maximize-profits-fast/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/precision-trend-scalping-indicator-free-download-9-proven-tips-for-safer-smarter-scalps/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/renko-star-indicator-free-download-7-powerful-reasons-traders-love-it/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/rsi-trend-catcher-signal-forex-indicator-free-download-powerful-proven-7-step-trading-advantage/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/auto-pivot-points-indicator-mt4-mt5-free-download-powerful-accurate-trading-tool/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/another-good-forex-zigzag-indicator-free-download-7-powerful-reasons-traders-love-it/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/gt-scalper-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/boom-and-crash-indicator-system-mt5-free-download-7-powerful-secrets-to-maximize-profits-safely/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/4x-wave-indicator-system-free-download-7-powerful-benefits-every-trader-must-know/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/sane-fx-binary-trading-indicator-mt4-free-download-powerful-proven-strategy-guide/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/instantaneous-trend-line-levels-mt5-forex-indicator-free-download-powerful-proven-guide-7-must-know-benefits/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/dtosc-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/scalper-inside-pro-c7-forex-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/support-resistance-breakout-arrows-forex-indicator-mt4-free-download-negative-traps-powerful-9-step-safe-setup/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/central-pivot-range-forex-indicator-mt4-free-download-powerful-trading-edge-with-7-proven-benefits/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/raff-channel-forex-indicator-for-mt4-free-download-powerful-proven-tool-for-traders/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/keltner-sd-supertrend-by-rakoquant-forex-indicator-reviews/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/ag-pro-swap-engine-by-agprolabs-forex-indicator-reviews-7-powerful-truths-every-trader-must-know/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/7-essential-honest-structure-mapping-pro-by-rabgoada9-forex-indicator-reviews-that-traders-shouldnt-ignore/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/btc-volatility-weighted-trend-matrix-by-mentor_michael03-forex-indicator-reviews-powerful-truths-smart-warnings-7-key-insights/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/supply-demand-zones-by-joksen-forex-indicator-reviews-powerful-insights-7-honest-pros-cons/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/adaptive-volatility-trend-by-willyalgotrader-forex-indicator-reviews-powerful-insights-7-proven-benefits/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/flux-pulse-orb-by-inkadinka_ka-forex-indicator-reviews-the-powerful-truth-behind-this-game-changing-tool/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/kama-sd-bands-by-rakoquant-forex-indicator-reviews-7-powerful-insights-every-trader-must-know/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/quantum-relative-performance-oscillator-by-pineify-forex-indicator-reviews/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/adaptive-pivot-structure-by-willyalgotrader-forex-indicator-reviews/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/orange-blue-trends-by-kkilbourne-forex-indicator-reviews-7-powerful-insights-traders-must-know/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/%F0%9F%93%88-buy-sell-forex-indicator-free-download-powerful-proven-7-step-guide-for-smart-trading/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/%F0%9F%93%8A-market-profile-trendlines-mt4-forex-indicator-free-download-powerful-proven-tool-for-precision-trading/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/%F0%9F%93%8A-adx-supertrend-by-rakoquant-forex-indicator-reviews-powerful-7-proven-insights-for-smarter-trading/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/%E2%9A%A1-zeus-forex-scalping-indicator-free-download-powerful-strategy-guide-7-proven-benefits/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/%F0%9F%9A%80-powerful-guide-daily-dynamic-trend-multi-currency-v4-forex-indicator-free-download-explained/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/%F0%9F%A4%96-bitcoin-wizard-scalping-bitcoin-robot-free-download-guide/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/%F0%9F%9A%80-bitcoin-quantum-edge-algo-forex-ea-reviews-7-shocking-truths-you-must-know-before-investing/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/%F0%9F%9A%80-smart-money-engine-by-willyalgotrader-forex-indicator-reviews-powerful-truth-7-shocking-insights/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/%F0%9F%9A%80-gcm-alpha-structure-framework-by-unigram-forex-indicator-reviews-powerful-insights-7-critical-truths/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/%F0%9F%93%88-supertrend-slope-only-by-sudhakar_kb-forex-indicator-reviews-7-powerful-truths-every-trader-must-know/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/%F0%9F%9A%80-kx4-pro-trading-system-free-download-powerful-proven-strategy-guide/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/professional-swing-intraday-channel-breakout-mt4-forex-strategy-free-download-powerful-7-step-winning-blueprint/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/wave-trend-oscillator-free-download-powerful-proven-guide-with-5-smart-trading-secrets/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/gold-sand-free-download-7-powerful-safe-ways-to-access-it-today/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/forex-rebellion-trading-system-for-mt4-free-download-7-powerful-truths-you-must-know-before-installing/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/forex-range-trading-strategy-free-download-powerful-7-step-blueprint-for-consistent-profits/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/free-scalping-and-100-pips-mt4-forex-trading-strategy-free-download-powerful-7-step-blueprint-for-consistent-gains/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/inception-metatrader-trading-system-free-download-risky-truth-9-smart-ways-to-get-it-safely/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/product-category/indicator/free-indicator/feed/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/shop/page/2/",
+      "wasTo": "/shop/"
+    },
+    {
+      "from": "/shop/page/10/",
+      "wasTo": "/shop/"
+    },
+    {
+      "from": "/shop/page/25/",
+      "wasTo": "/shop/"
+    },
+    {
+      "from": "/author/admin/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/home/",
+      "wasTo": "/"
+    },
+    {
+      "from": "/maintenance-2/",
+      "wasTo": "/"
+    },
+    {
+      "from": "/us-debt-ceiling-crisis-impact-on-treasury-yields-powerful-insights/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/bitcoin-trading-bot-free-download-powerful-safe-smart-guide/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/royal-hedge-free-download-7-powerful-facts-you-must-know-before-installing-this-elegant-font/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/nas100-alerts-limitless-by-blissfulaccoun8911-forex-indicator-reviews-powerful-truth-7-game-changing-insights-2/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/sparta-ea-7-powerful-benefits-that-make-it-a-game-changer-in-forex-trading-2/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/the-number-1-cause-of-death-of-forex-traders/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/what-is-day-trading-what-are-the-best-trading-strategies/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/indicator-for-scalping/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/forex-cyborg-review-half-bot-half-human-all-profit/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/what-are-pips-in-forex-trading-and-what-is-their-value/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/a-successful-mindset-5-tips-for-building-it/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/forex-trading-in-jamaica-a-complete-guide/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/forex-risk-calculator/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/forex-viking-pro-indicator-free-download-powerful-proven-trading-tool-guide/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/scalping-trading-strategies-3-fast-paced-approaches-to-try-now/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/best-forex-broker-in-usa/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/how-recency-bias-affects-your-trading-decisions/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/how-to-double-your-money-in-forex-trading/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/the-complete-guide-to-bollinger-bands-trading-strategy/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/day-trading-books-for-beginners/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/odin-forex-robot-review-valhalla-or-valhala-our-verdict-on-this-ea/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/the-costly-mistake-of-fat-finger-trades-and-how-to-avoid-them/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/the-complete-guide-to-scalping-trading-how-to-make-fast-profits-with-this-high-intensity-day-trading-strategy/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/best-indicators-for-scalping/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/zone-to-zone-trading-a-unique-approach-to-identifying-supply-and-demand/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/the-only-real-way-to-beat-the-market/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/what-is-forex-risk-management-how-and-when-to-walk-away/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/break-through-the-wall-of-trading-mistakes-holding-you-back/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/trusting-your-gut-feel-in-trading/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/the-complete-guide-to-trend-lines-for-technical-analysis/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/why-traders-should-get-used-to-being-wrong/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/oava-ea-forex-robot-unlimited-version-free-download/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/%F0%9F%93%88-smart-money-order-block-forex-strategy-free-indicator-powerful-2026-guide-7-pro-secrets-2/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/-better-volume-1-5-mt4-forex-indicator-free-download-powerful-guide-with-7-proven-trading-insights/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/-fx-support-and-resistance-forex-indicator-free-download-powerful-proven-trading-edge/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/-double-top-bottom-patterns-mt4-forex-indicator-powerful-proven-free-trading-tool/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/-forex-future-forecast-indicator-free-download-powerful-proven-guide-for-smarter-trading/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/-trend-action-binary-option-strategy-free-download-powerful-proven-guide/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/-powerful-crypto-trading-indicator-system-mt5-free-download/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/-powerful-7-step-guide-to-the-pivot-custom-indicator-mt4-free-download-for-smarter-trading/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/-powerful-7-reasons-why-gbpusd-scalper-king-sniper-ea-free-download-is-a-game-changer-for-forex-traders/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/tag/forex-trading-tips-today/",
+      "wasTo": "/blog/"
+    },
+    {
+      "from": "/tag/trading-tips-for-forex/",
+      "wasTo": "/blog/"
     },
     {
       "from": "/how-to-become-a-hedge-fund-manager-the-ultimate-guide",
@@ -291,16 +1245,8 @@
       "wasTo": "/blog/"
     },
     {
-      "from": "/forex-cyborg-review-half-bot-half-human-all-profit",
-      "wasTo": "/shop/"
-    },
-    {
       "from": "/veno-ea-review-can-this-robot-enhance-your-trading-performance",
       "wasTo": "/product-category/forex-robot/"
-    },
-    {
-      "from": "/the-number-1-cause-of-death-of-forex-traders",
-      "wasTo": "/blog/"
     },
     {
       "from": "/forex-megadroid-review-a-dinosaur-or-still-competitive-in-2024",
@@ -491,10 +1437,6 @@
       "wasTo": "/blog/"
     },
     {
-      "from": "/a-successful-mindset-5-tips-for-building-it",
-      "wasTo": "/blog/"
-    },
-    {
       "from": "/forex-steam-ea-review-does-this-automated-trading-robot-hold-up",
       "wasTo": "/shop/"
     },
@@ -515,10 +1457,6 @@
       "wasTo": "/blog/"
     },
     {
-      "from": "/what-are-pips-in-forex-trading-and-what-is-their-value",
-      "wasTo": "/blog/"
-    },
-    {
       "from": "/the-top-5-trading-tips-no-one-else-will-tell-you",
       "wasTo": "/blog/"
     },
@@ -528,10 +1466,6 @@
     },
     {
       "from": "/the-top-5-trading-tips-no-one-else-ever-told-you",
-      "wasTo": "/blog/"
-    },
-    {
-      "from": "/break-through-the-wall-of-trading-mistakes-holding-you-back",
       "wasTo": "/blog/"
     },
     {
@@ -907,10 +1841,6 @@
       "wasTo": "/blog/"
     },
     {
-      "from": "/%F0%9F%9A%80-smart-money-engine-by-willyalgotrader-forex-indicator-reviews-powerful-truth-7-shocking-insights",
-      "wasTo": "/category/forex-indicator-reviews/"
-    },
-    {
       "from": "/forex-pip-killer-ea-free-download-7-powerful-truths-you-must-know-before-installing",
       "wasTo": "/category/free-forex-ea/"
     },
@@ -1003,10 +1933,6 @@
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
-      "from": "/%F0%9F%A4%96-bitcoin-wizard-scalping-bitcoin-robot-free-download-guide",
-      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
-    },
-    {
       "from": "/swing-point-highs-and-lows-forex-indicator-free-download-7-powerful-trading-secrets-for-explosive-results",
       "wasTo": "/category/free-forex-indicator/"
     },
@@ -1021,10 +1947,6 @@
     {
       "from": "/volatility-factor-ea-free-download-7-powerful-facts-before-you-install-it",
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
-    },
-    {
-      "from": "/best-forex-scalping-ea-free-download-7-powerful-truths-you-must-know-before-using-one",
-      "wasTo": "/category/free-forex-ea/"
     },
     {
       "from": "/fibot-fibonacci-ea-free-download-7-powerful-truths-traders-must-know-before-installing",
@@ -1051,10 +1973,6 @@
       "wasTo": "/category/free-forex-ea/"
     },
     {
-      "from": "/instantaneous-trend-line-levels-mt5-forex-indicator-free-download-powerful-proven-guide-7-must-know-benefits",
-      "wasTo": "/category/free-forex-indicator/"
-    },
-    {
       "from": "/dragon-hft-scalping-indicator-strategy-free-download-7-powerful-truths-every-trader-must-know",
       "wasTo": "/category/forex-trading-strategies/forex-scalping/"
     },
@@ -1079,10 +1997,6 @@
       "wasTo": "/category/free-forex-indicator/"
     },
     {
-      "from": "/support-resistance-breakout-arrows-forex-indicator-mt4-free-download-negative-traps-powerful-9-step-safe-setup",
-      "wasTo": "/category/free-forex-indicator/"
-    },
-    {
       "from": "/nitrofx-indicator-free-download-powerful-guide-safe-alternatives",
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
@@ -1101,14 +2015,6 @@
     {
       "from": "/profit-99-reversal-trading-indicator-free-download-7-powerful-reasons-traders-love-it",
       "wasTo": "/category/free-forex-indicator/"
-    },
-    {
-      "from": "/forex-robotron-ea-free-download-7-powerful-facts-you-must-know-before-installing",
-      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
-    },
-    {
-      "from": "/budak-ubat-ea-free-download-7-powerful-facts-you-must-know-before-installing",
-      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/aura-neuron-ea-free-download-7-powerful-benefits-honest-insights-you-must-know",
@@ -1159,10 +2065,6 @@
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
-      "from": "/ai-gen-xii-chatgpt-ea-free-download-7-powerful-facts-you-must-know-before-installing",
-      "wasTo": "/category/free-forex-ea/"
-    },
-    {
       "from": "/%F0%9F%A4%96-bitcoin-trading-crypto-robot-free-download-the-ultimate-guide-to-safe-smart-automation",
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
@@ -1187,20 +2089,12 @@
       "wasTo": "/category/free-forex-ea/"
     },
     {
-      "from": "/forex-millionaire-rsi-indicator-and-strategy-free-download-7-powerful-secrets-to-maximize-profits-fast",
-      "wasTo": "/category/forex-trading-strategies/"
-    },
-    {
       "from": "/best-renko-strategy-and-indicator-system-free-download-powerful-trading-blueprint",
       "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/pegasus-pro-ea-free-download-7-powerful-facts-you-must-know-before-trying-it",
       "wasTo": "/category/free-forex-ea/"
-    },
-    {
-      "from": "/ai-price-action-robot-free-download-the-ultimate-guide-to-safe-smart-trading",
-      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/%F0%9F%9A%80-northwest-metatrader-4-ea-free-download-powerful-proven-trading-robot",
@@ -1323,10 +2217,6 @@
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
-      "from": "/north-east-way-ea-free-download-the-ultimate-safe-smart-2025-guide",
-      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
-    },
-    {
       "from": "/%F0%9F%92%A5-wallstreet-recovery-pro-download-the-ultimate-2026-guide-to-safe-smart-access",
       "wasTo": "/category/mt4-mt5-expert-advisors/"
     },
@@ -1363,10 +2253,6 @@
       "wasTo": "/category/forex-trading-strategies/forex-scalping/"
     },
     {
-      "from": "/algotradesoft-innovative-ea-7-powerful-reasons-its-a-game-changer-for-smart-traders",
-      "wasTo": "/category/free-forex-ea/"
-    },
-    {
       "from": "/anti-martingale-approach-for-safe-trading",
       "wasTo": "/category/forex-trading-strategies/"
     },
@@ -1376,10 +2262,6 @@
     },
     {
       "from": "/forexfiv-ea-free-download-7-powerful-truths-you-must-know-before-installing",
-      "wasTo": "/category/free-forex-ea/"
-    },
-    {
-      "from": "/algotradesoft-innovative-ea-free-download-7-powerful-benefits-honest-insights-you-must-know",
       "wasTo": "/category/free-forex-ea/"
     },
     {
@@ -1427,10 +2309,6 @@
       "wasTo": "/category/free-forex-indicator/"
     },
     {
-      "from": "/ai-forex-robot-forex-ea-reviews-9-powerful-truths-every-trader-must-know-before-buying",
-      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
-    },
-    {
       "from": "/black-diamond-special-ea-free-download-the-truth-you-must-know-before-installing",
       "wasTo": "/category/free-forex-ea/"
     },
@@ -1441,10 +2319,6 @@
     {
       "from": "/trend-scalp-bot-free-download-powerful-7-step-guide-to-safe-smart-trading-success",
       "wasTo": "/category/forex-trading-strategies/forex-scalping/"
-    },
-    {
-      "from": "/%F0%9F%9A%80-powerful-guide-daily-dynamic-trend-multi-currency-v4-forex-indicator-free-download-explained",
-      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/dj-market-pro-x20-delta-gold-indicator-free-download-powerful-secrets-7-smart-benefits-revealed",
@@ -1476,10 +2350,6 @@
     },
     {
       "from": "/fx-phantom-free-forex-system-download-powerful-7-step-guide-to-smart-trading-success",
-      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
-    },
-    {
-      "from": "/ea-new-player-forex-ea-reviews-7-powerful-insights-every-trader-must-know",
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
@@ -1547,10 +2417,6 @@
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
-      "from": "/firestorm-odin-ea-v3-free-download-7-powerful-truths-you-must-know-before-you-try-it",
-      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
-    },
-    {
       "from": "/audnzd-otaku-ea-free-download-7-powerful-secrets-every-forex-trader-must-know",
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
@@ -1595,10 +2461,6 @@
       "wasTo": "/category/free-forex-indicator/"
     },
     {
-      "from": "/precision-trend-scalping-indicator-free-download-9-proven-tips-for-safer-smarter-scalps",
-      "wasTo": "/category/free-forex-indicator/"
-    },
-    {
       "from": "/force-able-ea-free-download-powerful-truth-7-must-know-facts-before-you-install",
       "wasTo": "/category/free-forex-ea/"
     },
@@ -1624,10 +2486,6 @@
     },
     {
       "from": "/%F0%9F%8F%86-ribbon-explosion-trend-momentum-strategy-for-mt5-free-download-7-powerful-benefits-traders-must-know",
-      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
-    },
-    {
-      "from": "/inception-metatrader-trading-system-free-download-risky-truth-9-smart-ways-to-get-it-safely",
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
@@ -1871,10 +2729,6 @@
       "wasTo": "/category/free-forex-ea/"
     },
     {
-      "from": "/force-investor-ea-free-download-7-powerful-facts-honest-insights-smart-tips",
-      "wasTo": "/category/free-forex-ea/"
-    },
-    {
       "from": "/thg-straddle-trader-diamond-ea-free-download-7-powerful-facts-every-trader-must-know",
       "wasTo": "/category/free-forex-ea/"
     },
@@ -1927,10 +2781,6 @@
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
-      "from": "/infinite-wave-forex-ea-reviews-7-shocking-facts-smart-traders-must-know",
-      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
-    },
-    {
       "from": "/quantix-core-g33-ea-forex-ea-reviews-the-brutal-truth-behind-this-powerful-trading-bot",
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
@@ -1943,16 +2793,8 @@
       "wasTo": "/category/forex-indicator-reviews/"
     },
     {
-      "from": "/konstatine-robot-ea-free-download-7-powerful-facts-every-trader-must-know-before-installing",
-      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
-    },
-    {
       "from": "/steady-profit-ea-free-download-7-powerful-truths-every-trader-must-know",
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
-    },
-    {
-      "from": "/alphaflow-ea-free-download-powerful-guide-to-safe-smart-access",
-      "wasTo": "/category/mt4-mt5-expert-advisors/"
     },
     {
       "from": "/grid-round-numbers-forex-indicator-free-download-powerful-7-step-guide-to-master-psychological-levels",
@@ -2131,10 +2973,6 @@
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
-      "from": "/true-strength-index-tsi-divergence-ea-free-version-powerful-insights-for-smarter-trading",
-      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
-    },
-    {
       "from": "/how-to-use-fibonacci-retracement-in-forex-charts-11-powerful-strategies-for-traders",
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
@@ -2287,10 +3125,6 @@
       "wasTo": "/category/free-forex-indicator/"
     },
     {
-      "from": "/renko-star-indicator-free-download-7-powerful-reasons-traders-love-it",
-      "wasTo": "/category/free-forex-indicator/"
-    },
-    {
       "from": "/silver-trend-following-scalping-strategy-for-mt5-free-download-powerful-7-step-winning-system",
       "wasTo": "/category/free-forex-indicator/"
     },
@@ -2313,10 +3147,6 @@
     {
       "from": "/hikkake-pattern-forex-indicator-mt4-free-download-powerful-7-step-guide-to-trade-fakeouts-safely",
       "wasTo": "/category/forex-trading-strategies/"
-    },
-    {
-      "from": "/%F0%9F%9A%80-bitcoin-quantum-edge-algo-forex-ea-reviews-7-shocking-truths-you-must-know-before-investing",
-      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/ea-gold-stuff-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing",
@@ -2389,10 +3219,6 @@
     {
       "from": "/%F0%9F%94%8B-smartchoise-battery-forex-ea-reviews-7-powerful-truths-every-trader-must-know",
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
-    },
-    {
-      "from": "/%F0%9F%93%8A-adx-supertrend-by-rakoquant-forex-indicator-reviews-powerful-7-proven-insights-for-smarter-trading",
-      "wasTo": "/category/forex-trading-strategies/"
     },
     {
       "from": "/top-12-powerful-requirements-for-trading-forex-full-time",
@@ -4731,10 +5557,6 @@
       "wasTo": "/category/technical-analysis/"
     },
     {
-      "from": "/us-debt-ceiling-crisis-impact-on-treasury-yields-powerful-insights",
-      "wasTo": "/category/technical-analysis/"
-    },
-    {
       "from": "/7-powerful-ways-how-government-shutdown-affects-the-us-dollar-and-what-investors-should-know",
       "wasTo": "/category/technical-analysis/"
     },
@@ -5447,10 +6269,6 @@
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
-      "from": "/crownprincefx-ea-free-download-the-ultimate-beginner-to-pro-guide",
-      "wasTo": "/category/mt4-mt5-expert-advisors/"
-    },
-    {
       "from": "/darkslide-v7-ea-free-download-powerful-secrets-7-must-know-facts-before-you-install",
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
@@ -5469,10 +6287,6 @@
     {
       "from": "/mario-doo-ea-free-download-7-powerful-truths-you-must-know-before-downloading",
       "wasTo": "/category/free-forex-ea/"
-    },
-    {
-      "from": "/orbit-rage-final-ea-free-download-7-powerful-facts-you-must-know-before-installing",
-      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/forex-incontrol-reborn-ea-free-download-powerful-truth-about-this-automated-trading-system",
@@ -5509,10 +6323,6 @@
     {
       "from": "/impact-scalpx-mt4-ea-free-download-powerful-proven-guide-7-critical-facts-you-must-know",
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
-    },
-    {
-      "from": "/gold-sand-free-download-7-powerful-safe-ways-to-access-it-today",
-      "wasTo": "/category/ai-powered-trading-tools/"
     },
     {
       "from": "/dead-zone-scalper-ea-free-download-7-powerful-facts-every-trader-must-know",
@@ -5583,10 +6393,6 @@
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
-      "from": "/forex-range-trading-strategy-free-download-powerful-7-step-blueprint-for-consistent-profits",
-      "wasTo": "/category/forex-trading-strategies/"
-    },
-    {
       "from": "/range-detector-indicator-free-download-powerful-proven-guide-to-master-sideways-markets",
       "wasTo": "/category/free-forex-indicator/"
     },
@@ -5647,10 +6453,6 @@
       "wasTo": "/category/free-forex-indicator/"
     },
     {
-      "from": "/forex-rebellion-trading-system-for-mt4-free-download-7-powerful-truths-you-must-know-before-installing",
-      "wasTo": "/category/forex-trading-strategies/"
-    },
-    {
       "from": "/quantum-super-channel-with-ema-neural-free-indicator-powerful-guide-11-smart-tips",
       "wasTo": "/category/free-forex-indicator/"
     },
@@ -5683,10 +6485,6 @@
       "wasTo": "/category/forex-indicator-reviews/"
     },
     {
-      "from": "/%F0%9F%9A%80-gcm-alpha-structure-framework-by-unigram-forex-indicator-reviews-powerful-insights-7-critical-truths",
-      "wasTo": "/category/forex-indicator-reviews/"
-    },
-    {
       "from": "/trendrsi-momentum-structure-with-flip-signals-by-cony1979-forex-indicator-reviews",
       "wasTo": "/category/free-forex-indicator/"
     },
@@ -5712,10 +6510,6 @@
     },
     {
       "from": "/ema-9-21-50-bb-crossover-alerts-by-lunev200481-forex-indicator-reviews-powerful-honest-and-simple-7-key-insights",
-      "wasTo": "/category/forex-indicator-reviews/"
-    },
-    {
-      "from": "/btc-volatility-weighted-trend-matrix-by-mentor_michael03-forex-indicator-reviews-powerful-truths-smart-warnings-7-key-insights",
       "wasTo": "/category/forex-indicator-reviews/"
     },
     {
@@ -5815,10 +6609,6 @@
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
-      "from": "/gps-forex-robot-ea-free-download-7-powerful-truths-you-must-know-before-installing",
-      "wasTo": "/category/free-forex-ea/"
-    },
-    {
       "from": "/blastbands-ea-free-download-the-ultimate-7-step-powerful-guide-you-must-read",
       "wasTo": "/category/free-forex-ea/"
     },
@@ -5867,10 +6657,6 @@
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
-      "from": "/egcx-gold-bot-pro-ea-7-powerful-reasons-traders-are-switching-to-this-advanced-gold-trading-system",
-      "wasTo": "/category/gold-xauusd-trading/"
-    },
-    {
       "from": "/alpha-rare-forex-free-download-7-powerful-truths-you-must-know-before-installing",
       "wasTo": "/category/free-forex-ea/"
     },
@@ -5893,10 +6679,6 @@
     {
       "from": "/bss-forex-market-ea-14-3-free-download-powerful-guide-with-7-proven-insights",
       "wasTo": "/category/free-forex-ea/"
-    },
-    {
-      "from": "/the-monetree-ea-free-download-7-powerful-facts-before-you-install-it",
-      "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
       "from": "/strangelet-ea-free-download-7-powerful-truths-you-must-know-before-installing",
@@ -5971,14 +6753,6 @@
       "wasTo": "/category/free-forex-indicator/"
     },
     {
-      "from": "/free-scalping-and-100-pips-mt4-forex-trading-strategy-free-download-powerful-7-step-blueprint-for-consistent-gains",
-      "wasTo": "/category/free-forex-indicator/"
-    },
-    {
-      "from": "/professional-swing-intraday-channel-breakout-mt4-forex-strategy-free-download-powerful-7-step-winning-blueprint",
-      "wasTo": "/category/free-forex-indicator/"
-    },
-    {
       "from": "/custom-high-low-and-xmaster-formula-mt5-forex-strategy-free-download-powerful-9-step-setup-for-smarter-entries",
       "wasTo": "/category/mt4-mt5-expert-advisors/"
     },
@@ -6047,10 +6821,6 @@
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
-      "from": "/adaptive-pivot-structure-by-willyalgotrader-forex-indicator-reviews",
-      "wasTo": "/category/forex-indicator-reviews/"
-    },
-    {
       "from": "/smart-trend-by-zofesu-forex-indicator-reviews-powerful-honest-insights-7-must-know-facts",
       "wasTo": "/category/free-forex-indicator/"
     },
@@ -6075,10 +6845,6 @@
       "wasTo": "/category/free-forex-indicator/"
     },
     {
-      "from": "/quantum-relative-performance-oscillator-by-pineify-forex-indicator-reviews",
-      "wasTo": "/category/free-forex-indicator/"
-    },
-    {
       "from": "/cow-stochastic-momentum-index-by-tradercow913-forex-indicator-reviews-7-powerful-insights-every-trader-must-know",
       "wasTo": "/category/free-forex-indicator/"
     },
@@ -6099,16 +6865,8 @@
       "wasTo": "/category/free-forex-indicator/"
     },
     {
-      "from": "/orange-blue-trends-by-kkilbourne-forex-indicator-reviews-7-powerful-insights-traders-must-know",
-      "wasTo": "/category/forex-indicator-reviews/"
-    },
-    {
       "from": "/initial-value-breakout-by-omegatools-forex-indicator-reviews-7-powerful-truths-every-trader-must-know",
       "wasTo": "/category/forex-trading-strategies/"
-    },
-    {
-      "from": "/7-essential-honest-structure-mapping-pro-by-rabgoada9-forex-indicator-reviews-that-traders-shouldnt-ignore",
-      "wasTo": "/category/free-forex-indicator/"
     },
     {
       "from": "/exness-review-trade-from-1-with-free-vps-why-it-beats-every-other-broker",
@@ -6215,19 +6973,55 @@
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/"
     },
     {
-      "from": "/flux-pulse-orb-by-inkadinka_ka-forex-indicator-reviews-the-powerful-truth-behind-this-game-changing-tool",
-      "wasTo": "/category/forex-indicator-reviews/"
-    },
-    {
       "from": "/nas100-alerts-limitless-by-blissfulaccoun8911-forex-indicator-reviews-powerful-truth-7-game-changing-insights",
       "wasTo": "/category/free-forex-indicator/"
     }
   ],
   "rules": [
     {
-      "from": "/%E2%9A%A1-zeus-forex-scalping-indicator-free-download-powerful-strategy-guide-7-proven-benefits",
-      "to": "/murasaki-scalper-free-download-powerful-secrets-every-trader-must-know-before-installing/",
-      "status": 301
+      "from": "/-better-volume-1-5-mt4-forex-indicator-free-download-powerful-guide-with-7-proven-trading-insights/",
+      "to": "/-better-volume-1-5-mt4-forex-indicator-free-download-powerful-guide-with-7-proven-trading-insights/",
+      "status": 410
+    },
+    {
+      "from": "/-double-top-bottom-patterns-mt4-forex-indicator-powerful-proven-free-trading-tool/",
+      "to": "/-double-top-bottom-patterns-mt4-forex-indicator-powerful-proven-free-trading-tool/",
+      "status": 410
+    },
+    {
+      "from": "/-forex-future-forecast-indicator-free-download-powerful-proven-guide-for-smarter-trading/",
+      "to": "/-forex-future-forecast-indicator-free-download-powerful-proven-guide-for-smarter-trading/",
+      "status": 410
+    },
+    {
+      "from": "/-fx-support-and-resistance-forex-indicator-free-download-powerful-proven-trading-edge/",
+      "to": "/-fx-support-and-resistance-forex-indicator-free-download-powerful-proven-trading-edge/",
+      "status": 410
+    },
+    {
+      "from": "/-powerful-7-reasons-why-gbpusd-scalper-king-sniper-ea-free-download-is-a-game-changer-for-forex-traders/",
+      "to": "/-powerful-7-reasons-why-gbpusd-scalper-king-sniper-ea-free-download-is-a-game-changer-for-forex-traders/",
+      "status": 410
+    },
+    {
+      "from": "/-powerful-7-step-guide-to-the-pivot-custom-indicator-mt4-free-download-for-smarter-trading/",
+      "to": "/-powerful-7-step-guide-to-the-pivot-custom-indicator-mt4-free-download-for-smarter-trading/",
+      "status": 410
+    },
+    {
+      "from": "/-powerful-crypto-trading-indicator-system-mt5-free-download/",
+      "to": "/-powerful-crypto-trading-indicator-system-mt5-free-download/",
+      "status": 410
+    },
+    {
+      "from": "/-trend-action-binary-option-strategy-free-download-powerful-proven-guide/",
+      "to": "/-trend-action-binary-option-strategy-free-download-powerful-proven-guide/",
+      "status": 410
+    },
+    {
+      "from": "/%E2%9A%A1-zeus-forex-scalping-indicator-free-download-powerful-strategy-guide-7-proven-benefits/",
+      "to": "/%E2%9A%A1-zeus-forex-scalping-indicator-free-download-powerful-strategy-guide-7-proven-benefits/",
+      "status": 410
     },
     {
       "from": "/%F0%9F%8C%99-best-night-scalping-bot-free-download-7-powerful-secrets-traders-must-know-before-installing",
@@ -6265,9 +7059,9 @@
       "status": 410
     },
     {
-      "from": "/%F0%9F%93%88-buy-sell-forex-indicator-free-download-powerful-proven-7-step-guide-for-smart-trading",
-      "to": "/cpr-forex-indicator-for-mt4-free-download-7-powerful-benefits-proven-trading-secrets/",
-      "status": 301
+      "from": "/%F0%9F%93%88-buy-sell-forex-indicator-free-download-powerful-proven-7-step-guide-for-smart-trading/",
+      "to": "/%F0%9F%93%88-buy-sell-forex-indicator-free-download-powerful-proven-7-step-guide-for-smart-trading/",
+      "status": 410
     },
     {
       "from": "/%F0%9F%93%88-candlestick-traders-free-download-7-powerful-proven-facts-you-must-know-before-downloading",
@@ -6325,9 +7119,14 @@
       "status": 301
     },
     {
-      "from": "/%F0%9F%93%88-supertrend-slope-only-by-sudhakar_kb-forex-indicator-reviews-7-powerful-truths-every-trader-must-know",
-      "to": "/forex-millionaire-indicator-free-download-7-powerful-truths-you-must-know-before-installing/",
-      "status": 301
+      "from": "/%F0%9F%93%88-smart-money-order-block-forex-strategy-free-indicator-powerful-2026-guide-7-pro-secrets-2/",
+      "to": "/%F0%9F%93%88-smart-money-order-block-forex-strategy-free-indicator-powerful-2026-guide-7-pro-secrets-2/",
+      "status": 410
+    },
+    {
+      "from": "/%F0%9F%93%88-supertrend-slope-only-by-sudhakar_kb-forex-indicator-reviews-7-powerful-truths-every-trader-must-know/",
+      "to": "/%F0%9F%93%88-supertrend-slope-only-by-sudhakar_kb-forex-indicator-reviews-7-powerful-truths-every-trader-must-know/",
+      "status": 410
     },
     {
       "from": "/%F0%9F%93%88-trend-action-binary-option-strategy-free-download-powerful-proven-guide",
@@ -6355,8 +7154,8 @@
       "status": 301
     },
     {
-      "from": "/%F0%9F%93%8A-adx-supertrend-by-rakoquant-forex-indicator-reviews-powerful-7-proven-insights-for-smarter-trading",
-      "to": "/%F0%9F%93%8A-adx-supertrend-by-rakoquant-forex-indicator-reviews-powerful-7-proven-insights-for-smarter-trading",
+      "from": "/%F0%9F%93%8A-adx-supertrend-by-rakoquant-forex-indicator-reviews-powerful-7-proven-insights-for-smarter-trading/",
+      "to": "/%F0%9F%93%8A-adx-supertrend-by-rakoquant-forex-indicator-reviews-powerful-7-proven-insights-for-smarter-trading/",
       "status": 410
     },
     {
@@ -6420,9 +7219,9 @@
       "status": 301
     },
     {
-      "from": "/%F0%9F%93%8A-market-profile-trendlines-mt4-forex-indicator-free-download-powerful-proven-tool-for-precision-trading",
-      "to": "/cpr-forex-indicator-for-mt4-free-download-7-powerful-benefits-proven-trading-secrets/",
-      "status": 301
+      "from": "/%F0%9F%93%8A-market-profile-trendlines-mt4-forex-indicator-free-download-powerful-proven-tool-for-precision-trading/",
+      "to": "/%F0%9F%93%8A-market-profile-trendlines-mt4-forex-indicator-free-download-powerful-proven-tool-for-precision-trading/",
+      "status": 410
     },
     {
       "from": "/%F0%9F%93%8A-market-structure-oscillator-free-download-powerful-proven-trading-guide",
@@ -6570,8 +7369,8 @@
       "status": 410
     },
     {
-      "from": "/%F0%9F%9A%80-bitcoin-quantum-edge-algo-forex-ea-reviews-7-shocking-truths-you-must-know-before-investing",
-      "to": "/%F0%9F%9A%80-bitcoin-quantum-edge-algo-forex-ea-reviews-7-shocking-truths-you-must-know-before-investing",
+      "from": "/%F0%9F%9A%80-bitcoin-quantum-edge-algo-forex-ea-reviews-7-shocking-truths-you-must-know-before-investing/",
+      "to": "/%F0%9F%9A%80-bitcoin-quantum-edge-algo-forex-ea-reviews-7-shocking-truths-you-must-know-before-investing/",
       "status": 410
     },
     {
@@ -6590,14 +7389,14 @@
       "status": 301
     },
     {
-      "from": "/%F0%9F%9A%80-gcm-alpha-structure-framework-by-unigram-forex-indicator-reviews-powerful-insights-7-critical-truths",
-      "to": "/%F0%9F%9A%80-gcm-alpha-structure-framework-by-unigram-forex-indicator-reviews-powerful-insights-7-critical-truths",
+      "from": "/%F0%9F%9A%80-gcm-alpha-structure-framework-by-unigram-forex-indicator-reviews-powerful-insights-7-critical-truths/",
+      "to": "/%F0%9F%9A%80-gcm-alpha-structure-framework-by-unigram-forex-indicator-reviews-powerful-insights-7-critical-truths/",
       "status": 410
     },
     {
-      "from": "/%F0%9F%9A%80-kx4-pro-trading-system-free-download-powerful-proven-strategy-guide",
-      "to": "/gold-sniper-master-indicator-system-free-download-powerful-secrets-7-proven-trading-advantages/",
-      "status": 301
+      "from": "/%F0%9F%9A%80-kx4-pro-trading-system-free-download-powerful-proven-strategy-guide/",
+      "to": "/%F0%9F%9A%80-kx4-pro-trading-system-free-download-powerful-proven-strategy-guide/",
+      "status": 410
     },
     {
       "from": "/%F0%9F%9A%80-market-sentiment-forex-indicator-for-mt4-free-download-7-powerful-benefits-every-trader-must-know",
@@ -6645,8 +7444,8 @@
       "status": 410
     },
     {
-      "from": "/%F0%9F%9A%80-powerful-guide-daily-dynamic-trend-multi-currency-v4-forex-indicator-free-download-explained",
-      "to": "/%F0%9F%9A%80-powerful-guide-daily-dynamic-trend-multi-currency-v4-forex-indicator-free-download-explained",
+      "from": "/%F0%9F%9A%80-powerful-guide-daily-dynamic-trend-multi-currency-v4-forex-indicator-free-download-explained/",
+      "to": "/%F0%9F%9A%80-powerful-guide-daily-dynamic-trend-multi-currency-v4-forex-indicator-free-download-explained/",
       "status": 410
     },
     {
@@ -6670,8 +7469,8 @@
       "status": 410
     },
     {
-      "from": "/%F0%9F%9A%80-smart-money-engine-by-willyalgotrader-forex-indicator-reviews-powerful-truth-7-shocking-insights",
-      "to": "/%F0%9F%9A%80-smart-money-engine-by-willyalgotrader-forex-indicator-reviews-powerful-truth-7-shocking-insights",
+      "from": "/%F0%9F%9A%80-smart-money-engine-by-willyalgotrader-forex-indicator-reviews-powerful-truth-7-shocking-insights/",
+      "to": "/%F0%9F%9A%80-smart-money-engine-by-willyalgotrader-forex-indicator-reviews-powerful-truth-7-shocking-insights/",
       "status": 410
     },
     {
@@ -6705,8 +7504,8 @@
       "status": 410
     },
     {
-      "from": "/%F0%9F%A4%96-bitcoin-wizard-scalping-bitcoin-robot-free-download-guide",
-      "to": "/%F0%9F%A4%96-bitcoin-wizard-scalping-bitcoin-robot-free-download-guide",
+      "from": "/%F0%9F%A4%96-bitcoin-wizard-scalping-bitcoin-robot-free-download-guide/",
+      "to": "/%F0%9F%A4%96-bitcoin-wizard-scalping-bitcoin-robot-free-download-guide/",
       "status": 410
     },
     {
@@ -7665,9 +8464,9 @@
       "status": 410
     },
     {
-      "from": "/4x-wave-indicator-system-free-download-7-powerful-benefits-every-trader-must-know",
-      "to": "/nexus-6-0-binary-indicator-free-download-powerful-proven-trading-tool-guide/",
-      "status": 301
+      "from": "/4x-wave-indicator-system-free-download-7-powerful-benefits-every-trader-must-know/",
+      "to": "/4x-wave-indicator-system-free-download-7-powerful-benefits-every-trader-must-know/",
+      "status": 410
     },
     {
       "from": "/4x-wave-indicator-system-free-download-the-ultimate-powerful-guide",
@@ -7745,8 +8544,8 @@
       "status": 410
     },
     {
-      "from": "/7-essential-honest-structure-mapping-pro-by-rabgoada9-forex-indicator-reviews-that-traders-shouldnt-ignore",
-      "to": "/7-essential-honest-structure-mapping-pro-by-rabgoada9-forex-indicator-reviews-that-traders-shouldnt-ignore",
+      "from": "/7-essential-honest-structure-mapping-pro-by-rabgoada9-forex-indicator-reviews-that-traders-shouldnt-ignore/",
+      "to": "/7-essential-honest-structure-mapping-pro-by-rabgoada9-forex-indicator-reviews-that-traders-shouldnt-ignore/",
       "status": 410
     },
     {
@@ -8240,8 +9039,8 @@
       "status": 410
     },
     {
-      "from": "/a-successful-mindset-5-tips-for-building-it",
-      "to": "/a-successful-mindset-5-tips-for-building-it",
+      "from": "/a-successful-mindset-5-tips-for-building-it/",
+      "to": "/a-successful-mindset-5-tips-for-building-it/",
       "status": 410
     },
     {
@@ -8275,8 +9074,8 @@
       "status": 301
     },
     {
-      "from": "/adaptive-pivot-structure-by-willyalgotrader-forex-indicator-reviews",
-      "to": "/adaptive-pivot-structure-by-willyalgotrader-forex-indicator-reviews",
+      "from": "/adaptive-pivot-structure-by-willyalgotrader-forex-indicator-reviews/",
+      "to": "/adaptive-pivot-structure-by-willyalgotrader-forex-indicator-reviews/",
       "status": 410
     },
     {
@@ -8295,9 +9094,9 @@
       "status": 301
     },
     {
-      "from": "/adaptive-volatility-trend-by-willyalgotrader-forex-indicator-reviews-powerful-insights-7-proven-benefits",
-      "to": "/%F0%9F%93%88-gold-trend-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
-      "status": 301
+      "from": "/adaptive-volatility-trend-by-willyalgotrader-forex-indicator-reviews-powerful-insights-7-proven-benefits/",
+      "to": "/adaptive-volatility-trend-by-willyalgotrader-forex-indicator-reviews-powerful-insights-7-proven-benefits/",
+      "status": 410
     },
     {
       "from": "/advanced-hedge-forex-ea-mt4-free-download-7-powerful-benefits-every-trader-must-know",
@@ -8315,8 +9114,8 @@
       "status": 301
     },
     {
-      "from": "/advanced-scalper-forex-ea-mt4-free-download-7-powerful-secrets-every-trader-must-know",
-      "to": "/top-7-best-free-forex-scalper-ea-for-mt4-download/",
+      "from": "/advanced-scalper-forex-ea-mt4-free-download-7-powerful-secrets-every-trader-must-know/",
+      "to": "/best-forex-ea/",
       "status": 301
     },
     {
@@ -8360,9 +9159,9 @@
       "status": 301
     },
     {
-      "from": "/ag-pro-swap-engine-by-agprolabs-forex-indicator-reviews-7-powerful-truths-every-trader-must-know",
-      "to": "/forex-scanner-pro-indicator-system-for-mt4-free-download-ultimate-powerful-guide-setup/",
-      "status": 301
+      "from": "/ag-pro-swap-engine-by-agprolabs-forex-indicator-reviews-7-powerful-truths-every-trader-must-know/",
+      "to": "/ag-pro-swap-engine-by-agprolabs-forex-indicator-reviews-7-powerful-truths-every-trader-must-know/",
+      "status": 410
     },
     {
       "from": "/aggressive-free-forex-ea-download-7-powerful-truths-you-must-know-before-installing",
@@ -8380,8 +9179,8 @@
       "status": 410
     },
     {
-      "from": "/ai-forex-robot-forex-ea-reviews-9-powerful-truths-every-trader-must-know-before-buying",
-      "to": "/ai-forex-robot-forex-ea-reviews-9-powerful-truths-every-trader-must-know-before-buying",
+      "from": "/ai-forex-robot-forex-ea-reviews-9-powerful-truths-every-trader-must-know-before-buying/",
+      "to": "/ai-forex-robot-forex-ea-reviews-9-powerful-truths-every-trader-must-know-before-buying/",
       "status": 410
     },
     {
@@ -8390,9 +9189,9 @@
       "status": 410
     },
     {
-      "from": "/ai-gen-xii-chatgpt-ea-free-download-7-powerful-facts-you-must-know-before-installing",
-      "to": "/ai-gen-xii-chatgpt-ea-free-download-7-powerful-facts-you-must-know-before-installing",
-      "status": 410
+      "from": "/ai-gen-xii-chatgpt-ea-free-download-7-powerful-facts-you-must-know-before-installing/",
+      "to": "/best-forex-ea/",
+      "status": 301
     },
     {
       "from": "/ai-gold-prime-forex-ea-reviews-7-powerful-truths-you-must-know-before-investing",
@@ -8420,9 +9219,9 @@
       "status": 301
     },
     {
-      "from": "/ai-price-action-robot-free-download-the-ultimate-guide-to-safe-smart-trading",
-      "to": "/ai-price-action-robot-free-download-the-ultimate-guide-to-safe-smart-trading",
-      "status": 410
+      "from": "/ai-price-action-robot-free-download-the-ultimate-guide-to-safe-smart-trading/",
+      "to": "/best-forex-ea/",
+      "status": 301
     },
     {
       "from": "/ai-prop-firms-forex-ea-reviews-7-powerful-truths-you-must-know-before-investing",
@@ -8455,19 +9254,19 @@
       "status": 410
     },
     {
-      "from": "/algotradesoft-innovative-ea-7-powerful-reasons-its-a-game-changer-for-smart-traders",
-      "to": "/algotradesoft-innovative-ea-7-powerful-reasons-its-a-game-changer-for-smart-traders",
-      "status": 410
-    },
-    {
-      "from": "/algotradesoft-innovative-ea-free-download-7-powerful-benefits-honest-insights-you-must-know",
-      "to": "/algotradesoft-innovative-ea-free-download-7-powerful-benefits-honest-insights-you-must-know",
+      "from": "/algotradesoft-innovative-ea-7-powerful-reasons-its-a-game-changer-for-smart-traders/",
+      "to": "/algotradesoft-innovative-ea-7-powerful-reasons-its-a-game-changer-for-smart-traders/",
       "status": 410
     },
     {
       "from": "/algotradesoft-innovative-ea-free-download-7-powerful-benefits-honest-insights-you-must-know-2",
       "to": "/algotradesoft-innovative-ea-free-download-7-powerful-benefits-honest-insights-you-must-know-2",
       "status": 410
+    },
+    {
+      "from": "/algotradesoft-innovative-ea-free-download-7-powerful-benefits-honest-insights-you-must-know/",
+      "to": "/best-forex-ea/",
+      "status": 301
     },
     {
       "from": "/aliev-fx-volumes-mt4-indicator-free-download-powerful-7-step-guide-to-smarter-volume-trading",
@@ -8500,9 +9299,9 @@
       "status": 301
     },
     {
-      "from": "/alphaflow-ea-free-download-powerful-guide-to-safe-smart-access",
-      "to": "/alphaflow-ea-free-download-powerful-guide-to-safe-smart-access",
-      "status": 410
+      "from": "/alphaflow-ea-free-download-powerful-guide-to-safe-smart-access/",
+      "to": "/best-forex-ea/",
+      "status": 301
     },
     {
       "from": "/alpinist-ea-free-download-7-crucial-facts-you-must-know-before-installing",
@@ -8525,9 +9324,9 @@
       "status": 410
     },
     {
-      "from": "/another-good-forex-zigzag-indicator-free-download-7-powerful-reasons-traders-love-it",
-      "to": "/forex-plutus-best-premium-indicator-free-download-7-powerful-reasons-traders-love-it/",
-      "status": 301
+      "from": "/another-good-forex-zigzag-indicator-free-download-7-powerful-reasons-traders-love-it/",
+      "to": "/another-good-forex-zigzag-indicator-free-download-7-powerful-reasons-traders-love-it/",
+      "status": 410
     },
     {
       "from": "/anti-martingale-approach-for-safe-trading",
@@ -8655,6 +9454,11 @@
       "status": 410
     },
     {
+      "from": "/author/admin/",
+      "to": "/author/admin/",
+      "status": 410
+    },
+    {
       "from": "/auto-breakouts-and-retests-indicator-free-download-powerful-proven-trading-tool",
       "to": "/auto-breakouts-and-retests-indicator-free-download-powerful-proven-trading-tool",
       "status": 410
@@ -8680,9 +9484,9 @@
       "status": 410
     },
     {
-      "from": "/auto-pivot-points-indicator-mt4-mt5-free-download-powerful-accurate-trading-tool",
-      "to": "/renko-street-indicator-free-download-powerful-accurate-trading-tool-guide/",
-      "status": 301
+      "from": "/auto-pivot-points-indicator-mt4-mt5-free-download-powerful-accurate-trading-tool/",
+      "to": "/auto-pivot-points-indicator-mt4-mt5-free-download-powerful-accurate-trading-tool/",
+      "status": 410
     },
     {
       "from": "/auto-recovery-of-mt4-after-vps-crash-guide-7-powerful-steps-for-traders",
@@ -8950,9 +9754,9 @@
       "status": 410
     },
     {
-      "from": "/best-forex-broker-in-usa",
-      "to": "/best-forex-brokers/",
-      "status": 301
+      "from": "/best-forex-broker-in-usa/",
+      "to": "/best-forex-broker-in-usa/",
+      "status": 410
     },
     {
       "from": "/best-forex-brokers-top-10-regulated-platforms-with-lowest-deposits-real-bonuses-revealed",
@@ -8965,14 +9769,19 @@
       "status": 301
     },
     {
+      "from": "/best-forex-robot-2022/",
+      "to": "/best-forex-ea/",
+      "status": 301
+    },
+    {
       "from": "/best-forex-scalper-indicator-system-free-download-11-powerful-tools-for-fast-safer-entries-no-nonsense-guide",
       "to": "/top-7-best-free-forex-scalper-ea-for-mt4-download/",
       "status": 301
     },
     {
-      "from": "/best-forex-scalping-ea-free-download-7-powerful-truths-you-must-know-before-using-one",
-      "to": "/best-forex-scalping-ea-free-download-7-powerful-truths-you-must-know-before-using-one",
-      "status": 410
+      "from": "/best-forex-scalping-ea-free-download-7-powerful-truths-you-must-know-before-using-one/",
+      "to": "/best-forex-ea/",
+      "status": 301
     },
     {
       "from": "/best-forex-strategies-for-beginners-10-proven-methods-for-fast-safe-trading-success",
@@ -9008,6 +9817,11 @@
       "from": "/best-gold-robot-eafree-download-7-powerful-truths-every-trader-must-know",
       "to": "/gold-investor-best-forex-gold-ea-free-download-powerful-proven-guide/",
       "status": 301
+    },
+    {
+      "from": "/best-indicators-for-scalping/",
+      "to": "/best-indicators-for-scalping/",
+      "status": 410
     },
     {
       "from": "/best-ios-forex-trading-platforms-with-alerts-10-powerful-options-for-smarter-trading",
@@ -9180,6 +9994,11 @@
       "status": 410
     },
     {
+      "from": "/bitcoin-trading-bot-free-download-powerful-safe-smart-guide/",
+      "to": "/bitcoin-trading-bot-free-download-powerful-safe-smart-guide/",
+      "status": 410
+    },
+    {
       "from": "/bkk-scalper-ea",
       "to": "/bkk-scalper-ea",
       "status": 410
@@ -9280,9 +10099,9 @@
       "status": 301
     },
     {
-      "from": "/boom-and-crash-indicator-system-mt5-free-download-7-powerful-secrets-to-maximize-profits-safely",
-      "to": "/%F0%9F%9A%80-boom-and-crash-mt5-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
-      "status": 301
+      "from": "/boom-and-crash-indicator-system-mt5-free-download-7-powerful-secrets-to-maximize-profits-safely/",
+      "to": "/boom-and-crash-indicator-system-mt5-free-download-7-powerful-secrets-to-maximize-profits-safely/",
+      "status": 410
     },
     {
       "from": "/bottom-finder-2-green-candles-momentum-by-kerrency",
@@ -9295,8 +10114,8 @@
       "status": 410
     },
     {
-      "from": "/break-through-the-wall-of-trading-mistakes-holding-you-back",
-      "to": "/break-through-the-wall-of-trading-mistakes-holding-you-back",
+      "from": "/break-through-the-wall-of-trading-mistakes-holding-you-back/",
+      "to": "/break-through-the-wall-of-trading-mistakes-holding-you-back/",
       "status": 410
     },
     {
@@ -9360,6 +10179,11 @@
       "status": 301
     },
     {
+      "from": "/brokers/",
+      "to": "/best-forex-brokers/",
+      "status": 301
+    },
+    {
       "from": "/bss-forex-market-ea-14-3-free-download-powerful-guide-with-7-proven-insights",
       "to": "/bss-forex-market-ea-14-3-free-download-powerful-guide-with-7-proven-insights",
       "status": 410
@@ -9370,14 +10194,14 @@
       "status": 410
     },
     {
-      "from": "/btc-volatility-weighted-trend-matrix-by-mentor_michael03-forex-indicator-reviews-powerful-truths-smart-warnings-7-key-insights",
-      "to": "/btc-volatility-weighted-trend-matrix-by-mentor_michael03-forex-indicator-reviews-powerful-truths-smart-warnings-7-key-insights",
+      "from": "/btc-volatility-weighted-trend-matrix-by-mentor_michael03-forex-indicator-reviews-powerful-truths-smart-warnings-7-key-insights/",
+      "to": "/btc-volatility-weighted-trend-matrix-by-mentor_michael03-forex-indicator-reviews-powerful-truths-smart-warnings-7-key-insights/",
       "status": 410
     },
     {
-      "from": "/budak-ubat-ea-free-download-7-powerful-facts-you-must-know-before-installing",
-      "to": "/budak-ubat-ea-free-download-7-powerful-facts-you-must-know-before-installing",
-      "status": 410
+      "from": "/budak-ubat-ea-free-download-7-powerful-facts-you-must-know-before-installing/",
+      "to": "/best-forex-ea/",
+      "status": 301
     },
     {
       "from": "/building-a-forex-trading-plan-step-by-step-11-powerful-strategies-for-success",
@@ -9480,6 +10304,11 @@
       "status": 301
     },
     {
+      "from": "/category/beginners-guides-forex-basics/page/2/",
+      "to": "/category/forex-trading-strategies/",
+      "status": 301
+    },
+    {
       "from": "/category/bitcoin",
       "to": "/category/bitcoin",
       "status": 410
@@ -9500,6 +10329,11 @@
       "status": 301
     },
     {
+      "from": "/category/forex-broker-reviews/page/2/",
+      "to": "/category/ai-powered-trading-tools/brokers-trading-platforms/",
+      "status": 301
+    },
+    {
       "from": "/category/forex-ea-review",
       "to": "/product/obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5/",
       "status": 301
@@ -9515,9 +10349,24 @@
       "status": 410
     },
     {
+      "from": "/category/forex-indicator-reviews/page/4/",
+      "to": "/category/forex-indicator-reviews/",
+      "status": 301
+    },
+    {
       "from": "/category/forex-trading",
       "to": "/category/forex-trading",
       "status": 410
+    },
+    {
+      "from": "/category/forex-trading-strategies/forex-scalping/page/3/",
+      "to": "/category/forex-trading-strategies/forex-scalping/",
+      "status": 301
+    },
+    {
+      "from": "/category/forex-trading-strategies/forex-scalping/page/4/",
+      "to": "/category/forex-trading-strategies/forex-scalping/",
+      "status": 301
     },
     {
       "from": "/category/forex-trading-strategies/forex-swing-trading/",
@@ -9555,7 +10404,22 @@
       "status": 301
     },
     {
+      "from": "/category/free-forex-indicator/page/3/",
+      "to": "/category/free-forex-indicator/",
+      "status": 301
+    },
+    {
+      "from": "/category/free-forex-indicator/page/39/",
+      "to": "/category/free-forex-indicator/",
+      "status": 301
+    },
+    {
       "from": "/category/fundamental-analysis/",
+      "to": "/category/technical-analysis/",
+      "status": 301
+    },
+    {
+      "from": "/category/fundamental-analysis/page/4/",
       "to": "/category/technical-analysis/",
       "status": 301
     },
@@ -9571,6 +10435,11 @@
     },
     {
       "from": "/category/gold-xauusd-trading/gold-risk-management/",
+      "to": "/category/gold-xauusd-trading/",
+      "status": 301
+    },
+    {
+      "from": "/category/gold-xauusd-trading/page/3/",
       "to": "/category/gold-xauusd-trading/",
       "status": 301
     },
@@ -9605,6 +10474,11 @@
       "status": 301
     },
     {
+      "from": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/page/5/",
+      "to": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/",
+      "status": 301
+    },
+    {
       "from": "/category/mt4/expert-advisors",
       "to": "/category/mt4/expert-advisors",
       "status": 410
@@ -9620,12 +10494,42 @@
       "status": 301
     },
     {
+      "from": "/category/prop-firm-reviews/page/2/",
+      "to": "/category/risk-money-management/",
+      "status": 301
+    },
+    {
+      "from": "/category/prop-firm-reviews/page/3/",
+      "to": "/category/risk-money-management/",
+      "status": 301
+    },
+    {
+      "from": "/category/risk-money-management/page/3/",
+      "to": "/category/risk-money-management/",
+      "status": 301
+    },
+    {
       "from": "/category/strategies-best-practices/",
       "to": "/category/forex-trading-strategies/",
       "status": 301
     },
     {
+      "from": "/category/strategies-best-practices/page/9/",
+      "to": "/category/forex-trading-strategies/",
+      "status": 301
+    },
+    {
+      "from": "/category/technical-analysis/page/4/",
+      "to": "/category/technical-analysis/",
+      "status": 301
+    },
+    {
       "from": "/category/trading-psychology/",
+      "to": "/category/risk-money-management/",
+      "status": 301
+    },
+    {
+      "from": "/category/trading-psychology/page/3/",
       "to": "/category/risk-money-management/",
       "status": 301
     },
@@ -9640,9 +10544,9 @@
       "status": 410
     },
     {
-      "from": "/central-pivot-range-forex-indicator-mt4-free-download-powerful-trading-edge-with-7-proven-benefits",
-      "to": "/cpr-forex-indicator-for-mt4-free-download-7-powerful-benefits-proven-trading-secrets/",
-      "status": 301
+      "from": "/central-pivot-range-forex-indicator-mt4-free-download-powerful-trading-edge-with-7-proven-benefits/",
+      "to": "/central-pivot-range-forex-indicator-mt4-free-download-powerful-trading-edge-with-7-proven-benefits/",
+      "status": 410
     },
     {
       "from": "/cfd-trading-in-forex-pros-and-cons",
@@ -9825,9 +10729,9 @@
       "status": 301
     },
     {
-      "from": "/crownprincefx-ea-free-download-the-ultimate-beginner-to-pro-guide",
-      "to": "/crownprincefx-ea-free-download-the-ultimate-beginner-to-pro-guide",
-      "status": 410
+      "from": "/crownprincefx-ea-free-download-the-ultimate-beginner-to-pro-guide/",
+      "to": "/best-forex-ea/",
+      "status": 301
     },
     {
       "from": "/crude-oil-robot-mt4-performance-review-and-setup-guide-10-powerful-insights-for-traders",
@@ -10000,6 +10904,11 @@
       "status": 301
     },
     {
+      "from": "/day-trading-books-for-beginners/",
+      "to": "/day-trading-books-for-beginners/",
+      "status": 410
+    },
+    {
       "from": "/day-trading-gold-futures-step-by-step-guide",
       "to": "/free-gold-trading-ea-free-download-7-powerful-benefits-smart-setup-guide/",
       "status": 301
@@ -10145,6 +11054,11 @@
       "status": 410
     },
     {
+      "from": "/download/",
+      "to": "/best-forex-ea/",
+      "status": 301
+    },
+    {
       "from": "/dragon-expert-ea",
       "to": "/product/obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5/",
       "status": 301
@@ -10175,9 +11089,9 @@
       "status": 301
     },
     {
-      "from": "/dtosc-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know",
-      "to": "/%F0%9F%9A%80-mt4-x-speed-forex-indicator-free-download-powerful-proven-guide/",
-      "status": 301
+      "from": "/dtosc-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "to": "/dtosc-mt4-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "status": 410
     },
     {
       "from": "/e-savdogar-ea-free-download-powerful-guide-to-safe-access-smart-usage",
@@ -10205,9 +11119,9 @@
       "status": 301
     },
     {
-      "from": "/ea-gold-algo-forex-ea-reviews-7-powerful-truths-every-trader-must-know",
-      "to": "/the-gold-reaper-forex-ea-reviews-powerful-truths-7-critical-insights-before-you-invest/",
-      "status": 301
+      "from": "/ea-gold-algo-forex-ea-reviews-7-powerful-truths-every-trader-must-know/",
+      "to": "/ea-gold-algo-forex-ea-reviews-7-powerful-truths-every-trader-must-know/",
+      "status": 410
     },
     {
       "from": "/ea-gold-stuff-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing",
@@ -10215,13 +11129,13 @@
       "status": 410
     },
     {
-      "from": "/ea-gold-stuff-forex-ea-reviews-powerful-insights-honest-pros-performance-breakdown",
-      "to": "/quantum-valkyrie-forex-ea-reviews-powerful-insights-honest-analysis-performance-breakdown/",
-      "status": 301
+      "from": "/ea-gold-stuff-forex-ea-reviews-powerful-insights-honest-pros-performance-breakdown/",
+      "to": "/ea-gold-stuff-forex-ea-reviews-powerful-insights-honest-pros-performance-breakdown/",
+      "status": 410
     },
     {
-      "from": "/ea-new-player-forex-ea-reviews-7-powerful-insights-every-trader-must-know",
-      "to": "/ea-new-player-forex-ea-reviews-7-powerful-insights-every-trader-must-know",
+      "from": "/ea-new-player-forex-ea-reviews-7-powerful-insights-every-trader-must-know/",
+      "to": "/ea-new-player-forex-ea-reviews-7-powerful-insights-every-trader-must-know/",
       "status": 410
     },
     {
@@ -10290,8 +11204,8 @@
       "status": 410
     },
     {
-      "from": "/egcx-gold-bot-pro-ea-7-powerful-reasons-traders-are-switching-to-this-advanced-gold-trading-system",
-      "to": "/egcx-gold-bot-pro-ea-7-powerful-reasons-traders-are-switching-to-this-advanced-gold-trading-system",
+      "from": "/egcx-gold-bot-pro-ea-7-powerful-reasons-traders-are-switching-to-this-advanced-gold-trading-system/",
+      "to": "/egcx-gold-bot-pro-ea-7-powerful-reasons-traders-are-switching-to-this-advanced-gold-trading-system/",
       "status": 410
     },
     {
@@ -10605,9 +11519,9 @@
       "status": 301
     },
     {
-      "from": "/firestorm-odin-ea-v3-free-download-7-powerful-truths-you-must-know-before-you-try-it",
-      "to": "/firestorm-odin-ea-v3-free-download-7-powerful-truths-you-must-know-before-you-try-it",
-      "status": 410
+      "from": "/firestorm-odin-ea-v3-free-download-7-powerful-truths-you-must-know-before-you-try-it/",
+      "to": "/best-forex-ea/",
+      "status": 301
     },
     {
       "from": "/firestorm-scalper-ea-v5-free-download-7-powerful-truths-you-must-know-before-installing",
@@ -10635,8 +11549,8 @@
       "status": 301
     },
     {
-      "from": "/flux-pulse-orb-by-inkadinka_ka-forex-indicator-reviews-the-powerful-truth-behind-this-game-changing-tool",
-      "to": "/flux-pulse-orb-by-inkadinka_ka-forex-indicator-reviews-the-powerful-truth-behind-this-game-changing-tool",
+      "from": "/flux-pulse-orb-by-inkadinka_ka-forex-indicator-reviews-the-powerful-truth-behind-this-game-changing-tool/",
+      "to": "/flux-pulse-orb-by-inkadinka_ka-forex-indicator-reviews-the-powerful-truth-behind-this-game-changing-tool/",
       "status": 410
     },
     {
@@ -10665,9 +11579,9 @@
       "status": 301
     },
     {
-      "from": "/force-investor-ea-free-download-7-powerful-facts-honest-insights-smart-tips",
-      "to": "/force-investor-ea-free-download-7-powerful-facts-honest-insights-smart-tips",
-      "status": 410
+      "from": "/force-investor-ea-free-download-7-powerful-facts-honest-insights-smart-tips/",
+      "to": "/best-forex-ea/",
+      "status": 301
     },
     {
       "from": "/force-killer-ea-free-download-7-powerful-facts-you-must-know-before-installing",
@@ -10775,8 +11689,8 @@
       "status": 301
     },
     {
-      "from": "/forex-cyborg-review-half-bot-half-human-all-profit",
-      "to": "/forex-cyborg-review-half-bot-half-human-all-profit",
+      "from": "/forex-cyborg-review-half-bot-half-human-all-profit/",
+      "to": "/forex-cyborg-review-half-bot-half-human-all-profit/",
       "status": 410
     },
     {
@@ -10890,8 +11804,8 @@
       "status": 410
     },
     {
-      "from": "/forex-millionaire-rsi-indicator-and-strategy-free-download-7-powerful-secrets-to-maximize-profits-fast",
-      "to": "/forex-millionaire-rsi-indicator-and-strategy-free-download-7-powerful-secrets-to-maximize-profits-fast",
+      "from": "/forex-millionaire-rsi-indicator-and-strategy-free-download-7-powerful-secrets-to-maximize-profits-fast/",
+      "to": "/forex-millionaire-rsi-indicator-and-strategy-free-download-7-powerful-secrets-to-maximize-profits-fast/",
       "status": 410
     },
     {
@@ -10920,13 +11834,13 @@
       "status": 410
     },
     {
-      "from": "/forex-profit-boost-mt4-indicator-free-download-7-powerful-secrets-to-maximize-your-trading-profits",
-      "to": "/forex-scanner-pro-indicator-system-for-mt4-free-download-ultimate-powerful-guide-setup/",
-      "status": 301
+      "from": "/forex-profit-boost-mt4-indicator-free-download-7-powerful-secrets-to-maximize-your-trading-profits/",
+      "to": "/forex-profit-boost-mt4-indicator-free-download-7-powerful-secrets-to-maximize-your-trading-profits/",
+      "status": 410
     },
     {
-      "from": "/forex-range-trading-strategy-free-download-powerful-7-step-blueprint-for-consistent-profits",
-      "to": "/forex-range-trading-strategy-free-download-powerful-7-step-blueprint-for-consistent-profits",
+      "from": "/forex-range-trading-strategy-free-download-powerful-7-step-blueprint-for-consistent-profits/",
+      "to": "/forex-range-trading-strategy-free-download-powerful-7-step-blueprint-for-consistent-profits/",
       "status": 410
     },
     {
@@ -10940,14 +11854,19 @@
       "status": 410
     },
     {
-      "from": "/forex-rebellion-trading-system-for-mt4-free-download-7-powerful-truths-you-must-know-before-installing",
-      "to": "/forex-rebellion-trading-system-for-mt4-free-download-7-powerful-truths-you-must-know-before-installing",
+      "from": "/forex-rebellion-trading-system-for-mt4-free-download-7-powerful-truths-you-must-know-before-installing/",
+      "to": "/forex-rebellion-trading-system-for-mt4-free-download-7-powerful-truths-you-must-know-before-installing/",
       "status": 410
     },
     {
       "from": "/forex-reversal-indicator-mt4-free-download-7-powerful-safe-picks-to-spot-trend-turns-fast",
       "to": "/top-10-best-trend-reversal-indicator-mt4-non-repaint-solutions/",
       "status": 301
+    },
+    {
+      "from": "/forex-risk-calculator/",
+      "to": "/forex-risk-calculator/",
+      "status": 410
     },
     {
       "from": "/forex-risk-management-indicator-mt4-free-download-7-powerful-benefits-for-smarter-trading",
@@ -10960,9 +11879,9 @@
       "status": 410
     },
     {
-      "from": "/forex-robotron-ea-free-download-7-powerful-facts-you-must-know-before-installing",
-      "to": "/forex-robotron-ea-free-download-7-powerful-facts-you-must-know-before-installing",
-      "status": 410
+      "from": "/forex-robotron-ea-free-download-7-powerful-facts-you-must-know-before-installing/",
+      "to": "/best-forex-ea/",
+      "status": 301
     },
     {
       "from": "/forex-scalper-robot-review-tiny-gains-or-serious-trading-profits",
@@ -11015,6 +11934,11 @@
       "status": 301
     },
     {
+      "from": "/forex-trading-in-jamaica-a-complete-guide/",
+      "to": "/forex-trading-in-jamaica-a-complete-guide/",
+      "status": 410
+    },
+    {
       "from": "/forex-trading-journal-template-free-download-maximize-your-trading-success",
       "to": "/the-best-forex-trading-journal-template-excel-download-complete-guide-free-resources/",
       "status": 301
@@ -11040,9 +11964,9 @@
       "status": 301
     },
     {
-      "from": "/forex-viking-pro-indicator-free-download-powerful-proven-trading-tool-guide",
-      "to": "/nexus-6-0-binary-indicator-free-download-powerful-proven-trading-tool-guide/",
-      "status": 301
+      "from": "/forex-viking-pro-indicator-free-download-powerful-proven-trading-tool-guide/",
+      "to": "/forex-viking-pro-indicator-free-download-powerful-proven-trading-tool-guide/",
+      "status": 410
     },
     {
       "from": "/forex-voltage-free-download-the-shocking-truth-7-powerful-facts-you-must-know",
@@ -11170,8 +12094,8 @@
       "status": 410
     },
     {
-      "from": "/free-scalping-and-100-pips-mt4-forex-trading-strategy-free-download-powerful-7-step-blueprint-for-consistent-gains",
-      "to": "/free-scalping-and-100-pips-mt4-forex-trading-strategy-free-download-powerful-7-step-blueprint-for-consistent-gains",
+      "from": "/free-scalping-and-100-pips-mt4-forex-trading-strategy-free-download-powerful-7-step-blueprint-for-consistent-gains/",
+      "to": "/free-scalping-and-100-pips-mt4-forex-trading-strategy-free-download-powerful-7-step-blueprint-for-consistent-gains/",
       "status": 410
     },
     {
@@ -11250,8 +12174,8 @@
       "status": 410
     },
     {
-      "from": "/fundedea-prop-firm-ea-free-download-powerful-7-step-guide-to-smarter-funded-trading",
-      "to": "/prop-firm-ea-free-download-7-powerful-truths-every-trader-must-know/",
+      "from": "/fundedea-prop-firm-ea-free-download-powerful-7-step-guide-to-smarter-funded-trading/",
+      "to": "/best-forex-ea/",
       "status": 301
     },
     {
@@ -11525,8 +12449,8 @@
       "status": 301
     },
     {
-      "from": "/gold-sand-free-download-7-powerful-safe-ways-to-access-it-today",
-      "to": "/gold-sand-free-download-7-powerful-safe-ways-to-access-it-today",
+      "from": "/gold-sand-free-download-7-powerful-safe-ways-to-access-it-today/",
+      "to": "/gold-sand-free-download-7-powerful-safe-ways-to-access-it-today/",
       "status": 410
     },
     {
@@ -11560,9 +12484,9 @@
       "status": 301
     },
     {
-      "from": "/gold-trade-forex-ea-reviews-7-powerful-insights-you-must-know-before-investing",
-      "to": "/bb-return-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing/",
-      "status": 301
+      "from": "/gold-trade-forex-ea-reviews-7-powerful-insights-you-must-know-before-investing/",
+      "to": "/gold-trade-forex-ea-reviews-7-powerful-insights-you-must-know-before-investing/",
+      "status": 410
     },
     {
       "from": "/gold-trading-ea-for-prop-firm-free-download-safe-legal-proven-ways-to-get-one-7-step-guide",
@@ -11650,9 +12574,9 @@
       "status": 410
     },
     {
-      "from": "/gps-forex-robot-ea-free-download-7-powerful-truths-you-must-know-before-installing",
-      "to": "/gps-forex-robot-ea-free-download-7-powerful-truths-you-must-know-before-installing",
-      "status": 410
+      "from": "/gps-forex-robot-ea-free-download-7-powerful-truths-you-must-know-before-installing/",
+      "to": "/best-forex-ea/",
+      "status": 301
     },
     {
       "from": "/grab-candles-short-forex-indicator-free-download-powerful-trading-edge-for-smart-traders",
@@ -11710,9 +12634,9 @@
       "status": 301
     },
     {
-      "from": "/gt-scalper-indicator-free-download-7-powerful-benefits-every-trader-must-know",
-      "to": "/apex-scalper-metatrader-4-expert-advisor-free-download-7-powerful-benefits-every-trader-must-know/",
-      "status": 301
+      "from": "/gt-scalper-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "to": "/gt-scalper-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "status": 410
     },
     {
       "from": "/guide-to-backtesting-forex-eas-on-mt4-the-ultimate-beginner-friendly-walkthrough",
@@ -11905,6 +12829,11 @@
       "status": 410
     },
     {
+      "from": "/home/",
+      "to": "/home/",
+      "status": 410
+    },
+    {
       "from": "/horns-pattern-identifier-forex-indicator-free-download-powerful-proven-trading-guide-step-by-step",
       "to": "/cpr-forex-indicator-for-mt4-free-download-7-powerful-benefits-proven-trading-secrets/",
       "status": 301
@@ -11987,6 +12916,11 @@
     {
       "from": "/how-much-do-beginner-forex-traders-make-shocking-truth-expert-insights-realistic-numbers",
       "to": "/how-much-do-beginner-forex-traders-make-shocking-truth-expert-insights-realistic-numbers",
+      "status": 410
+    },
+    {
+      "from": "/how-recency-bias-affects-your-trading-decisions/",
+      "to": "/how-recency-bias-affects-your-trading-decisions/",
       "status": 410
     },
     {
@@ -12207,6 +13141,11 @@
     {
       "from": "/how-to-diversify-forex-portfolio-11-powerful-strategies-for-safer-trading-success",
       "to": "/how-to-diversify-forex-portfolio-11-powerful-strategies-for-safer-trading-success",
+      "status": 410
+    },
+    {
+      "from": "/how-to-double-your-money-in-forex-trading/",
+      "to": "/how-to-double-your-money-in-forex-trading/",
       "status": 410
     },
     {
@@ -12935,14 +13874,19 @@
       "status": 410
     },
     {
-      "from": "/inception-metatrader-trading-system-free-download-risky-truth-9-smart-ways-to-get-it-safely",
-      "to": "/inception-metatrader-trading-system-free-download-risky-truth-9-smart-ways-to-get-it-safely",
+      "from": "/inception-metatrader-trading-system-free-download-risky-truth-9-smart-ways-to-get-it-safely/",
+      "to": "/inception-metatrader-trading-system-free-download-risky-truth-9-smart-ways-to-get-it-safely/",
       "status": 410
     },
     {
       "from": "/ind-scalper-forex-ea-free-download-7-powerful-truths-you-must-know-before-installing",
       "to": "/top-7-best-free-forex-scalper-ea-for-mt4-download/",
       "status": 301
+    },
+    {
+      "from": "/indicator-for-scalping/",
+      "to": "/indicator-for-scalping/",
+      "status": 410
     },
     {
       "from": "/infinite-breakout-hedge-ea-forex-robot-unlimited-version-free-download",
@@ -12955,8 +13899,8 @@
       "status": 410
     },
     {
-      "from": "/infinite-wave-forex-ea-reviews-7-shocking-facts-smart-traders-must-know",
-      "to": "/infinite-wave-forex-ea-reviews-7-shocking-facts-smart-traders-must-know",
+      "from": "/infinite-wave-forex-ea-reviews-7-shocking-facts-smart-traders-must-know/",
+      "to": "/infinite-wave-forex-ea-reviews-7-shocking-facts-smart-traders-must-know/",
       "status": 410
     },
     {
@@ -12980,8 +13924,8 @@
       "status": 410
     },
     {
-      "from": "/instantaneous-trend-line-levels-mt5-forex-indicator-free-download-powerful-proven-guide-7-must-know-benefits",
-      "to": "/instantaneous-trend-line-levels-mt5-forex-indicator-free-download-powerful-proven-guide-7-must-know-benefits",
+      "from": "/instantaneous-trend-line-levels-mt5-forex-indicator-free-download-powerful-proven-guide-7-must-know-benefits/",
+      "to": "/instantaneous-trend-line-levels-mt5-forex-indicator-free-download-powerful-proven-guide-7-must-know-benefits/",
       "status": 410
     },
     {
@@ -13100,9 +14044,9 @@
       "status": 410
     },
     {
-      "from": "/kama-sd-bands-by-rakoquant-forex-indicator-reviews-7-powerful-insights-every-trader-must-know",
-      "to": "/super-arrow-mt4-forex-indicator-free-download-powerful-7-step-guide-to-smarter-trading/",
-      "status": 301
+      "from": "/kama-sd-bands-by-rakoquant-forex-indicator-reviews-7-powerful-insights-every-trader-must-know/",
+      "to": "/kama-sd-bands-by-rakoquant-forex-indicator-reviews-7-powerful-insights-every-trader-must-know/",
+      "status": 410
     },
     {
       "from": "/kangaroo-ea-review-bounce-back-from-losses-with-this-automated-trader",
@@ -13155,9 +14099,9 @@
       "status": 410
     },
     {
-      "from": "/keltner-sd-supertrend-by-rakoquant-forex-indicator-reviews",
-      "to": "/forex-millionaire-indicator-free-download-7-powerful-truths-you-must-know-before-installing/",
-      "status": 301
+      "from": "/keltner-sd-supertrend-by-rakoquant-forex-indicator-reviews/",
+      "to": "/keltner-sd-supertrend-by-rakoquant-forex-indicator-reviews/",
+      "status": 410
     },
     {
       "from": "/key-pa-levels-forex-indicator-free-download-powerful-proven-strategy-guide",
@@ -13205,9 +14149,9 @@
       "status": 410
     },
     {
-      "from": "/konstatine-robot-ea-free-download-7-powerful-facts-every-trader-must-know-before-installing",
-      "to": "/konstatine-robot-ea-free-download-7-powerful-facts-every-trader-must-know-before-installing",
-      "status": 410
+      "from": "/konstatine-robot-ea-free-download-7-powerful-facts-every-trader-must-know-before-installing/",
+      "to": "/best-forex-ea/",
+      "status": 301
     },
     {
       "from": "/l2-main-force-trend-by-blackcat-powerful-insights-honest-forex-indicator-reviews",
@@ -13385,6 +14329,11 @@
       "status": 410
     },
     {
+      "from": "/maintenance-2/",
+      "to": "/maintenance-2/",
+      "status": 410
+    },
+    {
       "from": "/maintenance-guide-for-vps-hosted-mt4-bots-15-powerful-ways-to-improve-reliability-and-performance",
       "to": "/maintenance-guide-for-vps-hosted-mt4-bots-15-powerful-ways-to-improve-reliability-and-performance",
       "status": 410
@@ -13450,8 +14399,8 @@
       "status": 301
     },
     {
-      "from": "/marketmaker-pro-ea-free-download-the-ultimate-guide-to-smart-automated-trading-success",
-      "to": "/best-gold-scalper-ea-for-mt4-mt5-the-only-guide-you-need/",
+      "from": "/marketmaker-pro-ea-free-download-the-ultimate-guide-to-smart-automated-trading-success/",
+      "to": "/best-forex-ea/",
       "status": 301
     },
     {
@@ -13765,8 +14714,8 @@
       "status": 410
     },
     {
-      "from": "/mpx-scalper-free-forex-indicator-download-shocking-truth-11-safe-steps",
-      "to": "/cryo-scalper-indicator-free-download-powerful-guide-to-boost-your-trading-profits-fast/",
+      "from": "/mpx-scalper-free-forex-indicator-download-shocking-truth-11-safe-steps/",
+      "to": "/best-forex-ea/",
       "status": 301
     },
     {
@@ -14005,6 +14954,11 @@
       "status": 410
     },
     {
+      "from": "/nas100-alerts-limitless-by-blissfulaccoun8911-forex-indicator-reviews-powerful-truth-7-game-changing-insights-2/",
+      "to": "/nas100-alerts-limitless-by-blissfulaccoun8911-forex-indicator-reviews-powerful-truth-7-game-changing-insights-2/",
+      "status": 410
+    },
+    {
       "from": "/nasdaq-ghost-free-download-7-shocking-truths-you-must-know-before-installing",
       "to": "/nasdaq-ghost-free-download-7-shocking-truths-you-must-know-before-installing",
       "status": 410
@@ -14100,14 +15054,14 @@
       "status": 301
     },
     {
-      "from": "/north-east-way-ea-free-download-the-ultimate-safe-smart-2025-guide",
-      "to": "/north-east-way-ea-free-download-the-ultimate-safe-smart-2025-guide",
-      "status": 410
+      "from": "/north-east-way-ea-free-download-the-ultimate-safe-smart-2025-guide/",
+      "to": "/best-forex-ea/",
+      "status": 301
     },
     {
-      "from": "/nova-gold-x-forex-ea-reviews-7-powerful-truths-you-must-know-before-investing",
-      "to": "/bb-return-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing/",
-      "status": 301
+      "from": "/nova-gold-x-forex-ea-reviews-7-powerful-truths-you-must-know-before-investing/",
+      "to": "/nova-gold-x-forex-ea-reviews-7-powerful-truths-you-must-know-before-investing/",
+      "status": 410
     },
     {
       "from": "/ntron-2ooo-forex-ea-reviews-powerful-truth-7-critical-facts-you-must-know",
@@ -14125,6 +15079,11 @@
       "status": 410
     },
     {
+      "from": "/oava-ea-forex-robot-unlimited-version-free-download/",
+      "to": "/oava-ea-forex-robot-unlimited-version-free-download/",
+      "status": 410
+    },
+    {
       "from": "/obv-divergence-indicator-unlimited-version-free-download",
       "to": "/obv-divergence-indicator-unlimited-version-free-download",
       "status": 410
@@ -14133,6 +15092,11 @@
       "from": "/odin-forex-robot-ea-free-download-powerful-truths-7-smart-facts-before-you-install",
       "to": "/forex-smc-indicator-for-mt4-free-download-powerful-7-step-guide-to-install-trade-smarter/",
       "status": 301
+    },
+    {
+      "from": "/odin-forex-robot-review-valhalla-or-valhala-our-verdict-on-this-ea/",
+      "to": "/odin-forex-robot-review-valhalla-or-valhala-our-verdict-on-this-ea/",
+      "status": 410
     },
     {
       "from": "/offer",
@@ -14180,8 +15144,8 @@
       "status": 410
     },
     {
-      "from": "/orange-blue-trends-by-kkilbourne-forex-indicator-reviews-7-powerful-insights-traders-must-know",
-      "to": "/orange-blue-trends-by-kkilbourne-forex-indicator-reviews-7-powerful-insights-traders-must-know",
+      "from": "/orange-blue-trends-by-kkilbourne-forex-indicator-reviews-7-powerful-insights-traders-must-know/",
+      "to": "/orange-blue-trends-by-kkilbourne-forex-indicator-reviews-7-powerful-insights-traders-must-know/",
       "status": 410
     },
     {
@@ -14190,9 +15154,9 @@
       "status": 410
     },
     {
-      "from": "/orbit-rage-final-ea-free-download-7-powerful-facts-you-must-know-before-installing",
-      "to": "/orbit-rage-final-ea-free-download-7-powerful-facts-you-must-know-before-installing",
-      "status": 410
+      "from": "/orbit-rage-final-ea-free-download-7-powerful-facts-you-must-know-before-installing/",
+      "to": "/best-forex-ea/",
+      "status": 301
     },
     {
       "from": "/order-flow-footprint-chart-vs-volume-profile-understanding-key-differences-in-market-analysis",
@@ -14545,8 +15509,8 @@
       "status": 301
     },
     {
-      "from": "/precision-trend-scalping-indicator-free-download-9-proven-tips-for-safer-smarter-scalps",
-      "to": "/precision-trend-scalping-indicator-free-download-9-proven-tips-for-safer-smarter-scalps",
+      "from": "/precision-trend-scalping-indicator-free-download-9-proven-tips-for-safer-smarter-scalps/",
+      "to": "/precision-trend-scalping-indicator-free-download-9-proven-tips-for-safer-smarter-scalps/",
       "status": 410
     },
     {
@@ -14595,9 +15559,9 @@
       "status": 301
     },
     {
-      "from": "/prizmal-lux-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing",
-      "to": "/bb-return-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing/",
-      "status": 301
+      "from": "/prizmal-lux-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing/",
+      "to": "/prizmal-lux-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing/",
+      "status": 410
     },
     {
       "from": "/prn-hub-macd-forex-indicator-free-download-powerful-guide-with-7-proven-trading-advantages",
@@ -14625,9 +15589,19 @@
       "status": 301
     },
     {
+      "from": "/product-category/forex-robot/page/2/",
+      "to": "/best-forex-ea/",
+      "status": 301
+    },
+    {
       "from": "/product-category/indicator/free-indicator",
       "to": "/product/golden-deer-holy-grail-indicator/",
       "status": 301
+    },
+    {
+      "from": "/product-category/indicator/free-indicator/feed/",
+      "to": "/product-category/indicator/free-indicator/feed/",
+      "status": 410
     },
     {
       "from": "/product-category/indicator/non-repaint-indicator",
@@ -14642,6 +15616,11 @@
     {
       "from": "/product-category/indicator/trend-indicator",
       "to": "/product/golden-deer-holy-grail-indicator/",
+      "status": 301
+    },
+    {
+      "from": "/product-category/most-popular/page/2/",
+      "to": "/best-forex-ea/",
       "status": 301
     },
     {
@@ -14670,6 +15649,11 @@
       "status": 410
     },
     {
+      "from": "/product/algotradesoft-innovative-ea/",
+      "to": "/best-forex-ea/",
+      "status": 301
+    },
+    {
       "from": "/product/all-free-fx-bundle",
       "to": "/product/all-free-fx-bundle",
       "status": 410
@@ -14690,6 +15674,11 @@
       "status": 301
     },
     {
+      "from": "/product/billionaire-grok-gold-finity-ai-scalper-ea/",
+      "to": "/best-forex-ea/",
+      "status": 301
+    },
+    {
       "from": "/product/billionaire-trend-pro-ea",
       "to": "/product/billionaire-trend-pro-ea",
       "status": 410
@@ -14698,6 +15687,21 @@
       "from": "/product/breakout-multicurrency-ea",
       "to": "/product/breakout-multicurrency-ea",
       "status": 410
+    },
+    {
+      "from": "/product/elon-musk-2000-neuralink-expert-advisor/",
+      "to": "/best-forex-ea/",
+      "status": 301
+    },
+    {
+      "from": "/product/farcry-trend-hunter-ea/",
+      "to": "/best-forex-ea/",
+      "status": 301
+    },
+    {
+      "from": "/product/forex-fury-v2-ea-forex-robot-forex-ea-bestmt4ea/",
+      "to": "/best-forex-ea/",
+      "status": 301
     },
     {
       "from": "/product/forex-hacked-pro-ea-v2-5-forex-robot",
@@ -14805,6 +15809,11 @@
       "status": 301
     },
     {
+      "from": "/product/oava-ea-forex-robot-forex-ea-bestmt4ea/",
+      "to": "/best-forex-ea/",
+      "status": 301
+    },
+    {
       "from": "/product/penguin-multi-ea",
       "to": "/product/equinox-cosmos-ea-ai-gbpjpy-scalper-for-mt5/",
       "status": 301
@@ -14820,6 +15829,11 @@
       "status": 301
     },
     {
+      "from": "/product/rollover-miracle-greedy-ea/",
+      "to": "/best-forex-ea/",
+      "status": 301
+    },
+    {
       "from": "/product/thunderbird-ea",
       "to": "/product/thunderbird-ea",
       "status": 410
@@ -14827,6 +15841,11 @@
     {
       "from": "/product/tiger-x-pro-ea",
       "to": "/product/obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5/",
+      "status": 301
+    },
+    {
+      "from": "/product/tiger-x-pro-eaTiger/",
+      "to": "/best-forex-ea/",
       "status": 301
     },
     {
@@ -14850,8 +15869,8 @@
       "status": 410
     },
     {
-      "from": "/professional-swing-intraday-channel-breakout-mt4-forex-strategy-free-download-powerful-7-step-winning-blueprint",
-      "to": "/professional-swing-intraday-channel-breakout-mt4-forex-strategy-free-download-powerful-7-step-winning-blueprint",
+      "from": "/professional-swing-intraday-channel-breakout-mt4-forex-strategy-free-download-powerful-7-step-winning-blueprint/",
+      "to": "/professional-swing-intraday-channel-breakout-mt4-forex-strategy-free-download-powerful-7-step-winning-blueprint/",
       "status": 410
     },
     {
@@ -15010,8 +16029,8 @@
       "status": 410
     },
     {
-      "from": "/quantum-relative-performance-oscillator-by-pineify-forex-indicator-reviews",
-      "to": "/quantum-relative-performance-oscillator-by-pineify-forex-indicator-reviews",
+      "from": "/quantum-relative-performance-oscillator-by-pineify-forex-indicator-reviews/",
+      "to": "/quantum-relative-performance-oscillator-by-pineify-forex-indicator-reviews/",
       "status": 410
     },
     {
@@ -15060,9 +16079,9 @@
       "status": 410
     },
     {
-      "from": "/raff-channel-forex-indicator-for-mt4-free-download-powerful-proven-tool-for-traders",
-      "to": "/%F0%9F%9A%80-mt4-x-speed-forex-indicator-free-download-powerful-proven-guide/",
-      "status": 301
+      "from": "/raff-channel-forex-indicator-for-mt4-free-download-powerful-proven-tool-for-traders/",
+      "to": "/raff-channel-forex-indicator-for-mt4-free-download-powerful-proven-tool-for-traders/",
+      "status": 410
     },
     {
       "from": "/rainbow-forex-indicator-mt4-free-download-7-powerful-benefits-every-trader-must-know",
@@ -15105,8 +16124,8 @@
       "status": 301
     },
     {
-      "from": "/renko-star-indicator-free-download-7-powerful-reasons-traders-love-it",
-      "to": "/renko-star-indicator-free-download-7-powerful-reasons-traders-love-it",
+      "from": "/renko-star-indicator-free-download-7-powerful-reasons-traders-love-it/",
+      "to": "/renko-star-indicator-free-download-7-powerful-reasons-traders-love-it/",
       "status": 410
     },
     {
@@ -15200,6 +16219,11 @@
       "status": 301
     },
     {
+      "from": "/royal-hedge-free-download-7-powerful-facts-you-must-know-before-installing-this-elegant-font/",
+      "to": "/royal-hedge-free-download-7-powerful-facts-you-must-know-before-installing-this-elegant-font/",
+      "status": 410
+    },
+    {
       "from": "/royal-quant-ea-forex-ea-reviews-7-powerful-insights-every-trader-must-know",
       "to": "/royal-quant-ea-forex-ea-reviews-7-powerful-insights-every-trader-must-know",
       "status": 410
@@ -15260,9 +16284,9 @@
       "status": 301
     },
     {
-      "from": "/rsi-trend-catcher-signal-forex-indicator-free-download-powerful-proven-7-step-trading-advantage",
-      "to": "/ai-trend-booster-ea-free-download-powerful-proven-trading-advantage-guide/",
-      "status": 301
+      "from": "/rsi-trend-catcher-signal-forex-indicator-free-download-powerful-proven-7-step-trading-advantage/",
+      "to": "/rsi-trend-catcher-signal-forex-indicator-free-download-powerful-proven-7-step-trading-advantage/",
+      "status": 410
     },
     {
       "from": "/rsi-with-fibonacci-auto-channel-mt5-forex-indicator-free-download-the-shocking-truth-9-simple-steps",
@@ -15300,9 +16324,9 @@
       "status": 301
     },
     {
-      "from": "/sane-fx-binary-trading-indicator-mt4-free-download-powerful-proven-strategy-guide",
-      "to": "/binary-options-signals-indicator-mt4-free-download-powerful-proven-guide/",
-      "status": 301
+      "from": "/sane-fx-binary-trading-indicator-mt4-free-download-powerful-proven-strategy-guide/",
+      "to": "/sane-fx-binary-trading-indicator-mt4-free-download-powerful-proven-strategy-guide/",
+      "status": 410
     },
     {
       "from": "/scaling-in-and-out",
@@ -15330,9 +16354,9 @@
       "status": 301
     },
     {
-      "from": "/scalper-inside-pro-c7-forex-indicator-free-download-7-powerful-benefits-every-trader-must-know",
-      "to": "/best-scalping-indicator-scalper-inside-v7-9-free-download-7-powerful-reasons-traders-love-it/",
-      "status": 301
+      "from": "/scalper-inside-pro-c7-forex-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "to": "/scalper-inside-pro-c7-forex-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
+      "status": 410
     },
     {
       "from": "/scalping-ea-free-download-7-powerful-truths-you-must-know-before-installing",
@@ -15342,6 +16366,11 @@
     {
       "from": "/scalping-ea-guide-should-you-use-robots-for-ultra-short-term-trading",
       "to": "/scalping-ea-guide-should-you-use-robots-for-ultra-short-term-trading",
+      "status": 410
+    },
+    {
+      "from": "/scalping-trading-strategies-3-fast-paced-approaches-to-try-now/",
+      "to": "/scalping-trading-strategies-3-fast-paced-approaches-to-try-now/",
       "status": 410
     },
     {
@@ -15365,9 +16394,9 @@
       "status": 410
     },
     {
-      "from": "/secret-profit-levels-forex-indicator-free-download-7-powerful-truths-every-trader-must-know",
-      "to": "/forex-millionaire-indicator-free-download-7-powerful-truths-you-must-know-before-installing/",
-      "status": 301
+      "from": "/secret-profit-levels-forex-indicator-free-download-7-powerful-truths-every-trader-must-know/",
+      "to": "/secret-profit-levels-forex-indicator-free-download-7-powerful-truths-every-trader-must-know/",
+      "status": 410
     },
     {
       "from": "/secrets-of-successful-trading",
@@ -15412,6 +16441,21 @@
     {
       "from": "/shizuka-ea-free-download-7-powerful-truths-you-must-know-before-installing",
       "to": "/shizuka-ea-free-download-7-powerful-truths-you-must-know-before-installing",
+      "status": 410
+    },
+    {
+      "from": "/shop/page/10/",
+      "to": "/shop/page/10/",
+      "status": 410
+    },
+    {
+      "from": "/shop/page/2/",
+      "to": "/shop/page/2/",
+      "status": 410
+    },
+    {
+      "from": "/shop/page/25/",
+      "to": "/shop/page/25/",
       "status": 410
     },
     {
@@ -15595,6 +16639,11 @@
       "status": 410
     },
     {
+      "from": "/sparta-ea-7-powerful-benefits-that-make-it-a-game-changer-in-forex-trading-2/",
+      "to": "/sparta-ea-7-powerful-benefits-that-make-it-a-game-changer-in-forex-trading-2/",
+      "status": 410
+    },
+    {
       "from": "/spearman-correlation-forex-indicator-free-download-powerful-proven-7-step-trading-advantage",
       "to": "/cpr-forex-indicator-for-mt4-free-download-7-powerful-benefits-proven-trading-secrets/",
       "status": 301
@@ -15740,9 +16789,9 @@
       "status": 301
     },
     {
-      "from": "/supply-demand-zones-by-joksen-forex-indicator-reviews-powerful-insights-7-honest-pros-cons",
-      "to": "/quantum-queen-forex-ea-reviews-powerful-insights-honest-pros-7-shocking-truths/",
-      "status": 301
+      "from": "/supply-demand-zones-by-joksen-forex-indicator-reviews-powerful-insights-7-honest-pros-cons/",
+      "to": "/supply-demand-zones-by-joksen-forex-indicator-reviews-powerful-insights-7-honest-pros-cons/",
+      "status": 410
     },
     {
       "from": "/support-and-resistance-levels",
@@ -15755,8 +16804,8 @@
       "status": 410
     },
     {
-      "from": "/support-resistance-breakout-arrows-forex-indicator-mt4-free-download-negative-traps-powerful-9-step-safe-setup",
-      "to": "/support-resistance-breakout-arrows-forex-indicator-mt4-free-download-negative-traps-powerful-9-step-safe-setup",
+      "from": "/support-resistance-breakout-arrows-forex-indicator-mt4-free-download-negative-traps-powerful-9-step-safe-setup/",
+      "to": "/support-resistance-breakout-arrows-forex-indicator-mt4-free-download-negative-traps-powerful-9-step-safe-setup/",
       "status": 410
     },
     {
@@ -15830,8 +16879,18 @@
       "status": 301
     },
     {
+      "from": "/tag/forex-trading-tips-today/",
+      "to": "/tag/forex-trading-tips-today/",
+      "status": 410
+    },
+    {
       "from": "/tag/mt4-ea",
       "to": "/tag/mt4-ea",
+      "status": 410
+    },
+    {
+      "from": "/tag/trading-tips-for-forex/",
+      "to": "/tag/trading-tips-for-forex/",
       "status": 410
     },
     {
@@ -15950,9 +17009,29 @@
       "status": 410
     },
     {
+      "from": "/the-complete-guide-to-bollinger-bands-trading-strategy/",
+      "to": "/the-complete-guide-to-bollinger-bands-trading-strategy/",
+      "status": 410
+    },
+    {
+      "from": "/the-complete-guide-to-scalping-trading-how-to-make-fast-profits-with-this-high-intensity-day-trading-strategy/",
+      "to": "/the-complete-guide-to-scalping-trading-how-to-make-fast-profits-with-this-high-intensity-day-trading-strategy/",
+      "status": 410
+    },
+    {
+      "from": "/the-complete-guide-to-trend-lines-for-technical-analysis/",
+      "to": "/the-complete-guide-to-trend-lines-for-technical-analysis/",
+      "status": 410
+    },
+    {
       "from": "/the-complete-mt5-expert-advisor-setup-guide-automate-your-forex-trading",
       "to": "/monopolist-scalping-expert-advisor-free-download-powerful-7-step-guide-to-smart-forex-profits/",
       "status": 301
+    },
+    {
+      "from": "/the-costly-mistake-of-fat-finger-trades-and-how-to-avoid-them/",
+      "to": "/the-costly-mistake-of-fat-finger-trades-and-how-to-avoid-them/",
+      "status": 410
     },
     {
       "from": "/the-daily-trading-routine-for-better-psychology",
@@ -15980,9 +17059,9 @@
       "status": 301
     },
     {
-      "from": "/the-gold-phantom-forex-ea-reviews-7-shocking-truths-every-trader-must-know-before-investing",
-      "to": "/aura-ultimate-ea-forex-ea-reviews-powerful-insights-7-shocking-truths-you-must-know/",
-      "status": 301
+      "from": "/the-gold-phantom-forex-ea-reviews-7-shocking-truths-every-trader-must-know-before-investing/",
+      "to": "/the-gold-phantom-forex-ea-reviews-7-shocking-truths-every-trader-must-know-before-investing/",
+      "status": 410
     },
     {
       "from": "/the-great-paradox-of-trading",
@@ -16005,9 +17084,9 @@
       "status": 410
     },
     {
-      "from": "/the-monetree-ea-free-download-7-powerful-facts-before-you-install-it",
-      "to": "/the-monetree-ea-free-download-7-powerful-facts-before-you-install-it",
-      "status": 410
+      "from": "/the-monetree-ea-free-download-7-powerful-facts-before-you-install-it/",
+      "to": "/best-forex-ea/",
+      "status": 301
     },
     {
       "from": "/the-most-dangerous-emotion-for-forex-traders",
@@ -16015,8 +17094,13 @@
       "status": 410
     },
     {
-      "from": "/the-number-1-cause-of-death-of-forex-traders",
-      "to": "/the-number-1-cause-of-death-of-forex-traders",
+      "from": "/the-number-1-cause-of-death-of-forex-traders/",
+      "to": "/the-number-1-cause-of-death-of-forex-traders/",
+      "status": 410
+    },
+    {
+      "from": "/the-only-real-way-to-beat-the-market/",
+      "to": "/the-only-real-way-to-beat-the-market/",
       "status": 410
     },
     {
@@ -16200,8 +17284,8 @@
       "status": 301
     },
     {
-      "from": "/titan-scalper-ea-free-download-7-powerful-truths-every-trader-must-know-before-installing",
-      "to": "/%F0%9F%9A%80-bitcoin-scalper-ea-free-download-powerful-guide-with-7-shocking-benefits-for-traders/",
+      "from": "/titan-scalper-ea-free-download-7-powerful-truths-every-trader-must-know-before-installing/",
+      "to": "/best-forex-ea/",
       "status": 301
     },
     {
@@ -16870,14 +17954,19 @@
       "status": 410
     },
     {
-      "from": "/true-strength-index-tsi-divergence-ea-free-version-powerful-insights-for-smarter-trading",
-      "to": "/true-strength-index-tsi-divergence-ea-free-version-powerful-insights-for-smarter-trading",
+      "from": "/true-strength-index-tsi-divergence-ea-free-version-powerful-insights-for-smarter-trading/",
+      "to": "/true-strength-index-tsi-divergence-ea-free-version-powerful-insights-for-smarter-trading/",
       "status": 410
     },
     {
       "from": "/trusted-forex-broker",
       "to": "/best-forex-brokers/",
       "status": 301
+    },
+    {
+      "from": "/trusting-your-gut-feel-in-trading/",
+      "to": "/trusting-your-gut-feel-in-trading/",
+      "status": 410
     },
     {
       "from": "/trx-mt4-scalping-system-free-download-risky-truths-safe-options-and-9-smart-steps",
@@ -17170,8 +18259,8 @@
       "status": 410
     },
     {
-      "from": "/us-debt-ceiling-crisis-impact-on-treasury-yields-powerful-insights",
-      "to": "/us-debt-ceiling-crisis-impact-on-treasury-yields-powerful-insights",
+      "from": "/us-debt-ceiling-crisis-impact-on-treasury-yields-powerful-insights/",
+      "to": "/us-debt-ceiling-crisis-impact-on-treasury-yields-powerful-insights/",
       "status": 410
     },
     {
@@ -17370,9 +18459,9 @@
       "status": 410
     },
     {
-      "from": "/wave-trend-oscillator-free-download-powerful-proven-guide-with-5-smart-trading-secrets",
-      "to": "/ai-trend-booster-ea-free-download-powerful-proven-trading-advantage-guide/",
-      "status": 301
+      "from": "/wave-trend-oscillator-free-download-powerful-proven-guide-with-5-smart-trading-secrets/",
+      "to": "/wave-trend-oscillator-free-download-powerful-proven-guide-with-5-smart-trading-secrets/",
+      "status": 410
     },
     {
       "from": "/wavetrend-vwap-v6-enhanced-by-k_syedhussain-forex-indicator-reviews-7-powerful-insights-every-trader-must-know",
@@ -17415,8 +18504,8 @@
       "status": 410
     },
     {
-      "from": "/what-are-pips-in-forex-trading-and-what-is-their-value",
-      "to": "/what-are-pips-in-forex-trading-and-what-is-their-value",
+      "from": "/what-are-pips-in-forex-trading-and-what-is-their-value/",
+      "to": "/what-are-pips-in-forex-trading-and-what-is-their-value/",
       "status": 410
     },
     {
@@ -17510,6 +18599,11 @@
       "status": 301
     },
     {
+      "from": "/what-is-day-trading-what-are-the-best-trading-strategies/",
+      "to": "/what-is-day-trading-what-are-the-best-trading-strategies/",
+      "status": 410
+    },
+    {
       "from": "/what-is-forex",
       "to": "/what-is-forex",
       "status": 410
@@ -17523,6 +18617,11 @@
       "from": "/what-is-forex-hedging-and-how-do-you-use-it",
       "to": "/product/ava-aigpt5-ea/",
       "status": 301
+    },
+    {
+      "from": "/what-is-forex-risk-management-how-and-when-to-walk-away/",
+      "to": "/what-is-forex-risk-management-how-and-when-to-walk-away/",
+      "status": 410
     },
     {
       "from": "/what-is-forex-trading-and-how-does-it-work-full-beginner-breakdown",
@@ -17710,6 +18809,11 @@
       "status": 410
     },
     {
+      "from": "/why-traders-should-get-used-to-being-wrong/",
+      "to": "/why-traders-should-get-used-to-being-wrong/",
+      "status": 410
+    },
+    {
       "from": "/williams-percent-r-momentum-trades-a-guide-to-using-this-indicator-for-active-trading",
       "to": "/range-detector-indicator-mt4-mt5-free-download-powerful-7-step-guide-to-smarter-range-trading/",
       "status": 301
@@ -17800,9 +18904,9 @@
       "status": 301
     },
     {
-      "from": "/xau-master-ea-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing",
-      "to": "/bb-return-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing/",
-      "status": 301
+      "from": "/xau-master-ea-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing/",
+      "to": "/xau-master-ea-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing/",
+      "status": 410
     },
     {
       "from": "/xau-sniper-forex-ea-reviews-powerful-truth-revealed-must-read-before-you-buy",
@@ -17935,9 +19039,9 @@
       "status": 301
     },
     {
-      "from": "/zeno-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing",
-      "to": "/bb-return-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing/",
-      "status": 301
+      "from": "/zeno-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing/",
+      "to": "/zeno-forex-ea-reviews-7-powerful-truths-every-trader-must-know-before-investing/",
+      "status": 410
     },
     {
       "from": "/zenox-forex-ea-reviews-powerful-insights-honest-analysis-7-key-facts-you-must-know",
@@ -17948,6 +19052,11 @@
       "from": "/zigzag-ws-channel-forex-indicator-free-download-powerful-proven-strategy-guide",
       "to": "/cap-channel-forex-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
       "status": 301
+    },
+    {
+      "from": "/zone-to-zone-trading-a-unique-approach-to-identifying-supply-and-demand/",
+      "to": "/zone-to-zone-trading-a-unique-approach-to-identifying-supply-and-demand/",
+      "status": 410
     },
     {
       "from": "/zonex-vynex-by-primeverse_app-forex-indicator-reviews-the-ultimate-honest-breakdown-for-smart-traders",
