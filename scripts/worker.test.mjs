@@ -41,7 +41,7 @@ console.log(`Loaded ${manifest.rules.length} manifest rules.`);
 
 /* --- ordinary redirects ----------------------------------------------- */
 {
-  const first = manifest.rules[0];
+  const first = manifest.rules.find((r) => r.status === 301);
   check('ordinary redirect status+location', matchRedirect(map, first.from), {
     kind: 'redirect',
     status: first.status,
@@ -94,7 +94,7 @@ console.log(`Loaded ${manifest.rules.length} manifest rules.`);
 
 /* --- encoded / decoded emoji paths --------------------------------------- */
 {
-  const emojiRule = manifest.rules.find((r) => /%/.test(r.from));
+  const emojiRule = manifest.rules.find((r) => /%/.test(r.from) && r.status === 301);
   check('manifest contains percent-encoded sources', Boolean(emojiRule), true);
   if (emojiRule) {
     const decoded = decodeURIComponent(emojiRule.from);
