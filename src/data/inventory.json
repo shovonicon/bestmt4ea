@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-02T02:49:27.898Z",
+  "generatedAt": "2026-11-02T12:40:46.042Z",
   "source": "https://bestmt4ea.com",
   "generatedBy": "scripts/build-inventory.mjs",
   "counts": {
     "products": 12,
-    "posts": 202,
+    "posts": 237,
     "pages": 22,
     "productCategories": 4,
     "brands": 2,
@@ -109,15 +109,57 @@
     },
     {
       "type": "post",
+      "url": "/10-best-adx-indicator-strategy-settings-for-mt4-powerful-secrets-for-winning-trades/",
+      "title": "ADX Indicator Settings for MT4: A Tested Guide",
+      "source": "https://bestmt4ea.com/10-best-adx-indicator-strategy-settings-for-mt4-powerful-secrets-for-winning-trades/"
+    },
+    {
+      "type": "post",
+      "url": "/10-best-free-tools-for-analyzing-mt4-robot-drawdowns-powerful-guide-for-safe-forex-trading/",
+      "title": "Free Tools for Analysing MT4 EA Drawdowns",
+      "source": "https://bestmt4ea.com/10-best-free-tools-for-analyzing-mt4-robot-drawdowns-powerful-guide-for-safe-forex-trading/"
+    },
+    {
+      "type": "post",
       "url": "/10-powerful-grid-trading-ea-safe-settings-for-mt4-to-reduce-risk-and-boost-profitability/",
       "title": "Grid Trading EA Safe Settings for MT4: Cap the Drawdown",
       "source": "https://bestmt4ea.com/10-powerful-grid-trading-ea-safe-settings-for-mt4-to-reduce-risk-and-boost-profitability/"
     },
     {
       "type": "post",
+      "url": "/10-powerful-paper-trading-strategies-to-test-before-real-money-investment/",
+      "title": "Paper Trading: How to Test a Strategy First",
+      "source": "https://bestmt4ea.com/10-powerful-paper-trading-strategies-to-test-before-real-money-investment/"
+    },
+    {
+      "type": "post",
+      "url": "/10-powerful-reasons-scalping-with-heikin-ashi-candles-can-boost-your-trading-success/",
+      "title": "Heikin-Ashi Scalping: What the Candles Show",
+      "source": "https://bestmt4ea.com/10-powerful-reasons-scalping-with-heikin-ashi-candles-can-boost-your-trading-success/"
+    },
+    {
+      "type": "post",
+      "url": "/10-powerful-reasons-why-what-are-harmonic-patterns-in-forex-trading-can-improve-your-market-results/",
+      "title": "What Are Harmonic Patterns in Forex Trading?",
+      "source": "https://bestmt4ea.com/10-powerful-reasons-why-what-are-harmonic-patterns-in-forex-trading-can-improve-your-market-results/"
+    },
+    {
+      "type": "post",
+      "url": "/10-powerful-tips-for-the-safe-way-to-remove-mt4-expert-advisor-without-errors/",
+      "title": "Removing an MT4 Expert Advisor Safely: Step by Step",
+      "source": "https://bestmt4ea.com/10-powerful-tips-for-the-safe-way-to-remove-mt4-expert-advisor-without-errors/"
+    },
+    {
+      "type": "post",
       "url": "/10-powerful-ways-on-how-to-export-tradingview-data-to-csv-free-methods-no-paid-plan-needed/",
       "title": "Export TradingView Data to CSV Free: 4 Methods That Work",
       "source": "https://bestmt4ea.com/10-powerful-ways-on-how-to-export-tradingview-data-to-csv-free-methods-no-paid-plan-needed/"
+    },
+    {
+      "type": "post",
+      "url": "/10-powerful-ways-to-improve-daily-drawdown-protection-for-prop-firms-via-ea-including-pro-tips/",
+      "title": "Daily Drawdown Protection for Prop Firm EAs",
+      "source": "https://bestmt4ea.com/10-powerful-ways-to-improve-daily-drawdown-protection-for-prop-firms-via-ea-including-pro-tips/"
     },
     {
       "type": "post",
@@ -133,9 +175,45 @@
     },
     {
       "type": "post",
+      "url": "/7-critical-risks-of-what-is-a-martingale-strategy-in-forex-risks-and-how-traders-can-avoid-them-2/",
+      "title": "Martingale in Forex: The Risks Explained",
+      "source": "https://bestmt4ea.com/7-critical-risks-of-what-is-a-martingale-strategy-in-forex-risks-and-how-traders-can-avoid-them-2/"
+    },
+    {
+      "type": "post",
+      "url": "/7-powerful-reasons-why-markets-rally-when-bad-news-comes-out-and-what-investors-should-know/",
+      "title": "Why Markets Sometimes Rally on Bad News",
+      "source": "https://bestmt4ea.com/7-powerful-reasons-why-markets-rally-when-bad-news-comes-out-and-what-investors-should-know/"
+    },
+    {
+      "type": "post",
+      "url": "/7-powerful-reasons-why-the-best-leverage-for-beginners-in-forex-leads-to-safer-profits/",
+      "title": "Best Forex Leverage for Beginners: A Safer Starting Point",
+      "source": "https://bestmt4ea.com/7-powerful-reasons-why-the-best-leverage-for-beginners-in-forex-leads-to-safer-profits/"
+    },
+    {
+      "type": "post",
       "url": "/7-powerful-strategies-to-use-a-gold-xauusd-scalping-robot-best-risk-to-reward/",
       "title": "Gold Scalping Robot Strategies: Risk-to-Reward That Works",
       "source": "https://bestmt4ea.com/7-powerful-strategies-to-use-a-gold-xauusd-scalping-robot-best-risk-to-reward/"
+    },
+    {
+      "type": "post",
+      "url": "/7-powerful-ways-a-free-qqe-indicator-with-alerts-for-trend-confirmation-can-transform-your-trading/",
+      "title": "QQE Indicator for MT4: Trend Confirmation Explained",
+      "source": "https://bestmt4ea.com/7-powerful-ways-a-free-qqe-indicator-with-alerts-for-trend-confirmation-can-transform-your-trading/"
+    },
+    {
+      "type": "post",
+      "url": "/7-powerful-ways-to-recover-from-a-losing-forex-trading-streak-and-come-back-stronger/",
+      "title": "Recovering From a Losing Streak in Forex",
+      "source": "https://bestmt4ea.com/7-powerful-ways-to-recover-from-a-losing-forex-trading-streak-and-come-back-stronger/"
+    },
+    {
+      "type": "post",
+      "url": "/9-powerful-mt4-ea-optimization-settings-for-eurusd-m5-to-boost-performance-fast/",
+      "title": "EA Optimisation for EURUSD M5: An Honest Testing Method",
+      "source": "https://bestmt4ea.com/9-powerful-mt4-ea-optimization-settings-for-eurusd-m5-to-boost-performance-fast/"
     },
     {
       "type": "post",
@@ -244,6 +322,12 @@
       "url": "/best-ea-for-prop-firm-challenge-passing/",
       "title": "Best EA for a Prop Firm Challenge: How to Choose & Run One",
       "source": "https://bestmt4ea.com/best-ea-for-prop-firm-challenge-passing/"
+    },
+    {
+      "type": "post",
+      "url": "/best-eur-usd-trading-strategies-for-beginners/",
+      "title": "EUR/USD Strategies for Beginners: A Testing Guide",
+      "source": "https://bestmt4ea.com/best-eur-usd-trading-strategies-for-beginners/"
     },
     {
       "type": "page",
@@ -376,6 +460,12 @@
       "url": "/blog/",
       "title": "Forex Trading Blog",
       "source": "https://bestmt4ea.com/blog/"
+    },
+    {
+      "type": "post",
+      "url": "/bollinger-band-width-indicator-trading-strategy/",
+      "title": "Bollinger Band Width: A Squeeze Strategy Explained",
+      "source": "https://bestmt4ea.com/bollinger-band-width-indicator-trading-strategy/"
     },
     {
       "type": "post",
@@ -580,6 +670,12 @@
       "url": "/fair-value-gaps-fvg-indicator-free-download-powerful-trading-edge-with-7-proven-benefits/",
       "title": "FVG Indicator Free Download: Fair Value Gap Trading Guide",
       "source": "https://bestmt4ea.com/fair-value-gaps-fvg-indicator-free-download-powerful-trading-edge-with-7-proven-benefits/"
+    },
+    {
+      "type": "post",
+      "url": "/fibonacci-time-zones-trading-strategy-7-powerful-techniques-for-consistent-market-success/",
+      "title": "Fibonacci Time Zones: What Traders Use It For",
+      "source": "https://bestmt4ea.com/fibonacci-time-zones-trading-strategy-7-powerful-techniques-for-consistent-market-success/"
     },
     {
       "type": "page",
@@ -835,6 +931,12 @@
     },
     {
       "type": "post",
+      "url": "/harmonic-patterns-in-forex-trading-guide/",
+      "title": "Harmonic Patterns in Forex: A Careful Guide",
+      "source": "https://bestmt4ea.com/harmonic-patterns-in-forex-trading-guide/"
+    },
+    {
+      "type": "post",
       "url": "/hft-arbitrage-ea-free-download-7-powerful-truths-every-trader-must-know-before-installing/",
       "title": "HFT Arbitrage EA: 7 Truths Before You Install One",
       "source": "https://bestmt4ea.com/hft-arbitrage-ea-free-download-7-powerful-truths-every-trader-must-know-before-installing/"
@@ -847,9 +949,27 @@
     },
     {
       "type": "post",
+      "url": "/how-does-the-forex-market-work-explained-simply-the-ultimate-beginners-guide/",
+      "title": "How the Forex Market Works: A Simple Beginner Guide",
+      "source": "https://bestmt4ea.com/how-does-the-forex-market-work-explained-simply-the-ultimate-beginners-guide/"
+    },
+    {
+      "type": "post",
       "url": "/how-forex-expert-advisors-work-algorithmic-trading-guide/",
       "title": "How Forex Expert Advisors Work: A Practical Guide",
       "source": "https://bestmt4ea.com/how-forex-expert-advisors-work-algorithmic-trading-guide/"
+    },
+    {
+      "type": "post",
+      "url": "/how-to-calculate-risk-reward-ratio-in-forex-powerful-guide-for-traders/",
+      "title": "Risk-Reward Ratio in Forex: How to Calculate It",
+      "source": "https://bestmt4ea.com/how-to-calculate-risk-reward-ratio-in-forex-powerful-guide-for-traders/"
+    },
+    {
+      "type": "post",
+      "url": "/how-to-calculate-sortino-ratio-for-forex-eas-7-powerful-steps-to-improve-trading-performance/",
+      "title": "Sortino Ratio for Forex EAs: How to Calculate It",
+      "source": "https://bestmt4ea.com/how-to-calculate-sortino-ratio-for-forex-eas-7-powerful-steps-to-improve-trading-performance/"
     },
     {
       "type": "post",
@@ -862,6 +982,18 @@
       "url": "/how-to-fix-compile-errors-in-mql4-complete-step-by-step-guide/",
       "title": "Fix Compile Errors in MQL4 & MQL5: A Step-by-Step Guide",
       "source": "https://bestmt4ea.com/how-to-fix-compile-errors-in-mql4-complete-step-by-step-guide/"
+    },
+    {
+      "type": "post",
+      "url": "/how-to-fund-a-forex-account-safely-10-powerful-steps-every-trader-must-follow/",
+      "title": "How to Fund a Forex Account Safely: 10 Steps",
+      "source": "https://bestmt4ea.com/how-to-fund-a-forex-account-safely-10-powerful-steps-every-trader-must-follow/"
+    },
+    {
+      "type": "post",
+      "url": "/how-to-identify-support-and-resistance-in-forex-proven-strategies-for-traders/",
+      "title": "Support and Resistance in Forex: How to Identify Levels",
+      "source": "https://bestmt4ea.com/how-to-identify-support-and-resistance-in-forex-proven-strategies-for-traders/"
     },
     {
       "type": "post",
@@ -883,6 +1015,12 @@
     },
     {
       "type": "post",
+      "url": "/long-form-article-donchian-channel-breakout-ea-for-commodity-trading-powerful-guide-to-automated-market-success/",
+      "title": "Donchian Channel Breakout EA: A Testing Guide",
+      "source": "https://bestmt4ea.com/long-form-article-donchian-channel-breakout-ea-for-commodity-trading-powerful-guide-to-automated-market-success/"
+    },
+    {
+      "type": "post",
       "url": "/master-entry-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
       "title": "MASTER ENTRY Indicator Free Download for MT4/MT5",
       "source": "https://bestmt4ea.com/master-entry-indicator-free-download-7-powerful-benefits-every-trader-must-know/"
@@ -898,6 +1036,12 @@
       "url": "/monopolist-scalping-expert-advisor-free-download-powerful-7-step-guide-to-smart-forex-profits/",
       "title": "Monopolist Scalping EA: Free Download Guide and Risks",
       "source": "https://bestmt4ea.com/monopolist-scalping-expert-advisor-free-download-powerful-7-step-guide-to-smart-forex-profits/"
+    },
+    {
+      "type": "post",
+      "url": "/monte-carlo-test-for-mt4-backtesting-the-complete-robustness-guide-for-traders/",
+      "title": "Monte Carlo Test for MT4 Backtests: A Robustness Guide",
+      "source": "https://bestmt4ea.com/monte-carlo-test-for-mt4-backtesting-the-complete-robustness-guide-for-traders/"
     },
     {
       "type": "page",
@@ -916,6 +1060,12 @@
       "url": "/mt4-gold-scalper-ea-free-download-powerful-2026-guide-proven-setup-tips/",
       "title": "MT4 Gold Scalper Setup: The Inputs That Decide the Outcome",
       "source": "https://bestmt4ea.com/mt4-gold-scalper-ea-free-download-powerful-2026-guide-proven-setup-tips/"
+    },
+    {
+      "type": "post",
+      "url": "/mt4-journal-common-ea-error-messages-and-fixes-17-powerful-ways-to-solve-expert-advisor-issues/",
+      "title": "MT4 Journal EA Error Messages and What They Mean",
+      "source": "https://bestmt4ea.com/mt4-journal-common-ea-error-messages-and-fixes-17-powerful-ways-to-solve-expert-advisor-issues/"
     },
     {
       "type": "post",
@@ -1225,6 +1375,12 @@
     },
     {
       "type": "post",
+      "url": "/tdi-bounce-forex-scalping-strategy-7-powerful-secrets-for-consistent-profits/",
+      "title": "TDI Bounce Scalping: A Testing Guide",
+      "source": "https://bestmt4ea.com/tdi-bounce-forex-scalping-strategy-7-powerful-secrets-for-consistent-profits/"
+    },
+    {
+      "type": "post",
       "url": "/teknotrader-mql4-indicators-free-download/",
       "title": "Free Open-Source MT4 Indicators with Full MQL4 Source",
       "source": "https://bestmt4ea.com/teknotrader-mql4-indicators-free-download/"
@@ -1279,6 +1435,18 @@
     },
     {
       "type": "post",
+      "url": "/the-ultimate-guide-to-the-best-forex-brokers-for-expert-advisors/",
+      "title": "Choosing a Forex Broker for Expert Advisors",
+      "source": "https://bestmt4ea.com/the-ultimate-guide-to-the-best-forex-brokers-for-expert-advisors/"
+    },
+    {
+      "type": "post",
+      "url": "/top-10-best-mobile-apps-for-learning-forex-trading-free/",
+      "title": "Free Mobile Apps for Learning Forex Trading",
+      "source": "https://bestmt4ea.com/top-10-best-mobile-apps-for-learning-forex-trading-free/"
+    },
+    {
+      "type": "post",
       "url": "/top-10-best-mt4-indicators-for-gold-xauusd-powerful-tools-for-accurate-trading/",
       "title": "Best MT4 Indicators for Gold XAUUSD: Pick Three, Not Ten",
       "source": "https://bestmt4ea.com/top-10-best-mt4-indicators-for-gold-xauusd-powerful-tools-for-accurate-trading/"
@@ -1309,6 +1477,18 @@
     },
     {
       "type": "post",
+      "url": "/top-10-powerful-team-trading-prop-firm-options-for-modern-traders/",
+      "title": "Team Trading and Prop Firm Options Explained",
+      "source": "https://bestmt4ea.com/top-10-powerful-team-trading-prop-firm-options-for-modern-traders/"
+    },
+    {
+      "type": "post",
+      "url": "/top-12-powerful-requirements-for-trading-forex-full-time-2/",
+      "title": "Requirements for Trading Forex Full-Time: Honest Checklist",
+      "source": "https://bestmt4ea.com/top-12-powerful-requirements-for-trading-forex-full-time-2/"
+    },
+    {
+      "type": "post",
       "url": "/top-7-best-free-forex-scalper-ea-for-mt4-download/",
       "title": "Forex Scalper EA Verification Checklist for MT4",
       "source": "https://bestmt4ea.com/top-7-best-free-forex-scalper-ea-for-mt4-download/"
@@ -1321,6 +1501,12 @@
     },
     {
       "type": "post",
+      "url": "/trendline-breakout-vs-false-breakout-how-to-identify-and-trade-them-effectively/",
+      "title": "Trendline Breakout vs False Breakout in Forex",
+      "source": "https://bestmt4ea.com/trendline-breakout-vs-false-breakout-how-to-identify-and-trade-them-effectively/"
+    },
+    {
+      "type": "post",
       "url": "/ultimate-pro-scalper-forex-indicator-free-download-7-powerful-secrets-every-trader-must-know/",
       "title": "Ultimate Pro Scalper Forex Indicator Free Download Guide",
       "source": "https://bestmt4ea.com/ultimate-pro-scalper-forex-indicator-free-download-7-powerful-secrets-every-trader-must-know/"
@@ -1330,6 +1516,12 @@
       "url": "/ultimate-trade-assistant-free-download-7-powerful-benefits-every-trader-will-love/",
       "title": "Ultimate Trade Assistant Free Download: Demo Check First",
       "source": "https://bestmt4ea.com/ultimate-trade-assistant-free-download-7-powerful-benefits-every-trader-will-love/"
+    },
+    {
+      "type": "post",
+      "url": "/understanding-the-dragonfly-doji-at-support-level/",
+      "title": "Dragonfly Doji at Support: How to Read It",
+      "source": "https://bestmt4ea.com/understanding-the-dragonfly-doji-at-support-level/"
     },
     {
       "type": "post",
@@ -1363,6 +1555,12 @@
     },
     {
       "type": "post",
+      "url": "/volumetric-inverse-fair-value-gap-detection-in-cryptocurrency-trading/",
+      "title": "Fair Value Gaps in Crypto: A Detection Guide",
+      "source": "https://bestmt4ea.com/volumetric-inverse-fair-value-gap-detection-in-cryptocurrency-trading/"
+    },
+    {
+      "type": "post",
       "url": "/vortex-gold-ea-forex-ea-reviews-7-powerful-truths-you-must-know-before-investing/",
       "title": "Vortex Gold EA Review: Seven Truths Before You Invest",
       "source": "https://bestmt4ea.com/vortex-gold-ea-forex-ea-reviews-7-powerful-truths-you-must-know-before-investing/"
@@ -1378,6 +1576,18 @@
       "url": "/waka-waka-ea-review-long-term-performance/",
       "title": "Waka Waka EA Review: Long-Term Performance & Drawdown",
       "source": "https://bestmt4ea.com/waka-waka-ea-review-long-term-performance/"
+    },
+    {
+      "type": "post",
+      "url": "/what-is-a-pip-in-forex-simple-explanation-the-ultimate-beginner-friendly-guide/",
+      "title": "What Is a Pip in Forex? Simple Beginner Guide",
+      "source": "https://bestmt4ea.com/what-is-a-pip-in-forex-simple-explanation-the-ultimate-beginner-friendly-guide/"
+    },
+    {
+      "type": "post",
+      "url": "/what-is-forex-trading-for-absolute-beginners/",
+      "title": "What Is Forex Trading? A Beginner's Plain Guide",
+      "source": "https://bestmt4ea.com/what-is-forex-trading-for-absolute-beginners/"
     },
     {
       "type": "post",
