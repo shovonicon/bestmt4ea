@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-02T03:14:55.889Z",
+  "generatedAt": "2026-11-02T03:37:48.818Z",
   "source": "wordpress-seo-redirects (2).csv",
-  "count": 2411,
+  "count": 2405,
   "dropped": [
     {
       "from": "/product/bbp-ai-golden-ea",
@@ -460,6 +460,18 @@
       "reason": "superseded by manual rule"
     },
     {
+      "from": "/harmonic-patterns-in-forex-trading-guide",
+      "to": "/category/beginners-guides-forex-basics/",
+      "status": 301,
+      "reason": "source collides with a live route"
+    },
+    {
+      "from": "/fibonacci-time-zones-trading-strategy-7-powerful-techniques-for-consistent-market-success",
+      "to": "/category/technical-analysis/",
+      "status": 301,
+      "reason": "source collides with a live route"
+    },
+    {
       "from": "/renko-star-indicator-free-download-7-powerful-reasons-traders-love-it",
       "to": "/category/free-forex-indicator/",
       "status": 301,
@@ -490,6 +502,18 @@
       "reason": "superseded by manual rule"
     },
     {
+      "from": "/top-12-powerful-requirements-for-trading-forex-full-time-2",
+      "to": "/category/installation-setup/",
+      "status": 301,
+      "reason": "source collides with a live route"
+    },
+    {
+      "from": "/how-to-calculate-sortino-ratio-for-forex-eas-7-powerful-steps-to-improve-trading-performance",
+      "to": "/category/installation-setup/",
+      "status": 301,
+      "reason": "source collides with a live route"
+    },
+    {
       "from": "/what-is-forex-trading-for-absolute-beginners",
       "to": "/category/forex-trading-strategies/",
       "status": 301,
@@ -504,6 +528,18 @@
     {
       "from": "/how-does-the-forex-market-work-explained-simply-the-ultimate-beginners-guide",
       "to": "/category/ai-powered-trading-tools/brokers-trading-platforms/",
+      "status": 301,
+      "reason": "source collides with a live route"
+    },
+    {
+      "from": "/trendline-breakout-vs-false-breakout-how-to-identify-and-trade-them-effectively",
+      "to": "/category/forex-trading-strategies/",
+      "status": 301,
+      "reason": "source collides with a live route"
+    },
+    {
+      "from": "/monte-carlo-test-for-mt4-backtesting-the-complete-robustness-guide-for-traders",
+      "to": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/",
       "status": 301,
       "reason": "source collides with a live route"
     },
@@ -3029,10 +3065,6 @@
       "wasTo": "/category/forex-trading-strategies/"
     },
     {
-      "from": "/harmonic-patterns-in-forex-trading-guide",
-      "wasTo": "/category/forex-trading-strategies/"
-    },
-    {
       "from": "/pyramiding-positions-in-winning-trades-a-comprehensive-guide",
       "wasTo": "/category/forex-trading-strategies/"
     },
@@ -3047,10 +3079,6 @@
     {
       "from": "/bullish-engulfing-pattern-reliability-statistics",
       "wasTo": "/category/forex-trading-strategies/"
-    },
-    {
-      "from": "/fibonacci-time-zones-trading-strategy-7-powerful-techniques-for-consistent-market-success",
-      "wasTo": "/category/technical-analysis/"
     },
     {
       "from": "/how-to-combine-rsi-and-moving-averages-for-accurate-trading-signals-7-proven-strategies",
@@ -3291,10 +3319,6 @@
     {
       "from": "/10-powerful-paper-trading-strategies-to-test-before-real-money-investment-2",
       "wasTo": "/category/forex-trading-strategies/"
-    },
-    {
-      "from": "/top-12-powerful-requirements-for-trading-forex-full-time-2",
-      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
       "from": "/10-powerful-ways-to-use-the-free-trix-triple-exponential-average-triple-crossover-for-better-trading-decisions-2",
@@ -3714,10 +3738,6 @@
     },
     {
       "from": "/9-powerful-ways-to-master-how-to-calculate-sharpe-ratio-for-forex-eas-guaranteed-performance-boost",
-      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
-    },
-    {
-      "from": "/how-to-calculate-sortino-ratio-for-forex-eas-7-powerful-steps-to-improve-trading-performance",
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
@@ -4457,10 +4477,6 @@
       "wasTo": "/category/technical-analysis/"
     },
     {
-      "from": "/trendline-breakout-vs-false-breakout-how-to-identify-and-trade-them-effectively",
-      "wasTo": "/category/forex-trading-strategies/"
-    },
-    {
       "from": "/golden-cross-vs-death-cross-reliability-understanding-market-signals",
       "wasTo": "/category/forex-trading-strategies/"
     },
@@ -4694,10 +4710,6 @@
     },
     {
       "from": "/backtesting-walk-forward-method-explained-for-beginners-7-powerful-insights-every-new-trader-needs",
-      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
-    },
-    {
-      "from": "/monte-carlo-test-for-mt4-backtesting-the-complete-robustness-guide-for-traders",
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
@@ -11511,11 +11523,6 @@
       "status": 410
     },
     {
-      "from": "/fibonacci-time-zones-trading-strategy-7-powerful-techniques-for-consistent-market-success",
-      "to": "/fibonacci-time-zones-trading-strategy-7-powerful-techniques-for-consistent-market-success",
-      "status": 410
-    },
-    {
       "from": "/fibot-fibonacci-ea-free-download-7-powerful-truths-traders-must-know-before-installing",
       "to": "/fibot-fibonacci-ea-free-download-7-powerful-truths-traders-must-know-before-installing",
       "status": 410
@@ -12721,11 +12728,6 @@
       "status": 301
     },
     {
-      "from": "/harmonic-patterns-in-forex-trading-guide",
-      "to": "/harmonic-patterns-in-forex-trading-guide",
-      "status": 410
-    },
-    {
       "from": "/harmonic-patterns-trading-guide-understanding-and-applying-key-patterns-for-success",
       "to": "/harmonic-patterns-trading-guide-understanding-and-applying-key-patterns-for-success",
       "status": 410
@@ -13073,11 +13075,6 @@
     {
       "from": "/how-to-calculate-sharpe-ratio-for-forex-eas-11-powerful-steps-for-better-trading-performance",
       "to": "/how-to-calculate-sharpe-ratio-for-forex-eas-11-powerful-steps-for-better-trading-performance",
-      "status": 410
-    },
-    {
-      "from": "/how-to-calculate-sortino-ratio-for-forex-eas-7-powerful-steps-to-improve-trading-performance",
-      "to": "/how-to-calculate-sortino-ratio-for-forex-eas-7-powerful-steps-to-improve-trading-performance",
       "status": 410
     },
     {
@@ -14658,11 +14655,6 @@
     {
       "from": "/monte-carlo-simulations-for-mt4-robots-complete-beginner-to-pro-guide",
       "to": "/monte-carlo-simulations-for-mt4-robots-complete-beginner-to-pro-guide",
-      "status": 410
-    },
-    {
-      "from": "/monte-carlo-test-for-mt4-backtesting-the-complete-robustness-guide-for-traders",
-      "to": "/monte-carlo-test-for-mt4-backtesting-the-complete-robustness-guide-for-traders",
       "status": 410
     },
     {
@@ -17626,11 +17618,6 @@
       "status": 410
     },
     {
-      "from": "/top-12-powerful-requirements-for-trading-forex-full-time-2",
-      "to": "/top-12-powerful-requirements-for-trading-forex-full-time-2",
-      "status": 410
-    },
-    {
       "from": "/top-15-sharia-compliant-strategies-forex-traders-must-use-for-powerful-ethical-results",
       "to": "/top-15-sharia-compliant-strategies-forex-traders-must-use-for-powerful-ethical-results",
       "status": 410
@@ -17859,11 +17846,6 @@
       "from": "/trend-squeezer-forex-system-mt4-free-download-powerful-guide-with-7-proven-trading-insights",
       "to": "/%F0%9F%93%88-pro-trend-line-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
       "status": 301
-    },
-    {
-      "from": "/trendline-breakout-vs-false-breakout-how-to-identify-and-trade-them-effectively",
-      "to": "/trendline-breakout-vs-false-breakout-how-to-identify-and-trade-them-effectively",
-      "status": 410
     },
     {
       "from": "/trendline-drawing-techniques-for-forex",
