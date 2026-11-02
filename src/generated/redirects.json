@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-02T02:49:27.595Z",
+  "generatedAt": "2026-11-02T03:14:55.889Z",
   "source": "wordpress-seo-redirects (2).csv",
-  "count": 2417,
+  "count": 2411,
   "dropped": [
     {
       "from": "/product/bbp-ai-golden-ea",
@@ -488,6 +488,42 @@
       "to": "/category/forex-trading-strategies/",
       "status": 301,
       "reason": "superseded by manual rule"
+    },
+    {
+      "from": "/what-is-forex-trading-for-absolute-beginners",
+      "to": "/category/forex-trading-strategies/",
+      "status": 301,
+      "reason": "source collides with a live route"
+    },
+    {
+      "from": "/how-to-fund-a-forex-account-safely-10-powerful-steps-every-trader-must-follow",
+      "to": "/category/forex-broker-reviews/",
+      "status": 301,
+      "reason": "source collides with a live route"
+    },
+    {
+      "from": "/how-does-the-forex-market-work-explained-simply-the-ultimate-beginners-guide",
+      "to": "/category/ai-powered-trading-tools/brokers-trading-platforms/",
+      "status": 301,
+      "reason": "source collides with a live route"
+    },
+    {
+      "from": "/how-to-identify-support-and-resistance-in-forex-proven-strategies-for-traders",
+      "to": "/category/installation-setup/",
+      "status": 301,
+      "reason": "source collides with a live route"
+    },
+    {
+      "from": "/how-to-calculate-risk-reward-ratio-in-forex-powerful-guide-for-traders",
+      "to": "/category/fundamental-analysis/",
+      "status": 301,
+      "reason": "source collides with a live route"
+    },
+    {
+      "from": "/what-is-a-pip-in-forex-simple-explanation-the-ultimate-beginner-friendly-guide",
+      "to": "/category/beginners-guides-forex-basics/",
+      "status": 301,
+      "reason": "source collides with a live route"
     },
     {
       "from": "/us-debt-ceiling-crisis-impact-on-treasury-yields-powerful-insights",
@@ -3717,10 +3753,6 @@
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
-      "from": "/what-is-forex-trading-for-absolute-beginners",
-      "wasTo": "/category/forex-trading-strategies/"
-    },
-    {
       "from": "/forex-terminology-glossary-for-beginners-essential-powerful-guide",
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
@@ -4177,10 +4209,6 @@
       "wasTo": "/category/ai-powered-trading-tools/brokers-trading-platforms/"
     },
     {
-      "from": "/how-to-fund-a-forex-account-safely-10-powerful-steps-every-trader-must-follow",
-      "wasTo": "/category/ai-powered-trading-tools/brokers-trading-platforms/"
-    },
-    {
       "from": "/withdrawal-fees-in-forex-brokers-explained-essential-guide-expert-insights",
       "wasTo": "/category/ai-powered-trading-tools/brokers-trading-platforms/"
     },
@@ -4335,10 +4363,6 @@
     {
       "from": "/the-ultimate-guide-to-venture-capital-in-trading-startups-proven-strategies-for-funding-success",
       "wasTo": "/category/risk-money-management/"
-    },
-    {
-      "from": "/how-does-the-forex-market-work-explained-simply-the-ultimate-beginners-guide",
-      "wasTo": "/category/ai-powered-trading-tools/brokers-trading-platforms/"
     },
     {
       "from": "/7-powerful-insights-into-the-difference-between-mini-micro-and-standard-lots-forex",
@@ -5033,10 +5057,6 @@
       "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
     },
     {
-      "from": "/how-to-identify-support-and-resistance-in-forex-proven-strategies-for-traders",
-      "wasTo": "/category/mt4-mt5-expert-advisors/ea-settings-optimization/"
-    },
-    {
       "from": "/how-to-manage-emotions-in-forex-trading-psychology-15-powerful-strategies-for-success",
       "wasTo": "/category/forex-trading-strategies/"
     },
@@ -5166,10 +5186,6 @@
     },
     {
       "from": "/how-to-trade-news-events-in-forex-safely-12-proven-strategies-for-smart-traders",
-      "wasTo": "/category/technical-analysis/"
-    },
-    {
-      "from": "/how-to-calculate-risk-reward-ratio-in-forex-powerful-guide-for-traders",
       "wasTo": "/category/technical-analysis/"
     },
     {
@@ -5346,10 +5362,6 @@
     },
     {
       "from": "/what-is-forex-trading-for-beginners-17-powerful-insights-to-start-safely",
-      "wasTo": "/category/forex-trading-strategies/"
-    },
-    {
-      "from": "/what-is-a-pip-in-forex-simple-explanation-the-ultimate-beginner-friendly-guide",
       "wasTo": "/category/forex-trading-strategies/"
     },
     {
@@ -12884,11 +12896,6 @@
       "status": 410
     },
     {
-      "from": "/how-does-the-forex-market-work-explained-simply-the-ultimate-beginners-guide",
-      "to": "/how-does-the-forex-market-work-explained-simply-the-ultimate-beginners-guide",
-      "status": 410
-    },
-    {
       "from": "/how-forex-market-hours-work-powerful-guide",
       "to": "/how-forex-market-hours-work-powerful-guide",
       "status": 410
@@ -13064,11 +13071,6 @@
       "status": 410
     },
     {
-      "from": "/how-to-calculate-risk-reward-ratio-in-forex-powerful-guide-for-traders",
-      "to": "/how-to-calculate-risk-reward-ratio-in-forex-powerful-guide-for-traders",
-      "status": 410
-    },
-    {
       "from": "/how-to-calculate-sharpe-ratio-for-forex-eas-11-powerful-steps-for-better-trading-performance",
       "to": "/how-to-calculate-sharpe-ratio-for-forex-eas-11-powerful-steps-for-better-trading-performance",
       "status": 410
@@ -13184,11 +13186,6 @@
       "status": 410
     },
     {
-      "from": "/how-to-fund-a-forex-account-safely-10-powerful-steps-every-trader-must-follow",
-      "to": "/how-to-fund-a-forex-account-safely-10-powerful-steps-every-trader-must-follow",
-      "status": 410
-    },
-    {
       "from": "/how-to-get-fit-for-consistent-forex-trading-10-powerful-strategies-for-long-term-success",
       "to": "/how-to-get-fit-for-consistent-forex-trading-10-powerful-strategies-for-long-term-success",
       "status": 410
@@ -13211,11 +13208,6 @@
     {
       "from": "/how-to-identify-market-structure-shifts",
       "to": "/how-to-identify-market-structure-shifts",
-      "status": 410
-    },
-    {
-      "from": "/how-to-identify-support-and-resistance-in-forex-proven-strategies-for-traders",
-      "to": "/how-to-identify-support-and-resistance-in-forex-proven-strategies-for-traders",
       "status": 410
     },
     {
@@ -18569,11 +18561,6 @@
       "status": 410
     },
     {
-      "from": "/what-is-a-pip-in-forex-simple-explanation-the-ultimate-beginner-friendly-guide",
-      "to": "/what-is-a-pip-in-forex-simple-explanation-the-ultimate-beginner-friendly-guide",
-      "status": 410
-    },
-    {
       "from": "/what-is-a-pip-in-forex-trading-explained-simply-7-powerful-insights-every-beginner-must-know",
       "to": "/what-is-a-pip-in-forex-trading-explained-simply-7-powerful-insights-every-beginner-must-know",
       "status": 410
@@ -18626,11 +18613,6 @@
     {
       "from": "/what-is-forex-trading-and-how-does-it-work-full-beginner-breakdown",
       "to": "/what-is-forex-trading-and-how-does-it-work-full-beginner-breakdown",
-      "status": 410
-    },
-    {
-      "from": "/what-is-forex-trading-for-absolute-beginners",
-      "to": "/what-is-forex-trading-for-absolute-beginners",
       "status": 410
     },
     {
