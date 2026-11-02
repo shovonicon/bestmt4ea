@@ -17,8 +17,8 @@ import { readFileSync, readdirSync, writeFileSync, mkdirSync } from 'node:fs';
 
 const ORIGIN = 'https://bestmt4ea.com';
 const CURRENCY = 'USD';
-// Owner to confirm: the brand the products are sold under. Merchant Center requires one.
-const BRAND = 'Strive Algo';
+// Brand the products are sold under (confirmed by the owner: BESTMT4EA). Merchant Center requires one.
+const BRAND = 'BESTMT4EA';
 const CATEGORY = 'Software > Computer Software';
 
 const plans = JSON.parse(readFileSync('src/data/product-plans.json', 'utf8'));
