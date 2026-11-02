@@ -3,7 +3,7 @@ title: "XAUUSD Scalping With Automated Gold EAs"
 slug: "xauusd-scalping-explained-automated-gold-eas"
 description: "How XAUUSD scalping EAs work, where their costs come from, why spread and slippage decide the result, and the checks to run before trading gold on automation."
 publishedAt: "2026-07-27T18:00:00.000Z"
-updatedAt: "2026-07-27T18:00:00.000Z"
+updatedAt: "2026-11-02T00:00:00.000Z"
 draft: false
 categories:
   - "Gold (XAUUSD) Trading Guides & EAs"

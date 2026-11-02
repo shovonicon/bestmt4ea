@@ -2,7 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { monthYear } from '../../lib/dates';
 import { getPublicPosts } from '../../lib/content';
-import { url } from '../../lib/urls';
+import { url, absoluteUrl } from '../../lib/urls';
+import { breadcrumbSchema, itemListSchema } from '../../lib/seo';
 import taxonomies from '../../data/taxonomies.json';
 import RInfinityRail from '../../components/RInfinityRail.astro';
 import ToolRailAds from '../../components/ToolRailAds.astro';
@@ -31,6 +32,22 @@ const fmt = (d: Date) =>
 <BaseLayout
   title={`Forex Trading Blog ${monthYear} — Guides, Reviews and MT4/MT5 Tutorials`}
   description="Practical guides on automated forex trading: how EAs work, how to test them on demo, how to read a drawdown and how to avoid costly traps."
+  jsonLd={[
+    breadcrumbSchema([
+      { name: 'Home', url: '/' },
+      { name: 'Blog', url: '/blog/' },
+    ]),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: 'Forex Trading Blog',
+      url: absoluteUrl('/blog/'),
+    },
+    itemListSchema(
+      'Forex Trading Blog',
+      posts.slice(0, 50).map((post) => ({ name: post.data.title, url: `/${post.data.slug}/` })),
+    ),
+  ]}
 >
   <div class="blog-layout relative">
     <div class="rf-rail-slot">

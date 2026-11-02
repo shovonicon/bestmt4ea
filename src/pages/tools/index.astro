@@ -7,7 +7,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getAvailableTools, PLATFORM_DOWNLOADS } from '../../data/tools';
 import { publicUrl } from '../../lib/files';
-import { url } from '../../lib/urls';
+import { url, absoluteUrl } from '../../lib/urls';
+import { breadcrumbSchema, itemListSchema } from '../../lib/seo';
 import RInfinityRail from '../../components/RInfinityRail.astro';
 import ToolRailAds from '../../components/ToolRailAds.astro';
 
@@ -41,6 +42,22 @@ const ARROW_RIGHT = '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>';
 <BaseLayout
   title="Free Forex Trading Tools & Calculators"
   description="Free forex calculators, live charts, real-time rates and an economic calendar: pip value, position size, margin, risk-reward and compounding."
+  jsonLd={[
+    breadcrumbSchema([
+      { name: 'Home', url: '/' },
+      { name: 'Tools', url: '/tools/' },
+    ]),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: 'Free Forex Trading Tools & Calculators',
+      url: absoluteUrl('/tools/'),
+    },
+    itemListSchema(
+      'Free Forex Trading Tools & Calculators',
+      tools.map((tool) => ({ name: tool.name, url: `/tools/${tool.slug}/` })),
+    ),
+  ]}
 >
 
   <div class="tools-layout relative">

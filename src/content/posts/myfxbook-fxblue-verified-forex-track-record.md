@@ -3,7 +3,7 @@ title: "Verified Track Records: What Myfxbook Does Not Show"
 slug: "myfxbook-fxblue-verified-forex-track-record"
 description: "What a verified track record on Myfxbook or FX Blue proves, what it does not, and the checks to run on costs, account history and live versus demo results."
 publishedAt: "2026-09-07T18:00:00.000Z"
-updatedAt: "2026-09-07T18:00:00.000Z"
+updatedAt: "2026-11-02T00:00:00.000Z"
 draft: false
 categories:
   - "Forex EA Reviews & Comparisons"

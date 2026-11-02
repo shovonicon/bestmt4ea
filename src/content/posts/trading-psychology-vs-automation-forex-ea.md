@@ -3,7 +3,7 @@ title: "Trading Psychology vs Automation for Forex EAs"
 slug: "trading-psychology-vs-automation-forex-ea"
 description: "How automation removes some emotional decisions but not the need to manage a system: rules, monitoring, overrides and the human decisions that remain for an."
 publishedAt: "2026-09-14T18:00:00.000Z"
-updatedAt: "2026-09-14T18:00:00.000Z"
+updatedAt: "2026-11-02T00:00:00.000Z"
 draft: false
 categories:
   - "Forex Risk & Money Management"

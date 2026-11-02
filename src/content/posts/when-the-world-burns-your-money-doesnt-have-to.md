@@ -3,7 +3,7 @@ title: "Market Crises: Keep Capital Working Through a Fall"
 slug: "when-the-world-burns-your-money-doesnt-have-to"
 description: "How to prepare a household and a portfolio for a downturn: cash buffers, failure-mode diversification, protection limits and a structured review after the."
 publishedAt: "2026-06-17T18:00:00.000Z"
-updatedAt: "2026-06-17T18:00:00.000Z"
+updatedAt: "2026-11-02T00:00:00.000Z"
 draft: false
 categories:
   - "Forex Risk & Money Management"

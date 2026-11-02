@@ -3,7 +3,7 @@ title: "Backtesting vs Forward Testing an EA"
 slug: "backtesting-vs-forward-testing-verify-ea"
 description: "How to verify an EA with honest backtesting and a forward demo test: what each shows, what each hides, and the checks to run before a system trades real."
 publishedAt: "2026-08-04T18:00:00.000Z"
-updatedAt: "2026-08-04T18:00:00.000Z"
+updatedAt: "2026-11-02T00:00:00.000Z"
 draft: false
 categories:
   - "EA Settings & Optimization Guides"

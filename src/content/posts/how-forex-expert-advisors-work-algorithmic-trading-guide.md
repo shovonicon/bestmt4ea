@@ -3,7 +3,7 @@ title: "How Forex Expert Advisors Work: A Practical Guide"
 slug: "how-forex-expert-advisors-work-algorithmic-trading-guide"
 description: "How forex expert advisors work: the signal, the sizing and the order logic, what their results really show, and the checks to run before you trust one."
 publishedAt: "2026-07-11T18:00:00.000Z"
-updatedAt: "2026-07-11T18:00:00.000Z"
+updatedAt: "2026-11-02T00:00:00.000Z"
 draft: false
 categories:
   - "MT4 & MT5 Expert Advisors"

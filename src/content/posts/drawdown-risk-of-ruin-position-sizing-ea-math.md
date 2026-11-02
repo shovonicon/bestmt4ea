@@ -3,7 +3,7 @@ title: "Drawdown, Risk of Ruin and Position Sizing for EAs"
 slug: "drawdown-risk-of-ruin-position-sizing-ea-math"
 description: "The maths behind EA drawdown and risk of ruin: expectancy, position sizing from the stop, recovery arithmetic and the checks to run before a sized EA trades."
 publishedAt: "2026-08-30T18:00:00.000Z"
-updatedAt: "2026-08-30T18:00:00.000Z"
+updatedAt: "2026-11-02T00:00:00.000Z"
 draft: false
 categories:
   - "Forex Risk & Money Management"
