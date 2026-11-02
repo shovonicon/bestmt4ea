@@ -2,7 +2,7 @@
 wpId: 0
 title: "Risk Disclaimer"
 slug: "disclaimer"
-description: "Trading forex and CFDs carries a high risk of loss. Read how BESTMT4EA presents performance data, what our software does and does not do, and why nothing here is financial advice."
+description: "Forex and CFD trading carries a high risk of loss. How BESTMT4EA presents performance data, what our software does, and why nothing here is advice."
 publishedAt: 2026-09-28
 updatedAt: 2026-09-29
 systemPage: true

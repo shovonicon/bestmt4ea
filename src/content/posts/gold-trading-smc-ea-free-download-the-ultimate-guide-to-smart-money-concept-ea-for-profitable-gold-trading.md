@@ -75,7 +75,7 @@ download:
   fileSize: "about 577 MB in three zip parts"
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
 seo:
-  title: "Gold Trading SMC EA FREE Download – The Ultimate Guide to Smart Money Concept EA for Profitable Gold Trading 2026"
+  title: "Gold Trading SMC EA Free Download: Smart Money Guide"
   description: "A free Apache-2.0 SMC expert advisor for MetaTrader 5, plus an honest look at what order blocks, fair value gaps and displacement become once code defines them."
   canonical: "https://bestmt4ea.com/gold-trading-smc-ea-free-download-the-ultimate-guide-to-smart-money-concept-ea-for-profitable-gold-trading/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127028_featured.webp"

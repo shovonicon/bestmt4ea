@@ -7,7 +7,7 @@ publishedAt: "2019-03-02T08:51:12.000Z"
 updatedAt: "2026-10-07"
 seo:
   title: "Privacy Policy — Cookies, Advertising and Your Data"
-  description: "What BESTMT4EA collects and why: AdSense advertising cookies, affiliate-link tracking, Cloudflare hosting logs, download emails, and how to exercise your privacy rights."
+  description: "What BESTMT4EA collects and why: AdSense cookies, affiliate-link tracking, Cloudflare logs, download emails, and how to exercise your privacy rights."
   canonical: "https://bestmt4ea.com/privacy-policy/"
 systemPage: true
 showAds: false

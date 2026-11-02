@@ -6,7 +6,7 @@ description: "Smart Correlation Hedge EA review: how correlation hedging works, 
 publishedAt: "2026-02-13T05:55:53.000Z"
 updatedAt: "2026-08-26T17:08:52Z"
 seo: 
-  title: "Smart Correlation Hedge EA Free Download: Powerful 7-Step Guide to Smarter Forex Hedging 2026"
+  title: "Smart Correlation Hedge EA: Free Download Guide"
   description: "Smart Correlation Hedge EA review: how correlation hedging works, why pair relationships break, what drawdown to expect, and how to test it on demo first."
   canonical: "https://bestmt4ea.com/smart-correlation-hedge-ea-free-download-powerful-7-step-guide-to-smarter-forex-hedging/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_125994_featured.webp"

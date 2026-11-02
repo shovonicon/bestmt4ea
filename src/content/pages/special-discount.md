@@ -7,7 +7,7 @@ publishedAt: "2026-05-04T01:33:18.000Z"
 updatedAt: "2026-07-26T22:27:26.000Z"
 seo: 
   title: "Special Discount"
-  description: "BESTMT4EA.com - Compare Myfxbook-verified Forex EAs for MT4 & MT5. AI-driven scalping systems for XAUUSD and major pairs, live-traded and backtested before release."
+  description: "Current offers on BESTMT4EA expert advisor licences. Check the terms, the licence tier and what each discount covers before you buy."
   canonical: "https://bestmt4ea.com/special-discount/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2025/10/1-Verified-Forex-EA-scaled.jpg"
 sourceUrl: "https://bestmt4ea.com/special-discount/"
