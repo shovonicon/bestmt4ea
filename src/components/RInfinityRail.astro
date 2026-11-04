@@ -13,13 +13,14 @@
  * projection, a guarantee or an income claim; the only figures are the provider's
  * own, and the checked date says when they were read.
  *
- * Two layouts, one component: `rail` for the 320px column above the layout
- * breakpoint, `inline` for the in-flow card on everything narrower.
+ * Three layouts, one component: `rail` for the 320px column above the layout
+ * breakpoint, `inline` for the in-flow card on everything narrower, and `banner`
+ * for the full-width strip on the homepage (one row on desktop, stacked on mobile).
  */
 import { affiliates, AFFILIATE_REL } from '../lib/affiliates';
 
 export interface Props {
-  variant?: 'rail' | 'inline';
+  variant?: 'rail' | 'inline' | 'banner';
 }
 
 const { variant = 'rail' } = Astro.props;
@@ -64,7 +65,7 @@ const OFFERS = [
     <span class="ad-card-ad__sheen" aria-hidden="true"></span>
 
     <div class="ad-card-ad__head">
-      <span class="ad-card-ad__tag">Advertisement</span>
+      {variant !== 'banner' && <span class="ad-card-ad__tag">Advertisement</span>}
       <span class="brand-chip ad-card-ad__logo">
         <img src={brand.logo} alt="RoboForex" loading="lazy" decoding="async" />
       </span>
@@ -82,7 +83,7 @@ const OFFERS = [
       {
         OFFERS.map((offer) => (
           <li>
-            <a href={offer.href} rel={AFFILIATE_REL} target="_blank" class="ad-card-ad__offer">
+            <a href={offer.href} rel={AFFILIATE_REL} target="_blank" class="ad-card-ad__offer" title={offer.detail}>
               <span class="ad-card-ad__stat">{offer.stat}</span>
               <span class="ad-card-ad__body">
                 <span class="ad-card-ad__name">
@@ -128,7 +129,7 @@ const OFFERS = [
   </div>
 
   <p class="ad-card-ad__note">
-    Offers read {CHECKED} — terms can change; the linked pages prevail. Affiliate links: we may
+    {variant === 'banner' && 'Advertisement. '}Offers read {CHECKED} — terms can change; the linked pages prevail. Affiliate links: we may
     earn a commission at no cost to you.
   </p>
 </aside>
@@ -379,6 +380,184 @@ const OFFERS = [
     font-size: 0.625rem;
     line-height: 1.55;
     color: var(--color-ink-dim);
+  }
+
+  /* ------------------------------------------------------------ banner card */
+
+  /*
+   * Homepage banner: a compact, centred strip in the header's own emerald
+   * palette (it reuses the base card's lit edge and the brand CTA). Everything is
+   * centred; from desktop up the four offers collapse to single-line tiles so the
+   * strip stays short, and the full terms stay on the linked pages.
+   */
+  .ad-card-ad--banner {
+    max-width: 56rem;
+    margin-inline: auto;
+    align-items: center;
+    text-align: center;
+  }
+
+  .ad-card-ad--banner .ad-card-ad__card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: 0.8rem;
+    padding: 1rem 1.1rem;
+    border-radius: 1.1rem;
+  }
+
+  .ad-card-ad--banner .ad-card-ad__head {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+  }
+
+  .ad-card-ad--banner .ad-card-ad__logo {
+    order: -1;
+    padding: 0.4rem 0.9rem;
+  }
+
+  .ad-card-ad--banner .ad-card-ad__logo img {
+    height: 1.25rem;
+  }
+
+  .ad-card-ad--banner .ad-card-ad__intro {
+    align-items: center;
+  }
+
+  .ad-card-ad--banner .ad-card-ad__title {
+    font-size: 1.2rem;
+  }
+
+  .ad-card-ad--banner .ad-card-ad__offers {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.55rem;
+    width: 100%;
+  }
+
+  .ad-card-ad--banner .ad-card-ad__offers li + li {
+    border-top: 0;
+  }
+
+  .ad-card-ad--banner .ad-card-ad__offer {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    height: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid rgba(0, 193, 144, 0.22);
+    border-radius: 0.8rem;
+    background: rgba(0, 193, 144, 0.04);
+  }
+
+  .ad-card-ad--banner .ad-card-ad__offer:hover,
+  .ad-card-ad--banner .ad-card-ad__offer:focus-visible {
+    border-color: rgba(0, 224, 168, 0.55);
+    background: rgba(0, 193, 144, 0.09);
+  }
+
+  .ad-card-ad--banner .ad-card-ad__stat {
+    width: auto;
+    padding-top: 0;
+    font-size: 1.15rem;
+    line-height: 1.1;
+  }
+
+  .ad-card-ad--banner .ad-card-ad__body {
+    align-items: center;
+  }
+
+  .ad-card-ad--banner .ad-card-ad__name {
+    justify-content: center;
+  }
+
+  .ad-card-ad--banner .ad-card-ad__detail {
+    font-size: 0.6875rem;
+    line-height: 1.4;
+  }
+
+  .ad-card-ad--banner .ad-card-ad__cta {
+    width: 100%;
+    padding: 0.7rem 1.4rem;
+  }
+
+  /* Tablet: tiles in two columns, CTA fits its text. */
+  @media (min-width: 640px) {
+    .ad-card-ad--banner .ad-card-ad__card {
+      padding: 1.1rem 1.4rem;
+    }
+
+    .ad-card-ad--banner .ad-card-ad__offers {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ad-card-ad--banner .ad-card-ad__cta {
+      width: auto;
+      padding-inline: 1.8rem;
+    }
+  }
+
+  /* Desktop: one-line tiles (figure + name), no hint copy; terms sit behind the link. */
+  @media (min-width: 1024px) {
+    /* Full container width, one slim row: plate, headline, four tiles, button. */
+    .ad-card-ad--banner {
+      max-width: none;
+    }
+
+    .ad-card-ad--banner .ad-card-ad__card {
+      grid-template-columns: max-content max-content minmax(0, 1fr) max-content;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 1.125rem 1rem;
+    }
+
+    .ad-card-ad--banner .ad-card-ad__head {
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .ad-card-ad--banner .ad-card-ad__kicker,
+    .ad-card-ad--banner .ad-card-ad__lede,
+    .ad-card-ad--banner .ad-card-ad__detail {
+      display: none;
+    }
+
+    .ad-card-ad--banner .ad-card-ad__intro {
+      max-width: 11rem;
+    }
+
+    .ad-card-ad--banner .ad-card-ad__title {
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .ad-card-ad--banner .ad-card-ad__offers {
+      /* The fourth tile (cashback on commission) is 1.3x as long as the others. */
+      grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.3fr);
+      gap: 0.5rem;
+    }
+
+    .ad-card-ad--banner .ad-card-ad__offer {
+      flex-direction: row;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.5rem;
+    }
+
+    .ad-card-ad--banner .ad-card-ad__stat {
+      font-size: 1rem;
+    }
+
+    .ad-card-ad--banner .ad-card-ad__name {
+      font-size: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .ad-card-ad--banner .ad-card-ad__cta {
+      padding: 0.6rem 1.3rem;
+      white-space: nowrap;
+    }
   }
 
   /* ---------------------------------------------------------- in-flow card */

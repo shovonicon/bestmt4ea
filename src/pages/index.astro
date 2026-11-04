@@ -4,7 +4,7 @@ import ProductCard from '../components/ProductCard.astro';
 import ComparisonRegistry from '../components/ComparisonRegistry.astro';
 import Faq from '../components/Faq.astro';
 import SectionHead from '../components/SectionHead.astro';
-import CountUp from '../components/CountUp.astro';
+import RInfinityRail from '../components/RInfinityRail.astro';
 import { getPerformance } from '../lib/performance';
 import { site, RISK_DISCLAIMER } from '../lib/site';
 import { organizationSchema, websiteSchema, faqSchema } from '../lib/seo';
@@ -52,18 +52,15 @@ const ranked = [...withPerf].sort(
   (a, b) => (b.perf?.totalGainPct ?? -Infinity) - (a.perf?.totalGainPct ?? -Infinity),
 );
 
+// The homepage table is ranked by Myfxbook's Abs. Gain, so the top ten are chosen by it too.
+const rankedByAbsGain = [...withPerf].sort(
+  (a, b) => (b.perf?.live?.absGainPct ?? -Infinity) - (a.perf?.live?.absGainPct ?? -Infinity),
+);
+
 const featured = ranked.slice(0, 6).map((r) => r.product);
 
 // Real counts only — never a counter we cannot source.
 const trackedCount = withPerf.filter((r) => r.perf?.verified).length;
-const liveCount = withPerf.filter((r) => r.perf?.accountType === 'real').length;
-
-const stats = [
-  { label: 'Expert advisors', value: String(products.length), count: true },
-  { label: 'Third-party tracked', value: String(trackedCount), count: true },
-  { label: 'Real accounts tracked', value: String(liveCount), count: true },
-  { label: 'Operating since', value: String(siteStats.since), count: false },
-];
 
 const pillars = [
   {
@@ -126,13 +123,15 @@ const faqs = [
   description={site.description}
   jsonLd={[organizationSchema(), websiteSchema(), faqSchema(faqs)]}
 >
+  <!-- First screen: hero + partner banner fill the viewport below the 4rem header. -->
+  <div class="flex min-h-[calc(100svh-4rem)] flex-col">
   <!-- Hero -->
-  <section class="relative overflow-hidden">
+  <section class="relative flex flex-1 flex-col overflow-hidden">
     <div class="glow-orb animate-aurora left-1/2 top-[-12rem] h-[26rem] w-[38rem] -translate-x-1/2 bg-emerald-500/25"
     ></div>
     <div class="glow-orb animate-float right-[-6rem] top-[6rem] h-[18rem] w-[18rem] bg-teal-400/10"></div>
     <div class="grid-overlay pointer-events-none absolute inset-0"></div>
-    <div class="container-x relative flex min-h-[62vh] flex-col items-center justify-center py-20 text-center lg:py-28">
+    <div class="container-x relative flex flex-1 flex-col items-center justify-center py-12 text-center lg:py-16">
       <span
         class="eyebrow animate-fade-in-up inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2"
       >
@@ -140,7 +139,7 @@ const faqs = [
       </span>
 
       <h1
-        class="animate-fade-in-up-delay-1 mt-6 max-w-5xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-7xl"
+        class="animate-fade-in-up-delay-1 mt-7 max-w-5xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
       >
         Forex expert advisors, with the <span class="text-gradient-aurora">track record</span> attached
       </h1>
@@ -152,7 +151,7 @@ const faqs = [
         before you spend anything. No hidden curves, no cherry-picked months.
       </p>
 
-      <div class="animate-fade-in-up-delay-3 mt-10 flex flex-wrap items-center justify-center gap-3">
+      <div class="animate-fade-in-up-delay-3 mt-9 flex flex-wrap items-center justify-center gap-3">
         <a href={url('/shop')} class="btn btn-primary !px-7 !py-3.5 !text-base">Browse the EA library</a>
         <a href={url('/top-ranking')} class="btn btn-ghost !px-6 !py-3.5 !text-base">See the full ranking</a>
         <a href={site.telegram.community} rel="noopener" class="btn btn-ghost !px-6 !py-3.5 !text-base">
@@ -161,7 +160,7 @@ const faqs = [
       </div>
 
       <div
-        class="animate-fade-in-up-delay-3 mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-[var(--color-ink-dim)]"
+        class="animate-fade-in-up-delay-3 mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-[var(--color-ink-dim)]"
       >
         <span class="inline-flex items-center gap-2">
           <span>{siteStats.customers} registered · {siteStats.payingCustomers}+ premium customers</span>
@@ -173,24 +172,11 @@ const faqs = [
     </div>
   </section>
 
-  <!-- Stats -->
-  <section class="container-x pb-20">
-    <div class="stats-panel reveal">
-      {
-        stats.map((stat) => (
-          <div class="stats-panel-item">
-            <div class="mb-3 flex items-center justify-center gap-2">
-              <span class="live-dot" />
-              <span class="metric-label">{stat.label}</span>
-            </div>
-            <div class="display-stat text-2xl sm:text-3xl">
-              {stat.count ? <CountUp value={stat.value} /> : stat.value}
-            </div>
-          </div>
-        ))
-      }
-    </div>
+  <!-- Partner banner (RoboForex / R Infinity). Homepage only. -->
+  <section class="container-x pb-8">
+    <RInfinityRail variant="banner" />
   </section>
+  </div>
 
   <!-- Pillars -->
   <section class="border-t border-white/5" aria-labelledby="pillars-heading">
@@ -229,7 +215,7 @@ const faqs = [
       />
 
       <div class="reveal mt-10">
-        <ComparisonRegistry products={ranked.slice(0, 10).map((entry) => entry.product)} />
+        <ComparisonRegistry products={rankedByAbsGain.slice(0, 10).map((entry) => entry.product)} showAbsGain />
       </div>
 
       <p class="mt-4 text-center text-xs text-[var(--color-ink-dim)]">

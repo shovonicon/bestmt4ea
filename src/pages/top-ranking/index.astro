@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ComparisonRegistry from '../../components/ComparisonRegistry.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import SectionHead from '../../components/SectionHead.astro';
-import CountUp from '../../components/CountUp.astro';
+import RInfinityRail from '../../components/RInfinityRail.astro';
 import Faq from '../../components/Faq.astro';
 import { getPerformance } from '../../lib/performance';
 import { RISK_DISCLAIMER, site } from '../../lib/site';
@@ -29,8 +29,6 @@ const perfSorted = products
   .map((product) => ({ product, perf: getPerformance(product.data.slug) }))
   .sort((a, b) => (b.perf?.monthlyGainPct ?? -Infinity) - (a.perf?.monthlyGainPct ?? -Infinity));
 
-const withLive = perfSorted.filter((r) => r.perf?.isLiveAccount);
-const withDemo = perfSorted.filter((r) => r.perf?.accountType === 'demo');
 const verified = perfSorted.filter((r) => r.perf?.verified);
 
 // The three leaders by verified monthly return — only rows with a real figure.
@@ -42,19 +40,15 @@ const catsWithCounts = cats.map((cat) => ({
   count: products.filter((p: any) => p.data.productCategories?.includes(cat.name)).length,
 }));
 
-const stats = [
-  { label: 'Systems ranked', value: String(products.length) },
-  { label: 'Third-party verified', value: String(verified.length) },
-  { label: 'On live accounts', value: String(withLive.length) },
-  { label: 'On demo accounts', value: String(withDemo.length) },
-];
-
 const trail = breadcrumbTrail([
   { name: 'Home', href: '/' },
   { name: 'Top ranking', href: url('/top-ranking') },
 ]);
 
-const rankedList = perfSorted.map((r) => ({
+// The structured-data list follows the table, which is ranked by Abs. Gain.
+const rankedList = [...perfSorted]
+  .sort((a, b) => (b.perf?.live?.absGainPct ?? -Infinity) - (a.perf?.live?.absGainPct ?? -Infinity))
+  .map((r) => ({
   name: r.product.data.title,
   url: `/product/${r.product.data.slug}/`,
 }));
@@ -63,7 +57,7 @@ const faqs = [
   {
     question: 'How are these systems ranked?',
     answer:
-      'By verified compound monthly return, taken from the third-party tracking account published on each product page. Drawdown is shown beside the return rather than averaged away, and the account type is stated on every row, so a demo record is never presented as live.',
+      'By Myfxbook absolute gain (Abs. Gain), taken from the third-party tracking account published on each product page. Drawdown is shown beside the return rather than averaged away, and the account type is stated on every row, so a demo record is never presented as live.',
   },
   {
     question: 'What does "verified" mean on this page?',
@@ -88,21 +82,23 @@ const faqs = [
   description="Ranked comparison of MT4 and MT5 expert advisors by verified return, maximum drawdown and gain, with the licence price and account type on every row."
   jsonLd={[breadcrumbSchema(trail), itemListSchema('Top forex expert advisors', rankedList), faqSchema(faqs)]}
 >
-  <section class="relative overflow-hidden">
+  <!-- First screen: hero + partner banner fill the viewport below the 4rem header. -->
+  <div class="flex min-h-[calc(100svh-4rem)] flex-col">
+  <section class="relative flex flex-1 flex-col overflow-hidden">
     <div class="glow-orb animate-aurora left-1/2 top-[-14rem] h-[22rem] w-[34rem] -translate-x-1/2 bg-emerald-500/20"
     ></div>
     <div class="grid-overlay pointer-events-none absolute inset-0"></div>
 
-    <div class="container-x relative py-16 text-center">
+    <div class="container-x relative flex flex-1 flex-col items-center justify-center py-12 text-center lg:py-16">
       <p class="eyebrow animate-fade-in-up">
         Rankings · Performance verified {formatDate(performanceVerifiedAt)}
       </p>
       <h1 class="animate-fade-in-up-delay-1 mx-auto mt-3 max-w-4xl text-3xl font-bold leading-tight md:text-5xl">
-        Top expert advisors, ranked by <span class="text-gradient-gold">verified monthly return</span>
+        Top expert advisors, ranked by <span class="text-gradient-gold">verified absolute gain</span>
       </h1>
       <p class="animate-fade-in-up-delay-2 mx-auto mt-5 max-w-3xl text-base leading-8 text-[var(--color-ink-soft)]">
         Every figure in this table comes from the third-party tracking account linked on each product page. We rank on
-        monthly return, but we publish drawdown, account type and the licence price beside it — because a system
+        Myfxbook absolute gain, but we publish drawdown, account type and the licence price beside it — because a system
         returning 20% a month at 80% drawdown is a different proposition from one returning 6% at 5%.
       </p>
 
@@ -118,31 +114,21 @@ const faqs = [
         <span>{verified.length} third-party tracked</span>
         <span>Checked {formatDate(performanceVerifiedAt)}</span>
       </div>
-
-      <div class="stats-panel reveal mt-12">
-        {
-          stats.map((stat) => (
-            <div class="stats-panel-item">
-              <div class="mb-3 flex items-center justify-center gap-2">
-                <span class="live-dot" />
-                <span class="metric-label">{stat.label}</span>
-              </div>
-              <div class="display-stat text-2xl sm:text-3xl">
-                <CountUp value={stat.value} />
-              </div>
-            </div>
-          ))
-        }
-      </div>
     </div>
   </section>
 
-  <div class="container-x pb-20">
+  <!-- Partner banner (RoboForex / R Infinity). -->
+  <section class="container-x pb-8">
+    <RInfinityRail variant="banner" />
+  </section>
+  </div>
+
+  <div class="container-x pb-20 pt-12 lg:pt-20">
     <section aria-labelledby="ranking-heading">
       <SectionHead
         kicker="Full ranking"
         title="Every system, side by side"
-        lead="Sorted by compound monthly return. Scroll the table sideways on a phone — or use the cards below for the three leaders."
+        lead="Sorted by Myfxbook absolute gain (Abs. Gain). Scroll the table sideways on a phone — or use the cards below for the three leaders."
         id="ranking-heading"
       />
       <div class="reveal mt-8">
@@ -178,8 +164,8 @@ const faqs = [
             third-party tracking account exists for it.
           </li>
           <li>
-            <strong class="text-[var(--color-ink)]">2. Monthly return first.</strong> Sorted by compound monthly return, then
-            by drawdown as a tiebreak.
+            <strong class="text-[var(--color-ink)]">2. Absolute gain first.</strong> Sorted by Myfxbook absolute gain
+            (Abs. Gain); the monthly return is shown beside it.
           </li>
           <li>
             <strong class="text-[var(--color-ink)]">3. Drawdown always shown.</strong> Never hidden, never averaged away.

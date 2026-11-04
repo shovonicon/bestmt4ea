@@ -60,7 +60,7 @@ const products = all.filter((product) => product.data.slug !== 'vps' && page.tes
 const shortName = (value: string) => String(value).split(':')[0].trim();
 const ranked = products
   .map((product) => ({ product, perf: getPerformance(product.data.slug) }))
-  .sort((a, b) => (b.perf?.totalGainPct ?? -Infinity) - (a.perf?.totalGainPct ?? -Infinity));
+  .sort((a, b) => (b.perf?.live?.absGainPct ?? -Infinity) - (a.perf?.live?.absGainPct ?? -Infinity));
 const tracked = ranked.filter((row) => row.perf?.totalGainPct != null);
 const realCount = tracked.filter((row) => row.perf?.accountType === 'real').length;
 const demoCount = tracked.filter((row) => row.perf?.accountType === 'demo').length;
@@ -71,12 +71,14 @@ const accountWord = (row: (typeof ranked)[number]) =>
   row.perf?.accountType === 'real' ? 'real account' : row.perf?.accountType === 'demo' ? 'demo account' : 'tracked account';
 const describe = (row: (typeof ranked)[number]) => {
   const drawdown = row.perf?.maxDrawdownPct != null ? `, maximum drawdown ${row.perf.maxDrawdownPct}%` : '';
-  return `${shortName(row.product.data.title)} (${row.perf?.totalGainPct}% gain on a ${accountWord(row)}${drawdown})`;
+  const abs = row.perf?.live?.absGainPct;
+  const gainText = abs != null ? `${abs}% absolute gain` : `${row.perf?.totalGainPct}% gain`;
+  return `${shortName(row.product.data.title)} (${gainText} on a ${accountWord(row)}${drawdown})`;
 };
 
 const [first, second, third] = tracked;
 const answer = first
-  ? `${describe(first)} ranks first of ${products.length} ${kind} expert advisors in our catalogue on third-party tracked gain` +
+  ? `${describe(first)} ranks first of ${products.length} ${kind} expert advisors in our catalogue on Myfxbook absolute gain` +
     `${second ? `, followed by ${shortName(second.product.data.title)}${third ? ` and ${shortName(third.product.data.title)}` : ''}` : ''}. ` +
     `Figures come from Myfxbook and were checked ${checkedOn}; a demo account is labelled as one. Past results do not predict future returns, and trading carries a risk of loss.`
   : `We list ${products.length} ${kind} expert advisors in our catalogue. Where a third-party tracked record exists it is shown with its account type and maximum drawdown, and a system without one says so. Past results do not predict future returns, and trading carries a risk of loss.`;
@@ -85,13 +87,13 @@ const faqs = [
   {
     question: `Which is the best ${kind} EA?`,
     answer: first
-      ? `On third-party tracked gain, ${describe(first)} ranks first in our catalogue as of ${checkedOn}. Gain is only one measure, so compare drawdown, the account type and the strategy as well, and test any system on a demo account before you buy.`
+      ? `On Myfxbook absolute gain, ${describe(first)} ranks first in our catalogue as of ${checkedOn}. Gain is only one measure, so compare drawdown, the account type and the strategy as well, and test any system on a demo account before you buy.`
       : `No single system is best for every trader. Compare each system's tracked record, drawdown and account type, and test on a demo account before you buy.`,
   },
   {
     question: 'How is this ranking calculated?',
     answer:
-      'Systems are ordered by total gain on their third-party tracked account. Maximum drawdown, the account type and the strategy are shown next to each gain, because a high gain with a deep drawdown is a different thing from a steady one. A system with no tracked record is listed without a number instead of borrowing one.',
+      'Systems are ordered by Myfxbook absolute gain (Abs. Gain) on their third-party tracked account. Maximum drawdown, the account type and the strategy are shown next to each gain, because a high gain with a deep drawdown is a different thing from a steady one. A system with no tracked record is listed without a number instead of borrowing one.',
   },
   {
     question: 'Are these results from real accounts or demo accounts?',
@@ -182,7 +184,7 @@ const related = [
       align="center"
       kicker="The full list"
       title={`${products.length} systems, ranked`}
-      lead="Ranked by verified gain. A demo account is labelled as a demo, and a system with no published record says so."
+      lead="Ranked by Myfxbook absolute gain. A demo account is labelled as a demo, and a system with no published record says so."
       id="review-heading"
     />
 

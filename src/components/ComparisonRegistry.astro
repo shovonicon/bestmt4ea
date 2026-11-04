@@ -16,9 +16,14 @@ import detailData from '../data/product-detail.json';
 
 export interface Props {
   products: any[];
+  /**
+   * Myfxbook's "Abs. Gain" (absolute gain) column after Platform, and the board
+   * ranked by it. On by default everywhere; pass `false` to fall back to Gain.
+   */
+  showAbsGain?: boolean;
 }
 
-const { products } = Astro.props;
+const { products, showAbsGain = true } = Astro.props;
 
 type Setting = { label: string; value: string };
 type Detail = { settings?: Setting[] };
@@ -31,7 +36,12 @@ const pct = (value: number | undefined) => (value != null ? `${value}%` : 'N/A')
 
 const rows = products
   .map((product) => ({ product, perf: getPerformance(product.data.slug) }))
-  .sort((a, b) => (b.perf?.totalGainPct ?? -Infinity) - (a.perf?.totalGainPct ?? -Infinity))
+  // With the Abs. Gain column on, the board is ranked by that column; otherwise by Gain.
+  .sort((a, b) =>
+    showAbsGain
+      ? (b.perf?.live?.absGainPct ?? -Infinity) - (a.perf?.live?.absGainPct ?? -Infinity)
+      : (b.perf?.totalGainPct ?? -Infinity) - (a.perf?.totalGainPct ?? -Infinity),
+  )
   .map((entry, index) => ({ ...entry, rank: index + 1 }));
 
 const rankClass = (rank: number) =>
@@ -52,7 +62,7 @@ const TH = 'px-5 py-4 text-xs font-semibold uppercase tracking-wider text-slate-
   tabindex="0"
   aria-label="Ranked comparison of expert advisors by verified gain"
 >
-  <table class="w-full min-w-[800px] border-collapse text-left text-sm">
+  <table class:list={['w-full border-collapse text-left text-sm', showAbsGain ? 'min-w-[900px]' : 'min-w-[800px]']}>
     <caption class="sr-only">Ranked expert advisors: platform, gain, monthly return, drawdown and strategy</caption>
     <thead>
       <tr class="border-b border-white/10 text-slate-300" style="background: rgba(0, 193, 144, 0.05);">
@@ -60,6 +70,13 @@ const TH = 'px-5 py-4 text-xs font-semibold uppercase tracking-wider text-slate-
         <th scope="col" class={TH}>Robot Name</th>
         <th scope="col" class={TH}>Pair</th>
         <th scope="col" class={TH}>Platform</th>
+        {
+          showAbsGain && (
+            <th scope="col" class:list={[TH, 'text-center']} title="Absolute Gain, as reported by Myfxbook">
+              Abs. Gain
+            </th>
+          )
+        }
         <th scope="col" class:list={[TH, 'text-center']}>Gain</th>
         <th scope="col" class:list={[TH, 'text-center']}>Monthly ROI</th>
         <th scope="col" class:list={[TH, 'text-center']}>Max Drawdown</th>
@@ -83,6 +100,7 @@ const TH = 'px-5 py-4 text-xs font-semibold uppercase tracking-wider text-slate-
           const pair = settingValue(slug, /pair/i) ?? '—';
           const strategy = perf?.strategy ?? settingValue(slug, /strategy/i) ?? '—';
           const gain = perf?.totalGainPct;
+          const absGain = perf?.live?.absGainPct;
           const tracked = perf?.verified
             ? perf.accountType === 'demo'
               ? 'MyFxBook Tracked · Demo'
@@ -140,6 +158,15 @@ const TH = 'px-5 py-4 text-xs font-semibold uppercase tracking-wider text-slate-
                   {platform}
                 </span>
               </td>
+
+              {/* Abs. Gain — Myfxbook's absolute gain, from the live sync only */}
+              {
+                showAbsGain && (
+                  <td class="px-5 py-5 text-center font-bold text-emerald-400">
+                    {absGain != null ? `${absGain >= 0 ? '+' : ''}${absGain}%` : 'N/A'}
+                  </td>
+                )
+              }
 
               {/* Gain */}
               <td class="px-5 py-5 text-center font-bold text-emerald-400">
