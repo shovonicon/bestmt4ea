@@ -61,14 +61,21 @@ const columnsRaw = [
       { href: '/disclaimer', label: 'Risk disclaimer' },
       { href: '/dmca-policy', label: 'DMCA' },
       { href: '/affiliate-disclosure', label: 'Affiliate disclosure' },
+      { href: '/sitemap-0.xml', label: 'Sitemap' },
     ],
   },
 ];
 
-/** Internal links are normalised once so the trailing-slash policy holds. */
+/**
+ * Internal links are normalised once so the trailing-slash policy holds.
+ * Files (the sitemap) keep their extension and are not given a slash.
+ */
 const columns = columnsRaw.map((column) => ({
   ...column,
-  links: column.links.map((link) => ({ ...link, href: url(link.href) })),
+  links: column.links.map((link) => ({
+    ...link,
+    href: /\.xml$/.test(link.href) ? link.href : url(link.href),
+  })),
 }));
 ---
 

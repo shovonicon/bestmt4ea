@@ -17,6 +17,7 @@
  */
 
 import verification from '../data/site-verification.json';
+import liveFeed from '../data/myfxbook-live.json';
 
 const MONTHS = [
   'January',
@@ -52,11 +53,23 @@ export const monthYear = `${currentMonth} ${currentYear}`;
 /** Parse a `YYYY-MM-DD` verification date as UTC midnight. */
 const asUtcDate = (value: string): Date => new Date(`${value}T00:00:00.000Z`);
 
-/** When the editorial content was last actually reviewed. */
-export const contentReviewedAt = asUtcDate(verification.contentReviewedAt);
+/**
+ * Date of the last successful Myfxbook sync (UTC date of `fetchedAt`), or
+ * undefined when the feed carries none. This is a real sync date, not build time.
+ */
+const liveSyncDate: Date | undefined = (() => {
+  const t = Date.parse(String((liveFeed as { fetchedAt?: string | null }).fetchedAt ?? ''));
+  if (!Number.isFinite(t)) return undefined;
+  const d = new Date(t);
+  return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
+})();
+const latest = (manual: Date, synced?: Date): Date => (synced && synced.getTime() > manual.getTime() ? synced : manual);
+
+/** When the editorial content was last reviewed: follows the Myfxbook sync date once that is newer. */
+export const contentReviewedAt = latest(asUtcDate(verification.contentReviewedAt), liveSyncDate);
 /** When the product catalogue and its prices were last checked. */
 export const catalogueVerifiedAt = asUtcDate(verification.catalogueVerifiedAt);
 /** When the published performance figures were last verified at source. */
-export const performanceVerifiedAt = asUtcDate(verification.performanceVerifiedAt);
+export const performanceVerifiedAt = latest(asUtcDate(verification.performanceVerifiedAt), liveSyncDate);
 /** Where those performance figures were verified. */
 export const performanceSource = verification.performanceSource;

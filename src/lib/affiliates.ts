@@ -95,11 +95,17 @@ export const affiliates = {
     program: 'broker',
     note: 'ASIC, CySEC, FCA · from $5',
   },
-  fbs: {
-    label: 'FBS',
-    url: 'https://fbs.partners/?ibl=238183&ibp=2416958',
+  hfm: {
+    label: 'HFM',
+    url: 'https://www.hfm.com/sv/en/?refid=30531077',
     program: 'broker',
-    note: 'ASIC, CySEC, FCA · from $10',
+    note: 'Multi-entity regulation · from $5',
+  },
+  justmarkets: {
+    label: 'JustMarkets',
+    url: 'https://one.justmarkets.link/a/tpb22u0hek',
+    program: 'broker',
+    note: 'FSA Seychelles · from $10',
   },
   markets4you: {
     label: 'Markets4you',

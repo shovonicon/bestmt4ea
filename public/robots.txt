@@ -38,7 +38,6 @@ Disallow: /login/
 Disallow: /auth/
 Disallow: /logout/
 
-# One canonical sitemap index. The old Yoast path /sitemap_index.xml still
-# resolves via middleware for anything that already knows it, but robots.txt
-# advertises a single sitemap so crawlers are not handed two names for it.
-Sitemap: https://bestmt4ea.com/sitemap-index.xml
+# The one sitemap URL used everywhere (robots, footer, Search Console).
+# The old Yoast path /sitemap_index.xml also resolves to it via middleware.
+Sitemap: https://bestmt4ea.com/sitemap-0.xml

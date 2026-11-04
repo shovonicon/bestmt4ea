@@ -8,39 +8,68 @@
       "platforms": "MT4, MT5, RTrader",
       "accountTypes": "Standard, Cent, Zero Spread",
       "offer": "Welcome bonus $30",
-      "recommended": true
+      "recommended": true,
+      "bestFor": "Grid EAs, MT5 Cent, ECN scalping",
+      "restrictedCountries": "USA, Canada, UK/EU, Japan, Australia, Brazil, Indonesia",
+      "acceptedCountries": "LATAM, SE Asia, CIS, Africa"
     },
     {
       "key": "exness",
-      "regulation": "Multiple entities (FSA SD025, FSC BVI, CBCS, FSC Belize, FSCA, CMA; FCA and CySEC entities are non-retail)",
+      "regulation": "FSA Seychelles",
       "minDeposit": "$1",
       "platforms": "MT4, MT5",
       "accountTypes": "Standard, Cent, Zero Spread",
       "offer": "Free VPS",
-      "recommended": true
+      "recommended": true,
+      "bestFor": "Instant withdrawals, Gold scalping",
+      "restrictedCountries": "USA, UK, EU, Canada, Japan, UAE/Saudi",
+      "acceptedCountries": "130+ countries: Asia, Africa, LATAM"
+    },
+    {
+      "key": "hfm",
+      "regulation": "FCA, CySEC",
+      "minDeposit": "$5",
+      "platforms": "MT4, MT5",
+      "accountTypes": "Micro, Premium, Pro, Zero, Cent",
+      "offer": "$500 bonus",
+      "recommended": true,
+      "bestFor": "MT5 Cent, swap-free Gold, EAs",
+      "restrictedCountries": "USA, Canada, Japan, Iran, North Korea",
+      "acceptedCountries": "GCC, South Asia, Africa, LATAM"
+    },
+    {
+      "key": "xm",
+      "regulation": "FSC Belize",
+      "minDeposit": "$5",
+      "platforms": "MT4, MT5",
+      "accountTypes": "Standard, Micro, Zero Spread",
+      "offer": "20% deposit bonus",
+      "recommended": true,
+      "bestFor": "Micro-lot EAs, deposit bonuses",
+      "restrictedCountries": "USA, Canada, Israel, Iran, North Korea",
+      "acceptedCountries": "190+ countries worldwide"
+    },
+    {
+      "key": "justmarkets",
+      "regulation": "FSA Seychelles",
+      "minDeposit": "$10",
+      "platforms": "MT4, MT5",
+      "accountTypes": "Standard, Standard Cent, Pro, Raw Spread",
+      "offer": "No current offer",
+      "recommended": true,
+      "bestFor": "Cent Grid EAs, high-leverage Gold",
+      "restrictedCountries": "USA, UK, Canada, Australia, Japan, India",
+      "acceptedCountries": "SE Asia, South Asia, GCC, Africa"
     },
     {
       "key": "fusion-markets",
       "regulation": "Seychelles FSA",
       "minDeposit": "$10",
       "platforms": "MT4, MT5, TradingView",
-      "accountTypes": "Standard, Zero Spread"
-    },
-    {
-      "key": "xm",
-      "regulation": "FSC Belize (XM Global Limited, 8557558)",
-      "minDeposit": "$5",
-      "platforms": "MT4, MT5",
-      "accountTypes": "Standard, Micro, Zero Spread",
-      "offer": "20% deposit bonus"
-    },
-    {
-      "key": "fbs",
-      "regulation": "ASIC, CySEC, FCA",
-      "minDeposit": "$10",
-      "platforms": "MT4, MT5",
-      "accountTypes": "Standard, Cent, Zero Spread",
-      "offer": "100% deposit bonus"
+      "accountTypes": "Standard, Zero Spread",
+      "bestFor": "Low-cost ECN scalping ($4.50 RT)",
+      "restrictedCountries": "USA, Canada, Japan, New Zealand",
+      "acceptedCountries": "Australia, UK, Europe, LATAM"
     },
     {
       "key": "markets4you",
@@ -48,35 +77,50 @@
       "minDeposit": "$1",
       "platforms": "MT4, MT5",
       "accountTypes": "Standard, Cent",
-      "offer": "100% deposit bonus"
+      "offer": "100% deposit bonus",
+      "bestFor": "Cent Pro grid and martingale EAs",
+      "restrictedCountries": "USA, Canada, UK, EU, Australia, Japan",
+      "acceptedCountries": "SE Asia, South Asia, CIS, Africa"
     },
     {
       "key": "icmarkets",
       "regulation": "Seychelles FSA",
       "minDeposit": "$200",
       "platforms": "MT4, MT5, cTrader",
-      "accountTypes": "Standard, Zero Spread"
+      "accountTypes": "Standard, Zero Spread",
+      "bestFor": "HFT and low-latency scalping",
+      "restrictedCountries": "USA, Canada, Israel, New Zealand, Japan",
+      "acceptedCountries": "Australia, UK, EU, Asia, Africa"
     },
     {
       "key": "avatrade",
       "regulation": "ASIC, FSCA",
       "minDeposit": "$100",
       "platforms": "MT4, MT5",
-      "accountTypes": "Standard, Cent, Zero Spread"
+      "accountTypes": "Standard, Cent, Zero Spread",
+      "bestFor": "Swing trading, hedging, FX options",
+      "restrictedCountries": "USA, New Zealand, Belgium, Iran",
+      "acceptedCountries": "EU, UAE, Australia, Japan, S. Africa"
     },
     {
       "key": "vantage",
       "regulation": "FCA",
       "minDeposit": "$100",
       "platforms": "MT4, MT5",
-      "accountTypes": "Standard, Zero Spread"
+      "accountTypes": "Standard, Zero Spread",
+      "bestFor": "Raw ECN scalping, MT4/MT5 Cent",
+      "restrictedCountries": "USA, Canada, Japan, China, Singapore",
+      "acceptedCountries": "APAC, UK, LATAM, Africa"
     },
     {
       "key": "xbtfx",
       "regulation": "ASIC, CySEC, FCA",
       "minDeposit": "$10",
       "platforms": "MT4, MT5",
-      "accountTypes": "Standard, Zero Spread"
+      "accountTypes": "Standard, Zero Spread",
+      "bestFor": "Crypto-funded ECN trading",
+      "restrictedCountries": "USA, OFAC-sanctioned countries",
+      "acceptedCountries": "Global crypto traders (non-sanctioned)"
     },
     {
       "key": "fxtm",
@@ -84,21 +128,30 @@
       "minDeposit": "$10",
       "platforms": "MT4, MT5",
       "accountTypes": "Standard, Micro, Zero Spread",
-      "offer": "Welcome bonus $50"
+      "offer": "Welcome bonus $50",
+      "bestFor": "ECN scalping, fast execution",
+      "restrictedCountries": "USA, Canada, Japan, South Korea, Brazil",
+      "acceptedCountries": "Africa, UK, SE Asia, Middle East"
     },
     {
       "key": "binance",
       "regulation": "DASP",
       "minDeposit": "$10",
       "platforms": "Binance platforms",
-      "accountTypes": "N/A"
+      "accountTypes": "N/A",
+      "bestFor": "Crypto Spot and Futures API bots",
+      "restrictedCountries": "USA, Canada, UK (derivatives), Netherlands",
+      "acceptedCountries": "100+ countries, registered EU markets"
     },
     {
       "key": "tradingview",
       "regulation": "Unregulated",
       "minDeposit": "Free",
       "platforms": "TradingView",
-      "accountTypes": "N/A"
+      "accountTypes": "N/A",
+      "bestFor": "Charting, Pine Script, webhook alerts",
+      "restrictedCountries": "None",
+      "acceptedCountries": "Worldwide"
     }
   ],
   "chooseChecklist": [

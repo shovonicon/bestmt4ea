@@ -28,7 +28,7 @@ const affiliate = getAffiliate(broker.key);
 if (!affiliate) return null;
 ---
 
-<article class:list={['hover-brand-card flex flex-col p-6', broker.recommended && 'shadow-glow']}>
+<article class:list={['hover-brand-card flex flex-col p-6', broker.recommended && 'shadow-glow', rank === 1 && broker.recommended && 'premium-pick']}>
   <div class="flex items-center justify-between gap-3">
     {
       rank != null ? (
@@ -37,7 +37,7 @@ if (!affiliate) return null;
         <span />
       )
     }
-    {broker.recommended && <span class="partner-chip">{rank === 1 ? 'Top choice' : 'Recommended'}</span>}
+    {broker.recommended && <span class="partner-chip">{rank != null && rank <= 2 ? 'Top choice' : 'Recommended'}</span>}
   </div>
 
   <span class="partner-logo-plate mt-5 w-fit">
@@ -78,3 +78,55 @@ if (!affiliate) return null;
 
   <a href={affiliate.url} rel={AFFILIATE_REL} class="btn btn-primary mt-5 w-full">Open account</a>
 </article>
+
+<style>
+  /* Premium highlight for the top choice (rank 1 in the picks section). */
+  .premium-pick {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.6);
+    background:
+      radial-gradient(120% 90% at 0% 0%, rgba(212, 175, 55, 0.16), transparent 60%),
+      linear-gradient(160deg, rgba(24, 19, 6, 0.94), rgba(0, 0, 0, 0.88) 60%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 236, 170, 0.2),
+      0 0 0 1px rgba(212, 175, 55, 0.14),
+      0 30px 80px -30px rgba(212, 175, 55, 0.6);
+  }
+  .premium-pick::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(110deg, transparent 35%, rgba(255, 236, 170, 0.14) 50%, transparent 65%);
+    transform: translateX(-100%);
+    animation: premium-sheen 6s ease-in-out infinite;
+  }
+  @keyframes premium-sheen {
+    0%, 60% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  .premium-pick h3 {
+    font-size: 1.5rem;
+    background: linear-gradient(90deg, #fff4c7, #e9c25b 55%, #fff4c7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .premium-pick .partner-chip {
+    background: linear-gradient(135deg, #f5d77a, #b8891c);
+    color: #1a1204;
+    border: 0;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-shadow: 0 6px 20px -6px rgba(212, 175, 55, 0.7);
+  }
+  .premium-pick .rank-badge {
+    background: linear-gradient(135deg, #f5d77a, #b8891c);
+    color: #1a1204;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .premium-pick::after { animation: none; }
+  }
+</style>

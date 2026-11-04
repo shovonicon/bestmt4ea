@@ -51,22 +51,20 @@ export const onRequest = defineMiddleware(async (context, next) => {
     });
   }
 
-  // Tools and older bookmarks ask for `/sitemap.xml`; the generated index is
-  // `/sitemap-index.xml`. Redirect the conventional path instead of 404ing.
+  // The single sitemap URL is `/sitemap-0.xml` (robots.txt, footer, Search Console).
+  // Tools and older bookmarks that ask for `/sitemap.xml` are redirected there.
   if (url.pathname === '/sitemap.xml') {
     return new Response(null, {
       status: 301,
-      headers: { location: '/sitemap-index.xml', 'cache-control': 'public, max-age=86400' },
+      headers: { location: '/sitemap-0.xml', 'cache-control': 'public, max-age=86400' },
     });
   }
 
   // The old WordPress site (Yoast) served its sitemap at `/sitemap_index.xml`,
-  // and that is the URL most likely registered with search engines. Astro writes
-  // the generated index to `/sitemap-index.xml`, so serve that same file under
-  // the Yoast path too rather than losing the familiar URL.
+  // and that URL is still registered with some engines. Serve the same sitemap.
   if (url.pathname === '/sitemap_index.xml') {
     const assets = (env as unknown as { ASSETS?: { fetch(input: URL): Promise<Response> } }).ASSETS;
-    if (assets) return assets.fetch(new URL('/sitemap-index.xml', url));
+    if (assets) return assets.fetch(new URL('/sitemap-0.xml', url));
   }
 
   const matched = matchRedirect(REDIRECT_MAP, url.pathname, url.search);
