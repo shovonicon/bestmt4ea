@@ -110,6 +110,7 @@ npm run check:debt             # content debt may only shrink vs content-debt.js
 npm run check:rendered         # rendered-HTML structure of post pages (1 H1, no dup sections)
 npm run check:canonicals       # one absolute self-canonical per page (incl. emoji routes)
 npm run check:titles           # every rendered <title> is 30-60 characters (run after build)
+npm run check:brokers          # broker country words all map; warns if the lists are stale
 npm run check:schema           # no zero prices, invented brand, or build-time dates
 npm run check:links            # every internal href in dist/ resolves + uses canonical slashes
 npm run check:downloads        # download blocks, licences and attribution

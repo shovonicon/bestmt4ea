@@ -28,7 +28,7 @@ const affiliate = getAffiliate(broker.key);
 if (!affiliate) return null;
 ---
 
-<article class:list={['hover-brand-card flex flex-col p-6', broker.recommended && 'shadow-glow', rank === 1 && broker.recommended && 'premium-pick']}>
+<article data-broker-pick={broker.key} class:list={['hover-brand-card flex flex-col p-6', broker.recommended && 'shadow-glow', rank === 1 && broker.recommended && 'premium-pick']}>
   <div class="flex items-center justify-between gap-3">
     {
       rank != null ? (
@@ -51,6 +51,7 @@ if (!affiliate) return null;
   </span>
 
   <h3 class="mt-4 text-lg font-bold text-[var(--color-ink)]">{affiliate.label}</h3>
+  <span data-country-badge hidden class="broker-badge mt-2 w-fit"></span>
 
   <dl class="mt-4 flex-1 space-y-2 text-sm">
     <div class="flex justify-between gap-3">

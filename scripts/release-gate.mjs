@@ -54,6 +54,7 @@ const steps = [
   ['Rendered-HTML structure', 'node scripts/check-rendered-html.mjs'],
   ['Canonicals + emoji encoding', 'node scripts/check-canonicals.mjs'],
   ['Title tags (30-60 characters)', 'node scripts/check-titles.mjs'],
+  ['Broker country lists', 'node scripts/check-broker-countries.mjs'],
   ['Structured data', 'node scripts/check-schema.mjs'],
   ['Internal links', 'node scripts/check-links.mjs'],
   ['Downloads (static)', 'node scripts/check-downloads.mjs'],

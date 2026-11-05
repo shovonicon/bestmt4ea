@@ -743,6 +743,45 @@
     background: rgba(0, 0, 0, 0.72);
     backdrop-filter: blur(4px);
   }
+  /* Sortable table headers, shared by the EA ranking and the broker table. */
+  .th-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+  }
+  .sort-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    min-height: 44px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    text-align: inherit;
+    cursor: pointer;
+    transition: color 150ms ease;
+  }
+  .sort-btn:hover {
+    color: #fff;
+  }
+  .sort-btn:focus-visible {
+    outline: 2px solid var(--color-accent, #00c190);
+    outline-offset: 2px;
+    border-radius: 0.375rem;
+  }
+  [data-sort-icon] {
+    font-size: 0.6rem;
+    opacity: 0.45;
+  }
+  th[aria-sort] [data-sort-icon] {
+    opacity: 1;
+    color: var(--color-accent, #00c190);
+  }
+
   /* Column filter menus (src/lib/tableEngine.ts builds these on <body>). */
   .col-filter-panel {
     position: fixed;

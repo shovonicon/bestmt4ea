@@ -15,6 +15,7 @@
 import BaseLayout from './BaseLayout.astro';
 import SectionHead from '../components/SectionHead.astro';
 import BrokerCard from '../components/BrokerCard.astro';
+import BrokerExplorer from '../components/BrokerExplorer.astro';
 import Faq from '../components/Faq.astro';
 import CountUp from '../components/CountUp.astro';
 import { getAffiliate, AFFILIATE_REL, AFFILIATE_DISCLOSURE } from '../lib/affiliates';
@@ -23,6 +24,9 @@ import { RISK_DISCLAIMER } from '../lib/site';
 import { formatDate } from '../lib/format';
 import { url } from '../lib/urls';
 import brokerData from '../data/brokers.json';
+import countryData from '../data/broker-countries.json';
+import verification from '../data/site-verification.json';
+import { buildStatusTable } from '../lib/brokerCountry';
 
 export interface Props {
   entry: any;
@@ -49,6 +53,27 @@ const faqs = (brokerData as unknown as { faqs: Array<{ question: string; answer:
 const recommended = brokers.filter((broker) => broker.recommended);
 /** The 'Where we test' picks: only the two top choices. */
 const picks = recommended.slice(0, 2);
+/** Table rows: only brokers with an affiliate entry, exactly as the cards below. */
+const explorerRows = brokers.flatMap((broker) => {
+  const affiliate = getAffiliate(broker.key);
+  return affiliate
+    ? [
+        {
+          key: broker.key,
+          name: affiliate.label,
+          url: affiliate.url,
+          regulation: broker.regulation,
+          minDeposit: broker.minDeposit,
+          platforms: broker.platforms,
+          accountTypes: broker.accountTypes,
+          offer: broker.offer,
+        },
+      ]
+    : [];
+});
+/** Country availability per broker, built from the free text in brokers.json. */
+const countryStatuses = buildStatusTable(brokers, countryData.countries);
+const countriesVerifiedAt = (verification as { brokerCountriesVerifiedAt?: string | null }).brokerCountriesVerifiedAt ?? null;
 /** The ranked broker list, in the order the page shows it. */
 const brokerList = brokers.map((broker) => ({ name: broker.key }));
 
@@ -162,19 +187,26 @@ const trail = breadcrumbTrail([
         align="center"
         kicker="The full list"
         title={`All ${brokers.length} platforms, ranked`}
-        lead="Ordered by regulation, minimum deposit and platform support. Offers are each broker's own promotion."
+        lead="Sort the table, choose your country, or tick up to three brokers to compare them side by side. Offers are each broker's own promotion."
         id="all-heading"
       />
 
-      <div class="reveal mx-auto mt-12 flex w-full max-w-6xl flex-col gap-6">
+      <div class="reveal mx-auto mt-12 w-full max-w-6xl">
+        <BrokerExplorer rows={explorerRows} countries={countryData.countries} statuses={countryStatuses} verifiedAt={countriesVerifiedAt} />
+      </div>
+
+      <h3 class="mx-auto mt-16 w-full max-w-6xl text-xl font-bold text-white">Each broker in detail</h3>
+      <div data-broker-cards class="reveal mx-auto mt-6 flex w-full max-w-6xl flex-col gap-6">
         {
           brokers.map((broker, index) => {
             const affiliate = getAffiliate(broker.key);
             if (!affiliate) return null;
             return (
               <div
+                id={`broker-${broker.key}`}
+                data-broker-card={broker.key}
                 class:list={[
-                  'group relative overflow-hidden rounded-2xl border border-white/10 transition-all duration-300 hover:border-emerald-500/50',
+                  'scroll-mt-24 group relative overflow-hidden rounded-2xl border border-white/10 transition-all duration-300 hover:border-emerald-500/50',
                   broker.recommended ? 'bg-emerald-500/5' : 'bg-white/[0.02]',
                   broker.key === 'roboforex' && 'premium-row',
                 ]}
@@ -182,7 +214,7 @@ const trail = breadcrumbTrail([
                 <div class="flex flex-col items-center gap-6 px-6 py-9 md:px-8 md:py-12 lg:flex-row lg:gap-10">
                   {/* Rank & name */}
                   <div class="flex w-full items-center gap-6 lg:w-1/4">
-                    <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 font-heading text-xl font-bold text-emerald-400 transition-colors group-hover:border-emerald-500/50 group-hover:bg-emerald-500/20">
+                    <div data-card-rank class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 font-heading text-xl font-bold text-emerald-400 transition-colors group-hover:border-emerald-500/50 group-hover:bg-emerald-500/20">
                       #{index + 1}
                     </div>
                     <div>
@@ -199,6 +231,7 @@ const trail = breadcrumbTrail([
                           </span>
                         )}
                         <h3 class="font-heading text-2xl font-bold text-white">{affiliate.label}</h3>
+                        <span data-country-badge hidden class="broker-badge w-fit"></span>
                       </div>
                       <div class="mt-1 flex items-center gap-1.5 text-sm text-slate-400">
                         <svg

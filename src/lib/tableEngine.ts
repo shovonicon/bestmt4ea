@@ -42,9 +42,14 @@ const toNumber = (raw: string | undefined): number | null => {
   return Number.isFinite(value) ? value : null;
 };
 
+/** Rows may carry `data-tier`; a higher tier always sorts below a lower one, whatever the column. */
+const tierOf = (row: HTMLElement) => Number(row.dataset.tier ?? 0) || 0;
+
 function sortRows(rows: HTMLTableRowElement[], key: string, type: string, dir: Dir) {
   const factor = dir === 'asc' ? 1 : -1;
   return [...rows].sort((a, b) => {
+    const tierDiff = tierOf(a) - tierOf(b);
+    if (tierDiff !== 0) return tierDiff;
     const rawA = a.dataset[key];
     const rawB = b.dataset[key];
     if (type === 'numeric') {
@@ -165,6 +170,7 @@ export function initRankTable(root: HTMLElement): void {
     }
     initialOrder.forEach((row) => tbody.appendChild(row));
     sortChanged = false;
+    resort();
   };
 
   const setSort = (th: HTMLTableCellElement, dir: Dir) => {
@@ -188,6 +194,25 @@ export function initRankTable(root: HTMLElement): void {
     if (clear) clear.hidden = false;
     renumber();
   };
+
+  /**
+   * Re-apply the current order. Callers that change `data-tier` (the brokers page
+   * country picker) dispatch `rank-table:resort` on the table root afterwards.
+   */
+  const resort = () => {
+    const active = headers.find((h) => h.hasAttribute('aria-sort'));
+    const sorted = active
+      ? sortRows(
+          rows(),
+          active.dataset.sortKey as string,
+          active.dataset.sortType ?? 'numeric',
+          active.getAttribute('aria-sort') === 'ascending' ? 'asc' : 'desc',
+        )
+      : [...rows()].sort((a, b) => tierOf(a) - tierOf(b) || initialOrder.indexOf(a) - initialOrder.indexOf(b));
+    sorted.forEach((row) => tbody.appendChild(row));
+    renumber();
+  };
+  root.addEventListener('rank-table:resort', resort);
 
   headers.forEach((th) => {
     const trigger = th.querySelector<HTMLButtonElement>('button');
@@ -432,7 +457,8 @@ function initCompare(root: HTMLElement, rows: () => HTMLTableRowElement[]): void
   const drawer = document.querySelector<HTMLElement>('[data-compare-drawer]');
   if (!drawer || root.querySelector('[data-compare-check]') == null) return;
 
-  const metrics: MetricConfig[] = JSON.parse(root.dataset.compareMetrics ?? '[]');
+  /** Read on use, so a page can change the rows (the brokers country row) after load. */
+  const getMetrics = (): MetricConfig[] => JSON.parse(root.dataset.compareMetrics ?? '[]');
   const bar = drawer.querySelector<HTMLElement>('[data-compare-bar]')!;
   const label = drawer.querySelector<HTMLElement>('[data-compare-label]')!;
   const openBtn = drawer.querySelector<HTMLButtonElement>('[data-compare-open]')!;
@@ -441,9 +467,9 @@ function initCompare(root: HTMLElement, rows: () => HTMLTableRowElement[]): void
   const out = drawer.querySelector<HTMLElement>('[data-compare-output]')!;
   const closeBtn = drawer.querySelector<HTMLButtonElement>('[data-compare-close]')!;
 
-  const selected = new Map<string, CompareItem>();
+  const selected = new Map<string, HTMLTableRowElement>();
 
-  const itemFor = (row: HTMLTableRowElement): CompareItem => ({
+  const itemFor = (row: HTMLTableRowElement, metrics: MetricConfig[]): CompareItem => ({
     id: row.dataset.id ?? '',
     name: row.dataset.name ?? '',
     href: row.dataset.href ?? '#',
@@ -466,7 +492,8 @@ function initCompare(root: HTMLElement, rows: () => HTMLTableRowElement[]): void
     raw === '' ? '—' : `${m.prefix ?? ''}${raw}${m.suffix ?? ''}`;
 
   const render = () => {
-    const items = [...selected.values()];
+    const metrics = getMetrics();
+    const items = [...selected.values()].map((row) => itemFor(row, metrics));
     const head = `<tr><th scope="col"><span class="sr-only">Metric</span></th>${items
       .map(
         (i) =>
@@ -506,7 +533,7 @@ function initCompare(root: HTMLElement, rows: () => HTMLTableRowElement[]): void
           box.checked = false;
           return;
         }
-        selected.set(id, itemFor(row));
+        selected.set(id, row);
       } else {
         selected.delete(id);
       }
@@ -529,6 +556,11 @@ function initCompare(root: HTMLElement, rows: () => HTMLTableRowElement[]): void
   });
   closeBtn.addEventListener('click', () => dialog.close());
   dialog.addEventListener('close', () => openBtn.focus());
+  // A name that points further down the same page should reveal it, not sit behind the dialog.
+  out.addEventListener('click', (event) => {
+    const link = (event.target as HTMLElement).closest('a');
+    if (link?.getAttribute('href')?.startsWith('#')) dialog.close();
+  });
 
   sync();
 }

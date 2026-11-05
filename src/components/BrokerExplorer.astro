@@ -1,0 +1,362 @@
+---
+/**
+ * Brokers page: country picker + sortable, comparable table.
+ *
+ * - Sorting, the compare checkboxes and the compare dialog all come from
+ *   `src/lib/tableEngine.ts` and the page-wide `CompareDrawer`.
+ * - Choosing a country sets `data-tier` on every broker (0 listed as available,
+ *   1 unknown, 2 restricted) and asks the engine to re-sort, so a restricted broker
+ *   always sits at the bottom whichever column is sorted. The same tiers reorder the
+ *   card list below the table and label the two top picks.
+ * - Every figure and every label comes from `brokers.json` / `brokerCountry.ts`.
+ *   Links come from the affiliate registry and carry the sponsored rel; the page
+ *   shows the affiliate disclosure above this block.
+ *
+ * Nothing here says a broker "will" accept a visitor. The wording is "listed as
+ * available", "restricted in your country" and "check with the broker", plus a
+ * standing note to confirm with the broker.
+ */
+import { AFFILIATE_REL } from '../lib/affiliates';
+import { formatDate } from '../lib/format';
+
+export interface BrokerRow {
+  key: string;
+  name: string;
+  url: string;
+  regulation: string;
+  minDeposit: string;
+  platforms: string;
+  accountTypes: string;
+  offer?: string;
+}
+
+export interface Props {
+  rows: BrokerRow[];
+  countries: { code: string; name: string }[];
+  statuses: Record<string, Record<string, 'a' | 'r' | 'u'>>;
+  /** ISO date the country lists were last checked, or null if they have not been. */
+  verifiedAt: string | null;
+}
+
+const { rows, countries, statuses, verifiedAt } = Astro.props;
+
+/** "$10" -> 10, "Free" -> 0, anything else -> '' (sorts last). */
+const depositNumber = (text: string): number | '' => {
+  if (/^\s*free\s*$/i.test(text)) return 0;
+  const match = String(text).match(/\$\s*([\d,]+(?:\.\d+)?)/);
+  return match ? Number(match[1].replace(/,/g, '')) : '';
+};
+
+const sortedCountries = [...countries].sort((a, b) => a.name.localeCompare(b.name));
+
+const metrics = [
+  { key: 'regulation', label: 'Regulation' },
+  { key: 'minDeposit', label: 'Min deposit (USD)', better: 'low', prefix: '$' },
+  { key: 'platforms', label: 'Platforms' },
+  { key: 'accounts', label: 'Accounts' },
+  { key: 'offer', label: 'Offer' },
+];
+
+type Column = { key: string; label: string; type: 'numeric' | 'text'; dir: 'asc' | 'desc' };
+const columns: Column[] = [
+  { key: 'name', label: 'Broker', type: 'text', dir: 'asc' },
+  { key: 'regulation', label: 'Regulation', type: 'text', dir: 'asc' },
+  { key: 'minDeposit', label: 'Min deposit', type: 'numeric', dir: 'asc' },
+  { key: 'platforms', label: 'Platforms', type: 'text', dir: 'asc' },
+  { key: 'accounts', label: 'Accounts', type: 'text', dir: 'asc' },
+  { key: 'offer', label: 'Offer', type: 'text', dir: 'asc' },
+];
+
+const payload = JSON.stringify({
+  countries: sortedCountries,
+  statuses,
+  verifiedAt,
+});
+
+const verifiedNote = verifiedAt
+  ? `Country lists last checked ${formatDate(new Date(verifiedAt))}.`
+  : "Country information is taken from each broker's published terms and may be out of date.";
+const TH = 'px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400';
+---
+
+<div data-rank-table data-broker-explorer data-compare-metrics={JSON.stringify(metrics)}>
+  <div class="mb-5 flex flex-wrap items-end gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-4 sm:p-5">
+    <label class="block w-full sm:w-auto">
+      <span class="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-400">Where do you trade from?</span>
+      <select
+        data-country-select
+        class="h-11 w-full min-w-[15rem] rounded-xl border border-white/15 bg-[#07090b] px-3 text-sm text-white focus:border-emerald-400/60 focus:outline-none focus-visible:outline-2 focus-visible:outline-emerald-400"
+      >
+        <option value="">Choose your country</option>
+        {sortedCountries.map((country) => <option value={country.code}>{country.name}</option>)}
+        <option value="other">My country is not listed</option>
+      </select>
+    </label>
+    <button type="button" data-country-clear hidden class="broker-pill">Clear country</button>
+    <p data-country-note class="min-w-0 flex-1 basis-64 text-xs leading-6 text-[var(--color-ink-dim)]" aria-live="polite">
+      Choose your country to move brokers that do not list it to the bottom. {verifiedNote} Availability depends on your
+      residence and the broker's current terms: confirm with the broker before you open an account.
+    </p>
+  </div>
+
+  <div class="table-shell w-full overflow-x-auto" role="region" tabindex="0" aria-label="Broker comparison table">
+    <table class="w-full border-collapse text-left text-sm">
+      <caption class="sr-only">
+        Forex brokers compared by regulation, minimum deposit, platforms, account types and current offer. Select a column
+        heading to sort by it.
+      </caption>
+      <thead>
+        <tr class="border-b border-white/10 text-slate-300" style="background: rgba(0, 193, 144, 0.05);">
+          <th scope="col" class="px-1.5 py-4 text-[11px] font-semibold uppercase tracking-wide text-slate-400">Compare</th>
+          {
+            columns.map((col) => (
+              <th
+                scope="col"
+                class={TH}
+                data-sort-key={col.key}
+                data-sort-type={col.type}
+                data-default-dir={col.dir}
+              >
+                <div class="th-inner">
+                  <button type="button" class="sort-btn">
+                    <span>{col.label}</span>
+                    <span data-sort-icon aria-hidden="true">↕</span>
+                  </button>
+                </div>
+              </th>
+            ))
+          }
+          <th scope="col" class={`${TH} text-right`}>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          rows.map((row) => (
+            <tr
+              class="border-b border-white/10 transition-colors duration-200 last:border-b-0 hover:bg-white/[0.02]"
+              data-row
+              data-id={row.key}
+              data-broker-key={row.key}
+              data-href={`#broker-${row.key}`}
+              data-name={row.name}
+              data-regulation={row.regulation}
+              data-min-deposit={depositNumber(row.minDeposit)}
+              data-platforms={row.platforms}
+              data-accounts={row.accountTypes}
+              data-offer={row.offer ?? ''}
+              data-country-status=""
+            >
+              <td class="px-1.5 py-4">
+                <label class="flex h-11 w-9 cursor-pointer items-center justify-center">
+                  <input
+                    type="checkbox"
+                    data-compare-check
+                    class="h-5 w-5 cursor-pointer accent-emerald-500"
+                    aria-label={`Compare ${row.name}`}
+                  />
+                </label>
+              </td>
+              <td class="px-3 py-4 font-semibold text-white">
+                <a href={`#broker-${row.key}`} class="hover:text-emerald-400">{row.name}</a>
+                <span data-country-badge hidden class="broker-badge mt-1 block w-fit"></span>
+              </td>
+              <td class="px-3 py-4 text-slate-300">{row.regulation}</td>
+              <td class="px-3 py-4 font-semibold text-white">{row.minDeposit}</td>
+              <td class="px-3 py-4 text-slate-300">{row.platforms}</td>
+              <td class="px-3 py-4 text-slate-300">{row.accountTypes}</td>
+              <td class="px-3 py-4 font-semibold text-amber-400">{row.offer ?? 'No current offer'}</td>
+              <td class="px-3 py-4 text-right">
+                <a
+                  href={row.url}
+                  rel={AFFILIATE_REL}
+                  class="inline-flex min-h-[44px] items-center gap-1.5 whitespace-nowrap rounded-lg border border-white/10 bg-white/5 px-3 text-xs font-semibold text-white transition-colors hover:border-emerald-400/50 hover:text-emerald-300"
+                >
+                  Open account
+                  <span aria-hidden="true">→</span>
+                </a>
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <script type="application/json" id="broker-country-data" set:html={payload} />
+</div>
+
+<script>
+  import { initAllRankTables } from '../lib/tableEngine';
+
+  initAllRankTables();
+
+  type Flag = 'a' | 'r' | 'u';
+  type Payload = {
+    countries: { code: string; name: string }[];
+    statuses: Record<string, Record<string, Flag>>;
+    verifiedAt: string | null;
+  };
+
+  const STORAGE_KEY = 'bestmt4ea.brokerCountry';
+  const LABEL: Record<Flag, string> = {
+    a: 'Listed as available',
+    r: 'Restricted in your country',
+    u: 'Check with the broker',
+  };
+  const TIER: Record<Flag, number> = { a: 0, u: 1, r: 2 };
+
+  const root = document.querySelector<HTMLElement>('[data-broker-explorer]');
+  const dataEl = document.getElementById('broker-country-data');
+  const select = root?.querySelector('[data-country-select]') as HTMLSelectElement | null | undefined;
+  const clearBtn = root?.querySelector<HTMLButtonElement>('[data-country-clear]');
+  const note = root?.querySelector<HTMLElement>('[data-country-note]');
+
+  if (root && dataEl?.textContent && select && clearBtn && note) {
+    const payload: Payload = JSON.parse(dataEl.textContent);
+    const baseNote = note.textContent ?? '';
+    const baseMetrics = JSON.parse(root.dataset.compareMetrics ?? '[]');
+
+    const tableRows = Array.from(root.querySelectorAll<HTMLTableRowElement>('tr[data-broker-key]'));
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-broker-card]'));
+    const picks = Array.from(document.querySelectorAll<HTMLElement>('[data-broker-pick]'));
+    const cardParent = cards[0]?.parentElement ?? null;
+    const cardOrder = [...cards];
+
+    const flagFor = (key: string, code: string): Flag =>
+      code === 'other' ? 'u' : (payload.statuses[key]?.[code] ?? 'u');
+
+    const badgeText = (flag: Flag, name: string | null) =>
+      flag === 'a' && name ? `Listed as available in ${name}` : LABEL[flag];
+
+    const paintBadge = (el: Element, flag: Flag | null, name: string | null) => {
+      const badge = el.querySelector<HTMLElement>('[data-country-badge]');
+      if (!badge) return;
+      if (!flag) {
+        badge.hidden = true;
+        badge.textContent = '';
+        badge.removeAttribute('data-flag');
+        return;
+      }
+      badge.hidden = false;
+      badge.textContent = badgeText(flag, name);
+      badge.dataset.flag = flag;
+    };
+
+    const apply = (code: string) => {
+      const name = code && code !== 'other' ? (payload.countries.find((c) => c.code === code)?.name ?? null) : null;
+      const counts = { a: 0, r: 0, u: 0 };
+
+      tableRows.forEach((row) => {
+        const key = row.dataset.brokerKey as string;
+        const flag = code ? flagFor(key, code) : null;
+        row.dataset.tier = flag ? String(TIER[flag]) : '0';
+        row.dataset.countryStatus = flag ? badgeText(flag, name) : '';
+        paintBadge(row, flag, name);
+        if (flag) counts[flag] += 1;
+      });
+      root.dispatchEvent(new Event('rank-table:resort'));
+
+      cards.forEach((card) => {
+        const key = card.dataset.brokerCard as string;
+        const flag = code ? flagFor(key, code) : null;
+        card.dataset.tier = flag ? String(TIER[flag]) : '0';
+        paintBadge(card, flag, name);
+      });
+      picks.forEach((pick) => {
+        const key = pick.dataset.brokerPick as string;
+        paintBadge(pick, code ? flagFor(key, code) : null, name);
+      });
+      if (cardParent) {
+        [...cardOrder]
+          .sort((a, b) => Number(a.dataset.tier ?? 0) - Number(b.dataset.tier ?? 0) || cardOrder.indexOf(a) - cardOrder.indexOf(b))
+          .forEach((card, index) => {
+            cardParent.appendChild(card);
+            const chip = card.querySelector<HTMLElement>('[data-card-rank]');
+            if (chip) chip.textContent = `#${index + 1}`;
+          });
+      }
+
+      root.dataset.compareMetrics = JSON.stringify(
+        code ? [...baseMetrics, { key: 'countryStatus', label: 'In your country' }] : baseMetrics,
+      );
+
+      clearBtn.hidden = !code;
+      if (!code) {
+        note.textContent = baseNote;
+      } else if (code === 'other') {
+        note.textContent =
+          "Your country is not in our list, so we cannot tell you which brokers take it. Read each broker's restricted-country list before you register, and confirm with the broker.";
+      } else {
+        note.textContent = `${name}: ${counts.a} listed as available, ${counts.u} not stated, ${counts.r} restricted. Restricted brokers are at the bottom, not hidden, because a list is the broker's stated policy and not a guarantee. Confirm with the broker before you open an account.`;
+      }
+    };
+
+    select.addEventListener('change', () => {
+      apply(select.value);
+      try {
+        if (select.value) localStorage.setItem(STORAGE_KEY, select.value);
+        else localStorage.removeItem(STORAGE_KEY);
+      } catch {
+        /* storage unavailable: the choice simply is not remembered */
+      }
+    });
+
+    clearBtn.addEventListener('click', () => {
+      select.value = '';
+      select.dispatchEvent(new Event('change'));
+      select.focus();
+    });
+
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored && (stored === 'other' || payload.countries.some((c) => c.code === stored))) {
+        select.value = stored;
+        apply(stored);
+      }
+    } catch {
+      /* storage unavailable */
+    }
+  }
+</script>
+
+<style is:global>
+  .broker-badge {
+    border-radius: 9999px;
+    padding: 0.15rem 0.6rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1.4;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgb(203, 213, 225);
+  }
+  .broker-badge[data-flag='a'] {
+    border-color: rgba(52, 211, 153, 0.4);
+    background: rgba(16, 185, 129, 0.12);
+    color: rgb(110, 231, 183);
+  }
+  .broker-badge[data-flag='r'] {
+    border-color: rgba(248, 113, 113, 0.45);
+    background: rgba(239, 68, 68, 0.12);
+    color: rgb(252, 165, 165);
+  }
+  .broker-badge[data-flag='u'] {
+    border-color: rgba(251, 191, 36, 0.4);
+    background: rgba(245, 158, 11, 0.1);
+    color: rgb(252, 211, 77);
+  }
+  .broker-pill {
+    min-height: 44px;
+    padding: 0 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.04);
+    color: rgb(203, 213, 225);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .broker-pill:hover {
+    border-color: rgba(52, 211, 153, 0.5);
+    color: #fff;
+  }
+</style>

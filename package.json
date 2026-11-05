@@ -13,6 +13,7 @@
     "check:rendered": "node scripts/check-rendered-html.mjs",
     "check:canonicals": "node scripts/check-canonicals.mjs",
     "check:titles": "node scripts/check-titles.mjs",
+    "check:brokers": "node scripts/check-broker-countries.mjs",
     "check:schema": "node scripts/check-schema.mjs",
     "check:preview": "node scripts/check-preview.mjs",
     "test:worker": "node scripts/worker.test.mjs",

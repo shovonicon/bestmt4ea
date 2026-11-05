@@ -3,5 +3,7 @@
   "contentReviewedAt": "2026-10-13",
   "catalogueVerifiedAt": "2026-10-13",
   "performanceVerifiedAt": "2026-11-02",
-  "performanceSource": "Myfxbook (live sync)"
+  "performanceSource": "Myfxbook (live sync)",
+  "_brokerCountriesNote": "Date the broker country lists in brokers.json were last checked against each broker's own published terms. null means they have not been re-checked since they were recorded, and the brokers page says so. The monthly check (docs/BROKER-COUNTRY-CHECK.md) sets this; never set it without doing the check.",
+  "brokerCountriesVerifiedAt": null
 }
