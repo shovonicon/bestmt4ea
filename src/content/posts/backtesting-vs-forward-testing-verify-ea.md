@@ -286,4 +286,4 @@ download:
 
 Once a backtest looks sound, the next step is a forward test on a demo account, and the cost of running it should be measured. Our [running-costs guide](/ea-running-costs-spread-commission-swap/) shows how spread, commission, swap and a server bill add up over a year. For the migration from demo to live, our [demo-to-live guide](/demo-to-live-ea-migration/) lists the conditions that change at the switch, and our [broker terms guide](/do-brokers-allow-eas-and-scalping/) explains which contract clauses decide whether an EA's trading pattern is allowed.
 
-For the rest of this topic on our site, see [our VPS guide](/vps-for-ea-trading-latency/).
+For the rest of this topic on our site, see [our VPS guide](/vps-for-ea-trading-latency/). To see how this method applies to a specific paid system, read our [Forex Flex EA review](/forex-flex-ea-review/), which covers its published track record and an eight-week demo plan.

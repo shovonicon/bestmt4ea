@@ -1,5 +1,5 @@
 {
-  "_note": "Structured content for the Windows VPS product page, taken from the product's own published page. A VPS is not an expert advisor, so it has no performance record, strategy or licence tiers — the page leads with specifications, terms of service and billing periods instead. Keep the content file untouched so the changed-content gate stays clean; never publish a per-period price we were not given.",
+  "_note": "Structured content for the Windows VPS product page, taken from the product's own published page. A VPS is not an expert advisor, so it has no performance record, strategy or licence tiers — the page leads with specifications, terms of service and billing periods instead. The content file now carries the full frontmatter (quick answer, takeaways, FAQs, sources) so it passes the changed-content gate; never publish a per-period price we were not given.",
   "vps": {
     "tagline": "Run 5–10 MT4 or MT5 platforms on a dedicated Windows VPS — built for expert advisors and algorithmic trading that cannot afford downtime.",
     "specs": [
