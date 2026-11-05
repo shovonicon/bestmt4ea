@@ -243,7 +243,16 @@ const searchIndexUrl = url('/search-index.json').replace(/\/$/, '');
           alt={site.name}
           width="800"
           height="132"
+          data-logo-dark
           class="h-8 w-auto object-contain transition-transform duration-300 group-hover:brightness-110 sm:h-9"
+        />
+        <img
+          src="/media/bestmt4ea-logo-light.png"
+          alt={site.name}
+          width="800"
+          height="132"
+          data-logo-light
+          class="hidden h-8 w-auto object-contain transition-transform duration-300 group-hover:brightness-110 sm:h-9"
         />
       </a>
       {
@@ -261,6 +270,19 @@ const searchIndexUrl = url('/search-index.json').replace(/\/$/, '');
     </div>
 
     <div class="hidden items-center justify-end gap-2.5 lg:flex">
+      <button
+        type="button"
+        data-theme-toggle
+        aria-label="Toggle light/dark theme"
+        class="nav-pill"
+      >
+        <svg data-theme-icon-sun viewBox="0 0 24 24" class="h-3.5 w-3.5 hidden" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+        <svg data-theme-icon-moon viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
       <a
         href={site.telegram.support}
         rel="noopener"
@@ -614,6 +636,20 @@ const searchIndexUrl = url('/search-index.json').replace(/\/$/, '');
           </svg>
           Join the community
         </a>
+        <button
+          type="button"
+          data-theme-toggle
+          aria-label="Toggle light/dark theme"
+          class="nav-pill col-span-2 min-h-[44px] justify-center !text-sm"
+        >
+          <svg data-theme-icon-sun viewBox="0 0 24 24" class="h-4 w-4 hidden" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+          <svg data-theme-icon-moon viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          <span data-theme-label>Dark mode</span>
+        </button>
       </div>
     </div>
   </nav>
@@ -625,12 +661,16 @@ const searchIndexUrl = url('/search-index.json').replace(/\/$/, '');
     const navToggle = document.querySelector('[data-nav-toggle]');
     const mobile = document.querySelector('[data-mobile-nav]');
 
+    const isLight = () => document.documentElement.dataset.theme === 'light';
+
     const onScroll = () => {
       if (!header) return;
       const solid = window.scrollY > 8;
       header.classList.toggle('border-b', solid);
-      header.classList.toggle('border-white/5', solid);
-      header.classList.toggle('bg-black/80', solid);
+      header.classList.toggle('border-white/5', solid && !isLight());
+      header.classList.toggle('border-black/5', solid && isLight());
+      header.classList.toggle('bg-black/80', solid && !isLight());
+      header.classList.toggle('bg-white/80', solid && isLight());
       header.classList.toggle('backdrop-blur-xl', solid);
     };
     onScroll();
@@ -838,6 +878,28 @@ const searchIndexUrl = url('/search-index.json').replace(/\/$/, '');
         setMobile(false);
         navToggle?.focus();
       }
+    });
+
+    /* --------------------------------------------------------- theme toggle */
+
+    const syncThemeUI = () => {
+      const light = isLight();
+      document.querySelectorAll('[data-theme-icon-sun]').forEach(el => el.classList.toggle('hidden', !light));
+      document.querySelectorAll('[data-theme-icon-moon]').forEach(el => el.classList.toggle('hidden', light));
+      document.querySelectorAll('[data-theme-label]').forEach(el => { el.textContent = light ? 'Dark mode' : 'Light mode'; });
+      document.querySelectorAll('[data-logo-dark]').forEach(el => el.classList.toggle('hidden', light));
+      document.querySelectorAll('[data-logo-light]').forEach(el => el.classList.toggle('hidden', !light));
+      onScroll();
+    };
+    syncThemeUI();
+
+    document.querySelectorAll('[data-theme-toggle]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const next = isLight() ? 'dark' : 'light';
+        document.documentElement.dataset.theme = next;
+        try { localStorage.setItem('theme', next); } catch {}
+        syncThemeUI();
+      });
     });
   })();
 </script>
