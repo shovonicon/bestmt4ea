@@ -6,7 +6,7 @@ description: "Shared Drive folder for a breakout and retest scanner indicator. L
 publishedAt: "2026-02-20T18:12:27.000Z"
 updatedAt: "2026-10-22T00:00:00.000Z"
 seo:
-  title: "Breakout and Retest Scanner Indicator Free Download Guide 2026"
+  title: "Breakout and Retest Scanner Indicator Free Download Guide"
   description: "Shared Drive folder for a breakout and retest scanner indicator. Learn how these tools work, how to test any indicator on a demo chart, and what to check."
   canonical: "https://bestmt4ea.com/breakout-and-retest-scanner-indicator-free-download-7-powerful-secrets-to-smarter-trading/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_135967_featured.webp"

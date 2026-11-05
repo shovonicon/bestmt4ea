@@ -49,7 +49,7 @@ download:
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
   platform: "MT4/MT5"
 seo:
-  title: "Noble Impulse V4 Indicator: Demo Test and Safe Access Guide 2026"
+  title: "Noble Impulse V4 Indicator: Demo Test and Safe Access Guide"
   description: "Noble Impulse V4 indicator explained: how to check a shared file, test its signals on demo, and manage risk. Honest steps, no profit promises, real limits."
   canonical: "https://bestmt4ea.com/noble-impulse-v4-indicator-and-strategies-for-free-download-powerful-guide-9-proven-tactics/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_136661_featured-1.webp"

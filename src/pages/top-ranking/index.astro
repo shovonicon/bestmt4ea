@@ -31,8 +31,12 @@ const perfSorted = products
 
 const verified = perfSorted.filter((r) => r.perf?.verified);
 
-// The three leaders by verified monthly return — only rows with a real figure.
-const leaders = perfSorted.filter((r) => r.perf?.monthlyGainPct != null).slice(0, 3).map((r) => r.product);
+// The three leaders by Myfxbook absolute gain (Abs. Gain), the same key the table sorts by — only rows with a real figure.
+const leaders = [...perfSorted]
+  .filter((r) => r.perf?.live?.absGainPct != null)
+  .sort((a, b) => (b.perf?.live?.absGainPct ?? -Infinity) - (a.perf?.live?.absGainPct ?? -Infinity))
+  .slice(0, 3)
+  .map((r) => r.product);
 
 const cats = ((taxonomies as any).productCategories ?? []) as { name: string; slug: string }[];
 const catsWithCounts = cats.map((cat) => ({
@@ -78,8 +82,8 @@ const faqs = [
 ---
 
 <BaseLayout
-  title={`Top Forex Expert Advisors ${monthYear} — Ranked and Verified`}
-  description="Ranked comparison of MT4 and MT5 expert advisors by verified return, maximum drawdown and gain, with the licence price and account type on every row."
+  title={`Top Forex Expert Advisors ${monthYear}: Verified`}
+  description="Ranked comparison of MT4 and MT5 expert advisors by verified absolute gain (Myfxbook Abs. Gain), with maximum drawdown, the licence price and account type on every row."
   jsonLd={[breadcrumbSchema(trail), itemListSchema('Top forex expert advisors', rankedList), faqSchema(faqs)]}
 >
   <!-- First screen: hero + partner banner fill the viewport below the 4rem header. -->
@@ -142,7 +146,7 @@ const faqs = [
         <section class="mt-20" aria-labelledby="leaders-heading">
           <SectionHead
             kicker="The leaders"
-            title="The three highest verified monthly returns"
+            title="The three highest verified absolute gains"
             lead="Each card carries the tracked figures, the minimum balance and the licence price."
             id="leaders-heading"
           />

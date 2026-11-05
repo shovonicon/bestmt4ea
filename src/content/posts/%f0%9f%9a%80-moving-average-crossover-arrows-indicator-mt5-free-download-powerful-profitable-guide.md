@@ -49,7 +49,7 @@ download:
   externalUrl: "https://drive.google.com/drive/folders/1w99fcnzD_vfU_tSlc4Pz8zOEX81t5-_l?usp=sharing"
   platform: "MT4/MT5"
 seo:
-  title: "Moving Average Crossover Indicator MT5: Free Download Guide 2026"
+  title: "Moving Average Crossover Indicator MT5: Free Download Guide"
   description: "Learn how a moving average crossover indicator for MT5 works, how to check a shared file safely before installing, and how to test it on a demo chart first."
   canonical: "https://bestmt4ea.com/🚀-moving-average-crossover-arrows-indicator-mt5-free-download-powerful-profitable-guide/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_137222_featured-1.webp"

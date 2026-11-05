@@ -6,7 +6,7 @@ description: "Export TradingView chart data to CSV without a paid plan. Four hon
 publishedAt: "2026-10-22T00:00:00.000Z"
 updatedAt: "2026-10-22T00:00:00.000Z"
 seo:
-  title: "Export TradingView Data to CSV Free: 4 Methods That Work 2026"
+  title: "Export TradingView Data to CSV Free: 4 Methods That Work"
   description: "Export TradingView chart data to CSV without a paid plan. Four honest methods, what each one captures, and the limits to check before you trust the numbers."
   canonical: "https://bestmt4ea.com/10-powerful-ways-on-how-to-export-tradingview-data-to-csv-free-methods-no-paid-plan-needed/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_2029_featured.webp"

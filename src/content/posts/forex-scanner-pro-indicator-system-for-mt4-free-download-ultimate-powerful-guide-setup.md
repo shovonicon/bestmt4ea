@@ -6,7 +6,7 @@ description: "How a multi-pair forex scanner works on MT4, what to verify before
 publishedAt: "2026-02-22T12:14:39.000Z"
 updatedAt: "2026-09-01T07:47:44Z"
 seo:
-  title: "Forex Scanner Pro Indicator for MT4: Free Download Guide 2026"
+  title: "Forex Scanner Pro Indicator for MT4: Free Download Guide"
   description: "How a multi-pair forex scanner works on MT4, what to verify before installing it, how to test its alerts on demo, and what the free download does not do."
   canonical: "https://bestmt4ea.com/forex-scanner-pro-indicator-system-for-mt4-free-download-ultimate-powerful-guide-setup/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_139013_featured-1.webp"

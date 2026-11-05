@@ -5,6 +5,8 @@ slug: "disclaimer"
 description: "Forex and CFD trading carries a high risk of loss. How BESTMT4EA presents performance data, what our software does, and why nothing here is advice."
 publishedAt: 2026-09-28
 updatedAt: 2026-09-29
+seo:
+  title: "Risk Disclaimer: Forex and EA Trading Risks"
 systemPage: true
 showAds: false
 draft: false

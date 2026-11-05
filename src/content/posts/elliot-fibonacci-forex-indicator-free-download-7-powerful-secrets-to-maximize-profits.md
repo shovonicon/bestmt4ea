@@ -6,7 +6,7 @@ description: "An Elliott wave and Fibonacci indicator for MT4 counts waves and p
 publishedAt: "2026-02-20T19:53:16.000Z"
 updatedAt: "2026-08-27T14:46:48Z"
 seo: 
-  title: "Elliott Wave Fibonacci Indicator MT4: Free Download Guide 2026"
+  title: "Elliott Wave Fibonacci Indicator MT4: Free Download Guide"
   description: "An Elliott wave and Fibonacci indicator for MT4 counts waves and plots ratios. Learn why wave counts are subjective, where automation fails, and how to test it."
   canonical: "https://bestmt4ea.com/elliot-fibonacci-forex-indicator-free-download-7-powerful-secrets-to-maximize-profits/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_136177_featured-1.webp"

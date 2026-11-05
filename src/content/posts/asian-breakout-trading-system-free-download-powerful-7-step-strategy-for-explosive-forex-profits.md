@@ -38,7 +38,7 @@ installSteps:
   - name: "Check on demo"
     text: "Compare the first sessions with a manual box you draw yourself, and watch for any signal that changes after its candle has closed."
 seo:
-  title: "Asian Breakout Trading System Free Download: 7-Step Guide 2026"
+  title: "Asian Breakout Trading System Free Download: 7-Step Guide"
   description: "Asian breakout trading system free download guide: a 7-step demo test plan, install checks, and honest limits for any shared file. Read before you trade."
   canonical: "https://bestmt4ea.com/asian-breakout-trading-system-free-download-powerful-7-step-strategy-for-explosive-forex-profits/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_137534_featured-1.webp"

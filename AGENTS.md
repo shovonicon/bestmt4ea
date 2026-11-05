@@ -109,6 +109,7 @@ npm run check:content:changed  # gate only content changed since the hash baseli
 npm run check:debt             # content debt may only shrink vs content-debt.json
 npm run check:rendered         # rendered-HTML structure of post pages (1 H1, no dup sections)
 npm run check:canonicals       # one absolute self-canonical per page (incl. emoji routes)
+npm run check:titles           # every rendered <title> is 30-60 characters (run after build)
 npm run check:schema           # no zero prices, invented brand, or build-time dates
 npm run check:links            # every internal href in dist/ resolves + uses canonical slashes
 npm run check:downloads        # download blocks, licences and attribution
@@ -129,6 +130,13 @@ Run `npm run release:check` before shipping anything — `npm run deploy` now ru
 it automatically via the `predeploy` hook, so a broken build cannot ship.
 
 ## Hard-won context (do not regress)
+
+- **Ranking copy must name the sort key the table actually uses.** The top-ranking board,
+  its leaders and its FAQ are ranked by Myfxbook **Abs. Gain** (`live.absGainPct`). Any
+  heading, lead, meta description or FAQ that says "monthly return", "return" or "gain"
+  for that board must say *absolute gain*, and the leaders must come from the same key.
+  Monthly return is shown beside the rank, never used as the rank. Check the sort key in
+  the component before writing ranking copy.
 
 - Only **3 of 153 posts** currently meet the standard. The rest are WordPress imports and
   are being rewritten in phased batches — see the rollout plan in

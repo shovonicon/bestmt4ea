@@ -38,7 +38,7 @@ installSteps:
   - name: "Score the tool and keep a log"
     text: "Work through the five questions and the four scorecard points. Keep two weeks of forward screenshots, and do not let the tool influence a trade until the log supports it."
 seo:
-  title: "No Repaint Indicator Free Download: Repaint Test Checklist 2026"
+  title: "No Repaint Indicator Free Download: Repaint Test Checklist"
   description: "Test any no repaint indicator on a demo chart in 30 minutes with a free checklist. Learn the repaint test, selection scorecard and what the guide cannot prove."
   canonical: "https://bestmt4ea.com/accurate-signals-no-repaint-indicator-free-download-7-powerful-benefits-traders-must-know/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_137775_featured-1.webp"

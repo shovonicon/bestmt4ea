@@ -6,7 +6,7 @@ description: "Learn what buyside and sellside liquidity mean, how to test a liqu
 publishedAt: "2026-02-20T05:24:58.000Z"
 updatedAt: "2026-10-22T00:00:00.000Z"
 seo:
-  title: "Buyside Sellside Liquidity Indicator Free Download Guide 2026"
+  title: "Buyside Sellside Liquidity Indicator Free Download Guide"
   description: "Learn what buyside and sellside liquidity mean, how to test a liquidity indicator on a demo chart, and how to install a shared MT4/MT5 file safely today."
   canonical: "https://bestmt4ea.com/buyside-sellside-liquidity-indicator-free-download-powerful-guide-to-smart-trading-success/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_135154_featured.webp"

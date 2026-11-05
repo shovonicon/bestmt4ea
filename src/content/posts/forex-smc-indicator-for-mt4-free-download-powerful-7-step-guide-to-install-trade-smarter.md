@@ -6,7 +6,7 @@ description: "Free EA Installation Checklist for MT4 and MT5: install a Forex SM
 publishedAt: "2026-02-21T05:32:58.000Z"
 updatedAt: "2026-10-22T00:00:00.000Z"
 seo:
-  title: "Forex SMC Indicator for MT4 Free Download: Install Checklist 2026"
+  title: "Forex SMC Indicator for MT4 Free Download: Install Checklist"
   description: "Free EA Installation Checklist for MT4 and MT5: install a Forex SMC indicator step by step, fix blocked trading, and test on demo before you trust it."
   canonical: "https://bestmt4ea.com/forex-smc-indicator-for-mt4-free-download-powerful-7-step-guide-to-install-trade-smarter/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_136836_featured-1.webp"

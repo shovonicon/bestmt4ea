@@ -14,6 +14,7 @@
  *   7. Route validation              (manifest vs live routes)
  *   8. Rendered-HTML structure       (one H1, no duplicate sections, no sidebar)
  *   9. Canonicals + emoji encoding   (one absolute self-canonical per page)
+ *      Title tags                    (every rendered title is 30-60 characters)
  *  10. Structured data               (no zero prices, invented brand or build-time dates)
  *  11. Internal links
  *  12. Downloads (static shape)
@@ -52,6 +53,7 @@ const steps = [
   ['Route validation', 'node scripts/check-routes.mjs'],
   ['Rendered-HTML structure', 'node scripts/check-rendered-html.mjs'],
   ['Canonicals + emoji encoding', 'node scripts/check-canonicals.mjs'],
+  ['Title tags (30-60 characters)', 'node scripts/check-titles.mjs'],
   ['Structured data', 'node scripts/check-schema.mjs'],
   ['Internal links', 'node scripts/check-links.mjs'],
   ['Downloads (static)', 'node scripts/check-downloads.mjs'],

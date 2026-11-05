@@ -6,7 +6,7 @@ description: "Seven survival rules for a gold scalping expert advisor on MT4 and
 publishedAt: "2026-02-13T20:38:34.000Z"
 updatedAt: "2026-08-28T15:50:51Z"
 seo:
-  title: "Gold Scalping Expert Advisor MT4 FREE Download – 7 Survival Rules"
+  title: "Gold Scalping EA MT4 Free Download: 7 Survival Rules"
   description: "Seven survival rules for a gold scalping expert advisor on MT4 and MT5: spread budget, session choice, stop placement, ATR position sizing and a daily loss cap."
   canonical: "https://bestmt4ea.com/gold-scalping-expert-advisor-mt4-free-download-powerful-proven-guide-7-winning-secrets/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127029_featured.webp"

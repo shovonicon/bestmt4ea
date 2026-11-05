@@ -6,7 +6,7 @@ description: "Free grid EA stress test sheet for MT4/MT5. Check margin, stop-out
 publishedAt: "2026-02-14T00:08:55.000Z"
 updatedAt: "2026-10-22T00:00:00.000Z"
 seo:
-  title: "Drawdown Reduction EA Free Download: Grid Stress Test Guide 2026"
+  title: "Drawdown Reduction EA Free Download: Grid Stress Test Guide"
   description: "Free grid EA stress test sheet for MT4/MT5. Check margin, stop-out and three bad market scenarios on demo first. Honest limits included, no profit promises."
   canonical: "https://bestmt4ea.com/drawdown-reduction-ea-free-download-7-powerful-benefits-every-trader-must-know/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_127429_featured.webp"

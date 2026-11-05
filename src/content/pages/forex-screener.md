@@ -6,7 +6,7 @@ description: "Forex Screener by TradingView"
 publishedAt: "2025-10-05T23:42:10.000Z"
 updatedAt: "2026-07-26T21:58:13.000Z"
 seo: 
-  title: "Forex Screener"
+  title: "Forex Screener: Filter Currency Pairs Live"
   description: "Forex Screener. Anticipate market-moving events long before they happen with the internet's most forex-focused economic calendar."
   canonical: "https://bestmt4ea.com/forex-screener/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/Best-MT4-EA-—-AI-Powered-Forex-Robots-for-MT4-MT5.webp"

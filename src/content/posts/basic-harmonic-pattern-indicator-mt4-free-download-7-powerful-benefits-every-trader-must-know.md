@@ -6,7 +6,7 @@ description: "A harmonic pattern indicator for MT4 measures XABCD Fibonacci shap
 publishedAt: "2026-02-20T05:34:12.000Z"
 updatedAt: "2026-08-31T08:14:37Z"
 seo: 
-  title: "Harmonic Pattern Indicator MT4: Free Download & Setup Guide 2026"
+  title: "Harmonic Pattern Indicator MT4: Free Download & Setup Guide"
   description: "A harmonic pattern indicator for MT4 measures XABCD Fibonacci shapes for you. See what it detects, why repainting breaks signals, and how to test it first."
   canonical: "https://bestmt4ea.com/basic-harmonic-pattern-indicator-mt4-free-download-7-powerful-benefits-every-trader-must-know/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_135178_featured.webp"

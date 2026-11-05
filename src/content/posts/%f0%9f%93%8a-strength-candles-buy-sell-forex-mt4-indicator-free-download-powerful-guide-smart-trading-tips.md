@@ -6,7 +6,7 @@ description: "Free Strength candles buy sell MT4 indicator guide: how to vet a s
 publishedAt: "2026-02-22T12:38:31.000Z"
 updatedAt: "2026-10-22T00:00:00.000Z"
 seo:
-  title: "Strength Candles MT4 Indicator Free Download: Safe Guide 2026"
+  title: "Strength Candles MT4 Indicator Free Download: Safe Guide"
   description: "Free Strength candles buy sell MT4 indicator guide: how to vet a shared file, install it, test for repainting on demo, and what a shared folder cannot prove."
   canonical: "https://bestmt4ea.com/📊-strength-candles-buy-sell-forex-mt4-indicator-free-download-powerful-guide-smart-trading-tips/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2026/07/post_139067_featured-1.webp"

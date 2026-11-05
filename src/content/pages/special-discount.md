@@ -6,7 +6,7 @@ description: ""
 publishedAt: "2026-05-04T01:33:18.000Z"
 updatedAt: "2026-07-26T22:27:26.000Z"
 seo: 
-  title: "Special Discount"
+  title: "Special Discount on BESTMT4EA Expert Advisor Licences"
   description: "Current offers on BESTMT4EA expert advisor licences. Check the terms, the licence tier and what each discount covers before you buy."
   canonical: "https://bestmt4ea.com/special-discount/"
   ogImage: "https://bestmt4ea.com/wp-content/uploads/2025/10/1-Verified-Forex-EA-scaled.jpg"

@@ -41,7 +41,11 @@ const {
   author,
 } = Astro.props;
 
-const pageTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
+/** Brand suffix only when the whole title still fits Google's ~60-character display. */
+const TITLE_LIMIT = 60;
+const brandSuffix = ` | ${site.name}`;
+const pageTitle =
+  title.includes(site.name) || [...title].length + brandSuffix.length > TITLE_LIMIT ? title : `${title}${brandSuffix}`;
 /** Self-canonical by default; a `seo.canonical` override wins when present. */
 const canonicalUrl = canonicalFor(Astro.url.pathname, canonical);
 /** OG images from the WordPress export can be relative — social needs absolute. */
