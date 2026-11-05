@@ -985,8 +985,54 @@
       "from": "/tag/trading-tips-for-forex/",
       "to": "/blog/",
       "status": 301
+    },
+    {
+      "from": "/-powerful-proven-crypto-trading-indicator-system-mt5-free-download/",
+      "to": "/%F0%9F%9A%80-powerful-proven-crypto-trading-indicator-system-mt5-free-download/",
+      "status": 301
+    },
+    {
+      "from": "/wp-json/woocommerce-analytics/v1/track/",
+      "to": "/",
+      "status": 410
+    },
+    {
+      "from": "/wp-json/hostinger-reach/v1/contact/",
+      "to": "/",
+      "status": 410
+    },
+    {
+      "from": "/*/",
+      "to": "/",
+      "status": 410
+    },
+    {
+      "from": "/cht-value-chart-indicato-free-download-the-ultimate-powerful-guide/",
+      "to": "/%F0%9F%9A%80-mt4-x-speed-forex-indicator-free-download-powerful-proven-guide/",
+      "status": 301
+    },
+    {
+      "from": "/product/fxcore100-gold-ea-special-set-files/",
+      "to": "/product/fxcore100-ea/",
+      "status": 301
+    },
+    {
+      "from": "/product/millionaire-clevrai-scalper-forex-ea/",
+      "to": "/best-forex-ea/",
+      "status": 301
+    },
+    {
+      "from": "/cpr-forex-indicator-for-mt4-free-download-7-powerful-benefits-proven-trading-secrets-2/",
+      "to": "/",
+      "status": 410
+    },
+    {
+      "from": "/category/forex-indicator-reviews/page/2/",
+      "to": "/category/forex-indicator-reviews/",
+      "status": 301
     }
   ],
+  "_phase1Note": "2026-11-05 (SEO recovery Phase 1): the emoji-less crypto indicator slug and a typo'd 'indicato' slug 301 to their live posts; two retired product slugs follow the existing EA-product convention; a retired category page 2 joins its siblings. Two dead WP plugin API endpoints, the literal /* row and one removed indicator post are 410. For 410 rows `to` is ignored by the matcher. Feeds, /wp-content, /wp-includes, /wp-admin, /wc-stripe, /wc-api, /cart, /my-account, /wp-login.php and /shop/page/N are 410 by pattern in worker/match.mjs. /wp-json/wc-stripe/v1/webhook is deliberately left alone (see AGENTS.md).",
   "_revivalNote": "2026-10-22 revival: absorbed troubleshooting posts 301 to the two merged guides; BBP product URL to its review; Gemini settings URL to the settings guide post.",
   "_categoryMergeNote": "The 2026-10-30 taxonomy consolidation folded eleven near-synonym category archives into broader ones (nine here; Brokers & Trading Platforms was kept). Each retired archive 301s at its single best surviving match. The Gold (XAUUSD) Trading archive and its two children are live again, so their old redirects were removed in the same change.",
   "_emptiedCategoriesNote": "2026-11-02: archives of old WordPress categories that hold no posts redirect to the nearest live category, so those legacy URLs do not 404.",

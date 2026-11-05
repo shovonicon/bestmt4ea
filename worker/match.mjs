@@ -50,13 +50,39 @@ const REDIRECT_STATUSES = new Set([301, 302, 307, 308]);
 const GONE_STATUSES = new Set([410, 451]);
 
 /**
+ * WordPress-era URL classes that can never exist on this site. Bots and old
+ * backlinks keep requesting them, and each one otherwise ends in a 404 that
+ * Search Console reports. They answer 410 Gone instead of 404.
+ *
+ *   - /wp-content, /wp-includes, /wp-admin, /wc-stripe, /wc-api, /cart,
+ *     /my-account  (path-prefix, anchored) and /wp-login.php
+ *   - the old shop pagination, /shop/page/N/ (the shop is a single page now)
+ *   - post, category and comment feeds: .../feed/, .../feed/rss2/, .../feed/atom/
+ *
+ * Deliberately NOT matched: anything under /wp-json/. The dead WooCommerce
+ * Stripe webhook (/wp-json/wc-stripe/v1/webhook) must be left exactly as it is;
+ * removing that endpoint is the owner's call in the Stripe Dashboard.
+ */
+const GONE_PATTERNS = [
+  /^\/(?:wp-content|wp-includes|wp-admin|wc-stripe|wc-api|cart|my-account)(?:\/|$)/i,
+  /^\/wp-login\.php\/?$/i,
+  /^\/shop\/page\/\d+(?:\/|$)/i,
+  /(?:^|\/)feed(?:\/(?:rss2?|atom|rdf))?\/?$/i,
+];
+
+export function isLegacyGonePath(requestPath) {
+  const p = String(requestPath);
+  return GONE_PATTERNS.some((re) => re.test(p));
+}
+
+/**
  * Match a request path against the manifest.
  * Returns `{ kind: 'redirect', status, location }`,
  * `{ kind: 'gone', status }`, or `{ kind: 'pass' }`.
  */
 export function matchRedirect(map, requestPath, search = '') {
   const rule = map.get(cmpKey(requestPath));
-  if (!rule) return { kind: 'pass' };
+  if (!rule) return isLegacyGonePath(requestPath) ? { kind: 'gone', status: 410 } : { kind: 'pass' };
   if (GONE_STATUSES.has(rule.status)) return { kind: 'gone', status: rule.status };
   if (!REDIRECT_STATUSES.has(rule.status)) return { kind: 'pass' };
   let location = isExternal(rule.to) ? rule.to : canon(rule.to);

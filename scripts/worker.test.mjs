@@ -144,6 +144,39 @@ check('homepage passes through', matchRedirect(map, '/'), { kind: 'pass' });
   });
 }
 
+/* --- legacy WordPress URL classes answer 410 ------------------------------------ */
+{
+  const gone = { kind: 'gone', status: 410 };
+  const empty = buildMap([]);
+  check('post feed is gone', matchRedirect(empty, '/some-old-post/feed/'), gone);
+  check('post feed without slash is gone', matchRedirect(empty, '/some-old-post/feed'), gone);
+  check('category feed is gone', matchRedirect(empty, '/category/forex/feed/'), gone);
+  check('comments feed is gone', matchRedirect(empty, '/comments/feed/'), gone);
+  check('feed/atom is gone', matchRedirect(empty, '/some-old-post/feed/atom/'), gone);
+  check('wp-content wildcard row is gone', matchRedirect(empty, '/wp-content/*/'), gone);
+  check('wp-content plugin path is gone', matchRedirect(empty, '/wp-content/plugins/x/sdk_files/'), gone);
+  check('wp-includes is gone', matchRedirect(empty, '/wp-includes/js/jquery.js'), gone);
+  check('wc-stripe REST route is gone', matchRedirect(empty, '/wc-stripe/v1/cart/item/'), gone);
+  check('wc-api endpoint is gone', matchRedirect(empty, '/wc-api/stripe_add_payment_method/'), gone);
+  check('old cart is gone', matchRedirect(empty, '/cart/'), gone);
+  check('old my-account is gone', matchRedirect(empty, '/my-account/downloads/'), gone);
+  check('wp-login.php is gone', matchRedirect(empty, '/wp-login.php'), gone);
+  check('old shop pagination is gone', matchRedirect(empty, '/shop/page/1/'), gone);
+  check('the shop itself passes', matchRedirect(empty, '/shop/'), { kind: 'pass' });
+  check('cart-like slug passes', matchRedirect(empty, '/cart-abandonment-in-forex-ecommerce/'), { kind: 'pass' });
+  check('Stripe webhook path is NOT touched', matchRedirect(empty, '/wp-json/wc-stripe/v1/webhook/'), { kind: 'pass' });
+  check('wp-json is NOT matched by pattern', matchRedirect(empty, '/wp-json/anything/'), { kind: 'pass' });
+  check('slug containing "feed" passes', matchRedirect(empty, '/how-to-feed-data-into-an-ea/'), { kind: 'pass' });
+  check('slug ending in -feed passes', matchRedirect(empty, '/best-news-feed/'), { kind: 'pass' });
+  check('wc-stripe-like slug passes', matchRedirect(empty, '/wc-stripes-review/'), { kind: 'pass' });
+  const withRule = buildMap([{ from: '/old/feed/', to: '/new-page/', status: 301 }]);
+  check('an explicit rule beats the pattern', matchRedirect(withRule, '/old/feed/'), {
+    kind: 'redirect',
+    status: 301,
+    location: '/new-page/',
+  });
+}
+
 /* --- canon helper -------------------------------------------------------------- */
 check('canon collapses encoding case', canon('/%f0%9f%9a%80-a/'), canon('/%F0%9F%9A%80-a/'));
 check('canon matches decoded emoji', canon('/%F0%9F%9A%80-a/'), canon('/🚀-a/'));
