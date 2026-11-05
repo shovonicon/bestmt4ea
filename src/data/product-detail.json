@@ -182,6 +182,13 @@
           ["Trades", "414"],
           ["Auditing", "Myfxbook"]
         ],
+        "images": [
+          {"src": "/media/products/obsidian-aether-live-history-2026-08.jpg", "alt": "MetaTrader 5 mobile History for EURUSD, August 2026: profit 1,246.68, swap -24.20, commission -10.72, balance 1,211.76", "caption": "August 2026: 1,211.76 net"},
+          {"src": "/media/products/obsidian-aether-live-history-2026-09.jpg", "alt": "MetaTrader 5 mobile History for EURUSD, September 2026: profit 1,137.70, swap -101.29, commission -10.01, balance 1,026.40", "caption": "September 2026: 1,026.40 net"},
+          {"src": "/media/products/obsidian-aether-live-history-2026-10.jpg", "alt": "MetaTrader 5 mobile History for EURUSD, October 2026: profit 2,955.68, swap -177.17, commission -34.45, balance 2,744.06", "caption": "October 2026: 2,744.06 net"},
+          {"src": "/media/products/obsidian-aether-live-history-2026-11.jpg", "alt": "MetaTrader 5 mobile History for EURUSD, November 2026 to the 2nd: profit 895.49, swap -60.26, commission -9.04, balance 826.19", "caption": "1 to 2 November 2026: 826.19 net"}
+        ],
+        "imagesNote": "Screenshots of the MetaTrader 5 mobile History tab (Positions, EURUSD), one per month. The balance line is profit after swap and commission. They show closed EURUSD positions commented Obsidian Aether EA; the figures are not audited, so the Myfxbook record above stays the reference.",
         "note": "Figures are the published Myfxbook record for account 12080504, checked 28 September 2026. This is a real-money account; the 80.14% maximum drawdown shown is the account's own. Confirm current numbers at the source before buying."
       },
       "report": "Obsidian Aether trades EURUSD on a structured grid, adding positions as price moves against the initial entry rather than chasing a single directional call. That is what produces the steady equity curve — and also what produces the deep drawdown: when a move does not retrace, the grid holds floating exposure until it does. It suits accounts sized to absorb that, on a broker with tight EURUSD spreads."

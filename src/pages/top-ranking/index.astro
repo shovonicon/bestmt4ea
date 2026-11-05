@@ -87,8 +87,8 @@ const faqs = [
   description="Ranked comparison of MT4 and MT5 expert advisors by verified absolute gain (Myfxbook Abs. Gain), with maximum drawdown, the licence price and account type on every row."
   jsonLd={[breadcrumbSchema(trail), itemListSchema('Top forex expert advisors', rankedList), faqSchema(faqs)]}
 >
-  <!-- First screen: hero + partner banner fill the viewport below the 4rem header. -->
-  <div class="flex min-h-[calc(100svh-4rem)] flex-col">
+  <!-- First screen: hero + partner banner fill the viewport below the header (4rem on mobile, 6.85rem with the two-row desktop header). -->
+  <div class="flex min-h-[calc(100svh-4rem)] flex-col lg:min-h-[calc(100svh-6.85rem)]">
   <section class="relative flex flex-1 flex-col overflow-hidden">
     <div class="glow-orb animate-aurora left-1/2 top-[-14rem] h-[22rem] w-[34rem] -translate-x-1/2 bg-emerald-500/20"
     ></div>

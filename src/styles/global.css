@@ -954,7 +954,7 @@
     .ad-rail-right { left: calc(50% + 34rem + 1.5rem); }
     .ad-rail-inner {
       position: sticky;
-      top: 6rem;
+      top: 8.25rem;
       /* Reserve the 300x600 unit's height so the page does not jump when it fills. */
       min-height: 600px;
     }
@@ -1002,7 +1002,7 @@
     }
     .rf-rail-sticky {
       position: sticky;
-      top: 96px;
+      top: 8.25rem;
     }
   }
 
@@ -1037,7 +1037,7 @@
 
     .toc-sticky {
       position: sticky;
-      top: 96px;
+      top: 8.25rem;
     }
   }
 
@@ -1061,7 +1061,7 @@
     }
     .tool-rail-sticky {
       position: sticky;
-      top: 96px;
+      top: 8.25rem;
     }
   }
 
@@ -1540,3 +1540,8 @@
     display: none;
   }
 }
+
+/* In-page anchors (table of contents, #broker-<key>) must land below the fixed header:
+   4rem on mobile, the two-row header (6.85rem) from lg. */
+html { scroll-padding-top: 5rem; }
+@media (min-width: 1024px) { html { scroll-padding-top: 8rem; } }

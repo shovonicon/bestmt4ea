@@ -124,8 +124,8 @@ const faqs = [
   description="Compare the best MT4 EA and forex robots by verified Myfxbook gain. Every expert advisor shows drawdown, account type and licence price before you buy."
   jsonLd={[organizationSchema(), websiteSchema(), faqSchema(faqs)]}
 >
-  <!-- First screen: hero + partner banner fill the viewport below the 4rem header. -->
-  <div class="flex min-h-[calc(100svh-4rem)] flex-col">
+  <!-- First screen: hero + partner banner fill the viewport below the header (4rem on mobile, 6.85rem with the two-row desktop header). -->
+  <div class="flex min-h-[calc(100svh-4rem)] flex-col lg:min-h-[calc(100svh-6.85rem)]">
   <!-- Hero -->
   <section class="relative flex flex-1 flex-col overflow-hidden">
     <div class="glow-orb animate-aurora left-1/2 top-[-12rem] h-[26rem] w-[38rem] -translate-x-1/2 bg-emerald-500/25"

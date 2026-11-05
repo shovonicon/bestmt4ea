@@ -989,3 +989,14 @@ account now shows 46.99% / 86.30% against the 147.21% / 80.14% the transcription
 - **Other:** scalping-indicators post rewritten; footer links Methodology and the legal pages; system page dates updated.
 - **Deploy:** version `d698ace5`, release gate passed.
 - **Open:** scalping post indicator names and MetaTrader help links are unverified; copy-trading page still carries income-style claims (avg monthly return, win rate, AUM) that should be removed; `BESTMT4EA GSC REPORT/` and `BestMT4EA SEO Audit.md` are untracked source files, not committed; Search Console actions (request indexing, `/best-forex-ea/` first) are the owner's.
+
+## Progress save: 2026-11-05 (two-row header, search, Telegram, live screenshots)
+
+- **Header:** two rows from `lg`. Row 1: search left; centre the logo, then a divider and "Sponsored by" over the RoboForex logo (`/go/roboforex/`, `rel="sponsored nofollow noopener"`); right Support, Community, Login. Row 2: the menu on a darker band, now including Brokers, Fund Management, Feedback and VPS. Mobile keeps one row; its menu has the search box, Support and "Join the community".
+- **Header height contract:** desktop header is 6.85rem (`pt-[6.85rem]` in `BaseLayout.astro`). The first-screen block on `/` and `/top-ranking/` uses `lg:min-h-[calc(100svh-6.85rem)]`; the sticky rails in `global.css` sit at `top: 8.25rem`; `html` has `scroll-padding-top` (5rem, 8rem from lg). The dashboard account bar is at `lg:top-[10.3rem]` (1.5x, owner's request). Change the header height and all of these move together.
+- **Search:** title-only client search over `/search-index.json` (prerendered by `src/pages/search-index.json.ts`: public products and posts). Loaded on first focus; no `aria-expanded` on the input (axe rejects it).
+- **Telegram:** `site.telegram.support` is `t.me/pizion`, `site.telegram.community` is `t.me/millionaireeliteclub`. The product-page "Join our Telegram" button now goes to the community.
+- **RoboForex links:** `roboforex` and `roboforex-welcome` both resolve to `https://my.roboforex.com/en/?a=lwek`. Audit of the built site: every RoboForex link is that URL, with the sponsored `rel`. R Infinity links keep their own `rinfinity.com` URLs (id `lwek`) by decision.
+- **Obsidian Aether:** four MT5 History screenshots (Aug to 2 Nov 2026) in the Live tab, two columns, with a note that they are unaudited and Myfxbook stays the reference. Data: `live.images` in `product-detail.json`.
+- **Copy trading:** "Client feedback" cards are two columns.
+- **Open:** the header sponsor label is the only disclosure in the header; the dashboard bar offset was not checked in a browser (needs a login); the menu row wraps below about 1100px wide. Plus the items under the previous save.

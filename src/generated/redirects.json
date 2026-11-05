@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-05T12:55:03.910Z",
+  "generatedAt": "2026-11-05T13:53:42.001Z",
   "source": "wordpress-seo-redirects (2).csv",
   "count": 2426,
   "dropped": [
@@ -12549,7 +12549,7 @@
     },
     {
       "from": "/go/roboforex-welcome/",
-      "to": "https://www.roboforex.com/clients/promotions/welcome-program/?utm_source=domain&utm_medium=affbanerimg&utm_content=size728_90&utm_campaign=affwelcome&a=lwek",
+      "to": "https://my.roboforex.com/en/?a=lwek",
       "status": 302
     },
     {

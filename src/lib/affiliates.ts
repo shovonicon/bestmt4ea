@@ -31,13 +31,13 @@ export const affiliates = {
     logo: '/media/brands/roboforex.svg',
   },
   /**
-   * The destination of RoboForex's own 728x90 welcome-programme banner. It is a
-   * *different* landing page from the plain registration link above, so it gets
-   * its own entry rather than being hard-coded into the banner component.
+   * The RoboForex banner link. By the owner's decision every RoboForex link lands on
+   * the plain registration page above, so this entry shares that URL; it keeps its
+   * own key so the banner can be pointed elsewhere later without a content edit.
    */
   'roboforex-welcome': {
     label: 'RoboForex welcome programme',
-    url: 'https://www.roboforex.com/clients/promotions/welcome-program/?utm_source=domain&utm_medium=affbanerimg&utm_content=size728_90&utm_campaign=affwelcome&a=lwek',
+    url: 'https://my.roboforex.com/en/?a=lwek',
     program: 'broker',
     note: "RoboForex's watch-the-banner link (affiliate id lwek)",
   },

@@ -179,7 +179,7 @@ type ProductDetail = {
   parameters?: Array<{ variable: string; value: string; description: string }>;
   verification?: {
     backtest?: { rows: string[][]; note?: string; image?: { src: string; alt: string } };
-    live?: { rows: string[][]; note?: string };
+    live?: { rows: string[][]; note?: string; images?: Array<{ src: string; alt: string; caption: string }>; imagesNote?: string };
     report?: string;
   };
   fit?: { good: string[]; notFit: string[] };
@@ -210,6 +210,8 @@ const features: string[] = product.data.keyTakeaways?.length ? product.data.keyT
 const hasBacktest = Boolean(spec.verification?.backtest?.rows?.length);
 // The forward-test tab only exists when there is a real tracked account to show.
 const hasForwardTest = Boolean(live || perf?.verified);
+const liveShots = spec.verification?.live?.images ?? [];
+const liveShotsNote = spec.verification?.live?.imagesNote;
 const firstVerifyTab = hasBacktest ? 'backtest' : hasForwardTest ? 'live' : 'report';
 
 // The sidebar radios are the single source of truth for the licence price shown
@@ -688,6 +690,30 @@ const faqs = [
                   </dl>
                   {spec.verification.live?.note && (
                     <p class="mt-4 max-w-3xl text-sm leading-7 text-[var(--color-ink-soft)]">{spec.verification.live.note}</p>
+                  )}
+                  {liveShots.length > 0 && (
+                    <div class="mt-6">
+                      <ul class="grid grid-cols-2 gap-3 md:max-w-2xl">
+                        {liveShots.map((shot) => (
+                          <li>
+                            <figure class="panel overflow-hidden p-2">
+                              <img
+                                src={shot.src}
+                                alt={shot.alt}
+                                width="1080"
+                                height="2340"
+                                loading="lazy"
+                                class="h-auto w-full rounded-lg"
+                              />
+                              <figcaption class="mt-2 text-xs text-[var(--color-ink-dim)]">{shot.caption}</figcaption>
+                            </figure>
+                          </li>
+                        ))}
+                      </ul>
+                      {liveShotsNote && (
+                        <p class="mt-3 max-w-3xl text-xs leading-6 text-[var(--color-ink-dim)]">{liveShotsNote}</p>
+                      )}
+                    </div>
                   )}
                 </div>
               )
@@ -1221,7 +1247,7 @@ const faqs = [
               always stay on your {site.name} account.
             </p>
           </div>
-          <a href={site.telegram.support} rel="noopener" class="btn btn-primary">Join our Telegram</a>
+          <a href={site.telegram.community} rel="noopener" class="btn btn-primary">Join our Telegram</a>
         </div>
       </section>
 
