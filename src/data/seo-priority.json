@@ -1,6 +1,12 @@
 {
   "_note": "Search-traffic priorities for the rewrite queue (scripts/rewrite-queue.mjs). A post listed here is forced into priority 1 and ranked by clicks, even when it already meets the content standard: these URLs earned real traffic before the redesign, so improving them first protects the most search traffic. Source: Search Console \"Performance on Search\", May 2025 - Sep 2026 (clicks / impressions / average position).",
   "posts": {
+    "best-custom-mt4-indicators-for-scalping": {
+      "clicks": 75,
+      "impressions": 2225,
+      "position": 12.74,
+      "note": "2026-11-05 (Phase 3): the only live not-indexed post still below the standard (1,022 words, no download, FAQs or sources) with real pre-migration demand."
+    },
     "golden-line-v3-indicator-free-download-7-powerful-benefits-safe-installation-guide": {
       "clicks": 206,
       "impressions": 2653,

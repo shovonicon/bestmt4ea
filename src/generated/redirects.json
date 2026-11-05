@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-05T05:24:13.703Z",
+  "generatedAt": "2026-11-05T05:49:03.338Z",
   "source": "wordpress-seo-redirects (2).csv",
-  "count": 2391,
+  "count": 2405,
   "dropped": [
     {
       "from": "/product/bbp-ai-golden-ea",
@@ -10338,6 +10338,11 @@
       "status": 301
     },
     {
+      "from": "/category/beginners-guides-forex-basics/page/4/",
+      "to": "/category/forex-trading-strategies/",
+      "status": 301
+    },
+    {
       "from": "/category/bitcoin",
       "to": "/category/bitcoin",
       "status": 410
@@ -10373,6 +10378,21 @@
       "status": 301
     },
     {
+      "from": "/category/forex-ea-reviews/page/3/",
+      "to": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/",
+      "status": 301
+    },
+    {
+      "from": "/category/forex-ea-reviews/page/4/",
+      "to": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/",
+      "status": 301
+    },
+    {
+      "from": "/category/forex-ea-reviews/page/6/",
+      "to": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/",
+      "status": 301
+    },
+    {
       "from": "/category/forex-education",
       "to": "/category/forex-education",
       "status": 410
@@ -10384,6 +10404,11 @@
     },
     {
       "from": "/category/forex-indicator-reviews/page/4/",
+      "to": "/category/forex-indicator-reviews/",
+      "status": 301
+    },
+    {
+      "from": "/category/forex-indicator-reviews/page/6/",
       "to": "/category/forex-indicator-reviews/",
       "status": 301
     },
@@ -10408,7 +10433,22 @@
       "status": 301
     },
     {
+      "from": "/category/forex-trading-strategies/forex-swing-trading/page/3/",
+      "to": "/category/forex-trading-strategies/",
+      "status": 301
+    },
+    {
       "from": "/category/forex-trading-strategies/mean-reversion-trading/",
+      "to": "/category/forex-trading-strategies/",
+      "status": 301
+    },
+    {
+      "from": "/category/forex-trading-strategies/page/2/",
+      "to": "/category/forex-trading-strategies/",
+      "status": 301
+    },
+    {
+      "from": "/category/forex-trading-strategies/page/3/",
       "to": "/category/forex-trading-strategies/",
       "status": 301
     },
@@ -10508,8 +10548,23 @@
       "status": 301
     },
     {
+      "from": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/page/2/",
+      "to": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/",
+      "status": 301
+    },
+    {
+      "from": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/page/3/",
+      "to": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/",
+      "status": 301
+    },
+    {
       "from": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/page/5/",
       "to": "/category/mt4-mt5-expert-advisors/ea-reviews-comparisons/",
+      "status": 301
+    },
+    {
+      "from": "/category/mt4-mt5-expert-advisors/page/3/",
+      "to": "/category/mt4-mt5-expert-advisors/",
       "status": 301
     },
     {
@@ -10534,6 +10589,11 @@
     },
     {
       "from": "/category/prop-firm-reviews/page/3/",
+      "to": "/category/risk-money-management/",
+      "status": 301
+    },
+    {
+      "from": "/category/risk-money-management/page/2/",
       "to": "/category/risk-money-management/",
       "status": 301
     },
@@ -15568,6 +15628,11 @@
       "status": 301
     },
     {
+      "from": "/product_brand-sitemap.xml",
+      "to": "/",
+      "status": 410
+    },
+    {
       "from": "/product-category/books",
       "to": "/product/golden-deer-holy-grail-indicator/",
       "status": 301
@@ -15684,6 +15749,11 @@
     },
     {
       "from": "/product/elon-musk-2000-neuralink-expert-advisor/",
+      "to": "/best-forex-ea/",
+      "status": 301
+    },
+    {
+      "from": "/product/euro-hedger-ea-automated-forex-hedging-robot-for-mt4/",
       "to": "/best-forex-ea/",
       "status": 301
     },

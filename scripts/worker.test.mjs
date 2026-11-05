@@ -162,6 +162,8 @@ check('homepage passes through', matchRedirect(map, '/'), { kind: 'pass' });
   check('old my-account is gone', matchRedirect(empty, '/my-account/downloads/'), gone);
   check('wp-login.php is gone', matchRedirect(empty, '/wp-login.php'), gone);
   check('old shop pagination is gone', matchRedirect(empty, '/shop/page/1/'), gone);
+  check('old blog pagination is gone', matchRedirect(empty, '/blog/page/177/'), gone);
+  check('the blog itself passes', matchRedirect(empty, '/blog/'), { kind: 'pass' });
   check('the shop itself passes', matchRedirect(empty, '/shop/'), { kind: 'pass' });
   check('cart-like slug passes', matchRedirect(empty, '/cart-abandonment-in-forex-ecommerce/'), { kind: 'pass' });
   check('Stripe webhook path is NOT touched', matchRedirect(empty, '/wp-json/wc-stripe/v1/webhook/'), { kind: 'pass' });

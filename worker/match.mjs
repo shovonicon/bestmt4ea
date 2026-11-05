@@ -56,7 +56,8 @@ const GONE_STATUSES = new Set([410, 451]);
  *
  *   - /wp-content, /wp-includes, /wp-admin, /wc-stripe, /wc-api, /cart,
  *     /my-account  (path-prefix, anchored) and /wp-login.php
- *   - the old shop pagination, /shop/page/N/ (the shop is a single page now)
+ *   - the old shop and blog pagination, /shop/page/N/ and /blog/page/N/ (both
+ *     are single pages now)
  *   - post, category and comment feeds: .../feed/, .../feed/rss2/, .../feed/atom/
  *
  * Deliberately NOT matched: anything under /wp-json/. The dead WooCommerce
@@ -67,6 +68,7 @@ const GONE_PATTERNS = [
   /^\/(?:wp-content|wp-includes|wp-admin|wc-stripe|wc-api|cart|my-account)(?:\/|$)/i,
   /^\/wp-login\.php\/?$/i,
   /^\/shop\/page\/\d+(?:\/|$)/i,
+  /^\/blog\/page\/\d+(?:\/|$)/i,
   /(?:^|\/)feed(?:\/(?:rss2?|atom|rdf))?\/?$/i,
 ];
 
