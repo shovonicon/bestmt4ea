@@ -1,0 +1,324 @@
+---
+/**
+ * Featured band: three cards above the footer, in a fixed order, each in its own
+ * colour.
+ *
+ *   1. Obsidian Aether EURUSD EA   (Myfxbook tracked)   emerald, the brand colour
+ *   2. Copy trading                (Barakah FX Management)   violet
+ *   3. Zenith Matrix XAUUSD EA     (Myfxbook tracked)   gold, for a gold EA
+ *
+ * Rendered once from `BaseLayout`, so it appears on every page.
+ *
+ * The EA figures are read from `getPerformance`, never typed in, so they match the
+ * product page and the ranking. Each shows absolute gain beside maximum drawdown and
+ * the account type, the trio the ranking table and the methodology page promise; a
+ * demo account is labelled as a demo. The drawdown chip is red on every card whatever
+ * the theme, because it is a risk signal and must not change with the colour. The
+ * copy-trading card carries only neutral facts from the service page and no return or
+ * win-rate figure.
+ *
+ * A card is hidden on its own page (self-promotion), and the whole band is hidden on
+ * the account and checkout routes, where a promo would be noise.
+ */
+import { getPerformance } from '../lib/performance';
+import { formatSignedPercent } from '../lib/format';
+import { RISK_DISCLAIMER_SHORT } from '../lib/site';
+import { url } from '../lib/urls';
+
+const path = Astro.url.pathname;
+const onPrivateRoute = /^\/(checkout|dashboard|admin|login|auth|logout)\b/.test(path);
+
+type Tone = 'gain' | 'risk' | 'neutral' | 'info';
+type Chip = { text: string; tone: Tone };
+
+const OBSIDIAN = 'obsidian-aether-eurusd-ea-ai-grid-scalper-for-mt5';
+const ZENITH = 'zenith-matrix-ea-ai-gold-scalper-for-mt5';
+
+/** Performance chips for an EA card: gain, drawdown, account type, trades. */
+function eaChips(slug: string): Chip[] {
+  const perf = getPerformance(slug);
+  if (!perf) return [];
+  const chips: Chip[] = [];
+  const abs = perf.live?.absGainPct;
+  if (abs != null) chips.push({ text: `Abs. gain ${formatSignedPercent(abs)}`, tone: 'gain' });
+  else if (perf.totalGainPct != null) chips.push({ text: `Gain ${formatSignedPercent(perf.totalGainPct)}`, tone: 'gain' });
+  if (perf.maxDrawdownPct != null) chips.push({ text: `Max DD ${perf.maxDrawdownPct}%`, tone: 'risk' });
+  if (perf.accountType) chips.push({ text: perf.accountType === 'demo' ? 'Demo account' : 'Live account', tone: 'neutral' });
+  if (perf.totalTrades != null) chips.push({ text: `${perf.totalTrades} trades`, tone: 'info' });
+  return chips;
+}
+
+const cards = [
+  {
+    key: 'obsidian',
+    theme: 'emerald',
+    href: url(`/product/${OBSIDIAN}`),
+    hiddenOn: `/product/${OBSIDIAN}`,
+    kicker: 'Featured EA · Myfxbook',
+    title: 'Obsidian Aether EURUSD EA',
+    text: 'AI-powered grid scalper for MetaTrader 5 with adaptive ATR spacing and range and trend detection.',
+    chips: eaChips(OBSIDIAN),
+    cta: 'View full review',
+  },
+  {
+    key: 'copy-trading',
+    theme: 'violet',
+    href: url('/copy-trading'),
+    hiddenOn: '/copy-trading',
+    kicker: 'Copy trading',
+    title: 'Barakah FX Management',
+    text: 'Copy-trade gold (XAUUSD) and EURUSD with an AI-driven system, while your capital stays in your own broker account.',
+    chips: [
+      { text: 'XAUUSD · EURUSD', tone: 'neutral' },
+      { text: 'Capital stays with you', tone: 'neutral' },
+      { text: 'From $1,000', tone: 'info' },
+    ] as Chip[],
+    cta: 'See how it works',
+  },
+  {
+    key: 'zenith',
+    theme: 'gold',
+    href: url(`/product/${ZENITH}`),
+    hiddenOn: `/product/${ZENITH}`,
+    kicker: 'Featured EA · Myfxbook',
+    title: 'Zenith Matrix XAUUSD EA',
+    text: 'AI gold scalper for MetaTrader 5. A multi-factor algorithm places rule-based trades on XAUUSD.',
+    chips: eaChips(ZENITH),
+    cta: 'View full review',
+  },
+].filter((card) => !path.startsWith(card.hiddenOn));
+
+const show = !onPrivateRoute && cards.length > 0;
+---
+
+{
+  show && (
+    <section class="container-x pb-16 pt-24" aria-label="Featured expert advisors and copy trading">
+      <div class:list={['grid gap-6', cards.length === 3 ? 'lg:grid-cols-3' : 'md:grid-cols-2']}>
+        {cards.map((card) => (
+          <a href={card.href} class="fb-card group" data-theme={card.theme} data-featured-card={card.key}>
+            <div class="fb-kicker">
+              <span class="fb-dot" aria-hidden="true" />
+              {card.kicker}
+            </div>
+
+            <h3 class="fb-title">{card.title}</h3>
+            <p class="fb-text">{card.text}</p>
+
+            <div class="fb-chips">
+              {card.chips.map((chip) => (
+                <span class="fb-chip" data-tone={chip.tone}>
+                  {chip.text}
+                </span>
+              ))}
+            </div>
+
+            <span class="fb-cta">
+              {card.cta}
+              <svg
+                viewBox="0 0 24 24"
+                class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+      <p class="mx-auto mt-6 max-w-3xl text-center text-xs leading-6 text-[var(--color-ink-dim)]">
+        EA figures come from third-party Myfxbook accounts, and a demo account is labelled as one. {RISK_DISCLAIMER_SHORT}
+      </p>
+    </section>
+  )
+}
+
+<style>
+  /* One set of variables per theme; everything else reads them. */
+  .fb-card[data-theme='emerald'] {
+    --rgb: 0, 193, 144;
+    --hi: #5ff0c8;
+    --cta-from: #00e0a8;
+    --cta-to: #00a883;
+    --cta-text: #03160f;
+  }
+  .fb-card[data-theme='violet'] {
+    --rgb: 139, 92, 246;
+    --hi: #c4b5fd;
+    --cta-from: #8b5cf6;
+    --cta-to: #6d28d9;
+    --cta-text: #ffffff;
+  }
+  .fb-card[data-theme='gold'] {
+    --rgb: 212, 175, 55;
+    --hi: #f3d97c;
+    --cta-from: #f5d77a;
+    --cta-to: #c99a1f;
+    --cta-text: #1a1204;
+  }
+
+  .fb-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    padding: 1.75rem;
+    border: 1px solid rgba(var(--rgb), 0.32);
+    border-radius: 1.5rem;
+    background:
+      radial-gradient(120% 90% at 100% 0%, rgba(var(--rgb), 0.2), transparent 58%),
+      radial-gradient(90% 70% at 0% 100%, rgba(var(--rgb), 0.1), transparent 60%),
+      linear-gradient(165deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012) 45%),
+      #07090b;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.09),
+      0 28px 60px -34px rgba(var(--rgb), 0.55);
+    transition:
+      transform 350ms ease,
+      border-color 350ms ease,
+      box-shadow 350ms ease;
+  }
+  /* A hairline of the card's colour along the top edge. */
+  .fb-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 1.75rem auto;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(var(--rgb), 0.95), transparent);
+  }
+  .fb-card:hover,
+  .fb-card:focus-visible {
+    transform: translateY(-4px);
+    border-color: rgba(var(--rgb), 0.6);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      0 36px 80px -30px rgba(var(--rgb), 0.75);
+  }
+  .fb-card:focus-visible {
+    outline: 2px solid var(--hi);
+    outline-offset: 3px;
+  }
+
+  .fb-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    width: fit-content;
+    margin-bottom: 1rem;
+    padding: 0.3rem 0.75rem;
+    border: 1px solid rgba(var(--rgb), 0.3);
+    border-radius: 9999px;
+    background: rgba(var(--rgb), 0.1);
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--hi);
+  }
+  .fb-dot {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 9999px;
+    background: var(--hi);
+    box-shadow: 0 0 10px 1px rgba(var(--rgb), 0.9);
+  }
+
+  .fb-title {
+    font-family: var(--font-heading, inherit);
+    font-size: 1.55rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    background: linear-gradient(120deg, #ffffff 30%, var(--hi) 110%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .fb-text {
+    flex: 1;
+    margin-top: 0.7rem;
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: rgb(148, 163, 184);
+  }
+
+  .fb-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.2rem;
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 0.75rem;
+  }
+  .fb-chip {
+    padding: 0.28rem 0.7rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.05);
+    font-weight: 600;
+    color: rgb(203, 213, 225);
+  }
+  .fb-chip[data-tone='gain'] {
+    border-color: rgba(var(--rgb), 0.4);
+    background: rgba(var(--rgb), 0.14);
+    color: var(--hi);
+  }
+  /* Drawdown is a risk figure: red on every card, whatever the card's colour. */
+  .fb-chip[data-tone='risk'] {
+    border-color: rgba(248, 113, 113, 0.4);
+    background: rgba(239, 68, 68, 0.12);
+    color: rgb(252, 165, 165);
+  }
+  .fb-chip[data-tone='info'] {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    color: rgb(148, 163, 184);
+  }
+
+  .fb-cta {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 0.55rem;
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.35rem;
+    border-radius: 0.8rem;
+    background: linear-gradient(135deg, var(--cta-from), var(--cta-to));
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--cta-text);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.35),
+      0 14px 30px -12px rgba(var(--rgb), 0.8);
+    transition:
+      transform 300ms ease,
+      box-shadow 300ms ease;
+  }
+  .fb-card:hover .fb-cta {
+    transform: translateY(-1px);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      0 18px 36px -10px rgba(var(--rgb), 0.95);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fb-card,
+    .fb-cta {
+      transition: none;
+    }
+    .fb-card:hover,
+    .fb-card:focus-visible {
+      transform: none;
+    }
+  }
+</style>

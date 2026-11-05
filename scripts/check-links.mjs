@@ -20,6 +20,13 @@ import { readdirSync, readFileSync, existsSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { getLiveRoutes, cmpKey } from './routes.mjs';
 
+/** Affiliate go-links are served by the redirect manifest, not by a file in dist. */
+const goLinks = new Set(
+  JSON.parse(readFileSync('src/generated/redirects.json', 'utf8'))
+    .rules.filter((rule) => rule.from.startsWith('/go/') && rule.status === 302)
+    .map((rule) => cmpKey(rule.from)),
+);
+
 const DIST = 'dist/client';
 // Routes served on demand (e.g. product pages, SSR) have no file in dist — a
 // link to one is live, not broken.
@@ -98,6 +105,10 @@ for (const file of htmlFiles()) {
     }
 
     checked++;
+    if (pathname.startsWith('/go/')) {
+      if (!goLinks.has(cmpKey(pathname))) errors.push({ page, target: pathname });
+      continue;
+    }
     if (!resolves(pathname) && !liveRoutes.has(cmpKey(pathname))) {
       errors.push({ page, target: pathname });
     }

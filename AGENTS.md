@@ -66,7 +66,9 @@ Free downloads drive organic **SEO + AI/GEO** traffic. That traffic is monetised
   ad or affiliate CTA adjacent to a download button — policy violation.
 - Affiliates: every affiliate link goes through `src/lib/affiliates.ts` and renders with
   `rel="sponsored nofollow noopener"` plus a visible disclosure. Never hard-code a
-  tracking URL in content.
+  tracking URL in content. The RoboForex / R Infinity banner links to `/go/<key>/` (use
+  `goPath(key)`): the Worker 302s it to the registry URL, the rules are generated from
+  the registry by `scripts/build-redirects.mjs`, and `/go/` is noindexed and disallowed.
 
 ## Policy safety (Google + Meta/Facebook)
 

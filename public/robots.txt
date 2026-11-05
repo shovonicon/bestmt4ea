@@ -38,6 +38,9 @@ Disallow: /login/
 Disallow: /auth/
 Disallow: /logout/
 
+# Affiliate redirect hops (/go/<partner>/): they are 302s with a noindex header.
+Disallow: /go/
+
 # The one sitemap URL used everywhere (robots, footer, Search Console).
 # The old Yoast path /sitemap_index.xml also resolves to it via middleware.
 Sitemap: https://bestmt4ea.com/sitemap-0.xml

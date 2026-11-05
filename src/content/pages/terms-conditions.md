@@ -4,7 +4,7 @@ title: "Terms & Conditions"
 slug: "terms-conditions"
 description: "The terms for using BESTMT4EA: what a licence covers, how hosted and linked files differ, refunds, acceptable use, and how we handle copyright notices."
 publishedAt: "2019-03-11T09:34:24.000Z"
-updatedAt: "2026-09-29"
+updatedAt: "2026-11-05"
 seo:
   title: "Terms & Conditions — Licences, Downloads and Acceptable Use"
   description: "The terms for using BESTMT4EA: what a licence covers, hosted versus linked files, refunds, acceptable use, and how copyright notices are handled."
@@ -92,4 +92,4 @@ Questions about these terms, a licence, or a refund:
 Email: **bestmt4ea@gmail.com**
 Telegram: [t.me/pizion](https://t.me/pizion)
 
-*Last reviewed: 29 September 2026.*
+*Last reviewed: 5 November 2026.*

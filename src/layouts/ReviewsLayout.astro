@@ -21,6 +21,8 @@ import Faq from '../components/Faq.astro';
 import { getPublicProducts } from '../lib/content';
 import { getPerformance } from '../lib/performance';
 import TableNotes from '../components/TableNotes.astro';
+import RInfinityRail from '../components/RInfinityRail.astro';
+import RankingMethod from '../components/RankingMethod.astro';
 import { monthYear, performanceVerifiedAt } from '../lib/dates';
 import { formatDate } from '../lib/format';
 import { url } from '../lib/urls';
@@ -152,7 +154,7 @@ const related = [
     ></div>
     <div class="grid-overlay pointer-events-none absolute inset-0"></div>
 
-    <div class="container-x relative py-20 text-center lg:py-24">
+    <div class="container-x relative pt-14 pb-28 text-center lg:pt-16 lg:pb-32">
       <span
         class="eyebrow animate-fade-in-up inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2"
       >
@@ -171,15 +173,13 @@ const related = [
     </div>
   </section>
 
-  <!-- Answer-first summary: the self-contained answer an answer engine can lift -->
-  <section class="container-x pb-10">
-    <div class="mx-auto max-w-4xl">
-      <AnswerBox answer={answer} label="Quick answer" />
-    </div>
+  <!-- Partner banner (RoboForex / R Infinity), a small gap below the hero. -->
+  <section class="container-x pb-32">
+    <RInfinityRail variant="banner" />
   </section>
 
   <!-- The board -->
-  <section class="container-x pb-16" aria-labelledby="review-heading">
+  <section class="container-x pb-32" aria-labelledby="review-heading">
     <SectionHead
       align="center"
       kicker="The full list"
@@ -200,29 +200,15 @@ const related = [
     </div>
   </section>
 
-  <!-- How the ranking works -->
-  <section class="container-x pb-16" aria-labelledby="method-heading">
-    <div class="panel mx-auto max-w-4xl p-6 md:p-8">
-      <h2 id="method-heading" class="text-xl">How this ranking works</h2>
-      <p class="mt-3 text-sm leading-7 text-[var(--color-ink-soft)]">
-        The order is total gain on each system's third-party tracked account, highest first. The same data drives the
-        table above, our top-ranking page and the summary at the top of this page, so they always agree.
-      </p>
-      <ul class="mt-4 list-disc space-y-2 pl-5 text-sm leading-7 text-[var(--color-ink-soft)]">
-        <li>Gain is shown next to maximum drawdown, because a high gain with a deep drawdown is not the same as a steady one.</li>
-        <li>
-          Every figure states its account type. {realCount} of the {tracked.length} tracked systems run on a real
-          account and {demoCount} on a demo account, and a demo result is never presented as a live one.
-        </li>
-        <li>A system with no tracked record is listed without a number. We do not borrow a figure from another account.</li>
-        <li>Third-party figures were last checked on {checkedOn}. A tracked record describes the past, not what comes next.</li>
-      </ul>
-      <p class="mt-4 text-sm leading-7 text-[var(--color-ink-soft)]">
-        This ranking is not investment advice. Test any system on a demo account first, and trade only money you can
-        afford to lose.
-      </p>
+  <!-- Answer-first summary: the self-contained answer an answer engine can lift -->
+  <section class="container-x pb-16">
+    <div class="mx-auto max-w-4xl">
+      <AnswerBox answer={answer} label="Quick answer" />
     </div>
   </section>
+
+  <!-- How the ranking works -->
+  <RankingMethod realCount={realCount} demoCount={demoCount} trackedCount={tracked.length} checkedOn={checkedOn} />
 
   <!-- FAQ -->
   <section class="container-x pb-16">

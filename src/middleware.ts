@@ -80,10 +80,10 @@ export const onRequest = defineMiddleware(async (context, next) => {
   }
 
   if (matched.kind === 'redirect' && matched.location) {
-    return new Response(null, {
-      status: matched.status,
-      headers: { location: matched.location, 'cache-control': 'public, max-age=3600' },
-    });
+    const headers: Record<string, string> = { location: matched.location, 'cache-control': 'public, max-age=3600' };
+    // Affiliate go-links are hops, not pages: keep them out of search.
+    if (url.pathname.startsWith('/go/')) headers['x-robots-tag'] = 'noindex, nofollow';
+    return new Response(null, { status: matched.status, headers });
   }
 
   const db = getDb();

@@ -17,11 +17,11 @@ import SectionHead from '../components/SectionHead.astro';
 import BrokerCard from '../components/BrokerCard.astro';
 import BrokerExplorer from '../components/BrokerExplorer.astro';
 import Faq from '../components/Faq.astro';
-import CountUp from '../components/CountUp.astro';
-import { getAffiliate, AFFILIATE_REL, AFFILIATE_DISCLOSURE } from '../lib/affiliates';
+import { getAffiliate, AFFILIATE_DISCLOSURE } from '../lib/affiliates';
 import { breadcrumbSchema, breadcrumbTrail, faqSchema, itemListSchema } from '../lib/seo';
 import { RISK_DISCLAIMER } from '../lib/site';
 import { formatDate } from '../lib/format';
+import { monthYear } from '../lib/dates';
 import { url } from '../lib/urls';
 import brokerData from '../data/brokers.json';
 import countryData from '../data/broker-countries.json';
@@ -54,7 +54,7 @@ const recommended = brokers.filter((broker) => broker.recommended);
 /** The 'Where we test' picks: only the two top choices. */
 const picks = recommended.slice(0, 2);
 /** Table rows: only brokers with an affiliate entry, exactly as the cards below. */
-const explorerRows = brokers.flatMap((broker) => {
+const explorerRows = brokers.flatMap((broker, index) => {
   const affiliate = getAffiliate(broker.key);
   return affiliate
     ? [
@@ -67,6 +67,9 @@ const explorerRows = brokers.flatMap((broker) => {
           platforms: broker.platforms,
           accountTypes: broker.accountTypes,
           offer: broker.offer,
+          bestFor: broker.bestFor,
+          // The same tag the cards below carry: the first two recommended brokers are the top choices.
+          tag: broker.recommended ? (index <= 1 ? 'Top choice' : 'Recommended') : undefined,
         },
       ]
     : [];
@@ -74,23 +77,47 @@ const explorerRows = brokers.flatMap((broker) => {
 /** Country availability per broker, built from the free text in brokers.json. */
 const countryStatuses = buildStatusTable(brokers, countryData.countries);
 const countriesVerifiedAt = (verification as { brokerCountriesVerifiedAt?: string | null }).brokerCountriesVerifiedAt ?? null;
+/** Short, answer-first guide under the table. Plain statements a reader (or an AI answer engine) can quote. */
+const guide = [
+  {
+    q: 'How do I choose a forex broker?',
+    a: "Check regulation first, then total cost, platform and withdrawals. Verify the licence on the regulator's own register, compare spread plus commission on the pair you trade, and confirm the broker offers MT4 or MT5 if you run expert advisors.",
+  },
+  {
+    q: 'How much do I need to start?',
+    a: "Many brokers accept $1 to $10, but start with an amount where risking 1 to 2% per trade still gives a usable lot size. Practise on a demo account first and fund only money you can afford to lose.",
+  },
+  {
+    q: 'What does forex trading cost?',
+    a: "Four things: the spread, any commission, overnight swap, and funding or withdrawal fees. Raw or ECN accounts usually pair a tight spread with a per-lot commission; standard accounts build the cost into a wider spread.",
+  },
+  {
+    q: 'Which platform is best?',
+    a: "MetaTrader 4 and 5 suit expert advisors, indicators and backtesting. cTrader is a common alternative for execution quality and custom bots. Check that the broker lists your platform before you deposit.",
+  },
+  {
+    q: 'Is forex trading risky?',
+    a: "Yes. Leverage magnifies losses as well as gains, prices can gap on news, and a weak broker adds counterparty risk. Keep position sizes small, use stops where your strategy allows, and test on a demo account first.",
+  },
+  {
+    q: 'Is forex trading legal?',
+    a: "In most countries, yes, but rules differ. Confirm the broker may accept clients from your country. The country picker above hides the brokers that list yours as restricted.",
+  },
+  {
+    q: 'How do I check a broker is regulated?',
+    a: "Find the licence number on the broker's site, search it on the regulator's public register, and match the company name and country. Do not rely on a logo or a claim on the broker's own page.",
+  },
+  {
+    q: 'How do I avoid forex scams?',
+    a: "Walk away from guaranteed returns, unsolicited offers and pressure to deposit quickly. Verify the licence yourself and request a small withdrawal early, before you add more capital.",
+  },
+  {
+    q: 'Which broker suits my style?',
+    a: "Beginners: regulated, with a demo account and a low deposit. Scalpers: raw spreads and fast execution. Algorithmic traders: MT4 or MT5, stable servers and no restrictions on expert advisors.",
+  },
+];
 /** The ranked broker list, in the order the page shows it. */
 const brokerList = brokers.map((broker) => ({ name: broker.key }));
-
-// Proof figures, all read straight from the comparison data.
-const offerCount = brokers.filter((broker) => broker.offer).length;
-const depositValues = brokers
-  .map((broker) => String(broker.minDeposit).match(/\$\s*([\d,]+)/))
-  .filter((match): match is RegExpMatchArray => Boolean(match))
-  .map((match) => Number(match[1].replace(/,/g, '')));
-const lowestDeposit = depositValues.length > 0 ? `$${Math.min(...depositValues)}` : '—';
-
-const stats = [
-  { label: 'Platforms compared', value: String(brokers.length) },
-  { label: 'We build on', value: String(picks.length) },
-  { label: 'Live broker offers', value: String(offerCount) },
-  { label: 'Lowest min deposit', value: lowestDeposit },
-];
 
 // `title` is "Best Forex Brokers 2026 – Trusted, Regulated, …"; the trailing
 // clause becomes the gradient half of the headline.
@@ -141,26 +168,23 @@ const trail = breadcrumbTrail([
         <a href={url('/shop')} class="btn btn-ghost !px-6 !py-3.5 !text-base">Browse the EA library</a>
       </div>
 
-      <div class="stats-panel reveal mt-12">
-        {
-          stats.map((stat) => (
-            <div class="stats-panel-item">
-              <div class="mb-3 flex items-center justify-center gap-2">
-                <span class="live-dot" />
-                <span class="metric-label">{stat.label}</span>
-              </div>
-              <div class="display-stat text-2xl sm:text-3xl">
-                <CountUp value={stat.value} />
-              </div>
-            </div>
-          ))
-        }
+      <!-- The full list: first thing under the headline. -->
+      <div class="mt-16 text-left">
+        <SectionHead
+          align="center"
+          kicker="The full list"
+          title={`Forex brokers rating in ${monthYear}`}
+          lead="Sort the table, choose your country, or tick up to three brokers to compare them side by side. Offers are each broker's own promotion."
+          id="all-heading"
+        />
+        <div class="reveal mt-12 w-full">
+          <BrokerExplorer rows={explorerRows} countries={countryData.countries} statuses={countryStatuses} verifiedAt={countriesVerifiedAt} />
+        </div>
+        <!-- Disclosure sits under the table, at the owner's request. -->
+        <p class="mx-auto mt-8 max-w-2xl text-center rounded-xl border border-[var(--color-line)] bg-white/[0.02] px-4 py-3 text-xs leading-6 text-[var(--color-ink-dim)]">
+          {AFFILIATE_DISCLOSURE}
+        </p>
       </div>
-
-      <!-- Disclosure must precede the first affiliate link on the page. -->
-      <p class="mx-auto mt-8 max-w-2xl rounded-xl border border-[var(--color-line)] bg-white/[0.02] px-4 py-3 text-xs leading-6 text-[var(--color-ink-dim)]">
-        {AFFILIATE_DISCLOSURE}
-      </p>
     </div>
   </section>
 
@@ -170,7 +194,7 @@ const trail = breadcrumbTrail([
       <SectionHead
         align="center"
         kicker="Where we test"
-        title="The two brokers we build on"
+        title="The two best forex brokers we build on"
         lead="Every expert advisor we sell is developed against these platforms, so they are the ones we can describe in detail."
         id="picks-heading"
       />
@@ -180,152 +204,29 @@ const trail = breadcrumbTrail([
     </div>
   </section>
 
-  <!-- The full ranked list -->
-  <section class="border-t border-white/5" aria-labelledby="all-heading">
+  <!-- Short guide: answer-first, so it reads well in search snippets and AI answers -->
+  <section class="border-t border-white/5" aria-labelledby="guide-heading">
     <div class="container-x py-20 lg:py-24">
       <SectionHead
         align="center"
-        kicker="The full list"
-        title={`All ${brokers.length} platforms, ranked`}
-        lead="Sort the table, choose your country, or tick up to three brokers to compare them side by side. Offers are each broker's own promotion."
-        id="all-heading"
+        kicker="Quick guide"
+        title="How to choose a forex broker"
+        lead="Short answers to the questions traders ask before they open an account."
+        id="guide-heading"
       />
-
-      <div class="reveal mx-auto mt-12 w-full max-w-6xl">
-        <BrokerExplorer rows={explorerRows} countries={countryData.countries} statuses={countryStatuses} verifiedAt={countriesVerifiedAt} />
-      </div>
-
-      <h3 class="mx-auto mt-16 w-full max-w-6xl text-xl font-bold text-white">Each broker in detail</h3>
-      <div data-broker-cards class="reveal mx-auto mt-6 flex w-full max-w-6xl flex-col gap-6">
+      <div class="reveal mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {
-          brokers.map((broker, index) => {
-            const affiliate = getAffiliate(broker.key);
-            if (!affiliate) return null;
-            return (
-              <div
-                id={`broker-${broker.key}`}
-                data-broker-card={broker.key}
-                class:list={[
-                  'scroll-mt-24 group relative overflow-hidden rounded-2xl border border-white/10 transition-all duration-300 hover:border-emerald-500/50',
-                  broker.recommended ? 'bg-emerald-500/5' : 'bg-white/[0.02]',
-                  broker.key === 'roboforex' && 'premium-row',
-                ]}
-              >
-                <div class="flex flex-col items-center gap-6 px-6 py-9 md:px-8 md:py-12 lg:flex-row lg:gap-10">
-                  {/* Rank & name */}
-                  <div class="flex w-full items-center gap-6 lg:w-1/4">
-                    <div data-card-rank class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 font-heading text-xl font-bold text-emerald-400 transition-colors group-hover:border-emerald-500/50 group-hover:bg-emerald-500/20">
-                      #{index + 1}
-                    </div>
-                    <div>
-                      <div class="flex flex-col items-start gap-1.5">
-                        {broker.recommended && (
-                          <span
-                            class:list={[
-                              'rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-                              index <= 1 ? 'bg-emerald-500 text-black' : 'bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/30',
-                              broker.key === 'roboforex' && 'premium-row__badge',
-                            ]}
-                          >
-                            {index <= 1 ? 'Top Choice' : 'Recommended'}
-                          </span>
-                        )}
-                        <h3 class="font-heading text-2xl font-bold text-white">{affiliate.label}</h3>
-                        <span data-country-badge hidden class="broker-badge w-fit"></span>
-                      </div>
-                      <div class="mt-1 flex items-center gap-1.5 text-sm text-slate-400">
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="h-4 w-4 text-emerald-400"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          aria-hidden="true"
-                        >
-                          <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
-                          <path d="m9 12 2 2 4-4" />
-                        </svg>
-                        <span>{broker.regulation}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Details */}
-                  <div class="grid w-full grid-cols-2 gap-6 md:grid-cols-4 lg:flex-1">
-                    <div>
-                      <p class="mb-1 flex items-center gap-1 text-xs uppercase tracking-wider text-slate-500">
-                        <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                          <line x1="12" x2="12" y1="2" y2="22" />
-                          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                        </svg>
-                        Min Deposit
-                      </p>
-                      <p class="font-semibold text-white">{broker.minDeposit}</p>
-                    </div>
-
-                    <div>
-                      <p class="mb-1 flex items-center gap-1 text-xs uppercase tracking-wider text-slate-500">
-                        <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                          <rect width="20" height="14" x="2" y="3" rx="2" />
-                          <line x1="8" x2="16" y1="21" y2="21" />
-                          <line x1="12" x2="12" y1="17" y2="21" />
-                        </svg>
-                        Platforms
-                      </p>
-                      <p class="text-sm text-slate-300">{broker.platforms}</p>
-                    </div>
-
-                    <div>
-                      <p class="mb-1 flex items-center gap-1 text-xs uppercase tracking-wider text-slate-500">
-                        <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                          <circle cx="12" cy="12" r="10" />
-                          <path d="m9 12 2 2 4-4" />
-                        </svg>
-                        Accounts
-                      </p>
-                      <p class="text-sm text-slate-300">{broker.accountTypes}</p>
-                    </div>
-
-                    <div>
-                      <p class="mb-1 flex items-center gap-1 text-xs uppercase tracking-wider text-slate-500">
-                        <svg viewBox="0 0 24 24" class="h-3 w-3 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                          <rect x="3" y="8" width="18" height="4" rx="1" />
-                          <path d="M12 8v13" />
-                          <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7" />
-                          <path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5" />
-                        </svg>
-                        Offer
-                      </p>
-                      <p class="text-sm font-semibold text-amber-400">{broker.offer ?? 'No current offer'}</p>
-                    </div>
-                  </div>
-
-                  {/* Action */}
-                  <div class="mt-4 w-full lg:mt-0 lg:w-auto">
-                    <a
-                      href={affiliate.url}
-                      rel={AFFILIATE_REL}
-                      class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-emerald-500 hover:bg-emerald-500 hover:text-black lg:w-auto"
-                    >
-                      Open account
-                      <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M5 12h14" />
-                        <path d="m12 5 7 7-7 7" />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            );
-          })
+          guide.map((item) => (
+            <article class="panel p-6">
+              <h3 class="text-lg font-bold text-white">{item.q}</h3>
+              <p class="mt-2 text-sm leading-7 text-[var(--color-ink-soft)]">{item.a}</p>
+            </article>
+          ))
         }
       </div>
-
-      <p class="mx-auto mt-6 max-w-2xl text-center text-xs leading-6 text-[var(--color-ink-dim)]">
-        Deposit bonuses are the broker's own promotions with their own terms. A bonus is not profit and does not reduce
-        the risk of trading.
+      <p class="mx-auto mt-8 max-w-3xl text-center text-sm leading-7 text-[var(--color-ink-soft)]">
+        See how we compare brokers on our <a href={url('/methodology')} class="text-emerald-300 underline underline-offset-4">methodology page</a>.
+        This is general information, not financial advice.
       </p>
     </div>
   </section>

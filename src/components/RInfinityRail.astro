@@ -17,7 +17,7 @@
  * breakpoint, `inline` for the in-flow card on everything narrower, and `banner`
  * for the full-width strip on the homepage (one row on desktop, stacked on mobile).
  */
-import { affiliates, AFFILIATE_REL } from '../lib/affiliates';
+import { affiliates, AFFILIATE_REL, goPath } from '../lib/affiliates';
 
 export interface Props {
   variant?: 'rail' | 'inline' | 'banner';
@@ -27,7 +27,7 @@ const { variant = 'rail' } = Astro.props;
 /* The audience already knows RoboForex, so the card leads with that mark even
    though the programme pages behind the links are R Infinity's. */
 const brand = affiliates.roboforex;
-const accountHref = affiliates.rinfinity.url;
+const accountHref = goPath('rinfinity');
 
 /** Read from rinfinity.com/en on 2026-10-30. */
 const CHECKED = '30 Oct 2026';
@@ -37,25 +37,25 @@ const OFFERS = [
     stat: 'Free',
     title: 'VPS server',
     detail: '1 core · 1 GB RAM · 30 GB · Windows Server 2019. Free while equity is $300+ and you trade 3 lots a month — otherwise $5/mo.',
-    href: affiliates['rinfinity-free-vps'].url,
+    href: goPath('rinfinity-free-vps'),
   },
   {
     stat: '$30',
     title: 'Welcome bonus',
     detail: 'For verified new cent or standard accounts after a $10 card deposit. The bonus is not written off in drawdown.',
-    href: affiliates['rinfinity-welcome-bonus'].url,
+    href: goPath('rinfinity-welcome-bonus'),
   },
   {
     stat: '10%',
     title: 'Extra funds on balance',
     detail: '2.5% on 1–10 lots a month, 5% on 10–1,000, 10% above 1,000. Paid monthly; withdrawable, not bonus-locked.',
-    href: affiliates['rinfinity-extra-funds'].url,
+    href: goPath('rinfinity-extra-funds'),
   },
   {
     stat: '5–10%',
     title: 'Cashback on commission',
     detail: 'Rebate from 10 lots a month: 5% of commission, 7% past 1,000 lots, 10% past 3,000. Paid on the 1st.',
-    href: affiliates['rinfinity-rebate'].url,
+    href: goPath('rinfinity-rebate'),
   },
 ];
 ---
@@ -498,8 +498,10 @@ const OFFERS = [
     }
   }
 
-  /* Desktop: one-line tiles (figure + name), no hint copy; terms sit behind the link. */
-  @media (min-width: 1024px) {
+  /* Wide desktop: one-line tiles (figure + name), no hint copy; terms sit behind the link.
+     From 1280px, because at 1024px each of the four tiles is only about 60px wide and the
+     figure and its name collide. Narrower windows keep the two-column tiles above. */
+  @media (min-width: 1280px) {
     /* Full container width, one slim row: plate, headline, four tiles, button. */
     .ad-card-ad--banner {
       max-width: none;

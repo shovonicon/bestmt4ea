@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-05T07:09:50.095Z",
+  "generatedAt": "2026-11-05T12:55:03.910Z",
   "source": "wordpress-seo-redirects (2).csv",
-  "count": 2406,
+  "count": 2426,
   "dropped": [
     {
       "from": "/product/bbp-ai-golden-ea",
@@ -12476,6 +12476,106 @@
       "from": "/gfk-forex-indicator-for-mt4-free-download-powerful-proven-trading-tool-2",
       "to": "/cpr-forex-indicator-for-mt4-free-download-7-powerful-benefits-proven-trading-secrets/",
       "status": 301
+    },
+    {
+      "from": "/go/avatrade/",
+      "to": "https://www.avatrade.com/?act=show-real-registry&tag=193586",
+      "status": 302
+    },
+    {
+      "from": "/go/binance/",
+      "to": "https://accounts.binance.com/register?ref=135593621",
+      "status": 302
+    },
+    {
+      "from": "/go/exness/",
+      "to": "https://one.exness.link/a/te38he38",
+      "status": 302
+    },
+    {
+      "from": "/go/fusion-markets/",
+      "to": "https://fusionmarkets.com/?refcode=111982",
+      "status": 302
+    },
+    {
+      "from": "/go/fxtm/",
+      "to": "http://www.forextime.com/register/open-account?raf=f4ee50ae",
+      "status": 302
+    },
+    {
+      "from": "/go/hfm/",
+      "to": "https://www.hfm.com/sv/en/?refid=30531077",
+      "status": 302
+    },
+    {
+      "from": "/go/icmarkets/",
+      "to": "https://icmarkets.com/?camp=74056",
+      "status": 302
+    },
+    {
+      "from": "/go/justmarkets/",
+      "to": "https://one.justmarkets.link/a/tpb22u0hek",
+      "status": 302
+    },
+    {
+      "from": "/go/markets4you/",
+      "to": "https://www.markets4you.online/?affid=u7k2fpy",
+      "status": 302
+    },
+    {
+      "from": "/go/rinfinity-extra-funds/",
+      "to": "https://rinfinity.com/en/up-to-10-percents-of-extra-funds?a=lwek",
+      "status": 302
+    },
+    {
+      "from": "/go/rinfinity-free-vps/",
+      "to": "https://rinfinity.com/en/free-vps-server?a=lwek",
+      "status": 302
+    },
+    {
+      "from": "/go/rinfinity-rebate/",
+      "to": "https://rinfinity.com/en/rebate?a=lwek",
+      "status": 302
+    },
+    {
+      "from": "/go/rinfinity-welcome-bonus/",
+      "to": "https://rinfinity.com/en/welcome-bonus?a=lwek",
+      "status": 302
+    },
+    {
+      "from": "/go/rinfinity/",
+      "to": "https://rinfinity.com/en/a?a=lwek",
+      "status": 302
+    },
+    {
+      "from": "/go/roboforex-welcome/",
+      "to": "https://www.roboforex.com/clients/promotions/welcome-program/?utm_source=domain&utm_medium=affbanerimg&utm_content=size728_90&utm_campaign=affwelcome&a=lwek",
+      "status": 302
+    },
+    {
+      "from": "/go/roboforex/",
+      "to": "https://my.roboforex.com/en/?a=lwek",
+      "status": 302
+    },
+    {
+      "from": "/go/tradingview/",
+      "to": "https://www.tradingview.com/?aff_id=122391",
+      "status": 302
+    },
+    {
+      "from": "/go/vantage/",
+      "to": "https://www.vantagemarkets.com/open-live-account/?affid=MTQxOTM5",
+      "status": 302
+    },
+    {
+      "from": "/go/xbtfx/",
+      "to": "https://my.xbtfx.io/register?xbt=6854",
+      "status": 302
+    },
+    {
+      "from": "/go/xm/",
+      "to": "https://clicks.pipaffiliates.com/c?c=210814&l=en&p=0",
+      "status": 302
     },
     {
       "from": "/gocharting-exotic-charts-setup-for-multi-asset-trading-10-powerful-tips-for-smarter-market-execution",

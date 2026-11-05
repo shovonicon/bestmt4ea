@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-04T12:50:01.742Z",
+  "generatedAt": "2026-11-05T12:55:04.135Z",
   "source": "https://bestmt4ea.com",
   "generatedBy": "scripts/build-inventory.mjs",
   "counts": {
     "products": 12,
-    "posts": 237,
+    "posts": 238,
     "pages": 22,
     "productCategories": 4,
     "brands": 2,
@@ -314,7 +314,7 @@
     {
       "type": "post",
       "url": "/best-custom-mt4-indicators-for-scalping/",
-      "title": "Best MT4 Scalping Indicators: Top Custom Tools",
+      "title": "10 MT4 Scalping Indicators and How to Test Them",
       "source": "https://bestmt4ea.com/best-custom-mt4-indicators-for-scalping/"
     },
     {
@@ -708,6 +708,12 @@
       "source": "https://bestmt4ea.com/forex-factory-calendar/"
     },
     {
+      "type": "post",
+      "url": "/forex-flex-ea-review/",
+      "title": "Forex Flex EA Review: What the Evidence Shows",
+      "source": "https://bestmt4ea.com/forex-flex-ea-review/"
+    },
+    {
       "type": "page",
       "url": "/forex-heat-map/",
       "title": "Forex Heat Map",
@@ -1024,6 +1030,12 @@
       "url": "/master-entry-indicator-free-download-7-powerful-benefits-every-trader-must-know/",
       "title": "MASTER ENTRY Indicator Free Download for MT4/MT5",
       "source": "https://bestmt4ea.com/master-entry-indicator-free-download-7-powerful-benefits-every-trader-must-know/"
+    },
+    {
+      "type": "page",
+      "url": "/methodology/",
+      "title": "How We Rank and Verify Expert Advisors",
+      "source": "https://bestmt4ea.com/methodology/"
     },
     {
       "type": "post",
@@ -1348,12 +1360,6 @@
       "url": "/smart-money-engine-ea-review/",
       "title": "Smart Money Engine EA Review: SMC Concepts in Code",
       "source": "https://bestmt4ea.com/smart-money-engine-ea-review/"
-    },
-    {
-      "type": "page",
-      "url": "/special-discount/",
-      "title": "Special Discount",
-      "source": "https://bestmt4ea.com/special-discount/"
     },
     {
       "type": "post",

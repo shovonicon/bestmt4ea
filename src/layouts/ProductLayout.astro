@@ -178,7 +178,7 @@ type ProductDetail = {
   cons?: string[];
   parameters?: Array<{ variable: string; value: string; description: string }>;
   verification?: {
-    backtest?: { rows: string[][]; note?: string };
+    backtest?: { rows: string[][]; note?: string; image?: { src: string; alt: string } };
     live?: { rows: string[][]; note?: string };
     report?: string;
   };
@@ -641,7 +641,20 @@ const faqs = [
               aria-labelledby="tab-backtest"
               hidden={firstVerifyTab !== 'backtest'}
             >
-              <dl class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {spec.verification.backtest?.image && (
+                <figure class="panel mb-4 overflow-hidden p-3">
+                  <img
+                    src={spec.verification.backtest.image.src}
+                    alt={spec.verification.backtest.image.alt}
+                    width="1280"
+                    height="1211"
+                    loading="lazy"
+                    class="mx-auto h-auto w-full max-w-3xl rounded-lg bg-white"
+                  />
+                  <figcaption class="mt-2 text-xs text-[var(--color-ink-dim)]">The Strategy Tester report as exported from MetaTrader 5.</figcaption>
+                </figure>
+              )}
+              <dl class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 {spec.verification.backtest?.rows?.map(([label, value]) => (
                   <div class="panel px-4 py-3">
                     <dt class="metric-label">{label}</dt>

@@ -102,7 +102,7 @@ export function initRankTable(root: HTMLElement): void {
       if (!chip) return;
       if (row.hidden) return;
       n += 1;
-      chip.textContent = `#${n}`;
+      chip.textContent = chip.dataset.rankChip === 'plain' ? String(n) : `#${n}`;
       chip.dataset.pos = String(n);
     });
   };

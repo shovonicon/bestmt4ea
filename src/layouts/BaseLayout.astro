@@ -7,7 +7,7 @@ import BackToTop from '../components/BackToTop.astro';
 import CompareDrawer from '../components/CompareDrawer.astro';
 import TelegramFab from '../components/TelegramFab.astro';
 import ParticleField from '../components/ParticleField.astro';
-import ObsidianPromo from '../components/ObsidianPromo.astro';
+import FeaturedBand from '../components/FeaturedBand.astro';
 import GoogleAnalytics from '../components/GoogleAnalytics.astro';
 import AdUnitCollapse from '../components/AdUnitCollapse.astro';
 import { site } from '../lib/site';
@@ -123,7 +123,7 @@ const jsonLdBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     <main class="relative z-10 flex-1 pt-16">
       <slot />
     </main>
-    <ObsidianPromo />
+    <FeaturedBand />
     <Footer />
     <BackToTop />
     <CompareDrawer />

@@ -578,6 +578,18 @@ wrapper was not keyboard-reachable (axe `scrollable-region-focusable`, WCAG
 2.1.1) — the same defect class as the markdown tables in Phase 7. It now carries
 `tabindex="0"` plus `role="region"` and a label.
 
+## SEO recovery plan (saved 2026-11-04, not started)
+
+Traffic fell about 97% after the WordPress → Astro migration (GSC: 1,025 → 152 indexed
+pages, 155 404s, 2,622 crawled-not-indexed). Causes: the earlier two-site setup
+(bestmt4ea.com + strivealgo.com, now redirected), the migration gaps, and bestmt4ea.com's
+own sitewide backlinks (1.86M links, 758:1 ratio). No manual action in GSC. Sitemap was
+resubmitted 2026-11-03.
+
+Plan: `C:\Users\Shovon\.claude\plans\c-users-shovon-downloads-gemini-impleme-rustling-conway.md`
+Phase 1 (fix the 155 404s, add 301/410 rules) is first. Owner has not yet said to start.
+Interactive ranking table (`src/lib/tableEngine.ts`, not yet wired) is Phase 5.
+
 ## Next task
 
 **Phase P11 — release gates, browser tests, cutover** (P0–P10 are DONE; the content rollout
@@ -955,3 +967,25 @@ account now shows 46.99% / 86.30% against the 147.21% / 80.14% the transcription
 - **Footer date:** "Content reviewed" now follows the Myfxbook sync date (`src/lib/dates.ts` takes the later of `site-verification.json` and `myfxbook-live.json` `fetchedAt`), so it moves on each successful sync and never shows build time.
 - **Deploy gotchas:** Wrangler must be logged in as `shovon.icon@gmail.com` (account `5ff0c7eb…`); the wrong login fails the "Deliverables in remote R2" check with error 7403. Stop any `astro preview` before `npm run build`/`deploy`: a running preview locks `dist/` and the build dies with a libuv assertion. The type check (`astro check`) is part of the gate; the local build alone does not catch type errors.
 - **Open:** AVA AIGPT5 product page (`/product/ava-aigpt5-ea/`) is "Crawled, not indexed": its body shares 59–72% of 8-word phrases with other product pages and the meta description carries income-style claims; it needs a unique rewrite. Plus the items listed under the 2026-11-02 save.
+
+## Progress save: 2026-11-04 (homepage banner and Abs. Gain)
+
+- **RoboForex banner:** full-width bar on `/` and `/top-ranking/`, placed directly above "Why this library" on the homepage. It is the `banner` variant of `RInfinityRail.astro`, one row on desktop, 2×2 tiles on tablet, stacked on mobile. The "Cashback on commission" tile is 1.3× the width of the others. The disclosure line reads "Advertisement. Offers read … Affiliate links: …". No other page gained an ad; the banner is not on posts, guides, category, blog or tool pages, which already show one.
+- **Hero:** the hero and banner share a block at least the viewport height minus the 4rem header, so the banner sits inside the first screen at 1440×900. The stat cards on `/` and `/top-ranking/` were removed; their numbers already appear in the line under the hero buttons. Their backing code (`stats`, `liveCount`, `CountUp` import) was deleted from both pages.
+- **Abs. Gain:** `ComparisonRegistry.astro` shows an Abs. Gain column (`perf.live.absGainPct`, from the Myfxbook live sync) after Platform, and the tables rank by it, highest first. It is on by default for every table (homepage, `/top-ranking/`, the three EA review pages, MT4/MT5 brand pages, product categories). Copy that described the old ordering now says "Myfxbook absolute gain". Pass `showAbsGain={false}` to fall back to Gain.
+- **Myfxbook data:** collector ingested 9/11 accounts. Nexora Manus (no summary figures parsed) and Elysium Vortex (HTTP 403) keep previous figures. `performanceVerifiedAt` and the footer date moved to 2026-11-04 from the sync's `fetchedAt`.
+- **Deploy:** version `2dd2eb7d`, release gate passed.
+- **Open:** the two failed accounts need a re-run of `scripts/local/collect-myfxbook.cmd`. Abs. Gain and Gain differ for several systems (for example Zenith Matrix 129.76% vs 90.43%); both come from Myfxbook as published. Mobile and tablet views of the banner and tables are not yet checked after the last changes.
+
+## Progress save: 2026-11-05 (SEO recovery plan, brokers page, banner and backtests)
+
+- **SEO recovery plan (phases 1-7):** redirects/404s, homepage keywords, not-indexed diagnosis, title checks, sortable and filterable EA table, compare drawer and `/methodology/` are done and live. **`/free-downloads/` hub is ON HOLD by owner decision: remind the owner when everything else is done.**
+- **Brokers page (`/best-forex-brokers/`):** the full list is now the first block under the hero, replacing the four stat cards. Heading "Forex brokers rating in {monthYear}" (from `src/lib/dates.ts`). `BrokerExplorer.astro` is the table: rank column with trophies for places 1-3, tag pills, regulation and platform chips, "Best for" line, offer tag, sortable columns, compare checkboxes (max 3). The "Each broker in detail" cards were removed (duplicate of the table); rows carry `id="broker-<key>"`. Affiliate notice sits under the table at the owner's request.
+- **Country picker:** choosing a country hides brokers that restrict it (row and top pick) and renumbers ranks; a broker with no stated policy keeps an "Ask broker" tag. RoboForex's restricted list is the owner's pasted list; its accepted list is "Worldwide". `brokerCountriesVerifiedAt` is still null, so the page says the lists are unverified.
+- **Short guide:** "How to choose a forex broker" (nine answer-first cards) plus three new FAQ entries in `src/data/brokers.json`, written for snippets and AI answers. Original wording, no competitor text.
+- **RoboForex banner and go-links:** the banner sits after the hero on the homepage, `/top-ranking/`, the three review pages and the three category pages, in a fixed order (hero, banner, list, Quick answer, How this ranking works). Affiliate links go through `/go/<key>/` (302 from the registry, noindexed, disallowed in robots.txt).
+- **Featured band:** three themed cards before the footer (Obsidian emerald, copy trading violet, Zenith gold), replacing `ObsidianPromo.astro`. System pages (terms, privacy and similar) use the blog layout with side rails and no in-text ads. `special-discount` retired with a 301 to the brokers page.
+- **Backtests:** Obsidian Aether (EURUSD, 100% real ticks) and Zenith Matrix (XAUUSD, 50% real ticks) have a Backtest tab with the full Results block and the exported Strategy Tester report image (`public/media/products/*-backtest-report.jpg`). The notes state it is a simulation and flag Zenith's small sample.
+- **Other:** scalping-indicators post rewritten; footer links Methodology and the legal pages; system page dates updated.
+- **Deploy:** version `d698ace5`, release gate passed.
+- **Open:** scalping post indicator names and MetaTrader help links are unverified; copy-trading page still carries income-style claims (avg monthly return, win rate, AUM) that should be removed; `BESTMT4EA GSC REPORT/` and `BestMT4EA SEO Audit.md` are untracked source files, not committed; Search Console actions (request indexing, `/best-forex-ea/` first) are the owner's.

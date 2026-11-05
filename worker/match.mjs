@@ -90,5 +90,7 @@ export function matchRedirect(map, requestPath, search = '') {
   let location = isExternal(rule.to) ? rule.to : canon(rule.to);
   // Enforce one canonical URL: local targets always end in `/`.
   if (!isExternal(location) && !location.endsWith('/')) location += '/';
-  return { kind: 'redirect', status: rule.status, location: location + search };
+  // An external target (an affiliate URL) already carries its own query string, so
+  // the request's is not appended to it.
+  return { kind: 'redirect', status: rule.status, location: isExternal(location) ? location : location + search };
 }

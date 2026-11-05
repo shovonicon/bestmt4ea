@@ -144,10 +144,10 @@ check('homepage passes through', matchRedirect(map, '/'), { kind: 'pass' });
     status: 301,
     location: 'https://example.com/landing/',
   });
-  check('external target keeps query', matchRedirect(fix, '/external-hop/', '?x=1'), {
+  check('external target does not take the request query', matchRedirect(fix, '/external-hop/', '?x=1'), {
     kind: 'redirect',
     status: 301,
-    location: 'https://example.com/landing/?x=1',
+    location: 'https://example.com/landing/',
   });
 }
 
@@ -184,6 +184,22 @@ check('homepage passes through', matchRedirect(map, '/'), { kind: 'pass' });
     status: 301,
     location: '/new-page/',
   });
+}
+
+/* --- affiliate go-links: /go/<key>/ -> the registry URL, 302 ---------------------- */
+{
+  const goRules = manifest.rules.filter((r) => r.from.startsWith('/go/'));
+  check('the manifest has go-links', goRules.length >= 5, true);
+  check('every go-link is a 302 to an external URL', goRules.every((r) => r.status === 302 && /^https?:\/\//.test(r.to)), true);
+  const rf = manifest.rules.find((r) => r.from === '/go/roboforex/');
+  check('roboforex go-link exists', Boolean(rf), true);
+  check('go-link answers with a 302 to the registry URL', matchRedirect(map, '/go/roboforex/'), {
+    kind: 'redirect',
+    status: 302,
+    location: rf?.to,
+  });
+  check('go-link without a trailing slash still resolves', matchRedirect(map, '/go/roboforex').status, 302);
+  check('go-link ignores a request query', matchRedirect(map, '/go/roboforex/', '?utm=x').location, rf?.to);
 }
 
 /* --- canon helper -------------------------------------------------------------- */

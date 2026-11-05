@@ -209,6 +209,9 @@ Every affiliate link goes through `src/lib/affiliates.ts` and renders with
 `rel="sponsored nofollow noopener"` plus a visible disclosure on the page. Never
 hard-code a tracking URL in content.
 
+- The partner banner (`RInfinityRail`) links through `/go/<key>/` redirects (`goPath()` in
+  `src/lib/affiliates.ts`), generated from the registry, so the tracking URL lives in one
+  place. Those links keep the sponsored rel and the visible disclosure.
 - Disclosure line appears **before** the first affiliate link.
 - An affiliate CTA may sit in-content or in the sidebar — **never** against the
   download card (§6).

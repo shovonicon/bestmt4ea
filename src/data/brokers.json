@@ -10,8 +10,8 @@
       "offer": "Welcome bonus $30",
       "recommended": true,
       "bestFor": "Grid EAs, MT5 Cent, ECN scalping",
-      "restrictedCountries": "USA, Canada, UK/EU, Japan, Australia, Brazil, Indonesia",
-      "acceptedCountries": "LATAM, SE Asia, CIS, Africa"
+      "restrictedCountries": "USA, Canada, Japan, Australia, Bonaire, Brazil, Curaçao, East Timor, Indonesia, Iran, Liberia, Saipan, Russia, Sint Eustatius, Tahiti, Turkey, Guinea-Bissau, Micronesia, Northern Mariana Islands, Svalbard and Jan Mayen, South Sudan, Ukraine, Belarus",
+      "acceptedCountries": "Worldwide"
     },
     {
       "key": "exness",
@@ -200,6 +200,18 @@
     {
       "question": "Can I use a broker that is not on this list?",
       "answer": "Yes. Our systems run on any MetaTrader 4 or MetaTrader 5 broker. The list here is what we test on, not a restriction — though a low-spread ECN account will usually suit these strategies better than a high-spread one."
+    },
+    {
+      "question": "How much money do I need to start trading forex?",
+      "answer": "Many brokers accept $1 to $10, but the useful question is how much lets you risk 1 to 2% per trade at a workable lot size. Practise on a demo account first, then fund only money you can afford to lose."
+    },
+    {
+      "question": "How do I check that a forex broker is regulated?",
+      "answer": "Find the licence number on the broker's website, then search for it on the regulator's own public register and match the company name. Confirm the licence covers your country, and check the regulator's warning list."
+    },
+    {
+      "question": "Are high-leverage brokers better?",
+      "answer": "No. Leverage magnifies losses as well as gains, so a higher limit is not a quality signal. Judge a broker on regulation, total cost and execution first, and size positions to your own risk."
     }
   ]
 }

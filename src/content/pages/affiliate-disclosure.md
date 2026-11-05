@@ -4,7 +4,7 @@ title: "Affiliate Disclosure"
 slug: "affiliate-disclosure"
 description: "How BESTMT4EA earns: which links are affiliate links, how they are labelled on the page, what it costs you, and how we decide what we recommend."
 publishedAt: 2026-09-28
-updatedAt: 2026-09-29
+updatedAt: 2026-11-05
 systemPage: true
 showAds: false
 draft: false

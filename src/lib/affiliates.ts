@@ -169,3 +169,17 @@ export const AFFILIATE_DISCLOSURE =
 export function getAffiliate(key: string): AffiliateOffer | undefined {
   return (affiliates as Record<string, AffiliateOffer>)[key];
 }
+
+/**
+ * Internal "go" path for an affiliate key, for example `/go/roboforex/`.
+ *
+ * A page links to this path instead of the tracking URL. The Worker answers it
+ * with a 302 to the registry URL, and `scripts/build-redirects.mjs` generates that
+ * rule from this registry, so the tracking URL is written down in exactly one place
+ * and a change to it needs no content edit. The link still carries
+ * `rel="sponsored nofollow noopener"` and the page's visible disclosure.
+ */
+export const GO_PREFIX = '/go/';
+export function goPath(key: AffiliateKey): string {
+  return `${GO_PREFIX}${key}/`;
+}

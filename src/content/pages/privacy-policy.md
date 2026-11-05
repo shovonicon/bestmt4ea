@@ -4,7 +4,7 @@ title: "Privacy Policy"
 slug: "privacy-policy"
 description: "What this site collects and why: Google AdSense advertising cookies, affiliate-link tracking, Cloudflare hosting logs, download emails, and how to exercise your data rights."
 publishedAt: "2019-03-02T08:51:12.000Z"
-updatedAt: "2026-10-07"
+updatedAt: "2026-11-05"
 seo:
   title: "Privacy Policy — Cookies, Advertising and Your Data"
   description: "What BESTMT4EA collects and why: AdSense cookies, affiliate-link tracking, Cloudflare logs, download emails, and how to exercise your privacy rights."
@@ -118,4 +118,4 @@ If this policy changes, the new version is published on this page and the review
 Email: **bestmt4ea@gmail.com**
 Telegram: [t.me/pizion](https://t.me/pizion)
 
-*Last reviewed: 7 October 2026.*
+*Last reviewed: 5 November 2026.*

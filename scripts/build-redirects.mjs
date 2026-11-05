@@ -32,6 +32,7 @@ import { readFile, writeFile, mkdir, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { getLiveRoutes, canon, cmpKey, isExternal } from './routes.mjs';
+import { affiliates, goPath } from '../src/lib/affiliates.ts';
 
 const CSV_CANDIDATES = [
   'wordpress-seo-redirects (2).csv',
@@ -158,6 +159,12 @@ async function main() {
     } catch (error) {
       fail(`Could not read ${MANUAL_JSON}: ${error.message}`);
     }
+  }
+  // Affiliate go-links: /go/<key>/ -> the registry URL, 302 (a temporary hop, so a
+  // changed tracking URL is picked up and nothing is cached as permanent). They
+  // join the project-owned rules, so they win over any generated row.
+  for (const [key, offer] of Object.entries(affiliates)) {
+    rows.push([goPath(key), offer.url, '302']);
   }
   rows.push(...csvRows);
   const manualKeys = new Set(rows.slice(0, rows.length - csvRows.length).map((r) => cmpKey(canon(r[0] ?? ''))));

@@ -1,0 +1,44 @@
+---
+/**
+ * "How this ranking works" panel, shared by the three review pages and the three
+ * strategy category pages so the six pages explain the same thing in the same words.
+ *
+ * The table sorts by Myfxbook absolute gain (Abs. Gain), so that is the sort key the
+ * copy names. A category with no tracked record (for example indicators) says so
+ * instead of printing "0 of the 0".
+ */
+export interface Props {
+  realCount: number;
+  demoCount: number;
+  trackedCount: number;
+  checkedOn: string;
+}
+
+const { realCount, demoCount, trackedCount, checkedOn } = Astro.props;
+---
+
+<section class="container-x pb-16" aria-labelledby="method-heading">
+  <div class="panel mx-auto max-w-4xl p-6 md:p-8">
+    <h2 id="method-heading" class="text-xl">How this ranking works</h2>
+    <p class="mt-3 text-sm leading-7 text-[var(--color-ink-soft)]">
+      The order is Myfxbook absolute gain (Abs. Gain) on each system's third-party tracked account, highest first. The same
+      data drives the table above, our top-ranking page and the quick answer on this page, so they always agree.
+    </p>
+    <ul class="mt-4 list-disc space-y-2 pl-5 text-sm leading-7 text-[var(--color-ink-soft)]">
+      <li>Gain is shown next to maximum drawdown, because a high gain with a deep drawdown is not the same as a steady one.</li>
+      <li>
+        {
+          trackedCount > 0
+            ? `Every figure states its account type. ${realCount} of the ${trackedCount} tracked systems run on a real account and ${demoCount} on a demo account, and a demo result is never presented as a live one.`
+            : 'None of the products on this page has a published track record, so no performance figures are shown. A demo result is never presented as a live one.'
+        }
+      </li>
+      <li>A system with no tracked record is listed without a number. We do not borrow a figure from another account.</li>
+      <li>Third-party figures were last checked on {checkedOn}. A tracked record describes the past, not what comes next.</li>
+    </ul>
+    <p class="mt-4 text-sm leading-7 text-[var(--color-ink-soft)]">
+      This ranking is not investment advice. Test any system on a demo account first, and trade only money you can afford to
+      lose.
+    </p>
+  </div>
+</section>

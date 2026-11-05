@@ -11,7 +11,7 @@
  *      even when a wider accepted region (for example "Asia") would include it.
  *   2. ACCEPTED only when the broker's own text names the country, or a region that
  *      is unambiguously made of it, or says "worldwide".
- *   3. Everything else is UNKNOWN and the page says "Check with the broker".
+ *   3. Everything else is UNKNOWN and the page says "Ask broker".
  *
  * The direction of every doubt is the same: when a region's boundary is arguable
  * (for example whether "Middle East" includes Turkey), the country is left out of
@@ -103,6 +103,22 @@ const COUNTRY_ALIASES: Record<string, string> = {
   'saudi arabia': 'SA',
   'south africa': 'ZA',
   's. africa': 'ZA',
+  russia: 'RU',
+  ukraine: 'UA',
+  belarus: 'BY',
+  turkey: 'TR',
+  liberia: 'LR',
+  'south sudan': 'SS',
+  'guinea-bissau': 'GW',
+  'east timor': 'TL',
+  micronesia: 'FM',
+  'northern mariana islands': 'MP',
+  saipan: 'MP',
+  tahiti: 'PF',
+  curaçao: 'CW',
+  bonaire: 'BQ',
+  'sint eustatius': 'BQ',
+  'svalbard and jan mayen': 'SJ',
 };
 
 /** Region words, including phrasings seen in the broker text. */

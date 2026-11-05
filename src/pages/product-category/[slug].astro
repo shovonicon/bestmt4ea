@@ -4,6 +4,10 @@ import ComparisonRegistry from '../../components/ComparisonRegistry.astro';
 import SectionHead from '../../components/SectionHead.astro';
 import { site } from '../../lib/site';
 import TableNotes from '../../components/TableNotes.astro';
+import RInfinityRail from '../../components/RInfinityRail.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import RankingMethod from '../../components/RankingMethod.astro';
+import { getPerformance } from '../../lib/performance';
 import { getPublicProducts } from '../../lib/content';
 import { monthYear, performanceVerifiedAt } from '../../lib/dates';
 import { url } from '../../lib/urls';
@@ -52,6 +56,32 @@ const title = `Best ${catName} ${monthYear}`;
 const intro = INTROS[slug] ?? `Every system in the ${catName} category, ranked on its third-party tracked record.`;
 const fmtDate = (d: Date) =>
   new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(d);
+
+/* Ranking summary: the same ordering and wording as the review pages (ReviewsLayout). */
+const shortName = (value: string) => String(value).split(':')[0].trim();
+const ranked = products
+  .map((product) => ({ product, perf: getPerformance(product.data.slug) }))
+  .sort((a, b) => (b.perf?.live?.absGainPct ?? -Infinity) - (a.perf?.live?.absGainPct ?? -Infinity));
+const tracked = ranked.filter((row) => row.perf?.totalGainPct != null);
+const realCount = tracked.filter((row) => row.perf?.accountType === 'real').length;
+const demoCount = tracked.filter((row) => row.perf?.accountType === 'demo').length;
+const checkedOn = fmtDate(performanceVerifiedAt);
+
+const accountWord = (row: (typeof ranked)[number]) =>
+  row.perf?.accountType === 'real' ? 'real account' : row.perf?.accountType === 'demo' ? 'demo account' : 'tracked account';
+const describe = (row: (typeof ranked)[number]) => {
+  const drawdown = row.perf?.maxDrawdownPct != null ? `, maximum drawdown ${row.perf.maxDrawdownPct}%` : '';
+  const abs = row.perf?.live?.absGainPct;
+  const gainText = abs != null ? `${abs}% absolute gain` : `${row.perf?.totalGainPct}% gain`;
+  return `${shortName(row.product.data.title)} (${gainText} on a ${accountWord(row)}${drawdown})`;
+};
+
+const [first, second, third] = tracked;
+const answer = first
+  ? `${describe(first)} ranks first of ${products.length} systems in ${catName} on Myfxbook absolute gain` +
+    `${second ? `, followed by ${shortName(second.product.data.title)}${third ? ` and ${shortName(third.product.data.title)}` : ''}` : ''}. ` +
+    `Figures come from Myfxbook and were checked ${checkedOn}; a demo account is labelled as one. Past results do not predict future returns, and trading carries a risk of loss.`
+  : `We list ${products.length} products in ${catName}. Where a third-party tracked record exists it is shown with its account type and maximum drawdown, and a product without one says so. Past results do not predict future returns, and trading carries a risk of loss.`;
 ---
 
 <BaseLayout
@@ -63,7 +93,7 @@ const fmtDate = (d: Date) =>
     <div class="glow-orb animate-aurora left-1/2 top-[-14rem] h-[24rem] w-[36rem] -translate-x-1/2 bg-emerald-500/25"></div>
     <div class="grid-overlay pointer-events-none absolute inset-0"></div>
 
-    <div class="container-x relative py-20 text-center lg:py-24">
+    <div class="container-x relative pt-14 pb-28 text-center lg:pt-16 lg:pb-32">
       <nav aria-label="Breadcrumb" class="text-xs text-[var(--color-ink-dim)]">
         <a href="/" class="hover:text-[var(--color-accent)]">Home</a>
         <span class="mx-2">/</span>
@@ -89,8 +119,13 @@ const fmtDate = (d: Date) =>
     </div>
   </section>
 
+  <!-- Partner banner (RoboForex / R Infinity), a small gap below the hero. -->
+  <section class="container-x pb-32">
+    <RInfinityRail variant="banner" />
+  </section>
+
   <!-- The board -->
-  <section class="container-x pb-20" aria-labelledby="strategy-heading">
+  <section class="container-x pb-32" aria-labelledby="strategy-heading">
     <SectionHead
       align="center"
       kicker="The full list"
@@ -112,4 +147,14 @@ const fmtDate = (d: Date) =>
       <a href={url('/shop')} class="btn btn-ghost !px-6 !py-3.5 !text-base">Browse the EA library</a>
     </div>
   </section>
+
+  <!-- Answer-first summary, the same block as the review pages -->
+  <section class="container-x pb-16">
+    <div class="mx-auto max-w-4xl">
+      <AnswerBox answer={answer} label="Quick answer" />
+    </div>
+  </section>
+
+  <!-- How the ranking works -->
+  <RankingMethod realCount={realCount} demoCount={demoCount} trackedCount={tracked.length} checkedOn={checkedOn} />
 </BaseLayout>
