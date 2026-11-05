@@ -6,7 +6,8 @@ import SectionHead from '../../components/SectionHead.astro';
 import RInfinityRail from '../../components/RInfinityRail.astro';
 import Faq from '../../components/Faq.astro';
 import { getPerformance } from '../../lib/performance';
-import { RISK_DISCLAIMER, site } from '../../lib/site';
+import { site } from '../../lib/site';
+import TableNotes from '../../components/TableNotes.astro';
 import { monthYear, performanceVerifiedAt } from '../../lib/dates';
 import { formatDate } from '../../lib/format';
 import { getPublicProducts } from '../../lib/content';
@@ -138,7 +139,7 @@ const faqs = [
       <div class="reveal mt-8">
         <ComparisonRegistry products={products} />
       </div>
-      <p class="mt-4 max-w-3xl text-xs leading-6 text-[var(--color-ink-dim)]">{RISK_DISCLAIMER}</p>
+      <TableNotes />
     </section>
 
     {

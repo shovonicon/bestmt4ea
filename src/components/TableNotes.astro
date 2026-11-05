@@ -1,0 +1,26 @@
+---
+/**
+ * The one centered note under a ranking table: how to sort, when the figures were
+ * checked, and the short risk line. One paragraph, so the three never drift apart.
+ */
+import { RISK_DISCLAIMER_SHORT } from '../lib/site';
+
+export interface Props {
+  /** Formatted check date, for example "4 November 2026". Omit to leave the line out. */
+  checked?: string;
+  /** Say that demo accounts are labelled on every row. */
+  demos?: boolean;
+}
+
+const { checked, demos = false } = Astro.props;
+
+const text = [
+  'Click a heading to sort. Missing figures sort last.',
+  checked ? `Figures checked ${checked}${demos ? ' · demos are labelled' : ''}.` : '',
+  RISK_DISCLAIMER_SHORT,
+]
+  .filter(Boolean)
+  .join(' ');
+---
+
+<p class="mx-auto mt-4 max-w-3xl text-center text-xs leading-6 text-[var(--color-ink-dim)]">{text}</p>

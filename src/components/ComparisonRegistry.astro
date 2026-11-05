@@ -45,7 +45,7 @@ const rows = products
   .map((entry, index) => ({ ...entry, rank: index + 1 }));
 
 /** Sortable header: the button carries the 44px touch target, so the cell pads less. */
-const TH = 'px-5 py-1 text-xs font-semibold uppercase tracking-wider text-slate-400';
+const TH = 'px-1.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400';
 
 type Column = {
   key: string;
@@ -75,22 +75,102 @@ const columns: Column[] = [
 
 /** The column the board is already ordered by, so the first click on it reverses. */
 const defaultSortKey = showAbsGain ? 'absGain' : 'gain';
+
+/** Comparing needs two systems to pick between. */
+const canCompare = rows.length >= 2;
+
+/** Rows the compare drawer shows. Keys match the `data-*` values on each row. */
+const compareMetrics = [
+  ...(showAbsGain ? [{ key: 'absGain', label: 'Abs. Gain', better: 'high', suffix: '%' }] : []),
+  { key: 'gain', label: 'Gain', better: 'high', suffix: '%' },
+  { key: 'monthly', label: 'Monthly ROI', better: 'high', suffix: '%' },
+  { key: 'dd', label: 'Max drawdown', better: 'low', suffix: '%' },
+  { key: 'platform', label: 'Platform' },
+  { key: 'pair', label: 'Pair' },
+  { key: 'strategy', label: 'Strategy' },
+];
+
+/** Search and filters only earn their space once there is something to filter. */
+const canFilter = rows.length >= 4;
+const total = rows.length;
+const FILTERABLE = new Set(['pair', 'platform', 'absGain', 'gain', 'monthly', 'dd', 'strategy']);
 ---
 
-<div
-  class="table-shell w-full overflow-x-auto"
-  role="region"
-  tabindex="0"
-  aria-label="Ranked comparison of expert advisors by verified gain"
-  data-rank-table
->
-  <table class:list={['w-full border-collapse text-left text-sm', showAbsGain ? 'min-w-[900px]' : 'min-w-[800px]']}>
+<div data-rank-table data-compare-metrics={canCompare ? JSON.stringify(compareMetrics) : undefined}>
+  {
+    canFilter && (
+      <div class="mb-4 flex flex-wrap items-center gap-3">
+        <label class="block w-full sm:w-72">
+          <span class="sr-only">Search systems by name, pair or strategy</span>
+          <input
+            type="search"
+            data-table-search
+            placeholder="Search name, pair or strategy"
+            autocomplete="off"
+            class="h-11 w-full rounded-full border border-white/15 bg-white/[0.04] px-4 text-sm text-white placeholder:text-slate-500 focus:border-emerald-400/60 focus:outline-none focus-visible:outline-2 focus-visible:outline-emerald-400"
+          />
+        </label>
+        <div role="group" aria-label="Platform" class="flex flex-wrap gap-2">
+          {[
+            ['all', 'All platforms'],
+            ['MT4', 'MT4'],
+            ['MT5', 'MT5'],
+          ].map(([value, text]) => (
+            <button type="button" class="pill" data-filter-group="platform" data-filter-value={value} aria-pressed={value === 'all'}>
+              {text}
+            </button>
+          ))}
+        </div>
+        <div role="group" aria-label="Maximum drawdown" class="flex flex-wrap gap-2">
+          {[
+            ['all', 'Any drawdown'],
+            ['low-dd', 'Drawdown under 20%'],
+            ['prop-safe', 'Drawdown under 10%'],
+          ].map(([value, text]) => (
+            <button type="button" class="pill" data-filter-group="dd" data-filter-value={value} aria-pressed={value === 'all'}>
+              {text}
+            </button>
+          ))}
+        </div>
+        <button type="button" class="pill pill-clear" data-table-clear hidden>
+          Clear all
+        </button>
+        <p class="ml-auto text-xs text-slate-400" aria-live="polite">
+          Showing <span data-table-count>{total}</span> of {total} systems
+        </p>
+      </div>
+    )
+  }
+
+  <p
+    data-table-empty
+    hidden
+    class="mb-4 rounded-xl border border-white/10 bg-white/[0.03] p-4 text-sm text-slate-300"
+    role="status"
+  >
+    No system matches these filters. Clear a filter or the search to see the full list.
+  </p>
+
+  <div
+    class="table-shell w-full overflow-x-auto"
+    role="region"
+    tabindex="0"
+    aria-label="Ranked comparison of expert advisors by verified gain"
+  >
+  <table class="w-full border-collapse text-left text-sm">
     <caption class="sr-only">
       Ranked expert advisors: platform, gain, monthly return, drawdown and strategy. Ordered by {showAbsGain ? 'absolute gain' : 'gain'}
       to start with; select a column heading to sort by it.
     </caption>
     <thead>
       <tr class="border-b border-white/10 text-slate-300" style="background: rgba(0, 193, 144, 0.05);">
+        {
+          canCompare && (
+            <th scope="col" class="px-1 py-4 text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+              Compare
+            </th>
+          )
+        }
         {
           columns.map((col) => (
             <th
@@ -102,12 +182,28 @@ const defaultSortKey = showAbsGain ? 'absGain' : 'gain';
               data-default-dir={col.dir}
               aria-sort={col.key === defaultSortKey ? 'descending' : undefined}
             >
-              <button type="button" class="sort-btn">
-                <span>{col.label}</span>
-                <span data-sort-icon aria-hidden="true">
-                  {col.key === defaultSortKey ? '▼' : '↕'}
-                </span>
-              </button>
+              <div class="th-inner">
+                <button type="button" class="sort-btn">
+                  <span>{col.label}</span>
+                  <span data-sort-icon aria-hidden="true">
+                    {col.key === defaultSortKey ? '▼' : '↕'}
+                  </span>
+                </button>
+                {canFilter && FILTERABLE.has(col.key) && (
+                  <button
+                    type="button"
+                    class="filter-btn"
+                    data-col-filter
+                    aria-haspopup="dialog"
+                    aria-expanded="false"
+                    aria-label={`Filter ${col.label}`}
+                  >
+                    <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M3 5h18l-7 8v6l-4 2v-8z" />
+                    </svg>
+                  </button>
+                )}
+              </div>
             </th>
           ))
         }
@@ -141,6 +237,8 @@ const defaultSortKey = showAbsGain ? 'absGain' : 'gain';
             <tr
               class="border-b border-white/10 transition-colors duration-200 last:border-b-0 hover:bg-white/[0.02]"
               data-row
+              data-id={slug}
+              data-href={href}
               data-rank={rank}
               data-name={shortName(product.data.title)}
               data-pair={pair === '—' ? '' : pair}
@@ -151,11 +249,28 @@ const defaultSortKey = showAbsGain ? 'absGain' : 'gain';
               data-dd={perf?.maxDrawdownPct ?? ''}
               data-strategy={strategy === '—' ? '' : strategy}
             >
+              {/* Compare checkbox: the engine caps the selection at three. */}
+              {
+                canCompare && (
+                  <td class="px-1.5 py-4">
+                    <label class="flex h-11 w-9 cursor-pointer items-center justify-center">
+                      <input
+                        type="checkbox"
+                        data-compare-check
+                        class="h-5 w-5 cursor-pointer accent-emerald-500"
+                        aria-label={`Compare ${shortName(product.data.title)}`}
+                      />
+                    </label>
+                  </td>
+                )
+              }
+
               {/* Rank. The engine rewrites the number to the row's position after every sort. */}
-              <td class="px-5 py-5 text-base font-semibold">
+              <td class="px-1.5 py-4 text-base font-semibold">
                 <div class="flex items-center gap-2">
                   <span
                     data-rank-chip
+                    data-pos={rank}
                     class="rank-chip flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold"
                   >
                     #{rank}
@@ -164,9 +279,9 @@ const defaultSortKey = showAbsGain ? 'absGain' : 'gain';
               </td>
 
               {/* Robot Name */}
-              <td class="px-5 py-5 font-medium text-white">
+              <td class="px-1.5 py-4 font-medium text-white">
                 <a href={href} class="flex flex-col gap-0.5 transition-colors duration-200 hover:text-emerald-400">
-                  <span class="font-heading flex items-center gap-1.5 text-sm font-bold sm:text-base">
+                  <span class="font-heading flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-sm font-bold">
                     {shortName(product.data.title)}
                     {rank === 1 && (
                       <span class="inline-flex items-center gap-1 rounded-full border border-emerald-400/20 bg-emerald-500/10 px-2 py-0.5 text-[11px] font-medium text-emerald-400">
@@ -195,10 +310,10 @@ const defaultSortKey = showAbsGain ? 'absGain' : 'gain';
               </td>
 
               {/* Pair */}
-              <td class="px-5 py-5 font-semibold text-slate-300">{pair}</td>
+              <td class="px-1.5 py-4 font-semibold text-slate-300">{pair}</td>
 
               {/* Platform */}
-              <td class="px-5 py-5">
+              <td class="px-1.5 py-4">
                 <span class="rounded border border-white/5 bg-white/5 px-2.5 py-1 text-xs font-semibold text-slate-300">
                   {platform}
                 </span>
@@ -207,37 +322,37 @@ const defaultSortKey = showAbsGain ? 'absGain' : 'gain';
               {/* Abs. Gain — Myfxbook's absolute gain, from the live sync only */}
               {
                 showAbsGain && (
-                  <td class="px-5 py-5 text-center font-bold text-emerald-400">
+                  <td class="px-1.5 py-4 text-center font-bold text-emerald-400">
                     {absGain != null ? `${absGain >= 0 ? '+' : ''}${absGain}%` : 'N/A'}
                   </td>
                 )
               }
 
               {/* Gain */}
-              <td class="px-5 py-5 text-center font-bold text-emerald-400">
+              <td class="px-1.5 py-4 text-center font-bold text-emerald-400">
                 {gain != null ? `${gain >= 0 ? '+' : ''}${gain}%` : 'N/A'}
               </td>
 
               {/* Monthly ROI */}
-              <td class="px-5 py-5 text-center font-bold text-emerald-400">{pct(perf?.monthlyGainPct)}</td>
+              <td class="px-1.5 py-4 text-center font-bold text-emerald-400">{pct(perf?.monthlyGainPct)}</td>
 
               {/* Max Drawdown */}
-              <td class="px-5 py-5 text-center text-slate-300">
+              <td class="px-1.5 py-4 text-center text-slate-300">
                 <span class="rounded border border-red-500/10 bg-red-500/10 px-2 py-0.5 text-xs font-semibold text-red-400">
                   {pct(perf?.maxDrawdownPct)}
                 </span>
               </td>
 
               {/* Strategy */}
-              <td class="px-5 py-5 font-medium text-slate-300">{strategy}</td>
+              <td class="px-1.5 py-4 font-medium text-slate-300">{strategy}</td>
 
               {/* Action */}
-              <td class="px-5 py-5 text-right">
+              <td class="px-1.5 py-4 text-right">
                 <div class="flex items-center justify-end">
                   <a
                     href={`${href}#acquire`}
-                    class="group inline-flex shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-semibold text-black transition-all duration-300 hover:scale-105"
-                    style="background: linear-gradient(135deg, #34D399 0%, #10B981 100%); min-width: 80px;"
+                    class="group inline-flex shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-lg px-2.5 py-1.5 text-xs font-semibold text-black transition-all duration-300 hover:scale-105"
+                    style="background: linear-gradient(135deg, #34D399 0%, #10B981 100%); min-width: 64px;"
                   >
                     Get License
                     <svg
@@ -262,11 +377,9 @@ const defaultSortKey = showAbsGain ? 'absGain' : 'gain';
       }
     </tbody>
   </table>
-</div>
+  </div>
 
-<p class="mt-3 text-xs text-slate-500">
-  Select a column heading to sort the table. A system with no published figure always sorts last.
-</p>
+</div>
 
 <script>
   import { initAllRankTables } from '../lib/tableEngine';
@@ -278,7 +391,7 @@ const defaultSortKey = showAbsGain ? 'absGain' : 'gain';
   .sort-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.25rem;
     min-height: 44px;
     padding: 0;
     border: 0;
@@ -294,13 +407,71 @@ const defaultSortKey = showAbsGain ? 'absGain' : 'gain';
   .sort-btn:hover {
     color: #fff;
   }
+  .th-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+  }
+  .filter-btn {
+    display: inline-grid;
+    place-items: center;
+    min-width: 1.25rem;
+    min-height: 44px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: rgb(100, 116, 139);
+    cursor: pointer;
+    transition: color 150ms ease;
+  }
+  .filter-btn:hover,
+  .filter-btn[aria-expanded='true'] {
+    color: #fff;
+  }
+  .filter-btn[data-active='true'] {
+    color: var(--color-accent, #00c190);
+  }
+  .filter-btn:focus-visible {
+    outline: 2px solid var(--color-accent, #00c190);
+    outline-offset: 2px;
+    border-radius: 0.375rem;
+  }
+  .pill {
+    min-height: 44px;
+    padding: 0 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.04);
+    color: rgb(203, 213, 225);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 150ms ease, color 150ms ease, background 150ms ease;
+  }
+  .pill:hover {
+    border-color: rgba(52, 211, 153, 0.5);
+    color: #fff;
+  }
+  .pill[aria-pressed='true'] {
+    border-color: rgba(52, 211, 153, 0.6);
+    background: rgba(0, 193, 144, 0.16);
+    color: rgb(110, 231, 183);
+  }
+  .pill:focus-visible {
+    outline: 2px solid var(--color-accent, #00c190);
+    outline-offset: 2px;
+  }
+  .pill-clear {
+    border-color: rgba(248, 113, 113, 0.4);
+    color: rgb(252, 165, 165);
+  }
   .sort-btn:focus-visible {
     outline: 2px solid var(--color-accent, #00c190);
     outline-offset: 2px;
     border-radius: 0.375rem;
   }
   [data-sort-icon] {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     opacity: 0.45;
   }
   th[aria-sort] [data-sort-icon] {
@@ -314,17 +485,17 @@ const defaultSortKey = showAbsGain ? 'absGain' : 'gain';
     background: rgba(255, 255, 255, 0.05);
     color: rgb(148, 163, 184);
   }
-  tbody tr:nth-child(1) .rank-chip {
+  .rank-chip[data-pos='1'] {
     border-color: rgba(52, 211, 153, 0.3);
     background: rgba(16, 185, 129, 0.2);
     color: rgb(110, 231, 183);
   }
-  tbody tr:nth-child(2) .rank-chip {
+  .rank-chip[data-pos='2'] {
     border-color: rgba(45, 212, 191, 0.3);
     background: rgba(20, 184, 166, 0.2);
     color: rgb(94, 234, 212);
   }
-  tbody tr:nth-child(3) .rank-chip {
+  .rank-chip[data-pos='3'] {
     border-color: rgba(34, 211, 238, 0.3);
     background: rgba(6, 182, 212, 0.2);
     color: rgb(103, 232, 249);

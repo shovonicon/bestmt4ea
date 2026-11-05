@@ -1,0 +1,44 @@
+---
+/**
+ * Compare drawer: a sticky bar plus a modal side-by-side table.
+ *
+ * Page-wide and rendered once from BaseLayout. It stays hidden until a table
+ * with `[data-compare-check]` boxes (see `src/lib/tableEngine.ts`) has at least
+ * one row ticked. The engine owns all behaviour: this file is only the markup
+ * contract (`data-compare-bar`, `-label`, `-open`, `-clear`, `-close`, `-output`).
+ */
+import { RISK_DISCLAIMER } from '../lib/site';
+---
+
+<div data-compare-drawer>
+  <div
+    data-compare-bar
+    hidden
+    class="compare-bar fixed bottom-4 inset-x-20 z-50 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-white/15 bg-black/85 p-3 shadow-2xl backdrop-blur sm:inset-x-0 sm:mx-auto sm:max-w-xl"
+  >
+    <p data-compare-label class="px-1 text-sm font-semibold text-white" aria-live="polite">Compare (0/3 selected)</p>
+    <div class="flex gap-2">
+      <button type="button" data-compare-clear class="btn btn-ghost">Clear</button>
+      <button type="button" data-compare-open class="btn btn-primary" disabled>Compare</button>
+    </div>
+  </div>
+
+  <dialog class="compare-dialog" aria-labelledby="compare-title">
+    <div class="mb-4 flex items-start justify-between gap-4">
+      <h2 id="compare-title" class="text-xl font-bold text-white">Compare side by side</h2>
+      <button
+        type="button"
+        data-compare-close
+        aria-label="Close comparison"
+        class="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/15 text-lg text-white hover:border-emerald-400/50 hover:text-emerald-300"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div data-compare-output class="overflow-x-auto"></div>
+    <p class="mt-4 text-xs leading-6 text-[var(--color-ink-dim)]">
+      The highlighted figure in a row is the best value in that row. It is not a recommendation: read the drawdown beside
+      the gain. {RISK_DISCLAIMER}
+    </p>
+  </dialog>
+</div>

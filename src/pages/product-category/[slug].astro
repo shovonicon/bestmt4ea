@@ -2,7 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ComparisonRegistry from '../../components/ComparisonRegistry.astro';
 import SectionHead from '../../components/SectionHead.astro';
-import { RISK_DISCLAIMER, site } from '../../lib/site';
+import { site } from '../../lib/site';
+import TableNotes from '../../components/TableNotes.astro';
 import { getPublicProducts } from '../../lib/content';
 import { monthYear, performanceVerifiedAt } from '../../lib/dates';
 import { url } from '../../lib/urls';
@@ -104,10 +105,7 @@ const fmtDate = (d: Date) =>
       <ComparisonRegistry products={products} />
     </div>
 
-    <p class="mt-4 text-center text-xs text-[var(--color-ink-dim)]">
-      Third-party figures checked {fmtDate(performanceVerifiedAt)}.
-    </p>
-    <p class="mx-auto mt-6 max-w-3xl text-center text-xs leading-6 text-[var(--color-ink-dim)]">{RISK_DISCLAIMER}</p>
+    <TableNotes checked={fmtDate(performanceVerifiedAt)} />
 
     <div class="mt-10 flex flex-wrap justify-center gap-3">
       <a href={url('/top-ranking')} class="btn btn-primary !px-7 !py-3.5 !text-base">Compare every system</a>

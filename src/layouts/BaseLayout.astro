@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ReadingProgress from '../components/ReadingProgress.astro';
 import BackToTop from '../components/BackToTop.astro';
+import CompareDrawer from '../components/CompareDrawer.astro';
 import TelegramFab from '../components/TelegramFab.astro';
 import ParticleField from '../components/ParticleField.astro';
 import ObsidianPromo from '../components/ObsidianPromo.astro';
@@ -125,6 +126,7 @@ const jsonLdBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     <ObsidianPromo />
     <Footer />
     <BackToTop />
+    <CompareDrawer />
     <TelegramFab />
     <AdUnitCollapse />
   </body>

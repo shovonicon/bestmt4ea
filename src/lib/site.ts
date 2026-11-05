@@ -45,6 +45,10 @@ export const site = {
   },
 } as const;
 
+/** Half-length risk line for the strip under a ranking table. The full text stays in the footer and on product pages. */
+export const RISK_DISCLAIMER_SHORT =
+  'Past performance is not a guide to future results. Forex and CFD trading carries a high risk of losing your capital, and results differ by broker and account. Not financial advice.';
+
 /** Risk disclaimer shown on every page that carries performance data. */
 export const RISK_DISCLAIMER =
   'Past performance is not indicative of future results. Trading forex and CFDs carries a high level of risk and can result in the loss of all of your capital. The results shown are specific to the broker, account type and settings used on the tracked account and will differ elsewhere. Nothing on this site is financial advice.';

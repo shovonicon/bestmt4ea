@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ComparisonRegistry from '../../components/ComparisonRegistry.astro';
-import { RISK_DISCLAIMER } from '../../lib/site';
+import TableNotes from '../../components/TableNotes.astro';
 import { getPublicProducts } from '../../lib/content';
 import { url } from '../../lib/urls';
 
@@ -55,6 +55,6 @@ const products = all.filter((p) => p.data.brands.some((b) => b.toLowerCase() ===
       }
     </div>
 
-    <p class="mt-6 text-xs leading-6 text-[var(--color-ink-dim)]">{RISK_DISCLAIMER}</p>
+    <TableNotes />
   </div>
 </BaseLayout>

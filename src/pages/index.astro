@@ -6,7 +6,8 @@ import Faq from '../components/Faq.astro';
 import SectionHead from '../components/SectionHead.astro';
 import RInfinityRail from '../components/RInfinityRail.astro';
 import { getPerformance } from '../lib/performance';
-import { site, RISK_DISCLAIMER } from '../lib/site';
+import { site } from '../lib/site';
+import TableNotes from '../components/TableNotes.astro';
 import { organizationSchema, websiteSchema, faqSchema } from '../lib/seo';
 import { monthYear, performanceVerifiedAt } from '../lib/dates';
 import { formatDate } from '../lib/format';
@@ -219,11 +220,7 @@ const faqs = [
         <ComparisonRegistry products={rankedByAbsGain.slice(0, 10).map((entry) => entry.product)} showAbsGain />
       </div>
 
-      <p class="mt-4 text-center text-xs text-[var(--color-ink-dim)]">
-        Third-party figures checked {formatDate(performanceVerifiedAt)} · a demo account is labelled as a demo on every
-        row.
-      </p>
-      <p class="mx-auto mt-6 max-w-3xl text-center text-xs leading-6 text-[var(--color-ink-dim)]">{RISK_DISCLAIMER}</p>
+      <TableNotes checked={formatDate(performanceVerifiedAt)} demos />
       <div class="mt-8 flex justify-center">
         <a href={url('/top-ranking')} class="btn btn-primary">See the full ranking</a>
       </div>

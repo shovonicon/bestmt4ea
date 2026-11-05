@@ -20,7 +20,7 @@ import AnswerBox from '../components/AnswerBox.astro';
 import Faq from '../components/Faq.astro';
 import { getPublicProducts } from '../lib/content';
 import { getPerformance } from '../lib/performance';
-import { RISK_DISCLAIMER } from '../lib/site';
+import TableNotes from '../components/TableNotes.astro';
 import { monthYear, performanceVerifiedAt } from '../lib/dates';
 import { formatDate } from '../lib/format';
 import { url } from '../lib/urls';
@@ -192,10 +192,7 @@ const related = [
       <ComparisonRegistry products={products} />
     </div>
 
-    <p class="mt-4 text-center text-xs text-[var(--color-ink-dim)]">
-      Third-party figures checked {checkedOn}.
-    </p>
-    <p class="mx-auto mt-6 max-w-3xl text-center text-xs leading-6 text-[var(--color-ink-dim)]">{RISK_DISCLAIMER}</p>
+    <TableNotes checked={checkedOn} />
 
     <div class="mt-10 flex flex-wrap justify-center gap-3">
       <a href={url('/top-ranking')} class="btn btn-primary !px-7 !py-3.5 !text-base">Compare every system</a>
