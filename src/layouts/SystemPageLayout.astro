@@ -1,0 +1,127 @@
+---
+/**
+ * System pages: legal, policy and methodology pages (`systemPage: true`).
+ *
+ * The blog post reading layout without the post chrome: a centered reading column,
+ * the "On this page" outline, and the two sticky partner rails (RoboForex on the
+ * left, Exness plus our own VPS and account services on the right).
+ *
+ * Ads sit in the rails and nowhere else. There is no in-flow sponsor card, no
+ * after-copy card, and `rehype-in-article-ads` skips these pages, so the text
+ * itself never carries one. The rails need 1740px of width: on a narrower screen
+ * the page shows no ad at all, by design, rather than moving them into the text.
+ *
+ * The rail and grid CSS is shared with `LongFormLayout` (`.longform`, `.rf-rail-*`,
+ * `.tool-rail-*`, `.toc-*`).
+ */
+import { render } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import RInfinityRail from '../components/RInfinityRail.astro';
+import ToolRailAds from '../components/ToolRailAds.astro';
+import Faq from '../components/Faq.astro';
+import { countWords, extractHeadings, readingMinutes } from '../lib/reading';
+import { breadcrumbSchema, faqSchema } from '../lib/seo';
+
+export interface Props {
+  entry: any;
+}
+
+const { entry } = Astro.props;
+const data = entry.data;
+const { Content } = await render(entry);
+
+const body: string = entry.body ?? '';
+const headings = extractHeadings(body);
+const minutes = readingMinutes(countWords(body));
+
+const fmtDate = (d?: Date) =>
+  d
+    ? new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(d)
+    : undefined;
+const updatedLabel = fmtDate(data.updatedAt ?? data.publishedAt);
+
+const pageUrl = `/${data.slug}/`;
+const trail = [
+  { name: 'Home', url: '/' },
+  { name: data.title, url: pageUrl },
+];
+const hasFaqs = Boolean(data.faqs?.length);
+---
+
+<BaseLayout
+  title={data.seo.title || data.title}
+  description={data.seo.description || data.description}
+  canonical={data.seo.canonical}
+  ogImage={data.seo.ogImage || data.featuredImage}
+  robots={data.seo.robots}
+  jsonLd={[breadcrumbSchema(trail), ...(hasFaqs ? [faqSchema(data.faqs)] : [])]}
+>
+  <div class="container-x relative pt-8 pb-16">
+    <div class="rf-rail-slot">
+      <div class="rf-rail-sticky">
+        <RInfinityRail />
+      </div>
+    </div>
+
+    <div class="tool-rail-slot">
+      <div class="tool-rail-sticky">
+        <ToolRailAds />
+      </div>
+    </div>
+
+    <div class="longform">
+      <div class="longform-main">
+        <nav aria-label="Breadcrumb" class="text-xs text-[var(--color-ink-dim)]">
+          <a href="/" class="hover:text-[var(--color-accent)]">Home</a>
+          <span class="mx-2">/</span>
+          <span class="text-[var(--color-ink-soft)]">{data.title}</span>
+        </nav>
+
+        <header class="mt-6">
+          <h1 class="text-balance text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">{data.title}</h1>
+          {
+            data.description && (
+              <p class="mt-5 max-w-2xl text-lg leading-8 text-[var(--color-ink-soft)]">{data.description}</p>
+            )
+          }
+          <div class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-white/5 pt-5 text-sm">
+            {updatedLabel && <span class="font-medium text-[var(--color-accent-soft)]">Updated {updatedLabel}</span>}
+            <span class="text-[var(--color-ink-dim)]">{minutes} min read</span>
+          </div>
+        </header>
+
+        {
+          headings.length > 0 && (
+            <>
+              <div class="mt-8 lg:hidden">
+                <TableOfContents headings={headings} variant="collapsible" />
+              </div>
+              <div class="toc-inline-slot mt-8 hidden lg:block">
+                <TableOfContents headings={headings} />
+              </div>
+            </>
+          )
+        }
+
+        <div class="prose-article mt-10">
+          <Content />
+        </div>
+
+        {
+          hasFaqs && (
+            <div class="mt-12">
+              <Faq items={data.faqs} heading="Frequently asked questions" />
+            </div>
+          )
+        }
+      </div>
+    </div>
+
+    <div class="toc-slot">
+      <div class="toc-sticky">
+        <TableOfContents headings={headings} variant="rail" minutes={minutes} />
+      </div>
+    </div>
+  </div>
+</BaseLayout>

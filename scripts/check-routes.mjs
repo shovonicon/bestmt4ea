@@ -6,7 +6,7 @@
  * hand-edited manifest cannot deploy:
  *
  *   - no source may collide with a live route (redirects must never shadow
- *     real pages — notably /disclaimer/, /dmca-policy/, /special-discount/)
+ *     real pages — notably /disclaimer/, /dmca-policy/, /methodology/)
  *   - every local target must be a live route (no redirect may land on a 404)
  *   - no duplicate sources, no self-redirects, no unsupported statuses
  *   - no rule may be an unresolved chain hop (every target must be final)
@@ -26,7 +26,7 @@ const PROTECTED_ROUTES = [
   '/affiliate-disclosure/',
   '/privacy-policy/',
   '/terms-conditions/',
-  '/special-discount/',
+  '/methodology/',
 ];
 
 const VALID_STATUSES = new Set([301, 302, 307, 308, 410, 451]);

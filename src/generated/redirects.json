@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-05T05:49:03.338Z",
+  "generatedAt": "2026-11-05T07:09:50.095Z",
   "source": "wordpress-seo-redirects (2).csv",
-  "count": 2405,
+  "count": 2406,
   "dropped": [
     {
       "from": "/product/bbp-ai-golden-ea",
@@ -13,7 +13,7 @@
       "from": "/special-discount",
       "to": "/",
       "status": 301,
-      "reason": "source collides with a live route"
+      "reason": "superseded by manual rule"
     },
     {
       "from": "/market-sentiment",
@@ -16720,6 +16720,11 @@
     {
       "from": "/spearman-correlation-forex-indicator-free-download-powerful-proven-7-step-trading-advantage",
       "to": "/cpr-forex-indicator-for-mt4-free-download-7-powerful-benefits-proven-trading-secrets/",
+      "status": 301
+    },
+    {
+      "from": "/special-discount/",
+      "to": "/best-forex-brokers/",
       "status": 301
     },
     {

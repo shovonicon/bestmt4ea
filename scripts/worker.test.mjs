@@ -109,9 +109,16 @@ console.log(`Loaded ${manifest.rules.length} manifest rules.`);
 }
 
 /* --- legal routes are NOT intercepted -------------------------------------- */
-for (const legal of ['/disclaimer/', '/disclaimer', '/dmca-policy/', '/dmca-policy', '/special-discount']) {
+for (const legal of ['/disclaimer/', '/disclaimer', '/dmca-policy/', '/dmca-policy', '/methodology/']) {
   check(`legal route passes through: ${legal}`, matchRedirect(map, legal), { kind: 'pass' });
 }
+
+/* The retired special-discount page redirects to the broker comparison (owner decision, 2026-11-05). */
+check('retired special-discount page 301s to the brokers page', matchRedirect(map, '/special-discount/'), {
+  kind: 'redirect',
+  status: 301,
+  location: '/best-forex-brokers/',
+});
 
 /* --- unknown paths 404 ------------------------------------------------------ */
 check('unknown path passes through', matchRedirect(map, '/no-such-page-anywhere/'), { kind: 'pass' });

@@ -184,7 +184,8 @@ That constraint dictates the placement:
 - ✅ Below the article, above the FAQ.
 - ❌ **Never adjacent to a download button or checkout CTA.**
 - ❌ Never above the answer box — it pushes the answer below the fold.
-- ❌ Never on checkout, cart, or legal pages.
+- ❌ Never on checkout or cart pages.
+- ⚠️ System pages (legal, policy and methodology: `systemPage: true`) use `SystemPageLayout`. They carry the two sticky side rails only (partner cards, 1740px and wider) and **never an ad in the text**: no in-flow card and no injected banner or AdSense unit (`rehype-in-article-ads` skips them). Owner decision, 2026-11-05; it replaces the earlier "never on legal pages" rule.
 - ❌ Maximum one unit per 500 words.
 
 On **free-download pages** the install steps sit between the download card and the

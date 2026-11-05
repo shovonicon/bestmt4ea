@@ -1100,6 +1100,11 @@
       "from": "/product_brand-sitemap.xml",
       "to": "/",
       "status": 410
+    },
+    {
+      "from": "/special-discount/",
+      "to": "/best-forex-brokers/",
+      "status": 301
     }
   ],
   "_phase3Note": "2026-11-05 (Phase 3): old category page-N archives 301 to their category, as the earlier page-N rules do. The retired Euro Hedger product follows the EA-product convention. The old Yoast product_brand sitemap is 410. /blog/page/N/ is 410 by pattern.",

@@ -20,7 +20,9 @@
  *    is the one AdSense reserves, so requiring height before asking deadlocks it.
  *  - Nothing is injected when `PUBLIC_ADSENSE_CLIENT` is unset, matching AdSlot.
  *    Banners are independent of AdSense and render regardless.
- *  - Only posts use this.
+ *  - Posts and ordinary pages use this. System pages (`systemPage: true`: legal,
+ *    policy, methodology) are skipped: their ads live in the side rails and never
+ *    in the text.
  */
 
 const BLOCK_TAGS = new Set(['h2', 'h3', 'h4', 'p', 'ul', 'ol', 'blockquote', 'pre', 'table']);
@@ -124,7 +126,9 @@ function adNode({ client, slot, index }) {
 }
 
 export function rehypeInArticleAds({ client, slot, banners = [] } = {}) {
-  return (tree) => {
+  return (tree, file) => {
+    if (file?.data?.astro?.frontmatter?.systemPage === true) return;
+
     const blockIndices = [];
     tree.children.forEach((node, i) => {
       if (node.type === 'element' && BLOCK_TAGS.has(node.tagName)) blockIndices.push(i);
