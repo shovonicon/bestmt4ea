@@ -10,7 +10,7 @@
       "offer": "Welcome bonus $30",
       "recommended": true,
       "bestFor": "Grid EAs, MT5 Cent, ECN scalping",
-      "restrictedCountries": "USA, Canada, Japan, Australia, Bonaire, Brazil, Curaçao, East Timor, Indonesia, Iran, Liberia, Saipan, Russia, Sint Eustatius, Tahiti, Turkey, Guinea-Bissau, Micronesia, Northern Mariana Islands, Svalbard and Jan Mayen, South Sudan, Ukraine, Belarus",
+      "restrictedCountries": "USA, Canada, Japan, Australia, Belarus, Bonaire, Brazil, Cuba, Curaçao, East Timor, European Union, EEA, Guinea-Bissau, Indonesia, Iran, Liberia, Micronesia, North Korea, Northern Mariana Islands, Russia, Saipan, Sint Eustatius, South Sudan, Svalbard and Jan Mayen, Syria, Tahiti, Turkey, Ukraine, United Kingdom",
       "acceptedCountries": "Worldwide"
     },
     {
@@ -22,7 +22,7 @@
       "offer": "Free VPS",
       "recommended": true,
       "bestFor": "Instant withdrawals, Gold scalping",
-      "restrictedCountries": "USA, UK, EU, Canada, Japan, UAE/Saudi",
+      "restrictedCountries": "American Samoa, Andorra, Australia, Austria, Baker Island, Belarus, Belgium, Bulgaria, Canada, China, Croatia, Cuba, Curacao, Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Guam, Heard and McDonald Islands, Hong Kong, Howland Island, Hungary, Iceland, Iran, Iraq, Ireland, Israel, Italy, Japan, Jarvis Island, Johnston Atoll, Kingman Reef, Latvia, Liechtenstein, Lithuania, Luxembourg, Malaysia, Malta, Marshall Islands, Micronesia, Midway Islands, Monaco, Navassa Island, Netherlands, New Zealand, North Korea, Northern Mariana Islands, Norway, Palau, Palmyra Atoll, Poland, Portugal, Puerto Rico, Romania, Russia, Singapore, Slovakia, Slovenia, Spain, Sweden, Syria, United Kingdom, United States, Uruguay, US Virgin Islands, Vanuatu, Vatican City, Wake Island, Yemen",
       "acceptedCountries": "130+ countries: Asia, Africa, LATAM"
     },
     {
@@ -34,7 +34,7 @@
       "offer": "$500 bonus",
       "recommended": true,
       "bestFor": "MT5 Cent, swap-free Gold, EAs",
-      "restrictedCountries": "USA, Canada, Japan, Iran, North Korea",
+      "restrictedCountries": "USA, Canada, Sudan, Syria, North Korea, Iran, Iraq, Mauritius, Myanmar, Yemen, Afghanistan, Vanuatu, EU, EEA, Belarus, Cuba, Haiti, Japan, Libya, Russia, Somalia, South Sudan, Venezuela, Zimbabwe",
       "acceptedCountries": "GCC, South Asia, Africa, LATAM"
     },
     {
@@ -46,7 +46,7 @@
       "offer": "20% deposit bonus",
       "recommended": true,
       "bestFor": "Micro-lot EAs, deposit bonuses",
-      "restrictedCountries": "USA, Canada, Israel, Iran, North Korea",
+      "restrictedCountries": "USA, Canada, Israel, Iran, North Korea, Australia, Belarus, China, Cuba, EU, EEA, Japan, Malaysia, Myanmar, New Zealand, Russia, Singapore, Sudan, Syria, United Kingdom",
       "acceptedCountries": "190+ countries worldwide"
     },
     {
@@ -58,7 +58,7 @@
       "offer": "No current offer",
       "recommended": true,
       "bestFor": "Cent Grid EAs, high-leverage Gold",
-      "restrictedCountries": "USA, UK, Canada, Australia, Japan, India",
+      "restrictedCountries": "Australia, Canada, EU, EEA, Belgium, Japan, United Kingdom, USA, Belarus, Cuba, India, Iran, Iraq, Myanmar, North Korea, Russia, South Sudan, Sudan, Syria, Ukraine, Yemen",
       "acceptedCountries": "SE Asia, South Asia, GCC, Africa"
     },
     {
@@ -68,7 +68,7 @@
       "platforms": "MT4, MT5, TradingView",
       "accountTypes": "Standard, Zero Spread",
       "bestFor": "Low-cost ECN scalping ($4.50 RT)",
-      "restrictedCountries": "USA, Canada, Japan, New Zealand",
+      "restrictedCountries": "USA, Canada (Ontario), Israel, Japan, North Korea, Belgium, New Zealand, Spain, Afghanistan, Belarus, Congo, Iran, Iraq, Myanmar, Palestine, Russia, Somalia, Sudan, Syria, Ukraine, Yemen",
       "acceptedCountries": "Australia, UK, Europe, LATAM"
     },
     {
@@ -79,7 +79,7 @@
       "accountTypes": "Standard, Cent",
       "offer": "100% deposit bonus",
       "bestFor": "Cent Pro grid and martingale EAs",
-      "restrictedCountries": "USA, Canada, UK, EU, Australia, Japan",
+      "restrictedCountries": "Afghanistan, Australia, Bosnia and Herzegovina, British Virgin Islands, Canada, EEA, EU, Guyana, India, Iran, Iraq, Japan, Laos, Latvia, Myanmar, Papua New Guinea, Singapore, Syria, Uganda, United Kingdom, United States, Vanuatu, Yemen, Belarus, North Korea, Russia, Ukraine",
       "acceptedCountries": "SE Asia, South Asia, CIS, Africa"
     },
     {
@@ -89,7 +89,7 @@
       "platforms": "MT4, MT5, cTrader",
       "accountTypes": "Standard, Zero Spread",
       "bestFor": "HFT and low-latency scalping",
-      "restrictedCountries": "USA, Canada, Israel, New Zealand, Japan",
+      "restrictedCountries": "USA, Canada, Israel, New Zealand, Iran, North Korea, Afghanistan, Australia, Belarus, Belgium, Central African Republic, Congo, Cuba, Iraq, Japan, Libya, Mali, Myanmar, Russia, Somalia, South Sudan, Spain, Sudan, Syria, Ukraine, Yemen, Zimbabwe",
       "acceptedCountries": "Australia, UK, EU, Asia, Africa"
     },
     {
@@ -99,7 +99,7 @@
       "platforms": "MT4, MT5",
       "accountTypes": "Standard, Cent, Zero Spread",
       "bestFor": "Swing trading, hedging, FX options",
-      "restrictedCountries": "USA, New Zealand, Belgium, Iran",
+      "restrictedCountries": "USA, Belarus, Belgium, Cuba, Iran, Lebanon, New Zealand, North Korea, Russia, Syria, Brazil, Iraq, Libya, Myanmar, Somalia, South Sudan, Sudan, Turkey, Yemen, Zimbabwe",
       "acceptedCountries": "EU, UAE, Australia, Japan, S. Africa"
     },
     {
@@ -109,7 +109,7 @@
       "platforms": "MT4, MT5",
       "accountTypes": "Standard, Zero Spread",
       "bestFor": "Raw ECN scalping, MT4/MT5 Cent",
-      "restrictedCountries": "USA, Canada, Japan, China, Singapore",
+      "restrictedCountries": "India, Canada, China, Singapore, USA, Afghanistan, Australia, Belarus, Central African Republic, Congo, Cuba, Hong Kong, Iran, Iraq, Japan, Libya, Myanmar, North Korea, Russia, Somalia, South Sudan, Sudan, Syria, Ukraine, Venezuela, Yemen, Zimbabwe",
       "acceptedCountries": "APAC, UK, LATAM, Africa"
     },
     {
@@ -119,7 +119,7 @@
       "platforms": "MT4, MT5",
       "accountTypes": "Standard, Zero Spread",
       "bestFor": "Crypto-funded ECN trading",
-      "restrictedCountries": "USA, OFAC-sanctioned countries",
+      "restrictedCountries": "USA, Québec (Canada), Belgium, Belarus, Russia, Iran, North Korea, Sudan, Yemen, EU, EEA, Myanmar, Syria",
       "acceptedCountries": "Global crypto traders (non-sanctioned)"
     },
     {
@@ -130,7 +130,7 @@
       "accountTypes": "Standard, Micro, Zero Spread",
       "offer": "Welcome bonus $50",
       "bestFor": "ECN scalping, fast execution",
-      "restrictedCountries": "USA, Canada, Japan, South Korea, Brazil",
+      "restrictedCountries": "USA, Mauritius, Japan, Canada, Haiti, Iran, Suriname, North Korea, Puerto Rico, North Cyprus, Quebec, Iraq, Syria, Cuba, Belarus, Myanmar, Russia, India, United Kingdom, EEA, United States",
       "acceptedCountries": "Africa, UK, SE Asia, Middle East"
     },
     {

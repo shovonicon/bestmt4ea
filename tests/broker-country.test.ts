@@ -55,9 +55,9 @@ describe('statusFor', () => {
   });
 
   it('lets a restriction beat a wider accepted region', () => {
-    // Exness accepts "Asia" but restricts the UAE and Saudi Arabia by name.
-    expect(statusFor(rule('exness'), 'AE')).toBe('restricted');
-    expect(statusFor(rule('exness'), 'SA')).toBe('restricted');
+    // Exness accepts "Asia" but restricts China and Singapore by name.
+    expect(statusFor(rule('exness'), 'CN')).toBe('restricted');
+    expect(statusFor(rule('exness'), 'SG')).toBe('restricted');
     // Avatrade accepts the EU but restricts Belgium by name.
     expect(statusFor(rule('avatrade'), 'BE')).toBe('restricted');
     expect(statusFor(rule('avatrade'), 'DE')).toBe('accepted');
@@ -67,7 +67,8 @@ describe('statusFor', () => {
   });
 
   it('says unknown, not accepted, when the text does not cover the country', () => {
-    expect(statusFor(rule('hfm'), 'DE')).toBe('unknown');
+    expect(statusFor(rule('hfm'), 'GB')).toBe('unknown');
+    expect(statusFor(rule('hfm'), 'DE')).toBe('restricted'); // EEA is restricted by name
     expect(statusFor(rule('exness'), 'FR')).toBe('restricted'); // EU is restricted by name
     expect(statusFor(rule('icmarkets'), 'TR')).toBe('unknown'); // Türkiye is not in "Asia"
   });
