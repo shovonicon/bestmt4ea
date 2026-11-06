@@ -245,7 +245,7 @@ const split = (text: string) =>
   const STORAGE_KEY = 'bestmt4ea.brokerCountry';
   const LABEL: Record<Flag, string> = {
     a: 'Listed as available',
-    r: 'Restricted in your country',
+    r: 'Ask broker',
     u: 'Ask broker',
   };
   const TIER: Record<Flag, number> = { a: 0, u: 1, r: 2 };
@@ -274,15 +274,14 @@ const split = (text: string) =>
       flag === 'a' && name ? `Listed as available in ${name}` : LABEL[flag];
 
     /**
-     * A broker restricted in the chosen country is hidden, not just marked. Only a broker whose
-     * status is not stated keeps a badge ("Ask broker"); an available one needs none.
+     * Every broker stays listed. A broker that restricts the chosen country, or states no policy
+     * for it, shows an "Ask broker" badge; an available one needs none.
      */
     const paintBadge = (el: Element, flag: Flag | null, name: string | null) => {
-      if (flag === 'r') el.setAttribute('data-country-hidden', '');
-      else el.removeAttribute('data-country-hidden');
+      el.removeAttribute('data-country-hidden');
       const badge = el.querySelector<HTMLElement>('[data-country-badge]');
       if (!badge) return;
-      if (flag !== 'u') {
+      if (flag !== 'u' && flag !== 'r') {
         badge.hidden = true;
         badge.textContent = '';
         badge.removeAttribute('data-flag');
@@ -290,7 +289,7 @@ const split = (text: string) =>
       }
       badge.hidden = false;
       badge.textContent = badgeText(flag, name);
-      badge.dataset.flag = flag;
+      badge.dataset.flag = 'u';
     };
 
     /** Rank = place among the brokers still shown, so hiding a restricted broker closes the gap. */
@@ -316,13 +315,6 @@ const split = (text: string) =>
         row.dataset.tier = flag ? String(TIER[flag]) : '0';
         row.dataset.countryStatus = flag ? badgeText(flag, name) : '';
         paintBadge(row, flag, name);
-        if (flag === 'r') {
-          const box = row.querySelector<HTMLInputElement>('[data-compare-check]');
-          if (box?.checked) {
-            box.checked = false;
-            box.dispatchEvent(new Event('change', { bubbles: true }));
-          }
-        }
         if (flag) counts[flag] += 1;
       });
       root.dispatchEvent(new Event('rank-table:resort'));
@@ -360,7 +352,8 @@ const split = (text: string) =>
         note.textContent =
           "Your country is not in our list, so we cannot tell you which brokers take it. Read each broker's restricted-country list before you register, and confirm with the broker.";
       } else {
-        note.textContent = `Showing ${counts.a + counts.u} of ${counts.a + counts.u + counts.r} brokers for ${name}${counts.u ? `, ${counts.u} of them without a stated policy for your country (marked "Ask broker")` : ''}. Brokers that list ${name} as restricted are hidden. A list is the broker's stated policy and not a guarantee, so confirm with the broker before you open an account.`;
+        const askCount = counts.u + counts.r;
+        note.textContent = `Showing all ${counts.a + askCount} brokers for ${name}${askCount ? `, ${askCount} of them marked "Ask broker" because they restrict ${name} or state no policy for it` : ''}. A list is the broker's stated policy and not a guarantee, so confirm with the broker before you open an account.`;
       }
     };
 

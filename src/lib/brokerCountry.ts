@@ -9,13 +9,13 @@
  * Rules, in order of precedence:
  *   1. RESTRICTED always wins. A country named in the restricted list is restricted
  *      even when a wider accepted region (for example "Asia") would include it.
- *   2. ACCEPTED only when the broker's own text names the country, or a region that
- *      is unambiguously made of it, or says "worldwide".
- *   3. Everything else is UNKNOWN and the page says "Ask broker".
+ *   2. Everything else is ACCEPTED (owner rule, 2026-11-06): a broker is available in
+ *      every country it does not restrict. The accepted text is no longer used to
+ *      decide availability, so nothing falls to UNKNOWN.
  *
- * The direction of every doubt is the same: when a region's boundary is arguable
- * (for example whether "Middle East" includes Turkey), the country is left out of
- * the region, so it falls to UNKNOWN rather than being shown as available.
+ * Restricted region boundaries still matter: when one is arguable (for example
+ * whether "Middle East" includes Turkey), the country is left out of the region,
+ * so it is shown as available.
  *
  * A word this module does not recognise throws. That is deliberate: silently
  * ignoring a new restriction would show a restricted country as available, so an
@@ -298,8 +298,9 @@ export function parseBroker(broker: BrokerCountryText): BrokerCountryRule {
 
 export function statusFor(rule: BrokerCountryRule, code: string): CountryStatus {
   if (rule.restricted.codes.has(code)) return 'restricted';
-  if (rule.accepted.worldwide || rule.accepted.codes.has(code)) return 'accepted';
-  return 'unknown';
+  // Owner rule: a country is allowed unless the broker restricts it. The accepted
+  // list no longer gates availability.
+  return 'accepted';
 }
 
 /** Compact flag used in the page payload: a for accepted, r for restricted, u for unknown. */

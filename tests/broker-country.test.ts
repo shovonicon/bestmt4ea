@@ -66,11 +66,11 @@ describe('statusFor', () => {
     expect(statusFor(rule('binance'), 'DE')).toBe('accepted');
   });
 
-  it('says unknown, not accepted, when the text does not cover the country', () => {
-    expect(statusFor(rule('hfm'), 'GB')).toBe('unknown');
+  it('accepts any country the restricted list does not name', () => {
+    expect(statusFor(rule('hfm'), 'GB')).toBe('accepted');
     expect(statusFor(rule('hfm'), 'DE')).toBe('restricted'); // EEA is restricted by name
     expect(statusFor(rule('exness'), 'FR')).toBe('restricted'); // EU is restricted by name
-    expect(statusFor(rule('icmarkets'), 'TR')).toBe('unknown'); // Türkiye is not in "Asia"
+    expect(statusFor(rule('icmarkets'), 'TR')).toBe('accepted'); // not restricted, so allowed
   });
 
   it('accepts everywhere for a worldwide broker, except the restricted list', () => {
