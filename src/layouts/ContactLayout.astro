@@ -1,0 +1,115 @@
+---
+/**
+ * Contact page layout. Three ways to reach the desk, each a labelled card with a
+ * real destination: email, Telegram support and the community. Destinations come
+ * from `src/lib/site.ts`, so a changed address is one edit. The page body in
+ * `contact.md` is rendered below the cards for any extra copy.
+ */
+import { render } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import { site } from '../lib/site';
+import { breadcrumbSchema } from '../lib/seo';
+
+export interface Props {
+  entry: any;
+}
+
+const { entry } = Astro.props;
+const data = entry.data;
+const { Content } = await render(entry);
+
+const trail = [
+  { name: 'Home', url: '/' },
+  { name: data.title, url: '/contact/' },
+];
+
+const channels = [
+  {
+    key: 'email',
+    eyebrow: 'Email',
+    title: 'Send us a message',
+    text: 'Account, licence and product questions.',
+    cta: 'Email the team',
+    href: `mailto:${site.contactEmail}`,
+    value: site.contactEmail,
+    external: false,
+  },
+  {
+    key: 'telegram',
+    eyebrow: 'Live support',
+    title: 'Message on Telegram',
+    text: 'Setup help, installation and quick technical questions.',
+    cta: 'Open Telegram support',
+    href: site.telegram.support,
+    value: 't.me/pizion',
+    external: true,
+  },
+  {
+    key: 'community',
+    eyebrow: 'Community',
+    title: 'Join the trader group',
+    text: 'Get the latest updates and notices.',
+    cta: 'Join the community',
+    href: site.telegram.community,
+    value: 't.me/millionaireeliteclub',
+    external: true,
+  },
+];
+---
+
+<BaseLayout
+  title={data.seo.title || data.title}
+  description={data.seo.description || data.description}
+  canonical={data.seo.canonical}
+  ogImage={data.seo.ogImage || data.featuredImage}
+  robots={data.seo.robots}
+  jsonLd={[breadcrumbSchema(trail)]}
+>
+  <div class="container-x pt-8">
+    <nav aria-label="Breadcrumb" class="text-xs text-[var(--color-ink-dim)]">
+      <a href="/" class="hover:text-[var(--color-accent)]">Home</a>
+      <span class="mx-2">/</span>
+      <span class="text-[var(--color-ink-soft)]">{data.title}</span>
+    </nav>
+  </div>
+
+  <div class="container-x mt-8 pb-20">
+    <header class="animate-fade-in-up max-w-3xl">
+      <p class="eyebrow flex items-center gap-3">
+        <span class="inline-block h-px w-8 bg-[var(--color-accent)]" aria-hidden="true"></span>
+        Get in touch
+      </p>
+      <h1 class="mt-4 text-3xl leading-tight tracking-tight sm:text-4xl lg:text-5xl">Talk to the BESTMT4EA team</h1>
+      <p class="mt-5 max-w-2xl text-base leading-8 text-[var(--color-ink-soft)] sm:text-lg">
+        Pick the channel that fits your question. Support is available around the clock on Telegram.
+      </p>
+    </header>
+
+    <ul class="mt-12 grid gap-6 md:grid-cols-3" role="list">
+      {
+        channels.map((c) => (
+          <li class="brand-card flex flex-col rounded-2xl p-6">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-accent)]">{c.eyebrow}</p>
+            <h2 class="mt-3 text-xl font-bold leading-snug text-[var(--color-ink)]">{c.title}</h2>
+            <p class="mt-3 text-sm leading-7 text-[var(--color-ink-soft)]">{c.text}</p>
+            <a
+              href={c.href}
+              class="btn btn-primary mt-6 self-start"
+              {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            >
+              {c.cta}
+              <span aria-hidden="true">→</span>
+              {c.external && <span class="sr-only">(opens in a new tab)</span>}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <article class="mt-14 max-w-3xl">
+      <div class="prose-article max-w-none">
+        <Content />
+      </div>
+    </article>
+  </div>
+</BaseLayout>

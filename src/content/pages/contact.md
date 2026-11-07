@@ -15,14 +15,6 @@ systemPage: false
 draft: false
 ---
 
-### Need Help?
+### Other ways to reach us
 
-#### Talk to our Experts. We’re available 24/7.
-
-#### Contact us
-
-[](https://www.facebook.com/ForexTradingwithAIEA)[](https://t.me/pizion)
-
-#### Email to us
-
-[**bestmt4ea@gmail.com**](mailto:bestmt4ea@gmail.com)
+For anything the cards above do not cover, email the team and include the page you were reading and your MT4 or MT5 version. Never send passwords or full account numbers by email or Telegram.

@@ -6,6 +6,7 @@ import BrokersLayout from '../layouts/BrokersLayout.astro';
 import CopyTradingLayout from '../layouts/CopyTradingLayout.astro';
 import ReviewsLayout from '../layouts/ReviewsLayout.astro';
 import SystemPageLayout from '../layouts/SystemPageLayout.astro';
+import ContactLayout from '../layouts/ContactLayout.astro';
 import { extractHeadings } from '../lib/reading';
 import { RESERVED_SLUGS, assertRootSlugIntegrity } from '../lib/content';
 
@@ -82,6 +83,8 @@ if (kind === 'post') {
       <CopyTradingLayout entry={entry} />
     ) : REVIEW_SLUGS.has(entry.data.slug) ? (
       <ReviewsLayout entry={entry} />
+    ) : entry.data.slug === 'contact' ? (
+      <ContactLayout entry={entry} />
     ) : entry.data.systemPage ? (
       <SystemPageLayout entry={entry} />
     ) : (

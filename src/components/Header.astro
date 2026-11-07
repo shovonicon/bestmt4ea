@@ -103,16 +103,16 @@ if (blogColumns.length > 0) {
 /** Links shown before the dropdown menus. */
 const leadLinksRaw = [
   { href: '/', label: 'Home' },
-  { href: '/top-ranking', label: 'Top Ranking' },
+  { href: '/top-ranking', label: 'EA Rankings' },
 ];
 
 /** Links shown after the dropdown menus. */
 const tailLinksRaw = [
-  { href: '/tools', label: 'Tools' },
-  { href: '/best-forex-brokers', label: 'Brokers' },
+  { href: '/best-forex-brokers', label: 'Forex Brokers' },
   { href: '/copy-trading', label: 'Fund Management' },
-  { href: '/customer-feedback', label: 'Feedback' },
-  { href: '/product/vps', label: 'VPS' },
+  { href: '/tools', label: 'Free Tools' },
+  { href: '/product/vps', label: 'Forex VPS' },
+  { href: '/customer-feedback', label: 'Testimonials' },
 ];
 
 /** The store, highlighted in the bar. It replaces both the old "Shop" link and the old button. */
@@ -121,31 +121,31 @@ const exploreCount = products.length;
 
 const menusRaw = [
   {
-    label: 'Products',
+    label: 'Expert Advisors',
     columns: [
       { title: 'Featured Expert Advisors', icon: 'flash', links: featured },
       { title: 'More Systems & Tools', icon: 'tools', links: moreProducts },
     ],
   },
   {
-    label: 'Reviews',
+    label: 'EA Reviews',
     columns: [
       {
-        title: 'Compare Platforms',
+        title: 'Best EAs by Platform',
         icon: 'chart',
         links: [
           { href: '/best-mt4-ea', label: 'Best MT4 EAs' },
           { href: '/best-mt5-ea', label: 'Best MT5 EAs' },
           { href: '/best-forex-ea', label: 'Best Forex EAs' },
-          { href: '/top-ranking', label: 'View All Rankings' },
+          { href: '/top-ranking', label: 'All EA Rankings' },
         ],
       },
       {
-        title: 'Compare Strategies',
+        title: 'Best EAs by Strategy',
         links: [
           { href: '/product-category/gold-forex-ea', label: 'Best Gold EAs' },
-          { href: '/product-category/forex-robot', label: 'Scalping Robots' },
-          { href: '/product-category/indicator', label: 'Indicators' },
+          { href: '/product-category/forex-robot', label: 'Best Scalping Robots' },
+          { href: '/product-category/indicator', label: 'Forex Indicators' },
         ],
       },
       {
@@ -160,7 +160,7 @@ const menusRaw = [
     ],
   },
   {
-    label: 'Blog',
+    label: 'Forex Blog',
     href: '/blog',
     columns: blogColumns,
   },
@@ -365,7 +365,7 @@ const searchIndexUrl = url('/search-index.json').replace(/\/$/, '');
         aria-current={isActive(exploreHref) ? 'page' : undefined}
       >
         <span class="live-dot" aria-hidden="true"></span>
-        Explore EAs
+        EA Store
         <span class="nav-explore-count" aria-label={`${exploreCount} systems`}>{exploreCount}</span>
       </a>
       {
@@ -525,7 +525,7 @@ const searchIndexUrl = url('/search-index.json').replace(/\/$/, '');
       >
         <span class="flex items-center gap-2.5">
           <span class="live-dot" aria-hidden="true"></span>
-          Explore EAs
+          EA Store
         </span>
         <span class="nav-explore-count">{exploreCount} systems</span>
       </a>

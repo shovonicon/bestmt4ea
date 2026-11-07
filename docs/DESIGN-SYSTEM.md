@@ -122,7 +122,7 @@ Every page renders these from `BaseLayout.astro`:
 - Fixed header, transparent at the top and `bg-black/80` + `backdrop-blur-xl` with a
   hairline border once scrolled.
 - Order: **Home · Top Ranking · Products ▾ · Reviews ▾ · Blog ▾ · Shop**, then the
-  Support link and the gradient "Explore EAs" CTA.
+  Support link and the gradient "EA Store" CTA.
 - Dropdowns are **mega-menus** (`.menu-panel`, `.menu-open`): 2–3 columns, mono
   uppercase emerald column headers, links with an emerald left-border + wash on hover.
   Open on hover *and* click; close on mouse-leave (220ms delay), Escape, or outside
