@@ -2057,6 +2057,47 @@ html { scroll-padding-top: 5rem; }
 :root[data-theme="light"] body > footer .bg-white\/\[0\.04\] { background-color: rgba(255, 255, 255, 0.7); }
 :root[data-theme="light"] body > footer .bg-black\/40 { background-color: rgba(255, 255, 255, 0.6); }
 
+/*
+ * Floating chrome that lives directly under <body>, outside the header / main /
+ * footer scopes above, so the remaps below never reach it. Without these the
+ * compare dialog's title and close button were white on a white panel, the compare
+ * bar stayed a black slab on a light page, and the Telegram icon was white on mint.
+ */
+:root[data-theme="light"] .compare-bar {
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(0, 40, 30, 0.14);
+  box-shadow: 0 10px 30px rgba(0, 40, 30, 0.16);
+}
+:root[data-theme="light"] .compare-bar .text-white,
+:root[data-theme="light"] .compare-dialog .text-white { color: #051f20; }
+:root[data-theme="light"] .compare-dialog .border-white\/15 { border-color: rgba(0, 40, 30, 0.2); }
+:root[data-theme="light"] .compare-dialog .hover\:text-emerald-300:hover { color: #006b4c; }
+:root[data-theme="light"] .compare-dialog .hover\:border-emerald-400\/50:hover { border-color: #00875f; }
+:root[data-theme="light"] [data-telegram-fab] { color: #051f20; }
+
+/*
+ * Gaps found auditing the dashboard, login, admin and calculator pages:
+ *  - inputs that carry both text-white and a bg- class are skipped by the generic
+ *    text-white remap below, so typed text was white on a pale field;
+ *  - bg-black/70..90 (sticky table heads) stayed black while their text was remapped
+ *    to dark grey;
+ *  - text-amber-100 (account warnings) had no light mapping, unlike amber 200-400;
+ *  - the "download ready" toast is injected inside <main> with a dark panel, so the
+ *    remapped dark text sat on a dark panel. It gets a light panel instead.
+ */
+:root[data-theme="light"] main input.text-white,
+:root[data-theme="light"] main textarea.text-white,
+:root[data-theme="light"] main select.text-white { color: #051f20; }
+:root[data-theme="light"] main .bg-black\/70,
+:root[data-theme="light"] main .bg-black\/80,
+:root[data-theme="light"] main .bg-black\/90 { background-color: rgba(255, 255, 255, 0.92); }
+:root[data-theme="light"] main .text-amber-100 { color: #92400e; }
+:root[data-theme="light"] [data-build-toast-host] [role="alert"] {
+  background: rgba(255, 255, 255, 0.97);
+  border-color: rgba(0, 135, 95, 0.35);
+  box-shadow: 0 10px 30px rgba(0, 40, 30, 0.18);
+}
+
 /* Tailwind dark-theme colour utilities, remapped for light mode across page content. */
 :root[data-theme="light"] main .text-white:not([class*="bg-"]):not(.btn *):not(.badge-solid),
 :root[data-theme="light"] main .hover\:text-white:hover:not([class*="bg-"]) { color: #051f20; }
