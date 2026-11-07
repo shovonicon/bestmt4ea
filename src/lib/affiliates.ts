@@ -48,7 +48,7 @@ export const affiliates = {
    */
   rinfinity: {
     label: 'R Infinity',
-    url: 'https://rinfinity.com/en/a?a=lwek',
+    url: 'https://rinfinity.com/a/lwek',
     program: 'broker',
     note: 'Forex and CFD broker · Pro, Prime, ECN, ProCent accounts',
   },
@@ -88,6 +88,12 @@ export const affiliates = {
     url: 'https://fusionmarkets.com/?refcode=111982',
     program: 'broker',
     note: 'Seychelles FSA · from $10 · zero-spread accounts',
+  },
+  fbs: {
+    label: 'FBS',
+    url: 'https://fbs.partners/?ibl=238183&ibp=2416958',
+    program: 'broker',
+    note: 'Multi-regulated broker · trader registration via partner link',
   },
   xm: {
     label: 'XM',

@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-05T15:12:17.512Z",
+  "generatedAt": "2026-11-07T01:29:45.747Z",
   "source": "wordpress-seo-redirects (2).csv",
-  "count": 2426,
+  "count": 2427,
   "dropped": [
     {
       "from": "/product/bbp-ai-golden-ea",
@@ -12493,6 +12493,11 @@
       "status": 302
     },
     {
+      "from": "/go/fbs/",
+      "to": "https://fbs.partners/?ibl=238183&ibp=2416958",
+      "status": 302
+    },
+    {
       "from": "/go/fusion-markets/",
       "to": "https://fusionmarkets.com/?refcode=111982",
       "status": 302
@@ -12544,7 +12549,7 @@
     },
     {
       "from": "/go/rinfinity/",
-      "to": "https://rinfinity.com/en/a?a=lwek",
+      "to": "https://rinfinity.com/a/lwek",
       "status": 302
     },
     {

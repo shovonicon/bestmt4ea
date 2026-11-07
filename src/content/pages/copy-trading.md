@@ -43,7 +43,7 @@ Our AI trades major forex pairs EURUSD and XAUUSD 24/5 using proven strategies. 
 
 ### How It Works – Simple, Secure & Hands-Off
 
-1.  **Open a Broker Account**: Choose from our vetted partners (**[Exness](https://one.exness.link/a/te38he38), [RoboForex](https://my.roboforex.com/en/?a=lwek), [XM](https://clicks.pipaffiliates.com/c?c=210814&l=en&p=0), [FBS](https://fbs.partners/?ibl=238183&ibp=2416958), [Markets4you](https://www.markets4you.online/?affid=u7k2fpy), [ICMarkets](https://icmarkets.com/?camp=74056), [AvaTrade](https://www.avatrade.com/?act=show-real-registry&tag=193586)**). Your funds stay in _your name_, in _your account_. Minimum: $1,000.
+1.  **Open a Broker Account**: Choose from our vetted partners (**[Exness](affiliate:exness), [RoboForex](affiliate:roboforex), [XM](affiliate:xm), [FBS](affiliate:fbs), [Markets4you](affiliate:markets4you), [ICMarkets](affiliate:icmarkets), [AvaTrade](affiliate:avatrade)**). Your funds stay in _your name_, in _your account_. Minimum: $1,000.
 2.  **Grant Limited Access**: Share only your MT4/MT5 trading password. We receive trade execution rights only — **zero access to withdraw or transfer funds**.
 3.  **We Manage Professionally**: Our AI EA executes high-probability trades around the clock. Every trade is visible to you in real time.
 4.  **You Stay in Complete Control**: Monitor your account anytime. Withdraw profits whenever you want. Pause or cancel management instantly via Telegram.
@@ -88,9 +88,9 @@ Pick a plan that fits your goals. Each offers **transparent profit sharing**, no
 
 | Plan Name | Min Deposit | Profit Share (Provider/You) | Affiliate Broker | Ideal For | Join Option |
 | --- | --- | --- | --- | --- | --- |
-| Starter | $1000 | 50/50 (You keep 50%) | [Exness](https://one.exness.link/a/te38he38), [RoboForex](https://my.roboforex.com/en/?a=lwek), [XM](https://clicks.pipaffiliates.com/c?c=210814&l=en&p=0) | New traders testing copy trading | [Join Now](https://t.me/pizion) |
-| Growth | $5000 | 40/60 (You keep 60%) | [Exness](https://one.exness.link/a/te38he38), [RoboForex](https://my.roboforex.com/en/?a=lwek), [XM](https://clicks.pipaffiliates.com/c?c=210814&l=en&p=0) | Copy trading with confidence | [Join Now](https://t.me/pizion) |
-| Professional | $25000 | 25/75 (You keep 75%) | Your Choice or [Exness](https://one.exness.link/a/te38he38), [RoboForex](https://my.roboforex.com/en/?a=lwek), [XM](https://clicks.pipaffiliates.com/c?c=210814&l=en&p=0) | Serious traders maximizing profits | [Join Now](https://t.me/pizion) |
+| Starter | $1000 | 50/50 (You keep 50%) | [Exness](affiliate:exness), [RoboForex](affiliate:roboforex), [XM](affiliate:xm) | New traders testing copy trading | [Join Now](https://t.me/pizion) |
+| Growth | $5000 | 40/60 (You keep 60%) | [Exness](affiliate:exness), [RoboForex](affiliate:roboforex), [XM](affiliate:xm) | Copy trading with confidence | [Join Now](https://t.me/pizion) |
+| Professional | $25000 | 25/75 (You keep 75%) | Your Choice or [Exness](affiliate:exness), [RoboForex](affiliate:roboforex), [XM](affiliate:xm) | Serious traders maximizing profits | [Join Now](https://t.me/pizion) |
 
 ### Grow Smarter with Barakah FX Management
 
@@ -134,7 +134,7 @@ No. We **cannot withdraw, transfer, or deposit your funds**. We only receive you
 
 **Which brokers do you support?**
 
-We currently support several reputable brokers, including **[Exness](https://one.exness.link/a/te38he38), [RoboForex](https://my.roboforex.com/en/?a=lwek), [XM](https://clicks.pipaffiliates.com/c?c=210814&l=en&p=0), [FBS](https://fbs.partners/?ibl=238183&ibp=2416958), [Markets4you](https://www.markets4you.online/?affid=u7k2fpy), [ICMarkets](https://icmarkets.com/?camp=74056), [AvaTrade](https://www.avatrade.com/?act=show-real-registry&tag=193586)**. If you already have an account with another regulated broker, contact us to check compatibility.
+We currently support several reputable brokers, including **[Exness](affiliate:exness), [RoboForex](affiliate:roboforex), [XM](affiliate:xm), [FBS](affiliate:fbs), [Markets4you](affiliate:markets4you), [ICMarkets](affiliate:icmarkets), [AvaTrade](affiliate:avatrade)**. If you already have an account with another regulated broker, contact us to check compatibility.
 
 **What is the minimum investment?**
 

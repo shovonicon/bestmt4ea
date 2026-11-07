@@ -85,7 +85,7 @@ Don’t take our word for it. The full trade history is public and updates in re
 
 [![widget](https://widgets.myfxbook.com/custom-widget?id=12144557&width=800&height=500&bart=2&linet=0&symbol=XAUUSD&magic=-1&title=Onix Stratos XAUUSD EA: AI Smart Scalper for MT5&titles=25&bgColor=ffffff&gridColor=bdbdbd&lineColor=00cb05&barColor=82ff85&bar1Color=82ff85&fontColor=525252&chartbgc=ffffff&equityColor=eff45a)](https://www.myfxbook.com/members/Bestmt4ea/onix-stratos-xauusd-ea-ai/12144557)
 
-Live Accounts – MyFxBook Verified –  MT5 – [Fusion Markets](https://fusionmarkets.com/?refcode=111982) broker
+Live Accounts – MyFxBook Verified –  MT5 – [Fusion Markets](affiliate:fusion-markets) broker
 
 [![Myfxbook Widget](https://widget.myfxbook.com/widget/widget.png?accountOid=12144557&type=3)](https://www.myfxbook.com/members/Bestmt4ea/onix-stratos-xauusd-ea-ai/12144557)
 
@@ -115,7 +115,7 @@ Scalping with Trend
 
 ## Broker
 
-[Fusion Markets](https://fusionmarkets.com/?refcode=111982)
+[Fusion Markets](affiliate:fusion-markets)
 
 ## Track record
 
@@ -258,7 +258,7 @@ Individual results vary and are not typical of every user. Testimonials reflect 
 
 **Which broker do you recommend?**
 
-It works best [Fusion Markets](https://fusionmarkets.com/?refcode=111982) MT5 broker only — this is the tested and recommended broker for stable execution.
+It works best [Fusion Markets](affiliate:fusion-markets) MT5 broker only — this is the tested and recommended broker for stable execution.
 
 **Is it verified?**
 

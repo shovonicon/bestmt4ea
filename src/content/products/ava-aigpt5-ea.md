@@ -98,7 +98,7 @@ Scalping with Trend
 
 ## Broker
 
-[Exness](https://one.exness.link/a/te38he38), [RoboForex](https://my.roboforex.com/en/?a=lwek), [XM](https://clicks.pipaffiliates.com/c?c=210814&l=en&p=0)
+[Exness](affiliate:exness), [RoboForex](affiliate:roboforex), [XM](affiliate:xm)
 
 ## Track record
 
@@ -225,7 +225,7 @@ Individual results vary and are not typical of every user. Testimonials reflect 
 
 **Which broker do you recommend?**
 
-It works best with MT4 – [Exness](https://one.exness.link/a/te38he38), [RoboForex](https://my.roboforex.com/en/?a=lwek), [XM](https://clicks.pipaffiliates.com/c?c=210814&l=en&p=0), [Fusion Markets](https://fusionmarkets.com/?refcode=111982) broker — this is the tested and recommended broker for stable execution.
+It works best with MT4 – [Exness](affiliate:exness), [RoboForex](affiliate:roboforex), [XM](affiliate:xm), [Fusion Markets](affiliate:fusion-markets) broker — this is the tested and recommended broker for stable execution.
 
 **Are your Forex EAs fully automated?**
 

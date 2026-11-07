@@ -1110,6 +1110,20 @@
     }
   }
 
+  /*
+   * Gap under the menu. Every rail slot is pinned to the top of its wrapper, so
+   * before any scroll the first card sat flush against the nav bar. Padding on the
+   * slot (not the sticky child) opens the gap without moving the stuck position.
+   */
+  @media (min-width: 1740px) {
+    .rf-rail-slot,
+    .tool-rail-slot,
+    .toc-slot,
+    .ad-rail {
+      padding-top: 1.5rem;
+    }
+  }
+
   /* Where the right rail cannot fit, the same three cards render after the copy. */
   @media (min-width: 1740px) {
     .tool-inline-slot {

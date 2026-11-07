@@ -78,7 +78,7 @@ Don’t take our word for it. The full trade history is public and updates in re
 
 [![widget](https://widgets.myfxbook.com/custom-widget?id=12059490&width=800&height=500&bart=2&linet=0&symbol=XAUUSD&magic=-1&title=Nexora Manus XAUUSD EA: AI Gold Scalper for MT5&titles=25&bgColor=ffffff&gridColor=bdbdbd&lineColor=00cb05&barColor=82ff85&bar1Color=82ff85&fontColor=525252&chartbgc=ffffff&equityColor=eff45a)](https://www.myfxbook.com/members/Bestmt4ea/nexora-manus-xauusd-ea-ai/12059490)
 
-Live Accounts – MyFxBook Verified –  MT5 – [Exness](https://one.exness.link/a/te38he38), [RoboForex](https://my.roboforex.com/en/?a=lwek), [XM](https://clicks.pipaffiliates.com/c?c=210814&l=en&p=0), [Fusion Markets](https://fusionmarkets.com/?refcode=111982) broker
+Live Accounts – MyFxBook Verified –  MT5 – [Exness](affiliate:exness), [RoboForex](affiliate:roboforex), [XM](affiliate:xm), [Fusion Markets](affiliate:fusion-markets) broker
 
 [![Myfxbook Widget](https://widget.myfxbook.com/widget/widget.png?accountOid=12059490&type=3)](https://www.myfxbook.com/members/Bestmt4ea/nexora-manus-xauusd-ea-ai/12059490)
 
@@ -108,7 +108,7 @@ Scalping with Trend
 
 ## Broker
 
-[Exness](https://one.exness.link/a/te38he38), [RoboForex](https://my.roboforex.com/en/?a=lwek), [XM](https://clicks.pipaffiliates.com/c?c=210814&l=en&p=0)
+[Exness](affiliate:exness), [RoboForex](affiliate:roboforex), [XM](affiliate:xm)
 
 ## Track record
 
@@ -251,7 +251,7 @@ Individual results vary and are not typical of every user. Testimonials reflect 
 
 **Which broker do you recommend?**
 
-It works best with MT5 – [Exness](https://one.exness.link/a/te38he38), [RoboForex](https://my.roboforex.com/en/?a=lwek), [XM](https://clicks.pipaffiliates.com/c?c=210814&l=en&p=0), [Fusion Markets](https://fusionmarkets.com/?refcode=111982) broker — this is the tested and recommended broker for stable execution.
+It works best with MT5 – [Exness](affiliate:exness), [RoboForex](affiliate:roboforex), [XM](affiliate:xm), [Fusion Markets](affiliate:fusion-markets) broker — this is the tested and recommended broker for stable execution.
 
 **Is it verified?**
 

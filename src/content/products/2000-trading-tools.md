@@ -38,4 +38,4 @@ draft: false
 
 [Free Download Now](#)
 
-[![Exness Banner](https://d3dpet1g0ty5ed.cloudfront.net/EN_Take_Control_990x250px.png)](https://one.exnessonelink.com/intl/en/a/te38he38)
+[![Exness Banner](https://d3dpet1g0ty5ed.cloudfront.net/EN_Take_Control_990x250px.png)](affiliate:exness)
