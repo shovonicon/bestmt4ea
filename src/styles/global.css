@@ -999,7 +999,7 @@
     .ad-rail-right { left: calc(50% + 34rem + 1.5rem); }
     .ad-rail-inner {
       position: sticky;
-      top: 8.25rem;
+      top: var(--rail-top);
       /* Reserve the 300x600 unit's height so the page does not jump when it fills. */
       min-height: 600px;
     }
@@ -1030,6 +1030,15 @@
    * (100vw - 896px) / 4 - 160px, which gives 96px each side at 1920 and 51px at
    * the 1740px breakpoint.
    */
+  /*
+   * Where a sticky rail stops when scrolling. The header is fixed and about 230px
+   * tall at desktop (logo row plus nav row), so the rail must stop below it.
+   * At 8.25rem the cards slid under the nav bar.
+   */
+  :root {
+    --rail-top: 15.5rem;
+  }
+
   .rf-rail-slot {
     display: none;
   }
@@ -1047,7 +1056,7 @@
     }
     .rf-rail-sticky {
       position: sticky;
-      top: 8.25rem;
+      top: var(--rail-top);
     }
   }
 
@@ -1082,7 +1091,7 @@
 
     .toc-sticky {
       position: sticky;
-      top: 8.25rem;
+      top: var(--rail-top);
     }
   }
 
@@ -1106,7 +1115,7 @@
     }
     .tool-rail-sticky {
       position: sticky;
-      top: 8.25rem;
+      top: var(--rail-top);
     }
   }
 
