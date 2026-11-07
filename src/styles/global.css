@@ -1036,7 +1036,7 @@
    * At 8.25rem the cards slid under the nav bar.
    */
   :root {
-    --rail-top: 15.5rem;
+    --rail-top: 8.5rem; /* fallback; Header.astro sets the measured value */
   }
 
   .rf-rail-slot {
