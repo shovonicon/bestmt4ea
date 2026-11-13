@@ -60,13 +60,17 @@ const GONE_STATUSES = new Set([410, 451]);
  *     are single pages now)
  *   - post, category and comment feeds: .../feed/, .../feed/rss2/, .../feed/atom/
  *
- * Deliberately NOT matched: anything under /wp-json/. The dead WooCommerce
- * Stripe webhook (/wp-json/wc-stripe/v1/webhook) must be left exactly as it is;
- * removing that endpoint is the owner's call in the Stripe Dashboard.
+ *   - /wp-cron.php, which WordPress and old cron pingers still request
+ *   - the WordPress REST API under /wp-json/, with one exception (below)
+ *
+ * Deliberately NOT matched: anything under /wp-json/wc-stripe/. The dead
+ * WooCommerce Stripe webhook (/wp-json/wc-stripe/v1/webhook) must be left exactly
+ * as it is; removing that endpoint is the owner's call in the Stripe Dashboard.
  */
 const GONE_PATTERNS = [
   /^\/(?:wp-content|wp-includes|wp-admin|wc-stripe|wc-api|cart|my-account)(?:\/|$)/i,
-  /^\/wp-login\.php\/?$/i,
+  /^\/wp-(?:login|cron)\.php\/?$/i,
+  /^\/wp-json(?:\/(?!wc-stripe(?:\/|$))|$)/i,
   /^\/shop\/page\/\d+(?:\/|$)/i,
   /^\/blog\/page\/\d+(?:\/|$)/i,
   /(?:^|\/)feed(?:\/(?:rss2?|atom|rdf))?\/?$/i,

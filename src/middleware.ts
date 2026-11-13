@@ -13,16 +13,11 @@
 
 import { defineMiddleware } from 'astro:middleware';
 import { env } from 'cloudflare:workers';
-import manifest from './generated/redirects.json' with { type: 'json' };
-import { buildMap, matchRedirect } from '../worker/match.mjs';
+import { legacyResponse } from './lib/redirect-response';
 import { getDb } from './db/client';
 import { resolveSession, SESSION_COOKIE } from './lib/session';
 import { CSRF_COOKIE, generateCsrfToken } from './lib/csrf';
 import { clientIpFrom } from './lib/http';
-
-type Rule = { from: string; to: string; status: number };
-
-const REDIRECT_MAP = buildMap((manifest as { rules: Rule[] }).rules);
 
 /**
  * On-demand routes that must never be cached or indexed.
@@ -35,15 +30,20 @@ const PRIVATE_PREFIXES = ['/login', '/dashboard', '/checkout', '/admin'];
 const isPrivatePath = (pathname: string) =>
   PRIVATE_PREFIXES.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`));
 
+/** Hosts that reach this Worker but must never serve the site themselves. */
+const NON_CANONICAL_HOSTS = new Set(['www.bestmt4ea.com', 'new.bestmt4ea.com']);
+
 export const onRequest = defineMiddleware(async (context, next) => {
   const url = new URL(context.request.url);
 
-  // One canonical host. The Worker route answers on www as well as the apex,
-  // which left www serving a full duplicate of the site (200, no redirect).
-  // Send every www request to the apex with a 301, preserving path and query.
-  // Defence in depth: a matching Cloudflare Single Redirect Rule on the zone
-  // covers any request the adapter serves before middleware runs.
-  if (url.hostname === 'www.bestmt4ea.com') {
+  // One canonical host. The Worker answers on www and on the old staging host
+  // `new.` as well as the apex, which left each serving a full duplicate of the
+  // site (200, no redirect). Send those requests to the apex with a 301,
+  // preserving path and query.
+  // This only sees on-demand routes: the adapter serves prerendered pages before
+  // middleware runs, so each extra host also needs a Cloudflare Single Redirect
+  // Rule on the zone (www has one) or to be detached from the Worker.
+  if (NON_CANONICAL_HOSTS.has(url.hostname)) {
     url.hostname = 'bestmt4ea.com';
     return new Response(null, {
       status: 301,
@@ -67,24 +67,8 @@ export const onRequest = defineMiddleware(async (context, next) => {
     if (assets) return assets.fetch(new URL('/sitemap-0.xml', url));
   }
 
-  const matched = matchRedirect(REDIRECT_MAP, url.pathname, url.search);
-
-  if (matched.kind === 'gone') {
-    return new Response(matched.status === 451 ? 'Unavailable For Legal Reasons' : 'Gone', {
-      status: matched.status,
-      headers: {
-        'content-type': 'text/plain; charset=utf-8',
-        'cache-control': 'public, max-age=86400',
-      },
-    });
-  }
-
-  if (matched.kind === 'redirect' && matched.location) {
-    const headers: Record<string, string> = { location: matched.location, 'cache-control': 'public, max-age=3600' };
-    // Affiliate go-links are hops, not pages: keep them out of search.
-    if (url.pathname.startsWith('/go/')) headers['x-robots-tag'] = 'noindex, nofollow';
-    return new Response(null, { status: matched.status, headers });
-  }
+  const legacy = legacyResponse(url);
+  if (legacy) return legacy;
 
   const db = getDb();
   const secret = env.SESSION_SECRET;

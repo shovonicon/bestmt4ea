@@ -1,6 +1,6 @@
-# robots.txt — https://bestmt4ea.com
+# robots.txt for https://bestmt4ea.com
 #
-# The public site is open to everything that respects robots.txt — search and
+# The public site is open to everything that respects robots.txt: search and
 # answer engines alike. GEO/AI traffic is a goal here, not something to block.
 #
 # Every agent below shares ONE rule set, so a named answer engine inherits the

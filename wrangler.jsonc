@@ -3,6 +3,8 @@
   "name": "bestmt4ea",
   "compatibility_date": "2025-09-01",
   "compatibility_flags": ["nodejs_compat"],
+  // The adapter's server handler behind a one-hop legacy-redirect check.
+  "main": "./src/worker-entry.ts",
   "vars": {
     "PUBLIC_SITE_URL": "https://bestmt4ea.com",
     // Public bucket only: the free files live here. Never point this at the
